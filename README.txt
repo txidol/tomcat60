@@ -33,6 +33,16 @@ svn mkdir https://svn.apache.org/repos/asf/tomcat/sandbox/component/trunk
 svn mkdir https://svn.apache.org/repos/asf/tomcat/sandbox/component/branches
 svn mkdir https://svn.apache.org/repos/asf/tomcat/sandbox/component/tags
 
+Alternatively, you can use the java/ directory. If possible:
+1. create a new package ( or few ) for each module
+2. if you have an external dependency for an optional component - create a new package.
+3. Update the top level build.xml file with targets for your module - use <include> patterns instead
+of exclude. 
+
+The single tree may help increase visibility of the source code. We are in 2005 ( or more ), build tools
+and IDEs have very good support for include/exclude patterns, we have tools to find dependencies between
+packages, and we have a single community, so we don't need fragmented source trees and more, at least in 
+sandbox.
 
 Releases
 ========
