@@ -18,6 +18,10 @@ package org.apache.tomcat.util.buf;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.ByteBuffer;
+
+import sun.security.krb5.internal.crypto.b;
+import sun.security.krb5.internal.crypto.t;
 
 /*
  * In a server it is very important to be able to operate on
@@ -32,9 +36,6 @@ import java.io.Serializable;
  * and mime values can be determined, but it is a great advantage
  * to be able to parse the request without converting to string.
  */
-
-// TODO: This class could either extend ByteBuffer, or better a ByteBuffer inside
-// this way it could provide the search/etc on ByteBuffer, as a helper.
 
 /**
  * This class is used to represent a chunk of bytes, and
@@ -65,6 +66,8 @@ public final class ByteChunk implements Cloneable, Serializable {
     /** Input interface, used when the buffer is emptiy
      *
      * Same as java.nio.channel.ReadableByteChannel
+     * It is used in InputBuffer class in connector.
+     * @deprecated Use RedableByteChannel
      */
     public static interface ByteInputChannel {
         /** 
@@ -77,6 +80,8 @@ public final class ByteChunk implements Cloneable, Serializable {
     }
 
     /** Same as java.nio.channel.WrittableByteChannel.
+     * 
+     * @deprecated use WrittableByteChannel
      */
     public static interface ByteOutputChannel {
         /** 
@@ -95,16 +100,19 @@ public final class ByteChunk implements Cloneable, Serializable {
     */
     public static final String DEFAULT_CHARACTER_ENCODING="ISO-8859-1";
         
-    // byte[]
-    private byte[] buff;
+    private ByteBuffer bb;
+    
+    // old style - while I'm updating
+    //private byte[] buff;
 
-    private int start=0;
-    private int end;
+    //private int start=0; // bb.getPosition() 
+    //private int end; // bb.getLimit()
 
     private String enc;
 
-    private boolean isSet=false; // XXX
-
+    // true if null. Is this used ??
+    private boolean isSet=false; 
+    
     // How much can it grow, when data is added
     private int limit=-1;
 
@@ -125,6 +133,15 @@ public final class ByteChunk implements Cloneable, Serializable {
     }
 
     //--------------------
+    
+    public void setByteBuffer(ByteBuffer buf) {
+        bb=buf;
+    }
+    
+    public ByteBuffer getByteBuffer() {
+        return bb;
+    }
+    
     public ByteChunk getClone() {
 	try {
 	    return (ByteChunk)this.clone();
@@ -133,6 +150,9 @@ public final class ByteChunk implements Cloneable, Serializable {
 	}
     }
 
+    /** @deprecated The buffer shouldn't be null - track this on the 
+     * MessageBytes.
+     */ 
     public boolean isNull() {
 	return ! isSet; // buff==null;
     }
@@ -143,25 +163,32 @@ public final class ByteChunk implements Cloneable, Serializable {
     public void recycle() {
 	//	buff = null;
 	enc=null;
-	start=0;
-	end=0;
+	//start=0;
+	//end=0;
 	isSet=false;
+        if( bb!=null ) bb.clear();
     }
 
     public void reset() {
-	buff=null;
+//	buff=null;
+        bb=null;
     }
 
     // -------------------- Setup --------------------
 
     public void allocate( int initial, int limit  ) {
 	isOutput=true;
-	if( buff==null || buff.length < initial ) {
-	    buff=new byte[initial];
-	}    
+        if( bb==null || bb.capacity() < initial ) {
+            bb=ByteBuffer.allocate( initial );
+        }
+        
+//	if( buff==null || buff.length < initial ) {
+//	    buff=new byte[initial];
+//	}    
+        
 	this.limit=limit;
-	start=0;
-	end=0;
+	//start=0;
+	//end=0;
 	isSet=true;
     }
 
@@ -171,12 +198,15 @@ public final class ByteChunk implements Cloneable, Serializable {
      * @param b the ascii bytes
      * @param off the start offset of the bytes
      * @param len the length of the bytes
+     * @deprecated use getByteBuffer().wrap( b, off, len )
      */
     public void setBytes(byte[] b, int off, int len) {
-        buff = b;
-        start = off;
-        end = start+ len;
+//        buff = b;
+        //start = off;
+        //end = start+ len;
         isSet=true;
+        
+        bb=ByteBuffer.wrap(b, off, len);
     }
 
     public void setOptimizedWrite(boolean optimizedWrite) {
@@ -186,6 +216,7 @@ public final class ByteChunk implements Cloneable, Serializable {
     public void setEncoding( String enc ) {
 	this.enc=enc;
     }
+
     public String getEncoding() {
         if (enc == null)
             enc=DEFAULT_CHARACTER_ENCODING;
@@ -194,6 +225,7 @@ public final class ByteChunk implements Cloneable, Serializable {
 
     /**
      * Returns the message bytes.
+     * @deprecated use getBuffer() ( or better - don't use it, ByteBuffer )
      */
     public byte[] getBytes() {
 	return getBuffer();
@@ -201,9 +233,10 @@ public final class ByteChunk implements Cloneable, Serializable {
 
     /**
      * Returns the message bytes.
+     * @deprecated Should be avoided, it's optional on direct buffers 
      */
     public byte[] getBuffer() {
-	return buff;
+	return bb.array(); //buff;
     }
 
     /**
@@ -211,16 +244,21 @@ public final class ByteChunk implements Cloneable, Serializable {
      * For output this is the end of the buffer.
      */
     public int getStart() {
-	return start;
+	return bb.position();// start;
     }
 
     public int getOffset() {
-	return start;
+	return bb.position();//start;
     }
 
     public void setOffset(int off) {
-        if (end < off ) end=off;
-	start=off;
+        //if (end < off ) end=off;
+        if( bb.limit() < off ) {
+            bb.limit(off);
+        }
+        
+	//start=off;
+        bb.position( off );
     }
 
     /**
@@ -228,7 +266,7 @@ public final class ByteChunk implements Cloneable, Serializable {
      * XXX need to clean this up
      */
     public int getLength() {
-	return end-start;
+	return bb.remaining(); // end-start;
     }
 
     /** Maximum amount of data in this buffer.
@@ -263,11 +301,11 @@ public final class ByteChunk implements Cloneable, Serializable {
     }
 
     public int getEnd() {
-	return end;
+	return bb.limit(); // end;
     }
 
     public void setEnd( int i ) {
-	end=i;
+	bb.limit(i); // end=i;
     }
 
     // -------------------- Adding data to the buffer --------------------
@@ -288,10 +326,10 @@ public final class ByteChunk implements Cloneable, Serializable {
 	makeSpace( 1 );
 
 	// couldn't make space
-	if( limit >0 && end >= limit ) {
+	if( limit >0 && bb.limit() >= limit ) {
 	    flushBuffer();
 	}
-	buff[end++]=b;
+	bb.put( b ); //buff[end++]=b;
     }
 
     public void append( ByteChunk src )
@@ -300,6 +338,15 @@ public final class ByteChunk implements Cloneable, Serializable {
 	append( src.getBytes(), src.getStart(), src.getLength());
     }
 
+    /** 
+     * Copy all data from another bytebuffer.
+     * 
+     * @param bb
+     */
+    public void append( ByteBuffer src ) {
+        bb.put( src );
+    }
+    
     /** Add data to the buffer
      */
     public void append( byte src[], int off, int len )
@@ -311,8 +358,9 @@ public final class ByteChunk implements Cloneable, Serializable {
 	// if we don't have limit: makeSpace can grow as it wants
 	if( limit < 0 ) {
 	    // assert: makeSpace made enough space
-	    System.arraycopy( src, off, buff, end, len );
-	    end+=len;
+	    //System.arraycopy( src, off, buff, end, len );
+            bb.put(src, off, len);
+	    //end+=len;
 	    return;
 	}
 
@@ -320,16 +368,17 @@ public final class ByteChunk implements Cloneable, Serializable {
         // If the buffer is empty and the source is going to fill up all the
         // space in buffer, may as well write it directly to the output,
         // and avoid an extra copy
-        if ( optimizedWrite && len == limit && end == start) {
+        if ( optimizedWrite && len == limit && bb.limit() == bb.position()) {
             out.realWriteBytes( src, off, len );
             return;
         }
 	// if we have limit and we're below
-	if( len <= limit - end ) {
+	if( len <= limit - bb.limit() ) {
 	    // makeSpace will grow the buffer to the limit,
 	    // so we have space
-	    System.arraycopy( src, off, buff, end, len );
-	    end+=len;
+	    //System.arraycopy( src, off, buff, end, len );
+            bb.put( src, off, len );
+	    //end+=len;
 	    return;
 	}
 
@@ -341,21 +390,23 @@ public final class ByteChunk implements Cloneable, Serializable {
         // We chunk the data into slices fitting in the buffer limit, although
         // if the data is written directly if it doesn't fit
 
-        int avail=limit-end;
-        System.arraycopy(src, off, buff, end, avail);
-        end += avail;
+        int avail=limit-bb.limit(); // end;
+        //System.arraycopy(src, off, buff, end, avail);
+        bb.put( src, off, avail );
+        //end += avail;
 
         flushBuffer();
 
         int remain = len - avail;
 
-        while (remain > (limit - end)) {
-            out.realWriteBytes( src, (off + len) - remain, limit - end );
-            remain = remain - (limit - end);
+        while (remain > (limit - bb.limit())) {
+            out.realWriteBytes( src, (off + len) - remain, limit - bb.limit() );
+            remain = remain - (limit - bb.limit());
         }
 
-        System.arraycopy(src, (off + len) - remain, buff, end, remain);
-        end += remain;
+        //System.arraycopy(src, (off + len) - remain, buff, end, remain);
+        bb.put( src, (off+len ) - remain, remain);
+        //end += remain;
 
     }
 
@@ -365,43 +416,46 @@ public final class ByteChunk implements Cloneable, Serializable {
     public int substract()
         throws IOException {
 
-        if ((end - start) == 0) {
+        if ((bb.limit() - bb.position()) == 0) {
             if (in == null)
                 return -1;
-            int n = in.realReadBytes( buff, 0, buff.length );
+            // TODO: if( in != null ) ... 
+            int n = in.realReadBytes( bb.array(), 0, bb.capacity() );
             if (n < 0)
                 return -1;
         }
 
-        return (buff[start++] & 0xFF);
+        return (bb.get() & 0xFF);
 
     }
 
     public int substract(ByteChunk src)
         throws IOException {
 
-        if ((end - start) == 0) {
+        if ((bb.limit() - bb.position()) == 0) {
             if (in == null)
                 return -1;
-            int n = in.realReadBytes( buff, 0, buff.length );
+            int n = in.realReadBytes( bb.array(), 0, bb.capacity());
             if (n < 0)
                 return -1;
         }
 
         int len = getLength();
-        src.append(buff, start, len);
-        start = end;
+        
+        src.getByteBuffer().put( bb );
+        //src.append(buff, start, len);
+        //start = end;
+        
         return len;
-
     }
 
     public int substract( byte src[], int off, int len )
         throws IOException {
 
-        if ((end - start) == 0) {
+        if ((bb.limit() - bb.position()) == 0) {
             if (in == null)
                 return -1;
-            int n = in.realReadBytes( buff, 0, buff.length );
+            int n = in.realReadBytes( bb.array(), 0, bb.capacity() );
             if (n < 0)
                 return -1;
         }
@@ -410,8 +464,10 @@ public final class ByteChunk implements Cloneable, Serializable {
         if (len > getLength()) {
             n = getLength();
         }
-        System.arraycopy(buff, start, src, off, n);
-        start += n;
+        
+        bb.get( src, off, n);
+        //System.arraycopy(buff, start, src, off, n);
+        //start += n;
         return n;
 
     }
@@ -428,10 +484,11 @@ public final class ByteChunk implements Cloneable, Serializable {
 	//assert out!=null
 	if( out==null ) {
 	    throw new IOException( "Buffer overflow, no sink " + limit + " " +
-				   buff.length  );
+				   bb.capacity()  );
 	}
-	out.realWriteBytes( buff, start, end-start );
-	end=start;
+	out.realWriteBytes( bb.array(), bb.position(), bb.limit()-bb.position());
+	bb.position(bb.limit());
+        //end=start;
     }
 
     /** Make space for len chars. If len is small, allocate
@@ -439,10 +496,10 @@ public final class ByteChunk implements Cloneable, Serializable {
      */
     private void makeSpace(int count)
     {
-	byte[] tmp = null;
+	ByteBuffer tmp = null;
 
 	int newSize;
-	int desiredSize=end + count;
+	int desiredSize=bb.limit() + count;
 
 	// Can't grow above the limit
 	if( limit > 0 &&
@@ -450,42 +507,45 @@ public final class ByteChunk implements Cloneable, Serializable {
 	    desiredSize=limit;
 	}
 
-	if( buff==null ) {
+	if( bb==null ) {
 	    if( desiredSize < 256 ) desiredSize=256; // take a minimum
-	    buff=new byte[desiredSize];
+	    //buff=new byte[desiredSize];
+            bb=ByteBuffer.allocate(desiredSize);
 	}
 	
 	// limit < buf.length ( the buffer is already big )
 	// or we already have space XXX
-	if( desiredSize <= buff.length ) {
+	if( desiredSize <= bb.capacity() ) {
 	    return;
 	}
 	// grow in larger chunks
-	if( desiredSize < 2 * buff.length ) {
-	    newSize= buff.length * 2;
+	if( desiredSize < 2 * bb.capacity() ) {
+	    newSize= bb.capacity() * 2;
 	    if( limit >0 &&
 		newSize > limit ) newSize=limit;
-	    tmp=new byte[newSize];
+	    tmp=ByteBuffer.allocate(newSize);
 	} else {
-	    newSize= buff.length * 2 + count ;
+	    newSize= bb.capacity() * 2 + count ;
 	    if( limit > 0 &&
 		newSize > limit ) newSize=limit;
-	    tmp=new byte[newSize];
+	    tmp=ByteBuffer.allocate(newSize);
 	}
 	
-	System.arraycopy(buff, start, tmp, 0, end-start);
-	buff = tmp;
+	//System.arraycopy(buff, start, tmp, 0, end-start);
+        tmp.put(bb);
+	bb = tmp;
 	tmp = null;
-	end=end-start;
-	start=0;
+	//end=end-start;
+	bb.position(0);
+        //start=0;
     }
     
     // -------------------- Conversion and getters --------------------
 
     public String toString() {
-        if (null == buff) {
+        if (null == bb) {
             return null;
-        } else if (end-start == 0) {
+        } else if (bb.remaining() == 0) {
             return "";
         }
         return StringCache.toString(this);
@@ -495,7 +555,7 @@ public final class ByteChunk implements Cloneable, Serializable {
         String strValue=null;
         try {
             if( enc==null ) enc=DEFAULT_CHARACTER_ENCODING;
-            strValue = new String( buff, start, end-start, enc );
+            strValue = new String( bb.array(), bb.position(), bb.remaining(), enc );
             /*
              Does not improve the speed too much on most systems,
              it's safer to use the "clasical" new String().
@@ -511,18 +571,18 @@ public final class ByteChunk implements Cloneable, Serializable {
         } catch (java.io.UnsupportedEncodingException e) {
             // Use the platform encoding in that case; the usage of a bad
             // encoding will have been logged elsewhere already
-            strValue = new String(buff, start, end-start);
+            strValue = new String(bb.array(), bb.position(), bb.remaining());
         }
         return strValue;
     }
 
     public int getInt()
     {
-	return Ascii.parseInt(buff, start,end-start);
+	return Ascii.parseInt(bb.array(), bb.position(),bb.remaining());
     }
 
     public long getLong() {
-        return Ascii.parseLong(buff, start,end-start);
+        return Ascii.parseLong(bb.array(), bb.position(),bb.remaining());
     }
 
 
@@ -537,12 +597,12 @@ public final class ByteChunk implements Cloneable, Serializable {
 	// XXX ENCODING - this only works if encoding is UTF8-compat
 	// ( ok for tomcat, where we compare ascii - header names, etc )!!!
 	
-	byte[] b = buff;
-	int blen = end-start;
+	byte[] b = bb.array();
+	int blen = bb.remaining();
 	if (b == null || blen != s.length()) {
 	    return false;
 	}
-	int boff = start;
+	int boff = bb.position();
 	for (int i = 0; i < blen; i++) {
 	    if (b[boff++] != s.charAt(i)) {
 		return false;
@@ -557,12 +617,12 @@ public final class ByteChunk implements Cloneable, Serializable {
      * @return true if the comparison succeeded, false otherwise
      */
     public boolean equalsIgnoreCase(String s) {
-	byte[] b = buff;
-	int blen = end-start;
+	byte[] b = bb.array();
+	int blen = bb.remaining();
 	if (b == null || blen != s.length()) {
 	    return false;
 	}
-	int boff = start;
+	int boff = bb.position();
 	for (int i = 0; i < blen; i++) {
 	    if (Ascii.toLower(b[boff++]) != Ascii.toLower(s.charAt(i))) {
 		return false;
@@ -576,14 +636,14 @@ public final class ByteChunk implements Cloneable, Serializable {
     }
     
     public boolean equals( byte b2[], int off2, int len2) {
-	byte b1[]=buff;
+	byte b1[]=bb.array();
 	if( b1==null && b2==null ) return true;
 
-	int len=end-start;
+	int len=bb.remaining();
 	if ( len2 != len || b1==null || b2==null ) 
 	    return false;
 		
-	int off1 = start;
+	int off1 = bb.position();
 
 	while ( len-- > 0) {
 	    if (b1[off1++] != b2[off2++]) {
@@ -599,14 +659,14 @@ public final class ByteChunk implements Cloneable, Serializable {
     
     public boolean equals( char c2[], int off2, int len2) {
 	// XXX works only for enc compatible with ASCII/UTF !!!
-	byte b1[]=buff;
+	byte b1[]=bb.array();
 	if( c2==null && b1==null ) return true;
 	
-	if (b1== null || c2==null || end-start != len2 ) {
+	if (b1== null || c2==null || bb.remaining() != len2 ) {
 	    return false;
 	}
-	int off1 = start;
-	int len=end-start;
+	int off1 = bb.position();
+	int len=bb.remaining();
 	
 	while ( len-- > 0) {
 	    if ( (char)b1[off1++] != c2[off2++]) {
@@ -622,12 +682,12 @@ public final class ByteChunk implements Cloneable, Serializable {
      */
     public boolean startsWith(String s) {
 	// Works only if enc==UTF
-	byte[] b = buff;
+	byte[] b = bb.array();
 	int blen = s.length();
-	if (b == null || blen > end-start) {
+	if (b == null || blen > bb.remaining()) {
 	    return false;
 	}
-	int boff = start;
+	int boff = bb.position();
 	for (int i = 0; i < blen; i++) {
 	    if (b[boff++] != s.charAt(i)) {
 		return false;
@@ -638,16 +698,16 @@ public final class ByteChunk implements Cloneable, Serializable {
 
     /* Returns true if the message bytes start with the specified byte array */
     public boolean startsWith(byte[] b2) {
-        byte[] b1 = buff;
+        byte[] b1 = bb.array();
         if (b1 == null && b2 == null) {
             return true;
         }
 
-        int len = end - start;
+        int len = bb.remaining();
         if (b1 == null || b2 == null || b2.length > len) {
             return false;
         }
-        for (int i = start, j = 0; i < end && j < b2.length; ) {
+        for (int i = bb.position(), j = 0; i < bb.limit() && j < b2.length; ) {
             if (b1[i++] != b2[j++]) 
                 return false;
         }
@@ -660,12 +720,12 @@ public final class ByteChunk implements Cloneable, Serializable {
      * @param pos The position
      */
     public boolean startsWithIgnoreCase(String s, int pos) {
-	byte[] b = buff;
+	byte[] b = bb.array();
 	int len = s.length();
-	if (b == null || len+pos > end-start) {
+	if (b == null || len+pos > bb.remaining()) {
 	    return false;
 	}
-	int off = start+pos;
+	int off = bb.position()+pos;
 	for (int i = 0; i < len; i++) {
 	    if (Ascii.toLower( b[off++] ) != Ascii.toLower( s.charAt(i))) {
 		return false;
@@ -680,14 +740,14 @@ public final class ByteChunk implements Cloneable, Serializable {
 	// Look for first char 
 	int srcEnd = srcOff + srcLen;
         
-	for( int i=myOff+start; i <= (end - srcLen); i++ ) {
-	    if( buff[i] != first ) continue;
+	for( int i=myOff+bb.position(); i <= (bb.limit() - srcLen); i++ ) {
+	    if( bb.get(i) != first ) continue;
 	    // found first char, now look for a match
             int myPos=i+1;
 	    for( int srcPos=srcOff + 1; srcPos< srcEnd; ) {
-                if( buff[myPos++] != src.charAt( srcPos++ ))
+                if( bb.get(myPos++) != src.charAt( srcPos++ ))
 		    break;
-                if( srcPos==srcEnd ) return i-start; // found it
+                if( srcPos==srcEnd ) return i-bb.position(); // found it
 	    }
 	}
 	return -1;
@@ -697,12 +757,12 @@ public final class ByteChunk implements Cloneable, Serializable {
 
     // normal hash. 
     public int hash() {
-	return hashBytes( buff, start, end-start);
+	return hashBytes( bb.array(), bb.position(), bb.remaining());
     }
 
     // hash ignoring case
     public int hashIgnoreCase() {
-	return hashBytesIC( buff, start, end-start );
+	return hashBytesIC( bb.array(), bb.position(), bb.remaining() );
     }
 
     private static int hashBytes( byte buff[], int start, int bytesLen ) {
@@ -733,8 +793,8 @@ public final class ByteChunk implements Cloneable, Serializable {
      * @param starting The start position
      */
     public int indexOf(char c, int starting) {
-	int ret = indexOf( buff, start+starting, end, c);
-	return (ret >= start) ? ret - start : -1;
+	int ret = indexOf( bb.array(), bb.position()+starting, bb.limit(), c);
+	return (ret >= bb.position()) ? ret - bb.position() : -1;
     }
 
     public static int  indexOf( byte bytes[], int off, int end, char qq )
