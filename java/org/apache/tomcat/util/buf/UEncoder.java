@@ -19,6 +19,10 @@ package org.apache.tomcat.util.buf;
 import java.io.CharArrayWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
 import java.util.BitSet;
 
 /** Efficient implementation for encoders.
@@ -39,51 +43,73 @@ public final class UEncoder {
     // Not static - the set may differ ( it's better than adding
     // an extra check for "/", "+", etc
     private BitSet safeChars=null;
-    private C2BConverter c2b=null;
-    private ByteChunk bb=null;
+    private CharsetEncoder c2b=null;
+    //private C2BConverter c2b=null;
+    private ByteBuffer bb=null;
 
     private String encoding="UTF8";
     private static final int debug=0;
+
+    private CharBuffer cb;
     
     public UEncoder() {
 	initSafeChars();
     }
 
+    // Doesn't seem to be used. Even if it would - it may need additional
+    // work to reset it.
     public void setEncoding( String s ) {
 	encoding=s;
     }
 
+    /** Characters that should not be encoded.
+     *  Typically "/".
+     * 
+     * @param c
+     */
     public void addSafeCharacter( char c ) {
 	safeChars.set( c );
     }
 
 
     /** URL Encode string, using a specified encoding.
+     * 
+     * Doesn't appear to be used outside
      *
      * @param buf The writer
      * @param s string to be encoded
      * @throws IOException If an I/O error occurs
+     * @deprecated Shouldn't be public - requires writer, should be simpler
      */
     public void urlEncode( Writer buf, String s )
 	throws IOException
     {
 	if( c2b==null ) {
-	    bb=new ByteChunk(16); // small enough.
-	    c2b=new C2BConverter( bb, encoding );
+	    bb=ByteBuffer.allocate(16); // small enough.
+	    c2b=Charset.forName("UTF8").newEncoder(); 
+            //new C2BConverter( bb, encoding );
+	    cb = CharBuffer.allocate(4);
 	}
 
-	for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
 	    int c = (int) s.charAt(i);
 	    if( safeChars.get( c ) ) {
-		if( debug > 0 ) log("Safe: " + (char)c);
+		//if( debug > 0 ) log("Safe: " + (char)c);
 		buf.write((char)c);
 	    } else {
-		if( debug > 0 ) log("Unsafe:  " + (char)c);
-		c2b.convert( (char)c );
+		//if( debug > 0 ) log("Unsafe:  " + (char)c);
+                cb.append((char)c);
+                cb.flip();
+                c2b.encode(cb, bb, true);
+		//c2b.convert( (char)c );
 		
 		// "surrogate" - UTF is _not_ 16 bit, but 21 !!!!
 		// ( while UCS is 31 ). Amazing...
-		if (c >= 0xD800 && c <= 0xDBFF) {
+		/*
+                 * I think this is going to be handled by 
+                 * c2b.
+                 * 
+                if (c >= 0xD800 && c <= 0xDBFF) {
 		    if ( (i+1) < s.length()) {
 			int d = (int) s.charAt(i+1);
 			if (d >= 0xDC00 && d <= 0xDFFF) {
@@ -93,17 +119,23 @@ public final class UEncoder {
 			}
 		    }
 		}
+                */
 
-		c2b.flushBuffer();
+		c2b.flush(bb);
 		
-		urlEncode( buf, bb.getBuffer(), bb.getOffset(),
-			   bb.getLength() );
-		bb.recycle();
+		urlEncode( buf, bb.array(), bb.arrayOffset(),
+			   bb.position() );
+		bb.clear();
+                cb.clear();
+                c2b.reset();
+                
 	    }
 	}
     }
 
     /**
+     * Doesn't appear to be used outside.
+     * @deprecated shouldn't be public, bad API
      */
     public void urlEncode( Writer buf, byte bytes[], int off, int len)
 	throws IOException
@@ -123,6 +155,10 @@ public final class UEncoder {
      * Utility funtion to re-encode the URL.
      * Still has problems with charset, since UEncoder mostly
      * ignores it.
+     * 
+     * Used by tomcat Response.toAbsolute() on the relative part
+     * 
+     * 
      */
     public String encodeURL(String uri) {
 	String outUri=null;
