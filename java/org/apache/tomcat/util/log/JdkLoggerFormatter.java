@@ -69,12 +69,6 @@ public class JdkLoggerFormatter extends Formatter {
         // pad to 8 to make it more readable 
         for( int i=0; i<8-buf.length(); i++ ) { buf.append(" "); }
         
-        // Append the name of the log instance if so configured
-        buf.append(name);
-        
-        // pad to 20 chars 
-        for( int i=0; i<8-buf.length(); i++ ) { buf.append(" "); }
-        
         //      Append a readable representation of the log level.
         switch(level) {
          case LOG_LEVEL_TRACE: buf.append(" T "); break;
@@ -86,7 +80,13 @@ public class JdkLoggerFormatter extends Formatter {
          default: buf.append("   ");
          }
          
+
+        // Append the name of the log instance if so configured
+        buf.append(name);
         
+        // pad to 20 chars 
+        for( int i=0; i<8-buf.length(); i++ ) { buf.append(" "); }
+                
         // Append the message
         buf.append(message);
         
