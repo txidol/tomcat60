@@ -201,10 +201,11 @@
   
       
   <target name="runtime"
-          description="Build single jar tomcat">
+          description="Build single jar tomcat" depends="compile">
      <mkdir dir="runtime" />
      <jar jarfile="runtime/tomcat-runtime.jar" manifest="resources/runtime.MF">
        <fileset dir="${container.home}/bin" >
+         <exclude name="org/apache/tomcat/util/buf/**"/>
        </fileset>
        <fileset dir="${sandbox.home}/bin" >
        </fileset>
@@ -238,6 +239,7 @@
       <mkdir dir="runtime" />
       <jar jarfile="runtime/tomcat-all-runtime.jar" manifest="resources/runtime.MF">
          <fileset dir="${container.home}/bin" >
+           <exclude name="org/apache/tomcat/util/buf/**"/>
          </fileset>
         <fileset dir="${sandbox.home}/bin" >
         </fileset>
@@ -282,44 +284,31 @@
         This is only the http connector, for testing/experimental purposes.
       -->
 
-    <target name="tomcat-http11" >
-        <mkdir dir="runtime/http11"/>
-        <javac destdir="runtime/http11" debug="false" >
-            <src>
-                <pathelement path="${connectors.home}/util/java"/>
-                <pathelement path="${connectors.home}/util/loader"/>
-                <pathelement path="${connectors.home}/mini/java"/>
-                <pathelement path="${connectors.home}/coyote/src/java"/>
-                <pathelement path="${connectors.home}/http11/src/java"/>
-            </src>
-            <exclude name="org/apache/coyote/http11/Http11Protocol.java"/>
-            <exclude name="org/apache/coyote/http11/Http11AprProcessor.java"/>
-            <exclude name="org/apache/coyote/http11/Http11AprProtocol.java"/>
-            <exclude name="org/apache/coyote/http11/InternalAprInputBuffer.java"/>
-            <exclude name="org/apache/coyote/http11/InternalAprOutputBuffer.java"/>
-            <exclude name="org/apache/tomcat/util/net/puretls/**"/>
-            <exclude name="org/apache/tomcat/util/net/jsse/JSSE15SocketFactory.java"/>
-            <exclude name="org/apache/tomcat/util/net/jsse/JSSE15Factory.java"/>
-            <exclude name="org/apache/tomcat/util/net/AprEndpoint.java"/>
-            <exclude name="org/apache/tomcat/util/digester/**"/>
-            <exclude name="org/apache/tomcat/util/compat/**"/>
-            <exclude name="org/apache/tomcat/util/jmx/**"/>
-            <exclude name="org/apache/tomcat/util/log/**"/>
-            <exclude name="org/apache/tomcat/util/IntrospectionUtils.java"/>
-            <exclude name="org/apache/coyote/tomcat3/**"/>
-            <exclude name="org/apache/coyote/tomcat4/**"/>
-            <exclude name="org/apache/coyote/memory/**"/>
-        </javac>
-        <copy todir="runtime/http11" >
-            <fileset dir="${connectors.home}/http11/src/java" includes="**/*.properties **/*.xml"/>
-            <fileset dir="${connectors.home}/util/java" includes="**/*.properties **/*.xml"/>
-        </copy>
-
-        <jar jarfile="runtime/tomcat-http11.jar" manifest="resources/coyote-http11.MF"
-             basedir="runtime/http11"
-             includes="**" />
+    <target name="tomcat-http11" depends="compile">
+      <mkdir dir="runtime"/>
+      <jar jarfile="runtime/tomcat-http11.jar" manifest="resources/coyote-http11.MF">
+        <fileset dir="${connectors.home}/bin" >
+          <exclude name="org/apache/tomcat/util/buf/**"/>
+        </fileset>
+        <fileset dir="${sandbox.home}/bin" >
+        </fileset>
+        <exclude name="org/apache/coyote/http11/Http11Protocol**"/>
+        <exclude name="org/apache/coyote/http11/Http11AprProcessor**"/>
+        <exclude name="org/apache/coyote/http11/Http11AprProtocol**"/>
+        <exclude name="org/apache/coyote/http11/InternalAprInputBuffer**"/>
+        <exclude name="org/apache/coyote/http11/InternalAprOutputBuffer**"/>
+        <exclude name="org/apache/tomcat/util/digester/**"/>
+        <exclude name="org/apache/tomcat/util/compat/**"/>
+        <exclude name="org/apache/tomcat/util/jmx/**"/>
+        <exclude name="org/apache/tomcat/util/log/**"/>
+        <exclude name="org/apache/tomcat/util/IntrospectionUtils**"/>
+        <exclude name="org/apache/coyote/tomcat3/**"/>
+        <exclude name="org/apache/coyote/tomcat4/**"/>
+        <exclude name="org/apache/coyote/memory/**"/>
+        </jar>
 
     </target>
 
+  <target name="all" depends="tomcat-http11,runtime,runtime-all" />
 
 </project>
