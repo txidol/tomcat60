@@ -1,0 +1,325 @@
+<project name="Tomcat Sandbox" default="compile" basedir=".">
+
+  <!-- ===================== Initialize Property Values =================== -->
+
+  <property file="${user.home}/build.properties"/>
+  <property file="build.properties"/>
+  <property file="build.properties.default"/>
+  <property file="../build/build.properties"/>
+  <property file="../build/build.properties.default"/>
+
+  <property name="tc55xbase" location=".." />
+
+  <!-- Source dependencies -->
+  <property name="api.home"      value="${tc55xbase}/servletapi"/>
+  <property name="container.home" value="${tc55xbase}/container"/>
+  <property name="jasper.home"   value="${tc55xbase}/jasper"/>
+  <property name="jtc.home"      value="${tc55xbase}/connectors"/>
+  <property name="connectors.home"      value="${tc55xbase}/connectors"/>
+  <property name="sandbox.home"  value="${tc55xbase}/sandbox"/>
+  <property name="tomcat.home"   value="${tc55xbase}/build"/>
+  <property name="build.home"   value="${tc55xbase}/build"/>
+
+  <property name="ant.jar"               value="${ant.home}/lib/ant.jar"/>
+  <property name="ant-launcher.jar"      value="${ant.home}/lib/ant-launcher.jar"/>
+
+  <!-- Build Defaults -->
+  <property name="catalina.build"   value="${container.home}/build"/>
+  <property name="jasper.build"     value="${jasper.home}/build"/>
+  <property name="tomcat.build"     value="${basedir}/build"/>
+  <property name="build.home"       value="${tomcat.build}"/>
+
+  <property name="tomcat-dbcp.home" value="${base.path}/tomcat-deps" />
+  <property name="tomcat-dbcp.jar"  value="${tomcat-dbcp.home}/naming-factory-dbcp.jar"/>
+
+  <property name="jasper-compiler-jdt.home" value="${base.path}/tomcat-deps" />
+  <property name="jasper-compiler-jdt.jar"
+       value="${jasper-compiler-jdt.home}/jasper-compiler-jdt.jar"/>
+
+  <property name="compile.optimize"     value="false"/>
+  <property name="compile.debug"        value="true" />
+  <property name="compile.deprecation"  value="false" />
+  <property name="compile.source"       value="1.5" />
+
+
+
+  <!-- ======================= Single-jar minimal tomcat =========== -->
+
+  <path id="runtime-deps" >  
+    <pathelement location="${base.path}/commons-modeler-1.1/commons-modeler.jar"/>
+    <pathelement location="${base.path}/servlet-api-2.4/lib/servlet-api.jar"/>
+    <pathelement location="${base.path}/jsp-api-2.0/lib/jsp-api.jar"/>
+    <pathelement location="${base.path}/mx4j-3.0.1/lib/mx4j.jar"/>
+    <pathelement location="${base.path}/commons-el-1.0/commons-el.jar" />
+    <pathelement location="${base.path}/tomcat-deps/jasper-compiler-jdt.jar" />
+    <pathelement location="${base.path}/commons-logging-1.0.4/commons-logging-api.jar" />
+    <pathelement location="${base.path}/commons-collections-3.1/commons-collections-3.1.jar" />
+    <pathelement location="${base.path}/apache-ant-1.6.5/lib/ant.jar"/>
+    <pathelement location="${base.path}/commons-launcher-0.9/bin/commons-launcher.jar"/>
+    <pathelement location="${base.path}/struts-1.2.7/lib/struts.jar"/>
+    <pathelement location="${base.path}/rhino1_6R2/js.jar"/>
+  </path>
+
+  <patternset id="runtime-all-excludes"> 
+    <exclude name="org/apache/tomcat/util/buf/**"/>
+    <exclude name="org/apache/tomcat/util/net/puretls/**"/>
+    <exclude name="org/apache/tomcat/util/net/jsse/JSSE15SocketFactory.java"/>
+    <exclude name="org/apache/tomcat/util/net/jsse/JSSE15Factory.java"/>
+    <exclude name="org/apache/ajp/tomcat33/**"/>
+    <exclude name="org/apache/ajp/tomcat4/**"/>
+    <exclude name="org/apache/coyote/tomcat3/**"/>
+    <exclude name="org/apache/coyote/tomcat4/**"/>
+    <exclude name="org/apache/coyote/memory/**"/>
+    <exclude name="org/apache/coyote/standalone/**"/>
+    <exclude name="**/CatalinaLaunchFilter.java"/>
+    <exclude name="**/MailSessionFactory.java"/>
+    <exclude name="**/SendMailFactory.java"/>
+    <exclude name="**/SemaphoreValve.java"/>
+    <exclude name="org/apache/catalina/ant/**"/>
+    <exclude name="org/apache/catalina/ssi/**"/>
+  </patternset>  
+
+  
+  <patternset id="runtime-excludes"> 
+    <!--
+    <exclude name="org/apache/tomcat/util/net/AprEndpoint.java"/>
+    <exclude name="org/apache/coyote/http11/Http11AprProcessor.java"/>
+    <exclude name="org/apache/coyote/http11/Http11AprProtocol.java"/>
+    <exclude name="org/apache/coyote/http11/InternalAprInputBuffer.java"/>
+    <exclude name="org/apache/coyote/http11/InternalAprOutputBuffer.java"/>
+    -->
+    <exclude name="org/apache/catalina/loader/CatalinaModuleListener.java"/>
+    <exclude name="org/apache/catalina/core/NamingContextListener.java"/>
+    <patternset refid="runtime-all-excludes"/>
+  </patternset>  
+
+  <path id="runtime-src-path">
+    <pathelement path="${connectors.home}/util/java"/>
+    <pathelement path="${connectors.home}/util/loader"/>
+    <pathelement path="${connectors.home}/jni/java"/>
+    <pathelement path="${connectors.home}/coyote/src/java"/>
+    <pathelement path="${connectors.home}/http11/src/java"/>
+    <pathelement path="${container.home}/catalina/src/share"/>
+    <pathelement path="${connectors.home}/juli/src"/>
+  </path>
+  <path id="runtime-all-src-path">
+    <path refid="runtime-src-path"/>
+    <pathelement path="${jasper.home}/src/share"/>
+  </path>
+  
+  <!-- =================== Eclipse/Idea equivalent ================== -->
+  <!-- If you are in an IDE environment, it should reuse the result of 
+       the (re)compilation - so ant will only do packaging -->
+  
+  <target name="compile-connectors">
+    <mkdir dir="${connectors.home}/bin" />
+    <javac destdir="${connectors.home}/bin" 
+      deprecation="false" debug="false"  >
+      <classpath refid="runtime-deps" />
+      <src path="${connectors.home}/coyote/src/java" />
+      <src path="${connectors.home}/http11/src/java" />
+      <src path="${connectors.home}/jni/java" />
+      <src path="${connectors.home}/jni/examples" />
+      <src path="${connectors.home}/juli/src/java" />
+      <src path="${connectors.home}/util/java" />
+      <src path="${connectors.home}/util/loader" />
+      <exclude name="org/apache/coyote/tomcat3/**"/>
+      <exclude name="org/apache/coyote/tomcat4/**"/>
+      <exclude name="org/apache/tomcat/util/net/puretls/**"/>
+    </javac>
+    <copy todir="${connectors.home}/bin" >
+          <fileset dir="${connectors.home}/util/java" includes="**/*.properties **/*.xml"/>
+          <fileset dir="${connectors.home}/naming/src" includes="**/*.properties **/*.xml"/>
+          <fileset dir="${connectors.home}/coyote/src/java" includes="**/*.properties **/*.xml" >
+            <exclude name="org/apache/coyote/tomcat4/**"/>
+          </fileset>
+          <fileset dir="${connectors.home}/http11/src/java" includes="**/*.properties **/*.xml"/>
+    </copy>
+  </target>
+
+  <target name="compile-sandbox">
+    <mkdir dir="${sandbox.home}/bin" />
+    <javac destdir="${sandbox.home}/bin" 
+      deprecation="false" debug="false"  >
+      <src path="${sandbox.home}/java" />
+      <classpath>
+        <path refid="runtime-deps" />        
+        <pathelement location="${connectors.home}/bin"/>
+      </classpath>
+    </javac>
+    <copy todir="${sandbox.home}/bin" >
+      <fileset dir="${sandbox.home}/java" includes="**/*.properties **/*.xml"/>
+    </copy>
+  </target>
+
+  <target name="compile-container">
+    <mkdir dir="${container.home}/bin" />
+    <javac destdir="${container.home}/bin" 
+      deprecation="false" debug="false"  >
+      <src path="${container.home}/catalina/src/share" />
+      <src path="${container.home}/modules/cluster/src/share" />
+      <src path="${container.home}/modules/storeconfig/src/share" />
+      <src path="${container.home}/webapps/admin/WEB-INF/classes" />
+      <src path="${container.home}/webapps/balancer/WEB-INF/classes" />
+      <src path="${container.home}/webapps/host-manager/WEB-INF/classes" />
+      <src path="${container.home}/webapps/manager/WEB-INF/classes" />
+      <src path="${container.home}/webapps/jmxremote/WEB-INF/src" />
+      <src path="${container.home}/webapps/docs/appdev/sample/src" />
+      <classpath>
+        <path refid="runtime-deps" />        
+        <pathelement location="${connectors.home}/bin"/>
+      </classpath>
+      <exclude name="**/MailSessionFactory.java"/>
+      <exclude name="**/SendMailFactory.java"/>
+    </javac>
+    <copy todir="${container.home}/bin" >
+      <fileset dir="${container.home}/catalina/src/share" includes="**/*.properties **/*.xml"/>
+    </copy>
+  </target>
+
+  <target name="compile-jasper">
+    <mkdir dir="${jasper.home}/bin" />
+    <javac destdir="${jasper.home}/bin" 
+      deprecation="false" debug="false"  >
+      <src path="${jasper.home}/src/share" />
+      <classpath>
+        <path refid="runtime-deps" />        
+        <pathelement location="${connectors.home}/bin"/>
+      </classpath>
+    </javac>
+  </target>
+  
+  <target name="compile" 
+    depends="compile-connectors,compile-sandbox,compile-container,compile-jasper"/>
+
+  <target name="clean-compile">
+    <delete dir="${container.home}/bin" includes="**"/>
+    <delete dir="${sandbox.home}/bin" includes="**"/>
+    <delete dir="${connector.home}/bin" includes="**"/>
+    <delete dir="${jasper.home}/bin" includes="**"/>
+  </target>
+  
+      
+  <target name="runtime"
+          description="Build single jar tomcat">
+     <mkdir dir="runtime" />
+     <jar jarfile="runtime/tomcat-runtime.jar" manifest="resources/runtime.MF">
+       <fileset dir="${container.home}/bin" >
+       </fileset>
+       <fileset dir="${sandbox.home}/bin" >
+       </fileset>
+       <fileset dir="${connectors.home}/bin" >
+         <exclude name="org/apache/tomcat/util/buf/**"/>
+       </fileset>
+       <zipfileset src="${base.path}/servlet-api-2.4/lib/servlet-api.jar" >
+           <exclude name="META-INF/**" />
+           <exclude name="**/*.html" />
+       </zipfileset>
+       <zipfileset src="${base.path}/commons-modeler-1.1/commons-modeler.jar">
+           <exclude name="org/apache/commons/modeler/ant/**" />
+           <exclude name="org/apache/catalina/ant/**" />
+           <exclude name="META-INF/**" />
+           <exclude name="**/*.html" />
+       </zipfileset>
+       <zipfileset src="${base.path}/jsp-api-2.0/lib/jsp-api.jar">
+           <exclude name="META-INF/**" />
+           <exclude name="**/*.html" />
+       </zipfileset>
+     </jar>
+
+  </target>
+
+    
+    <!-- Larger tomcat runtime, with jasper and some other packages.
+         JK could be excluded - this is not intended for full servers, just apps.
+    -->
+    <target name="runtime-all"
+            description="Build single jar tomcat - all inclusive" depends="compile">
+      <mkdir dir="runtime" />
+      <jar jarfile="runtime/tomcat-all-runtime.jar" manifest="resources/runtime.MF">
+         <fileset dir="${container.home}/bin" >
+         </fileset>
+        <fileset dir="${sandbox.home}/bin" >
+        </fileset>
+        <fileset dir="${jasper.home}/bin" >
+        </fileset>
+         <fileset dir="${connectors.home}/bin" >
+           <exclude name="org/apache/tomcat/util/buf/**"/>
+         </fileset>
+         <zipfileset src="${base.path}/servlet-api-2.4/lib/servlet-api.jar" >
+             <exclude name="META-INF/**" />
+             <exclude name="**/*.html" />
+         </zipfileset>
+         <zipfileset src="${base.path}/commons-modeler-1.1/commons-modeler.jar">
+             <exclude name="org/apache/commons/modeler/ant/**" />
+             <exclude name="org/apache/catalina/ant/**" />
+             <exclude name="META-INF/**" />
+             <exclude name="**/*.html" />
+         </zipfileset>
+         <zipfileset src="${base.path}/jsp-api-2.0/lib/jsp-api.jar">
+             <exclude name="META-INF/**" />
+             <exclude name="**/*.html" />
+         </zipfileset>
+
+        <zipfileset src="${base.path}/tomcat-deps/jasper-compiler-jdt.jar" >
+                <exclude name="META-INF/**" />
+                <exclude name="**/*.html" />
+        </zipfileset>
+        <zipfileset src="${base.path}/commons-el-1.0/commons-el.jar" >
+                <exclude name="META-INF/**" />
+                <exclude name="**/*.html" />
+        </zipfileset>
+        <zipfileset src="${base.path}/jsp-api-2.0/lib/jsp-api.jar">
+                 <exclude name="META-INF/**" />
+                 <exclude name="**/*.html" />
+           </zipfileset>
+         </jar>
+
+     </target>
+
+    <!-- ======================= Coyote standalone =========== -->
+    <!--
+        This is only the http connector, for testing/experimental purposes.
+      -->
+
+    <target name="tomcat-http11" >
+        <mkdir dir="runtime/http11"/>
+        <javac destdir="runtime/http11" debug="false" >
+            <src>
+                <pathelement path="${connectors.home}/util/java"/>
+                <pathelement path="${connectors.home}/util/loader"/>
+                <pathelement path="${connectors.home}/mini/java"/>
+                <pathelement path="${connectors.home}/coyote/src/java"/>
+                <pathelement path="${connectors.home}/http11/src/java"/>
+            </src>
+            <exclude name="org/apache/coyote/http11/Http11Protocol.java"/>
+            <exclude name="org/apache/coyote/http11/Http11AprProcessor.java"/>
+            <exclude name="org/apache/coyote/http11/Http11AprProtocol.java"/>
+            <exclude name="org/apache/coyote/http11/InternalAprInputBuffer.java"/>
+            <exclude name="org/apache/coyote/http11/InternalAprOutputBuffer.java"/>
+            <exclude name="org/apache/tomcat/util/net/puretls/**"/>
+            <exclude name="org/apache/tomcat/util/net/jsse/JSSE15SocketFactory.java"/>
+            <exclude name="org/apache/tomcat/util/net/jsse/JSSE15Factory.java"/>
+            <exclude name="org/apache/tomcat/util/net/AprEndpoint.java"/>
+            <exclude name="org/apache/tomcat/util/digester/**"/>
+            <exclude name="org/apache/tomcat/util/compat/**"/>
+            <exclude name="org/apache/tomcat/util/jmx/**"/>
+            <exclude name="org/apache/tomcat/util/log/**"/>
+            <exclude name="org/apache/tomcat/util/IntrospectionUtils.java"/>
+            <exclude name="org/apache/coyote/tomcat3/**"/>
+            <exclude name="org/apache/coyote/tomcat4/**"/>
+            <exclude name="org/apache/coyote/memory/**"/>
+        </javac>
+        <copy todir="runtime/http11" >
+            <fileset dir="${connectors.home}/http11/src/java" includes="**/*.properties **/*.xml"/>
+            <fileset dir="${connectors.home}/util/java" includes="**/*.properties **/*.xml"/>
+        </copy>
+
+        <jar jarfile="runtime/tomcat-http11.jar" manifest="resources/coyote-http11.MF"
+             basedir="runtime/http11"
+             includes="**" />
+
+    </target>
+
+
+</project>
