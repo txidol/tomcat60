@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="java"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/connectors"/>
+	<classpathentry kind="var" path="TOMCAT_LIBS_BASE/rhino1_6R2/js.jar"/>
+	<classpathentry kind="var" path="TOMCAT_LIBS_BASE/junit3.8.1/junit.jar"/>
+	<classpathentry kind="var" path="TOMCAT_LIBS_BASE/servlet-api-2.4/lib/servlet-api.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
