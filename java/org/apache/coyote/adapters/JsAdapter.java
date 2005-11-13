@@ -149,7 +149,7 @@ public class JsAdapter extends Main implements Adapter {
         ScriptableObject.putProperty(mainScope, "server", jsOut);
 
         Counters ct = (Counters) proto.getAdapter();
-        Mapper mp = (Mapper) ct.getNext();
+        MapperAdapter mp = (MapperAdapter) ct.getNext();
         FileAdapter fa = (FileAdapter) mp.getDefaultAdapter();
 
         jsOut = Context.javaToJS(ct, mainScope);

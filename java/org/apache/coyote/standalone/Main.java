@@ -1,9 +1,15 @@
 package org.apache.coyote.standalone;
 
+import java.util.Enumeration;
+import java.util.Hashtable;
+
+import org.apache.coyote.Adapter;
 import org.apache.coyote.adapters.Counters;
 import org.apache.coyote.adapters.HelloWorldAdapter;
-import org.apache.coyote.adapters.Mapper;
+import org.apache.coyote.adapters.MapperAdapter;
 import org.apache.coyote.http11.Http11BaseProtocol;
+import org.apache.tomcat.util.loader.Loader;
+import org.apache.tomcat.util.loader.Repository;
 
 
 /** 
@@ -13,7 +19,7 @@ import org.apache.coyote.http11.Http11BaseProtocol;
 public class Main  {
     
     protected Http11BaseProtocol proto;
-    protected Mapper mainAdapter;
+    protected MapperAdapter mainAdapter;
     
     public Main() {        
     }
@@ -25,7 +31,7 @@ public class Main  {
     public void init() {
         proto = new Http11BaseProtocol();
 
-        mainAdapter = new Mapper();        
+        mainAdapter = new MapperAdapter();        
         mainAdapter.addAdapter("/hello", new HelloWorldAdapter());
 
         Counters cnt=new Counters();
@@ -55,6 +61,52 @@ public class Main  {
         }
 
     }
+   
+    /** Load the handler table. Just a hack, I'll find a better solution
+     */
+    public void initHandlers() {
+
+        Hashtable prefixMap=new Hashtable();
+        Enumeration keys=System.getProperties().keys();
+
+        Loader loader=null;
+        if( loader == null ) {
+            // Not started from loader, we are embedded - create the loader, so we
+            // can do reloading.
+            //LoaderProperties.setPropertiesFile("");
+            try {
+                loader=new Loader();
+                ClassLoader myL=this.getClass().getClassLoader();
+                loader.setParentClassLoader( myL );
+                loader.init();
+            } catch( Throwable t ) {
+                t.printStackTrace();
+            }
+        }
+
+        Repository sR=loader.getRepository("shared");
+        // Construct handlers. Handlers will be created, they can get the protocol
+        // if they need additional init
+
+        while( keys.hasMoreElements()) {
+            String n=(String)keys.nextElement();
+            if( n.startsWith("handler.")) {
+                String cls=System.getProperty( n );
+                String map=n.substring(8);
+                Adapter hC=null;
+                try {
+                    // use the loader's server common repository
+                    Class c=sR.getClassLoader().loadClass(cls);
+                    //Class c=Class.forName(cls);
+                    hC=(Adapter)c.newInstance();
+                    prefixMap.put( map, hC );
+                } catch( Throwable t ) {
+                    t.printStackTrace();
+                }
+            }
+        }
+    }
+
     
     // ------------------- Main ---------------------
     public static void main( String args[]) {
