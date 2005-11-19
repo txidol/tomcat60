@@ -116,13 +116,15 @@ public class MessageWriter extends Writer
 
 
     /**
-     * Byte chunk used to output bytes.
+     * Byte chunk used to output bytes. This is just used to wrap the byte[]
+     * to match the coyote OutputBuffer interface
      */
     private ByteChunk outputChunk = new ByteChunk();
 
 
     /**
-     * Encoding to use.
+     * Encoding to use. 
+     * TODO: isn't it redundant ? enc, gotEnc, conv plus the enc in the bb
      */
     private String enc;
 
@@ -134,13 +136,14 @@ public class MessageWriter extends Writer
 
 
     /**
-     * List of encoders.
+     * List of encoders. The writer is reused - the encoder mapping 
+     * avoids creating expensive objects. In future it'll contain nio.Charsets
      */
     protected HashMap encoders = new HashMap();
 
 
     /**
-     * Current char to byte converter.
+     * Current char to byte converter. TODO: replace with Charset
      */
     protected C2BConverter conv;
 

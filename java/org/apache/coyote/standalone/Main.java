@@ -8,6 +8,7 @@ import org.apache.coyote.adapters.Counters;
 import org.apache.coyote.adapters.HelloWorldAdapter;
 import org.apache.coyote.adapters.MapperAdapter;
 import org.apache.coyote.http11.Http11BaseProtocol;
+import org.apache.tomcat.util.http.mapper.Mapper;
 import org.apache.tomcat.util.loader.Loader;
 import org.apache.tomcat.util.loader.Repository;
 
@@ -41,11 +42,18 @@ public class Main  {
         proto.setAdapter(cnt);
     }
     
+    public MapperAdapter getMapper() {
+        return mainAdapter;
+    }
+    
     /**
      */
     public void run() {
         init();
-        
+        start();
+    }
+    
+    public void start() {
         if( proto.getPort() == 0 )
             proto.setPort(8800);
         
