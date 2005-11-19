@@ -36,6 +36,16 @@ public class TcpConnection  { // implements Endpoint {
 
     PoolTcpEndpoint endpoint;
     Socket socket;
+    private long nativeSocket;
+    // SocketChannel for NIO 
+
+    public long getNativeSocket() {
+        return nativeSocket;
+    }
+
+    public void setNativeSocket(long s) {
+        this.nativeSocket = s;
+    }
 
     public static void setMaxShutdownTries(int mst) {
 	MAX_SHUTDOWN_TRIES = mst;

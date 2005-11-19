@@ -53,7 +53,7 @@ import org.apache.tomcat.util.threads.ThreadWithAttributes;
  * @author Mladen Turk
  * @author Remy Maucherat
  */
-public class AprEndpoint {
+public class AprEndpoint extends PoolTcpEndpoint {
 
 
     // -------------------------------------------------------------- Constants
@@ -65,6 +65,7 @@ public class AprEndpoint {
         StringManager.getManager("org.apache.tomcat.util.net.res");
 
 
+    // where is this used ?
     /**
      * The Request attribute key for the cipher suite.
      */
@@ -238,6 +239,10 @@ public class AprEndpoint {
     protected Handler handler = null;
     public void setHandler(Handler handler ) { this.handler = handler; }
     public Handler getHandler() { return handler; }
+
+    protected TcpConnectionHandler chandler = null;
+    public void setHandler(TcpConnectionHandler chandler ) { this.chandler = chandler; }
+    public TcpConnectionHandler getTcpConnectionHandler() { return chandler; }
 
 
     /**
@@ -1192,6 +1197,7 @@ public class AprEndpoint {
         public void run() {
 
             // Process requests until we receive a shutdown signal
+            TcpConnection tcpCon=new TcpConnection();
             while (running) {
 
                 // Wait for the next socket to be assigned
@@ -1200,12 +1206,20 @@ public class AprEndpoint {
                     continue;
 
                 // Process the request from this socket
-                if (!handler.process(socket)) {
+                if (handler != null && !handler.process(socket)) {
                     // Close socket and pool
                     Socket.destroy(socket);
                     socket = 0;
+                } else {
+                    if (chandler != null ) {
+                        tcpCon.setNativeSocket(socket);
+                        chandler.processConnection(tcpCon, null);
+                        // TODO: Close socket and pool - what would be the 
+                        // return false case ? 
+                        //Socket.destroy(socket);
+                        //socket = 0;
+                    }
                 }
-
                 // Finish up this request
                 recycleWorkerThread(this);
 

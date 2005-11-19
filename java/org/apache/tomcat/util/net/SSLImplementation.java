@@ -65,10 +65,12 @@ abstract public class SSLImplementation {
 	try {
 	    // Workaround for the J2SE 1.4.x classloading problem (under Solaris).
 	    // Class.forName(..) fails without creating class using new.
-	    // This is an ugly workaround. 
-	    if( JSSEImplementationClass.equals(className) ) {
-		return new org.apache.tomcat.util.net.jsse.JSSEImplementation();
-	    }
+	    // This is an ugly workaround.
+            // This also breaks compiling tomcat without SSL support, and is 
+            // just wrong. Better fix - fix Class.forName.
+	    //if( JSSEImplementationClass.equals(className) ) {
+	    //    return new org.apache.tomcat.util.net.jsse.JSSEImplementation();
+	    //}
 	    Class clazz=Class.forName(className);
 	    return (SSLImplementation)clazz.newInstance();
 	} catch (Exception e){
