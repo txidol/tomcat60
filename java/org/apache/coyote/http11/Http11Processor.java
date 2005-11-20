@@ -823,7 +823,7 @@ public class Http11Processor implements Processor, ActionHook {
                 if( !disableUploadTimeout && keptAlive && soTimeout > 0 ) {
                     socket.setSoTimeout(soTimeout);
                 }
-                inputBuffer.parseRequestLine();
+                inputBuffer.parseRequestLine(false);
                 request.setStartTime(System.currentTimeMillis());
                 thrA.setParam( threadPool, request.requestURI() );
                 keptAlive = true;

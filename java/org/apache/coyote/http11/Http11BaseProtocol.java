@@ -264,9 +264,17 @@ public class Http11BaseProtocol implements ProtocolHandler
         setAttribute("strategy", strategy);
       }
 
-      public String getStrategy() {
+   public String getStrategy() {
         return ep.getStrategy();
-      }
+   }
+
+    /** Access to the thread pool.
+     *
+     * @return tp the internal thread pool used by the protocol
+     */
+   public ThreadPool getThreadPool() {
+        return tp;
+   }
 
     // -------------------- Tcp setup --------------------
 

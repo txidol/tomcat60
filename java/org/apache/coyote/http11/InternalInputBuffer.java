@@ -371,6 +371,10 @@ public class InternalInputBuffer implements InputBuffer {
 
     }
 
+    public boolean parseRequestLine()
+        throws IOException {
+        return parseRequestLine( false );
+    }
 
     /**
      * Read the request line. This function is meant to be used during the 
@@ -381,7 +385,7 @@ public class InternalInputBuffer implements InputBuffer {
      * read operations, or if the given buffer is not big enough to accomodate
      * the whole line.
      */
-    public void parseRequestLine()
+    public boolean parseRequestLine(boolean dummy)
         throws IOException {
 
         int start = 0;
@@ -517,6 +521,8 @@ public class InternalInputBuffer implements InputBuffer {
         } else {
             request.protocol().setString("");
         }
+        
+        return true;
 
     }
 

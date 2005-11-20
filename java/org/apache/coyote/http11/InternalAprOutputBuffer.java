@@ -19,17 +19,12 @@ package org.apache.coyote.http11;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import org.apache.tomcat.jni.Socket;
-import org.apache.tomcat.util.buf.ByteChunk;
-import org.apache.tomcat.util.buf.CharChunk;
-import org.apache.tomcat.util.buf.MessageBytes;
-import org.apache.tomcat.util.http.HttpMessages;
-import org.apache.tomcat.util.http.MimeHeaders;
-import org.apache.tomcat.util.res.StringManager;
-
 import org.apache.coyote.ActionCode;
 import org.apache.coyote.OutputBuffer;
 import org.apache.coyote.Response;
+import org.apache.tomcat.jni.Socket;
+import org.apache.tomcat.util.buf.ByteChunk;
+import org.apache.tomcat.util.http.HttpMessages;
 
 /**
  * Output buffer.

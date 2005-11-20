@@ -62,7 +62,7 @@ import org.apache.tomcat.util.threads.ThreadWithAttributes;
  *
  * @author Remy Maucherat
  */
-public class Http11AprProcessor implements ActionHook {
+public class Http11AprProcessor extends Http11Processor implements ActionHook {
 
 
     /**
