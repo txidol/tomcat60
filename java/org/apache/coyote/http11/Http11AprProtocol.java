@@ -45,63 +45,16 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Remy Maucherat
  * @author Costin Manolache
  */
-public class Http11AprProtocol implements ProtocolHandler, MBeanRegistration
+public class Http11AprProtocol extends Http11BaseProtocol implements ProtocolHandler, MBeanRegistration
 {
     public Http11AprProtocol() {
+        ep=new AprEndpoint();
         cHandler = new Http11ConnectionHandler( this );
         setSoLinger(Constants.DEFAULT_CONNECTION_LINGER);
         setSoTimeout(Constants.DEFAULT_CONNECTION_TIMEOUT);
+        // this line is different from super.
         //setServerSoTimeout(Constants.DEFAULT_SERVER_SOCKET_TIMEOUT);
         setTcpNoDelay(Constants.DEFAULT_TCP_NO_DELAY);
-    }
-
-    /**
-     * The string manager for this package.
-     */
-    protected static StringManager sm =
-        StringManager.getManager(Constants.Package);
-
-    /** Pass config info
-     */
-    public void setAttribute( String name, Object value ) {
-        if( log.isTraceEnabled())
-            log.trace(sm.getString("http11protocol.setattribute", name, value));
-
-        attributes.put(name, value);
-    }
-
-    public Object getAttribute( String key ) {
-        if( log.isTraceEnabled())
-            log.trace(sm.getString("http11protocol.getattribute", key));
-        return attributes.get(key);
-    }
-
-    public Iterator getAttributeNames() {
-        return attributes.keySet().iterator();
-    }
-
-    /**
-     * Set a property.
-     */
-    public void setProperty(String name, String value) {
-        setAttribute(name, value);
-    }
-
-    /**
-     * Get a property
-     */
-    public String getProperty(String name) {
-        return (String)getAttribute(name);
-    }
-
-    /** The adapter, used to call the connector
-     */
-    public void setAdapter(Adapter adapter) {
-        this.adapter=adapter;
-    }
-
-    public Adapter getAdapter() {
-        return adapter;
     }
 
 
@@ -109,7 +62,7 @@ public class Http11AprProtocol implements ProtocolHandler, MBeanRegistration
      */
     public void init() throws Exception {
         ep.setName(getName());
-        ep.setHandler(cHandler);
+        ep.setHandler((AprEndpoint.Handler)cHandler);
 
         try {
             ep.init();
@@ -151,28 +104,6 @@ public class Http11AprProtocol implements ProtocolHandler, MBeanRegistration
             log.info(sm.getString("http11protocol.start", getName()));
     }
 
-    public void pause() throws Exception {
-        try {
-            ep.pause();
-        } catch (Exception ex) {
-            log.error(sm.getString("http11protocol.endpoint.pauseerror"), ex);
-            throw ex;
-        }
-        if(log.isInfoEnabled())
-            log.info(sm.getString("http11protocol.pause", getName()));
-    }
-
-    public void resume() throws Exception {
-        try {
-            ep.resume();
-        } catch (Exception ex) {
-            log.error(sm.getString("http11protocol.endpoint.resumeerror"), ex);
-            throw ex;
-        }
-        if(log.isInfoEnabled())
-            log.info(sm.getString("http11protocol.resume", getName()));
-    }
-
     public void destroy() throws Exception {
         if(log.isInfoEnabled())
             log.info(sm.getString("http11protocol.stop", getName()));
@@ -185,70 +116,6 @@ public class Http11AprProtocol implements ProtocolHandler, MBeanRegistration
 
     // -------------------- Properties--------------------
     protected AprEndpoint ep=new AprEndpoint();
-    protected boolean secure;
-
-    protected Hashtable attributes = new Hashtable();
-
-    private int maxKeepAliveRequests=100; // as in Apache HTTPD server
-    private int timeout = 300000;   // 5 minutes as in Apache HTTPD server
-    private int maxSavePostSize = 4 * 1024;
-    private int maxHttpHeaderSize = 4 * 1024;
-    private int socketCloseDelay=-1;
-    private boolean disableUploadTimeout = true;
-    private int socketBuffer = 9000;
-    private Adapter adapter;
-    private Http11ConnectionHandler cHandler;
-
-    /**
-     * Compression value.
-     */
-    private String compression = "off";
-    private String noCompressionUserAgents = null;
-    private String restrictedUserAgents = null;
-    private String compressableMimeTypes = "text/html,text/xml,text/plain";
-    private int compressionMinSize    = 2048;
-
-    private String server;
-
-    // -------------------- Pool setup --------------------
-
-    public int getMaxThreads() {
-        return ep.getMaxThreads();
-    }
-
-    public void setMaxThreads( int maxThreads ) {
-        ep.setMaxThreads(maxThreads);
-        setAttribute("maxThreads", "" + maxThreads);
-    }
-
-    public void setThreadPriority(int threadPriority) {
-      ep.setThreadPriority(threadPriority);
-      setAttribute("threadPriority", "" + threadPriority);
-    }
-
-    public int getThreadPriority() {
-      return ep.getThreadPriority();
-    }
-
-    // -------------------- Tcp setup --------------------
-
-    public int getBacklog() {
-        return ep.getBacklog();
-    }
-
-    public void setBacklog( int i ) {
-        ep.setBacklog(i);
-        setAttribute("backlog", "" + i);
-    }
-
-    public int getPort() {
-        return ep.getPort();
-    }
-
-    public void setPort( int port ) {
-        ep.setPort(port);
-        setAttribute("port", "" + port);
-    }
 
     public int getFirstReadTimeout() {
         return ep.getFirstReadTimeout();
@@ -323,85 +190,6 @@ public class Http11AprProtocol implements ProtocolHandler, MBeanRegistration
         setAttribute("tcpNoDelay", "" + b);
     }
 
-    public boolean getDisableUploadTimeout() {
-        return disableUploadTimeout;
-    }
-
-    public void setDisableUploadTimeout(boolean isDisabled) {
-        disableUploadTimeout = isDisabled;
-    }
-
-    public int getSocketBuffer() {
-        return socketBuffer;
-    }
-
-    public void setSocketBuffer(int valueI) {
-        socketBuffer = valueI;
-    }
-
-    public String getCompression() {
-        return compression;
-    }
-
-    public void setCompression(String valueS) {
-        compression = valueS;
-        setAttribute("compression", valueS);
-    }
-
-    public int getMaxSavePostSize() {
-        return maxSavePostSize;
-    }
-
-    public void setMaxSavePostSize(int valueI) {
-        maxSavePostSize = valueI;
-        setAttribute("maxSavePostSize", "" + valueI);
-    }
-
-    public int getMaxHttpHeaderSize() {
-        return maxHttpHeaderSize;
-    }
-
-    public void setMaxHttpHeaderSize(int valueI) {
-        maxHttpHeaderSize = valueI;
-        setAttribute("maxHttpHeaderSize", "" + valueI);
-    }
-
-    public String getRestrictedUserAgents() {
-        return restrictedUserAgents;
-    }
-
-    public void setRestrictedUserAgents(String valueS) {
-        restrictedUserAgents = valueS;
-        setAttribute("restrictedUserAgents", valueS);
-    }
-
-    public String getNoCompressionUserAgents() {
-        return noCompressionUserAgents;
-    }
-
-    public void setNoCompressionUserAgents(String valueS) {
-        noCompressionUserAgents = valueS;
-        setAttribute("noCompressionUserAgents", valueS);
-    }
-
-    public String getCompressableMimeType() {
-        return compressableMimeTypes;
-    }
-
-    public void setCompressableMimeType(String valueS) {
-        compressableMimeTypes = valueS;
-        setAttribute("compressableMimeTypes", valueS);
-    }
-
-    public int getCompressionMinSize() {
-        return compressionMinSize;
-    }
-
-    public void setCompressionMinSize(int valueI) {
-        compressionMinSize = valueI;
-        setAttribute("compressionMinSize", "" + valueI);
-    }
-
     public int getSoLinger() {
         return ep.getSoLinger();
     }
@@ -436,59 +224,6 @@ public class Http11AprProtocol implements ProtocolHandler, MBeanRegistration
     public void setSecure( boolean b ) {
         secure=b;
         setAttribute("secure", "" + b);
-    }
-
-    public int getMaxKeepAliveRequests() {
-        return maxKeepAliveRequests;
-    }
-
-    /** Set the maximum number of Keep-Alive requests that we will honor.
-     */
-    public void setMaxKeepAliveRequests(int mkar) {
-        maxKeepAliveRequests = mkar;
-        setAttribute("maxKeepAliveRequests", "" + mkar);
-    }
-
-    /**
-     * Return the Keep-Alive policy for the connection.
-     */
-    public boolean getKeepAlive() {
-        return ((maxKeepAliveRequests != 0) && (maxKeepAliveRequests != 1));
-    }
-
-    /**
-     * Set the keep-alive policy for this connection.
-     */
-    public void setKeepAlive(boolean keepAlive) {
-        if (!keepAlive) {
-            setMaxKeepAliveRequests(1);
-        }
-    }
-
-    public int getSocketCloseDelay() {
-        return socketCloseDelay;
-    }
-
-    public void setSocketCloseDelay( int d ) {
-        socketCloseDelay=d;
-        setAttribute("socketCloseDelay", "" + d);
-    }
-
-    public void setServer( String server ) {
-        this.server = server;
-    }
-
-    public String getServer() {
-        return server;
-    }
-
-    public int getTimeout() {
-        return timeout;
-    }
-
-    public void setTimeout( int timeouts ) {
-        timeout = timeouts;
-        setAttribute("timeout", "" + timeouts);
     }
 
     // --------------------  SSL related properties --------------------
@@ -586,13 +321,32 @@ public class Http11AprProtocol implements ProtocolHandler, MBeanRegistration
 
     // --------------------  Connection handler --------------------
 
-    static class Http11ConnectionHandler implements Handler {
+    Http11AprProcessor newProcessor() {
+        Http11AprProcessor processor = null;
+        processor = new Http11AprProcessor(maxHttpHeaderSize, ep);
+        processor.setAdapter(adapter);
+        processor.setMaxKeepAliveRequests(maxKeepAliveRequests);
+        processor.setTimeout(timeout);
+        processor.setDisableUploadTimeout(disableUploadTimeout);
+        processor.setCompression(compression);
+        processor.setCompressionMinSize(compressionMinSize);
+        processor.setNoCompressionUserAgents(noCompressionUserAgents);
+        processor.setCompressableMimeTypes(compressableMimeTypes);
+        processor.setRestrictedUserAgents(restrictedUserAgents);
+        processor.setSocketBuffer(socketBuffer);
+        processor.setMaxSavePostSize(maxSavePostSize);
+        processor.setServer(server);
+        return processor;
+    }
+    
+    static class AprHttp11ConnectionHandler extends Http11ConnectionHandler implements Handler {
         Http11AprProtocol proto;
         static int count=0;
         RequestGroupInfo global=new RequestGroupInfo();
         ThreadLocal localProcessor = new ThreadLocal();
 
-        Http11ConnectionHandler( Http11AprProtocol proto ) {
+        AprHttp11ConnectionHandler( Http11AprProtocol proto ) {
+            super(null);
             this.proto=proto;
         }
 
@@ -601,20 +355,8 @@ public class Http11AprProtocol implements ProtocolHandler, MBeanRegistration
             try {
                 processor = (Http11AprProcessor) localProcessor.get();
                 if (processor == null) {
-                    processor =
-                        new Http11AprProcessor(proto.maxHttpHeaderSize, proto.ep);
-                    processor.setAdapter(proto.adapter);
-                    processor.setMaxKeepAliveRequests(proto.maxKeepAliveRequests);
-                    processor.setTimeout(proto.timeout);
-                    processor.setDisableUploadTimeout(proto.disableUploadTimeout);
-                    processor.setCompression(proto.compression);
-                    processor.setCompressionMinSize(proto.compressionMinSize);
-                    processor.setNoCompressionUserAgents(proto.noCompressionUserAgents);
-                    processor.setCompressableMimeTypes(proto.compressableMimeTypes);
-                    processor.setRestrictedUserAgents(proto.restrictedUserAgents);
-                    processor.setSocketBuffer(proto.socketBuffer);
-                    processor.setMaxSavePostSize(proto.maxSavePostSize);
-                    processor.setServer(proto.server);
+                    processor=proto.newProcessor();
+                    
                     localProcessor.set(processor);
                     if (proto.getDomain() != null) {
                         synchronized (this) {

@@ -199,27 +199,27 @@ public class Http11BaseProtocol implements ProtocolHandler
     protected String socketFactoryName=null;
     protected String sslImplementationName=null;
 
-    private int maxKeepAliveRequests=100; // as in Apache HTTPD server
-    private int timeout = 300000;   // 5 minutes as in Apache HTTPD server
-    private int maxSavePostSize = 4 * 1024;
-    private int maxHttpHeaderSize = 4 * 1024;
+    protected int maxKeepAliveRequests=100; // as in Apache HTTPD server
+    protected int timeout = 300000;   // 5 minutes as in Apache HTTPD server
+    protected int maxSavePostSize = 4 * 1024;
+    protected int maxHttpHeaderSize = 4 * 1024;
     private String reportedname;
     private int socketCloseDelay=-1;
-    private boolean disableUploadTimeout = true;
-    private int socketBuffer = 9000;
-    private Adapter adapter;
+    protected boolean disableUploadTimeout = true;
+    protected int socketBuffer = 9000;
+    protected Adapter adapter;
     protected Http11ConnectionHandler cHandler;
 
     /**
      * Compression value.
      */
-    private String compression = "off";
-    private String noCompressionUserAgents = null;
-    private String restrictedUserAgents = null;
-    private String compressableMimeTypes = "text/html,text/xml,text/plain";
-    private int compressionMinSize    = 2048;
+    protected String compression = "off";
+    protected String noCompressionUserAgents = null;
+    protected String restrictedUserAgents = null;
+    protected String compressableMimeTypes = "text/html,text/xml,text/plain";
+    protected int compressionMinSize    = 2048;
 
-    private String server;
+    protected String server;
 
     // -------------------- Pool setup --------------------
 
