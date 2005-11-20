@@ -44,7 +44,7 @@ public class InternalAprOutputBuffer extends InternalOutputBuffer {
      * Default constructor.
      */
     public InternalAprOutputBuffer(Response response) {
-        super(response, Constants.DEFAULT_HTTP_HEADER_BUFFER_SIZE);
+        this(response, Constants.DEFAULT_HTTP_HEADER_BUFFER_SIZE);
     }
 
 
@@ -60,6 +60,7 @@ public class InternalAprOutputBuffer extends InternalOutputBuffer {
 
         // Cause loading of HttpMessages
         HttpMessages.getMessage(200);
+        socketBuffer=null;
     }
 
     // ----------------------------------------------------- Instance Variables

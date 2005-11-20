@@ -207,7 +207,8 @@ public class InternalOutputBuffer
      * Set the socket buffer size.
      */
     public void setSocketBuffer(int socketBufferSize) {
-
+        
+        if( socketBuffer == null ) return;
         if (socketBufferSize > 500) {
             useSocketBuffer = true;
             socketBuffer.allocate(socketBufferSize, socketBufferSize);
@@ -300,7 +301,7 @@ public class InternalOutputBuffer
         }
 
         // Flush the current buffer
-        if (useSocketBuffer) {
+        if (useSocketBuffer && socketBuffer != null ) {
             socketBuffer.flushBuffer();
         }
 
@@ -331,7 +332,9 @@ public class InternalOutputBuffer
 
         // Recycle Request object
         response.recycle();
-        socketBuffer.recycle();
+        if( socketBuffer != null ) {
+            socketBuffer.recycle();
+        }
 
         outputStream = null;
         buf = headerBuffer;
@@ -353,7 +356,10 @@ public class InternalOutputBuffer
 
         // Recycle Request object
         response.recycle();
-        socketBuffer.recycle();
+        // this is not used in apr 
+        if( socketBuffer != null ) {
+            socketBuffer.recycle();
+        }
 
         // Determine the header buffer used for next request
         buf = headerBuffer;
@@ -395,7 +401,7 @@ public class InternalOutputBuffer
         if (lastActiveFilter != -1)
             activeFilters[lastActiveFilter].end();
 
-        if (useSocketBuffer) {
+        if (useSocketBuffer && socketBuffer != null ) {
             socketBuffer.flushBuffer();
         }
 
@@ -455,6 +461,8 @@ public class InternalOutputBuffer
         }
 
         // End the response status line
+        // This was missing in APR !
+        // Why is this needed ???? 
         if (System.getSecurityManager() != null){
            AccessController.doPrivileged(
                 new PrivilegedAction(){
@@ -472,7 +480,7 @@ public class InternalOutputBuffer
 
     }
 
-    private String getMessage(final int message){
+    protected String getMessage(final int message){
         if (System.getSecurityManager() != null){
            return (String)AccessController.doPrivileged(
                 new PrivilegedAction(){
@@ -598,7 +606,7 @@ public class InternalOutputBuffer
 
         if (pos > 0) {
             // Sending the response header buffer
-            if (useSocketBuffer) {
+            if (useSocketBuffer && socketBuffer != null) {
                 socketBuffer.append(buf, 0, pos);
             } else {
                 outputStream.write(buf, 0, pos);
@@ -765,7 +773,7 @@ public class InternalOutputBuffer
         public int doWrite(ByteChunk chunk, Response res) 
             throws IOException {
 
-            if (useSocketBuffer) {
+            if (useSocketBuffer && socketBuffer != null ) {
                 socketBuffer.append(chunk.getBuffer(), chunk.getStart(), 
                                    chunk.getLength());
             } else {
