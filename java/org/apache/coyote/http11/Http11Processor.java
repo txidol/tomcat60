@@ -561,7 +561,7 @@ public class Http11Processor implements Processor, ActionHook {
      * @param sArray the StringArray
      * @param value string
      */
-    private boolean startsWithStringArray(String sArray[], String value) {
+    protected boolean startsWithStringArray(String sArray[], String value) {
         if (value == null)
            return false;
         for (int i = 0; i < sArray.length; i++) {
@@ -1026,8 +1026,26 @@ public class Http11Processor implements Processor, ActionHook {
         } else if (actionCode == ActionCode.ACTION_STOP) {
 
             started = false;
+            
+        // ------------------------------------    
+        } else if (actionCode == ActionCode.ACTION_REQ_SET_BODY_REPLAY) {
+            ByteChunk body = (ByteChunk) param;
+            
+            InputFilter savedBody = new SavedRequestInputFilter(body);
+            savedBody.setRequest(request);
 
-        } else if (actionCode == ActionCode.ACTION_REQ_SSL_ATTRIBUTE ) {
+            InternalInputBuffer internalBuffer = (InternalInputBuffer)
+                request.getInputBuffer();
+            internalBuffer.addActiveFilter(savedBody);
+        } else {
+            endpointAction(actionCode, param);
+        }
+    }
+
+    protected void endpointAction(ActionCode actionCode, 
+            Object param) {
+        
+        if (actionCode == ActionCode.ACTION_REQ_SSL_ATTRIBUTE ) {
 
             try {
                 if (sslSupport != null) {
@@ -1124,15 +1142,6 @@ public class Http11Processor implements Processor, ActionHook {
                     log.warn(sm.getString("http11processor.socket.ssl"), e);
                 }
             }
-        } else if (actionCode == ActionCode.ACTION_REQ_SET_BODY_REPLAY) {
-            ByteChunk body = (ByteChunk) param;
-            
-            InputFilter savedBody = new SavedRequestInputFilter(body);
-            savedBody.setRequest(request);
-
-            InternalInputBuffer internalBuffer = (InternalInputBuffer)
-                request.getInputBuffer();
-            internalBuffer.addActiveFilter(savedBody);
         }
 
     }
@@ -1341,6 +1350,18 @@ public class Http11Processor implements Processor, ActionHook {
 
     }
 
+    protected void setDefaultHost() {
+        // HTTP/1.0
+        // Default is what the socket tells us. Overriden if a host is
+        // found/parsed
+        // APR: endpoint.getPort(), no serverName.
+        request.setServerPort(socket.getLocalPort());
+        
+        InetAddress localAddress = socket.getLocalAddress();
+        // Setting the socket-related fields. The adapter doesn't know
+        // about socket.
+        request.serverName().setString(localAddress.getHostName());        
+    }
 
     /**
      * Parse host.
@@ -1348,14 +1369,7 @@ public class Http11Processor implements Processor, ActionHook {
     public void parseHost(MessageBytes valueMB) {
 
         if (valueMB == null || valueMB.isNull()) {
-            // HTTP/1.0
-            // Default is what the socket tells us. Overriden if a host is
-            // found/parsed
-            request.setServerPort(socket.getLocalPort());
-            InetAddress localAddress = socket.getLocalAddress();
-            // Setting the socket-related fields. The adapter doesn't know
-            // about socket.
-            request.serverName().setString(localAddress.getHostName());
+            setDefaultHost();
             return;
         }
 
@@ -1420,7 +1434,7 @@ public class Http11Processor implements Processor, ActionHook {
     /**
      * Check for compression
      */
-    private boolean isCompressable() {
+    protected boolean isCompressable() {
 
         // Nope Compression could works in HTTP 1.0 also
         // cf: mod_deflate
@@ -1514,6 +1528,9 @@ public class Http11Processor implements Processor, ActionHook {
             contentDelimitation = true;
         }
 
+        // APR: sendfile
+        sendfileSupport(outputFilters);
+
         // Check for compression
         boolean useCompression = false;
         if (entityBody && (compressionLevel > 0)) {
@@ -1565,7 +1582,7 @@ public class Http11Processor implements Processor, ActionHook {
             headers.setValue("Vary").setString("Accept-Encoding");
         }
 
-        // Add date header
+        // Add date header. APR didn't have SecurityManager wrapper
         String date = null;
         if (System.getSecurityManager() != null){
             date = (String)AccessController.doPrivileged(
@@ -1615,6 +1632,9 @@ public class Http11Processor implements Processor, ActionHook {
 
     }
 
+    // Hook for sendfile
+    protected void sendfileSupport(OutputFilter[] outputFilters) {
+    }
 
     /**
      * Initialize standard input and output filters.

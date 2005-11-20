@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.EOFException;
 
+import org.apache.tomcat.jni.Socket;
+import org.apache.tomcat.jni.Status;
 import org.apache.tomcat.util.buf.ByteChunk;
 import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.http.MimeHeaders;
@@ -385,7 +387,7 @@ public class InternalInputBuffer implements InputBuffer {
      * read operations, or if the given buffer is not big enough to accomodate
      * the whole line.
      */
-    public boolean parseRequestLine(boolean dummy)
+    public boolean parseRequestLine(boolean useAvailableData)
         throws IOException {
 
         int start = 0;
@@ -399,6 +401,27 @@ public class InternalInputBuffer implements InputBuffer {
 
             // Read new bytes if needed
             if (pos >= lastValid) {
+                /* APR version:
+                if (useAvailableData) {
+                    return false;
+                }
+                // Do a simple read with a short timeout
+                bbuf.clear();
+                int nRead = Socket.recvbbt
+                    (socket, 0, buf.length - lastValid, readTimeout);
+                if (nRead > 0) {
+                    bbuf.limit(nRead);
+                    bbuf.get(buf, pos, nRead);
+                    lastValid = pos + nRead;
+                } else {
+                    if ((-nRead) == Status.ETIMEDOUT || (-nRead) == Status.TIMEUP) {
+                        return false;
+                    } else {
+                        throw new IOException(sm.getString("iib.failedread"));
+                    }
+                }
+
+                 */
                 if (!fill())
                     throw new EOFException(sm.getString("iib.eof.error"));
             }
@@ -417,6 +440,29 @@ public class InternalInputBuffer implements InputBuffer {
         // Method name is always US-ASCII
         //
 
+        /* APR: extra code:
+        if (pos >= lastValid) {
+            if (useAvailableData) {
+                return false;
+            }
+            // Do a simple read with a short timeout
+            bbuf.clear();
+            int nRead = Socket.recvbbt
+                (socket, 0, buf.length - lastValid, readTimeout);
+            if (nRead > 0) {
+                bbuf.limit(nRead);
+                bbuf.get(buf, pos, nRead);
+                lastValid = pos + nRead;
+            } else {
+                if ((-nRead) == Status.ETIMEDOUT || (-nRead) == Status.TIMEUP) {
+                    return false;
+                } else {
+                    throw new IOException(sm.getString("iib.failedread"));
+                }
+            }
+        }         
+         */
+        
         boolean space = false;
 
         while (!space) {
@@ -740,16 +786,44 @@ public class InternalInputBuffer implements InputBuffer {
                     (sm.getString("iib.requestheadertoolarge.error"));
             }
 
+            // In APR: 
+            /*
+            bbuf.clear();
+            nRead = Socket.recvbb
+                (socket, 0, buf.length - lastValid);
+            if (nRead > 0) {
+                bbuf.limit(nRead);
+                bbuf.get(buf, pos, nRead);
+                lastValid = pos + nRead;
+            } else {
+                if ((-nRead) == Status.EAGAIN) {
+                    return false;
+                } else {
+                    throw new IOException(sm.getString("iib.failedread"));
+                }
+            }
+             */
             nRead = inputStream.read(buf, pos, buf.length - lastValid);
             if (nRead > 0) {
                 lastValid = pos + nRead;
             }
 
         } else {
-
             buf = bodyBuffer;
             pos = 0;
             lastValid = 0;
+            /*APR:
+                        bbuf.clear();
+            nRead = Socket.recvbb
+                (socket, 0, buf.length);
+            if (nRead > 0) {
+                bbuf.limit(nRead);
+                bbuf.get(buf, 0, nRead);
+                lastValid = nRead;
+            } else {
+                throw new IOException(sm.getString("iib.failedread"));
+            }
+             */
             nRead = inputStream.read(buf, 0, buf.length);
             if (nRead > 0) {
                 lastValid = nRead;
@@ -768,6 +842,8 @@ public class InternalInputBuffer implements InputBuffer {
     /**
      * This class is an input buffer which will read its data from an input
      * stream.
+     * 
+     * Used as an adapter for the ByteChunk.
      */
     protected class InputStreamInputBuffer 
         implements InputBuffer {

@@ -21,11 +21,9 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import org.apache.coyote.InputBuffer;
 import org.apache.coyote.Request;
 import org.apache.tomcat.jni.Socket;
 import org.apache.tomcat.jni.Status;
-import org.apache.tomcat.util.buf.ByteChunk;
 
 /**
  * Implementation of InputBuffer which provides HTTP request header parsing as
@@ -50,8 +48,6 @@ public class InternalAprInputBuffer extends InternalInputBuffer {
         super(request, headerBufferSize);
 
         bbuf = ByteBuffer.allocateDirect(headerBufferSize);
-
-        inputStreamInputBuffer = new SocketInputBuffer();
 
         this.readTimeout = readTimeout * 1000;
 
@@ -109,9 +105,6 @@ public class InternalAprInputBuffer extends InternalInputBuffer {
      */
     public void recycle() {
         super.recycle();
-
-        // Recycle Request object
-        request.recycle();
 
         socket = 0;
     }
@@ -364,40 +357,4 @@ public class InternalAprInputBuffer extends InternalInputBuffer {
         return (nRead > 0);
 
     }
-
-
-    // ------------------------------------- InputStreamInputBuffer Inner Class
-
-
-    /**
-     * This class is an input buffer which will read its data from an input
-     * stream.
-     */
-    protected class SocketInputBuffer 
-        implements InputBuffer {
-
-
-        /**
-         * Read bytes into the specified chunk.
-         */
-        public int doRead(ByteChunk chunk, Request req ) 
-            throws IOException {
-
-            if (pos >= lastValid) {
-                if (!fill())
-                    return -1;
-            }
-
-            int length = lastValid - pos;
-            chunk.setBytes(buf, pos, length);
-            pos = lastValid;
-
-            return (length);
-
-        }
-
-
-    }
-
-
 }
