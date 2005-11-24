@@ -15,13 +15,15 @@
  */
 
 
-package org.apache.coyote.http11;
+package org.apache.coyote.http11.apr;
 
 import java.io.EOFException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
 import org.apache.coyote.Request;
+import org.apache.coyote.http11.Constants;
+import org.apache.coyote.http11.InternalInputBuffer;
 import org.apache.tomcat.jni.Socket;
 import org.apache.tomcat.jni.Status;
 

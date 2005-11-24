@@ -14,27 +14,19 @@
  *  limitations under the License.
  */
 
-package org.apache.coyote.http11;
+package org.apache.coyote.http11.apr;
 
 import java.net.InetAddress;
 import java.net.URLEncoder;
-import java.util.Hashtable;
-import java.util.Iterator;
 
-import javax.management.MBeanRegistration;
-import javax.management.MBeanServer;
-import javax.management.ObjectName;
-
-import org.apache.commons.modeler.Registry;
 import org.apache.coyote.ActionCode;
 import org.apache.coyote.ActionHook;
-import org.apache.coyote.Adapter;
 import org.apache.coyote.ProtocolHandler;
 import org.apache.coyote.RequestGroupInfo;
-import org.apache.coyote.RequestInfo;
+import org.apache.coyote.http11.Constants;
+import org.apache.coyote.http11.Http11BaseProtocol;
 import org.apache.tomcat.util.net.AprEndpoint;
 import org.apache.tomcat.util.net.AprEndpoint.Handler;
-import org.apache.tomcat.util.res.StringManager;
 
 
 /**
@@ -45,11 +37,11 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Remy Maucherat
  * @author Costin Manolache
  */
-public class Http11AprProtocol extends Http11BaseProtocol implements ProtocolHandler, MBeanRegistration
+public class Http11AprBaseProtocol extends Http11BaseProtocol implements ProtocolHandler
 {
-    public Http11AprProtocol() {
+    public Http11AprBaseProtocol() {
         ep=new AprEndpoint();
-        cHandler = new Http11ConnectionHandler( this );
+        cHandler = new AprHttp11ConnectionHandler( this );
         setSoLinger(Constants.DEFAULT_CONNECTION_LINGER);
         setSoTimeout(Constants.DEFAULT_CONNECTION_TIMEOUT);
         // this line is different from super.
@@ -75,25 +67,7 @@ public class Http11AprProtocol extends Http11BaseProtocol implements ProtocolHan
 
     }
 
-    ObjectName tpOname;
-    ObjectName rgOname;
-
     public void start() throws Exception {
-        if( this.domain != null ) {
-            try {
-                tpOname=new ObjectName
-                    (domain + ":" + "type=ThreadPool,name=" + getName());
-                Registry.getRegistry(null, null)
-                .registerComponent(ep, tpOname, null );
-            } catch (Exception e) {
-                log.error("Can't register threadpool" );
-            }
-            rgOname=new ObjectName
-                (domain + ":type=GlobalRequestProcessor,name=" + getName());
-            Registry.getRegistry(null, null).registerComponent
-                ( cHandler.global, rgOname, null );
-        }
-
         try {
             ep.start();
         } catch (Exception ex) {
@@ -108,10 +82,6 @@ public class Http11AprProtocol extends Http11BaseProtocol implements ProtocolHan
         if(log.isInfoEnabled())
             log.info(sm.getString("http11protocol.stop", getName()));
         ep.destroy();
-        if( tpOname!=null )
-            Registry.getRegistry(null, null).unregisterComponent(tpOname);
-        if( rgOname != null )
-            Registry.getRegistry(null, null).unregisterComponent(rgOname);
     }
 
     // -------------------- Properties--------------------
@@ -338,14 +308,19 @@ public class Http11AprProtocol extends Http11BaseProtocol implements ProtocolHan
         processor.setServer(server);
         return processor;
     }
+
+    protected void registerWorker(Http11AprProcessor processor, int count, RequestGroupInfo global) {        
+    }
     
     static class AprHttp11ConnectionHandler extends Http11ConnectionHandler implements Handler {
-        Http11AprProtocol proto;
+        Http11AprBaseProtocol proto;
         static int count=0;
         RequestGroupInfo global=new RequestGroupInfo();
+
+        // equivalent with old connector params
         ThreadLocal localProcessor = new ThreadLocal();
 
-        AprHttp11ConnectionHandler( Http11AprProtocol proto ) {
+        AprHttp11ConnectionHandler( Http11AprBaseProtocol proto ) {
             super(null);
             this.proto=proto;
         }
@@ -359,18 +334,7 @@ public class Http11AprProtocol extends Http11BaseProtocol implements ProtocolHan
                     
                     localProcessor.set(processor);
                     if (proto.getDomain() != null) {
-                        synchronized (this) {
-                            try {
-                                RequestInfo rp = processor.getRequest().getRequestProcessor();
-                                rp.setGlobalProcessor(global);
-                                ObjectName rpName = new ObjectName
-                                (proto.getDomain() + ":type=RequestProcessor,worker="
-                                        + proto.getName() + ",name=HttpRequest" + count++);
-                                Registry.getRegistry(null, null).registerComponent(rp, rpName, null);
-                            } catch (Exception e) {
-                                log.warn("Error registering request");
-                            }
-                        }
+                        proto.registerWorker(processor, count++, global);
                     }
                 }
 
@@ -395,12 +359,12 @@ public class Http11AprProtocol extends Http11BaseProtocol implements ProtocolHan
 
             } catch(java.net.SocketException e) {
                 // SocketExceptions are normal
-                Http11AprProtocol.log.debug
+                Http11AprBaseProtocol.log.debug
                     (sm.getString
                      ("http11protocol.proto.socketexception.debug"), e);
             } catch (java.io.IOException e) {
                 // IOExceptions are normal
-                Http11AprProtocol.log.debug
+                Http11AprBaseProtocol.log.debug
                     (sm.getString
                      ("http11protocol.proto.ioexception.debug"), e);
             }
@@ -411,7 +375,7 @@ public class Http11AprProtocol extends Http11BaseProtocol implements ProtocolHan
                 // any other exception or error is odd. Here we log it
                 // with "ERROR" level, so it will show up even on
                 // less-than-verbose logs.
-                Http11AprProtocol.log.error
+                Http11AprBaseProtocol.log.error
                     (sm.getString("http11protocol.proto.error"), e);
             } finally {
                 //       if(proto.adapter != null) proto.adapter.recycle();
@@ -426,36 +390,13 @@ public class Http11AprProtocol extends Http11BaseProtocol implements ProtocolHan
     }
 
     protected static org.apache.commons.logging.Log log
-        = org.apache.commons.logging.LogFactory.getLog(Http11AprProtocol.class);
+        = org.apache.commons.logging.LogFactory.getLog(Http11AprBaseProtocol.class);
 
     // -------------------- Various implementation classes --------------------
 
     protected String domain;
-    protected ObjectName oname;
-    protected MBeanServer mserver;
-
-    public ObjectName getObjectName() {
-        return oname;
-    }
 
     public String getDomain() {
         return domain;
-    }
-
-    public ObjectName preRegister(MBeanServer server,
-                                  ObjectName name) throws Exception {
-        oname=name;
-        mserver=server;
-        domain=name.getDomain();
-        return name;
-    }
-
-    public void postRegister(Boolean registrationDone) {
-    }
-
-    public void preDeregister() throws Exception {
-    }
-
-    public void postDeregister() {
     }
 }
