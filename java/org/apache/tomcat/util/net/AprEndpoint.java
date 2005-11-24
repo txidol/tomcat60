@@ -180,7 +180,7 @@ public class AprEndpoint extends PoolTcpEndpoint {
      * SSL context.
      */
     protected long sslContext = 0;
-
+    
 
     // ------------------------------------------------------------- Properties
 
@@ -213,8 +213,13 @@ public class AprEndpoint extends PoolTcpEndpoint {
      * Size of the sendfile (= concurrent files which can be served).
      */
     protected int sendfileSize = 256;
-    public void setSendfileSize(int sendfileSize) { this.sendfileSize = sendfileSize; }
-    public int getSendfileSize() { return sendfileSize; }
+    public void setSendfileSize(int sendfileSize) { 
+        this.sendfileSize = sendfileSize;
+        if( sendfile != null ) sendfile.setSendfileSize(sendfileSize);
+    }
+    public int getSendfileSize() { 
+        return sendfileSize; 
+    }
 
 
     /**
@@ -276,7 +281,9 @@ public class AprEndpoint extends PoolTcpEndpoint {
      */
     protected int soTimeout = -1;
     public int getSoTimeout() { return soTimeout; }
-    public void setSoTimeout(int soTimeout) { this.soTimeout = soTimeout; }
+    public void setSoTimeout(int soTimeout) { 
+        this.soTimeout = soTimeout;
+    }
 
 
     /**
@@ -293,7 +300,9 @@ public class AprEndpoint extends PoolTcpEndpoint {
      */
     protected int pollTime = 5000;
     public int getPollTime() { return pollTime; }
-    public void setPollTime(int pollTime) { this.pollTime = pollTime; }
+    public void setPollTime(int pollTime) { 
+        this.pollTime = pollTime;
+    }
 
 
     /**
@@ -332,8 +341,7 @@ public class AprEndpoint extends PoolTcpEndpoint {
     /**
      * Number of sendfile sockets.
      */
-    protected int sendfileCount = 0;
-    public int getSendfileCount() { return sendfileCount; }
+    public int getSendfileCount() { return sendfile.getSendfileCount(); }
 
 
     /**
@@ -647,7 +655,8 @@ public class AprEndpoint extends PoolTcpEndpoint {
 
             // Start sendfile thread
             if (useSendfile) {
-                sendfile = new Sendfile();
+                sendfile = new Sendfile(this, serverSockPool);
+                sendfile.setSendfileSize(getSendfileSize());
                 sendfile.init();
                 sendfileThread = new Thread(sendfile, getName() + "-Sendfile");
                 sendfileThread.setPriority(getThreadPriority());
@@ -1226,9 +1235,7 @@ public class AprEndpoint extends PoolTcpEndpoint {
             }
 
             // Tell threadStop() we have shut ourselves down successfully
-            synchronized (this) {
-                threadSync.notifyAll();
-            }
+            threadSyncNotify();
 
         }
 
@@ -1246,6 +1253,12 @@ public class AprEndpoint extends PoolTcpEndpoint {
 
     }
 
+    // TODO: theradEnd event, etc
+    public void threadSyncNotify() {
+        synchronized (this) {
+            threadSync.notifyAll();
+        }        
+    }
 
     // ----------------------------------------------- SendfileData Inner Class
 
@@ -1276,7 +1289,7 @@ public class AprEndpoint extends PoolTcpEndpoint {
     /**
      * Sendfile class.
      */
-    public class Sendfile implements Runnable {
+    public static class Sendfile implements Runnable {
 
         protected long sendfilePollset = 0;
         protected long pool = 0;
@@ -1285,6 +1298,23 @@ public class AprEndpoint extends PoolTcpEndpoint {
 
         protected ArrayList addS;
 
+        protected int sendfileCount = 0;
+        public int getSendfileCount() { return sendfileCount; }
+
+        AprEndpoint ep;
+        protected long serverSockPool = 0;
+        
+        
+        protected int sendfileSize = 256;
+        public void setSendfileSize(int sendfileSize) { this.sendfileSize = sendfileSize; }
+        public int getSendfileSize() { return sendfileSize; }
+
+        public Sendfile( AprEndpoint ep, long serverSockPool ) {
+            this.ep = ep;
+            this.serverSockPool = serverSockPool;
+        }
+        
+        
         /**
          * Create the sendfile poller. With some versions of APR, the maximum poller size will
          * be 62 (reocmpiling APR is necessary to remove this limitation).
@@ -1292,13 +1322,13 @@ public class AprEndpoint extends PoolTcpEndpoint {
         protected void init() {
             pool = Pool.create(serverSockPool);
             try {
-                sendfilePollset = Poll.create(sendfileSize, pool, 0, soTimeout * 1000);
+                sendfilePollset = Poll.create(sendfileSize, pool, 0, ep.getSoTimeout() * 1000);
             } catch (Error e) {
                 if (Status.APR_STATUS_IS_EINVAL(e.getError())) {
                     try {
                         // Use WIN32 maximum poll size
                         sendfileSize = 62;
-                        sendfilePollset = Poll.create(sendfileSize, pool, 0, soTimeout * 1000);
+                        sendfilePollset = Poll.create(sendfileSize, pool, 0, ep.getSoTimeout() * 1000);
                         log.warn(sm.getString("endpoint.poll.limitedpollsize"));
                     } catch (Error err) {
                         log.error(sm.getString("endpoint.poll.initfail"), e);
@@ -1371,7 +1401,7 @@ public class AprEndpoint extends PoolTcpEndpoint {
                             // Entire file has been sent
                             Pool.destroy(data.fdpool);
                             // Set back socket to blocking mode
-                            Socket.timeoutSet(data.socket, soTimeout * 1000);
+                            Socket.timeoutSet(data.socket, ep.getSoTimeout() * 1000);
                             return true;
                         }
                     }
@@ -1409,10 +1439,10 @@ public class AprEndpoint extends PoolTcpEndpoint {
         public void run() {
 
             // Loop until we receive a shutdown command
-            while (running) {
+            while (ep.isRunning()) {
 
                 // Loop if endpoint is paused
-                while (paused) {
+                while (ep.isPaused()) {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -1450,7 +1480,7 @@ public class AprEndpoint extends PoolTcpEndpoint {
                         }
                     }
                     // Pool for the specified interval
-                    int rv = Poll.poll(sendfilePollset, pollTime, desc, false);
+                    int rv = Poll.poll(sendfilePollset, ep.getPollTime(), desc, false);
                     if (rv > 0) {
                         for (int n = 0; n < rv; n++) {
                             // Get the sendfile state
@@ -1485,10 +1515,10 @@ public class AprEndpoint extends PoolTcpEndpoint {
                                 if (state.keepAlive) {
                                     // Destroy file descriptor pool, which should close the file
                                     Pool.destroy(state.fdpool);
-                                    Socket.timeoutSet(state.socket, soTimeout * 1000);
+                                    Socket.timeoutSet(state.socket, ep.getSoTimeout() * 1000);
                                     // If all done hand this socket off to a worker for
                                     // processing of further requests
-                                    getWorkerThread().assign(state.socket);
+                                    ep.getWorkerThread().assign(state.socket);
                                 } else {
                                     // Close the socket since this is
                                     // the end of not keep-alive request.
@@ -1516,10 +1546,7 @@ public class AprEndpoint extends PoolTcpEndpoint {
             }
 
             // Notify the threadStop() method that we have shut ourselves down
-            synchronized (threadSync) {
-                threadSync.notifyAll();
-            }
-
+            ep.threadSyncNotify();
         }
 
     }

@@ -36,10 +36,10 @@ class LeaderFollowerWorkerThread implements ThreadPoolRunnable {
        It's better to keep the name ThreadPoolRunnable - avoid confusion.
        We also want to use per/thread data and avoid sync wherever possible.
     */
-    PoolTcpEndpoint endpoint;
+    LeaderFollowerEndpoint endpoint;
     
     public LeaderFollowerWorkerThread(PoolTcpEndpoint endpoint) {
-        this.endpoint = endpoint;
+        this.endpoint = (LeaderFollowerEndpoint)endpoint;
     }
 
     public Object[] getInitData() {

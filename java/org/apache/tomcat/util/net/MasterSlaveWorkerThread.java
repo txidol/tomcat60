@@ -112,7 +112,7 @@ class MasterSlaveWorkerThread implements Runnable {
             endpoint.processSocket(socket, con, threadData);
 
             // Finish up this request
-            endpoint.recycleWorkerThread(this);
+            endpoint.workerDone(this);
 
         }
 
