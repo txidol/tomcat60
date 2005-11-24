@@ -24,7 +24,7 @@ import java.io.IOException;
  *  without adding complexity to the buffers.
  *
  *  The conversion will modify the original buffer.
- * 
+ *  
  *  @author Costin Manolache
  */
 public final class UDecoder {
@@ -105,6 +105,8 @@ public final class UDecoder {
     }
 
     /** In-buffer processing - the buffer will be modified
+     * IMPORTANT: this method doesn't work for UTF or other encodings !!
+     * Only the byte[] method works ( since it happens before charset decoding)
      */
     public void convert( CharChunk mb, boolean query )
 	throws IOException

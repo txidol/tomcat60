@@ -29,6 +29,7 @@ import java.io.IOException;
  *
  * @author Costin Manolache
  * @author ( Xml-Xerces )
+ * @deprecated to be removed if not in use...
  */
 public final class UTF8Decoder extends B2CConverter {
     

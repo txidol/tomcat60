@@ -688,6 +688,12 @@ public final class ByteChunk implements Cloneable, Serializable {
 	    if( bb.get(i) != first ) continue;
 	    // found first char, now look for a match
             int myPos=i+1;
+
+            // not enough chars to have a match
+            if( i + srcLen >= end ) {
+                break;
+            }
+            
 	    for( int srcPos=srcOff + 1; srcPos< srcEnd; ) {
                 if( bb.get(myPos++) != src.charAt( srcPos++ ))
 		    break;
@@ -815,6 +821,7 @@ public final class ByteChunk implements Cloneable, Serializable {
      * 
      * @param value to convert to byte array
      * @return the byte array value
+     * @deprecated WRONG, if ascii is all you need - rename the method !
      */
     public static final byte[] convertToBytes(String value) {
         byte[] result = new byte[value.length()];

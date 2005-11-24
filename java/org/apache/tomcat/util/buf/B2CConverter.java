@@ -32,6 +32,8 @@ import java.io.UnsupportedEncodingException;
  *  Not used in the current code, the performance gain is not very big
  *  in the current case ( since String is created anyway ), but it will
  *  be used in a later version or after the remaining optimizations.
+ *  
+ *  @deprecated use CharsetDecoder using the ByteBuffer
  */
 public class B2CConverter {
     

@@ -29,6 +29,8 @@ import java.io.Serializable;
  * also Contexts, Servlets, cache - or any other object that
  * expires.
  * 
+ * Currently used in util.threads.Expirer, may be better to move there.
+ * 
  * @author Costin Manolache
  */
 public final class TimeStamp implements  Serializable {

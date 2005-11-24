@@ -27,6 +27,7 @@ import java.io.UnsupportedEncodingException;
  *  to recycle all the objects that are used. It is compatible with JDK1.1 and up,
  *  ( nio is better, but it's not available even in 1.2 or 1.3 )
  * 
+ * @deprecated Use CharsetEncoder on the ByteBuffer
  */
 public final class C2BConverter {
     
@@ -48,19 +49,23 @@ public final class C2BConverter {
     }
 
     /** Create a converter
+     * Not used.
      */
     public C2BConverter(String encoding) throws IOException {
 	this( new ByteChunk(1024), encoding );
     }
 
+    // Not used
     public ByteChunk getByteChunk() {
 	return bb;
     }
 
+    // not used
     public String getEncoding() {
         return enc;
     }
 
+    // internal use only
     public void setByteChunk(ByteChunk bb) {
 	this.bb=bb;
 	ios.setByteChunk( bb );
@@ -97,7 +102,7 @@ public final class C2BConverter {
     public final void convert(MessageBytes mb ) throws IOException {
         int type=mb.getType();
         if( type==MessageBytes.T_BYTES )
-            return;
+            return; // why ?
         ByteChunk orig=bb;
         setByteChunk( mb.getByteChunk());
         bb.recycle();

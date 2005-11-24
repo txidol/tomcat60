@@ -27,7 +27,16 @@ import java.io.IOException;
  * delayed and cached. Everything is recyclable.
  *
  * The object can represent a byte[], a char[], or a (sub) String. All
- * operations can be made in case sensitive mode or not.
+ * operations can be made in case sensitive mode or not. The byte[] 
+ * representation is the primary one - String and char[] are used for caching
+ * or as temporary storage. 
+ * 
+ * This class should be used for buffer operations as well, instead of 
+ * directly using ByteChunk, CharChunk, C2B and B2C encoders, which will be
+ * deprecated for public use. Eventually the implementation may use directly
+ * ByteBuffers or perform optimizations to avoid copy on grow. It is also easier
+ * to deal with a single class with a ( somehow ) consistent API.
+ *  
  *
  * @author dac@eng.sun.com
  * @author James Todd [gonzo@eng.sun.com]
@@ -72,7 +81,7 @@ public final class MessageBytes implements Cloneable, Serializable {
      */
     public MessageBytes() {
     }
-
+    
     /** Construct a new MessageBytes instance
      */
     public static MessageBytes newInstance() {
@@ -113,8 +122,17 @@ public final class MessageBytes implements Cloneable, Serializable {
 	hasStrValue=false;
 	hasHashCode=false;
 	hasIntValue=false;
-    hasLongValue=false;
+        hasLongValue=false;
 	hasDateValue=false;	
+    }
+    
+    /** Allocate a byte buffer to use.
+     * 
+     * @param initial
+     * @param limit
+     */
+    public void allocate( int initial, int limit ) {
+       byteC.allocate(initial, limit); 
     }
 
 
@@ -244,11 +262,14 @@ public final class MessageBytes implements Cloneable, Serializable {
 	return strValue;
     }
 
-    /** Unimplemented yet. Do a char->byte conversion.
+    /** Do a char->byte conversion.
      */
     public void toBytes() {
         if( ! byteC.isNull() ) {
             type=T_BYTES;
+            return;
+        }
+        if( type== T_BYTES) {
             return;
         }
         toString();
@@ -530,6 +551,30 @@ public final class MessageBytes implements Cloneable, Serializable {
 	    break;
 	}
     }
+    
+    // -------------------- Flushing ------------------------- 
+    
+    // -------------------- Adding data -----------------------
+    
+    public void append( byte b ) {
+        
+    }
+    
+    public void append( byte b[], int off, int len ) {
+        
+    }
+    
+    public void append( char c ) {
+        
+    }
+    
+    public void append( char b[], int off, int len ) {
+        
+    }
+    
+    public void append( MessageBytes mb ) {
+        
+    }
 
     // -------------------- Deprecated code --------------------
     // efficient int, long and date
@@ -724,8 +769,8 @@ public final class MessageBytes implements Cloneable, Serializable {
     public static class MessageBytesFactory {
 	protected MessageBytesFactory() {
 	}
-	public MessageBytes newInstance() {
-	    return new MessageBytes();
-	}
+        public MessageBytes newInstance() {
+            return new MessageBytes();
+        }
     }
 }
