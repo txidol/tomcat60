@@ -7,5 +7,6 @@
 	<classpathentry kind="var" path="TOMCAT_LIBS_BASE/rhino1_6R2/js.jar"/>
 	<classpathentry kind="var" path="TOMCAT_LIBS_BASE/junit3.8.1/junit.jar"/>
 	<classpathentry kind="var" path="TOMCAT_LIBS_BASE/servlet-api-2.4/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_LIBS_BASE/commons-modeler-1.1/commons-modeler.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
