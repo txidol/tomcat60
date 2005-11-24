@@ -121,6 +121,10 @@ public class AcceptorEndpoint extends SimpleEndpoint {
         }        
     }
     
+    public void run() {
+        // nothing 
+    }
+    
     public void workerDone(Runnable workerThread) {
         curThreads--;
     }
@@ -132,7 +136,9 @@ public class AcceptorEndpoint extends SimpleEndpoint {
     void newAcceptor() {
         acceptors++;
         Thread t=new ThreadWithAttributes( this, new AcceptorThread());
-        t.setPriority(threadPriority);
+        if( threadPriority > 0 ) {
+            t.setPriority(threadPriority);
+        }
         t.setDaemon(daemon);
         threadStart( t );
         t.start();        
