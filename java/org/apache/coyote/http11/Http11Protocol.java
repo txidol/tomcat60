@@ -80,16 +80,10 @@ public class Http11Protocol extends Http11BaseProtocol implements MBeanRegistrat
                 // XXX It should be possible to use a single TP
                 tpOname=new ObjectName
                     (domain + ":" + "type=ThreadPool,name=" + getName());
-                if ("ms".equals(getStrategy())) {
-                    Registry.getRegistry(null, null)
-                        .registerComponent(ep, tpOname, null );
-                } else {
-                    Registry.getRegistry(null, null)
-                        .registerComponent(tp, tpOname, null );
-                }
-                tp.setName(getName());
-                tp.setDaemon(false);
-                tp.addThreadPoolListener(new MXPoolListener(this, tp));
+                Registry.getRegistry(null, null).registerComponent(ep, tpOname, null );
+                ep.setName(getName());
+                ep.setDaemon(false);
+                ep.addEndpointListener(new MXPoolListener(this, ep));
             } catch (Exception e) {
                 log.error("Can't register threadpool" );
             }
@@ -112,15 +106,15 @@ public class Http11Protocol extends Http11BaseProtocol implements MBeanRegistrat
 
     // --------------------  Connection handler --------------------
 
-    static class MXPoolListener implements ThreadPool.ThreadPoolListener {
-        MXPoolListener( Http11Protocol proto, ThreadPool control ) {
+    static class MXPoolListener implements PoolTcpEndpoint.EndpointListener {
+        MXPoolListener( Http11Protocol proto, PoolTcpEndpoint control ) {
 
         }
 
-        public void threadStart(ThreadPool tp, Thread t) {
+        public void threadStart(PoolTcpEndpoint tp, Thread t) {
         }
 
-        public void threadEnd(ThreadPool tp, Thread t) {
+        public void threadEnd(PoolTcpEndpoint tp, Thread t) {
             // Register our associated processor
             // TP uses only TWA
             ThreadWithAttributes ta=(ThreadWithAttributes)t;

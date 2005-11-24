@@ -31,7 +31,6 @@ import org.apache.coyote.ActionHook;
 import org.apache.coyote.Adapter;
 import org.apache.coyote.ProtocolHandler;
 import org.apache.coyote.RequestGroupInfo;
-import org.apache.coyote.RequestInfo;
 import org.apache.tomcat.util.net.PoolTcpEndpoint;
 import org.apache.tomcat.util.net.SSLImplementation;
 import org.apache.tomcat.util.net.SSLSupport;
@@ -39,8 +38,6 @@ import org.apache.tomcat.util.net.ServerSocketFactory;
 import org.apache.tomcat.util.net.TcpConnection;
 import org.apache.tomcat.util.net.TcpConnectionHandler;
 import org.apache.tomcat.util.res.StringManager;
-import org.apache.tomcat.util.threads.ThreadPool;
-import org.apache.tomcat.util.threads.ThreadWithAttributes;
 
 
 /**
@@ -188,8 +185,9 @@ public class Http11BaseProtocol implements ProtocolHandler
     }
 
     // -------------------- Properties--------------------
-    protected ThreadPool tp=ThreadPool.createThreadPool(true);
-    protected PoolTcpEndpoint ep=new PoolTcpEndpoint(tp);
+    // 
+    protected PoolTcpEndpoint ep= PoolTcpEndpoint.getEndpoint("acc");
+    
     protected boolean secure;
 
     protected ServerSocketFactory socketFactory;
@@ -267,13 +265,9 @@ public class Http11BaseProtocol implements ProtocolHandler
    public String getStrategy() {
         return ep.getStrategy();
    }
-
-    /** Access to the thread pool.
-     *
-     * @return tp the internal thread pool used by the protocol
-     */
-   public ThreadPool getThreadPool() {
-        return tp;
+   
+   public PoolTcpEndpoint getEndpoint() {
+       return ep;
    }
 
     // -------------------- Tcp setup --------------------
@@ -577,15 +571,6 @@ public class Http11BaseProtocol implements ProtocolHandler
         return server;
     }
 
-
-    private static ServerSocketFactory string2SocketFactory( String val)
-    throws ClassNotFoundException, IllegalAccessException,
-    InstantiationException
-    {
-        Class chC=Class.forName( val );
-        return (ServerSocketFactory)chC.newInstance();
-    }
-
     public int getTimeout() {
         return timeout;
     }
@@ -607,12 +592,12 @@ public class Http11BaseProtocol implements ProtocolHandler
     public static final int THREAD_DATA_PROCESSOR=1;
     public static final int THREAD_DATA_OBJECT_NAME=2;
 
-    static class Http11ConnectionHandler implements TcpConnectionHandler {
+    public static class Http11ConnectionHandler implements TcpConnectionHandler {
         Http11BaseProtocol proto;
         static int count=0;
-        RequestGroupInfo global=new RequestGroupInfo();
+        public RequestGroupInfo global=new RequestGroupInfo();
 
-        Http11ConnectionHandler( Http11BaseProtocol proto ) {
+        public Http11ConnectionHandler( Http11BaseProtocol proto ) {
             this.proto=proto;
         }
 
@@ -628,7 +613,6 @@ public class Http11BaseProtocol implements ProtocolHandler
             Http11Processor  processor =
                 new Http11Processor(proto.maxHttpHeaderSize);
             processor.setAdapter( proto.adapter );
-            processor.setThreadPool( proto.tp );
             processor.setEndpoint( proto.ep );
             processor.setMaxKeepAliveRequests( proto.maxKeepAliveRequests );
             processor.setTimeout( proto.timeout );
@@ -733,24 +717,9 @@ public class Http11BaseProtocol implements ProtocolHandler
      */
     private void checkSocketFactory() throws Exception {
         if (secure) {
-            try {
-                // The SSL setup code has been moved into
-                // SSLImplementation since SocketFactory doesn't
-                // provide a wide enough interface
-                sslImplementation =
-                    SSLImplementation.getInstance(sslImplementationName);
-                socketFactory = sslImplementation.getServerSocketFactory();
-                ep.setServerSocketFactory(socketFactory);
-            } catch (ClassNotFoundException e){
-                throw e;
-            }
-        } else if (socketFactoryName != null) {
-            try {
-                socketFactory = string2SocketFactory(socketFactoryName);
-                ep.setServerSocketFactory(socketFactory);
-            } catch(Exception sfex) {
-                throw sfex;
-            }
+            ep.setSSLSupport( secure, sslImplementationName );
+        } else {
+            ep.setSSLSupport( secure, socketFactoryName );
         }
     }
 
