@@ -29,6 +29,13 @@ public class Main  {
         return proto;
     }
     
+    /**
+     */
+    public void run() {
+        init();
+        start();
+    }
+    
     public void init() {
         proto = new Http11BaseProtocol();
 
@@ -46,25 +53,20 @@ public class Main  {
         return mainAdapter;
     }
     
-    /**
-     */
-    public void run() {
-        init();
-        start();
-    }
-    
     public void start() {
-        if( proto.getPort() == 0 )
+        if( proto.getPort() == 0 && 
+                proto.getEndpoint().getServerSocket() == null) {
             proto.setPort(8800);
+        }
         
         try {
             proto.init();
 
-            proto.getThreadPool().setDaemon(false);
+            proto.getEndpoint().setDaemon(false);
             
             proto.start();
 
-        } catch (Exception e) {
+        } catch (Throwable e) {
             e.printStackTrace();
         }
 
