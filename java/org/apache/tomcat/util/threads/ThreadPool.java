@@ -301,12 +301,13 @@ public class ThreadPool  {
      * Executes a given Runnable on a thread in the pool, block if needed.
      */
     public void runIt(ThreadPoolRunnable r) {
-        if(null == r) {
-            throw new NullPointerException();
-        }
-
         ControlRunnable c = findControlRunnable();
         c.runIt(r);
+    }
+
+    public void runIt(ThreadPoolRunnable r, Object param) {
+        ControlRunnable c = findControlRunnable();
+        c.runIt(r, param);
     }
 
     private ControlRunnable findControlRunnable() {
@@ -728,6 +729,11 @@ public class ThreadPool  {
                 p.removeThread(Thread.currentThread());
             }
         }
+
+        public synchronized void runIt(ThreadPoolRunnable toRun) {
+            runIt( toRun, null);
+        }
+        
         /** Run a task
          *
          * @param toRun
@@ -746,13 +752,11 @@ public class ThreadPool  {
          *
          * @param toRun
          */
-        public synchronized void runIt(ThreadPoolRunnable toRun) {
+        public synchronized void runIt(ThreadPoolRunnable toRun, 
+                Object param) {
 	    this.toRun = toRun;
-	    // Do not re-init, the whole idea is to run init only once per
-	    // thread - the pool is supposed to run a single task, that is
-	    // initialized once.
-            // noThData = true;
             shouldRun = true;
+            t.setParam(p, param);
             this.notify();
         }
 

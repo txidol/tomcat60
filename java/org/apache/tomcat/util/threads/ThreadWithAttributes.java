@@ -27,7 +27,8 @@ import java.util.Hashtable;
  * JDK < 1.4 ).
  *
  * The main use is to store 'state' for monitoring ( like "processing
- * request 'GET /' ").
+ * request 'GET /' "), and to simplify information passing between threads.
+ * 
  */
 public class ThreadWithAttributes extends Thread {
     

@@ -18,6 +18,7 @@ package org.apache.tomcat.util.threads;
 
 
 /** Implemented if you want to run a piece of code inside a thread pool.
+ *  You can also use Runnable + ThreadLocal or ThreadWithAttributes.
  */
 public interface ThreadPoolRunnable {
     // XXX use notes or a hashtable-like
