@@ -51,7 +51,7 @@ import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.http.FastHttpDateFormat;
 import org.apache.tomcat.util.http.MimeHeaders;
 import org.apache.tomcat.util.net.PoolTcpEndpoint;
-import org.apache.tomcat.util.net.SSLSupport;
+//import org.apache.tomcat.util.net.javaio.SSLSupport;
 import org.apache.tomcat.util.res.StringManager;
 import org.apache.tomcat.util.threads.ThreadWithAttributes;
 
@@ -197,9 +197,14 @@ public class Http11Processor implements Processor, ActionHook {
 
 
     /**
-     * SSL information.
+     * SSL information - removed, specific to old-style java io
      */
-    protected SSLSupport sslSupport;
+    // protected SSLSupport sslSupport;
+    /**
+     * SSL enabled ?
+     */
+    protected boolean ssl = false;
+    
 
 
     /**
@@ -358,6 +363,15 @@ public class Http11Processor implements Processor, ActionHook {
         }
     }
 
+    public boolean getSecure() {
+        return ssl;
+    }
+
+    public void setSecure( boolean b ) {
+        ssl=b;
+    }
+
+    
     /**
      * Set Minimum size to trigger compression.
      */
@@ -662,9 +676,9 @@ public class Http11Processor implements Processor, ActionHook {
     /**
      * Set the SSL information for this HTTP connection.
      */
-    public void setSSLSupport(SSLSupport sslSupport) {
+    /*public void setSSLSupport(SSLSupport sslSupport) {
         this.sslSupport = sslSupport;
-    }
+    }*/
 
 
     /**
@@ -757,6 +771,7 @@ public class Http11Processor implements Processor, ActionHook {
      */
     public void process(InputStream input, OutputStream output)
         throws IOException {
+        
         ThreadWithAttributes thrA=
                 (ThreadWithAttributes)Thread.currentThread();
         RequestInfo rp = request.getRequestProcessor();
@@ -931,7 +946,7 @@ public class Http11Processor implements Processor, ActionHook {
         outputBuffer.recycle();
 
         // Recycle ssl info
-        sslSupport = null;
+        //sslSupport = null;
     }
 
 
@@ -1043,6 +1058,14 @@ public class Http11Processor implements Processor, ActionHook {
         if (actionCode == ActionCode.ACTION_REQ_SSL_ATTRIBUTE ) {
 
             try {
+                if( ssl ) {
+                    Object sslO = endpoint.getSsl("cipherSuite");
+                    endpoint.getSsl("peerCertificateChain");
+                    endpoint.getSsl("keySize");
+                    endpoint.getSsl("sessionId");
+                    
+                }
+                /* TODO(costin)
                 if (sslSupport != null) {
                     Object sslO = sslSupport.getCipherSuite();
                     if (sslO != null)
@@ -1061,6 +1084,7 @@ public class Http11Processor implements Processor, ActionHook {
                         request.setAttribute
                             (SSLSupport.SESSION_ID_KEY, sslO);
                 }
+                */
             } catch (Exception e) {
                 log.warn(sm.getString("http11processor.socket.ssl"), e);
             }
@@ -1117,7 +1141,7 @@ public class Http11Processor implements Processor, ActionHook {
             request.setLocalPort(localPort);
 
         } else if (actionCode == ActionCode.ACTION_REQ_SSL_CERTIFICATE) {
-            if( sslSupport != null) {
+            if( ssl ) {
                 /*
                  * Consume and buffer the request body, so that it does not
                  * interfere with the client's handshake messages
@@ -1127,11 +1151,13 @@ public class Http11Processor implements Processor, ActionHook {
                     .setLimit(maxSavePostSize);
                 inputBuffer.addActiveFilter
                     (inputFilters[Constants.BUFFERED_FILTER]);
+                
                 try {
-                    Object sslO = sslSupport.getPeerCertificateChain(true);
+                    Object sslO = endpoint.getSsl( PoolTcpEndpoint.CERTIFICATE_KEY );
+                    // getPeerCertificateChain(true);
                     if( sslO != null) {
                         request.setAttribute
-                            (SSLSupport.CERTIFICATE_KEY, sslO);
+                            (PoolTcpEndpoint.CERTIFICATE_KEY, sslO);
                     }
                 } catch (Exception e) {
                     log.warn(sm.getString("http11processor.socket.ssl"), e);
@@ -1177,7 +1203,7 @@ public class Http11Processor implements Processor, ActionHook {
         http09 = false;
         contentDelimitation = false;
         expectation = false;
-        if (sslSupport != null) {
+        if (ssl) {
             request.scheme().setString("https");
         }
         MessageBytes protocolMB = request.protocol();
@@ -1393,7 +1419,7 @@ public class Http11Processor implements Processor, ActionHook {
         }
 
         if (colonPos < 0) {
-            if (sslSupport == null) {
+            if (!ssl) {
                 // 80 - Default HTTP port
                 request.setServerPort(80);
             } else {
@@ -1524,6 +1550,8 @@ public class Http11Processor implements Processor, ActionHook {
         }
 
         // APR: sendfile
+        // if someone set the right attributes in req, we'll send the file
+        //
         sendfileSupport(outputFilters);
 
         // Check for compression

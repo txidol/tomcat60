@@ -40,7 +40,8 @@ import org.apache.tomcat.jni.Sockaddr;
 import org.apache.tomcat.jni.Socket;
 import org.apache.tomcat.util.buf.HexUtils;
 import org.apache.tomcat.util.http.FastHttpDateFormat;
-import org.apache.tomcat.util.net.AprEndpoint;
+import org.apache.tomcat.util.net.apr.AprEndpoint;
+import org.apache.tomcat.util.net.apr.Sendfile;
 import org.apache.tomcat.util.threads.ThreadWithAttributes;
 
 
@@ -91,14 +92,9 @@ public class Http11AprProcessor extends Http11Processor implements ActionHook {
     /**
      * Sendfile data.
      */
-    protected AprEndpoint.SendfileData sendfileData = null;
+    protected Sendfile.SendfileData sendfileData = null;
 
 
-    /**
-     * SSL enabled ?
-     */
-    protected boolean ssl = false;
-    
 
     /**
      * Socket associated with the current connection.
@@ -507,7 +503,7 @@ public class Http11AprProcessor extends Http11Processor implements ActionHook {
                 outputBuffer.addActiveFilter
                     (outputFilters[Constants.VOID_FILTER]);
                 contentDelimitation = true;
-                sendfileData = new AprEndpoint.SendfileData();
+                sendfileData = new Sendfile.SendfileData();
                 sendfileData.fileName = fileName;
                 sendfileData.start = 
                     ((Long) request.getAttribute("org.apache.tomcat.sendfile.start")).longValue();

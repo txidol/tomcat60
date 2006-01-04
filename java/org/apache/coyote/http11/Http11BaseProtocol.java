@@ -32,11 +32,11 @@ import org.apache.coyote.Adapter;
 import org.apache.coyote.ProtocolHandler;
 import org.apache.coyote.RequestGroupInfo;
 import org.apache.tomcat.util.net.PoolTcpEndpoint;
-import org.apache.tomcat.util.net.SSLImplementation;
-import org.apache.tomcat.util.net.SSLSupport;
-import org.apache.tomcat.util.net.ServerSocketFactory;
 import org.apache.tomcat.util.net.TcpConnection;
 import org.apache.tomcat.util.net.TcpConnectionHandler;
+//import org.apache.tomcat.util.net.javaio.SSLImplementation;
+//import org.apache.tomcat.util.net.javaio.SSLSupport;
+//import org.apache.tomcat.util.net.javaio.ServerSocketFactory;
 import org.apache.tomcat.util.res.StringManager;
 
 
@@ -124,6 +124,7 @@ public class Http11BaseProtocol implements ProtocolHandler
             throw ex;
         }
 
+        /* Endpoint should know about ssl.
         if( socketFactory!=null ) {
             Enumeration attE=attributes.keys();
             while( attE.hasMoreElements() ) {
@@ -132,6 +133,7 @@ public class Http11BaseProtocol implements ProtocolHandler
                 socketFactory.setAttribute( key, v );
             }
         }
+        */
 
         // XXX get domain from registration
         try {
@@ -186,12 +188,13 @@ public class Http11BaseProtocol implements ProtocolHandler
 
     // -------------------- Properties--------------------
     // 
-    protected PoolTcpEndpoint ep= PoolTcpEndpoint.getEndpoint("acc");
+    protected PoolTcpEndpoint ep= PoolTcpEndpoint.getEndpoint(null);
     
     protected boolean secure;
 
-    protected ServerSocketFactory socketFactory;
-    protected SSLImplementation sslImplementation;
+    // Old style, no longer supported by apr, nio
+    //protected ServerSocketFactory socketFactory;
+    //protected SSLImplementation sslImplementation;
     // socket factory attriubtes ( XXX replace with normal setters )
     protected Hashtable attributes = new Hashtable();
     protected String socketFactoryName=null;
@@ -646,7 +649,12 @@ public class Http11BaseProtocol implements ProtocolHandler
                 InputStream in = socket.getInputStream();
                 OutputStream out = socket.getOutputStream();
 
-                if( proto.secure ) {
+                processor.setSecure( proto.secure );
+
+                /* This was passing the ssl info from potocol to processor.
+                 * Now endpoing knows all about ssl.
+                 * 
+                 if( proto.secure ) {
                     SSLSupport sslSupport=null;
                     if(proto.sslImplementation != null)
                         sslSupport = proto.sslImplementation.getSSLSupport(socket);
@@ -654,6 +662,7 @@ public class Http11BaseProtocol implements ProtocolHandler
                 } else {
                     processor.setSSLSupport( null );
                 }
+                */
                 processor.setSocket( socket );
 
                 processor.process(in, out);

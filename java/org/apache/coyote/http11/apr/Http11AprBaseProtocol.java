@@ -25,8 +25,8 @@ import org.apache.coyote.ProtocolHandler;
 import org.apache.coyote.RequestGroupInfo;
 import org.apache.coyote.http11.Constants;
 import org.apache.coyote.http11.Http11BaseProtocol;
-import org.apache.tomcat.util.net.AprEndpoint;
-import org.apache.tomcat.util.net.AprEndpoint.Handler;
+import org.apache.tomcat.util.net.apr.AprEndpoint;
+import org.apache.tomcat.util.net.apr.AprEndpoint.Handler;
 
 
 /**
