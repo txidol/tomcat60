@@ -45,18 +45,11 @@ public class ThreadPool  {
     public static final int MAX_THREADS_MIN = 10;
     public static final int MAX_SPARE_THREADS = 50;
     public static final int MIN_SPARE_THREADS = 4;
-    public static final int WORK_WAIT_TIMEOUT = 60*1000;
 
     /*
      * Where the threads are held.
      */
     protected ControlRunnable[] pool = null;
-
-    /*
-     * A monitor thread that monitors the pool for idel threads.
-     */
-    protected MonitorRunnable monitor;
-
 
     /*
      * Max number of threads that you can open in the pool.
@@ -146,13 +139,6 @@ public class ThreadPool  {
         pool = new ControlRunnable[maxThreads];
 
         openThreads(minSpareThreads);
-        if (maxSpareThreads < maxThreads) {
-            monitor = new MonitorRunnable(this);
-        }
-    }
-
-    public MonitorRunnable getMonitor() {
-        return monitor;
     }
   
     /**
@@ -286,7 +272,7 @@ public class ThreadPool  {
     }
 
     public void run(Runnable r) {
-        ControlRunnable c = findControlRunnable();
+        ControlRunnable c = findControlRunnable(true);
         c.runIt(r);
     }    
     
@@ -301,16 +287,25 @@ public class ThreadPool  {
      * Executes a given Runnable on a thread in the pool, block if needed.
      */
     public void runIt(ThreadPoolRunnable r) {
-        ControlRunnable c = findControlRunnable();
+        ControlRunnable c = findControlRunnable(true);
         c.runIt(r);
     }
 
     public void runIt(ThreadPoolRunnable r, Object param) {
-        ControlRunnable c = findControlRunnable();
+        ControlRunnable c = findControlRunnable(true);
         c.runIt(r, param);
     }
 
-    private ControlRunnable findControlRunnable() {
+    /** Find a worker thread and remove it from the pool.
+     * 
+     *  If the pool is stopping, will generate a runtime exception to 
+     *  block the processing.
+     *  
+     *  
+     * @param waitForThread if true, will wait for a thread to become available.
+     * @return
+     */
+    public ControlRunnable findControlRunnable(boolean waitForThread) {
         ControlRunnable c=null;
 
         if ( stopThePool ) {
@@ -329,6 +324,9 @@ public class ThreadPool  {
                     openThreads(toOpen);
                 } else {
                     logFull(log, currentThreadCount, maxThreads);
+                    if( ! waitForThread ) {
+                        return null;
+                    }
                     // Wait for a thread to become idel.
                     try {
                         this.wait();
@@ -385,10 +383,6 @@ public class ThreadPool  {
     public synchronized void shutdown() {
         if(!stopThePool) {
             stopThePool = true;
-            if (monitor != null) {
-                monitor.terminate();
-                monitor = null;
-            }
             for(int i = 0; i < currentThreadCount - currentThreadsBusy; i++) {
                 try {
                     pool[i].terminate();
@@ -404,6 +398,16 @@ public class ThreadPool  {
             pool = null;
             notifyAll();
         }
+    }
+
+    boolean checkSpare() {
+        if( stopThePool ) {
+            return true; // die, the pool is stopped
+        }
+        if( (currentThreadCount - currentThreadsBusy) > maxSpareThreads ) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -525,71 +529,9 @@ public class ThreadPool  {
 	//loghelper.flush();
     }
     
-    /** 
-     * Periodically execute an action - cleanup in this case
-     */
-    public static class MonitorRunnable implements Runnable {
-        ThreadPool p;
-        Thread     t;
-        int interval=WORK_WAIT_TIMEOUT;
-        boolean    shouldTerminate;
-
-        MonitorRunnable(ThreadPool p) {
-            this.p=p;
-            this.start();
-        }
-
-        public void start() {
-            shouldTerminate = false;
-            t = new Thread(this);
-            t.setDaemon(p.getDaemon() );
-	    t.setName(p.getName() + "-Monitor");
-            t.start();
-        }
-
-        public void setInterval(int i ) {
-            this.interval=i;
-        }
-
-        public void run() {
-            while(true) {
-                try {
-
-                    // Sleep for a while.
-                    synchronized(this) {
-                        this.wait(interval);
-                    }
-
-                    // Check if should terminate.
-                    // termination happens when the pool is shutting down.
-                    if(shouldTerminate) {
-                        break;
-                    }
-
-                    // Harvest idle threads.
-                    p.checkSpareControllers();
-
-                } catch(Throwable t) {
-		    ThreadPool.log.error("Unexpected exception", t);
-                }
-            }
-        }
-
-        public void stop() {
-            this.terminate();
-        }
-
-	/** Stop the monitor
-	 */
-        public synchronized void terminate() {
-            shouldTerminate = true;
-            this.notify();
-        }
-    }
-
     /**
-     * A Thread object that executes various actions ( ThreadPoolRunnable )
-     *  under control of ThreadPool
+     * The Runnable object that executes various actions ( ThreadPoolRunnable )
+     *  under control of ThreadPool. This is associated with a ThreadWithAttribute. 
      */
     public static class ControlRunnable implements Runnable {
         /**
@@ -690,6 +632,17 @@ public class ThreadPool  {
                                     ThreadPool.log.debug("No toRun ???");
                                 }
                             }
+
+                            // After a task is done, we can check if there are
+                            // threads that need to go. In particular - the 
+                            // current thread could terminate.
+                            if( p.checkSpare() ) {
+                                _shouldRun = false; // to not return
+                                _shouldTerminate = true;
+                                p.notifyThreadEnd(this);
+                                break;
+                            }
+
                         } catch (Throwable t) {
                             ThreadPool.log.error(sm.getString
                                 ("threadpool.thread_error", t, toRun.toString()));
