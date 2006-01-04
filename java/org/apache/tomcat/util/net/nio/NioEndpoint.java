@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package org.apache.tomcat.util.net;
+package org.apache.tomcat.util.net.nio;
 
 import java.io.IOException;
 import java.net.BindException;
@@ -22,7 +22,6 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketAddress;
-import java.nio.channels.ClosedChannelException;
 import java.nio.channels.SelectableChannel;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -31,9 +30,10 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.tomcat.util.net.SimpleEndpoint;
+import org.apache.tomcat.util.net.TcpConnection;
 import org.apache.tomcat.util.threads.ThreadPool;
 import org.apache.tomcat.util.threads.ThreadPoolRunnable;
-import org.apache.tomcat.util.threads.ThreadWithAttributes;
 
 
 /** All threads blocked in accept(). New thread created on demand.
@@ -42,23 +42,25 @@ import org.apache.tomcat.util.threads.ThreadWithAttributes;
  * 
  */
 public class NioEndpoint extends SimpleEndpoint { 
-
-    private final Object threadSync = new Object();
-
-    // active acceptors
-    private int acceptors=0;
-    
-    ThreadPool tp;
+    private ThreadPool tp;
     
     public NioEndpoint() {
         tp=new ThreadPool();
         tp.setMinSpareThreads(2);
         tp.setMaxSpareThreads(8);
+        type = "nio";
     }
 
     // -------------------- Configuration --------------------
     // -------------------- Thread pool --------------------
 
+    public ThreadPool getThreadPool() {
+        return tp;
+    }
+    
+    // wrappers to make JMX happier .
+    // TODO: jmx wrapper should be smarter, support delegates. 
+    
     public void setMaxThreads(int maxThreads) {
         if( maxThreads > 0)
             tp.setMaxThreads(maxThreads);
@@ -110,16 +112,6 @@ public class NioEndpoint extends SimpleEndpoint {
     public void setName(String name) {
         tp.setName(name);
     }
-
-    
-    // ---------------------- 
-    public String getStrategy() {
-        return "nio";
-    }
-    
-    public int getCurrentThreadsBusy() {
-        return curThreads;
-    }
     
     // -------------------- Public methods --------------------
     
@@ -165,16 +157,16 @@ public class NioEndpoint extends SimpleEndpoint {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        addSocketAccept( serverSocket, new SocketDispatch());
-        Thread poller = new Thread( new PollerThread());
-        poller.start();
+
+        PollerThread acceptTask = new PollerThread();
+        
+        addSocketAccept( serverSocket, acceptTask);
+        
+        tp.runIt(acceptTask);
     }
 
 
     // -------------------------------------------------- Master Slave Methods
-
-    
-
 
     public boolean getPolling() {
         return true;
@@ -207,80 +199,8 @@ public class NioEndpoint extends SimpleEndpoint {
      *  
      * @author Costin Manolache
      */
-    class PollerThread implements Runnable {
-
-        public PollerThread() {
-        }
-               
-        public void run() {
-            while( running ) {
-                
-                try {
-                    int selRes = selector.select();
-
-                    if( selRes == 0 ) {
-                        System.err.println("Select with 0 keys " + 
-                                selector.keys().size() );
-                        for( SelectionKey k : selector.keys() ) {
-                            System.err.println("K " + k.interestOps() +
-                                    " " + k.readyOps() + " " + k.toString() + " "
-                                    + k.isValid() );
-                        }
-                        continue;
-                    }
-                    
-                    Set selected = selector.selectedKeys();
-                    Iterator selI = selected.iterator();
-                    
-                    while( selI.hasNext() ) {
-                        SelectionKey sk = (SelectionKey)selI.next();
-                        selI.remove();
-                        Object skAt = sk.attachment();
-                        
-                        int readyOps = sk.readyOps();
-                        SelectableChannel sc = sk.channel();
-                        
-                        // TODO: use the attachment to decide what's to do.
-                        if( sk.isAcceptable() ) {
-                            ServerSocketChannel ssc=(ServerSocketChannel)sc;
-                            SocketChannel sockC = ssc.accept();
-                            
-                            
-                            // process the connection in the thread pool
-                            if( skAt instanceof ThreadPoolRunnable ) {
-                                tp.runIt( (ThreadPoolRunnable) skAt, sockC);
-                            }
-                            //sk.interestOps( sk.interestOps() | 
-                            //        SelectionKey.OP_ACCEPT );
-                            System.err.println( sk.interestOps() ); 
-
-                            continue;
-                        }
-
-                        // TODO: this is for keep alive
-                        if( sk.isReadable() ) {
-                            SocketChannel sockC = (SocketChannel)sc;
-                            
-                            // Incoming data on keep-alive connection.
-                            continue;
-                        }
-                        
-                        // dispatch the socket to a pool thread
-                        System.err.println("Select: " + readyOps);
-                    }
-                    
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                
-            }
-            
-        }
+    class PollerThread implements ThreadPoolRunnable  {
         
-    }
-    
-    class SocketDispatch implements ThreadPoolRunnable {
-
         public Object[] getInitData() {
             // no synchronization overhead, but 2 array access 
             Object obj[]=new Object[2];
@@ -288,26 +208,63 @@ public class NioEndpoint extends SimpleEndpoint {
             obj[0]=new TcpConnection();
             return obj;
         }
-        
+
         public void runIt(Object perThrData[]) {
-            ThreadWithAttributes t=(ThreadWithAttributes)Thread.currentThread();
-            
-            SocketChannel sc=(SocketChannel)t.getParam(tp);
-            if (isRunning()) {
-                // Loop if endpoint is paused
-                while (isPaused()) {
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        // Ignore
+            try {
+                int selRes = selector.select();
+
+                if( selRes == 0 ) {
+                    System.err.println("Select with 0 keys " + 
+                            selector.keys().size() );
+                    for( SelectionKey k : selector.keys() ) {
+                        System.err.println("K " + k.interestOps() +
+                                " " + k.readyOps() + " " + k.toString() + " "
+                                + k.isValid() );
                     }
+                    return;
                 }
+                
+                Set selected = selector.selectedKeys();
+                Iterator selI = selected.iterator();
+                
+                while( selI.hasNext() ) {
+                    SelectionKey sk = (SelectionKey)selI.next();
+                    selI.remove();
+                    //Object skAt = sk.attachment(); // == this
+                    
+                    int readyOps = sk.readyOps();
+                    SelectableChannel sc = sk.channel();
+                    
+                    // TODO: use the attachment to decide what's to do.
+                    if( sk.isAcceptable() ) {
+                        ServerSocketChannel ssc=(ServerSocketChannel)sc;
+                        SocketChannel sockC = ssc.accept();
+                        
+                        //  continue accepting on a different thread
+                        // Side effect: if pool is full, accept will happen
+                        // a bit later. 
+                        // TODO: customize this if needed
+                        tp.runIt( this ); 
+                        // now process the socket. 
+                        processSocket(sockC.socket(), (TcpConnection) perThrData[0], 
+                                     (Object[]) perThrData[1]);
+                        continue;
+                    }
 
-                if (null != sc) {
-                    processSocket(sc.socket(), (TcpConnection) perThrData[0], 
-                            (Object[]) perThrData[1]);
+                    // TODO: this is for keep alive
+                    if( sk.isReadable() ) {
+                        //SocketChannel sockC = (SocketChannel)sc;
+                        
+                        // Incoming data on keep-alive connection.
+                        continue;
+                    }
+                    
+                    // dispatch the socket to a pool thread
+                    System.err.println("Select: " + readyOps);
                 }
-
+                
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         

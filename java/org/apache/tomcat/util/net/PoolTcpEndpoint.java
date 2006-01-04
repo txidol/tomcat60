@@ -26,8 +26,6 @@ import java.util.ArrayList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.tomcat.util.res.StringManager;
-import org.apache.tomcat.util.threads.ThreadPool;
-import org.apache.tomcat.util.threads.ThreadPool.ThreadPoolListener;
 
 /* Similar with MPM module in Apache2.0. Handles all the details related with
    "tcp server" functionality - thread management, accept policy, etc.
@@ -54,7 +52,7 @@ import org.apache.tomcat.util.threads.ThreadPool.ThreadPoolListener;
  */
 public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
 
-    static Log log=LogFactory.getLog(PoolTcpEndpoint.class );
+    protected static Log log=LogFactory.getLog(PoolTcpEndpoint.class );
 
     protected StringManager sm = 
         StringManager.getManager("org.apache.tomcat.util.net.res");
@@ -89,7 +87,7 @@ public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
     protected int maxThreads = 20;
     protected int maxSpareThreads = 20;
     protected int minSpareThreads = 20;
-    protected String type;
+    protected String type = "default";
 
     protected String name = "EP"; // base name for threads
     
@@ -98,6 +96,8 @@ public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
     protected boolean daemon = true;
 
     private ArrayList listeners = new ArrayList();
+
+    private boolean polling;
     
     public PoolTcpEndpoint() {
     }
@@ -105,16 +105,16 @@ public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
     public static PoolTcpEndpoint getEndpoint(String type) {
         String cn = null;
         if( "apr".equals( type )) {
-            cn = "org.apache.tomcat.util.net.AprEndpoint";
+            cn = "org.apache.tomcat.util.net.apr.AprEndpoint";
         }
         if( "lf".equals( type )) {
-            cn = "org.apache.tomcat.util.net.LeaderFollowerEndpoint";
-        }
-        if( "acc".equals( type )) {
-            cn = "org.apache.tomcat.util.net.AcceptorEndpoint";
+            cn = "org.apache.tomcat.util.net.javaio.LeaderFollowerEndpoint";
         }
         if( "ms".equals( type )) {
-            cn = "org.apache.tomcat.util.net.MasterSlaveEndpoint";
+            cn = "org.apache.tomcat.util.net.javaio.MasterSlaveEndpoint";
+        }
+        if( "nio".equals( type )) {
+            cn = "org.apache.tomcat.util.net.nio.NioEndpoint";
         }
         PoolTcpEndpoint res = null; 
         if( cn != null ) {
@@ -288,7 +288,16 @@ public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
     public int getCurrentThreadsBusy() {
         return curThreads;
     }
+
+    public boolean getPolling() {
+        return polling;
+    }
     
+    public void setPolling( boolean b ) {
+        polling = b;
+    }
+
+
     // -------------------- Public methods --------------------
 
     public void initEndpoint() throws IOException, InstantiationException {
@@ -306,7 +315,7 @@ public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
     public void stopEndpoint() {
     }
 
-    protected void processSocket(Socket s, TcpConnection con, 
+    public void processSocket(Socket s, TcpConnection con, 
             Object[] threadData) {
     }
 
@@ -317,7 +326,19 @@ public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
         
     }
 
-
+    /** If the endpoint supports polling, add the socket to the poll
+     * watch. A thread will be woked up when the socket has available data.
+     * 
+     * Use this for Keep-Alive, or for reading data from client in poll mode.
+     * 
+     * 
+     * @param s
+     * @param context will be made available to the thread.
+     */
+    public void addPolling(Socket s, Object context ) {
+        
+    }
+    
     // ---------------- Utils ----------------------
     
     protected void closeServerSocket() {
@@ -410,5 +431,30 @@ public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
 
         public void threadEnd( PoolTcpEndpoint ep, Thread t);
 
+    }
+
+    /**
+     * The Request attribute key for the cipher suite.
+     */
+    public static final String CIPHER_SUITE_KEY = "javax.servlet.request.cipher_suite";
+
+    /**
+     * The Request attribute key for the key size.
+     */
+    public static final String KEY_SIZE_KEY = "javax.servlet.request.key_size";
+
+    /**
+     * The Request attribute key for the client certificate chain.
+     */
+    public static final String CERTIFICATE_KEY = "javax.servlet.request.X509Certificate";
+
+    /**
+     * The Request attribute key for the session id.
+     * This one is a Tomcat extension to the Servlet spec.
+     */
+    public static final String SESSION_ID_KEY = "javax.servlet.request.ssl_session";
+
+    public Object getSsl(String string) {
+        return null;
     }
 }

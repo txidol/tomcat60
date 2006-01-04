@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package org.apache.tomcat.util.net;
+package org.apache.tomcat.util.net.javaio;
 
 import java.io.*;
 import java.net.*;

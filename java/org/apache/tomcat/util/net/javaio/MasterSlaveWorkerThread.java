@@ -14,10 +14,12 @@
  *  limitations under the License.
  */
 
-package org.apache.tomcat.util.net;
+package org.apache.tomcat.util.net.javaio;
 
 import java.net.Socket;
 
+import org.apache.tomcat.util.net.PoolTcpEndpoint;
+import org.apache.tomcat.util.net.TcpConnection;
 import org.apache.tomcat.util.threads.ThreadWithAttributes;
 
 /**

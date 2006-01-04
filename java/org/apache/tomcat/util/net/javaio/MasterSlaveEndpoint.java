@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package org.apache.tomcat.util.net;
+package org.apache.tomcat.util.net.javaio;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -23,9 +23,10 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.security.AccessControlException;
 import java.util.Stack;
+import java.util.Vector;
 
-import org.apache.tomcat.util.threads.ThreadPool;
-import org.apache.tomcat.util.threads.ThreadPoolRunnable;
+import org.apache.tomcat.util.net.PoolTcpEndpoint;
+import org.apache.tomcat.util.net.TcpConnection;
 
 /* Similar with MPM module in Apache2.0. Handles all the details related with
    "tcp server" functionality - thread management, accept policy, etc.
@@ -37,11 +38,12 @@ import org.apache.tomcat.util.threads.ThreadPoolRunnable;
 
 /**
  * Handle incoming TCP connections.
- * 
- * Each thread in the pool accepts, then process a request. A spare thread
- * will take over the accept.
  *
- * TODO: can we have all threads in the pool blocked on accept ? 
+ * This class implement a simple server model: one listener thread accepts on a socket and
+ * creates a new worker thread for each incoming connection.
+ *
+ * This does not use the ThreadPool class ( LeaderFollower does ). Instead
+ * a mini thread pool is implemented inside.
  *
  * @author James Duncan Davidson [duncan@eng.sun.com]
  * @author Jason Hunter [jch@eng.sun.com]
@@ -50,7 +52,7 @@ import org.apache.tomcat.util.threads.ThreadPoolRunnable;
  * @author Gal Shachor [shachor@il.ibm.com]
  * @author Yoav Shapira <yoavs@apache.org>
  */
-public class LeaderFollowerEndpoint extends PoolTcpEndpoint { // implements Endpoint {
+public class MasterSlaveEndpoint extends PoolTcpEndpoint { // implements Endpoint {
 
     private final Object threadSync = new Object();
 
@@ -58,65 +60,21 @@ public class LeaderFollowerEndpoint extends PoolTcpEndpoint { // implements Endp
 
     
     // ------ Leader follower fields
-
-    
-    TcpConnectionHandler handler;
-    ThreadPoolRunnable listener;
-    ThreadPool tp;
-
     
     // ------ Master slave fields
 
     /* The background thread. */
-    //private Thread thread = null;
+    private Thread thread = null;
     /* Available processors. */
     private Stack workerThreads = new Stack();
+    /* All processors which have been created. */
+    private Vector created = new Vector();
 
     
-    public LeaderFollowerEndpoint() {
-	tp = new ThreadPool();
-    }
-
-    public LeaderFollowerEndpoint( ThreadPool tp ) {
-        this.tp=tp;
+    public MasterSlaveEndpoint() {
     }
 
     // -------------------- Configuration --------------------
-
-    public void setMaxThreads(int maxThreads) {
-	if( maxThreads > 0)
-	    tp.setMaxThreads(maxThreads);
-    }
-
-    public int getMaxThreads() {
-        return tp.getMaxThreads();
-    }
-
-    public void setMaxSpareThreads(int maxThreads) {
-	if(maxThreads > 0) 
-	    tp.setMaxSpareThreads(maxThreads);
-    }
-
-    public int getMaxSpareThreads() {
-        return tp.getMaxSpareThreads();
-    }
-
-    public void setMinSpareThreads(int minThreads) {
-	if(minThreads > 0) 
-	    tp.setMinSpareThreads(minThreads);
-    }
-
-    public int getMinSpareThreads() {
-        return tp.getMinSpareThreads();
-    }
-
-    public void setThreadPriority(int threadPriority) {
-      tp.setThreadPriority(threadPriority);
-    }
-
-    public int getThreadPriority() {
-      return tp.getThreadPriority();
-    }
 
     public void setServerSocketFactory(  ServerSocketFactory factory ) {
 	    this.factory=factory;
@@ -126,9 +84,9 @@ public class LeaderFollowerEndpoint extends PoolTcpEndpoint { // implements Endp
  	    return factory;
    }
 
-   public String getStrategy() {
-        return "lf";
-   }
+    public String getStrategy() {
+        return "ms";
+    }
     
     public void setStrategy(String strategy) {
     }
@@ -168,11 +126,10 @@ public class LeaderFollowerEndpoint extends PoolTcpEndpoint { // implements Endp
         if (!initialized) {
             initEndpoint();
         }
-        tp.start();
         running = true;
         paused = false;
-        listener = new LeaderFollowerWorkerThread(this);
-        tp.runIt(listener);
+        maxThreads = getMaxThreads();
+        threadStart();
     }
 
     public void pauseEndpoint() {
@@ -190,7 +147,6 @@ public class LeaderFollowerEndpoint extends PoolTcpEndpoint { // implements Endp
 
     public void stopEndpoint() {
         if (running) {
-            tp.shutdown();
             running = false;
             if (serverSocket != null) {
                 closeServerSocket();
@@ -198,7 +154,6 @@ public class LeaderFollowerEndpoint extends PoolTcpEndpoint { // implements Endp
             initialized=false ;
         }
     }
-
 
     // -------------------- Private methods
 
@@ -303,7 +258,7 @@ public class LeaderFollowerEndpoint extends PoolTcpEndpoint { // implements Endp
     }
 
     
-    protected void processSocket(Socket s, TcpConnection con, Object[] threadData) {
+    public void processSocket(Socket s, TcpConnection con, Object[] threadData) {
         // Process the connection
         int step = 1;
         try {
@@ -350,6 +305,131 @@ public class LeaderFollowerEndpoint extends PoolTcpEndpoint { // implements Endp
             }
         }
     }
+    
+
+    // -------------------------------------------------- Master Slave Methods
+
+
+    /**
+     * Create (or allocate) and return an available processor for use in
+     * processing a specific HTTP request, if possible.  If the maximum
+     * allowed processors have already been created and are in use, return
+     * <code>null</code> instead.
+     */
+    private MasterSlaveWorkerThread createWorkerThread() {
+
+        synchronized (workerThreads) {
+            if (workerThreads.size() > 0) {
+                return ((MasterSlaveWorkerThread) workerThreads.pop());
+            }
+            if ((maxThreads > 0) && (curThreads < maxThreads)) {
+                return (newWorkerThread());
+            } else {
+                if (maxThreads < 0) {
+                    return (newWorkerThread());
+                } else {
+                    return (null);
+                }
+            }
+        }
+
+    }
+
+    
+    /**
+     * Create and return a new processor suitable for processing HTTP
+     * requests and returning the corresponding responses.
+     */
+    private MasterSlaveWorkerThread newWorkerThread() {
+
+        MasterSlaveWorkerThread workerThread = 
+            new MasterSlaveWorkerThread(this, getName() + "-" + (++curThreads));
+        workerThread.start();
+        created.addElement(workerThread);
+        return (workerThread);
+
+    }
+
+
+    /**
+     * Recycle the specified Processor so that it can be used again.
+     *
+     * @param processor The processor to be recycled
+     */
+    public void workerDone(Runnable workerThread) {
+        workerThreads.push(workerThread);
+    }
+
+    
+    /**
+     * The background thread that listens for incoming TCP/IP connections and
+     * hands them off to an appropriate processor.
+     */
+    public void run() {
+
+        // Loop until we receive a shutdown command
+        while (running) {
+
+            // Loop if endpoint is paused
+            while (paused) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    // Ignore
+                }
+            }
+
+            // Allocate a new worker thread
+            MasterSlaveWorkerThread workerThread = createWorkerThread();
+            if (workerThread == null) {
+                try {
+                    // Wait a little for load to go down: as a result, 
+                    // no accept will be made until the concurrency is
+                    // lower than the specified maxThreads, and current
+                    // connections will wait for a little bit instead of
+                    // failing right away.
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    // Ignore
+                }
+                continue;
+            }
+            
+            // Accept the next incoming connection from the server socket
+            Socket socket = acceptSocket();
+
+            // Hand this socket off to an appropriate processor
+            workerThread.assign(socket);
+
+            // The processor will recycle itself when it finishes
+
+        }
+
+        // Notify the threadStop() method that we have shut ourselves down
+        synchronized (threadSync) {
+            threadSync.notifyAll();
+        }
+
+    }
+
+
+    /**
+     * Start the background processing thread.
+     */
+    private void threadStart() {
+        thread = new Thread(this, getName());
+        thread.setPriority(getThreadPriority());
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+
+    /**
+     * Stop the background processing thread.
+     */
+    private void threadStop() {
+        thread = null;
+    }
 
     public void setSSLSupport(boolean secure, String factoryName) throws Exception {
         if (secure) {
@@ -382,5 +462,6 @@ public class LeaderFollowerEndpoint extends PoolTcpEndpoint { // implements Endp
         Class chC=Class.forName( val );
         return (ServerSocketFactory)chC.newInstance();
     }
+
 
 }
