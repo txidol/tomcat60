@@ -26,6 +26,7 @@ import java.security.AccessControlException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.tomcat.util.threads.ThreadWithAttributes;
 
 
 /**
@@ -47,11 +48,14 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
     static Log log=LogFactory.getLog(SimpleEndpoint.class );
 
     private final Object threadSync = new Object();
+
+    // active acceptors
+    private int acceptors=0;
     
-    /* The background thread. */
-    private Thread thread = null;
     
     public SimpleEndpoint() {
+        maxSpareThreads = 4;
+        minSpareThreads = 1;
     }
 
 
@@ -73,14 +77,6 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
             if( serverTimeout >= 0 )
                 serverSocket.setSoTimeout( serverTimeout );
             
-            thread = new Thread(this, "SimpleEP");
-            thread.setDaemon(daemon);
-            if( getThreadPriority() > 0 ) {
-                thread.setPriority(getThreadPriority());
-            }
-            thread.setDaemon(true);
-            thread.start();
-
         } catch( IOException ex ) {
             throw ex;
         }
@@ -93,9 +89,52 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
         }
         running = true;
         paused = false;
-        
+        if( maxSpareThreads == minSpareThreads ) {
+            maxSpareThreads = minSpareThreads + 4;
+        }
+
+        // Start the first thread
+        checkSpares();
     }
 
+    /** Check the spare situation. If not enough - create more.
+     * If too many - return true to end this.
+     * 
+     * This is the main method to handle the number of threads.
+     * 
+     * @return
+     */
+    boolean checkSpares() {
+        // make sure we have min spare threads
+        while( (acceptors - curThreads ) < minSpareThreads ) {
+            if( acceptors >= maxThreads ) {
+                // limit reached, we won't accept any more requests. 
+            } else {
+                newAcceptor();
+            }
+        }
+        
+        if( acceptors - curThreads > maxSpareThreads ) {
+            threadEnd( Thread.currentThread() );
+            return true; // this one should go
+        }
+        
+        return false;
+    }
+
+    void newAcceptor() {
+        acceptors++;
+        Thread t=new ThreadWithAttributes( this, new AcceptorRunnable());
+        t.setName("Tomcat-" + acceptors);
+        if( threadPriority > 0 ) {
+            t.setPriority(threadPriority);
+        }
+        t.setDaemon(daemon);
+        threadStart( t );
+        t.start();        
+    }
+    
+    
     public void pauseEndpoint() {
         if (running && !paused) {
             paused = true;
@@ -254,7 +293,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
         return accepted;
     }
 
-    protected void processSocket(Socket s, TcpConnection con, Object[] threadData) {
+    public void processSocket(Socket s, TcpConnection con, Object[] threadData) {
         // Process the connection
         int step = 1;
         try {
@@ -299,81 +338,63 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
         }
     }
     
-    
-    /**
-     * Accept, dispatch on a new thread. May benefit from VM thread pooling, but
-     * the goal is to minimize the number of resources used.
-     * 
-     * TODO: change this to use NIO, use the thread for other control events
-     * ( timers, etc ) that would require a separate thread.
-     * 
-     * TODO: maybe add back ability to do pooling, by refactoring ThreadPool
-     * or adding some optional interface. Maybe better abstract the other endpoint 
-     * thread models in a new TP interface.
-     */
     public void run() {
+        // nothing here, all action is in AcceptorRunnable
+    }
 
-        // Loop until we receive a shutdown command
-        while (running) {
+    class AcceptorRunnable implements Runnable {
+        private TcpConnection con = new TcpConnection();
 
-            // Loop if endpoint is paused
-            while (paused) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    // Ignore
+    
+        /**
+         * Accept, dispatch on a new thread. May benefit from VM thread pooling, but
+         * the goal is to minimize the number of resources used.
+         * 
+         * TODO: change this to use NIO, use the thread for other control events
+         * ( timers, etc ) that would require a separate thread.
+         * 
+         * TODO: maybe add back ability to do pooling, by refactoring ThreadPool
+         * or adding some optional interface. Maybe better abstract the other endpoint 
+         * thread models in a new TP interface.
+         */
+        public void run() {
+            Object[] threadData = getConnectionHandler().init();
+            while( running ) {
+                // Loop if endpoint is paused
+                if( checkSpares() ) {
+                    return;
+                }
+                
+                while (paused) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        // Ignore
+                    }
+                }
+                
+                Socket socket = acceptSocket();
+                
+                curThreads++;
+                
+                // Process the request from this socket
+                processSocket(socket, con, threadData);
+                
+                // Finish up this request
+                curThreads--;
+                
+                if( checkSpares() ) {
+                    return;
                 }
             }
             
-            // Accept the next incoming connection from the server socket
-            Socket socket = acceptSocket();
-
-            // Hand this socket off to an appropriate processor
-            Thread t=new Thread( new SimpleThread(this, socket) );
-            t.setDaemon(daemon);
-            if( getThreadPriority() > 0 ) 
-                t.setPriority(getThreadPriority());
+            acceptors--; // we're done
             
-            threadStart( t );// notify listeners
-            
-            t.start();
-
-        }
-
-        // Notify the threadStop() method that we have shut ourselves down
-        synchronized (threadSync) {
-            threadSync.notifyAll();
-        }
-
-    }
-
-    static class SimpleThread implements Runnable {
-
-        private Socket socket;
-        private PoolTcpEndpoint ep;
-        private ThreadLocal tl=new ThreadLocal();
-
-        public SimpleThread(SimpleEndpoint endpoint, Socket socket) {
-            this.socket = socket;
-            this.ep = endpoint;
-        }
-
-        public void run() {
-            Object[] threadData = (Object [])tl.get();
-            if( threadData == null ) {
-                threadData=new Object[2];
-                threadData[0]=new TcpConnection();
-                threadData[1] = ep.getConnectionHandler().init();
-                tl.set(threadData);
-            } else {
-                System.err.println("Congrats, the VM does thread pooling !!!");
+            // Notify the threadStop() method that we have shut ourselves down
+            synchronized (threadSync) {
+                threadSync.notifyAll();
             }
-            ep.processSocket( socket, (TcpConnection)threadData[0],
-                    (Object[])threadData[1]);
             
-            ep.threadEnd( Thread.currentThread() );
         }
     }
-
-
 }
