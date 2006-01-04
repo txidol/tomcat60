@@ -690,15 +690,19 @@ public final class ByteChunk implements Cloneable, Serializable {
             int myPos=i+1;
 
             // not enough chars to have a match
-            if( i + srcLen >= end ) {
+            if( myPos + srcLen >= end ) {
                 break;
             }
             
+            try {
 	    for( int srcPos=srcOff + 1; srcPos< srcEnd; ) {
                 if( bb.get(myPos++) != src.charAt( srcPos++ ))
 		    break;
                 if( srcPos==srcEnd ) return i-start; // found it
 	    }
+            } catch( Throwable t ) {
+                t.printStackTrace();
+            }
 	}
 	return -1;
     }
