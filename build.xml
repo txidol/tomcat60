@@ -11,8 +11,8 @@
   <property name="tc55xbase" location=".." />
 
     <!-- Source dependencies -->
-  <property name="target.vm"     value="1.4"/>
-  <property name="source.vm"     value="1.4"/>
+  <property name="target.vm"     value="1.5"/>
+  <property name="source.vm"     value="1.5"/>
   <property name="api.home"      value="${tc55xbase}/servletapi"/>
   <property name="container.home" value="${tc55xbase}/container"/>
   <property name="jasper.home"   value="${tc55xbase}/jasper"/>
@@ -141,13 +141,14 @@
   </target>
 
   <target name="compile-sandbox">
-    <mkdir dir="${sandbox.home}/bin" />
+    <mkdir dir="${sandbox.home}/classes" />
     <javac destdir="${sandbox.home}/classes" source="${source.vm}" target="${target.vm}"
       deprecation="false" debug="false"  >
       <src path="${sandbox.home}/java" />
       <classpath>
         <path refid="runtime-deps" />        
-          <pathelement location="${connectors.home}/bin"/>
+        <pathelement location="${connectors.home}/bin"/>
+        <pathelement location="${container.home}/bin"/>
       </classpath>
     </javac>
     <copy todir="${sandbox.home}/classes" >
@@ -195,24 +196,29 @@
   </target>
   
   <target name="compile" 
-    depends="compile-connectors,compile-sandbox,compile-container,compile-jasper"/>
+    depends="compile-connectors,compile-container,compile-sandbox,compile-jasper"/>
 
   <target name="clean-compile">
     <delete dir="${container.home}/bin" includes="**"/>
-    <delete dir="${sandbox.home}/bin" includes="**"/>
+    <delete dir="${sandbox.home}/classes" includes="**"/>
     <delete dir="${connectors.home}/bin" includes="**"/>
     <delete dir="${jasper.home}/bin" includes="**"/>
   </target>
   
   
-  <target name="runtime"
-    description="Build single jar tomcat" depends="compile">
+  <target name="tomcat-runtime.jar"
+    description="Build single jar tomcat" depends="compile,pack_tomcat-runtime.jar">
+  </target>
+  
+  
+  <target name="pack_tomcat-runtime.jar"
+    description="Pack single jar tomcat" >
     <mkdir dir="runtime" />
     <jar jarfile="runtime/tomcat-runtime.jar" manifest="resources/runtime.MF">
       <fileset dir="${container.home}/bin" >
         <exclude name="org/apache/tomcat/util/buf/**"/>
       </fileset>
-      <fileset dir="${sandbox.home}/bin" >
+      <fileset dir="${sandbox.home}/classes" >
         <exclude name="org/apache/tomcat/util/net/Leader**"/>
         <exclude name="org/apache/tomcat/util/net/Master**"/>
         <exclude name="org/apache/tomcat/util/net/SSL**"/>
@@ -221,6 +227,7 @@
         <exclude name="org/apache/tomcat/util/net/Default**"/>
       </fileset>
       <fileset dir="${connectors.home}/bin" >
+        <exclude name="org/apache/coyote/http11/*"/>
         <exclude name="org/apache/tomcat/util/buf/**"/>
         <exclude name="org/apache/tomcat/util/net/jsse/**"/>
         <exclude name="org/apache/tomcat/util/threads/Expirer**"/>
@@ -352,7 +359,7 @@
 
   </target>
 
-  <target name="all" depends="tomcat-http11,runtime,runtime-all" />
+  <target name="all" depends="tomcat-http11,tomcat-runtime.jar,runtime-all" />
 
   <!-- ============ Download targets for deps ================ -->
 

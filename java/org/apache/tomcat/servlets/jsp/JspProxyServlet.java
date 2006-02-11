@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Vector;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +15,12 @@ import javax.servlet.http.HttpServletResponse;
  *  
  *  If jasper is not found - i.e. runtime without jasper compiler - it'll 
  *  compute the mangled class name ( same code as jasper )
- *  and invoke the jsp servlet directly. 
+ *  and invoke the jsp servlet directly. If the class is not found, it'll execute
+ *   "jspc" and try again. 
+ *  
+ *  
+ * 
+ * TODO: test jspc, generate files in or out web-inf dir, modify web.xml
  * 
  * @author Costin Manolache
  */
@@ -64,11 +70,33 @@ public class JspProxyServlet extends HttpServlet {
                 Class sC=Class.forName( mangledClass );
                 jsp=(HttpServlet)sC.newInstance();
             } catch( Throwable t ) {
+            }
+        }
+        if(jsp == null) {
+            
+        }
+        // try again
+        if( jsp == null ) {
+            try {
+                Class sC=Class.forName( mangledClass );
+                jsp=(HttpServlet)sC.newInstance();
+            } catch( Throwable t ) {
                 t.printStackTrace();
                 arg1.setStatus(404);
             }
         }        
         jsp.service( req, arg1);
+    }
+    
+    private void compileJsp(ServletContext ctx, String jspPath) {
+        // Params to pass to jspc:
+        // classpath 
+        
+        // webapp base dir
+        String baseDir = ctx.getRealPath("/");
+        // jsp path ( rel. base dir )
+        
+        
     }
 
     public void init(ServletConfig arg0) throws ServletException {

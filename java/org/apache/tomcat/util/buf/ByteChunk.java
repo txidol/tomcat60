@@ -34,27 +34,36 @@ import java.nio.ByteBuffer;
  * to be able to parse the request without converting to string.
  */
 
-// TODO: This class could either extend ByteBuffer, or better a ByteBuffer inside
-// this way it could provide the search/etc on ByteBuffer, as a helper.
-
 /**
  * This class is used to represent a chunk of bytes, and
- * utilities to manipulate byte[].
+ * utilities to manipulate bytes.
  *
  * The buffer can be modified and used for both input and output.
  *
- * There are 2 modes: The chunk can be associated with a sink - ByteInputChannel or ByteOutputChannel,
- * which will be used when the buffer is empty ( on input ) or filled ( on output ).
- * For output, it can also grow. This operating mode is selected by calling setLimit() or
- * allocate(initial, limit) with limit != -1.
+ * There are 3 modes: 
+ * 
+ * 1. Wrapping a chunk from another buffer. This was the original use and is the
+ * most common use - for example in headers. Typically there is an associated
+ * CharChunk and MessageBytes for the char[] representation - but many buffers 
+ * will not be converted or will be converted just before use. 
+ * 
+ * 2. For input, associated with a ByteInputChannel ( or ReadableByteChannel ), 
+ * which will be called automatically when the buffer is emtpy. This is used for 
+ * the input stream and for the header buffer ( which will be later wrapped in many
+ * ByteChunks )
+ * 
+ * 3. For output, associated ( or not ) with a ByteOutputChannel. The buffer
+ * can grow up to a limit ( and will stay allocated to that limit ). When the limit
+ * is reached, the channel is used.
  *
  * Various search and append method are defined - similar with String and StringBuffer, but
  * operating on bytes.
+ * 
+ * In addition, append and substract are used in 2 and 3.
  *
  * This is important because it allows processing the http headers directly on the received bytes,
  * without converting to chars and Strings until the strings are needed. In addition, the charset
  * is determined later, from headers or user code.
- *
  *
  * @author dac@sun.com
  * @author James Todd [gonzo@sun.com]
@@ -66,6 +75,7 @@ public final class ByteChunk implements Cloneable, Serializable {
     /** Input interface, used when the buffer is emptiy
      *
      * Same as java.nio.channel.ReadableByteChannel
+     * @deprecated
      */
     public static interface ByteInputChannel {
         /** 
@@ -78,6 +88,7 @@ public final class ByteChunk implements Cloneable, Serializable {
     }
 
     /** Same as java.nio.channel.WrittableByteChannel.
+     * @deprecated
      */
     public static interface ByteOutputChannel {
         /** 
@@ -95,38 +106,83 @@ public final class ByteChunk implements Cloneable, Serializable {
 	8859_1, and this object is used mostly for servlets. 
     */
     public static final String DEFAULT_CHARACTER_ENCODING="ISO-8859-1";
-        
-    // byte[]
-    //private byte[] buff;
-    private ByteBuffer bb;
-    
-    private int start=0;
-    private int end;
 
+    // By default in read mode - there are fewer uses of ByteChunk for output.
+    // (In most cases it's wrapping existing data) 
+    //
+    // So start == 0, end == limit. Position is not used.
+    // 
+    // if isOutout==true - the buffer is used for output. It must be released().
+    private ByteBuffer bb;
+    private boolean isSet=false; // == ! isNull
+    
+    
+    private int start=0; // used as ByteBuffer.offset and position
+    private int end; // used as limit
+
+    // not sure it's good to have it here, MessageBytes should deal with this
     private String enc;
 
-    private boolean isSet=false; // XXX
+    // Probably not needed if callers respect the rules - but good to debug.
+    private boolean inUse = false; // direct access to bb
+    private boolean isOutput=false; // byte buffer in output mode
+    private int mode = 0; 
+    //private boolean optimizedWrite=true;
 
-    // How much can it grow, when data is added
-    private int limit=-1;
+    // How much can it grow, when data is added. Different from the bb limit,
+    // this is how much we can resize the bb before flushing.
+    private int growLimit=-1;
 
+    // maybe a single in/out channel would be better.
     private ByteInputChannel in = null;
     private ByteOutputChannel out = null;
 
-    private boolean isOutput=false;
-    private boolean optimizedWrite=true;
-    
+    /*
+     
+    // experiment: specific structure for 2. and 3.
+    static class ByteData {
+        Channel channel; // or in, out
+        
+        int growLimit = -1;
+        String enc; // no need to have it in wrapped buffers
+        
+    }
+    private ByteData byteData;
+    */
     /**
      * Creates a new, uninitialized ByteChunk object.
      */
     public ByteChunk() {
     }
 
-    public ByteChunk( int initial ) {
-	allocate( initial, -1 );
+    //--------------------
+    
+    public ByteBuffer getBuffer(boolean forWrite) {
+        inUse = true;
+        if( forWrite ) {
+            isOutput = true;
+            // all methods except append should throw exceptions !
+            //  start - end are existing data, end is growing on append
+            // also, start is supposed to be 0 ( or offeset ? )
+            bb.position(end);
+            bb.limit(bb.capacity());
+        }
+        return bb;
     }
 
-    //--------------------
+    public void releaseBuffer() {
+        if( isOutput ) {
+            isOutput = false;
+            // start remain the same ( probably 0 )
+            end = bb.position();
+            // flip bb for reading
+            bb.limit(bb.position());
+            bb.position(0);
+        }
+        inUse = false;
+    }
+    
+    
     public ByteChunk getClone() {
 	try {
 	    return (ByteChunk)this.clone();
@@ -136,18 +192,21 @@ public final class ByteChunk implements Cloneable, Serializable {
     }
 
     public boolean isNull() {
-	return ! isSet; // buff==null;
+	return ! isSet; 
     }
     
     /**
      * Resets the message buff to an uninitialized state.
      */
     public void recycle() {
-	//	buff = null;
 	enc=null;
 	start=0;
 	end=0;
 	isSet=false;
+        if( bb != null) bb.clear();
+        inUse = false;
+        // mode remains - it shouldn't change
+        isOutput = false;
     }
 
     public void reset() {
@@ -156,20 +215,41 @@ public final class ByteChunk implements Cloneable, Serializable {
 
     // -------------------- Setup --------------------
 
+    /**
+     * Prealocate a buffer.
+     * Called by C2B, BufferedInputFilter ( mode 2 ), catalina InputBuffer 
+     * and OutputBuffe,  
+     * 
+     * @param initial
+     */
+    public ByteChunk( int initial ) {
+        allocate( initial, -1 );
+    }
+
+    /** Used for 2. and 3. - allocate the buffer.
+     * 
+     * Called by InternalOutputBuffer, C2B ( for out ).
+     *  
+     * Called by MessageBytes ( out mode ) to hold decoded uri, other temp
+     * storages for request ( long, etc ) 
+     */
     public void allocate( int initial, int limit  ) {
 	isOutput=true;
 	if( bb==null || bb.capacity() < initial ) {
 	    //buff=new byte[initial];
             bb=ByteBuffer.allocate(initial);
 	}    
-	this.limit=limit;
+	this.growLimit=limit;
 	start=0;
 	end=0;
 	isSet=true;
+        mode = 4; // will set to 2 or 3 on first op.
+        //new Throwable().printStackTrace();
     }
 
     /**
      * Sets the message bytes to the specified subarray of bytes.
+     * Used for 1.
      * 
      * @param b the ascii bytes
      * @param off the start offset of the bytes
@@ -178,18 +258,27 @@ public final class ByteChunk implements Cloneable, Serializable {
     public void setBytes(byte[] b, int off, int len) {
         //buff = b;
         bb=ByteBuffer.wrap( b, off, len );
-        start = off;
+        start = off; // also offset in bb.
+        // bb.arrayOffset() == off == start;
         end = start+ len;
         isSet=true;
+        if( mode > 1 ) {
+            System.err.println("Old mode: " + mode);
+            new Throwable().printStackTrace();
+        }
+        mode = 1;
     }
 
-    public void setOptimizedWrite(boolean optimizedWrite) {
-        this.optimizedWrite = optimizedWrite;
-    }
+    // --------------------------------------
+    // Doesn't seem to be used - and it shouldn't be
+    //public void setOptimizedWrite(boolean optimizedWrite) {
+    //    this.optimizedWrite = optimizedWrite;
+    //}
 
     public void setEncoding( String enc ) {
 	this.enc=enc;
     }
+    
     public String getEncoding() {
         if (enc == null)
             enc=DEFAULT_CHARACTER_ENCODING;
@@ -243,11 +332,11 @@ public final class ByteChunk implements Cloneable, Serializable {
      *  or throw exception.
      */
     public void setLimit(int limit) {
-	this.limit=limit;
+	this.growLimit=limit;
     }
     
     public int getLimit() {
-	return limit;
+	return growLimit;
     }
 
     /**
@@ -275,6 +364,8 @@ public final class ByteChunk implements Cloneable, Serializable {
     }
 
     // -------------------- Adding data to the buffer --------------------
+    // this is mode 3.
+    
     /** Append a char, by casting it to byte. This IS NOT intended for unicode.
      *
      * @param c
@@ -292,11 +383,11 @@ public final class ByteChunk implements Cloneable, Serializable {
 	makeSpace( 1 );
 
 	// couldn't make space
-	if( limit >0 && end >= limit ) {
+	if( growLimit >0 && end >= growLimit ) {
 	    flushBuffer();
 	}
 	//buff[end++]=b;
-        bb.put(end++, b);
+        bb.array()[end++] = b;
     }
 
     public void append( ByteChunk src )
@@ -314,7 +405,7 @@ public final class ByteChunk implements Cloneable, Serializable {
 	makeSpace( len );
 
 	// if we don't have limit: makeSpace can grow as it wants
-	if( limit < 0 ) {
+	if( growLimit < 0 ) {
 	    // assert: makeSpace made enough space
 	    System.arraycopy( src, off, bb.array(), end, len );
 	    end+=len;
@@ -325,12 +416,12 @@ public final class ByteChunk implements Cloneable, Serializable {
         // If the buffer is empty and the source is going to fill up all the
         // space in buffer, may as well write it directly to the output,
         // and avoid an extra copy
-        if ( optimizedWrite && len == limit && end == start) {
+        if ( /*optimizedWrite &&*/ len == growLimit && end == start) {
             out.realWriteBytes( src, off, len );
             return;
         }
 	// if we have limit and we're below
-	if( len <= limit - end ) {
+	if( len <= growLimit - end ) {
 	    // makeSpace will grow the buffer to the limit,
 	    // so we have space
 	    System.arraycopy( src, off, bb.array(), end, len );
@@ -346,7 +437,7 @@ public final class ByteChunk implements Cloneable, Serializable {
         // We chunk the data into slices fitting in the buffer limit, although
         // if the data is written directly if it doesn't fit
 
-        int avail=limit-end;
+        int avail=growLimit-end;
         System.arraycopy(src, off, bb.array(), end, avail);
         end += avail;
 
@@ -354,9 +445,9 @@ public final class ByteChunk implements Cloneable, Serializable {
 
         int remain = len - avail;
 
-        while (remain > (limit - end)) {
-            out.realWriteBytes( src, (off + len) - remain, limit - end );
-            remain = remain - (limit - end);
+        while (remain > (growLimit - end)) {
+            out.realWriteBytes( src, (off + len) - remain, growLimit - end );
+            remain = remain - (growLimit - end);
         }
 
         System.arraycopy(src, (off + len) - remain, bb.array(), end, remain);
@@ -364,12 +455,96 @@ public final class ByteChunk implements Cloneable, Serializable {
 
     }
 
+    /** Send the buffer to the sink. Called by append() when the limit is reached.
+     *  You can also call it explicitely to force the data to be written.
+     *
+     * @throws IOException
+     */
+    public void flushBuffer()
+        throws IOException
+    {
+        //assert out!=null
+        if( out==null ) {
+            throw new IOException( "Buffer overflow, no sink " + growLimit + " " +
+                                   bb.capacity()  );
+        }
+        out.realWriteBytes( bb.array(), start, end-start );
+        end=start;
+    }
+
+
+    /** Make space for len chars. If len is small, allocate
+     *  a reserve space too. Never grow bigger than limit.
+     */
+    private void makeSpace(int count)
+    {
+        // all appends call make space
+        if( mode != 3 ) {
+            if( mode == 4 ) {
+                mode = 3;
+            } else { // mode change
+                new Throwable().printStackTrace();
+            }
+            
+        }
+        
+        ByteBuffer tmp = null;
+
+        int newSize;
+        int desiredSize=end + count;
+
+        // Can't grow above the limit
+        if( growLimit > 0 &&
+            desiredSize > growLimit) {
+            desiredSize=growLimit;
+        }
+
+        if( bb==null ) {
+            if( desiredSize < 256 ) desiredSize=256; // take a minimum
+            bb=ByteBuffer.allocate(desiredSize);
+        }
+        
+        // limit < buf.length ( the buffer is already big )
+        // or we already have space XXX
+        if( desiredSize <= bb.capacity() ) {
+            return;
+        }
+        // grow in larger chunks
+        if( desiredSize < 2 * bb.capacity() ) {
+            newSize= bb.capacity() * 2;
+            if( growLimit >0 &&
+                newSize > growLimit ) newSize=growLimit;
+        } else {
+            newSize= bb.capacity() * 2 + count ;
+            if( growLimit > 0 &&
+                newSize > growLimit ) newSize=growLimit;
+        }
+        tmp=ByteBuffer.allocate(newSize);
+        
+        System.arraycopy(bb.array(), start, tmp.array(), 0, end-start);
+        bb = tmp;
+        tmp = null;
+        end=end-start;
+        start=0;
+    }
 
     // -------------------- Removing data from the buffer --------------------
-
+    // mode 2.
+    private void checkMode2() {
+        if( mode != 2 ) {
+            if( mode == 4 ) {
+                System.err.println("Mode 2 buffer");
+                mode = 2;
+            } else { // mode change
+                new Throwable().printStackTrace();
+            }
+        }        
+    }
+    
     public int substract()
         throws IOException {
 
+        checkMode2();
         if ((end - start) == 0) {
             if (in == null)
                 return -1;
@@ -378,13 +553,14 @@ public final class ByteChunk implements Cloneable, Serializable {
                 return -1;
         }
 
-        return (bb.get(start++) & 0xFF);
+        return (bb.array()[start++] & 0xFF);
 
     }
 
     public int substract(ByteChunk src)
         throws IOException {
 
+        checkMode2();
         if ((end - start) == 0) {
             if (in == null)
                 return -1;
@@ -403,6 +579,7 @@ public final class ByteChunk implements Cloneable, Serializable {
     public int substract( byte src[], int off, int len )
         throws IOException {
 
+        checkMode2();
         if ((end - start) == 0) {
             if (in == null)
                 return -1;
@@ -418,74 +595,12 @@ public final class ByteChunk implements Cloneable, Serializable {
         System.arraycopy(bb.array(), start, src, off, n);
         start += n;
         return n;
-
     }
 
-
-    /** Send the buffer to the sink. Called by append() when the limit is reached.
-     *  You can also call it explicitely to force the data to be written.
-     *
-     * @throws IOException
-     */
-    public void flushBuffer()
-	throws IOException
-    {
-	//assert out!=null
-	if( out==null ) {
-	    throw new IOException( "Buffer overflow, no sink " + limit + " " +
-				   bb.capacity()  );
-	}
-	out.realWriteBytes( bb.array(), start, end-start );
-	end=start;
-    }
-
-    /** Make space for len chars. If len is small, allocate
-     *	a reserve space too. Never grow bigger than limit.
-     */
-    private void makeSpace(int count)
-    {
-	ByteBuffer tmp = null;
-
-	int newSize;
-	int desiredSize=end + count;
-
-	// Can't grow above the limit
-	if( limit > 0 &&
-	    desiredSize > limit) {
-	    desiredSize=limit;
-	}
-
-	if( bb==null ) {
-	    if( desiredSize < 256 ) desiredSize=256; // take a minimum
-	    bb=ByteBuffer.allocate(desiredSize);
-	}
-	
-	// limit < buf.length ( the buffer is already big )
-	// or we already have space XXX
-	if( desiredSize <= bb.capacity() ) {
-	    return;
-	}
-	// grow in larger chunks
-	if( desiredSize < 2 * bb.capacity() ) {
-	    newSize= bb.capacity() * 2;
-	    if( limit >0 &&
-		newSize > limit ) newSize=limit;
-	} else {
-	    newSize= bb.capacity() * 2 + count ;
-	    if( limit > 0 &&
-		newSize > limit ) newSize=limit;
-	}
-	tmp=ByteBuffer.allocate(newSize);
-	
-	System.arraycopy(bb.array(), start, tmp.array(), 0, end-start);
-	bb = tmp;
-	tmp = null;
-	end=end-start;
-	start=0;
-    }
     
     // -------------------- Conversion and getters --------------------
-
+    // all modes
+    
     public String toString() {
         if (null == bb.array()) {
             return null;
@@ -685,7 +800,7 @@ public final class ByteChunk implements Cloneable, Serializable {
 	int srcEnd = srcOff + srcLen;
         
 	for( int i=myOff+start; i <= (end - srcLen); i++ ) {
-	    if( bb.get(i) != first ) continue;
+	    if( bb.array()[i] != first ) continue;
 	    // found first char, now look for a match
             int myPos=i+1;
 
@@ -694,15 +809,11 @@ public final class ByteChunk implements Cloneable, Serializable {
                 break;
             }
             
-            try {
-	    for( int srcPos=srcOff + 1; srcPos< srcEnd; ) {
-                if( bb.get(myPos++) != src.charAt( srcPos++ ))
+            for( int srcPos=srcOff + 1; srcPos< srcEnd; ) {
+                if( bb.array()[myPos++] != src.charAt( srcPos++ ))
 		    break;
                 if( srcPos==srcEnd ) return i-start; // found it
 	    }
-            } catch( Throwable t ) {
-                t.printStackTrace();
-            }
 	}
 	return -1;
     }

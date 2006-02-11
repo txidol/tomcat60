@@ -170,33 +170,6 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
         serverSocket = null;
     }
 
-    protected void unlockAccept() {
-        Socket s = null;
-        try {
-            // Need to create a connection to unlock the accept();
-            if (inet == null) {
-                s = new Socket("127.0.0.1", port);
-            } else {
-                s = new Socket(inet, port);
-                    // setting soLinger to a small value will help shutdown the
-                    // connection quicker
-                s.setSoLinger(true, 0);
-            }
-        } catch(Exception e) {
-            if (log.isDebugEnabled()) {
-                log.debug(sm.getString("endpoint.debug.unlock", "" + port), e);
-            }
-        } finally {
-            if (s != null) {
-                try {
-                    s.close();
-                } catch (Exception e) {
-                    // Ignore
-                }
-            }
-        }
-    }
-
     // -------------------- Private methods
 
     Socket acceptSocket() {
