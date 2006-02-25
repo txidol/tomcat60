@@ -55,7 +55,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
     
     public SimpleEndpoint() {
         maxSpareThreads = 4;
-        minSpareThreads = 1;
+        minSpareThreads = 2;
     }
 
 
@@ -125,7 +125,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
     void newAcceptor() {
         acceptors++;
         Thread t=new ThreadWithAttributes( this, new AcceptorRunnable());
-        t.setName("Tomcat-" + acceptors);
+        t.setName("Tomcat-" + threadId++);
         if( threadPriority > 0 ) {
             t.setPriority(threadPriority);
         }
@@ -335,7 +335,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
             while( running ) {
                 // Loop if endpoint is paused
                 if( checkSpares() ) {
-                    return;
+                    break;
                 }
                 
                 while (paused) {
@@ -357,7 +357,8 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
                 curThreads--;
                 
                 if( checkSpares() ) {
-                    return;
+                    break;
+                    // return;
                 }
             }
             

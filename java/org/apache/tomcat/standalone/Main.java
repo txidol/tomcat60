@@ -31,14 +31,19 @@ public class Main {
             return;
         }
         String dispatch = args[0];
+        // default: use conf/, server.xml, etc
         String launcher = "org.apache.catalina.startup.Bootstrap";
         if( "-webapps".equals(dispatch) ) {
+            // webapps dir, autodeploy
             launcher = "org.apache.tomcat.standalone.WebappsMain";
-        } else if("-app".equals(dispatch)) {
-            launcher = "org.apache.tomcat.standalone.SimpleAppsMain";            
+        } else if("-single".equals(dispatch)) {
+            // one webapp, using web.xml
+            launcher = "org.apache.tomcat.standalone.SingleMain";            
         } else if("-etomcat".equals(dispatch)) {
+            // explicit control, no XML
             launcher = "org.apache.tomcat.standalone.ETomcat";            
         } else if("-coyote".equals(dispatch)) {
+            // only http11, no servlets
             launcher = "org.apache.coyote.standalone.Main";            
         }
         try {

@@ -6,7 +6,9 @@ import org.apache.catalina.core.StandardHost;
 import org.apache.catalina.startup.HostConfig;
 
 /**
- * Start tomcat using server.xml and web.xml and regular config files 
+ * Example of start tomcat using webapps/ dir. No server.xml or other conf/ file
+ * is used - just a single jar and an webapps/ dir ( plus the auto-generated work/
+ * dir ). You can set authentication, etc programmatically. 
  * 
  * @author Costin Manolache
  */

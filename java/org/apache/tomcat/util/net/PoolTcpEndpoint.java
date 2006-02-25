@@ -88,6 +88,8 @@ public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
     protected int maxSpareThreads = 20;
     protected int minSpareThreads = 20;
     protected String type = "default";
+    // to name the threads and get an idea how many threads were closed
+    protected int threadId = 0;
 
     protected String name = "EP"; // base name for threads
     
