@@ -1,16 +1,12 @@
 package org.apache.coyote.adapters;
 
-import java.util.Enumeration;
 import java.util.Hashtable;
 
 import org.apache.coyote.Adapter;
 import org.apache.coyote.Request;
 import org.apache.coyote.Response;
-import org.apache.coyote.http11.Http11BaseProtocol;
 import org.apache.coyote.standalone.MessageWriter;
 import org.apache.tomcat.util.http.mapper.Mapper;
-import org.apache.tomcat.util.loader.Loader;
-import org.apache.tomcat.util.loader.Repository;
 
 /**
  * 
@@ -76,6 +72,11 @@ public class MapperAdapter implements Adapter {
 
     public Adapter getDefaultAdapter() {
         return defaultAdapter;
+    }
+
+    public boolean event(Request req, Response res, boolean error) throws Exception {
+        // TODO Auto-generated method stub
+        return false;
     }
 
 }

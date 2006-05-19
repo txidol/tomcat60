@@ -10,9 +10,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.coyote.Adapter;
 import org.apache.coyote.Request;
 import org.apache.coyote.Response;
-import org.apache.coyote.standalone.MessageWriter;
 import org.apache.tomcat.util.buf.ByteChunk;
-import org.apache.tomcat.util.buf.C2BConverter;
 
 /**
  * Serve a static file. This is the traditional method, a separate adapter could
@@ -122,6 +120,11 @@ public class FileAdapter implements Adapter {
     
     public String getContentType( String ext ) {
         return contentTypes.getProperty( ext, "text/plain" );
+    }
+
+    public boolean event(Request req, Response res, boolean error) throws Exception {
+        // TODO Auto-generated method stub
+        return false;
     }
     
 }

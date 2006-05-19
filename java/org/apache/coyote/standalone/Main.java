@@ -4,11 +4,8 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 import org.apache.coyote.Adapter;
-import org.apache.coyote.adapters.Counters;
-import org.apache.coyote.adapters.HelloWorldAdapter;
 import org.apache.coyote.adapters.MapperAdapter;
 import org.apache.coyote.http11.Http11BaseProtocol;
-import org.apache.tomcat.util.http.mapper.Mapper;
 import org.apache.tomcat.util.loader.Loader;
 import org.apache.tomcat.util.loader.Repository;
 
@@ -40,13 +37,8 @@ public class Main  {
         proto = new Http11BaseProtocol();
 
         mainAdapter = new MapperAdapter();        
-        mainAdapter.addAdapter("/hello", new HelloWorldAdapter());
 
-        Counters cnt=new Counters();
-        cnt.setNext( mainAdapter );
-
-        //proto.setAdapter(mainAdapter);
-        proto.setAdapter(cnt);
+        proto.setAdapter(mainAdapter);
     }
     
     public MapperAdapter getMapper() {
