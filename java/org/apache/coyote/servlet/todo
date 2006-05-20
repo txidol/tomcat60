@@ -1,0 +1,26 @@
+Changes  (compared with catalina classes):
+
+- removed interfaces and intermediary classes
+- removed notification/listener -> can be added back in super or in a lighter way
+- removed JMX ( can be added in extending classes )
+- removed facades
+- removed 'sandbox' mode ( can be added back if needed, maybe using super )
+- dispatcher - remove support for non-http requests
+- remove 'container servlets'
+- valves: ....
+- configuration: remove ApplicationParameter, minimal context config.
+
+The old model: hierarchy of abstract classes and interfaces, with eventually one or 2 concrete
+classes having all the features.
+
+New model: basic ( but working ) base classes, can be extended to add functionality.
+
+Broken:
+- Contest: getResource, needs to be reimplemented using file system instead of naming
+- 
+
+Missing:
+
+- Globals
+- RequestUtils
+- Realm
