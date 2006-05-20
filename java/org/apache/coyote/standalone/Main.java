@@ -5,7 +5,7 @@ import java.util.Hashtable;
 
 import org.apache.coyote.Adapter;
 import org.apache.coyote.adapters.MapperAdapter;
-import org.apache.coyote.http11.Http11BaseProtocol;
+import org.apache.coyote.http11.Http11Protocol;
 import org.apache.tomcat.util.loader.Loader;
 import org.apache.tomcat.util.loader.Repository;
 
@@ -16,13 +16,13 @@ import org.apache.tomcat.util.loader.Repository;
  */
 public class Main  {
     
-    protected Http11BaseProtocol proto;
+    protected Http11Protocol proto;
     protected MapperAdapter mainAdapter;
     
     public Main() {        
     }
 
-    public Http11BaseProtocol getProtocol() {
+    public Http11Protocol getProtocol() {
         return proto;
     }
     
@@ -34,10 +34,9 @@ public class Main  {
     }
     
     public void init() {
-        proto = new Http11BaseProtocol();
+        proto = new Http11Protocol();
 
         mainAdapter = new MapperAdapter();        
-
         proto.setAdapter(mainAdapter);
     }
     
@@ -46,8 +45,8 @@ public class Main  {
     }
     
     public void start() {
-        if( proto.getPort() == 0 && 
-                proto.getEndpoint().getServerSocket() == null) {
+        if( proto.getPort() == 0 ) { //&& 
+                //proto.getEndpoint().getServerSocket() == null) {
             proto.setPort(8800);
         }
         

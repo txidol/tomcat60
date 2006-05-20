@@ -1,11 +1,16 @@
 package org.apache.coyote.standalone;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.nio.channels.Channel;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.spi.SelectorProvider;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import org.apache.tomcat.util.net.ServerSocketFactory;
 
 
 /** 
@@ -40,7 +45,7 @@ public class MainInetd extends Main {
             if(ch!=null ) {
                 System.err.println("Inherited: " + ch.getClass().getName());
                 ServerSocketChannel ssc=(ServerSocketChannel)ch;
-                proto.getEndpoint().setServerSocket( ssc.socket() );
+                //proto.getEndpoint().setServerSocketFactory(new InetdServerSocketFactory(ssc.socket()));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,6 +69,42 @@ public class MainInetd extends Main {
         MainInetd sa=new MainInetd();
         sa.run();
     }
+
+    class InetdServerSocketFactory extends ServerSocketFactory {
+        ServerSocket inetd;
+        
+        InetdServerSocketFactory (ServerSocket inetd) {
+            /* NOTHING */
+        }
+
+        public ServerSocket createSocket (int port)
+        throws IOException {
+            return inetd;
+        }
+
+        public ServerSocket createSocket (int port, int backlog)
+        throws IOException {
+            return inetd;
+        }
+
+        public ServerSocket createSocket (int port, int backlog,
+            InetAddress ifAddress)
+        throws IOException {
+            return inetd;
+        }
+     
+        public Socket acceptSocket(ServerSocket socket)
+        throws IOException {
+            return socket.accept();
+        }
+     
+        public void handshake(Socket sock)
+        throws IOException {
+            ; // NOOP
+        }
+            
+            
+     }
 
     
 }

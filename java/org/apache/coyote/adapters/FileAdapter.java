@@ -10,7 +10,9 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.coyote.Adapter;
 import org.apache.coyote.Request;
 import org.apache.coyote.Response;
+import org.apache.coyote.standalone.MessageWriter;
 import org.apache.tomcat.util.buf.ByteChunk;
+import org.apache.tomcat.util.buf.C2BConverter;
 
 /**
  * Serve a static file. This is the traditional method, a separate adapter could
@@ -113,8 +115,10 @@ public class FileAdapter implements Adapter {
         initContentTypes();
     }
     static void initContentTypes() {
+        contentTypes.put("xhtml", "text/html");
         contentTypes.put("html", "text/html");
         contentTypes.put("txt", "text/plain");
+        contentTypes.put("css", "text/css");
         contentTypes.put("xul", "application/vnd.mozilla.xul+xml");
     }
     

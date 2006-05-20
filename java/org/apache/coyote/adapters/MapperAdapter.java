@@ -7,6 +7,7 @@ import org.apache.coyote.Request;
 import org.apache.coyote.Response;
 import org.apache.coyote.standalone.MessageWriter;
 import org.apache.tomcat.util.http.mapper.Mapper;
+import org.apache.tomcat.util.http.mapper.MappingData;
 
 /**
  * 
@@ -14,45 +15,32 @@ import org.apache.tomcat.util.http.mapper.Mapper;
 public class MapperAdapter implements Adapter {
 
     public Mapper mapper=new Mapper();
+    private Adapter defaultAdapter;
     
-    // TODO: add extension mappings 
-    // Key = prefix, one level only, value= class name of Adapter
-    // key starts with a / and has no other / ( /foo - but not /foo/bar )
-    Hashtable prefixMap=new Hashtable();
-
-    String fileAdapterCN="org.apache.coyote.adapters.FileAdapter";
-    Adapter defaultAdapter=new FileAdapter();    
-
     public MapperAdapter() {
+        mapper = new Mapper();
+    }
+
+    public MapperAdapter(Mapper mapper2) {
+        mapper = mapper2;
     }
 
     public void service(Request req, final Response res)
-    throws Exception {
-        try {           
-            String uri=req.requestURI().toString();
-            if( uri.equals("/") ) uri="index.html";
-            String ctx="";
-            String local=uri;
-            if( uri.length() > 1 ) {
-                int idx=uri.indexOf('/', 1);
-                if( idx > 0 ) {
-                    ctx=uri.substring(0, idx);
-                    local=uri.substring( idx );
-                }
-            }
-            Adapter h=(Adapter)prefixMap.get( ctx );
-            if( h != null ) {
+            throws Exception {
+        try {
+            MappingData mapRes = new MappingData();
+            mapper.map(req.remoteHost(), req.decodedURI(), mapRes);
+            
+            Adapter h=(Adapter)mapRes.wrapper;
+            if (h != null) {
                 h.service( req, res );
-            } else {
-                defaultAdapter.service( req, res );
             }
+            
         } catch( Throwable t ) {
             t.printStackTrace();
         } 
 
-        //out.flushBuffer();
-        //out.getByteChunk().flushBuffer(); - part of res.finish()
-        // final processing
+        // Final processing
         MessageWriter.getWriter(req, res, 0).flush();
         res.finish();
 
@@ -62,14 +50,15 @@ public class MapperAdapter implements Adapter {
     }
 
 
-    public void addAdapter( String prefix, Adapter adapter ) {
-        prefixMap.put(prefix, adapter);
+    public void addAdapter( String path, Adapter adapter ) {
+        mapper.addWrapper(path, adapter);
     }
     
     public void setDefaultAdapter(Adapter adapter) {
-        defaultAdapter=adapter;
+        mapper.addWrapper("*", adapter);
+        defaultAdapter = adapter;
     }
-
+    
     public Adapter getDefaultAdapter() {
         return defaultAdapter;
     }
