@@ -23,7 +23,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -72,10 +71,6 @@ import org.apache.tomcat.util.modeler.modules.ModelerSource;
  * @author Costin Manolache
  */
 public class Registry implements RegistryMBean, MBeanRegistration  {
-    /** Experimental support for manifest-based discovery.
-     */
-    public static String MODELER_MANIFEST="/META-INF/mbeans-descriptors.xml";
-
     /**
      * The Log instance to which we will write our log messages.
      */
@@ -83,7 +78,7 @@ public class Registry implements RegistryMBean, MBeanRegistration  {
 
     // Support for the factory methods
     
-    /** Will be used to isolate different apps and enhance security
+    /** Will be used to isolate different apps and enhance security.
      */
     private static HashMap perLoaderRegistries=null;
 
@@ -114,10 +109,10 @@ public class Registry implements RegistryMBean, MBeanRegistration  {
     // map to avoid duplicated searching or loading descriptors 
     private HashMap searchedPaths=new HashMap();
     
-    private Object key;
     private Object guard;
 
     // Id - small ints to use array access. No reset on stop()
+    // Used for notifications
     private Hashtable idDomains=new Hashtable();
     private Hashtable ids=new Hashtable();
 
@@ -159,7 +154,7 @@ public class Registry implements RegistryMBean, MBeanRegistration  {
                 localRegistry=(Registry)perLoaderRegistries.get(key);
                 if( localRegistry == null ) {
                     localRegistry=new Registry();
-                    localRegistry.key=key;
+//                    localRegistry.key=key;
                     localRegistry.guard=guard;
                     perLoaderRegistries.put( key, localRegistry );
                     return localRegistry;
@@ -183,7 +178,8 @@ public class Registry implements RegistryMBean, MBeanRegistration  {
         return (registry);
     }
     
-    /** Allow containers to isolate apps. Can be called only once.
+    /** 
+     * Allow containers to isolate apps. Can be called only once.
      * It  is highly recommended you call this method if using Registry in
      * a container environment. The default is false for backward compatibility
      * 
@@ -198,21 +194,8 @@ public class Registry implements RegistryMBean, MBeanRegistration  {
     
     // -------------------- Generic methods  --------------------
 
-    /** Set a guard object that will prevent access to this registry 
-     * by unauthorized components
-     * 
-     * @param guard
-     * 
-     * @since 1.1
-     */ 
-    public void setGuard( Object guard ) {
-        if( this.guard!=null ) {
-            return; // already set, only once
-        }
-        this.guard=guard;
-    }
-
     /** Lifecycle method - clean up the registry metadata.
+     *  Called from resetMetadata().
      * 
      * @since 1.1
      */ 
@@ -248,9 +231,6 @@ public class Registry implements RegistryMBean, MBeanRegistration  {
      * descriptors file. In the case of File and URL, if the extension is ".ser"
      * a serialized version will be loaded. 
      * 
-     * Also ( experimental for now ) a ClassLoader - in which case META-INF/ will
-     * be used.
-     * 
      * This method should be used to explicitely load metadata - but this is not
      * required in most cases. The registerComponent() method will find metadata
      * in the same pacakge.
@@ -258,13 +238,7 @@ public class Registry implements RegistryMBean, MBeanRegistration  {
      * @param source
      */ 
     public void loadMetadata(Object source ) throws Exception {
-        if( source instanceof ClassLoader ) {
-            loadMetaInfDescriptors((ClassLoader)source);
-            return;
-        } else {
-            loadDescriptors( null, source, null );
-        }
-        
+        loadDescriptors( null, source, null );
     }
 
     /** Register a bean by creating a modeler mbean and adding it to the 
@@ -899,25 +873,6 @@ public class Registry implements RegistryMBean, MBeanRegistration  {
         }
     }
 
-    /** Discover all META-INF/modeler.xml files in classpath and register
-     * the components
-     *
-     * @since EXPERIMENTAL
-     */
-    private void loadMetaInfDescriptors(ClassLoader cl) {
-        try {
-            Enumeration en=cl.getResources(MODELER_MANIFEST);
-            while( en.hasMoreElements() ) {
-                URL url=(URL)en.nextElement();
-                InputStream is=url.openStream();
-                if( log.isDebugEnabled()) log.debug("Loading " + url);
-                loadDescriptors("MbeansDescriptorsDigesterSource", is, null );
-            }
-        } catch( Exception ex ) {
-            ex.printStackTrace();
-        }
-    }
-
     /** Lookup the component descriptor in the package and
      * in the parent packages.
      *
@@ -1061,12 +1016,6 @@ public class Registry implements RegistryMBean, MBeanRegistration  {
         }
     }
     
-    public List loadMBeans( Object source )
-            throws Exception
-    {
-        return loadMBeans( source, null );
-    }
-
 
     /**
      * Load the registry from a cached .ser file. This is typically 2-3 times

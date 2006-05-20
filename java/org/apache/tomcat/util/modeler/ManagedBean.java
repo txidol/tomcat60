@@ -340,7 +340,6 @@ public class ManagedBean implements java.io.Serializable
         MBeanException, RuntimeOperationsException {
 
         BaseModelMBean mbean = null;
-        MBeanInfo minfo = createMBeanInfo();
 
         // Load the ModelMBean implementation class
         if(getClassName().equals(BASE_MBEAN)) {
@@ -382,19 +381,6 @@ public class ManagedBean implements java.io.Serializable
         
         mbean.setManagedBean(this);
         
-        // Create a new ModelMBean instance
-        try {
-            mbean.setMBeanInfo(minfo);
-        } catch (MBeanException e) {
-            throw e;
-        } catch (RuntimeOperationsException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new MBeanException
-                (e, "Cannot instantiate ModelMBean of class " +
-                 getClassName());
-        }
-
         // Set the managed resource (if any)
         try {
             if (instance != null)
@@ -411,7 +397,7 @@ public class ManagedBean implements java.io.Serializable
      * Create and return a <code>ModelMBeanInfo</code> object that
      * describes this entire managed bean.
      */
-    MBeanInfo createMBeanInfo() {
+    MBeanInfo getMBeanInfo() {
 
         // Return our cached information (if any)
         if (info != null)

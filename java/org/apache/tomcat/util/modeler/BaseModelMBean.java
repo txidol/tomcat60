@@ -113,79 +113,11 @@ public class BaseModelMBean implements DynamicMBean, MBeanRegistration, ModelMBe
      * @exception RuntimeOperationsException if an IllegalArgumentException
      *  occurs
      */
-    public BaseModelMBean() throws MBeanException, RuntimeOperationsException {
-
+    protected BaseModelMBean() throws MBeanException, RuntimeOperationsException {
         super();
-        if( log.isDebugEnabled()) log.debug("default constructor");
-        //BaseModelMBeans should be created only from ManagedBean, which sets the model explicitely.
-        //No need to create another object
-        //setModelMBeanInfo(createDefaultModelMBeanInfo());
     }
 
-
-    /**
-     * Construct a <code>ModelMBean</code> associated with the specified
-     * <code>ModelMBeanInfo</code> information.
-     *
-     * @param info ModelMBeanInfo for this MBean
-     *
-     * @exception MBeanException if the initializer of an object
-     *  throws an exception
-     * @exception RuntimeOperationsException if an IllegalArgumentException
-     *  occurs
-     */
-//     public BaseModelMBean(ModelMBeanInfo info)
-//        throws MBeanException, RuntimeOperationsException {
-//        // XXX should be deprecated - just call setInfo
-//        super();
-//        setModelMBeanInfo(info);
-//        if( log.isDebugEnabled()) log.debug("ModelMBeanInfo constructor");
-//    }
-
-    /** Construct a ModelMBean of a specified type.
-     *  The type can be a class name or the key used in one of the descriptors.
-     *
-     * If no descriptor is available, we'll first try to locate one in
-     * the same package with the class, then use introspection.
-     *
-     * The mbean resource will be created.
-     *
-     * @param type Class name or the type key used in the descriptor.
-     * @throws MBeanException
-     * @throws RuntimeOperationsException
-     */
-    // not used
-//    public BaseModelMBean( String type )
-//        throws MBeanException, RuntimeOperationsException
-//    {
-//        try {
-//            // This constructor is used from <mlet>, it should create
-//            // the resource
-//            setModeledType(type);
-//        } catch( Throwable ex ) {
-//            log.error( "Error creating mbean ", ex);
-//        }
-//    }
-
-    // not used
-//    public BaseModelMBean( String type, ModelerSource source )
-//        throws MBeanException, RuntimeOperationsException
-//    {
-//        try {
-//            setModeledType(type);
-//        } catch( Throwable ex ) {
-//            log.error( "Error creating mbean ", ex);
-//        }
-//        this.source=source;
-//    }
-
     // ----------------------------------------------------- Instance Variables
-
-
-    // Information from MBeanRegistration
-    /** Registry we are associated with
-     */
-//    protected Registry registry=null;
 
     protected ObjectName oname=null;
 
@@ -198,7 +130,6 @@ public class BaseModelMBean implements DynamicMBean, MBeanRegistration, ModelMBe
      * Notification broadcaster for general notifications.
      */
     protected BaseNotificationBroadcaster generalBroadcaster = null;
-
     
     /** Metadata for the mbean instance.
      */
@@ -209,24 +140,11 @@ public class BaseModelMBean implements DynamicMBean, MBeanRegistration, ModelMBe
      */
     protected Object resource = null;
 
-    /** Source object used to read this mbean. Can be used to
-     * persist the mbean
-     */
-    //protected ModelerSource source=null;
-
-    /** Attribute values. XXX That can be stored in the value Field
-     */
-    //protected HashMap attributes=new HashMap();
-
     // --------------------------------------------------- DynamicMBean Methods
     // TODO: move to ManagedBean
     static final Object[] NO_ARGS_PARAM=new Object[0];
     static final Class[] NO_ARGS_PARAM_SIG=new Class[0];
     
-    /**
-     * The <code>ModelMBeanInfo</code> object that controls our activity.
-     */
-    protected MBeanInfo info = null;
     protected String resourceType = null;
 
     // key: operation val: invoke method
@@ -328,9 +246,7 @@ public class BaseModelMBean implements DynamicMBean, MBeanRegistration, ModelMBe
      * Return the <code>MBeanInfo</code> object for this MBean.
      */
     public MBeanInfo getMBeanInfo() {
-        // XXX Why do we have to clone ?
-        if( info== null ) return null;
-        return ((MBeanInfo) info.clone());
+        return managedBean.getMBeanInfo();
     }
 
 
@@ -649,40 +565,6 @@ public class BaseModelMBean implements DynamicMBean, MBeanRegistration, ModelMBe
     }
 
 
-    /**
-     * Initialize the <code>ModelMBeanInfo</code> associated with this
-     * <code>ModelMBean</code>.  After the information and associated
-     * descriptors have been customized, the <code>ModelMBean</code> should
-     * be registered with the associated <code>MBeanServer</code>.
-     *
-     * Currently the model can be set after registration. This behavior is
-     * deprecated and won't be supported in future versions.
-     *
-     * @param info The ModelMBeanInfo object to be used by this ModelMBean
-     *
-     * @exception MBeanException If an exception occurs recording this
-     *  ModelMBeanInfo information
-     * @exception RuntimeOperations if the specified parameter is
-     *  <code>null</code> or invalid
-     */
-    public void setMBeanInfo(MBeanInfo info)
-        throws MBeanException, RuntimeOperationsException {
-
-        if (info == null)
-            throw new RuntimeOperationsException
-                (new IllegalArgumentException("ModelMBeanInfo is null"),
-                 "ModelMBeanInfo is null");
-
-//        if (!isModelMBeanInfoValid(info))
-//            throw new RuntimeOperationsException
-//                (new IllegalArgumentException("ModelMBeanInfo is invalid"),
-//                 "ModelMBeanInfo is invalid");
-
-        this.info = (MBeanInfo) info.clone();
-
-    }
-
-
     // ------------------------------ ModelMBeanNotificationBroadcaster Methods
 
 
@@ -934,7 +816,7 @@ public class BaseModelMBean implements DynamicMBean, MBeanRegistration, ModelMBe
     public MBeanNotificationInfo[] getNotificationInfo() {
 
         // Acquire the set of application notifications
-        MBeanNotificationInfo current[] = info.getNotifications();
+        MBeanNotificationInfo current[] = getMBeanInfo().getNotifications();
         if (current == null)
             current = new MBeanNotificationInfo[0];
         MBeanNotificationInfo response[] =

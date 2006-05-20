@@ -21,7 +21,6 @@ package org.apache.tomcat.util.modeler;
 import java.io.Serializable;
 
 import javax.management.MBeanConstructorInfo;
-import javax.management.MBeanParameterInfo;
 
 
 /**
@@ -29,92 +28,15 @@ import javax.management.MBeanParameterInfo;
  * descriptor.</p>
  *
  * @author Craig R. McClanahan
- * @version $Revision: 155428 $ $Date: 2005-02-26 14:12:25 +0100 (sam., 26 févr. 2005) $
  */
-
-public class ConstructorInfo extends FeatureInfo implements Serializable {
+public class ConstructorInfo extends OperationInfo implements Serializable {
     static final long serialVersionUID = -5735336213417238238L;
-
-    // ----------------------------------------------------- Instance Variables
-
-
-    /**
-     * The <code>ModelMBeanConstructorInfo</code> object that corresponds
-     * to this <code>ConstructorInfo</code> instance.
-     */
-    transient MBeanConstructorInfo info = null;
-    protected String displayName = null;
-    protected ParameterInfo parameters[] = new ParameterInfo[0];
-
-
     // ------------------------------------------------------------- Properties
 
     public ConstructorInfo() {
-        System.err.println("CONSTRUCTOR XXXX");
     }
-
-    /**
-     * Override the <code>description</code> property setter.
-     *
-     * @param description The new description
-     */
-    public void setDescription(String description) {
-        super.setDescription(description);
-        this.info = null;
-    }
-
-
-    /**
-     * Override the <code>name</code> property setter.
-     *
-     * @param name The new name
-     */
-    public void setName(String name) {
-        super.setName(name);
-        this.info = null;
-        System.err.println("Constructor: name");
-    }
-
-
-    /**
-     * The display name of this attribute.
-     */
-    public String getDisplayName() {
-        return (this.displayName);
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-
-    /**
-     * The set of parameters for this constructor.
-     */
-    public ParameterInfo[] getSignature() {
-        return (this.parameters);
-    }
-
 
     // --------------------------------------------------------- Public Methods
-
-
-    /**
-     * Add a new parameter to the set of parameters for this constructor.
-     *
-     * @param parameter The new parameter descriptor
-     */
-    public void addParameter(ParameterInfo parameter) {
-
-        synchronized (parameters) {
-            ParameterInfo results[] = new ParameterInfo[parameters.length + 1];
-            System.arraycopy(parameters, 0, results, 0, parameters.length);
-            results[parameters.length] = parameter;
-            parameters = results;
-            this.info = null;
-        }
-
-    }
 
 
     /**
@@ -122,40 +44,12 @@ public class ConstructorInfo extends FeatureInfo implements Serializable {
      * corresponds to the attribute described by this instance.
      */
     public MBeanConstructorInfo createConstructorInfo() {
-
         // Return our cached information (if any)
-        if (info != null)
-            return (info);
-
-        // Create and return a new information object
-        ParameterInfo params[] = getSignature();
-        MBeanParameterInfo parameters[] =
-            new MBeanParameterInfo[params.length];
-        for (int i = 0; i < params.length; i++)
-            parameters[i] = params[i].createParameterInfo();
-        info = new MBeanConstructorInfo
-            (getName(), getDescription(), parameters);
-        return (info);
-
+        if (info == null) {
+            info = new MBeanConstructorInfo(getName(), getDescription(), 
+                    getMBeanParameterInfo());
+        }
+        return (MBeanConstructorInfo)info;
     }
-
-
-    /**
-     * Return a string representation of this constructor descriptor.
-     */
-    public String toString() {
-
-        StringBuffer sb = new StringBuffer("ConstructorInfo[");
-        sb.append("name=");
-        sb.append(name);
-        sb.append(", description=");
-        sb.append(description);
-        sb.append(", parameters=");
-        sb.append(parameters.length);
-        sb.append("]");
-        return (sb.toString());
-
-    }
-
 
 }
