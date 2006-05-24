@@ -14,18 +14,22 @@
  *  limitations under the License.
  */
 
-package org.apache.tomcat.util.net;
+package org.apache.tomcat.util.net.simple;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.BindException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.security.AccessControlException;
+import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.tomcat.util.net.TcpConnectionHandler;
+import org.apache.tomcat.util.res.StringManager;
 import org.apache.tomcat.util.threads.ThreadWithAttributes;
 
 
@@ -43,7 +47,7 @@ import org.apache.tomcat.util.threads.ThreadWithAttributes;
  * 
  * @author Costin Manolache ( costin@apache.org )
  */
-public class SimpleEndpoint extends PoolTcpEndpoint { 
+public class SimpleEndpoint { 
 
     static Log log=LogFactory.getLog(SimpleEndpoint.class );
 
@@ -52,10 +56,291 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
     // active acceptors
     private int acceptors=0;
     
+    protected static final int BACKLOG = 100;
+    protected static final int TIMEOUT = 1000;
+
+    protected int backlog = BACKLOG;
+    protected int serverTimeout = TIMEOUT;
+
+    protected InetAddress inet;
+    protected int port;
+
+    protected ServerSocket serverSocket;
+
+    protected volatile boolean running = false;
+    protected volatile boolean paused = false;
+    protected boolean initialized = false;
+    protected boolean reinitializing = false;
+
+    protected boolean tcpNoDelay=false;
+    protected int linger=100;
+    protected int socketTimeout=-1;
+    
+    
+    // ------ Leader follower fields
+    public interface Handler {
+        public boolean process(Socket socket);
+    }
+    
+    Handler handler;
+    // ------ Master slave fields
+
+    protected int curThreads = 0;
+    protected int maxThreads = 20;
+    protected int maxSpareThreads = 20;
+    protected int minSpareThreads = 20;
+    protected String type = "default";
+    // to name the threads and get an idea how many threads were closed
+    protected int threadId = 0;
+
+    protected String name = "EP"; // base name for threads
+    
+    protected int threadPriority;
+
+    protected boolean daemon = true;
+
+    private ArrayList listeners = new ArrayList();
+
+    private boolean polling;
+    
     
     public SimpleEndpoint() {
         maxSpareThreads = 4;
         minSpareThreads = 2;
+    }
+
+    // --- From PoolTcpEndpoint
+    
+    public static interface EndpointListener {
+        public void threadStart(SimpleEndpoint ep, Thread t);
+
+        public void threadEnd( SimpleEndpoint ep, Thread t);
+
+    }
+
+    
+    protected void threadEnd(Thread t) {
+        for( int i=0; i<listeners.size(); i++ ) {
+            EndpointListener tpl=(EndpointListener)listeners.get(i);
+            tpl.threadStart(this, t);
+        }        
+    }
+
+    protected void threadStart(Thread t) {
+        for( int i=0; i<listeners.size(); i++ ) {
+            EndpointListener tpl=(EndpointListener)listeners.get(i);
+            tpl.threadStart(this, t);
+        }        
+    }
+
+    protected void unlockAccept() {
+        Socket s = null;
+        try {
+            // Need to create a connection to unlock the accept();
+            if (inet == null) {
+                s = new Socket("127.0.0.1", port);
+            } else {
+                s = new Socket(inet, port);
+                    // setting soLinger to a small value will help shutdown the
+                    // connection quicker
+                s.setSoLinger(true, 0);
+            }
+        } catch(Exception e) {
+            if (log.isDebugEnabled()) {
+                log.debug("Error unlocking: " + port, e);
+            }
+        } finally {
+            if (s != null) {
+                try {
+                    s.close();
+                } catch (Exception e) {
+                    // Ignore
+                }
+            }
+        }
+    }
+
+    protected void setSocketOptions(Socket socket)
+            throws SocketException {
+        if(linger >= 0 ) 
+            socket.setSoLinger( true, linger);
+        if( tcpNoDelay )
+            socket.setTcpNoDelay(tcpNoDelay);
+        if( socketTimeout > 0 )
+            socket.setSoTimeout( socketTimeout );
+    }
+
+    // --- PoolTcpEndpoint - getters and setters 
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    
+    public void setMaxThreads(int maxThreads) {
+        this.maxThreads = maxThreads;
+    }
+
+    public int getMaxThreads() {
+        return maxThreads;
+    }
+
+    public void setMaxSpareThreads(int maxThreads) {
+        this.maxSpareThreads = maxThreads;
+    }
+
+    public int getMaxSpareThreads() {
+        return maxSpareThreads;
+    }
+
+    public void setMinSpareThreads(int minThreads) {
+        this.minSpareThreads = minThreads;
+    }
+
+    public int getMinSpareThreads() {
+        return minSpareThreads;
+    }
+
+    public void setThreadPriority(int threadPriority) {
+        this.threadPriority = threadPriority;
+    }
+
+    public int getThreadPriority() {
+        return threadPriority;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port ) {
+        this.port=port;
+    }
+
+    public InetAddress getAddress() {
+            return inet;
+    }
+
+    public void setAddress(InetAddress inet) {
+            this.inet=inet;
+    }
+
+    public void setServerSocket(ServerSocket ss) {
+            serverSocket = ss;
+    }
+    
+    public ServerSocket getServerSocket() {
+        return serverSocket;
+    }
+
+    public void setConnectionHandler( Handler handler ) {
+        this.handler=handler;
+    }
+
+    public Handler getConnectionHandler() {
+            return handler;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+    
+    public boolean isPaused() {
+        return paused;
+    }
+    
+    /**
+     * Allows the server developer to specify the backlog that
+     * should be used for server sockets. By default, this value
+     * is 100.
+     */
+    public void setBacklog(int backlog) {
+        if( backlog>0)
+            this.backlog = backlog;
+    }
+
+    public int getBacklog() {
+        return backlog;
+    }
+
+    /**
+     * Sets the timeout in ms of the server sockets created by this
+     * server. This method allows the developer to make servers
+     * more or less responsive to having their server sockets
+     * shut down.
+     *
+     * <p>By default this value is 1000ms.
+     */
+    public void setServerTimeout(int timeout) {
+        this.serverTimeout = timeout;
+    }
+
+    public boolean getTcpNoDelay() {
+        return tcpNoDelay;
+    }
+    
+    public void setTcpNoDelay( boolean b ) {
+        tcpNoDelay=b;
+    }
+
+    public int getSoLinger() {
+        return linger;
+    }
+    
+    public void setSoLinger( int i ) {
+        linger=i;
+    }
+
+    public int getSoTimeout() {
+        return socketTimeout;
+    }
+    
+    public void setSoTimeout( int i ) {
+        socketTimeout=i;
+    }
+    
+    public int getServerSoTimeout() {
+        return serverTimeout;
+    }  
+    
+    public void setServerSoTimeout( int i ) {
+        serverTimeout=i;
+    }
+
+    public String getStrategy() {
+        return type;
+    }
+    
+    public void setStrategy(String strategy) {
+        // shouldn't be used.
+    }
+
+    public int getCurrentThreadCount() {
+        return curThreads;
+    }
+    
+    public int getCurrentThreadsBusy() {
+        return curThreads;
+    }
+
+    public boolean getPolling() {
+        return polling;
+    }
+    
+    public void setPolling( boolean b ) {
+        polling = b;
+    }
+
+    public void setDaemon(boolean b) {
+        daemon=b;
+    }
+    
+    public boolean getDaemon() {
+        return daemon;
     }
 
 
@@ -165,7 +450,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
             if( serverSocket!=null)
                 serverSocket.close();
         } catch(Exception e) {
-            log.error(sm.getString("endpoint.err.close"), e);
+            log.error("Exception", e);
         }
         serverSocket = null;
     }
@@ -180,7 +465,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
     	try {
     	    accepted = serverSocket.accept();
             if (null == accepted) {
-                log.warn(sm.getString("endpoint.warn.nullSocket"));
+                log.warn("Accepted null socket");
             } else {
                 if (!running) {
                     accepted.close();  // rude, but unlikely!
@@ -198,27 +483,21 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
             // can be thrown if you are restricting access to the
             // socket with SocketPermission's.
             // Log the unauthorized access and continue
-            String msg = sm.getString("endpoint.warn.security",
-                                      serverSocket, ace);
-            log.warn(msg);
+            log.warn("AccessControlException", ace);
         }
         catch (IOException e) {
 
             String msg = null;
 
             if (running) {
-                msg = sm.getString("endpoint.err.nonfatal",
-                        serverSocket, e);
-                log.error(msg, e);
+                log.error("IOException", e);
             }
 
             if (accepted != null) {
                 try {
                     accepted.close();
                 } catch(Throwable ex) {
-                    msg = sm.getString("endpoint.err.nonfatal",
-                                       accepted, ex);
-                    log.warn(msg, ex);
+                    log.warn("IOException in close()", ex);
                 }
                 accepted = null;
             }
@@ -234,26 +513,20 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
                     initialized = false;
                     // 2) Reinit endpoint (recreate server socket)
                     try {
-                        msg = sm.getString("endpoint.warn.reinit");
-                        log.warn(msg);
+                        log.warn("Reinit endpoint");
                         initEndpoint();
                     } catch (Throwable t) {
-                        msg = sm.getString("endpoint.err.nonfatal",
-                                           serverSocket, t);
-                        log.error(msg, t);
+                        log.error("Error in reinit", t);
                     }
                     // 3) If failed, attempt to restart endpoint
                     if (!initialized) {
-                        msg = sm.getString("endpoint.warn.restart");
-                        log.warn(msg);
+                        log.warn("Restart endpoint");
                         try {
                             stopEndpoint();
                             initEndpoint();
                             startEndpoint();
                         } catch (Throwable t) {
-                            msg = sm.getString("endpoint.err.fatal",
-                                               serverSocket, t);
-                            log.error(msg, t);
+                            log.error("Error in restart", t);
                         }
                         // Current thread is now invalid: kill it
                         throw new ThreadDeath();
@@ -266,7 +539,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
         return accepted;
     }
 
-    public void processSocket(Socket s, TcpConnection con, Object[] threadData) {
+    public void processSocket(Socket s, Object[] threadData) {
         // Process the connection
         int step = 1;
         try {
@@ -279,13 +552,10 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
             
             // 3: Process the connection
             step = 3;
-            con.setEndpoint(this);
-            con.setSocket(s);
-            getConnectionHandler().processConnection(con, threadData);
+            handler.process(s);
             
         } catch (SocketException se) {
-            log.error(sm.getString("endpoint.err.socket", s.getInetAddress()),
-                    se);
+            log.error("Socket error " + s.getInetAddress(), se);
             // Try to close the socket
             try {
                 s.close();
@@ -294,10 +564,10 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
         } catch (Throwable t) {
             if (step == 2) {
                 if (log.isDebugEnabled()) {
-                    log.debug(sm.getString("endpoint.err.handshake"), t);
+                    log.debug("Error in handshake", t);
                 }
             } else {
-                log.error(sm.getString("endpoint.err.unexpected"), t);
+                log.error("Unexpected error", t);
             }
             // Try to close the socket
             try {
@@ -305,9 +575,6 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
             } catch (IOException e) {
             }
         } finally {
-            if (con != null) {
-                con.recycle();
-            }
         }
     }
     
@@ -316,7 +583,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
     }
 
     class AcceptorRunnable implements Runnable {
-        private TcpConnection con = new TcpConnection();
+        //private TcpConnection con = new TcpConnection();
 
     
         /**
@@ -331,7 +598,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
          * thread models in a new TP interface.
          */
         public void run() {
-            Object[] threadData = getConnectionHandler().init();
+            Object[] threadData = null; //getConnectionHandler().init();
             while( running ) {
                 // Loop if endpoint is paused
                 if( checkSpares() ) {
@@ -351,7 +618,7 @@ public class SimpleEndpoint extends PoolTcpEndpoint {
                 curThreads++;
                 
                 // Process the request from this socket
-                processSocket(socket, con, threadData);
+                processSocket(socket, threadData);
                 
                 // Finish up this request
                 curThreads--;

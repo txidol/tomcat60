@@ -22,16 +22,18 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.nio.channels.Channel;
 import java.nio.channels.SelectableChannel;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.channels.spi.SelectorProvider;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.apache.tomcat.util.net.SimpleEndpoint;
 import org.apache.tomcat.util.net.TcpConnection;
+import org.apache.tomcat.util.net.simple.SimpleEndpoint;
 import org.apache.tomcat.util.threads.ThreadPool;
 import org.apache.tomcat.util.threads.ThreadPoolRunnable;
 
@@ -181,6 +183,25 @@ public class NioEndpoint extends SimpleEndpoint {
         // nothing 
     }
     
+    /**
+     */
+    public ServerSocketChannel getInetdChannel() {
+        SelectorProvider sp=SelectorProvider.provider();
+        
+        try {
+            Channel ch=sp.inheritedChannel();
+            if(ch!=null ) {
+                System.err.println("Inherited: " + ch.getClass().getName());
+                ServerSocketChannel ssc=(ServerSocketChannel)ch;
+                return ssc;
+                //proto.getEndpoint().setServerSocketFactory(new InetdServerSocketFactory(ssc.socket()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     public void addSocketRead(Socket s, Object o) throws IOException {
         s.getChannel().register( selector, SelectionKey.OP_READ, o);        
@@ -204,8 +225,8 @@ public class NioEndpoint extends SimpleEndpoint {
         public Object[] getInitData() {
             // no synchronization overhead, but 2 array access 
             Object obj[]=new Object[2];
-            obj[1]= getConnectionHandler().init();
-            obj[0]=new TcpConnection();
+            obj[1]= null;//getConnectionHandler().init();
+            obj[0]= null; // new TcpConnection();
             return obj;
         }
 
@@ -246,7 +267,7 @@ public class NioEndpoint extends SimpleEndpoint {
                         // TODO: customize this if needed
                         tp.runIt( this ); 
                         // now process the socket. 
-                        processSocket(sockC.socket(), (TcpConnection) perThrData[0], 
+                        processSocket(sockC.socket(),  
                                      (Object[]) perThrData[1]);
                         continue;
                     }
