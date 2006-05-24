@@ -19,9 +19,11 @@ package org.apache.tomcat.util.loader;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -29,33 +31,39 @@ import java.util.Vector;
 
 
 /**
- * A group of modules and libraries. 
+ * A group of modules.  
  * 
- * Modules can have one or more jars and class dirs. Classloaders are created 
- * from modules when the module is started are be disposed when the module is stopped.
+ * Modules can have one or more jars and classes dirs, and are reloaded as a 
+ * unit. Each module has an internal class loader.
  * 
  * The module will delegate to the associated repository in addition to the 
  * normal delegation rules. The repository will search on all sibling modules.
- * This mechanism is defined in the MLetClassLoader and is also used by JBoss and
- * few other servers. 
  * 
- * TODO: explain more ( or point to the right jboss/mlet pages )
- * TODO: explain how this can be used for webapps to support better partitioning 
- *
+ * This mechanism is defined in the MLetClassLoader and is also used by JBoss 
+ * and few other servers.
+ * 
+ *  Use: 
+ *   - create a Repository in all situations where you would need a separate
+ *     class loader - each webapp, common/, server/, etc.
+ *   - set the parent hierarchy
+ *   - add modules to each repo - a module can be a single jar/classes, or 
+ *     multiple jars. I think single jar modules may be better.  
+ *   - get the classloader from repository 
+ * 
  * @author Costin Manolache
  */
 public class Repository {
    
-    private static final boolean DEBUG=Loader.getProperty("loader.debug.Repository") != null;
+    private static final boolean DEBUG=System.getProperty("loader.debug.Repository") != null;
     
     // Allows the (experimental) use of jar indexes
     // Right now ( for small set of jars, incomplete build ) it's a tiny 3.5 -> 3.4 sec dif.
-    private static final boolean USE_IDX=Loader.getProperty("loader.Repository.noIndex") == null;
+    private static final boolean USE_IDX=System.getProperty("loader.Repository.noIndex") == null;
     
     private Vector loaders=new Vector();
     private String name;
     private Vector grpModules=new Vector();
-    private transient Loader loader;
+    //private transient Loader loader;
     
     private transient RepositoryClassLoader groupClassLoader;
     private Hashtable prefixes=new Hashtable();
@@ -65,25 +73,25 @@ public class Repository {
     private Repository parent;
 
 
-    private Repository() {
+    public Repository() {
     }
 
-    public Repository(Loader loader) {
-        if( loader== null ) throw new NullPointerException();
-        this.loader=loader;
-    }
+//    public Repository(Loader loader) {
+//        if( loader== null ) throw new NullPointerException();
+//        this.loader=loader;
+//    }
 
-    public Loader getLoader() {
-        return loader;
-    }
+//    public Loader getLoader() {
+//        return loader;
+//    }
     
-    void addModule(  Module mod ) {
+    public void addModule(  Module mod ) {
         mod.setRepository( this );
 
         grpModules.addElement(mod);
-        if( loader.listener!=null ) {
-            loader.listener.moduleAdd(mod);
-        }
+//        if( loader.listener!=null ) {
+//            loader.listener.moduleAdd(mod);
+//        }
         
         if( parentClassLoader != null ) 
             mod.setParentClassLoader( parentClassLoader );
@@ -167,7 +175,7 @@ public class Repository {
         return "Repository " + name + "(" + getClasspathString() + ")";
     }
 
-    private String getClasspathString() {
+    public String getClasspathString() {
         StringBuffer sb=new StringBuffer();
         Enumeration mE=grpModules.elements();
         while( mE.hasMoreElements() ) {
@@ -250,6 +258,42 @@ public class Repository {
             if( DEBUG ) log("---------- Created repository loader " + pcl );
         }
         return groupClassLoader;
+    }
+
+    public void addDir(File directory) {
+        try {
+            URL url=directory.toURL();
+            Module mod = new Module();
+            mod.setClasspath(new URL[] {url});
+            addModule(mod);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    
+    public void addLibs(File directory) {
+        if (!directory.isDirectory() || !directory.exists() ||
+                !directory.canRead()) {
+            if (DEBUG)
+                log("  Not found:  "+ directory.getAbsolutePath());
+            return;
+        }
+        String filenames[] = directory.list();
+        for (int j = 0; j < filenames.length; j++) {
+            String filename = filenames[j].toLowerCase();
+            if (!filename.endsWith(".jar"))
+                continue;
+            File file = new File(directory, filenames[j]);
+            try {
+                URL url=file.toURL();
+                Module mod = new Module();
+                mod.setClasspath(new URL[] {url});
+                addModule(mod);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        }
     }
     
     /** 

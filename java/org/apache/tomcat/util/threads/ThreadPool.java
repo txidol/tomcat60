@@ -578,7 +578,7 @@ public class ThreadPool  {
             shouldRun = false;
             this.p = p;
             t = new ThreadWithAttributes(p, this);
-            t.setDaemon(true);
+            t.setDaemon(p.isDaemon);
             t.setName(p.getName() + "-Processor" + p.getSequence());
             t.setPriority(p.getThreadPriority());
             p.addThread( t, this );

@@ -23,7 +23,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
-import java.util.Vector;
+
+import org.apache.catalina.LifecycleException;
 
 /*
  * Initially, I started with WebappClassLoader attempting to clean up and
@@ -62,14 +63,13 @@ import java.util.Vector;
  * @author Remy Maucherat
  * @author Craig R. McClanahan
  */
-public class ModuleClassLoader
-    extends URLClassLoader
+class ModuleClassLoader extends URLClassLoader
 {
     // Don't use commons logging or configs to debug loading - logging is dependent
     // on loaders and drags a lot of stuff in the classpath 
     //
-    private static final boolean DEBUG=false; //LoaderProperties.getProperty("loader.debug.ModuleClassLoader") != null;
-    private static final boolean DEBUGNF=false;//LoaderProperties.getProperty("loader.debug.ModuleClassLoaderNF") != null;
+    private static final boolean DEBUG=false; 
+    private static final boolean DEBUGNF=false;
     
     // ----------------------------------------------------------- Constructors
 

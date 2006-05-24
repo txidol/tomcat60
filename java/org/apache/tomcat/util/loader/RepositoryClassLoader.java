@@ -17,9 +17,7 @@
 
 package org.apache.tomcat.util.loader;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
@@ -38,8 +36,7 @@ import java.util.Vector;
  * @author Remy Maucherat
  * @author Craig R. McClanahan
  */
-public class RepositoryClassLoader
-    extends URLClassLoader
+class RepositoryClassLoader extends URLClassLoader
 {
     private static final boolean DEBUG=false; //LoaderProperties.getProperty("loader.debug.ModuleClassLoader") != null;
     private static final boolean DEBUGNF=false;//LoaderProperties.getProperty("loader.debug.ModuleClassLoaderNF") != null;

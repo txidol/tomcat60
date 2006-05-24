@@ -61,7 +61,7 @@ public class Module implements Serializable {
      */
     private boolean delegate = false;
 
-    private Class classLoaderClass;
+    //private Class classLoaderClass;
 
     /**
      * The Java class name of the ClassLoader implementation to be used.
@@ -84,7 +84,7 @@ public class Module implements Serializable {
     /**
      * The set of repositories associated with this class loader.
      */
-    private String repositories[] = new String[0];
+    //private String repositories[] = new String[0];
     private URL classpath[] ;
 
     private File workDir;
@@ -102,7 +102,7 @@ public class Module implements Serializable {
     /**
      * Return the Java class loader to be used by this Container.
      */
-    public ClassLoader getClassLoader() {
+    ClassLoader getClassLoader() {
         return classLoader;
     }
 
@@ -134,16 +134,18 @@ public class Module implements Serializable {
     /**
      * Has the internal repository associated with this Loader been modified,
      * such that the loaded classes should be reloaded?
+     * 
+     * For normal use - call repository.isModified()
      */
     public boolean modified() {
         return (classLoader.modified());
     }
     
-    public boolean isStarted() {
+    boolean isStarted() {
         return started;
     }
 
-    public String getClasspathString() {
+    String getClasspathString() {
         if(classpath==null ) {
             return null;
         }
@@ -157,14 +159,15 @@ public class Module implements Serializable {
     
     /**
      * Start this component, initializing our associated class loader.
+     * Will be called by repository under normal operation - use only 
+     * if you want to fine tune.
      *
      * @exception LifecycleException if a lifecycle error occurs
      */
     public void start()  {
         // Validate and update our current component state
         if (started)
-            throw new RuntimeException
-                ("Already started");
+            return;
         started = true;
 
         log("start()");
@@ -177,13 +180,13 @@ public class Module implements Serializable {
             //classLoader.setResources(container.getResources());
             classLoader.setDelegate(this.delegate);
 
-            for (int i = 0; i < repositories.length; i++) {
-                classLoader.addRepository(repositories[i]);
-            }
+//            for (int i = 0; i < repositories.length; i++) {
+//                classLoader.addRepository(repositories[i]);
+//            }
 
             classLoader.start();
 
-            getRepository().getLoader().notifyModuleStart(this);
+            //getRepository().getLoader().notifyModuleStart(this);
 
         } catch (Throwable t) {
             log( "LifecycleException ", t );
@@ -205,7 +208,7 @@ public class Module implements Serializable {
         //if (DEBUG) 
         log("stop()", null);
         
-        getRepository().getLoader().notifyModuleStop(this);
+        //getRepository().getLoader().notifyModuleStop(this);
         
         started = false;
 
@@ -231,16 +234,17 @@ public class Module implements Serializable {
         
     //}
     
-    /** Set the class used to construct the class loader.
-     * 
-     * The alternative is to set the context class loader to allow loaderClass
-     * to be created. 
-     * 
-     * @param c
-     */
-    public void setClassLoaderClass( Class c ) {
-        classLoaderClass=c;
-    }
+//    /** Set the class used to construct the class loader.
+//     * 
+//     * The alternative is to set the context class loader to allow loaderClass
+//     * to be created. 
+//     * 
+//     * @param c
+//     */
+//    public void setClassLoaderClass( Class c ) {
+//        classLoaderClass=c;
+//    }
+//
 
     /**
      * Create associated classLoader.
@@ -250,9 +254,9 @@ public class Module implements Serializable {
     {
 
         if( classLoader != null ) return classLoader;
-        if( classLoaderClass==null && loaderClass!=null) {
-            classLoaderClass = Class.forName(loaderClass);
-        }
+//        if( classLoaderClass==null && loaderClass!=null) {
+//            classLoaderClass = Class.forName(loaderClass);
+//        }
         
         ModuleClassLoader classLoader = null;
 
@@ -265,15 +269,18 @@ public class Module implements Serializable {
             parentClassLoader = Thread.currentThread().getContextClassLoader();
         }
         
-        if( classLoaderClass != null ) {
-            Class[] argTypes = { URL[].class, ClassLoader.class };
-            Object[] args = { classpath, parentClassLoader };
-            Constructor constr = classLoaderClass.getConstructor(argTypes);
-            classLoader = (ModuleClassLoader) constr.newInstance(args);
-        } else {
-            classLoader=new ModuleClassLoader( classpath, parentClassLoader);
-        }
-        System.err.println("---- Created class loader " + classpath + " " + parentClassLoader + " repo=" + repository.getName() + " " + parent);
+//        if( classLoaderClass != null ) {
+//            Class[] argTypes = { URL[].class, ClassLoader.class };
+//            Object[] args = { classpath, parentClassLoader };
+//            Constructor constr = classLoaderClass.getConstructor(argTypes);
+//            classLoader = (ModuleClassLoader) constr.newInstance(args);
+//        } else {
+        classLoader=new ModuleClassLoader( classpath, parentClassLoader);
+//        }
+        if(DEBUG)
+            System.err.println("---- Created class loader " + classpath + " " +
+                parentClassLoader + " repo=" + repository.getName() + " " + 
+                parent);
         
         classLoader.setModule(this);
         classLoader.setDelegate( delegate );
@@ -303,15 +310,18 @@ public class Module implements Serializable {
      * In normal use, each module will be associated with one jar or 
      * classpath dir.
      * 
-     * @param name
+     * @param name - full url 
      */
     public void setPath(String name) {
         this.classpath=new URL[1];
         try {
             classpath[0]=new URL(name);
         } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            try {
+                classpath[0]=new File(name).toURL();
+            } catch (MalformedURLException e1) {
+                e1.printStackTrace();
+            }
         }
     }
 
