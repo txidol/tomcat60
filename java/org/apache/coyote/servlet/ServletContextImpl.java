@@ -66,10 +66,8 @@ public class ServletContextImpl
 
     // ----------------------------------------------------------- Constructors
 
-    public ServletContextImpl(String basePath) {
-        this.basePath = basePath;
+    public ServletContextImpl() {
     }
-
 
     // ----------------------------------------------------- Instance Variables
 
@@ -1008,6 +1006,14 @@ public class ServletContextImpl
 
     void setPath(String path) {
         this.path = path;
+    }
+    
+    public void setBasePath(String basePath) {
+        this.basePath = basePath;        
+    }
+
+    public String getBasePath() {
+        return basePath;
     }
 
     public SessionManager getManager() {

@@ -34,7 +34,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.coyote.servlet.util.CharsetMapper;
-import org.apache.coyote.standalone.MessageWriter;
+import org.apache.coyote.servlet.util.MessageWriter;
 
 import org.apache.tomcat.util.buf.CharChunk;
 import org.apache.tomcat.util.buf.UEncoder;

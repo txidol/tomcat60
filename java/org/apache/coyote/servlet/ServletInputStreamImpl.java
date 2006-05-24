@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletInputStream;
 
-import org.apache.coyote.standalone.MessageReader;
+import org.apache.coyote.servlet.util.MessageReader;
 
 /**
  * This class handles reading bytes.

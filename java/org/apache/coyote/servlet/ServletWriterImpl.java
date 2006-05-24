@@ -20,7 +20,7 @@ package org.apache.coyote.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import org.apache.coyote.standalone.MessageWriter;
+import org.apache.coyote.servlet.util.MessageWriter;
 
 /**
  * Coyote implementation of the servlet writer.

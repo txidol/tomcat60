@@ -53,10 +53,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.coyote.ActionCode;
 import org.apache.coyote.servlet.util.Enumerator;
+import org.apache.coyote.servlet.util.MessageReader;
 import org.apache.coyote.servlet.util.ParameterMap;
 import org.apache.coyote.servlet.util.RequestUtil;
 import org.apache.coyote.servlet.util.StringParser;
-import org.apache.coyote.standalone.MessageReader;
 
 import org.apache.tomcat.util.buf.B2CConverter;
 import org.apache.tomcat.util.buf.MessageBytes;

@@ -20,7 +20,7 @@ package org.apache.coyote.servlet;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import org.apache.coyote.standalone.MessageReader;
+import org.apache.coyote.servlet.util.MessageReader;
 
 
 /**

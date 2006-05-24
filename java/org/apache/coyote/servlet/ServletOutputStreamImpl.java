@@ -21,7 +21,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletOutputStream;
 
-import org.apache.coyote.standalone.MessageWriter;
+import org.apache.coyote.servlet.util.MessageWriter;
 
 /**
  * Coyote implementation of the servlet output stream.
