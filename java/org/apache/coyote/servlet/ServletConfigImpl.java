@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Stack;
 
 import javax.servlet.Servlet;
@@ -34,6 +35,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.SingleThreadModel;
 import javax.servlet.UnavailableException;
 
+import org.apache.catalina.LifecycleException;
 import org.apache.commons.logging.Log;
 import org.apache.coyote.servlet.util.Enumerator;
 import org.apache.tomcat.util.IntrospectionUtils;
@@ -141,7 +143,7 @@ public class ServletConfigImpl implements ServletConfig {
      * The initialization parameters for this servlet, keyed by
      * parameter name.
      */
-    private HashMap parameters = new HashMap();
+    private Map parameters = new HashMap();
 
 
     /**
@@ -620,14 +622,12 @@ public class ServletConfigImpl implements ServletConfig {
      * @param value Value of this initialization parameter to add
      */
     public void addInitParameter(String name, String value) {
-
-        synchronized (parameters) {
-            parameters.put(name, value);
-        }
-//        fireContainerEvent("addInitParameter", name);
-
+        parameters.put(name, value);
     }
 
+    public void setInitParameters(Map params) {
+        parameters = params;
+    }
 
     /**
      * Add a mapping associated with the Wrapper.
@@ -900,7 +900,7 @@ public class ServletConfigImpl implements ServletConfig {
             String actualClass = servletClass;
             if ((actualClass == null) && (jspFile != null)) {
                 ServletConfigImpl jspWrapper = (ServletConfigImpl)
-                    ((ServletContextImpl) getParent()).findChild(JSP_SERVLET_NAME);
+                    ((ServletContextImpl) getParent()).getServletConfig(JSP_SERVLET_NAME);
                 if (jspWrapper != null) {
                     actualClass = jspWrapper.getServletClass();
                     // Merge init parameters
@@ -933,7 +933,10 @@ public class ServletConfigImpl implements ServletConfig {
 //            ClassLoader classLoader = loader.getClassLoader();
 
             // TODO(costin): use real loader if multiple webapps
-            ClassLoader classLoader = this.getClass().getClassLoader();
+            
+            ClassLoader classLoader = parent.getClassLoader(); 
+            if (classLoader == null ) 
+                classLoader = this.getClass().getClassLoader();
             
             // Special case class loader for a container provided servlet
             //  
@@ -1344,6 +1347,9 @@ public class ServletConfigImpl implements ServletConfig {
 
     // -------------------------------------------------- ServletConfig Methods
 
+    public void destroy() {
+        
+    }
 
     /**
      * Return the initialization parameter value for the specified name,

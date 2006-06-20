@@ -27,27 +27,30 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
-//import javax.naming.Binding;
-//import javax.naming.NamingException;
-//import javax.naming.directory.DirContext;
+import javax.servlet.Filter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextAttributeEvent;
 import javax.servlet.ServletContextAttributeListener;
+import javax.servlet.ServletException;
 
 import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.coyote.servlet.util.CharsetMapper;
 import org.apache.coyote.servlet.util.Enumerator;
-
-//import org.apache.naming.resources.DirContextURLStreamHandler;
-//import org.apache.naming.resources.Resource;
-
+import org.apache.coyote.servlet.util.MappingData;
+import org.apache.coyote.servlet.webxml.WebXml;
+import org.apache.tomcat.servlets.file.DefaultServlet;
 import org.apache.tomcat.util.buf.CharChunk;
 import org.apache.tomcat.util.buf.MessageBytes;
-import org.apache.tomcat.util.http.mapper.MappingData;
+import org.apache.tomcat.util.loader.Repository;
 import org.apache.tomcat.util.res.StringManager;
 
 
@@ -61,8 +64,7 @@ import org.apache.tomcat.util.res.StringManager;
  * @version $Revision: 377994 $ $Date: 2006-02-15 04:37:28 -0800 (Wed, 15 Feb 2006) $
  */
 
-public class ServletContextImpl
-    implements ServletContext {
+public class ServletContextImpl implements ServletContext {
 
     // ----------------------------------------------------------- Constructors
 
@@ -70,6 +72,18 @@ public class ServletContextImpl
     }
 
     // ----------------------------------------------------- Instance Variables
+    /**
+     * Empty collection to serve as the basis for empty enumerations.
+     * <strong>DO NOT ADD ANY ELEMENTS TO THIS COLLECTION!</strong>
+     */
+    private static final ArrayList empty = new ArrayList();
+
+    Log log;
+    /**
+     * The string manager for this package.
+     */
+    private static final StringManager sm =
+      StringManager.getManager("org.apache.coyote.servlet");
 
 
     /**
@@ -83,82 +97,54 @@ public class ServletContextImpl
      */
     private HashMap readOnlyAttributes = new HashMap();
 
-
-    /**
-     * The Context instance with which we are associated.
-     */
-    private ServletContextImpl context = this;
-
-    /** Internal mapper - it may be better to use only one per server.
+    /** Internal mapper for request dispatcher, must have all 
+     *  context mappings. 
+     *  TODO: why do we need one mapper per context ? 
      */ 
-    private org.apache.tomcat.util.http.mapper.Mapper mapper = 
-        new org.apache.tomcat.util.http.mapper.Mapper();
+    private WebappServletMapper mapper = new WebappServletMapper(this);
 
-
-    /**
-     * Empty collection to serve as the basis for empty enumerations.
-     * <strong>DO NOT ADD ANY ELEMENTS TO THIS COLLECTION!</strong>
-     */
-    private static final ArrayList empty = new ArrayList();
-
-
-//    /**
-//     * The facade around this object.
-//     */
-//    private ServletContext facade = new ApplicationContextFacade(this);
-
+    private WebappHasRole realm = new WebappHasRole();
 
     /**
      * The merged context initialization parameters for this Context.
      */
-    private HashMap parameters = null;
+    private HashMap parameters = new HashMap();
 
-
-    /**
-     * The string manager for this package.
-     */
-    private static final StringManager sm =
-      StringManager.getManager("org.apache.coyote.servlet");
-
+    private ArrayList lifecycleListenersClassName = new ArrayList();
+    private ArrayList lifecycleListeners = new ArrayList();
 
     /**
-     * Base path.
+     * Base path - the directory root of the webapp
      */
     private String basePath = null;
-
 
     /**
      * Thread local mapping data.
      */
     private ThreadLocal localMappingData = new ThreadLocal();
 
-
     /**
      * Thread local URI message bytes.
      */
     private ThreadLocal localUriMB = new ThreadLocal();
 
-
     private String contextName = "";
     
     private Host host;
 
-    private SessionManager manager = new SessionManager();
+    CharsetMapper charsetMapper = new CharsetMapper();
 
-    // --------------------------------------------------------- Public Methods
+    String contextPath;
 
+    private WebappSessionManager manager = new WebappSessionManager();
 
-    /**
-     * Return the resources object that is mapped to a specified path.
-     * The path must begin with a "/" and is interpreted as relative to the
-     * current context root.
-     */
-//    public DirContext getResources() {
-//
-//        return context.getResources();
-//
-//    }
+    Repository repository;
 
+    HashMap filters = new HashMap();
+
+    private WebappFilterMapper webappFilterMapper = new WebappFilterMapper(this);
+    
+    CoyoteServletFacade facade = CoyoteServletFacade.getServletImpl();
 
     // ------------------------------------------------- ServletContext Methods
 
@@ -209,7 +195,7 @@ public class ServletContextImpl
 
         ServletContextImpl child = null;
         try {
-            Host host = (Host) context.getParent();
+            Host host = (Host) this.getParent();
             String mapuri = uri;
             while (true) {
                 child = (ServletContextImpl) host.findChild(mapuri);
@@ -227,12 +213,12 @@ public class ServletContextImpl
         if (child == null)
             return (null);
 
-        if (context.getCrossContext()) {
+        if (this.getCrossContext()) {
             // If crossContext is enabled, can always return the context
             return child.getServletContext();
-        } else if (child == context) {
+        } else if (child == this) {
             // Can still return the current context
-            return context.getServletContext();
+            return this.getServletContext();
         } else {
             // Nothing to return
             return (null);
@@ -244,7 +230,7 @@ public class ServletContextImpl
      * Return the main path associated with this context.
      */
     public String getContextPath() {
-        return context.getPath();
+        return contextPath;
     }
     
 
@@ -255,11 +241,7 @@ public class ServletContextImpl
      * @param name Name of the initialization parameter to retrieve
      */
     public String getInitParameter(final String name) {
-
-        mergeParameters();
-        synchronized (parameters) {
-            return ((String) parameters.get(name));
-        }
+        return ((String) parameters.get(name));
     }
 
 
@@ -268,12 +250,7 @@ public class ServletContextImpl
      * empty enumeration if the context has no initialization parameters.
      */
     public Enumeration getInitParameterNames() {
-
-        mergeParameters();
-        synchronized (parameters) {
-           return (new Enumerator(parameters.keySet()));
-        }
-
+        return (new Enumerator(parameters.keySet()));
     }
 
 
@@ -313,8 +290,7 @@ public class ServletContextImpl
         String extension = file.substring(period + 1);
         if (extension.length() < 1)
             return (null);
-        return (context.findMimeMapping(extension));
-
+        return contentTypes.getProperty(extension);
     }
 
 
@@ -331,12 +307,11 @@ public class ServletContextImpl
             return (null);
 
         // Create and return a corresponding request dispatcher
-        ServletConfigImpl wrapper = (ServletConfigImpl) context.findChild(name);
+        ServletConfigImpl wrapper = (ServletConfigImpl) this.getServletConfig(name);
         if (wrapper == null)
             return (null);
         
         return new RequestDispatcherImpl(wrapper, null, null, null, null, name);
-
     }
 
 
@@ -347,17 +322,12 @@ public class ServletContextImpl
      * @param path The path to the desired resource
      */
     public String getRealPath(String path) {
-
-        if (!context.isFilesystemBased())
-            return null;
-
         if (path == null) {
             return null;
         }
 
         File file = new File(basePath, path);
         return (file.getAbsolutePath());
-
     }
 
 
@@ -366,6 +336,7 @@ public class ServletContextImpl
      * Return a <code>RequestDispatcher</code> instance that acts as a
      * wrapper for the resource at the given path.  The path must begin
      * with a "/" and is interpreted as relative to the current context root.
+
      *
      * @param path The path to the desired resource.
      */
@@ -412,7 +383,7 @@ public class ServletContextImpl
         // Map the URI
         CharChunk uriCC = uriMB.getCharChunk();
         try {
-            uriCC.append(context.getPath(), 0, context.getPath().length());
+            uriCC.append(path, 0, path.length());
             /*
              * Ignore any trailing path params (separated by ';') for mapping
              * purposes
@@ -422,7 +393,7 @@ public class ServletContextImpl
                 semicolon = -1;
             }
             uriCC.append(path, 0, semicolon > 0 ? semicolon : pos);
-            context.getMapper().map(uriMB, mappingData);
+            this.getMapper().map(uriMB, mappingData);
             if (mappingData.wrapper == null) {
                 return (null);
             }
@@ -479,33 +450,13 @@ public class ServletContextImpl
         String libPath = "/WEB-INF/lib/";
         if ((path.startsWith(libPath)) && (path.endsWith(".jar"))) {
             File jarFile = null;
-            if (context.isFilesystemBased()) {
-                jarFile = new File(basePath, path);
-            } else {
-                jarFile = new File(context.getWorkPath(), path);
-            }
+            jarFile = new File(basePath, path);
             if (jarFile.exists()) {
                 return jarFile.toURL();
             } else {
                 return null;
             }
         } else {
-
-            // TODO(costin): File based resources !!
-            
-//            DirContext resources = context.getResources();
-//            if (resources != null) {
-//                String fullPath = context.getName() + path;
-//                String hostName = context.getParent().getName();
-//                try {
-//                    resources.lookup(path);
-//                    return new URL
-//                        ("jndi", "", 0, getJNDIUri(hostName, fullPath),
-//                         new DirContextURLStreamHandler(resources));
-//                } catch (Exception e) {
-//                    // Ignore
-//                }
-//            }
         }
 
         return (null);
@@ -546,7 +497,7 @@ public class ServletContextImpl
             return (null);
 
         // TODO(costin): file based resources
-//        DirContext resources = context.getResources();
+//        DirContext resources = this.getResources();
 //        if (resources != null) {
 //            try {
 //                Object resource = resources.lookup(path);
@@ -582,34 +533,21 @@ public class ServletContextImpl
         if (path == null)
             return (null);
 
-        // TODO(costin): file based resources
-//        DirContext resources = context.getResources();
-//        if (resources != null) {
-//            return (getResourcePathsInternal(resources, path));
-//        }
-        return (null);
-
+        File f = new File(basePath + path);
+        File[] files = f.listFiles();
+        if (files == null) return null;
+        
+        HashSet result = new HashSet();
+        for (int i=0; i < files.length; i++) {
+            if (files[i].isDirectory() ) {
+                result.add(files[i].getName() + "/");
+            } else {
+                result.add(files[i].getName());
+            }
+        }
+        return result;
     }
 
-
-    /**
-     * Internal implementation of getResourcesPath() logic.
-     *
-     * @param resources Directory context to search
-     * @param path Collection path
-     */
-//    private Set getResourcePathsInternal(DirContext resources, String path) {
-//
-//        HashSet set = new HashSet();
-//        try {
-//            listCollectionPaths(set, resources, path);
-//        } catch (NamingException e) {
-//            return (null);
-//        }
-//        //set.setLocked(true);
-//        return (set);
-//
-//    }
 
 
     /**
@@ -665,7 +603,7 @@ public class ServletContextImpl
      */
     public void log(String message) {
 
-        context.getLogger().info(message);
+        this.getLogger().info(message);
 
     }
 
@@ -681,7 +619,7 @@ public class ServletContextImpl
      */
     public void log(Exception exception, String message) {
         
-        context.getLogger().error(message, exception);
+        this.getLogger().error(message, exception);
 
     }
 
@@ -694,7 +632,7 @@ public class ServletContextImpl
      */
     public void log(String message, Throwable throwable) {
         
-        context.getLogger().error(message, throwable);
+        this.getLogger().error(message, throwable);
 
     }
 
@@ -724,25 +662,28 @@ public class ServletContextImpl
         }
 
         // Notify interested application event listeners
-        Object listeners[] = context.getApplicationEventListeners();
-        if ((listeners == null) || (listeners.length == 0))
+        List listeners = this.getApplicationEventListeners();
+        if (listeners.size() == 0)
             return;
-        ServletContextAttributeEvent event =
-          new ServletContextAttributeEvent(context.getServletContext(),
-                                            name, value);
-        for (int i = 0; i < listeners.length; i++) {
-            if (!(listeners[i] instanceof ServletContextAttributeListener))
+        ServletContextAttributeEvent event = null;
+        for (int i = 0; i < listeners.size(); i++) {
+            if (!(listeners.get(i) instanceof ServletContextAttributeListener))
                 continue;
             ServletContextAttributeListener listener =
-                (ServletContextAttributeListener) listeners[i];
+                (ServletContextAttributeListener) listeners.get(i);
             try {
-//                context.fireContainerEvent("beforeContextAttributeRemoved",
+//                this.fireContainerEvent("beforeContextAttributeRemoved",
 //                                           listener);
+                if (event == null) {
+                    event = new ServletContextAttributeEvent(this.getServletContext(),
+                            name, value);
+
+                }
                 listener.attributeRemoved(event);
-//                context.fireContainerEvent("afterContextAttributeRemoved",
+//                this.fireContainerEvent("afterContextAttributeRemoved",
 //                                           listener);
             } catch (Throwable t) {
-//                context.fireContainerEvent("afterContextAttributeRemoved",
+//                this.fireContainerEvent("afterContextAttributeRemoved",
 //                                           listener);
                 // FIXME - should we do anything besides log these?
                 log(sm.getString("applicationContext.attributeEvent"), t);
@@ -787,44 +728,46 @@ public class ServletContextImpl
         }
 
         // Notify interested application event listeners
-        Object listeners[] = context.getApplicationEventListeners();
-        if ((listeners == null) || (listeners.length == 0))
+        List listeners = this.getApplicationEventListeners();
+        if (listeners.size() == 0)
             return;
         ServletContextAttributeEvent event = null;
-        if (replaced)
-            event =
-                new ServletContextAttributeEvent(context.getServletContext(),
-                                                 name, oldValue);
-        else
-            event =
-                new ServletContextAttributeEvent(context.getServletContext(),
-                                                 name, value);
-
-        for (int i = 0; i < listeners.length; i++) {
-            if (!(listeners[i] instanceof ServletContextAttributeListener))
+        for (int i = 0; i < listeners.size(); i++) {
+            if (!(listeners.get(i) instanceof ServletContextAttributeListener))
                 continue;
             ServletContextAttributeListener listener =
-                (ServletContextAttributeListener) listeners[i];
+                (ServletContextAttributeListener) listeners.get(i);
             try {
+                if (event == null) {
+                    if (replaced)
+                        event =
+                            new ServletContextAttributeEvent(this.getServletContext(),
+                                                             name, oldValue);
+                    else
+                        event =
+                            new ServletContextAttributeEvent(this.getServletContext(),
+                                                             name, value);
+                    
+                }
                 if (replaced) {
-//                    context.fireContainerEvent
+//                    this.fireContainerEvent
 //                        ("beforeContextAttributeReplaced", listener);
                     listener.attributeReplaced(event);
-//                    context.fireContainerEvent("afterContextAttributeReplaced",
+//                    this.fireContainerEvent("afterContextAttributeReplaced",
 //                                               listener);
                 } else {
-//                    context.fireContainerEvent("beforeContextAttributeAdded",
+//                    this.fireContainerEvent("beforeContextAttributeAdded",
 //                                               listener);
                     listener.attributeAdded(event);
-//                    context.fireContainerEvent("afterContextAttributeAdded",
+//                    this.fireContainerEvent("afterContextAttributeAdded",
 //                                               listener);
                 }
             } catch (Throwable t) {
 //                if (replaced)
-//                    context.fireContainerEvent("afterContextAttributeReplaced",
+//                    this.fireContainerEvent("afterContextAttributeReplaced",
 //                                               listener);
 //                else
-//                    context.fireContainerEvent("afterContextAttributeAdded",
+//                    this.fireContainerEvent("afterContextAttributeAdded",
 //                                               listener);
                 // FIXME - should we do anything besides log these?
                 log(sm.getString("applicationContext.attributeEvent"), t);
@@ -926,89 +869,17 @@ public class ServletContextImpl
 
     }
 
-
-    /**
-     * Merge the context initialization parameters specified in the application
-     * deployment descriptor with the application parameters described in the
-     * server configuration, respecting the <code>override</code> property of
-     * the application parameters appropriately.
-     */
-    private void mergeParameters() {
-
-        if (parameters != null)
-            return;
-//        HashMap results = new HashMap();
-//        String names[] = context.findParameters();
-//        for (int i = 0; i < names.length; i++)
-//            results.put(names[i], context.findParameter(names[i]));
-//        ApplicationParameter params[] =
-//            context.findApplicationParameters();
-//        for (int i = 0; i < params.length; i++) {
-//            if (params[i].getOverride()) {
-//                if (results.get(params[i].getName()) == null)
-//                    results.put(params[i].getName(), params[i].getValue());
-//            } else {
-//                results.put(params[i].getName(), params[i].getValue());
-//            }
-//        }
-//        parameters = results;
-
-    }
-
-
-    /**
-     * List resource paths (recursively), and store all of them in the given
-     * Set.
-     */
-//    private static void listCollectionPaths
-//        (Set set, DirContext resources, String path)
-//        throws NamingException {
-//
-//        Enumeration childPaths = resources.listBindings(path);
-//        while (childPaths.hasMoreElements()) {
-//            Binding binding = (Binding) childPaths.nextElement();
-//            String name = binding.getName();
-//            StringBuffer childPath = new StringBuffer(path);
-//            if (!"/".equals(path) && !path.endsWith("/"))
-//                childPath.append("/");
-//            childPath.append(name);
-//            Object object = binding.getObject();
-//            if (object instanceof DirContext) {
-//                childPath.append("/");
-//            }
-//            set.add(childPath.toString());
-//        }
-//
-//    }
-
-
-    /**
-     * Get full path, based on the host name and the context path.
-     */
-//    private static String getJNDIUri(String hostName, String path) {
-//        if (!path.startsWith("/"))
-//            return "/" + hostName + "/" + path;
-//        else
-//            return "/" + hostName + path;
-//    }
-
-    CharsetMapper charsetMapper = new CharsetMapper();
-    String path;
-    
     public CharsetMapper getCharsetMapper() {
         return charsetMapper;
     }
 
-
-    public String getPath() {
-        return path;
-    }
-
-    void setPath(String path) {
-        this.path = path;
+    void setContextPath(String path) {
+        this.contextPath = path;
+        mapper.contextMapElement.name = path;
+        log = LogFactory.getLog("webapp." + path.replace("/", "."));
     }
     
-    public void setBasePath(String basePath) {
+    void setBasePath(String basePath) {
         this.basePath = basePath;        
     }
 
@@ -1016,13 +887,13 @@ public class ServletContextImpl
         return basePath;
     }
 
-    public SessionManager getManager() {
+    public WebappSessionManager getManager() {
         return manager;
     }
 
 
-    public ApplicationAuthorization getRealm() {
-        return null;
+    public WebappHasRole getRealm() {
+        return realm;
     }
 
 
@@ -1041,13 +912,16 @@ public class ServletContextImpl
     }
 
 
-    public Object[] getApplicationEventListeners() {
-        return null;
+    public List getApplicationEventListeners() {
+        return lifecycleListeners;
     }
 
+    public List getListenersClassName() {
+        return lifecycleListenersClassName;
+    }
 
     public Log getLogger() {
-        return null;
+        return log;
     }
 
 
@@ -1060,11 +934,16 @@ public class ServletContextImpl
         return 0;
     }
 
+    HashMap servlets = new HashMap();
 
-    public ServletConfigImpl findChild(String jsp_servlet_name) {
-        return null;
+    public ServletConfigImpl getServletConfig(String jsp_servlet_name) {
+        return (ServletConfigImpl)servlets.get(jsp_servlet_name);
     }
 
+    public void addServletConfig(ServletConfigImpl servletConfig) {
+        servlets.put(servletConfig.getServletName(), servletConfig);
+        
+    }
 
     public boolean getPrivileged() {
         return false;
@@ -1074,44 +953,161 @@ public class ServletContextImpl
         return true;
     }
 
-    private boolean isFilesystemBased() {
-        return true;
+    static Properties contentTypes=new Properties();
+    static {
+        initContentTypes();
+    }
+    // TODO: proper implementation
+    static void initContentTypes() {
+        contentTypes.put("xhtml", "text/html");
+        contentTypes.put("html", "text/html");
+        contentTypes.put("txt", "text/plain");
+        contentTypes.put("css", "text/css");
+        contentTypes.put("xul", "application/vnd.mozilla.xul+xml");
+    }
+    
+    public void addMimeType(String ext, String type) {
+        contentTypes.put(ext, type);
     }
 
-
-    private String findMimeMapping(String extension) {
-        return null;
+    public WebappServletMapper getMapper() {
+        return mapper;
+    }
+    
+    public WebappFilterMapper getFilterMapper() {
+        return webappFilterMapper ;
+    }
+    
+    public FilterConfigImpl getFilter(String name) {
+        return (FilterConfigImpl)filters.get(name);
     }
 
+    public void addFilter(String name, String className, Map initParams) {
+        FilterConfigImpl fc = new FilterConfigImpl(this);
+        fc.setFilterClass(className);
+        fc.setFilterName(name);
+        fc.setParameterMap(initParams);
+        filters.put(name, fc);
 
-    public void destroy() {
+        // Filters are added before mappings - if the WebappFilterMapper
+        // is replaced, it can get all the mappings.
+        try {
+            if (name.equals("_tomcat.FilterMapper")) {
+                Filter filter = fc.getFilter();
+                if (filter instanceof WebappFilterMapper) {
+                    webappFilterMapper = (WebappFilterMapper)filter;
+                }
+            }
+            if (name.equals("_tomcat.ServletMapper")) {
+                Filter filter = fc.getFilter();
+                if (filter instanceof WebappServletMapper) {
+                    mapper = (WebappServletMapper)filter;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-    public org.apache.tomcat.util.http.mapper.Mapper getMapper() {
-        return (mapper);
+    
+    public void initFilters() throws ServletException {
+        Iterator fI = getFilters().values().iterator();
+        while (fI.hasNext()) {
+            FilterConfigImpl fc = (FilterConfigImpl)fI.next();
+            try {
+                fc.getFilter(); // will triger init()
+            } catch (Throwable e) {
+                log.warn("Error initializing filter " + fc.getFilterName(), e);
+            } 
+            
+        }
     }
-
-
-    public FilterMap[] findFilterMaps() {
-        return null;
+    
+    public void initListeners() throws ServletException {
+        Iterator fI = getListenersClassName().iterator();
+        while (fI.hasNext()) {
+            String listenerClass = (String)fI.next();
+            try {
+                Object l = 
+                    getClassLoader().loadClass(listenerClass).newInstance();
+                lifecycleListeners.add(l);
+            } catch (Throwable e) {
+                log.warn("Error initializing listener " + listenerClass, e);
+            } 
+            
+        }
     }
-
-
-    public FilterConfigImpl findFilterConfig(String filterName) {
-        return null;
+    
+    public Map getFilters() {
+        return filters;
     }
+    
 
-
+    public void setRepository(Repository repo) {
+        repository = repo;
+    }
+    
     public ClassLoader getClassLoader() {
+        if( repository != null ) 
+            return repository.getClassLoader();
         return this.getClass().getClassLoader();
     }
 
-
-    public Object[] getApplicationLifecycleListeners() {
-        return null;
+    public Map getContextParameters() {
+        return parameters;
     }
 
-    void setContextParameters(HashMap params) {
-        this.parameters = params;
+
+    public void init() throws ServletException {
+        String base = getBasePath();
+        
+        // create a class loader
+        Repository ctxRepo = new Repository();
+        ctxRepo.setParentClassLoader(this.getClass().getClassLoader());
+        ctxRepo.addDir(new File(base + "/WEB-INF/classes"));
+        ctxRepo.addLibs(new File(base + "/WEB-INF/lib"));
+        setRepository(ctxRepo);
+        ClassLoader cl = ctxRepo.getClassLoader();
+
+        // Add default mappings.
+        ServletConfig fileS =
+            facade.createServletWrapper(this, "default", new DefaultServlet());
+        facade.addMapping("/", fileS);
+
+        WebXml webXml = new WebXml(this);
+        webXml.readWebXml(base);
+
+        // TODO: read a simpler version of web.xml
+
+        // TODO: read the real web.xml
+
+        facade.notifyAdd(this);
+        
+        initFilters();
+        initListeners();
     }
+    
+    public void destroy() throws ServletException {
+        // destroy filters
+        Iterator fI = filters.values().iterator();
+        while(fI.hasNext()) {
+            FilterConfigImpl fc = (FilterConfigImpl) fI.next();
+            try {
+                fc.getFilter().destroy();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // destroy servlets
+        fI = servlets.values().iterator();
+        while(fI.hasNext()) {
+            ServletConfigImpl fc = (ServletConfigImpl) fI.next();
+            try {
+                fc.destroy();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
+

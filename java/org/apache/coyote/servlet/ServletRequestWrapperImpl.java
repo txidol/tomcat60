@@ -67,11 +67,11 @@ class ServletRequestWrapperImpl extends HttpServletRequestWrapper {
      * The set of attribute names that are special for request dispatchers.
      */
     protected static final String specials[] =
-    { Globals.INCLUDE_REQUEST_URI_ATTR, Globals.INCLUDE_CONTEXT_PATH_ATTR,
-      Globals.INCLUDE_SERVLET_PATH_ATTR, Globals.INCLUDE_PATH_INFO_ATTR,
-      Globals.INCLUDE_QUERY_STRING_ATTR, Globals.FORWARD_REQUEST_URI_ATTR, 
-      Globals.FORWARD_CONTEXT_PATH_ATTR, Globals.FORWARD_SERVLET_PATH_ATTR, 
-      Globals.FORWARD_PATH_INFO_ATTR, Globals.FORWARD_QUERY_STRING_ATTR };
+    { ServletRequestImpl.INCLUDE_REQUEST_URI_ATTR, ServletRequestImpl.INCLUDE_CONTEXT_PATH_ATTR,
+      ServletRequestImpl.INCLUDE_SERVLET_PATH_ATTR, ServletRequestImpl.INCLUDE_PATH_INFO_ATTR,
+      ServletRequestImpl.INCLUDE_QUERY_STRING_ATTR, ServletRequestImpl.FORWARD_REQUEST_URI_ATTR, 
+      ServletRequestImpl.FORWARD_CONTEXT_PATH_ATTR, ServletRequestImpl.FORWARD_SERVLET_PATH_ATTR, 
+      ServletRequestImpl.FORWARD_PATH_INFO_ATTR, ServletRequestImpl.FORWARD_QUERY_STRING_ATTR };
 
 
     /**
@@ -206,9 +206,9 @@ class ServletRequestWrapperImpl extends HttpServletRequestWrapper {
      */
     public Object getAttribute(String name) {
 
-        if (name.equals(Globals.DISPATCHER_TYPE_ATTR)) {
+        if (name.equals(ServletRequestImpl.DISPATCHER_TYPE_ATTR)) {
             return dispatcherType;
-        } else if (name.equals(Globals.DISPATCHER_REQUEST_PATH_ATTR)) {
+        } else if (name.equals(ServletRequestImpl.DISPATCHER_REQUEST_PATH_ATTR)) {
             if ( requestDispatcherPath != null ){
                 return requestDispatcherPath.toString();
             } else {
@@ -266,10 +266,10 @@ class ServletRequestWrapperImpl extends HttpServletRequestWrapper {
      */
     public void setAttribute(String name, Object value) {
 
-        if (name.equals(Globals.DISPATCHER_TYPE_ATTR)) {
+        if (name.equals(ServletRequestImpl.DISPATCHER_TYPE_ATTR)) {
             dispatcherType = value;
             return;
-        } else if (name.equals(Globals.DISPATCHER_REQUEST_PATH_ATTR)) {
+        } else if (name.equals(ServletRequestImpl.DISPATCHER_REQUEST_PATH_ATTR)) {
             requestDispatcherPath = value;
             return;
         }
@@ -300,7 +300,7 @@ class ServletRequestWrapperImpl extends HttpServletRequestWrapper {
 
         // Convert a request-relative path to a context-relative one
         String servletPath = 
-            (String) getAttribute(Globals.INCLUDE_SERVLET_PATH_ATTR);
+            (String) getAttribute(ServletRequestImpl.INCLUDE_SERVLET_PATH_ATTR);
         if (servletPath == null)
             servletPath = getServletPath();
 
@@ -563,7 +563,7 @@ class ServletRequestWrapperImpl extends HttpServletRequestWrapper {
                 return (false);
             if (context == null)
                 return (false);
-            SessionManager manager = context.getManager();
+            WebappSessionManager manager = context.getManager();
             if (manager == null)
                 return (false);
             HttpSessionImpl session = null;
@@ -673,9 +673,9 @@ class ServletRequestWrapperImpl extends HttpServletRequestWrapper {
         super.setRequest(request);
 
         // Initialize the attributes for this request
-        dispatcherType = request.getAttribute(Globals.DISPATCHER_TYPE_ATTR);
+        dispatcherType = request.getAttribute(ServletRequestImpl.DISPATCHER_TYPE_ATTR);
         requestDispatcherPath = 
-            request.getAttribute(Globals.DISPATCHER_REQUEST_PATH_ATTR);
+            request.getAttribute(ServletRequestImpl.DISPATCHER_REQUEST_PATH_ATTR);
 
         // Initialize the path elements for this request
         contextPath = request.getContextPath();

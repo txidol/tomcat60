@@ -19,7 +19,6 @@ package org.apache.coyote.servlet;
 
 
 import java.io.IOException;
-import java.security.PrivilegedActionException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -27,8 +26,6 @@ import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.res.StringManager;
 
@@ -46,10 +43,6 @@ import org.apache.tomcat.util.res.StringManager;
  */
 
 final class FilterChainImpl implements FilterChain {
-
-
-    // -------------------------------------------------------------- Constants
-
 
     public static final int INCREMENT = 10;
 
@@ -143,38 +136,6 @@ final class FilterChainImpl implements FilterChain {
     public void doFilter(ServletRequest request, ServletResponse response)
         throws IOException, ServletException {
 
-        if( System.getSecurityManager() != null ) {
-            final ServletRequest req = request;
-            final ServletResponse res = response;
-            try {
-                java.security.AccessController.doPrivileged(
-                    new java.security.PrivilegedExceptionAction() {
-                        public Object run() 
-                            throws ServletException, IOException {
-                            internalDoFilter(req,res);
-                            return null;
-                        }
-                    }
-                );
-            } catch( PrivilegedActionException pe) {
-                Exception e = pe.getException();
-                if (e instanceof ServletException)
-                    throw (ServletException) e;
-                else if (e instanceof IOException)
-                    throw (IOException) e;
-                else if (e instanceof RuntimeException)
-                    throw (RuntimeException) e;
-                else
-                    throw new ServletException(e.getMessage(), e);
-            }
-        } else {
-            internalDoFilter(request,response);
-        }
-    }
-
-    private void internalDoFilter(ServletRequest request, 
-                                  ServletResponse response)
-        throws IOException, ServletException {
 
         // Call the next filter if there is one
         if (pos < n) {
@@ -182,45 +143,15 @@ final class FilterChainImpl implements FilterChain {
             Filter filter = null;
             try {
                 filter = filterConfig.getFilter();
-//                support.fireInstanceEvent(InstanceEvent.BEFORE_FILTER_EVENT,
-//                                          filter, request, response);
-                
-//                if( System.getSecurityManager() != null ) {
-//                    final ServletRequest req = request;
-//                    final ServletResponse res = response;
-//                    Principal principal = 
-//                        ((HttpServletRequest) req).getUserPrincipal();
-//
-//                    Object[] args = new Object[]{req, res, this};
-//                    SecurityUtil.doAsPrivilege
-//                        ("doFilter", filter, classType, args);
-//                    
-//                    args = null;
-//                } else {  
-                    filter.doFilter(request, response, this);
-//                }
-
-//                support.fireInstanceEvent(InstanceEvent.AFTER_FILTER_EVENT,
-//                                          filter, request, response);
+                filter.doFilter(request, response, this);
             } catch (IOException e) {
-//                if (filter != null)
-//                    support.fireInstanceEvent(InstanceEvent.AFTER_FILTER_EVENT,
-//                                              filter, request, response, e);
                 throw e;
             } catch (ServletException e) {
-//                if (filter != null)
-//                    support.fireInstanceEvent(InstanceEvent.AFTER_FILTER_EVENT,
-//                                              filter, request, response, e);
                 throw e;
             } catch (RuntimeException e) {
-//                if (filter != null)
-//                    support.fireInstanceEvent(InstanceEvent.AFTER_FILTER_EVENT,
-//                                              filter, request, response, e);
                 throw e;
             } catch (Throwable e) {
-//                if (filter != null)
-//                    support.fireInstanceEvent(InstanceEvent.AFTER_FILTER_EVENT,
-//                                              filter, request, response, e);
+                e.printStackTrace();
                 throw new ServletException
                   (sm.getString("filterChain.filter"), e);
             }
@@ -229,51 +160,18 @@ final class FilterChainImpl implements FilterChain {
 
         // We fell off the end of the chain -- call the servlet instance
         try {
-//            support.fireInstanceEvent(InstanceEvent.BEFORE_SERVICE_EVENT,
-//                                      servlet, request, response);
-            if ((request instanceof HttpServletRequest) &&
-                (response instanceof HttpServletResponse)) {
-//                    
-//                if( System.getSecurityManager() != null ) {
-//                    final ServletRequest req = request;
-//                    final ServletResponse res = response;
-//                    Principal principal = 
-//                        ((HttpServletRequest) req).getUserPrincipal();
-//                    Object[] args = new Object[]{req, res};
-//                    SecurityUtil.doAsPrivilege("service",
-//                                               servlet,
-//                                               classTypeUsedInService, 
-//                                               args,
-//                                               principal);   
-//                    args = null;
-//                } else {  
-                    servlet.service((HttpServletRequest) request,
-                                    (HttpServletResponse) response);
-//                }
-            } else {
+            if (servlet != null) 
                 servlet.service(request, response);
-            }
-//            support.fireInstanceEvent(InstanceEvent.AFTER_SERVICE_EVENT,
-//                                      servlet, request, response);
         } catch (IOException e) {
-//            support.fireInstanceEvent(InstanceEvent.AFTER_SERVICE_EVENT,
-//                                      servlet, request, response, e);
             throw e;
         } catch (ServletException e) {
-//            support.fireInstanceEvent(InstanceEvent.AFTER_SERVICE_EVENT,
-//                                      servlet, request, response, e);
             throw e;
         } catch (RuntimeException e) {
-//            support.fireInstanceEvent(InstanceEvent.AFTER_SERVICE_EVENT,
-//                                      servlet, request, response, e);
             throw e;
         } catch (Throwable e) {
-//            support.fireInstanceEvent(InstanceEvent.AFTER_SERVICE_EVENT,
-//                                      servlet, request, response, e);
             throw new ServletException
               (sm.getString("filterChain.servlet"), e);
         }
-
     }
 
 
@@ -287,7 +185,6 @@ final class FilterChainImpl implements FilterChain {
      * @param filterConfig The FilterConfig for the servlet to be executed
      */
     void addFilter(FilterConfigImpl filterConfig) {
-
         if (n == filters.length) {
             FilterConfigImpl[] newFilters =
                 new FilterConfigImpl[n + INCREMENT];
@@ -295,7 +192,6 @@ final class FilterChainImpl implements FilterChain {
             filters = newFilters;
         }
         filters[n++] = filterConfig;
-
     }
 
 
@@ -303,12 +199,9 @@ final class FilterChainImpl implements FilterChain {
      * Release references to the filters and wrapper executed by this chain.
      */
     void release() {
-
         n = 0;
         pos = 0;
         servlet = null;
-//        support = null;
-
     }
 
 
@@ -317,24 +210,10 @@ final class FilterChainImpl implements FilterChain {
      *
      * @param servlet The Wrapper for the servlet to be executed
      */
-    void setServlet(Servlet servlet) {
+    public void setServlet(Servlet servlet) {
 
         this.servlet = servlet;
 
     }
-
-
-    /**
-     * Set the InstanceSupport object used for event notifications
-     * for this filter chain.
-     *
-     * @param support The InstanceSupport object for our Wrapper
-     */
-//    void setSupport(InstanceSupport support) {
-//
-//        this.support = support;
-//
-//    }
-
 
 }

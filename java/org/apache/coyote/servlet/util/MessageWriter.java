@@ -52,7 +52,7 @@ public class MessageWriter extends Writer
     implements ByteChunk.ByteOutputChannel, CharChunk.CharOutputChannel {
 
     // used in getWriter, until a method is added to res.
-    private static final int WRITER_NOTE = 3;
+    private static final int WRITER_NOTE = 9;
 
     // -------------------------------------------------------------- Constants
 

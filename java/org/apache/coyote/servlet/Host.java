@@ -19,7 +19,9 @@ package org.apache.coyote.servlet;
 
 
 import java.util.HashMap;
+import java.util.Iterator;
 
+import org.apache.coyote.servlet.WebappServletMapper.ContextMapElement;
 import org.apache.tomcat.util.res.StringManager;
 
 
@@ -57,105 +59,45 @@ public class Host
 
     // ----------------------------------------------------- Instance Variables
 
+    String  name = "";
 
     /**
      * The set of aliases for this Host.
      */
     private String[] aliases = new String[0];
 
+    // <String path, ServletContextImp>
+    private HashMap children = new HashMap();
 
+    ContextMapElement[] contexts = new ContextMapElement[0];
+    int nesting = 0;
+
+    // ---- Deployer stuff - shouldn't be in here -----
+    
     /**
      * The application root for this Host.
      */
     private String appBase = ".";
-
-
-    /**
-     * The auto deploy flag for this Host.
-     */
-    private boolean autoDeploy = true;
-
-
-    /**
-     * The Java class name of the default context configuration class
-     * for deployed web applications.
-     */
-    private String configClass =
-        "org.apache.catalina.startup.ContextConfig";
-
-
-    /**
-     * The Java class name of the default Context implementation class for
-     * deployed web applications.
-     */
-    private String contextClass =
-        "org.apache.catalina.core.StandardContext";
-
-
-    /**
-     * The deploy on startup flag for this Host.
-     */
-    private boolean deployOnStartup = true;
-
-
-    /**
-     * deploy Context XML config files property.
-     */
-    private boolean deployXML = true;
-
-
-    /**
-     * The Java class name of the default error reporter implementation class 
-     * for deployed web applications.
-     */
-    private String errorReportValveClass =
-        "org.apache.catalina.valves.ErrorReportValve";
-
-    /**
-     * The object name for the errorReportValve.
-     */
-//    private ObjectName errorReportValveObjectName = null;
-
-    /**
-     * The descriptive information string for this implementation.
-     */
-    private static final String info =
-        "org.apache.catalina.core.StandardHost/1.0";
-
-
-    /**
-     * The live deploy flag for this Host.
-     */
-    private boolean liveDeploy = true;
-
-
-    /**
-     * Unpack WARs property.
-     */
-    private boolean unpackWARs = true;
-
 
     /**
      * Work Directory base for applications.
      */
     private String workDir = null;
 
+    /**
+     * The auto deploy flag for this Host.
+     */
+    private boolean autoDeploy = true;
 
     /**
-     * Attribute value used to turn on/off XML validation
+     * The deploy on startup flag for this Host.
      */
-     private boolean xmlValidation = false;
-
+    private boolean deployOnStartup = true;
 
     /**
-     * Attribute value used to turn on/off XML namespace awarenes.
+     * deploy Context XML config files property.
      */
-     private boolean xmlNamespaceAware = false;
-
-
-    private String name;
-
-    private HashMap children = new HashMap();
+    private boolean deployXML = true;
 
 
     // ------------------------------------------------------------- Properties
@@ -211,62 +153,6 @@ public class Host
 //                                   this.autoDeploy);
 
     }
-
-
-    /**
-     * Return the Java class name of the context configuration class
-     * for new web applications.
-     */
-    public String getConfigClass() {
-
-        return (this.configClass);
-
-    }
-
-
-    /**
-     * Set the Java class name of the context configuration class
-     * for new web applications.
-     *
-     * @param configClass The new context configuration class
-     */
-    public void setConfigClass(String configClass) {
-
-        String oldConfigClass = this.configClass;
-        this.configClass = configClass;
-//        support.firePropertyChange("configClass",
-//                                   oldConfigClass, this.configClass);
-
-    }
-
-
-    /**
-     * Return the Java class name of the Context implementation class
-     * for new web applications.
-     */
-    public String getContextClass() {
-
-        return (this.contextClass);
-
-    }
-
-
-    /**
-     * Set the Java class name of the Context implementation class
-     * for new web applications.
-     *
-     * @param contextClass The new context implementation class
-     */
-    public void setContextClass(String contextClass) {
-
-        String oldContextClass = this.contextClass;
-        this.contextClass = contextClass;
-//        support.firePropertyChange("contextClass",
-//                                   oldContextClass, this.contextClass);
-
-    }
-
-
     /**
      * Return the value of the deploy on startup flag.  If true, it indicates 
      * that this host's child webapps should be discovred and automatically 
@@ -335,35 +221,6 @@ public class Host
         setAutoDeploy(liveDeploy);
     }
 
-
-    /**
-     * Return the Java class name of the error report valve class
-     * for new web applications.
-     */
-    public String getErrorReportValveClass() {
-
-        return (this.errorReportValveClass);
-
-    }
-
-
-    /**
-     * Set the Java class name of the error report valve class
-     * for new web applications.
-     *
-     * @param errorReportValveClass The new error report valve class
-     */
-    public void setErrorReportValveClass(String errorReportValveClass) {
-
-        String oldErrorReportValveClassClass = this.errorReportValveClass;
-        this.errorReportValveClass = errorReportValveClass;
-//        support.firePropertyChange("errorReportValveClass",
-//                                   oldErrorReportValveClassClass, 
-//                                   this.errorReportValveClass);
-
-    }
-
-
     /**
      * Return the canonical, fully qualified, name of the virtual host
      * this Container represents.
@@ -398,64 +255,6 @@ public class Host
     }
 
 
-    /**
-     * Unpack WARs flag accessor.
-     */
-    public boolean isUnpackWARs() {
-
-        return (unpackWARs);
-
-    }
-
-
-    /**
-     * Unpack WARs flag mutator.
-     */
-    public void setUnpackWARs(boolean unpackWARs) {
-
-        this.unpackWARs = unpackWARs;
-
-    }
-
-     /**
-     * Set the validation feature of the XML parser used when
-     * parsing xml instances.
-     * @param xmlValidation true to enable xml instance validation
-     */
-    public void setXmlValidation(boolean xmlValidation){
-        
-        this.xmlValidation = xmlValidation;
-
-    }
-
-    /**
-     * Get the server.xml <host> attribute's xmlValidation.
-     * @return true if validation is enabled.
-     *
-     */
-    public boolean getXmlValidation(){
-        return xmlValidation;
-    }
-
-    /**
-     * Get the server.xml <host> attribute's xmlNamespaceAware.
-     * @return true if namespace awarenes is enabled.
-     *
-     */
-    public boolean getXmlNamespaceAware(){
-        return xmlNamespaceAware;
-    }
-
-
-    /**
-     * Set the namespace aware feature of the XML parser used when
-     * parsing xml instances.
-     * @param xmlNamespaceAware true to enable namespace awareness
-     */
-    public void setXmlNamespaceAware(boolean xmlNamespaceAware){
-        this.xmlNamespaceAware=xmlNamespaceAware;
-    }    
-    
     /**
      * Host work directory base.
      */
@@ -513,13 +312,7 @@ public class Host
      * @param child Child container to be added
      */
     public void addChild(ServletContextImpl child) {
-
-        if (!(child instanceof ServletContextImpl))
-            throw new IllegalArgumentException
-                (sm.getString("standardHost.notContext"));
-//        super.addChild(child);
-
-        children .put(child.getName(), child);
+        children.put(child.getName(), child);
     }
 
 
@@ -530,18 +323,6 @@ public class Host
     public String[] findAliases() {
 
         return (this.aliases);
-
-    }
-
-
-    /**
-     * Return descriptive information about this Container implementation and
-     * the corresponding version number, in the format
-     * <code>&lt;description&gt;/&lt;version&gt;</code>.
-     */
-    public String getInfo() {
-
-        return (info);
 
     }
 
@@ -589,7 +370,7 @@ public class Host
 
         // Return the mapped Context (if any)
         if (log.isDebugEnabled())
-            log.debug(" Mapped to context '" + context.getPath() + "'");
+            log.debug(" Mapped to context '" + context.getContextPath() + "'");
         return (context);
 
     }
@@ -706,12 +487,6 @@ public class Host
 //                     errorReportValveClass));
 //            }
 //        }
-        if(log.isInfoEnabled()) {
-            if (xmlValidation)
-                log.info( sm.getString("standardHost.validationEnabled"));
-            else
-                log.info( sm.getString("standardHost.validationDisabled"));
-        }
 //        super.start();
 
     }
@@ -797,6 +572,9 @@ public class Host
       
     }
 
+    public Iterator getContexts() {
+        return children.values().iterator();
+    }
 
     public ServletContextImpl findChild(String mapuri) {
         return (ServletContextImpl)children.get(mapuri);

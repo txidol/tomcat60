@@ -18,26 +18,36 @@
 package org.apache.coyote.servlet;
 
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.Servlet;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-//import org.apache.catalina.Globals;
+import org.apache.coyote.servlet.util.RequestUtil;
 
 /**
- * Factory for the creation and caching of Filters and creationg 
- * of Filter Chains.
+ * First filter after the context and servlet are mapped. It will add 
+ * web.xml-defined filters. 
  * 
- * costin: This is another mapping - done in RequestDispatcher.
+ * costin: This is another mapping - done in RequestDispatcher or initial 
+ * mapping.
  * Also: StandardHostValve - sets attribute for error pages,
  *   StandardWrapperValve - mapping per invocation
  *
  * @author Greg Murray
  * @author Remy Maucherat
- * @version $Revision: 1.0
  */
-
-public final class ApplicationFilterFactory {
+public class WebappFilterMapper implements Filter {
 
 
     // -------------------------------------------------------------- Constants
@@ -64,35 +74,35 @@ public final class ApplicationFilterFactory {
     public static final String DISPATCHER_REQUEST_PATH_ATTR = 
         "org.apache.catalina.core.DISPATCHER_REQUEST_PATH";
 
-    private static final SecurityManager securityManager = 
-        System.getSecurityManager();
-
-    private static ApplicationFilterFactory factory = null;;
-
 
     // ----------------------------------------------------------- Constructors
+    ServletContextImpl servletContext;
 
-
-    /*
-     * Prevent instanciation outside of the getInstanceMethod().
-     */
-    private ApplicationFilterFactory() {
+    public WebappFilterMapper() {
     }
 
+    public WebappFilterMapper(ServletContextImpl impl) {
+        servletContext = impl;
+    }
+
+    public void setServletContext(ServletContextImpl sc) {
+        servletContext = sc;
+    }
 
     // --------------------------------------------------------- Public Methods
 
-
-    /**
-     * Return the fqctory instance.
-     */
-    public static ApplicationFilterFactory getInstance() {
-        if (factory == null) {
-            factory = new ApplicationFilterFactory();
-        }
-        return factory;
+    ArrayList filterMaps = new ArrayList();
+    
+    public void addMapping(String filterName, 
+                           String url, 
+                           String servletName, 
+                           String type[]) {
+        FilterMap map = new FilterMap();
+        map.setURLPattern(url);
+        map.setFilterName(filterName);
+        map.setServletName(servletName);
+        filterMaps.add(map);
     }
-
 
     /**
      * Construct and return a FilterChain implementation that will wrap the
@@ -102,8 +112,13 @@ public final class ApplicationFilterFactory {
      * @param request The servlet request we are processing
      * @param servlet The servlet instance to be wrapped
      */
-    public FilterChainImpl createFilterChain
-        (ServletRequest request, ServletConfigImpl wrapper, Servlet servlet) {
+    public FilterChainImpl createFilterChain(ServletRequest request, 
+                                             ServletConfigImpl wrapper, 
+                                             Servlet servlet) {
+
+        // If there is no servlet to execute, return null
+        if (servlet == null)
+            return (null);
 
         // get the dispatcher type
         int dispatcher = -1; 
@@ -122,19 +137,13 @@ public final class ApplicationFilterFactory {
         HttpServletRequest hreq = null;
         if (request instanceof HttpServletRequest) 
             hreq = (HttpServletRequest)request;
-        // If there is no servlet to execute, return null
-        if (servlet == null)
-            return (null);
 
         // Create and initialize a filter chain object
         FilterChainImpl filterChain = null;
-        if ((securityManager == null) && (request instanceof ServletRequestImpl)) {
+        if ((request instanceof ServletRequestImpl)) {
             ServletRequestImpl req = (ServletRequestImpl) request;
             filterChain = (FilterChainImpl) req.getFilterChain();
-            if (filterChain == null) {
-                filterChain = new FilterChainImpl();
-                req.setFilterChain(filterChain);
-            }
+            filterChain.release();
         } else {
             // Security: Do not recycle
             filterChain = new FilterChainImpl();
@@ -142,15 +151,8 @@ public final class ApplicationFilterFactory {
 
         filterChain.setServlet(servlet);
 
-//        filterChain.setSupport
-//            (((ServletWrapper)wrapper).getInstanceSupport());
-
-        // Acquire the filter mappings for this Context
-        ServletContextImpl context = (ServletContextImpl) wrapper.getParent();
-        FilterMap filterMaps[] = context.findFilterMaps();
-
         // If there are no filter mappings, we are done
-        if ((filterMaps == null) || (filterMaps.length == 0))
+        if ((filterMaps.size() == 0))
             return (filterChain);
 
         // Acquire the information we will need to match filter mappings
@@ -158,17 +160,25 @@ public final class ApplicationFilterFactory {
 
         int n = 0;
 
+        // TODO(costin): optimize: separate in 2 lists, one for url-mapped, one for
+        // servlet-name. Maybe even separate list for dispatcher and 
+        // non-dispatcher
+        
+        // TODO(costin): optimize: set the FilterConfig in the FilterMap, to 
+        // avoid second hash lookup
+        
         // Add the relevant path-mapped filters to this filter chain
-        for (int i = 0; i < filterMaps.length; i++) {
-            if (!matchDispatcher(filterMaps[i] ,dispatcher)) {
+        for (int i = 0; i < filterMaps.size(); i++) {
+            FilterMap filterMap = (FilterMap)filterMaps.get(i);
+            if (!matchDispatcher(filterMap ,dispatcher)) {
                 continue;
             }
-            if (!matchFiltersURL(filterMaps[i], requestPath))
+            if (!matchFiltersURL(filterMap, requestPath))
                 continue;
-            FilterConfigImpl filterConfig = (FilterConfigImpl)
-                context.findFilterConfig(filterMaps[i].getFilterName());
+            FilterConfigImpl filterConfig = 
+                servletContext.getFilter(filterMap.getFilterName());
             if (filterConfig == null) {
-                ;       // FIXME - log configuration problem
+                // FIXME - log configuration problem
                 continue;
             }
             filterChain.addFilter(filterConfig);
@@ -176,14 +186,15 @@ public final class ApplicationFilterFactory {
         }
 
         // Add filters that match on servlet name second
-        for (int i = 0; i < filterMaps.length; i++) {
-            if (!matchDispatcher(filterMaps[i] ,dispatcher)) {
+        for (int i = 0; i < filterMaps.size(); i++) {
+            FilterMap filterMap = (FilterMap)filterMaps.get(i);
+            if (!matchDispatcher(filterMap ,dispatcher)) {
                 continue;
             }
-            if (!matchFiltersServlet(filterMaps[i], servletName))
+            if (!matchFiltersServlet(filterMap, servletName))
                 continue;
-            FilterConfigImpl filterConfig = (FilterConfigImpl)
-                context.findFilterConfig(filterMaps[i].getFilterName());
+            FilterConfigImpl filterConfig = 
+                servletContext.getFilter(filterMap.getFilterName());
             if (filterConfig == null) {
                 ;       // FIXME - log configuration problem
                 continue;
@@ -343,5 +354,178 @@ public final class ApplicationFilterFactory {
         return false;
     }
 
+
+    // -------------------- Map elements -----------------------
+    
+    public static class FilterMap implements Serializable {
+
+
+        // ------------------------------------------------------------- Properties
+
+
+        /**
+         * The name of this filter to be executed when this mapping matches
+         * a particular request.
+         */
+        
+        public static final int ERROR = 1;
+        public static final int FORWARD = 2;
+        public static final int FORWARD_ERROR =3;  
+        public static final int INCLUDE = 4;
+        public static final int INCLUDE_ERROR  = 5;
+        public static final int INCLUDE_ERROR_FORWARD  =6;
+        public static final int INCLUDE_FORWARD  = 7;
+        public static final int REQUEST = 8;
+        public static final int REQUEST_ERROR = 9;
+        public static final int REQUEST_ERROR_FORWARD = 10;
+        public static final int REQUEST_ERROR_FORWARD_INCLUDE = 11;
+        public static final int REQUEST_ERROR_INCLUDE = 12;
+        public static final int REQUEST_FORWARD = 13;
+        public static final int REQUEST_INCLUDE = 14;
+        public static final int REQUEST_FORWARD_INCLUDE= 15;
+        
+        // represents nothing having been set. This will be seen 
+        // as equal to a REQUEST
+        private static final int NOT_SET = -1;
+        
+        private int dispatcherMapping=NOT_SET;
+        
+        private String filterName = null;    
+
+        /**
+         * The URL pattern this mapping matches.
+         */
+        private String urlPattern = null;
+
+        /**
+         * The servlet name this mapping matches.
+         */
+        private String servletName = null;
+
+
+
+        public String getFilterName() {
+            return (this.filterName);
+        }
+
+        public void setFilterName(String filterName) {
+            this.filterName = filterName;
+        }
+
+
+        public String getServletName() {
+            return (this.servletName);
+        }
+
+        public void setServletName(String servletName) {
+            this.servletName = servletName;
+        }
+
+
+        public String getURLPattern() {
+            return (this.urlPattern);
+        }
+
+        public void setURLPattern(String urlPattern) {
+            this.urlPattern = RequestUtil.URLDecode(urlPattern);
+        }
+        
+        /**
+         *
+         * This method will be used to set the current state of the FilterMap
+         * representing the state of when filters should be applied:
+         *
+         *        ERROR
+         *        FORWARD
+         *        FORWARD_ERROR
+         *        INCLUDE
+         *        INCLUDE_ERROR
+         *        INCLUDE_ERROR_FORWARD
+         *        REQUEST
+         *        REQUEST_ERROR
+         *        REQUEST_ERROR_INCLUDE
+         *        REQUEST_ERROR_FORWARD_INCLUDE
+         *        REQUEST_INCLUDE
+         *        REQUEST_FORWARD,
+         *        REQUEST_FORWARD_INCLUDE
+         *
+         */
+        public void setDispatcher(String dispatcherString) {
+            String dispatcher = dispatcherString.toUpperCase();
+            
+            if (dispatcher.equals("FORWARD")) {
+
+                // apply FORWARD to the global dispatcherMapping.
+                switch (dispatcherMapping) {
+                    case NOT_SET  :  dispatcherMapping = FORWARD; break;
+                    case ERROR : dispatcherMapping = FORWARD_ERROR; break;
+                    case INCLUDE  :  dispatcherMapping = INCLUDE_FORWARD; break;
+                    case INCLUDE_ERROR  :  dispatcherMapping = INCLUDE_ERROR_FORWARD; break;
+                    case REQUEST : dispatcherMapping = REQUEST_FORWARD; break;
+                    case REQUEST_ERROR : dispatcherMapping = REQUEST_ERROR_FORWARD; break;
+                    case REQUEST_ERROR_INCLUDE : dispatcherMapping = REQUEST_ERROR_FORWARD_INCLUDE; break;
+                    case REQUEST_INCLUDE : dispatcherMapping = REQUEST_FORWARD_INCLUDE; break;
+                }
+            } else if (dispatcher.equals("INCLUDE")) {
+                // apply INCLUDE to the global dispatcherMapping.
+                switch (dispatcherMapping) {
+                    case NOT_SET  :  dispatcherMapping = INCLUDE; break;
+                    case ERROR : dispatcherMapping = INCLUDE_ERROR; break;
+                    case FORWARD  :  dispatcherMapping = INCLUDE_FORWARD; break;
+                    case FORWARD_ERROR  :  dispatcherMapping = INCLUDE_ERROR_FORWARD; break;
+                    case REQUEST : dispatcherMapping = REQUEST_INCLUDE; break;
+                    case REQUEST_ERROR : dispatcherMapping = REQUEST_ERROR_INCLUDE; break;
+                    case REQUEST_ERROR_FORWARD : dispatcherMapping = REQUEST_ERROR_FORWARD_INCLUDE; break;
+                    case REQUEST_FORWARD : dispatcherMapping = REQUEST_FORWARD_INCLUDE; break;
+                }
+            } else if (dispatcher.equals("REQUEST")) {
+                // apply REQUEST to the global dispatcherMapping.
+                switch (dispatcherMapping) {
+                    case NOT_SET  :  dispatcherMapping = REQUEST; break;
+                    case ERROR : dispatcherMapping = REQUEST_ERROR; break;
+                    case FORWARD  :  dispatcherMapping = REQUEST_FORWARD; break;
+                    case FORWARD_ERROR  :  dispatcherMapping = REQUEST_ERROR_FORWARD; break;
+                    case INCLUDE  :  dispatcherMapping = REQUEST_INCLUDE; break;
+                    case INCLUDE_ERROR  :  dispatcherMapping = REQUEST_ERROR_INCLUDE; break;
+                    case INCLUDE_FORWARD : dispatcherMapping = REQUEST_FORWARD_INCLUDE; break;
+                    case INCLUDE_ERROR_FORWARD : dispatcherMapping = REQUEST_ERROR_FORWARD_INCLUDE; break;
+                }
+            }  else if (dispatcher.equals("ERROR")) {
+                // apply ERROR to the global dispatcherMapping.
+                switch (dispatcherMapping) {
+                    case NOT_SET  :  dispatcherMapping = ERROR; break;
+                    case FORWARD  :  dispatcherMapping = FORWARD_ERROR; break;
+                    case INCLUDE  :  dispatcherMapping = INCLUDE_ERROR; break;
+                    case INCLUDE_FORWARD : dispatcherMapping = INCLUDE_ERROR_FORWARD; break;
+                    case REQUEST : dispatcherMapping = REQUEST_ERROR; break;
+                    case REQUEST_INCLUDE : dispatcherMapping = REQUEST_ERROR_INCLUDE; break;
+                    case REQUEST_FORWARD : dispatcherMapping = REQUEST_ERROR_FORWARD; break;
+                    case REQUEST_FORWARD_INCLUDE : dispatcherMapping = REQUEST_ERROR_FORWARD_INCLUDE; break;
+                }
+            }
+        }
+        
+        public int getDispatcherMapping() {
+            // per the SRV.6.2.5 absence of any dispatcher elements is
+            // equivelant to a REQUEST value
+            if (dispatcherMapping == NOT_SET) return REQUEST;
+            else return dispatcherMapping; 
+        }
+
+    }
+
+
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
+
+
+    public void doFilter(ServletRequest request, ServletResponse response, 
+                         FilterChain chain) 
+            throws IOException, ServletException {
+    }
+
+
+    public void destroy() {
+    }
 
 }

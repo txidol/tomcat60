@@ -31,6 +31,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -71,8 +72,7 @@ import org.apache.tomcat.util.res.StringManager;
  * @version $Revision: 375376 $ $Date: 2006-02-06 13:22:14 -0800 (Mon, 06 Feb 2006) $
  */
 
-public class HttpSessionImpl
-    implements HttpSession, Serializable {
+public class HttpSessionImpl  implements HttpSession, Serializable {
 
 
     // ----------------------------------------------------------- Constructors
@@ -83,7 +83,7 @@ public class HttpSessionImpl
      *
      * @param manager The manager with which this Session is associated
      */
-    public HttpSessionImpl(SessionManager manager) {
+    public HttpSessionImpl(WebappSessionManager manager) {
 
         super();
         this.manager = manager;
@@ -203,7 +203,7 @@ public class HttpSessionImpl
     /**
      * The Manager with which this Session is associated.
      */
-    protected transient SessionManager manager = null;
+    protected transient WebappSessionManager manager = null;
 
 
     /**
@@ -368,15 +368,16 @@ public class HttpSessionImpl
 
         // Notify interested application event listeners
         ServletContextImpl context = (ServletContextImpl) manager.getContainer();
-        Object listeners[] = context.getApplicationLifecycleListeners();
-        if (listeners != null) {
+        List listeners = context.getApplicationEventListeners();
+        if (listeners.size() > 0) {
             HttpSessionEvent event =
                 new HttpSessionEvent(getSession());
-            for (int i = 0; i < listeners.length; i++) {
-                if (!(listeners[i] instanceof HttpSessionListener))
+            for (int i = 0; i < listeners.size(); i++) {
+                Object listenerObj = listeners.get(i);
+                if (!(listenerObj instanceof HttpSessionListener))
                     continue;
                 HttpSessionListener listener =
-                    (HttpSessionListener) listeners[i];
+                    (HttpSessionListener) listenerObj;
                 try {
                     fireContainerEvent(context,
                                        "beforeSessionCreated",
@@ -434,7 +435,7 @@ public class HttpSessionImpl
     /**
      * Return the Manager within which this Session is valid.
      */
-    public SessionManager getManager() {
+    public WebappSessionManager getManager() {
 
         return (this.manager);
 
@@ -446,7 +447,7 @@ public class HttpSessionImpl
      *
      * @param manager The new Manager
      */
-    public void setManager(SessionManager manager) {
+    public void setManager(WebappSessionManager manager) {
 
         this.manager = manager;
 
@@ -664,16 +665,17 @@ public class HttpSessionImpl
             // Notify interested application event listeners
             // FIXME - Assumes we call listeners in reverse order
             ServletContextImpl context = (ServletContextImpl) manager.getContainer();
-            Object listeners[] = context.getApplicationLifecycleListeners();
-            if (notify && (listeners != null)) {
+            List listeners = context.getApplicationEventListeners();
+            if (notify && (listeners.size() > 0)) {
                 HttpSessionEvent event =
                     new HttpSessionEvent(getSession());
-                for (int i = 0; i < listeners.length; i++) {
-                    int j = (listeners.length - 1) - i;
-                    if (!(listeners[j] instanceof HttpSessionListener))
+                for (int i = 0; i < listeners.size(); i++) {
+                    Object listenerObj = listeners.get(i);
+                    int j = (listeners.size() - 1) - i;
+                    if (!(listenerObj instanceof HttpSessionListener))
                         continue;
                     HttpSessionListener listener =
-                        (HttpSessionListener) listeners[j];
+                        (HttpSessionListener) listenerObj;
                     try {
                         fireContainerEvent(context,
                                            "beforeSessionDestroyed",
@@ -1280,14 +1282,14 @@ public class HttpSessionImpl
 
         // Notify interested application event listeners
         ServletContextImpl context = (ServletContextImpl) manager.getContainer();
-        Object listeners[] = context.getApplicationEventListeners();
-        if (listeners == null)
+        List listeners = context.getApplicationEventListeners();
+        if (listeners.size() == 0)
             return;
-        for (int i = 0; i < listeners.length; i++) {
-            if (!(listeners[i] instanceof HttpSessionAttributeListener))
+        for (int i = 0; i < listeners.size(); i++) {
+            if (!(listeners.get(i) instanceof HttpSessionAttributeListener))
                 continue;
             HttpSessionAttributeListener listener =
-                (HttpSessionAttributeListener) listeners[i];
+                (HttpSessionAttributeListener) listeners.get(i);
             try {
                 if (unbound != null) {
                     fireContainerEvent(context,
@@ -1605,14 +1607,14 @@ public class HttpSessionImpl
 
         // Notify interested application event listeners
         ServletContextImpl context = (ServletContextImpl) manager.getContainer();
-        Object listeners[] = context.getApplicationEventListeners();
-        if (listeners == null)
+        List listeners = context.getApplicationEventListeners();
+        if (listeners.size() == 0)
             return;
-        for (int i = 0; i < listeners.length; i++) {
-            if (!(listeners[i] instanceof HttpSessionAttributeListener))
+        for (int i = 0; i < listeners.size(); i++) {
+            if (!(listeners.get(i) instanceof HttpSessionAttributeListener))
                 continue;
             HttpSessionAttributeListener listener =
-                (HttpSessionAttributeListener) listeners[i];
+                (HttpSessionAttributeListener) listeners.get(i);
             try {
                 fireContainerEvent(context,
                                    "beforeSessionAttributeRemoved",

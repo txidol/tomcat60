@@ -1307,7 +1307,7 @@ public class ServletResponseImpl
         if (serverPort != urlPort)
             return (false);
 
-        String contextPath = request.getContext().getPath();
+        String contextPath = request.getContext().getContextPath();
         if (contextPath != null) {
             String file = url.getFile();
             if ((file == null) || !file.startsWith(contextPath))

@@ -8,28 +8,49 @@ import org.apache.coyote.ActionCode;
 import org.apache.coyote.Adapter;
 import org.apache.coyote.Request;
 import org.apache.coyote.Response;
+import org.apache.coyote.servlet.util.MappingData;
 import org.apache.coyote.servlet.util.MessageWriter;
 import org.apache.tomcat.util.buf.ByteChunk;
 import org.apache.tomcat.util.buf.MessageBytes;
-import org.apache.tomcat.util.http.mapper.Mapper;
-import org.apache.tomcat.util.http.mapper.MappingData;
 
-/** Main adapter - mapping.
- * TODO: filters
- * TODO: auth
+/** Main adapter - top mapping and adaptation.
+ * 
+ * This handles host and context mapping - the data structures are stored
+ * in this class. 
+ * 
+ * All context-specific mapping is done in the Mapper class, one per
+ * context. Mapper should also handle filters and authentication.
  */
-public class MapperAdapter implements Adapter {
-    private Mapper mapper=new Mapper();
+public class CoyoteAdapter implements Adapter {
+    WebappContextMapper hostMapper = new WebappContextMapper();
+    
     private static org.apache.commons.logging.Log log=
-        org.apache.commons.logging.LogFactory.getLog( MapperAdapter.class );
+        org.apache.commons.logging.LogFactory.getLog( CoyoteAdapter.class );
 
 
-    public MapperAdapter(Mapper mapper2) {
-        mapper = mapper2;
+    public CoyoteAdapter() {
     }
+    
+    public static int REQUEST_MAPPING_NOTE = 4;
 
+    /** Override the default host mapper.
+     *  This allow fine tunning for very large number of domains,
+     *  dynamic domain names, large/deep/atypical context names,
+     *  dynamic context names. 
+     * 
+     * @param hmapper
+     */
+    public void setHostMapper(WebappContextMapper hmapper) {
+        hostMapper = hmapper;
+    }
+    
+    public WebappContextMapper getHostMapper() {
+        return hostMapper;
+    }
+    
     public void service(Request req, final Response res)
             throws Exception {
+        MappingData mapRes = null;
         try {
             
             MessageBytes decodedURI = req.decodedURI();
@@ -59,22 +80,48 @@ public class MapperAdapter implements Adapter {
                 decodedURI.toChars();
             }
 
+            ServletRequestImpl request = (ServletRequestImpl) req.getNote(ADAPTER_NOTES);
+            ServletResponseImpl response = (ServletResponseImpl) res.getNote(ADAPTER_NOTES);
 
+            if (request == null) {
+                // Create objects
+                request = new ServletRequestImpl();
+                request.setCoyoteRequest(req);
+                response = new ServletResponseImpl();
+                response.setRequest(request);
+                response.setCoyoteResponse(res);
+                // Link objects
+                request.setResponse(response);
+
+                // Set as notes
+                req.setNote(ADAPTER_NOTES, request);
+                res.setNote(ADAPTER_NOTES, response);
+            }
             
-            // TODO: per thread data - does it help ? 
-            
-            MappingData mapRes = new MappingData();
-            mapper.map(req.remoteHost(), req.decodedURI(), 
-                       mapRes);
+            mapRes = request.getMappingData(); 
+            if(mapRes == null ) {
+                mapRes = new MappingData();
+                req.setNote(REQUEST_MAPPING_NOTE, mapRes);
+            }
+            hostMapper.mapContext(req.remoteHost(), req.decodedURI(), mapRes);
+            ServletContextImpl ctx = (ServletContextImpl)mapRes.context;
+            if( ctx == null ) {
+                // TODO: 404
+                return;
+            }
+            WebappServletMapper mapper = ctx.getMapper();
+            mapper.map(req.decodedURI(), mapRes);
             
             ServletConfigImpl h=(ServletConfigImpl)mapRes.wrapper;
             if (h != null) {
-                serviceServlet( req, res, h );
+                serviceServlet( req, request, response, h, mapRes );
             }
-            
         } catch( Throwable t ) {
             t.printStackTrace(System.out);
-        } 
+        } finally {
+            if(mapRes != null ) 
+                mapRes.recycle();
+        }
 
         // Final processing
         MessageWriter.getWriter(req, res, 0).flush();
@@ -93,41 +140,18 @@ public class MapperAdapter implements Adapter {
      *  This replaces the valve chain, the path is: 
      *    1. coyote calls mapper -> result Adapter 
      *    2. service is called. Additional filters are set on the wrapper. 
+     * @param mapRes 
      */
-    public void serviceServlet(org.apache.coyote.Request req, 
-                               org.apache.coyote.Response res,
-                               ServletConfigImpl servletConfig) 
+    public void serviceServlet(Request req, ServletRequestImpl request, 
+                               ServletResponseImpl response,
+                               ServletConfigImpl servletConfig, MappingData mapRes) 
         throws IOException {
         
-        ServletRequestImpl request = (ServletRequestImpl) req.getNote(ADAPTER_NOTES);
-        ServletResponseImpl response = (ServletResponseImpl) res.getNote(ADAPTER_NOTES);
-
-        if (request == null) {
-
-            // Create objects
-            request = new ServletRequestImpl();
-            request.setCoyoteRequest(req);
-            response = new ServletResponseImpl();
-            response.setRequest(request);
-            response.setCoyoteResponse(res);
-
-            // Link objects
-            request.setResponse(response);
-
-            // Set as notes
-            req.setNote(ADAPTER_NOTES, request);
-            res.setNote(ADAPTER_NOTES, response);
-
-            // Set query string encoding
-//            req.getParameters().setQueryStringEncoding
-//                (connector.getURIEncoding());
-
-        }
-
         try {
 
             // Parse and set Catalina and configuration specific 
             // request parameters
+            
 //            if ( postParseRequest(req, request, res, response) ) {
 //                // Calling the container
 //                connector.getContainer().getPipeline().getFirst().invoke(request, response);
@@ -139,8 +163,15 @@ public class MapperAdapter implements Adapter {
             
 
             Servlet servlet = servletConfig.allocate();
+            WebappFilterMapper filterMap = servletConfig.getParent().getFilterMapper();
+            FilterChainImpl chain = 
+                filterMap.createFilterChain(request, servletConfig, servlet);
             
-            servlet.service(request, response);
+            if (chain == null) {
+                servlet.service(request, response);
+            } else {
+                chain.doFilter(request, response);
+            }
             
             response.finishResponse();
             req.action( ActionCode.ACTION_POST_REQUEST , null);
@@ -276,4 +307,5 @@ public class MapperAdapter implements Adapter {
         return false;
     }
 
+    // --------------------------------------------------------- Public Methods
 }

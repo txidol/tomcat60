@@ -54,6 +54,8 @@ final class FilterConfigImpl implements FilterConfig, Serializable {
      */
     private ServletContextImpl context = null;
 
+    private Map parameters = new HashMap();
+
     /**
      * The application Filter we are configured for.
      */
@@ -61,17 +63,19 @@ final class FilterConfigImpl implements FilterConfig, Serializable {
 
     private String filterName = null;
 
+    private String filterClass = null;
+
     void setFilterName(String filterName) {
         this.filterName = filterName;
     }
     
-    private Map parameters = new HashMap();
-
     public Map getParameterMap() {
         return (this.parameters);
     }
 
-    private String filterClass = null;
+    public void setParameterMap(Map initParams) {
+        parameters = initParams;
+    }
 
     public String getFilterClass() {
         return (this.filterClass);
@@ -80,8 +84,6 @@ final class FilterConfigImpl implements FilterConfig, Serializable {
     public void setFilterClass(String filterClass) {
         this.filterClass = filterClass;
     }
-
-
 
     // --------------------------------------------------- FilterConfig Methods
 
@@ -117,30 +119,8 @@ final class FilterConfigImpl implements FilterConfig, Serializable {
      * Return the ServletContext of our associated web application.
      */
     public ServletContext getServletContext() {
-
-        return (this.context.getServletContext());
-
+        return context;
     }
-
-
-    /**
-     * Return a String representation of this object.
-     */
-    public String toString() {
-
-        StringBuffer sb = new StringBuffer("ApplicationFilterConfig[");
-        sb.append("name=");
-        sb.append(getFilterName());
-        sb.append(", filterClass=");
-        sb.append(getFilterClass());
-        sb.append("]");
-        return (sb.toString());
-
-    }
-
-
-    // -------------------------------------------------------- Package Methods
-
 
     /**
      * Return the application Filter we are configured for.
@@ -164,7 +144,7 @@ final class FilterConfigImpl implements FilterConfig, Serializable {
         // Identify the class loader we will be using
         String filterClass = getFilterClass();
         ClassLoader classLoader = null;
-        if (filterClass.startsWith("org.apache.catalina."))
+        if (filterClass.startsWith("org.apache.tomcat.servlet."))
             classLoader = this.getClass().getClassLoader();
         else
             classLoader = context.getClassLoader();
@@ -174,6 +154,8 @@ final class FilterConfigImpl implements FilterConfig, Serializable {
 
         // Instantiate a new instance of this filter and return it
         Class clazz = classLoader.loadClass(filterClass);
+        
+        
         this.filter = (Filter) clazz.newInstance();
         if (context instanceof ServletContextImpl &&
             ((ServletContextImpl)context).getSwallowOutput()) {

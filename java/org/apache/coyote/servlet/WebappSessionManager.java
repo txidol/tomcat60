@@ -54,8 +54,8 @@ import org.apache.tomcat.util.res.StringManager;
  * @version $Revision: 303871 $ $Date: 2005-04-19 05:15:51 -0700 (Tue, 19 Apr 2005) $
  */
 
-public class SessionManager {
-    protected Log log = LogFactory.getLog(SessionManager.class);
+public class WebappSessionManager {
+    protected Log log = LogFactory.getLog(WebappSessionManager.class);
 
     // ----------------------------------------------------- Instance Variables
 

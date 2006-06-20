@@ -59,44 +59,7 @@ import org.apache.tomcat.util.res.StringManager;
  * @version $Revision: 303947 $ $Date: 2005-06-08 22:50:26 -0700 (Wed, 08 Jun 2005) $
  */
 
-final class RequestDispatcherImpl
-    implements RequestDispatcher {
-
-
-    protected class PrivilegedForward implements PrivilegedExceptionAction {
-        private ServletRequest request;
-        private ServletResponse response;
-
-        PrivilegedForward(ServletRequest request, ServletResponse response)
-        {
-            this.request = request;
-            this.response = response;
-        }
-
-        public Object run() throws java.lang.Exception {
-            doForward(request,response);
-            return null;
-        }
-    }
-
-    protected class PrivilegedInclude implements PrivilegedExceptionAction {
-        private ServletRequest request;
-        private ServletResponse response;
-
-        PrivilegedInclude(ServletRequest request, ServletResponse response)
-        {
-            this.request = request;
-            this.response = response;
-        }
-
-        public Object run() throws ServletException, IOException {
-            doInclude(request,response);
-            return null;
-        }
-    }
-
-    // ----------------------------------------------------------- Constructors
-
+final class RequestDispatcherImpl implements RequestDispatcher {
 
     /**
      * Construct a new instance of this class, configured according to the
@@ -375,25 +338,6 @@ final class RequestDispatcherImpl
     public void forward(ServletRequest request, ServletResponse response)
         throws ServletException, IOException
     {
-        if (System.getSecurityManager() != null) {
-            try {
-                PrivilegedForward dp = new PrivilegedForward(request,response);
-                AccessController.doPrivileged(dp);
-            } catch (PrivilegedActionException pe) {
-                Exception e = pe.getException();
-                if (e instanceof ServletException)
-                    throw (ServletException) e;
-                throw (IOException) e;
-            }
-        } else {
-            doForward(request,response);
-        }
-    }
-
-    private void doForward(ServletRequest request, ServletResponse response)
-        throws ServletException, IOException
-    {
-        
         // Reset any output that has been buffered, but keep headers/cookies
         if (response.isCommitted()) {
             if ( log.isDebugEnabled() )
@@ -459,7 +403,7 @@ final class RequestDispatcherImpl
 
             ServletRequestWrapperImpl wrequest =
                 (ServletRequestWrapperImpl) wrapRequest();
-            String contextPath = context.getPath();
+            String contextPath = context.getContextPath();
 
             if (hrequest.getAttribute(FORWARD_REQUEST_URI_ATTR) == null) {
                 wrequest.setAttribute(FORWARD_REQUEST_URI_ATTR,
@@ -539,15 +483,15 @@ final class RequestDispatcherImpl
         throws IOException, ServletException {
                 
         Integer disInt = (Integer) request.getAttribute
-            (ApplicationFilterFactory.DISPATCHER_TYPE_ATTR);
+            (WebappFilterMapper.DISPATCHER_TYPE_ATTR);
         if (disInt != null) {
-            if (disInt.intValue() != ApplicationFilterFactory.ERROR) {
+            if (disInt.intValue() != WebappFilterMapper.ERROR) {
                 outerRequest.setAttribute
-                    (ApplicationFilterFactory.DISPATCHER_REQUEST_PATH_ATTR,
+                    (WebappFilterMapper.DISPATCHER_REQUEST_PATH_ATTR,
                      origServletPath);
                 outerRequest.setAttribute
-                    (ApplicationFilterFactory.DISPATCHER_TYPE_ATTR,
-                     new Integer(ApplicationFilterFactory.FORWARD));
+                    (WebappFilterMapper.DISPATCHER_TYPE_ATTR,
+                     new Integer(WebappFilterMapper.FORWARD));
                 invoke(outerRequest, response);
             } else {
                 invoke(outerRequest, response);
@@ -572,25 +516,7 @@ final class RequestDispatcherImpl
     public void include(ServletRequest request, ServletResponse response)
         throws ServletException, IOException
     {
-        if (System.getSecurityManager() != null) {
-            try {
-                PrivilegedInclude dp = new PrivilegedInclude(request,response);
-                AccessController.doPrivileged(dp);
-            } catch (PrivilegedActionException pe) {
-                Exception e = pe.getException();
 
-                if (e instanceof ServletException)
-                    throw (ServletException) e;
-                throw (IOException) e;
-            }
-        } else {
-            doInclude(request,response);
-        }
-    }
-
-    private void doInclude(ServletRequest request, ServletResponse response)
-        throws ServletException, IOException
-    {
         // Set up to handle the specified request and response
         setup(request, response, true);
 
@@ -604,9 +530,9 @@ final class RequestDispatcherImpl
 
             if ( log.isDebugEnabled() )
                 log.debug(" Non-HTTP Include");
-            request.setAttribute(ApplicationFilterFactory.DISPATCHER_TYPE_ATTR,
-                                             new Integer(ApplicationFilterFactory.INCLUDE));
-            request.setAttribute(ApplicationFilterFactory.DISPATCHER_REQUEST_PATH_ATTR, origServletPath);
+            request.setAttribute(WebappFilterMapper.DISPATCHER_TYPE_ATTR,
+                                             new Integer(WebappFilterMapper.INCLUDE));
+            request.setAttribute(WebappFilterMapper.DISPATCHER_REQUEST_PATH_ATTR, origServletPath);
             invoke(request, outerResponse);
         }
 
@@ -621,9 +547,9 @@ final class RequestDispatcherImpl
             wrequest.setAttribute(NAMED_DISPATCHER_ATTR, name);
             if (servletPath != null)
                 wrequest.setServletPath(servletPath);
-            wrequest.setAttribute(ApplicationFilterFactory.DISPATCHER_TYPE_ATTR,
-                                             new Integer(ApplicationFilterFactory.INCLUDE));
-            wrequest.setAttribute(ApplicationFilterFactory.DISPATCHER_REQUEST_PATH_ATTR, origServletPath);
+            wrequest.setAttribute(WebappFilterMapper.DISPATCHER_TYPE_ATTR,
+                                             new Integer(WebappFilterMapper.INCLUDE));
+            wrequest.setAttribute(WebappFilterMapper.DISPATCHER_REQUEST_PATH_ATTR, origServletPath);
             invoke(outerRequest, outerResponse);
 
             wrequest.recycle();
@@ -637,7 +563,7 @@ final class RequestDispatcherImpl
 
             ServletRequestWrapperImpl wrequest =
                 (ServletRequestWrapperImpl) wrapRequest();
-            String contextPath = context.getPath();
+            String contextPath = context.getContextPath();
             if (requestURI != null)
                 wrequest.setAttribute(INCLUDE_REQUEST_URI_ATTR,
                                       requestURI);
@@ -656,9 +582,9 @@ final class RequestDispatcherImpl
                 wrequest.setQueryParams(queryString);
             }
             
-            wrequest.setAttribute(ApplicationFilterFactory.DISPATCHER_TYPE_ATTR,
-                                             new Integer(ApplicationFilterFactory.INCLUDE));
-            wrequest.setAttribute(ApplicationFilterFactory.DISPATCHER_REQUEST_PATH_ATTR, origServletPath);
+            wrequest.setAttribute(WebappFilterMapper.DISPATCHER_TYPE_ATTR,
+                                             new Integer(WebappFilterMapper.INCLUDE));
+            wrequest.setAttribute(WebappFilterMapper.DISPATCHER_REQUEST_PATH_ATTR, origServletPath);
             invoke(outerRequest, outerResponse);
 
             wrequest.recycle();
@@ -743,7 +669,8 @@ final class RequestDispatcherImpl
         }
                 
         // Get the FilterChain Here
-        ApplicationFilterFactory factory = ApplicationFilterFactory.getInstance();
+        WebappFilterMapper factory = 
+            ((ServletContextImpl)wrapper.getServletContext()).getFilterMapper();
         FilterChainImpl filterChain = factory.createFilterChain(request,
                                                                 wrapper,servlet);
         // Call the service() method for the allocated servlet instance
@@ -985,7 +912,7 @@ final class RequestDispatcherImpl
                     // Forward
                     contextPath = houterRequest.getContextPath();
                 }
-                crossContext = !(context.getPath().equals(contextPath));
+                crossContext = !(context.getContextPath().equals(contextPath));
             }
             wrapper = new ServletRequestWrapperImpl
                 (hcurrent, context, crossContext);
