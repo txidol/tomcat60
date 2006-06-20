@@ -63,7 +63,7 @@ public class SimpleEndpoint {
     protected int serverTimeout = TIMEOUT;
 
     protected InetAddress inet;
-    protected int port;
+    protected int port = 8080;
 
     protected ServerSocket serverSocket;
 

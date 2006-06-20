@@ -76,31 +76,16 @@ public class Repository {
     public Repository() {
     }
 
-//    public Repository(Loader loader) {
-//        if( loader== null ) throw new NullPointerException();
-//        this.loader=loader;
-//    }
-
-//    public Loader getLoader() {
-//        return loader;
-//    }
-    
     public void addModule(  Module mod ) {
         mod.setRepository( this );
 
         grpModules.addElement(mod);
-//        if( loader.listener!=null ) {
-//            loader.listener.moduleAdd(mod);
-//        }
         
         if( parentClassLoader != null ) 
             mod.setParentClassLoader( parentClassLoader );
 
         if(! mod.isStarted()) {
             mod.start();
-            //log("started " + mod);
-        } else {
-            //log("already started " + mod);
         }
         
         try {
@@ -114,7 +99,6 @@ public class Repository {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
     }
     
     public void newModule( String path ) {
