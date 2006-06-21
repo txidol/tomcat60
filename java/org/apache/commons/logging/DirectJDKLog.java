@@ -62,11 +62,8 @@ class DirectJDKLog implements Log {
                 }
             } catch( Throwable t ) {
                 // maybe it wasn't included - the ugly default will be used.
-                t.printStackTrace();
             }
             
-        } else {
-            System.out.println(System.getProperties());
         }
     }
     
