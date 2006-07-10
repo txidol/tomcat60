@@ -42,32 +42,19 @@ import org.apache.tomcat.util.res.StringManager;
  * @version $Revision: 303523 $ $Date: 2004-11-22 08:35:18 -0800 (Mon, 22 Nov 2004) $
  */
 
-final class FilterChainImpl implements FilterChain {
+public final class FilterChainImpl implements FilterChain {
 
-    public static final int INCREMENT = 10;
+    public static final int INCREMENT = 8;
 
-
-    // ----------------------------------------------------------- Constructors
-
-
-    /**
-     * Construct a new chain instance with no defined filters.
-     */
     public FilterChainImpl() {
-
         super();
-
     }
-
-
-    // ----------------------------------------------------- Instance Variables
-
 
     /**
      * Filters.
      */
     private FilterConfigImpl[] filters = 
-        new FilterConfigImpl[0];
+        new FilterConfigImpl[8];
 
 
     /**
@@ -89,35 +76,15 @@ final class FilterChainImpl implements FilterChain {
     private Servlet servlet = null;
 
 
+    private ServletConfigImpl wrapper;
+
+
     /**
      * The string manager for our package.
      */
     private static final StringManager sm =
       StringManager.getManager("org.apache.coyote.servlet");
 
-
-    /**
-     * The InstanceSupport instance associated with our Wrapper (used to
-     * send "before filter" and "after filter" events.
-     */
-//    private InstanceSupport support = null;
-
-    
-    /**
-     * Static class array used when the SecurityManager is turned on and 
-     * <code>doFilter</code is invoked.
-     */
-    private static Class[] classType = new Class[]{ServletRequest.class, 
-                                                   ServletResponse.class,
-                                                   FilterChain.class};
-                                                   
-    /**
-     * Static class array used when the SecurityManager is turned on and 
-     * <code>service</code is invoked.
-     */                                                 
-    private static Class[] classTypeUsedInService = new Class[]{
-                                                         ServletRequest.class,
-                                                         ServletResponse.class};
 
     // ---------------------------------------------------- FilterChain Methods
 
@@ -184,7 +151,7 @@ final class FilterChainImpl implements FilterChain {
      *
      * @param filterConfig The FilterConfig for the servlet to be executed
      */
-    void addFilter(FilterConfigImpl filterConfig) {
+    public void addFilter(FilterConfigImpl filterConfig) {
         if (n == filters.length) {
             FilterConfigImpl[] newFilters =
                 new FilterConfigImpl[n + INCREMENT];
@@ -207,13 +174,32 @@ final class FilterChainImpl implements FilterChain {
 
     /**
      * Set the servlet that will be executed at the end of this chain.
-     *
-     * @param servlet The Wrapper for the servlet to be executed
+     * Set by the mapper filter 
      */
-    public void setServlet(Servlet servlet) {
-
+    public void setServlet(ServletConfigImpl wrapper, Servlet servlet) {
+        this.wrapper = wrapper;
         this.servlet = servlet;
-
     }
 
+    // ------ Getters for information ------------ 
+    
+    public int getSize() {
+        return n;
+    }
+    
+    public FilterConfigImpl getFilter(int i) {
+        return filters[i];
+    }
+    
+    public Servlet getServlet() {
+        return servlet;
+    }
+    
+    public ServletConfigImpl getServletConfig() {
+        return wrapper;
+    }
+    
+    public int getPos() {
+        return pos;
+    }
 }

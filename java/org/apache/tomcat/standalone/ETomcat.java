@@ -4,6 +4,7 @@ package org.apache.tomcat.standalone;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Hashtable;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -21,35 +22,26 @@ import org.apache.catalina.core.StandardService;
 import org.apache.catalina.core.StandardWrapper;
 import org.apache.catalina.deploy.LoginConfig;
 import org.apache.catalina.session.StandardManager;
+import org.apache.tomcat.util.IntrospectionUtils;
 
 /**
  * Minimal tomcat starter for embedding. 
  * 
  * Tomcat supports multiple styles of configuration. 
  * 
- * 1. Classical server.xml, web.xml - see the Tomcat superclass.
- * 2. Minimal tomcat, programatically configured, using regular webapps and web.xml
- * 3. For apps that only need basic servlets, or have their own deployment mechanism -
- *  you can start tomcat without using web.xml
- *  
- *  Before people start screaming 'violation of the spec' - please read again the
- *  spec, web.xml is a mechanism for _deployment_. If you ship or deploy a webapp, it
- *  must have web.xml and all the war format. However the spec doesn't require the
- *  container to store the files in the same format or use the web.xml file - they
- *  added a lot of pain to the spec to make sure files could be stored in a database
- *  for example. 
- *  
- *  In particular, storing the web.xml in a pre-parsed form, like a .ser file or 
- *  a generated java class is (IMO) perfectly fine. One particular case of this is 
- *  a hand-generated configurator - which is a good fit for apps that want to 
- *  provide a HTTP interface and use servlets, but don't need all dynamic deployment
- *  and reconfiguration.
- *  
- *  In fact - if you don't use jsps or use precompiled jsps, you can leave most of the 
- *  xml parsing overhead out of your app, and have a more minimal http server.
- * 
- * This is provided as a base class and as an example - you can extend it, or just 
- * cut&paste or reuse methods.
+ * 1. Classical server.xml-based. 
+ *  Use org.apache.catalina.startup.Bootstrap as main class 
+ * 2. No server.xml, deploy hosts using HostConfig
+ *  Args: -hostbase BASE_HOST_PATH   
+ * 3. No server.xml, load individual webapps using ContextConfig
+ *  Args: -ctxbase BASE_WEBAPP_PATH  
+ * 4. Single webapp, load individual servlets from current classpath ( no
+ *   web.xml or other configuration ) for specific cases. This assumes 
+ *   web.xml has been translated to method calls or args. Use method calls 
+ *   to do this.
+ *        
+ * This is provided as a base class and as an example - you can extend it, or 
+ * just cut&paste or reuse methods.
  * 
  * @author Costin Manolache
  */
@@ -58,32 +50,13 @@ public class ETomcat {
     protected StandardServer server;
     protected StandardService service;
     protected StandardEngine eng;
-    protected StandardHost host;
-    protected StandardContext ctx;
 
-    /** Example main. You should extend ETomcat and call start() your own way.
+    public StandardEngine getEngine() {
+        return eng;
+    }
+    
+    /** First call - need to initialize tomcat objects.
      */
-    public static void main( String args[] ) {
-        try {
-            ETomcat etomcat = new ETomcat();
-            
-            etomcat.initServer(null);
-            etomcat.initConnector(8000);
-            etomcat.initHost("localhost");
-            etomcat.initWebapp("/", ".");
-            etomcat.initWebappDefaults();
-            
-            etomcat.start();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void start() throws Exception {
-        server.initialize();
-        server.start();
-    }
-    
     public StandardServer initServer(String baseDir) {
         initHome(baseDir);
         System.setProperty("catalina.useNaming", "false");
@@ -91,12 +64,14 @@ public class ETomcat {
         server = new StandardServer();
         server.setPort( -1 );
         
-        //ServerLifecycleListener jmxLoader = new ServerLifecycleListener();
-        //server.addLifecycleListener(jmxLoader);
-        
         service = new StandardService();
         server.addService( service );
         return server;
+    }
+
+    public void start() throws Exception {
+        server.initialize();
+        server.start();
     }
 
     /** Add a default http connector.
@@ -115,24 +90,6 @@ public class ETomcat {
         service.addConnector( connector );
     }
     
-    /** Create a host. First host will be the default.
-     */
-    public StandardHost initHost(String hostname) {
-        if(eng == null ) {
-            eng = new StandardEngine();
-            eng.setName( "default" );
-            eng.setDefaultHost(hostname);
-            service.setContainer(eng);
-        }
-
-        
-        host = new StandardHost();
-        host.setName(hostname);
-
-        eng.addChild( host );
-        return host;
-    }
-
     /** Initialize a webapp.
      * 
      * You can customize the return value to support different web.xml features:
@@ -150,8 +107,10 @@ public class ETomcat {
      * ctx.addMimeMapping("ext", "type");
      *  
      */
-    public StandardContext initWebapp(String path, String dir) {
-        ctx = new StandardContext();
+    public StandardContext initWebappSimple(StandardHost host, 
+                                            String path, 
+                                            String dir) {
+        StandardContext ctx = new StandardContext();
         ctx.setPath( path );
         ctx.setDocBase(dir);
 
@@ -161,24 +120,18 @@ public class ETomcat {
         return ctx;
     }
     
-    public void addWebapp(StandardContext ctx) {
-        this.ctx = ctx;
-        
-        ctx.addLifecycleListener(new FixContextListener());
-
-        host.addChild(ctx);
-        
-    }
-
-    public void initWebappDefaults() {
+    /** Init default servlets for the context. 
+     */
+    public void initWebappDefaults(StandardContext ctx) {
         // Default servlet 
         StandardWrapper defaultServletW = 
-            initServlet("default", "org.apache.catalina.servlets.DefaultServlet");
+            initServlet(ctx, "default", 
+                    "org.apache.catalina.servlets.DefaultServlet");
         defaultServletW.addInitParameter("listings", "true");
 
-        initServlet("invoker", "org.apache.catalina.servlets.InvokerServlet");
+        initServlet(ctx, "invoker", "org.apache.catalina.servlets.InvokerServlet");
 
-        initServlet("jsp", "org.apache.tomcat.servlets.jsp.JspProxyServlet");
+        initServlet(ctx, "jsp", "org.apache.tomcat.servlets.jsp.JspProxyServlet");
         
         ctx.addServletMapping("/", "default");
         ctx.addServletMapping("*.jsp", "jsp");
@@ -204,7 +157,9 @@ public class ETomcat {
      * 
      *    wrapper.addInitParameter("name", "value");
      */
-    public StandardWrapper initServlet(String servletName, String servletClass) {
+    public StandardWrapper initServlet(StandardContext ctx, 
+                                       String servletName, 
+                                       String servletClass) {
         // will do class for name and set init params
         StandardWrapper sw = (StandardWrapper)ctx.createWrapper();
         sw.setServletClass(servletClass);
@@ -215,9 +170,11 @@ public class ETomcat {
     }
 
     /** Use an existing servlet, no class.forName or initialization will be 
-     * performed
+     *  performed
      */
-    public StandardWrapper initServlet(String servletName, Servlet servlet) {
+    public StandardWrapper initServlet(StandardContext ctx,
+                                       String servletName, 
+                                       Servlet servlet) {
         // will do class for name and set init params
         StandardWrapper sw = new ExistingStandardWrapper(servlet);
         sw.setName(servletName);
@@ -225,7 +182,80 @@ public class ETomcat {
         
         return sw;
     }
+    
+    /** Create a host. First host will be the default.
+     */
+    public StandardHost initHostSimple(String hostname) {
+        if(eng == null ) {
+            eng = new StandardEngine();
+            eng.setName( "default" );
+            eng.setDefaultHost(hostname);
+            service.setContainer(eng);
+        }
 
+        
+        StandardHost host = new StandardHost();
+        host.setName(hostname);
+
+        eng.addChild( host );
+        return host;
+    }
+
+
+    /** Init a host, using HostConfig. All webapps under webappsBase will be 
+     * loaded
+     */
+    public StandardHost initHost(String hostName, 
+                                 String webappsBase) 
+        throws ServletException
+    {
+        StandardHost host = new StandardHost();
+        host.setName(hostName);
+        
+        
+        //HostConfig hconfig = new HostConfig();
+        //host.addLifecycleListener( hconfig );
+        try {
+            Class c = Class.forName("org.apache.catalina.startup.HostConfig");
+            LifecycleListener hconfig = (LifecycleListener) c.newInstance();
+            host.addLifecycleListener(hconfig);
+        } catch(Throwable t) {
+            throw new ServletException(t);
+        }
+
+        host.setAppBase(webappsBase);
+
+        getEngine().addChild(host);
+        return host;
+    }
+
+    /** Init a webapp, using ContextConfig.
+     */
+    public StandardContext initWebapp(StandardHost host, 
+                                      String url, String path) 
+        throws ServletException
+    {
+        StandardContext ctx = new StandardContext();
+        ctx.setPath( url );
+        ctx.setDocBase(path);
+
+        // web.xml reader
+        try {
+            Class c = Class.forName("org.apache.catalina.startup.ContextConfig");
+            LifecycleListener hconfig = (LifecycleListener) c.newInstance();
+            ctx.addLifecycleListener(hconfig);
+        } catch(Throwable t) {
+            throw new ServletException(t);
+        }
+        //  ContextConfig ctxCfg = new ContextConfig();
+        //  ctx.addLifecycleListener( ctxCfg );
+        
+        host.addChild(ctx);
+        return ctx;
+    }
+
+    // ---------- Helper methods and classes -------------------
+    
     /** Init expected tomcat env. This is used as a base for the work directory.
      * TODO: disable work dir if not needed ( no jsp, etc ).
      * 
@@ -299,4 +329,41 @@ public class ETomcat {
             return false;       
         }
     }
+
+    // ---------------- Command line processing -----------------------------
+
+    
+    StandardHost currentHost;
+    StandardContext currentContext;
+    
+    public void setHost(String hostname) {
+        currentHost = initHostSimple(hostname); 
+    }
+    
+    
+    /** Example main. You should extend ETomcat and call start() your own way.
+     */
+    public static void main( String args[] ) {
+        try {
+            ETomcat etomcat = new ETomcat();
+            etomcat.initServer(null);
+            
+            IntrospectionUtils.processArgs(etomcat, args, 
+                    new String[] {}, null, new Hashtable());
+
+            etomcat.initConnector(8000);
+            
+            // 
+            StandardHost host = etomcat.initHostSimple("localhost");
+            StandardContext ctx = etomcat.initWebappSimple(host, "/", ".");
+            // 
+            etomcat.initWebappDefaults(ctx);
+            
+            etomcat.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+
 }

@@ -23,7 +23,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -46,6 +45,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.util.ServerInfo;
+import org.apache.tomcat.servlets.util.URLEncoder;
 import org.apache.tomcat.util.res.StringManager;
 
 /**
@@ -60,39 +60,12 @@ public class DefaultServlet  extends HttpServlet {
 
 
     // ----------------------------------------------------- Instance Variables
-    /**
-     * HTTP date format.
-     */
-    protected static final SimpleDateFormat format =
-        new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.US);
-
+    
 
     /**
      * Should we generate directory listings?
      */
     protected boolean listings = true;
-
-
-    /**
-     * Read only flag. By default, it's set to true.
-     */
-    protected boolean readOnly = true;
-
-
-    /**
-     * The input buffer size to use when serving resources.
-     */
-    protected int input = 2048;
-
-    /**
-     * The output buffer size to use when serving resources.
-     */
-    protected int output = 2048;
-
-    /**
-     * Size of file transfer buffer in bytes.
-     */
-    protected static final int BUFFER_SIZE = 4096;
 
     /**
      * Array containing the safe characters set.
@@ -104,17 +77,31 @@ public class DefaultServlet  extends HttpServlet {
      */
     protected String readmeFile = null;
 
+    // TODO: find a better default
+    /**
+     * The input buffer size to use when serving resources.
+     */
+    protected int input = 2048;
+
+    /**
+     * The output buffer size to use when serving resources.
+     */
+    protected int output = 2048;
+
     /**
      * File encoding to be used when reading static files. If none is specified
      * the platform default is used.
      */
     protected String fileEncoding = null;
+
+    ThreadLocal formatTL = new ThreadLocal();
         
     /**
      * Full range marker.
      */
     protected static ArrayList FULL = new ArrayList();
-    
+
+    // Context base dir
     protected File basePath;
     protected String basePathName;
     
@@ -185,24 +172,14 @@ public class DefaultServlet  extends HttpServlet {
             ;
         }
         try {
-            value = getServletConfig().getInitParameter("readonly");
-            if (value != null)
-                readOnly = (new Boolean(value)).booleanValue();
-        } catch (Throwable t) {
-            ;
-        }
-        try {
             value = getServletConfig().getInitParameter("output");
             output = Integer.parseInt(value);
         } catch (Throwable t) {
             ;
         }
-        try {
-            value = getServletConfig().getInitParameter("fileEncoding");
-            fileEncoding = value;
-        } catch (Throwable t) {
-            ;
-        }
+        fileEncoding = getServletConfig().getInitParameter("fileEncoding");
+        
+        readmeFile = getServletConfig().getInitParameter("readmeFile");
 
         
         // Sanity check on the specified buffer sizes
@@ -227,7 +204,8 @@ public class DefaultServlet  extends HttpServlet {
 
     
     /**
-     * Return the relative path associated with this servlet.
+     * Return the relative path associated with this servlet. 
+     * Multiple sources are used - include attribute, servlet path, etc
      *
      * @param request The servlet request we are processing
      */
@@ -260,19 +238,8 @@ public class DefaultServlet  extends HttpServlet {
             result = "/";
         }
         return (result);
-
     }
 
-
-    /**
-     * Process a GET request for the specified resource.
-     *
-     * @param request The servlet request we are processing
-     * @param response The servlet response we are creating
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet-specified error occurs
-     */
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
         throws IOException, ServletException {
@@ -283,15 +250,6 @@ public class DefaultServlet  extends HttpServlet {
     }
 
 
-    /**
-     * Process a HEAD request for the specified resource.
-     *
-     * @param request The servlet request we are processing
-     * @param response The servlet response we are creating
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet-specified error occurs
-     */
     protected void doHead(HttpServletRequest request,
                           HttpServletResponse response)
         throws IOException, ServletException {
@@ -302,15 +260,6 @@ public class DefaultServlet  extends HttpServlet {
     }
 
 
-    /**
-     * Process a POST request for the specified resource.
-     *
-     * @param request The servlet request we are processing
-     * @param response The servlet response we are creating
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet-specified error occurs
-     */
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response)
         throws IOException, ServletException {
@@ -318,189 +267,6 @@ public class DefaultServlet  extends HttpServlet {
     }
 
 
-    /**
-     * Process a POST request for the specified resource.
-     *
-     * @param req The servlet request we are processing
-     * @param resp The servlet response we are creating
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet-specified error occurs
-     */
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp)
-        throws ServletException, IOException {
-
-        if (readOnly) {
-            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
-            return;
-        }
-
-        String path = getRelativePath(req);
-
-        if (path.indexOf("..") >= 0) {
-            // not supported, too dangerous
-            // what else to escape ?
-            resp.setStatus(404);
-            return;
-        }
-
-        File resFile = new File(basePath, path);
-        boolean exists = resFile.exists();
-        
-
-        // extra check
-        if (!resFile.getCanonicalPath().startsWith(basePathName)) {
-            //log.info("File outside basedir " + basePathS + " " + f);
-            resp.setStatus(404);
-            return;
-        }
-
-
-        boolean result = true;
-
-        // Temp. content file used to support partial PUT
-        File contentFile = null;
-
-        Range range = parseContentRange(req, resp);
-
-        InputStream resourceInputStream = null;
-
-        // Append data specified in ranges to existing content for this
-        // resource - create a temp. file on the local filesystem to
-        // perform this operation
-        // Assume just one range is specified for now
-        if (range != null) {
-            //contentFile = executePartialPut(req, range, path);
-            //resourceInputStream = new FileInputStream(contentFile);
-            resp.sendError(HttpServletResponse.SC_NOT_IMPLEMENTED);
-            return;
-        } else {
-            resourceInputStream = req.getInputStream();
-        }
-
-        try {
-            // will override 
-            FileOutputStream fos = new FileOutputStream(resFile);
-            copy(resourceInputStream, fos);
-        } catch(IOException e) {
-            result = false;
-        }
-
-        if (result) {
-            if (exists) {
-                resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            } else {
-                resp.setStatus(HttpServletResponse.SC_CREATED);
-            }
-        } else {
-            resp.sendError(HttpServletResponse.SC_CONFLICT);
-        }
-
-    }
-
-
-    /**
-     * Handle a partial PUT.  New content specified in request is appended to
-     * existing content in oldRevisionContent (if present). This code does
-     * not support simultaneous partial updates to the same resource.
-     */
-//    protected File executePartialPut(HttpServletRequest req, Range range,
-//                                     String path)
-//        throws IOException {
-//
-//        // Append data specified in ranges to existing content for this
-//        // resource - create a temp. file on the local filesystem to
-//        // perform this operation
-//        File tempDir = (File) getServletContext().getAttribute
-//            ("javax.servlet.context.tempdir");
-//        // Convert all '/' characters to '.' in resourcePath
-//        String convertedResourcePath = path.replace('/', '.');
-//        File contentFile = new File(tempDir, convertedResourcePath);
-//        if (contentFile.createNewFile()) {
-//            // Clean up contentFile when Tomcat is terminated
-//            contentFile.deleteOnExit();
-//        }
-//
-//        RandomAccessFile randAccessContentFile =
-//            new RandomAccessFile(contentFile, "rw");
-//
-//        Resource oldResource = null;
-//        try {
-//            Object obj = resources.lookup(path);
-//            if (obj instanceof Resource)
-//                oldResource = (Resource) obj;
-//        } catch (NamingException e) {
-//        }
-//
-//        // Copy data in oldRevisionContent to contentFile
-//        if (oldResource != null) {
-//            BufferedInputStream bufOldRevStream =
-//                new BufferedInputStream(oldResource.streamContent(),
-//                                        BUFFER_SIZE);
-//
-//            int numBytesRead;
-//            byte[] copyBuffer = new byte[BUFFER_SIZE];
-//            while ((numBytesRead = bufOldRevStream.read(copyBuffer)) != -1) {
-//                randAccessContentFile.write(copyBuffer, 0, numBytesRead);
-//            }
-//
-//            bufOldRevStream.close();
-//        }
-//
-//        randAccessContentFile.setLength(range.length);
-//
-//        // Append data in request input stream to contentFile
-//        randAccessContentFile.seek(range.start);
-//        int numBytesRead;
-//        byte[] transferBuffer = new byte[BUFFER_SIZE];
-//        BufferedInputStream requestBufInStream =
-//            new BufferedInputStream(req.getInputStream(), BUFFER_SIZE);
-//        while ((numBytesRead = requestBufInStream.read(transferBuffer)) != -1) {
-//            randAccessContentFile.write(transferBuffer, 0, numBytesRead);
-//        }
-//        randAccessContentFile.close();
-//        requestBufInStream.close();
-//
-//        return contentFile;
-//
-//    }
-
-
-    /**
-     * Process a POST request for the specified resource.
-     *
-     * @param req The servlet request we are processing
-     * @param resp The servlet response we are creating
-     *
-     * @exception IOException if an input/output error occurs
-     * @exception ServletException if a servlet-specified error occurs
-     */
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
-        throws ServletException, IOException {
-
-        if (readOnly) {
-            resp.sendError(HttpServletResponse.SC_FORBIDDEN);
-            return;
-        }
-
-        String path = getRelativePath(req);
-
-        File resFile = new File(basePath, path);
-
-        boolean exists = resFile.exists();
-
-        if (exists) {
-            boolean result = resFile.delete();
-            if (result) {
-                resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
-            } else {
-                resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
-            }
-        } else {
-            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
-        }
-
-    }
 
 
     /**
@@ -533,15 +299,8 @@ public class DefaultServlet  extends HttpServlet {
      * @param resourceAttributes The resource information
      */
     protected String getETag(File resourceAttributes) {
-        String result = null;
-//        if ((result = resourceAttributes.getETag(true)) != null) {
-//            return result;
-//        } else if ((result = resourceAttributes.getETag()) != null) {
-//            return result;
-//        } else {
-            return "W/\"" + resourceAttributes.length() + "-"
+        return "W/\"" + resourceAttributes.length() + "-"
                 + resourceAttributes.lastModified() + "\"";
-//        }
     }
 
 
@@ -772,13 +531,15 @@ public class DefaultServlet  extends HttpServlet {
 
     }
 
-
     protected String lastModifiedHttp(File resFile) {
         String lastModifiedHttp = null;
-        // TODO: use thread local, no sync lock
-        synchronized (format) {
-            lastModifiedHttp = format.format(new Date(resFile.lastModified()));
+        SimpleDateFormat format = (SimpleDateFormat)formatTL.get();
+        if (format == null) {
+            format = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", 
+                    Locale.US);
+            formatTL.set(format);
         }
+        lastModifiedHttp = format.format(new Date(resFile.lastModified()));
         return lastModifiedHttp;
     }
 
@@ -1921,5 +1682,68 @@ public class DefaultServlet  extends HttpServlet {
         }
         return null;
     }
-    
+
+    /**
+     * Return a context-relative path, beginning with a "/", that represents
+     * the canonical version of the specified path after ".." and "." elements
+     * are resolved out.  If the specified path attempts to go outside the
+     * boundaries of the current context (i.e. too many ".." path elements
+     * are present), return <code>null</code> instead.
+     *
+     * @param path Path to be normalized
+     */
+    protected String normalize(String path) {
+
+        if (path == null)
+            return null;
+
+        // Create a place for the normalized path
+        String normalized = path;
+
+        if (normalized == null)
+            return (null);
+
+        if (normalized.equals("/."))
+            return "/";
+
+        // Normalize the slashes and add leading slash if necessary
+        if (normalized.indexOf('\\') >= 0)
+            normalized = normalized.replace('\\', '/');
+        if (!normalized.startsWith("/"))
+            normalized = "/" + normalized;
+
+        // Resolve occurrences of "//" in the normalized path
+        while (true) {
+            int index = normalized.indexOf("//");
+            if (index < 0)
+                break;
+            normalized = normalized.substring(0, index) +
+                normalized.substring(index + 1);
+        }
+
+        // Resolve occurrences of "/./" in the normalized path
+        while (true) {
+            int index = normalized.indexOf("/./");
+            if (index < 0)
+                break;
+            normalized = normalized.substring(0, index) +
+                normalized.substring(index + 2);
+        }
+
+        // Resolve occurrences of "/../" in the normalized path
+        while (true) {
+            int index = normalized.indexOf("/../");
+            if (index < 0)
+                break;
+            if (index == 0)
+                return (null);  // Trying to go outside our context
+            int index2 = normalized.lastIndexOf('/', index - 1);
+            normalized = normalized.substring(0, index2) +
+                normalized.substring(index + 3);
+        }
+
+        // Return the normalized path that we have completed
+        return (normalized);
+    }
+
 }

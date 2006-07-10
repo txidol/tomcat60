@@ -28,9 +28,6 @@ import java.util.ArrayList;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.tomcat.util.net.TcpConnectionHandler;
-import org.apache.tomcat.util.res.StringManager;
-import org.apache.tomcat.util.threads.ThreadWithAttributes;
 
 
 /**
@@ -115,7 +112,6 @@ public class SimpleEndpoint {
         public void threadStart(SimpleEndpoint ep, Thread t);
 
         public void threadEnd( SimpleEndpoint ep, Thread t);
-
     }
 
     
@@ -409,7 +405,7 @@ public class SimpleEndpoint {
 
     void newAcceptor() {
         acceptors++;
-        Thread t=new ThreadWithAttributes( this, new AcceptorRunnable());
+        Thread t=new Thread( new AcceptorRunnable());
         t.setName("Tomcat-" + threadId++);
         if( threadPriority > 0 ) {
             t.setPriority(threadPriority);
@@ -487,8 +483,6 @@ public class SimpleEndpoint {
         }
         catch (IOException e) {
 
-            String msg = null;
-
             if (running) {
                 log.error("IOException", e);
             }
@@ -539,7 +533,7 @@ public class SimpleEndpoint {
         return accepted;
     }
 
-    public void processSocket(Socket s, Object[] threadData) {
+    public void processSocket(Socket s) {
         // Process the connection
         int step = 1;
         try {
@@ -618,7 +612,7 @@ public class SimpleEndpoint {
                 curThreads++;
                 
                 // Process the request from this socket
-                processSocket(socket, threadData);
+                processSocket(socket);
                 
                 // Finish up this request
                 curThreads--;
@@ -635,7 +629,6 @@ public class SimpleEndpoint {
             synchronized (threadSync) {
                 threadSync.notifyAll();
             }
-            
         }
     }
 }

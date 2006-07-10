@@ -21,8 +21,6 @@ package org.apache.coyote.servlet;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -32,8 +30,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-
-import org.apache.coyote.servlet.util.RequestUtil;
+import org.apache.tomcat.servlets.util.RequestUtil;
 
 /**
  * First filter after the context and servlet are mapped. It will add 
@@ -149,7 +146,7 @@ public class WebappFilterMapper implements Filter {
             filterChain = new FilterChainImpl();
         }
 
-        filterChain.setServlet(servlet);
+        filterChain.setServlet(wrapper, servlet);
 
         // If there are no filter mappings, we are done
         if ((filterMaps.size() == 0))

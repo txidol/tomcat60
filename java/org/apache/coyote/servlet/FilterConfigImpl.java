@@ -42,7 +42,7 @@ import org.apache.tomcat.util.log.SystemLogHandler;
  *  
  *  
  */
-final class FilterConfigImpl implements FilterConfig, Serializable {
+public final class FilterConfigImpl implements FilterConfig, Serializable {
 
     public FilterConfigImpl(ServletContextImpl context) {
         super();

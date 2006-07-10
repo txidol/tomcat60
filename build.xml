@@ -10,7 +10,7 @@
 
   <property name="tc.base" location=".." />
 
-    <!-- Source dependencies -->
+  <!-- Source dependencies -->
   <property name="target.vm"     value="1.5"/>
   <property name="source.vm"     value="1.5"/>
 
@@ -40,8 +40,6 @@
   <property name="compile.source"       value="1.5" />
 
   <property name="tc6.classes" location="${tc6.home}/.settings/output"/>
-
-  <!-- ======================= Single-jar minimal tomcat =========== -->
 
   <path id="runtime-deps" >  
     <pathelement location="${base.path}/tomcat-deps/jasper-compiler-jdt.jar" />
@@ -85,6 +83,7 @@
     <mkdir dir="${sandbox.home}/classes" />
     <javac destdir="${sandbox.home}/classes" source="${source.vm}" 
       target="${target.vm}"
+      includeJavaRuntime="false"
       deprecation="false" 
       debug="false"  >
       <src path="${sandbox.home}/java" />
@@ -92,31 +91,15 @@
         <path refid="runtime-deps" />        
         <pathelement location="${tc6.classes}"/>
       </classpath>
+      <exclude name="org/apache/tomcat/standalone/**"/>
     </javac>
     <copy todir="${sandbox.home}/classes" >
       <fileset dir="${sandbox.home}/java" includes="**/*.properties **/*.xml"/>
     </copy>
   </target>
 
-  <target name="compile-tc6">
-    <mkdir dir="${tc6.classes}" />
-    <javac destdir="${tc6.classes}" 
-      source="${source.vm}" 
-      target="${target.vm}"
-      deprecation="false" 
-      debug="false"  >
-      <src path="${tc6.home}/java" />
-      <classpath>
-        <path refid="runtime-deps" />        
-      </classpath>
-    </javac>
-    <copy todir="${tc6.classes}" >
-      <fileset dir="${tc6.home}/java" includes="**/*.properties **/*.xml"/>
-    </copy>
-  </target>
-
   <target name="compile" 
-    depends="compile-sandbox,compile-tc6"/>
+    depends="compile-sandbox"/>
 
   <target name="clean-compile">
     <delete dir="${sandbox.home}/classes" includes="**"/>
@@ -133,26 +116,10 @@
     <jar jarfile="runtime/tomcat-runtime.jar" 
          manifest="resources/runtime.MF">
       <fileset dir="${tc6.classes}" >
-        <exclude name="org/apache/tomcat/util/buf/**"/>
-        <exclude name="org/apache/coyote/http11/*"/>
-        <exclude name="org/apache/tomcat/util/buf/**"/>
-        <exclude name="org/apache/tomcat/util/net/jsse/**"/>
-        <exclude name="org/apache/tomcat/util/threads/Expirer**"/>
-        <exclude name="org/apache/tomcat/util/threads/Reaper**"/>
-        <exclude name="org/apache/tomcat/util/threads/ThreadPoolListener.*"/>
-        <exclude name="org/apache/tomcat/util/threads/ThreadPool.*"/>
-        <exclude name="org/apache/tomcat/util/threads/Control**"/>
-        <exclude name="org/apache/tomcat/util/threads/Monitor**"/>
-        <exclude name="org/apache/tomcat/util/net/**"/>
         <exclude name="org/apache/jasper/**"/>
       </fileset>
       <fileset dir="${sandbox.home}/classes" >
-        <exclude name="org/apache/tomcat/util/net/Leader**"/>
-        <exclude name="org/apache/tomcat/util/net/Master**"/>
-        <exclude name="org/apache/tomcat/util/net/SSL**"/>
-        <exclude name="org/apache/tomcat/util/net/jsse/**"/>
-        <exclude name="org/apache/tomcat/util/net/ServerSocketFactory**"/>
-        <exclude name="org/apache/tomcat/util/net/Default**"/>
+        <include name="org/apache/tomcat/standalone/**"/>
       </fileset>
     </jar>
 
@@ -161,29 +128,30 @@
   <target name="coyote-servlet.jar" depends="compile,pack_coyote-servlet.jar"/>
   
   <target name="pack_coyote-servlet.jar" >
-    <jar destfile="runtime/coyote-servlet.jar" manifest="resources/coyote-servlet.MF">
+    <jar destfile="coyote-servlet.jar" manifest="resources/coyote-servlet.MF">
       <fileset dir="classes" >
-        <include name="org/apache/commons/**"/>
+        <include name="org/apache/commons/logging/*.class"/>
         <include name="org/apache/coyote/servlet/**"/>
+        <include name="org/apache/tomcat/servlets/**"/>
         <include name="org/apache/tomcat/util/buf/**"/>
         <include name="org/apache/tomcat/util/loader/**"/>
-        <include name="org/apache/tomcat/util/log/**"/>
         <include name="org/apache/tomcat/util/net/**"/>
-        <include name="org/apache/tomcat/util/threads/**"/>
-        <include name="org/apache/tomcat/servlets/file/**"/>
       </fileset>
       <fileset dir="${tc6.classes}" >
         <include name="javax/servlet/*"/>
         <include name="javax/servlet/http/*"/>
         <include name="org/apache/coyote/*"/>
-        <include name="org/apache/coyote/http11/Constants**"/>
-        <include name="org/apache/coyote/http11/*Filter.class"/>
+        <include name="org/apache/coyote/http11/Constants.class"/>
+        <include name="org/apache/coyote/http11/InputFilter.class"/>
+        <include name="org/apache/coyote/http11/OutputFilter.class"/>
         <include name="org/apache/coyote/http11/LocalStrings.properties"/>
         <include name="org/apache/coyote/http11/filters/**"/>
         <include name="org/apache/tomcat/util/collections/*"/>
-        <include name="org/apache/tomcat/util/net/URL*"/>
-        <include name="org/apache/tomcat/util/http/**"/>
+        <include name="org/apache/tomcat/util/http/*"/>
+        <include name="org/apache/tomcat/util/http/res/LocalStrings.properties"/>
         <include name="org/apache/tomcat/util/res/**"/>
+        <include name="org/apache/tomcat/util/*"/>
+        <include name="org/apache/tomcat/util/net/URL*"/>
         <include name="org/apache/tomcat/util/*"/>
       </fileset>
     </jar>

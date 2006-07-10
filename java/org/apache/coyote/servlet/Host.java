@@ -566,7 +566,9 @@ public class Host
         // destroy our child containers, if any
         //Container children[] = findChildren();
 //        super.destroy();
-        for (Object child: children.values()) {
+        Iterator valI = children.values().iterator();
+        while (valI.hasNext()) {
+            Object child = valI.next();
            ((ServletContextImpl)child).destroy();
         }
       

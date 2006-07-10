@@ -264,7 +264,7 @@ public final class ByteChunk implements Cloneable, Serializable {
         isSet=true;
         if( mode > 1 ) {
             System.err.println("Old mode: " + mode);
-            new Throwable().printStackTrace();
+            //new Throwable().printStackTrace();
         }
         mode = 1;
     }
@@ -536,7 +536,7 @@ public final class ByteChunk implements Cloneable, Serializable {
                 System.err.println("Mode 2 buffer");
                 mode = 2;
             } else { // mode change
-                new Throwable().printStackTrace();
+               // new Throwable().printStackTrace();
             }
         }        
     }

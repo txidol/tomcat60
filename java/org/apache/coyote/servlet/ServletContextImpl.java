@@ -48,6 +48,7 @@ import org.apache.coyote.servlet.util.Enumerator;
 import org.apache.coyote.servlet.util.MappingData;
 import org.apache.coyote.servlet.webxml.WebXml;
 import org.apache.tomcat.servlets.file.DefaultServlet;
+import org.apache.tomcat.servlets.file.WebdavServlet;
 import org.apache.tomcat.util.buf.CharChunk;
 import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.loader.Repository;
@@ -1070,7 +1071,7 @@ public class ServletContextImpl implements ServletContext {
 
         // Add default mappings.
         ServletConfig fileS =
-            facade.createServletWrapper(this, "default", new DefaultServlet());
+            facade.createServletWrapper(this, "default", new WebdavServlet());
         facade.addMapping("/", fileS);
 
         WebXml webXml = new WebXml(this);

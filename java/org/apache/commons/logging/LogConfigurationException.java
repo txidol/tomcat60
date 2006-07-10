@@ -33,9 +33,7 @@ public class LogConfigurationException extends RuntimeException {
      * Construct a new exception with <code>null</code> as its detail message.
      */
     public LogConfigurationException() {
-
         super();
-
     }
 
 
@@ -45,9 +43,7 @@ public class LogConfigurationException extends RuntimeException {
      * @param message The detail message
      */
     public LogConfigurationException(String message) {
-
         super(message);
-
     }
 
 
@@ -58,9 +54,7 @@ public class LogConfigurationException extends RuntimeException {
      * @param cause The underlying cause
      */
     public LogConfigurationException(Throwable cause) {
-
-        this((cause == null) ? null : cause.toString(), cause);
-
+        this( ((cause == null) ? null : cause.toString()), cause);
     }
 
 
@@ -72,7 +66,7 @@ public class LogConfigurationException extends RuntimeException {
      */
     public LogConfigurationException(String message, Throwable cause) {
 
-        super(message + " (Caused by " + cause + ")");
+        super(message);
         this.cause = cause; // Two-argument version requires JDK 1.4 or later
 
     }

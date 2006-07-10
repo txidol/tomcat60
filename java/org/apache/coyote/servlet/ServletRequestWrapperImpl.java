@@ -32,7 +32,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
 import org.apache.coyote.servlet.util.Enumerator;
-import org.apache.coyote.servlet.util.RequestUtil;
+import org.apache.tomcat.servlets.util.RequestUtil;
 import org.apache.tomcat.util.res.StringManager;
 
 //import org.apache.catalina.Globals;

@@ -96,7 +96,7 @@ public class Http11Protocol
     // *
 
 
-    protected HashMap<String, Object> attributes = new HashMap<String, Object>();
+    protected HashMap attributes = new HashMap();
 
     
     /**
@@ -150,9 +150,9 @@ public class Http11Protocol
         */
 
         if (socketFactory!=null) {
-            Iterator<String> attE = attributes.keySet().iterator();
+            Iterator attE = attributes.keySet().iterator();
             while( attE.hasNext() ) {
-                String key = attE.next();
+                String key = (String)attE.next();
                 Object v=attributes.get(key);
                 socketFactory.setAttribute(key, v);
             }
@@ -499,7 +499,7 @@ public class Http11Protocol
         protected Http11Protocol protocol;
         protected static int count = 0;
         protected RequestGroupInfo global = new RequestGroupInfo();
-        protected ThreadLocal<Http11Processor> localProcessor = new ThreadLocal<Http11Processor>();
+        protected ThreadLocal localProcessor = new ThreadLocal();
 
         Http11ConnectionHandler(Http11Protocol proto) {
             this.protocol = proto;
@@ -508,7 +508,7 @@ public class Http11Protocol
         public boolean process(Socket socket) {
             Http11Processor processor = null;
             try {
-                processor = localProcessor.get();
+                processor = (Http11Processor)localProcessor.get();
                 if (processor == null) {
                     processor =
                         new Http11Processor(protocol.maxHttpHeaderSize, protocol.endpoint);

@@ -31,11 +31,10 @@ import java.nio.channels.SocketChannel;
 import java.nio.channels.spi.SelectorProvider;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
-import org.apache.tomcat.util.net.TcpConnection;
 import org.apache.tomcat.util.net.simple.SimpleEndpoint;
-import org.apache.tomcat.util.threads.ThreadPool;
-import org.apache.tomcat.util.threads.ThreadPoolRunnable;
 
 
 /** All threads blocked in accept(). New thread created on demand.
@@ -44,75 +43,18 @@ import org.apache.tomcat.util.threads.ThreadPoolRunnable;
  * 
  */
 public class NioEndpoint extends SimpleEndpoint { 
-    private ThreadPool tp;
+    private ThreadPoolExecutor tp;
     
     public NioEndpoint() {
-        tp=new ThreadPool();
-        tp.setMinSpareThreads(2);
-        tp.setMaxSpareThreads(8);
+        tp=(ThreadPoolExecutor) Executors.newCachedThreadPool();;
         type = "nio";
     }
 
     // -------------------- Configuration --------------------
     // -------------------- Thread pool --------------------
 
-    public ThreadPool getThreadPool() {
+    public ThreadPoolExecutor getThreadPool() {
         return tp;
-    }
-    
-    // wrappers to make JMX happier .
-    // TODO: jmx wrapper should be smarter, support delegates. 
-    
-    public void setMaxThreads(int maxThreads) {
-        if( maxThreads > 0)
-            tp.setMaxThreads(maxThreads);
-    }
-
-    public int getMaxThreads() {
-        return tp.getMaxThreads();
-    }
-
-    public void setMaxSpareThreads(int maxThreads) {
-        if(maxThreads > 0) 
-            tp.setMaxSpareThreads(maxThreads);
-    }
-
-    public int getMaxSpareThreads() {
-        return tp.getMaxSpareThreads();
-    }
-
-    public void setMinSpareThreads(int minThreads) {
-        if(minThreads > 0) 
-            tp.setMinSpareThreads(minThreads);
-    }
-
-    public int getMinSpareThreads() {
-        return tp.getMinSpareThreads();
-    }
-
-    public void setThreadPriority(int threadPriority) {
-      tp.setThreadPriority(threadPriority);
-    }
-
-    public int getThreadPriority() {
-      return tp.getThreadPriority();
-    }
-
-    public void setDaemon(boolean b) {
-        daemon=b;
-        tp.setDaemon( b );
-    }
-    
-    public boolean getDaemon() {
-        return tp.getDaemon();
-    }
-
-    public String getName() {
-        return tp.getName();
-    }
-
-    public void setName(String name) {
-        tp.setName(name);
     }
     
     // -------------------- Public methods --------------------
@@ -153,7 +95,7 @@ public class NioEndpoint extends SimpleEndpoint {
         running = true;
         paused = false;
         
-        tp.start();
+        //tp.start();
         try {
             selector = Selector.open();
         } catch (IOException e) {
@@ -164,7 +106,7 @@ public class NioEndpoint extends SimpleEndpoint {
         
         addSocketAccept( serverSocket, acceptTask);
         
-        tp.runIt(acceptTask);
+        tp.execute(acceptTask);
     }
 
 
@@ -220,24 +162,18 @@ public class NioEndpoint extends SimpleEndpoint {
      *  
      * @author Costin Manolache
      */
-    class PollerThread implements ThreadPoolRunnable  {
+    class PollerThread implements Runnable  {
         
-        public Object[] getInitData() {
-            // no synchronization overhead, but 2 array access 
-            Object obj[]=new Object[2];
-            obj[1]= null;//getConnectionHandler().init();
-            obj[0]= null; // new TcpConnection();
-            return obj;
-        }
-
-        public void runIt(Object perThrData[]) {
+        public void run() {
             try {
                 int selRes = selector.select();
 
                 if( selRes == 0 ) {
                     System.err.println("Select with 0 keys " + 
                             selector.keys().size() );
-                    for( SelectionKey k : selector.keys() ) {
+                    Iterator sI = selector.keys().iterator();
+                    while (sI.hasNext()) {
+                        SelectionKey k = (SelectionKey) sI.next();
                         System.err.println("K " + k.interestOps() +
                                 " " + k.readyOps() + " " + k.toString() + " "
                                 + k.isValid() );
@@ -265,10 +201,9 @@ public class NioEndpoint extends SimpleEndpoint {
                         // Side effect: if pool is full, accept will happen
                         // a bit later. 
                         // TODO: customize this if needed
-                        tp.runIt( this ); 
+                        tp.execute( this ); 
                         // now process the socket. 
-                        processSocket(sockC.socket(),  
-                                     (Object[]) perThrData[1]);
+                        processSocket(sockC.socket());  
                         continue;
                     }
 
@@ -290,5 +225,4 @@ public class NioEndpoint extends SimpleEndpoint {
         }
         
     }
-
 }

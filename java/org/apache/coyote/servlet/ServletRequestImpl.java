@@ -45,21 +45,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-//import org.apache.catalina.Globals;
-//import org.apache.catalina.Realm;
-
-//import org.apache.catalina.util.ParameterMap;
-//import org.apache.catalina.util.RequestUtil;
-//import org.apache.catalina.util.StringParser;
-
 import org.apache.coyote.ActionCode;
 import org.apache.coyote.servlet.util.Enumerator;
 import org.apache.coyote.servlet.util.MappingData;
 import org.apache.coyote.servlet.util.MessageReader;
 import org.apache.coyote.servlet.util.ParameterMap;
-import org.apache.coyote.servlet.util.RequestUtil;
+import org.apache.tomcat.servlets.util.RequestUtil;
 import org.apache.coyote.servlet.util.StringParser;
-
 import org.apache.tomcat.util.buf.B2CConverter;
 import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.buf.StringCache;
@@ -737,7 +729,7 @@ public class ServletRequestImpl
     /**
      * Get filter chain associated with the request.
      */
-    public FilterChain getFilterChain() {
+    public FilterChainImpl getFilterChain() {
         return (this.filterChain);
     }
 
