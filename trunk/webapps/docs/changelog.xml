@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="changelog.html">
+
+  &project;
+
+  <properties>
+    <author email="remm@apache.org">Remy Maucherat</author>
+    <author email="yoavs@apache.org">Yoav Shapira</author>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>Changelog</title>
+  </properties>
+
+<body>
+<section name="Tomcat 6.0.5 (remm)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        <bug>40585</bug>: Fix parameterised constructor for o.a.juli.FileHandler
+        so parameters have an effect. (markt)
+      </fix>
+      <fix>
+        Escape invalid characters from request.getLocale. (markt, remm)
+      </fix>
+      <update>
+        Update required version for native to 1.1.8. (remm)
+      </update>
+      <fix>
+        Do not log broken pipe errors which can occur when flushing the content of an error page. (remm)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <fix>
+        Fix firstReadTimeout behavior for the AJP connector. (remm)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>41057</bug>: Make jsp:plugin output XHTML compliant. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <update>
+        Cluster interface cleanup. (fhanik)
+      </update>
+      <update>
+        Refactoring to allow usage of executors. (fhanik)
+      </update>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 6.0.4 (remm)">
+  <subsection name="General">
+    <changelog>
+      <update>
+        Update to NSIS 2.22 (remm)
+      </update>
+      <fix>
+        Fix regression in 6.0.3 with Windows wrapper (mturk)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 6.0.3 (remm)">
+  <subsection name="General">
+    <changelog>
+    </changelog>
+  </subsection>
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        <bug>37509</bug>: Do not remove whitespace from the end of values
+        defined in logging.properties files. (markt)
+      </fix>
+      <fix>
+        <bug>38198</bug>: Add reference to Context documentation from Host
+        documentation that explains how Context name is obtained from the
+        Context filename. (markt)
+      </fix>
+      <fix>
+        <bug>40844</bug> Missing syncs in JDBCRealm. (markt)
+      </fix>
+       <fix>
+        <bug>40901</bug>: Encode directory listing output. Based on a patch
+        provided by Chris Halstead. (markt)
+      </fix>
+      <fix>
+        <bug>40929</bug>: Correct JavaDoc for StandardClassLoader. (markt)
+      </fix>
+      <fix>
+        <bug>41008</bug>: Allow POST to be used for indexed queries with CGI
+        Servlet. Patch provided by Chris Halstead. (markt)
+      </fix>
+      <fix>
+        Fix usage of print on the servlet output stream if the processor never used
+        a writer (fhanik)
+      </fix>
+      <fix>
+        Fix logic of sameSameObjects used to determine correct wrapping of request and
+        response objects (fhanik)
+      </fix>
+      <fix>
+        Update TLD scan lists, and disable caching for now (remm)
+      </fix>
+      <update>
+        Add system property to WebappClassLoader to allow disabling setting references
+        to null when stopping it (remm)
+      </update>
+      <add>
+        Add clustered SSO code, submitted by Fabien Carrion (remm)
+      </add>
+    </changelog>
+  </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <fix>
+        <bug>40860</bug>: Log exceptions and other problems during parameter
+        processing. (markt)
+      </fix>
+      <update>
+        Enable JMX for trust store attributes for SSL connector. (markt)
+      </update>
+      <update>
+        Port memory usage reduction changes to the java.io HTTP connector. (remm)
+      </update>
+      <fix>
+        MessageBytes.setString(null) will remove the String value. (remm)
+      </fix>
+      <fix>
+        <bug>41057</bug>: Caching large strings is not useful and takes too much
+        memory, so don't cache these (remm)
+      </fix>
+      <update>
+        Add keepAliveTimeout attribute to most connectors (mturk, remm)
+      </update>
+    </changelog>
+  </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        Relax EL type validation for litterals. (remm)
+      </fix>
+      <fix>
+        Update some version numbers to 2.1. (funkman, remm)
+      </fix>
+      <fix>
+        Add xsds for JSP 2.1 (remm)
+      </fix>
+      <fix>
+        <bug>41106</bug>: Update validation checks for EL to also include 
+        legacy 1.2 tags (remm)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Webapps">
+    <changelog>
+      <fix>
+        <bug>40677</bug>: Update SSL documentation to indicate that PKCS11
+        keystores may be used. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 6.0.2 (remm)">
+  <subsection name="General">
+    <changelog>
+      <fix>
+        Various tweaks to distribution (remm, funkman)
+      </fix>
+      <update>
+        Update Tomcat native to 1.1.7 (mturk)
+      </update>
+      <update>
+        Update to JDT 3.2.1 (remm)
+      </update>
+    </changelog>
+  </subsection>
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        Fix EJB annotation interface (remm)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <fix>
+        Fix passing of the keystore password for the NIO connector (fhanik)
+      </fix>
+    </changelog>
+  </subsection> 
+</section>
+<section name="Tomcat 6.0.1 (remm)">
+  <subsection name="General">
+    <changelog>
+      <fix>
+        <bug>37439</bug>, <bug>40823</bug>: Documentation cleanup (markt)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Catalina">
+    <changelog>
+      <update>
+        Refactor exception processing using Throwable.getCause to improve exception chaining (remm)
+      </update>
+      <add>
+        Remove dead code involving the Logger (funkman)
+      </add>
+      <fix>
+        <bug>37458</bug>: Fix some exceptions which could happen during classloading (markt)
+      </fix>
+      <fix>
+        <bug>40817</bug>: Fix CGI path (markt)
+      </fix>
+      <fix>
+        <bug>34956</bug>: Add the possibility to enforce usage of request and response
+        wrapper objects (markt)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <update>
+        Many fixes for JSP 2.1 compliance, invloving tag files handling, deferred expressions
+        validation, bom encoding support (remm)
+      </update>
+    </changelog>
+  </subsection> 
+  <subsection name="Coyote">
+    <changelog>
+      <update>
+        Many HTTP NIO connector fixes and refactorings (fhanik)
+      </update>
+      <update>
+        HTTP NIO connector performance improvements (fhanik)
+      </update>
+      <update>
+        Add packetSize option for the classic AJP connector (jfclere)
+      </update>
+      <update>
+        Implement explicit flushing in AJP (mturk)
+      </update>
+    </changelog>
+  </subsection> 
+</section>
+<section name="Tomcat 6.0.0 (remm)">
+  <subsection name="Catalina">
+    <changelog>
+      <add>
+        SSLEngine attribute added to the AprLifecycleListener(fhanik)
+      </add>
+      <add>
+        Add API for Comet IO handling (remm, fhanik)
+      </add>
+      <add>
+        Servlet 2.5 support (remm)
+      </add>
+    </changelog>
+  </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <add>
+        JSP 2.1 support (jhook, remm)
+      </add>
+      <add>
+        Unifed EL 2.1 support (jhook)
+      </add>
+    </changelog>
+  </subsection> 
+  <subsection name="Coyote">
+    <changelog>
+      <add>
+        SSLEnabled attribute required for SSL to be turned on, on all HTTP connectors (fhanik)
+      </add>
+      <update>
+        Memory usage reduction for the HTTP connectors, except java.io (remm)
+      </update>
+      <update>
+        Modeler update to use dynamic mbeans rather than model mbeans, which consume more
+        resources (costin)
+      </update>
+    </changelog>
+  </subsection> 
+  <subsection name="Cluster">
+    <changelog>
+      <add>
+        New cluster configuration and new documentation (fhanik)
+      </add>
+    </changelog>
+  </subsection> 
+  <subsection name="Webapps">
+    <changelog>
+    </changelog>
+  </subsection> 
+</section>
+</body>
+</document>
