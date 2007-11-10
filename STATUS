@@ -53,6 +53,12 @@ PATCHES PROPOSED TO BACKPORT:
   -1: markt - only the double quoting part - see http://marc.info/?l=tomcat-dev&m=119454915422424&w=2 for reasons
   -1: fhanik - proposed patch http://people.apache.org/~fhanik/patches/cookies-fix.patch
 
+* Alternate Cookies fix - http://people.apache.org/~fhanik/patches/cookies-fix-2.patch
+  Includes: Version fix, Escape fix
+  Excludes: Already quoted fix, vetoed in prev proposal
+  +1: fhanik
+  -1: 
+
 * Fix licensing of JSP 2.1 schema
   svn diff -c r593814
   +1: markt
