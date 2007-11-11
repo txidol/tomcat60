@@ -39,13 +39,13 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix BZ 43702 - Inner class files have unnecessarily long names
   http://people.apache.org/~markt/patches/2007-10-30-Bug43702.patch
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix BZ 43675 - Possible logging related classloader leak
   http://people.apache.org/~markt/patches/2007-10-30-Bug43675.patch
   +1: markt
-  -1:
+  -1: remm (in ServerCookie, log(String) should probably be removed)
 
 * Fix double quoting of quoted-string. http://people.apache.org/~jfclere/patches/cookies.tck.patch
   and $Version parsing
@@ -61,5 +61,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix licensing of JSP 2.1 schema
   svn diff -c r593814
-  +1: markt
+  +1: markt, remm
   -1:
