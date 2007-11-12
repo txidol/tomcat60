@@ -57,9 +57,9 @@ PATCHES PROPOSED TO BACKPORT:
   Includes: Version fix, Escape fix
   Excludes: Already quoted fix, vetoed in prev proposal
   +1: fhanik
-  -1: 
+  -1: jfclere TC doesn't pass TCK tests with your patch. +1 for the version part.
 
 * Fix licensing of JSP 2.1 schema
   svn diff -c r593814
-  +1: markt, remm
+  +1: markt, remm, jfclere
   -1:
