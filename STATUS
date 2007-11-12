@@ -58,13 +58,3 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm, jfclere
   -1:
   
-* Fix cookie parsing, rev 3
-  Includes: Version fix, Escape fix, already quoted fix
-  It seems that the TCK doesn't do a good job at knowing what an escape character is.
-  Since the TCK does set an "already quoted" value, we should assume that that is how they interpret the cookie handling in the servlet spec
-  In this fix however, alreadyQuoted also checks for escaped values, and ignores them
-  http://people.apache.org/~fhanik/patches/cookies-fix-3.patch
-  +1: fhanik
-  -1: 
-  
-  
