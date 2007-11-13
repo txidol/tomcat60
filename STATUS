@@ -42,11 +42,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1:
 
-* Fix licensing of JSP 2.1 schema
-  svn diff -c r593814
-  +1: markt, remm, jfclere
-  -1:
-  
 * Fix Tomcat's cookie parsing/writing, changelog updated with changes
   http://people.apache.org/~fhanik/patches/cookie_change.patch.5
   +1: fhanik, jfclere
