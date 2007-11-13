@@ -47,14 +47,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: remm (in ServerCookie, log(String) should probably be removed)
 
-* Fix double quoting of quoted-string. http://people.apache.org/~jfclere/patches/cookies.tck.patch
-  and $Version parsing
-  +1: jfclere, pero
-  -1: markt - only the double quoting part - see http://marc.info/?l=tomcat-dev&m=119454915422424&w=2 for reasons
-  -1: fhanik - proposed patch below
-
 * Fix licensing of JSP 2.1 schema
   svn diff -c r593814
   +1: markt, remm, jfclere
   -1:
   
+* Fix Tomcat's cookie parsing/writing, changelog updated with changes
+  http://people.apache.org/~fhanik/patches/cookie_change.patch.5
+  +1: fhanik
+  -1: 
