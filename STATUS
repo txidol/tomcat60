@@ -56,3 +56,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~fhanik/patches/cookie_change.patch.5
   +1: fhanik, jfclere
   -1:
+
+* Add tests for the cookie parsing.
+  http://people.apache.org/~jfclere/patches/test_cookies.patch
+  +1: jfclere
+  -1:
