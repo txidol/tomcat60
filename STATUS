@@ -50,7 +50,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Add tests for the cookie parsing.
   http://people.apache.org/~jfclere/patches/test_cookies.patch
   +1: jfclere
-  -1:
+  -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
 * Fix BZ 43675 - Possible logging related classloader leak
   Better patch that removes ServerCookie.log(String) entirely as per
@@ -58,3 +58,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=594700
   +1: markt
   -1:
+
+* Fix BZ 43846
+  Fix output of data on simulated blocking IO
+  Improve speed of writing and reading
+  Add in non blocking request header parsing
+  This is a port of improvements from the old trunk and fixes the BZ above and improves greatly on the NIO connector
+  http://people.apache.org/~fhanik/patches/fix-nio-blocking-output.patch
+  +1: fhanik
+  -1: 
