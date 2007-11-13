@@ -54,5 +54,5 @@ PATCHES PROPOSED TO BACKPORT:
   
 * Fix Tomcat's cookie parsing/writing, changelog updated with changes
   http://people.apache.org/~fhanik/patches/cookie_change.patch.5
-  +1: fhanik
-  -1: 
+  +1: fhanik, jfclere
+  -1:
