@@ -34,7 +34,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix bug in CGI servlet that causes it to fail when included
   http://people.apache.org/~markt/patches/2007-10-28-cgi-include.patch
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix BZ 43702 - Inner class files have unnecessarily long names
@@ -44,7 +44,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix Tomcat's cookie parsing/writing, changelog updated with changes
   http://people.apache.org/~fhanik/patches/cookie_change.patch.5
-  +1: fhanik, jfclere
+  +1: fhanik, jfclere, remm
   -1:
 
 * Add tests for the cookie parsing.
@@ -56,7 +56,7 @@ PATCHES PROPOSED TO BACKPORT:
   Better patch that removes ServerCookie.log(String) entirely as per
   Remy's -1 comment on previous patch
   http://svn.apache.org/viewvc?view=rev&revision=594700
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix BZ 43846
