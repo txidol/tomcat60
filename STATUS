@@ -70,6 +70,6 @@ PATCHES PROPOSED TO BACKPORT:
   
 * JDT location return 404
   http://people.apache.org/~fhanik/patches/jdt-loc.patch
-  +1: fhanik
+  +1: fhanik, jfclere
   -1: 
   
