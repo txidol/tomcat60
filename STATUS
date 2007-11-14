@@ -67,3 +67,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~fhanik/patches/fix-nio-blocking-output.patch
   +1: fhanik
   -1: 
+  
+* Fix Comet bug, if servlet calls cometEvent.close() on the BEGIN event, the request still is marked as comet and ends up in a funky state
+  http://people.apache.org/~fhanik/patches/comet-begin-event-close.patch
+  +1: fhanik
+  -1: 
