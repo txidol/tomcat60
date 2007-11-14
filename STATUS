@@ -51,7 +51,7 @@ PATCHES PROPOSED TO BACKPORT:
   Better patch that removes ServerCookie.log(String) entirely as per
   Remy's -1 comment on previous patch
   http://svn.apache.org/viewvc?view=rev&revision=594700
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * Fix BZ 43846
