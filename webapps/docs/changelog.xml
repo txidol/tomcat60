@@ -32,6 +32,22 @@
   </properties>
 
 <body>
+<section name="Tomcat 6.0.16 (remm)">
+  <subsection name="General">
+    <changelog>
+      <update>
+        Cookie handling/parsing changes!
+        The following behavior has been changed with regards to Tomcat's cookie handling
+        a) Cookies containing control characters, except 0x09(HT), are rejected using an InvalidArgumentException <br/>
+        b) If cookies are not quoted, they will be quoted if they contain tspecials(ver0), tspecials2(ver1) characters<br/>
+        c) Escape character '\\' is allowed and respected as a escape character, will be unescaped during parsing
+      </update>
+      <fix>
+        Cookie parsing of $Version regression from 6.0.15 has been fixed
+      </fix>
+    </changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.15 (remm)">
   <subsection name="General">
     <changelog>
