@@ -47,6 +47,20 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        <bug>43675</bug>: Fix a possible logging related classloader leak (markt).
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>43675</bug>: Fix a possible logging related classloader leak (markt).
+      </fix>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.15 (remm)">
   <subsection name="General">
