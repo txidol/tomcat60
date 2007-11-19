@@ -27,10 +27,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 
 * Fix BZ 43588 - hard coded 127.0.0.1 for localhost
-  http://issues.apache.org/bugzilla/attachment.cgi?id=21039&action=view
-  +1: 
-  -1: funkman InetAddress.getLocalHost() != localhost - it should be
-            InetAddress.getByName("localhost").getHostAddress()
+  http://people.apache.org/~jim/patches/tc-localhost.txt
+  +1: jim
+  -1: 
 
 * Add tests for the cookie parsing.
   http://people.apache.org/~jfclere/patches/test_cookies.patch
@@ -43,10 +42,10 @@ PATCHES PROPOSED TO BACKPORT:
   Add in non blocking request header parsing
   This is a port of improvements from the old trunk and fixes the BZ above and improves greatly on the NIO connector
   http://people.apache.org/~fhanik/patches/fix-nio-blocking-output.patch
-  +1: fhanik
+  +1: fhanik, jim
   -1: 
   
 * Fix Comet bug, if servlet calls cometEvent.close() on the BEGIN event, the request still is marked as comet and ends up in a funky state
   http://people.apache.org/~fhanik/patches/comet-begin-event-close.patch
-  +1: fhanik, markt, pero
+  +1: fhanik, markt, pero, jim
   -1: 
