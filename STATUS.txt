@@ -35,8 +35,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~jfclere/patches/test_cookies.patch
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
-  
-* Fix Comet bug, if servlet calls cometEvent.close() on the BEGIN event, the request still is marked as comet and ends up in a funky state
-  http://people.apache.org/~fhanik/patches/comet-begin-event-close.patch
-  +1: fhanik, markt, pero, jim
-  -1: 

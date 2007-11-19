@@ -35,6 +35,9 @@
 <section name="Tomcat 6.0.16 (remm)">
   <subsection name="General">
     <changelog>
+      <update>
+        Fix handling of CometEvent.close when called during BEGIN event (fhanik)
+      </update>
       <fix><bug>43846</bug>
         Fix block simulated read and writes causing timeouts.
         Add non blocking parsing of HTTP request headers.
