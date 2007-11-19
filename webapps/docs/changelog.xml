@@ -35,6 +35,11 @@
 <section name="Tomcat 6.0.16 (remm)">
   <subsection name="General">
     <changelog>
+      <fix><bug>43846</bug>
+        Fix block simulated read and writes causing timeouts.
+        Add non blocking parsing of HTTP request headers.
+        Perf improvements(fhanik)
+      </fix>
       <update>
         Cookie handling/parsing changes!
         The following behavior has been changed with regards to Tomcat's cookie handling
