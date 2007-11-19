@@ -28,7 +28,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix BZ 43588 - hard coded 127.0.0.1 for localhost
   http://people.apache.org/~jim/patches/tc-localhost.txt
-  +1: jim
+  +1: jim, pero
   -1: 
 
 * Add tests for the cookie parsing.
@@ -42,7 +42,7 @@ PATCHES PROPOSED TO BACKPORT:
   Add in non blocking request header parsing
   This is a port of improvements from the old trunk and fixes the BZ above and improves greatly on the NIO connector
   http://people.apache.org/~fhanik/patches/fix-nio-blocking-output.patch
-  +1: fhanik, jim
+  +1: fhanik, jim, pero
   -1: 
   
 * Fix Comet bug, if servlet calls cometEvent.close() on the BEGIN event, the request still is marked as comet and ends up in a funky state
