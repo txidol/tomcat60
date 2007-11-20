@@ -581,7 +581,7 @@ public class JIoEndpoint {
         try {
             // Need to create a connection to unlock the accept();
             if (address == null) {
-                s = new Socket("127.0.0.1", port);
+                s = new Socket(InetAddress.getByName("localhost").getHostAddress(), port);
             } else {
                 s = new Socket(address, port);
                     // setting soLinger to a small value will help shutdown the

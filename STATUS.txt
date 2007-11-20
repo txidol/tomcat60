@@ -26,11 +26,6 @@ PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
 
-* Fix BZ 43588 - hard coded 127.0.0.1 for localhost
-  http://people.apache.org/~jim/patches/tc-localhost.txt
-  +1: jim, pero, fhanik
-  -1: 
-
 * Add tests for the cookie parsing.
   http://people.apache.org/~jfclere/patches/test_cookies.patch
   +1: jfclere

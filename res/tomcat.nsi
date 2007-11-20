@@ -242,18 +242,18 @@ Section "Start Menu Items" SecMenu
                  "http://tomcat.apache.org/"
 
   CreateShortCut "$SMPROGRAMS\Apache Tomcat 6.0\Welcome.lnk" \
-                 "http://127.0.0.1:$R0/"
+                 "http://localhost:$R0/"
 
 ;  IfFileExists "$INSTDIR\webapps\admin" 0 NoAdminApp
 ;
 ;  CreateShortCut "$SMPROGRAMS\Apache Tomcat 6.0\Tomcat Administration.lnk" \
-;                 "http://127.0.0.1:$R0/admin/"
+;                 "http://localhost:$R0/admin/"
 ;NoAdminApp:
 
   IfFileExists "$INSTDIR\webapps\manager" 0 NoManagerApp
 
   CreateShortCut "$SMPROGRAMS\Apache Tomcat 6.0\Tomcat Manager.lnk" \
-                 "http://127.0.0.1:$R0/manager/html"
+                 "http://localhost:$R0/manager/html"
 
 NoManagerApp:
 

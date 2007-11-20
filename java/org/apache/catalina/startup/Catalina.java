@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -416,7 +417,8 @@ public class Catalina extends Embedded {
 
         // Stop the existing server
         try {
-            Socket socket = new Socket("127.0.0.1", server.getPort());
+            String hostAddress = InetAddress.getByName("localhost").getHostAddress();
+            Socket socket = new Socket(hostAddress, server.getPort());
             OutputStream stream = socket.getOutputStream();
             String shutdown = server.getShutdown();
             for (int i = 0; i < shutdown.length(); i++)

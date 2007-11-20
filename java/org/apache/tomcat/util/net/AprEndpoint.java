@@ -858,7 +858,7 @@ public class AprEndpoint {
         try {
             // Need to create a connection to unlock the accept();
             if (address == null) {
-                s = new java.net.Socket("127.0.0.1", port);
+                s = new java.net.Socket(InetAddress.getByName("localhost").getHostAddress(), port);
             } else {
                 s = new java.net.Socket(address, port);
                 // setting soLinger to a small value will help shutdown the
