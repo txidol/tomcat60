@@ -30,3 +30,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~jfclere/patches/test_cookies.patch
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
+
+* WebDAV JavaDoc update as a result of bug 43893
+  http://svn.apache.org/viewvc?rev=597719&view=rev
+  +1: markt
+  -1:
