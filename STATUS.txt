@@ -41,3 +41,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=597738&view=rev
   +1: markt
   -1:
+
+* Remove conditional headers on Form Auth replay, since the UA (esp. FireFox) isn't expecting it.
+  http://issues.apache.org/bugzilla/show_bug.cgi?id=43687
+  +1: billbarker
+  -1:
