@@ -46,3 +46,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://issues.apache.org/bugzilla/show_bug.cgi?id=43687
   +1: billbarker
   -1:
+
+* Fix another license issue
+  http://svn.apache.org/viewvc?rev=598412&view=rev
+  +1: markt
+  -1: 
