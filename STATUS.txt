@@ -33,13 +33,13 @@ PATCHES PROPOSED TO BACKPORT:
 
 * WebDAV JavaDoc update as a result of bug 43893
   http://svn.apache.org/viewvc?rev=597719&view=rev
-  +1: markt
+  +1: markt, pero
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43887
   Include exception in log message
   http://svn.apache.org/viewvc?rev=597738&view=rev
-  +1: markt
+  +1: markt, pero
   -1:
 
 * Remove conditional headers on Form Auth replay, since the UA (esp. FireFox) isn't expecting it.
@@ -49,10 +49,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix another license issue
   http://svn.apache.org/viewvc?rev=598412&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, pero
   -1: 
   
 * Add get/set methods for properties in the Tcp Failure detector
   http://people.apache.org/~fhanik/patches/tcpfaildet-getset.patch
-  +1: fhanik
+  +1: fhanik, pero
   -1: 
