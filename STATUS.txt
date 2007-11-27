@@ -50,7 +50,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix another license issue
   http://svn.apache.org/viewvc?rev=598412&view=rev
   +1: markt, fhanik, pero
-  -1: 
+  -1: billbarker  It is clear that simply making a copy doesn't release you from the original license.  
+                  It is clear that Sun ownes the license on these files, and that will never change.  
   
 * Add get/set methods for properties in the Tcp Failure detector
   http://people.apache.org/~fhanik/patches/tcpfaildet-getset.patch
