@@ -63,6 +63,10 @@
       <fix>
         Fix a bug that causes CGI Servlet to fail when it is included. (markt)
       </fix>
+      <update>
+        Improve the webDAV Servlet Javadocs to make clear that the WebDAV
+        Servlet can not be used as the default servlet. (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Jasper">
