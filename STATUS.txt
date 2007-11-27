@@ -51,9 +51,18 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=598412&view=rev
   +1: markt, fhanik, pero, remm
   -1: billbarker  It is clear that simply making a copy doesn't release you from the original license.  
-                  It is clear that Sun ownes the license on these files, and that will never change.  
+                  It is clear that Sun ownes the license on these files, and that will never change.
+                  (markt) Agreed. However, I believe when originally commited these files were covered
+                          by a CLA and the Sun text should never have been included. I am waiting for
+                          confirmation of this from Sun before commit/revert.
   
 * Add get/set methods for properties in the Tcp Failure detector
   http://people.apache.org/~fhanik/patches/tcpfaildet-getset.patch
   +1: fhanik, pero
   -1: 
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43706
+  Copy/move should return 201
+  http://svn.apache.org/viewvc?rev=598783&view=rev
+  +1: markt
+  -1:
