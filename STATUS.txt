@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43887
-  Include exception in log message
-  http://svn.apache.org/viewvc?rev=597738&view=rev
-  +1: markt, pero, remm
-  -1:
-
 * Remove conditional headers on Form Auth replay, since the UA (esp. FireFox) isn't expecting it.
   http://issues.apache.org/bugzilla/show_bug.cgi?id=43687
   +1: billbarker, remm
