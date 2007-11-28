@@ -33,7 +33,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove conditional headers on Form Auth replay, since the UA (esp. FireFox) isn't expecting it.
   http://issues.apache.org/bugzilla/show_bug.cgi?id=43687
-  +1: billbarker, remm
+  +1: billbarker, remm, jfclere
   -1:
 
 * Fix another license issue
@@ -49,11 +49,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43706
   Copy/move should return 201
   http://svn.apache.org/viewvc?rev=598783&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43957
   Service.bat doesn't configure logging correctly
   http://svn.apache.org/viewvc?rev=598800&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1: 
