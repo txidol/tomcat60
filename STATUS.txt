@@ -52,3 +52,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=598800&view=rev
   +1: markt, jfclere, pero
   -1: 
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43757
+  Use SMAP info rather than string matching to ID line number in JSP
+  http://svn.apache.org/viewvc?rev=599605&view=rev
+  +1: markt
+  -1:
