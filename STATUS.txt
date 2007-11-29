@@ -31,11 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Remove conditional headers on Form Auth replay, since the UA (esp. FireFox) isn't expecting it.
-  http://issues.apache.org/bugzilla/show_bug.cgi?id=43687
-  +1: billbarker, remm, jfclere, pero
-  -1:
-
 * Fix another license issue
   http://svn.apache.org/viewvc?rev=598412&view=rev
   +1: markt, fhanik, pero, remm, billbarker 

@@ -72,6 +72,9 @@
         Improve the webDAV Servlet Javadocs to make clear that the WebDAV
         Servlet can not be used as the default servlet. (markt)
       </update>
+      <fix><bug>43687</bug> Remove conditional headers on Form Auth replay, 
+           since the UA (esp. FireFox) isn't expecting it.
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
