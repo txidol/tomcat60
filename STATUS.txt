@@ -58,3 +58,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=599605&view=rev
   +1: markt
   -1:
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43622
+  Don't always overwrite min compression size with default
+  http://svn.apache.org/viewvc?rev=599914&view=rev
+  +1: markt
+  -1:
