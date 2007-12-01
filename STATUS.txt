@@ -64,3 +64,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=599914&view=rev
   +1: markt
   -1:
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43611
+  Provide an error message when trying to upload a war if the context is defined
+  in server.xml
+  http://svn.apache.org/viewvc?rev=600177&view=rev
+  +1: markt
+  -1:
