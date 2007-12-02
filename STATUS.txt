@@ -81,5 +81,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix  http://issues.apache.org/bugzilla/show_bug.cgi?id=43530
   Fix bad links on docs home page
   http://svn.apache.org/viewvc?view=rev&revision=600222
-  +1: funkman
+  +1: funkman, markt
   -1:
