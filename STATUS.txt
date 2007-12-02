@@ -41,12 +41,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, pero, funkman
   -1: 
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43706
-  Copy/move should return 201
-  http://svn.apache.org/viewvc?rev=598783&view=rev
-  +1: markt, jfclere, pero
-  -1:
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43957
   Service.bat doesn't configure logging correctly
   http://svn.apache.org/viewvc?rev=598800&view=rev

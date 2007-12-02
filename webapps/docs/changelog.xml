@@ -58,7 +58,12 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
-        <bug>43675</bug>: Fix a possible logging related classloader leak. (markt)
+        <bug>43675</bug>: Fix a possible logging related classloader leak.
+        (markt)
+      </fix>
+      <fix>
+        <bug>43706</bug>: WebDAV copy/move now returns 201 on success. Based on
+        a patch by Panagiotis Astithas. (markt)
       </fix>
       <fix>
         <bug>43887</bug>: Make error messages much more helpful when illegal
