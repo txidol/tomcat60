@@ -31,13 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43611
-  Provide an error message when trying to upload a war if the context is defined
-  in server.xml
-  http://svn.apache.org/viewvc?rev=600177&view=rev
-  +1: markt, funkman, pero, remm
-  -1:
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43594
   Use CATALINA_BASE (if set) for setenv
   http://svn.apache.org/viewvc?rev=600185&view=rev
