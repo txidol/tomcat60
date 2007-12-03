@@ -38,10 +38,19 @@
       <update>
         Fix handling of CometEvent.close when called during BEGIN event (fhanik)
       </update>
-      <fix><bug>43846</bug>
+      <fix>
+        <bug>43594</bug>: Use setenv from CATALINA_BASE (if set) in preference
+        to the one in CATALINA_HOME. Patch provided by Shaddy Baddah.
+        (markt/jim)
+      </fix>
+      <fix><bug>43846</bug>:
         Fix block simulated read and writes causing timeouts.
         Add non blocking parsing of HTTP request headers.
         Perf improvements(fhanik)
+      </fix>
+      <fix>
+        <bug>43957</bug>: Service.bat doesn't configure logging correctly. Patch
+        provided by  Richard Fearn. (markt/jim)
       </fix>
       <update>
         Cookie handling/parsing changes!
@@ -82,14 +91,46 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <fix>
+        <bug>43622</bug>: Don't overwrite the min compression size set by the
+        compression attribute with the default. (markt/jim)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Jasper">
     <changelog>
       <fix>
-        <bug>43675</bug>: Fix a possible logging related classloader leak. (markt)
+        <bug>43675</bug>: Fix a possible logging related classloader leak.
+        (markt)
       </fix>
       <fix>
-        <bug>43702</bug>: Inner class files have unnecessarily long names. (markt)
+        <bug>43702</bug>: Inner class files have unnecessarily long names.
+        (markt)
       </fix>
+      <fix>
+        <bug>43757</bug>: Rather than use string matching to work out the line
+        in the JSP with the error, use the SMAP info and the knowledge that for
+        a scriptlet there is a one to one line mapping. (markt/jim)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Webapps">
+    <changelog>
+      <fix>
+        <bug>43611</bug>: Provide an error message if user tries to upload a war
+        for a context defined in server.xml rather than failing silently.
+        (markt/jim)
+      </fix>
+    </changelog>
+  </subsection>
+   <subsection name="Cluster">
+    <changelog>
+      <update>
+        Add get/set methods for properties in the Tcp Failure detector.
+        (fhanik/jim)
+      </update>
     </changelog>
   </subsection>
 </section>
