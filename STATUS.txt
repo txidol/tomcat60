@@ -44,36 +44,36 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43957
   Service.bat doesn't configure logging correctly
   http://svn.apache.org/viewvc?rev=598800&view=rev
-  +1: markt, jfclere, pero
+  +1: markt, jfclere, pero, remm
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43757
   Use SMAP info rather than string matching to ID line number in JSP
   http://svn.apache.org/viewvc?rev=599605&view=rev
-  +1: markt, funkman, pero
+  +1: markt, funkman, pero, remm
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43622
   Don't always overwrite min compression size with default
   http://svn.apache.org/viewvc?rev=599914&view=rev
-  +1: markt, funkman, pero
+  +1: markt, funkman, pero, remm
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43611
   Provide an error message when trying to upload a war if the context is defined
   in server.xml
   http://svn.apache.org/viewvc?rev=600177&view=rev
-  +1: markt, funkman, pero
+  +1: markt, funkman, pero, remm
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43594
   Use CATALINA_BASE (if set) for setenv
   http://svn.apache.org/viewvc?rev=600185&view=rev
-  +1: markt, funkman, pero
+  +1: markt, funkman, pero, remm
   -1:
 
 * Fix  http://issues.apache.org/bugzilla/show_bug.cgi?id=43530
   Fix bad links on docs home page
   http://svn.apache.org/viewvc?view=rev&revision=600222
-  +1: funkman, markt, pero
+  +1: funkman, markt, pero, remm
   -1:
