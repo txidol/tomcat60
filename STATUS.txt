@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43757
-  Use SMAP info rather than string matching to ID line number in JSP
-  http://svn.apache.org/viewvc?rev=599605&view=rev
-  +1: markt, funkman, pero, remm
-  -1:
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43622
   Don't always overwrite min compression size with default
   http://svn.apache.org/viewvc?rev=599914&view=rev
