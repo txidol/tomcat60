@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43594
-  Use CATALINA_BASE (if set) for setenv
-  http://svn.apache.org/viewvc?rev=600185&view=rev
-  +1: markt, funkman, pero, remm
-  -1:
-
 * Fix  http://issues.apache.org/bugzilla/show_bug.cgi?id=43530
   Fix bad links on docs home page
   http://svn.apache.org/viewvc?view=rev&revision=600222
