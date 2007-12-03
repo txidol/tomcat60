@@ -31,11 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix another license issue
-  http://svn.apache.org/viewvc?rev=598412&view=rev
-  +1: markt, fhanik, pero, remm, billbarker 
-  -1: 
-
 * Add get/set methods for properties in the Tcp Failure detector
   http://people.apache.org/~fhanik/patches/tcpfaildet-getset.patch
   +1: fhanik, pero, funkman
