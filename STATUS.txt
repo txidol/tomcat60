@@ -33,11 +33,11 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Port license fix from TC5 that got missed last time - sorry
   http://svn.apache.org/viewvc?rev=600993&view=rev
-  +1: markt, fhanik, funkman
+  +1: markt, fhanik, funkman, remm
   -1: 
 
 * 43993 - mime mapping for WS-Policy
   http://svn.apache.org/viewvc?rev=601188&view=rev
-  +1: funkman
+  +1: funkman, remm
   -1: 
 
