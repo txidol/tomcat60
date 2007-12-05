@@ -89,6 +89,9 @@
       <fix><bug>43687</bug> Remove conditional headers on Form Auth replay, 
            since the UA (esp. FireFox) isn't expecting it.
       </fix>
+      <fix>
+        <bug>43530 </bug>: doc link fixes provided by  Paul Shemansky (funkman)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
