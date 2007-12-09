@@ -31,9 +31,4 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Port license fix from TC5 that got missed last time - sorry
-  http://svn.apache.org/viewvc?rev=600993&view=rev
-  +1: markt, fhanik, funkman, remm, pero
-  -1: 
-
 
