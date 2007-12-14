@@ -33,5 +33,27 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44041
   http://svn.apache.org/viewvc?rev=603340&view=rev
-  +1: markt, jim
+  +1: markt, jim, fhanik
   -1:
+
+* Fix chunked encoding parsing
+  The following patch fixes how the Comet processors blocks, it doesn't change the 
+  way chunked parsing is done, but changing when it blocks and doesn't block.
+  In the old way, it incorrectly blocks after parsing CRLF waiting for the next chunk
+  In the new way, it wont block after CRLF
+  Index: java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
+  ===================================================================
+  --- java/org/apache/coyote/http11/filters/ChunkedInputFilter.java	(revision 604269)
+  +++ java/org/apache/coyote/http11/filters/ChunkedInputFilter.java	(working copy)
+  @@ -154,7 +154,7 @@
+               chunk.setBytes(buf, pos, remaining);
+               pos = pos + remaining;
+               remaining = 0;
+  -            needCRLFParse = true;
+  +            parseCRLF(); //a chunk should end with CRLF, block right away
+           }
+   
+           return result;
+  
+  +1: fhanik
+  -1: 
