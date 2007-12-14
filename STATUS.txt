@@ -33,5 +33,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44041
   http://svn.apache.org/viewvc?rev=603340&view=rev
-  +1: markt
+  +1: markt, jim
   -1:
