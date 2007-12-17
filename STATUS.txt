@@ -50,5 +50,5 @@ PATCHES PROPOSED TO BACKPORT:
    
            return result;
   
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
