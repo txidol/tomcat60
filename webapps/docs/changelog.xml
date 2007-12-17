@@ -95,6 +95,9 @@
       <fix>
         <bug>43993</bug>: mime mapping for WS-Policy. Patch by Fabian Ritzmann  (funkman)
       </fix>
+      <fix>
+        <bug>44041</bug>: Fix duplicate class definition under load. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

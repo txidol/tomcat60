@@ -31,11 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44041
-  http://svn.apache.org/viewvc?rev=603340&view=rev
-  +1: markt, jim, fhanik
-  -1:
-
 * Fix chunked encoding parsing
   The following patch fixes how the Comet processors blocks, it doesn't change the 
   way chunked parsing is done, but changing when it blocks and doesn't block.
