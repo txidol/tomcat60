@@ -64,3 +64,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=605356&view=rev
   +1: markt
   -1: 
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43236
+  Reset usingWriter and associated flags when response is reset
+  http://svn.apache.org/viewvc?rev=605364&view=rev
+  +1: markt
+  -1: 
