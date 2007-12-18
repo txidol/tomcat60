@@ -52,3 +52,9 @@ PATCHES PROPOSED TO BACKPORT:
   
   +1: fhanik, markt
   -1: 
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44094
+  Add note about side-effects of setting privileged on a context
+  http://svn.apache.org/viewvc?rev=605339&view=rev
+  +1: markt
+  -1: 
