@@ -74,11 +74,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Dont reuse byte buffers and use only the size you need
   http://people.apache.org/~fhanik/patches/request-byte-reuse.patch
   +1: fhanik
-  -1: 
+  -1:  jfclere (Just add a return to the original when there is an exception).
   
 * Alternate fix to the above patch, reuse the byte buffers but check the read in the correct place
   http://people.apache.org/~fhanik/patches/request-byte-with-reuse.patch
   +1: fhanik
-  -1: 
+  -1: jfclere (Just add a return to the original when there is an exception).
   
   
