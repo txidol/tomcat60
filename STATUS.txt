@@ -80,5 +80,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~fhanik/patches/request-byte-with-reuse.patch
   +1: fhanik
   -1: jfclere (Just add a return to the original when there is an exception).
-  
-  
+
+* Smallest fix to the above patches.
+  http://people.apache.org/~jfclere/patches/Request.patch  
+  +1: jfclere 
+  -1:
