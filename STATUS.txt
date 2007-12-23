@@ -41,3 +41,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=606594&view=rev
   +1: markt
   -1:
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44084
+  JASSRealm is broken for application provided Principals
+  http://svn.apache.org/viewvc?rev=606621&view=rev
+  +1: markt
+  -1: 
