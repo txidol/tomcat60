@@ -33,7 +33,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Smallest fix to the above patches.
   http://people.apache.org/~jfclere/patches/Request.patch  
-  +1: jfclere, fhanik
+  +1: jfclere, fhanik, markt
   -1:
 
 * Fix CVE-2007-5342
