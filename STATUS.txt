@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43241
-  ServletContext.getResourceAsStream() not spec compliant
-  http://svn.apache.org/viewvc?rev=605356&view=rev
-  +1: markt, pero, fhanik
-  -1: 
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43236
   Reset usingWriter and associated flags when response is reset
   http://svn.apache.org/viewvc?rev=605364&view=rev
