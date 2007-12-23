@@ -132,6 +132,10 @@
         for a context defined in server.xml rather than failing silently.
         (markt/jim)
       </fix>
+      <fix>
+        <bug>44094</bug>: Add a note about the side effects of configuring a
+        context as privileged. (markt)
+      </fix>
     </changelog>
   </subsection>
    <subsection name="Cluster">
