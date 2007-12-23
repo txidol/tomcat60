@@ -31,28 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix chunked encoding parsing
-  The following patch fixes how the Comet processors blocks, it doesn't change the 
-  way chunked parsing is done, but changing when it blocks and doesn't block.
-  In the old way, it incorrectly blocks after parsing CRLF waiting for the next chunk
-  In the new way, it wont block after CRLF
-  Index: java/org/apache/coyote/http11/filters/ChunkedInputFilter.java
-  ===================================================================
-  --- java/org/apache/coyote/http11/filters/ChunkedInputFilter.java	(revision 604269)
-  +++ java/org/apache/coyote/http11/filters/ChunkedInputFilter.java	(working copy)
-  @@ -154,7 +154,7 @@
-               chunk.setBytes(buf, pos, remaining);
-               pos = pos + remaining;
-               remaining = 0;
-  -            needCRLFParse = true;
-  +            parseCRLF(); //a chunk should end with CRLF, block right away
-           }
-   
-           return result;
-  
-  +1: fhanik, markt, pero
-  -1: 
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44094
   Add note about side-effects of setting privileged on a context
   http://svn.apache.org/viewvc?rev=605339&view=rev
@@ -71,17 +49,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, pero, fhanik
   -1: 
 
-* Dont reuse byte buffers and use only the size you need
-  http://people.apache.org/~fhanik/patches/request-byte-reuse.patch
-  +1: fhanik
-  -1:  jfclere (Just add a return to the original when there is an exception).
-  
-* Alternate fix to the above patch, reuse the byte buffers but check the read in the correct place
-  http://people.apache.org/~fhanik/patches/request-byte-with-reuse.patch
-  +1: fhanik
-  -1: jfclere (Just add a return to the original when there is an exception).
-
 * Smallest fix to the above patches.
   http://people.apache.org/~jfclere/patches/Request.patch  
-  +1: jfclere 
+  +1: jfclere, fhanik
   -1:

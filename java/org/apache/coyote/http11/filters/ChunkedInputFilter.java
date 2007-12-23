@@ -154,7 +154,7 @@ public class ChunkedInputFilter implements InputFilter {
             chunk.setBytes(buf, pos, remaining);
             pos = pos + remaining;
             remaining = 0;
-            needCRLFParse = true;
+            parseCRLF(); //a chunk should end with CRLF
         }
 
         return result;
