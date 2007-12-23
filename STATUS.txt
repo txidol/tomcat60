@@ -53,3 +53,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~jfclere/patches/Request.patch  
   +1: jfclere, fhanik
   -1:
+
+* Fix CVE-2007-5342
+  JULI permissions need to be restricted
+  http://svn.apache.org/viewvc?rev=606594&view=rev
+  +1: markt
+  -1:
