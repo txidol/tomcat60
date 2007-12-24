@@ -39,17 +39,17 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix CVE-2007-5342
   JULI permissions need to be restricted
   http://svn.apache.org/viewvc?rev=606594&view=rev
-  +1: markt
+  +1: markt,funkman
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44084
   JASSRealm is broken for application provided Principals
   http://svn.apache.org/viewvc?rev=606621&view=rev
-  +1: markt
+  +1: markt,funkman
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44088
   Expire button on Manager web page doesn't work
   http://svn.apache.org/viewvc?rev=606633&view=rev
-  +1: markt
+  +1: markt,funkman
   -1: 
