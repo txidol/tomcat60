@@ -53,3 +53,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=606633&view=rev
   +1: markt,funkman
   -1: 
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43944
+  Use a message that exists to prevent a MissingResourceException
+  http://svn.apache.org/viewvc?rev=606704&view=rev
+  +1: markt
+  -1: 
