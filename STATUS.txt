@@ -65,3 +65,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=606728&view=rev
   +1: markt
   -1: 
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43839
+  URL based session tracking fails when session cookie from parent context is
+  present. Based on a patch by Yuan Qingyun.
+  http://svn.apache.org/viewvc?rev=606944&view=rev
+  +1: markt
+  -1: 
