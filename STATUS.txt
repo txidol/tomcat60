@@ -72,3 +72,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=606944&view=rev
   +1: markt
   -1: 
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43914
+  Location headers must be encoded. Patch provided by Ivan Todoroski.
+  http://svn.apache.org/viewvc?rev=606952&view=rev
+  +1: markt
+  -1: 
