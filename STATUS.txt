@@ -39,7 +39,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix CVE-2007-5342
   JULI permissions need to be restricted
   http://svn.apache.org/viewvc?rev=606594&view=rev
-  +1: markt,funkman
+  +1: markt,funkman, pero
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44084
@@ -70,23 +70,23 @@ PATCHES PROPOSED TO BACKPORT:
   URL based session tracking fails when session cookie from parent context is
   present. Based on a patch by Yuan Qingyun.
   http://svn.apache.org/viewvc?rev=606944&view=rev
-  +1: markt,funkman
+  +1: markt,funkman, pero
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43914
   Location headers must be encoded. Patch provided by Ivan Todoroski.
   http://svn.apache.org/viewvc?rev=606952&view=rev
-  +1: markt,funkman
+  +1: markt,funkman, pero
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=42503
   ServletContext.getResourceAsStream returns stale data
   http://svn.apache.org/viewvc?rev=606994&view=rev
-  +1: funkman, markt
+  +1: funkman, markt, pero
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43285
   Missing EL Coercion causes argument type mismatch
   http://svn.apache.org/viewvc?rev=606996&view=rev
-  +1: funkman, markt
+  +1: funkman, markt, pero
   -1: 
