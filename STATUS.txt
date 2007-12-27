@@ -82,11 +82,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=42503
   ServletContext.getResourceAsStream returns stale data
   http://svn.apache.org/viewvc?rev=606994&view=rev
-  +1: funkman
+  +1: funkman, markt
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43285
   Missing EL Coercion causes argument type mismatch
   http://svn.apache.org/viewvc?rev=606996&view=rev
-  +1: funkman
+  +1: funkman, markt
   -1: 
