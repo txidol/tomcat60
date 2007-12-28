@@ -48,12 +48,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt,funkman, yoavs
   -1: 
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44088
-  Expire button on Manager web page doesn't work
-  http://svn.apache.org/viewvc?rev=606633&view=rev
-  +1: markt,funkman, yoavs
-  -1: 
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=42503
   ServletContext.getResourceAsStream returns stale data
   http://svn.apache.org/viewvc?rev=606994&view=rev

@@ -158,6 +158,9 @@
         (markt/jim)
       </fix>
       <fix>
+        <bug>44088</bug>: Fix expire session button in manager. (markt)
+      </fix>
+      <fix>
         <bug>44094</bug>: Add a note about the side effects of configuring a
         context as privileged. (markt)
       </fix>
