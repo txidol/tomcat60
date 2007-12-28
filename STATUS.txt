@@ -73,12 +73,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt,funkman, pero, yoavs
   -1: 
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43914
-  Location headers must be encoded. Patch provided by Ivan Todoroski.
-  http://svn.apache.org/viewvc?rev=606952&view=rev
-  +1: markt,funkman, pero, yoavs
-  -1: 
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=42503
   ServletContext.getResourceAsStream returns stale data
   http://svn.apache.org/viewvc?rev=606994&view=rev

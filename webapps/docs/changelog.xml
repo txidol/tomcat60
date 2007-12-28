@@ -132,6 +132,10 @@
         in the JSP with the error, use the SMAP info and the knowledge that for
         a scriptlet there is a one to one line mapping. (markt/jim)
       </fix>
+      <fix>
+        <bug>43914</bug>: URLs in location headers should be encoded. Patch
+        provided by Ivan Todoroski. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
