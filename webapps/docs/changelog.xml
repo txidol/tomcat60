@@ -39,15 +39,6 @@
         Fix handling of CometEvent.close when called during BEGIN event (fhanik)
       </update>
       <fix>
-        <bug>43236</bug>: When resetting the response, also reset the flags
-        associated with using a writer or an output stream to allow the user to
-        change character set after the reset. (markt)
-      </fix>
-      <fix>
-        <bug>43241</bug>: Make ServletContext.getResourceAsStream() conform to
-        the specification. Patch provided by John Kew. (markt)
-      </fix>
-      <fix>
         <bug>43594</bug>: Use setenv from CATALINA_BASE (if set) in preference
         to the one in CATALINA_HOME. Patch provided by Shaddy Baddah.
         (markt/jim)
@@ -76,6 +67,18 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>43236</bug>: When resetting the response, also reset the flags
+        associated with using a writer or an output stream to allow the user to
+        change character set after the reset. (markt)
+      </fix>
+      <fix>
+        <bug>43241</bug>: Make ServletContext.getResourceAsStream() conform to
+        the specification. Patch provided by John Kew. (markt)
+      </fix>
+      <fix>
+        <bug>43530 </bug>: doc link fixes provided by  Paul Shemansky (funkman)
+      </fix>
+      <fix>
         <bug>43675</bug>: Fix a possible logging related classloader leak.
         (markt)
       </fix>
@@ -97,9 +100,6 @@
       </update>
       <fix><bug>43687</bug> Remove conditional headers on Form Auth replay, 
            since the UA (esp. FireFox) isn't expecting it.
-      </fix>
-      <fix>
-        <bug>43530 </bug>: doc link fixes provided by  Paul Shemansky (funkman)
       </fix>
       <fix>
         <bug>43993</bug>: mime mapping for WS-Policy. Patch by Fabian Ritzmann  (funkman)
