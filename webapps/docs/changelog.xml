@@ -145,6 +145,9 @@
         <bug>43909</bug>: Make sure locale maps to wrapped ELContext. Patch
         provided by Tuomas Kiviaho. (markt)
       </fix>
+      <fix>
+        <bug>43944</bug>: Fix a missing resource exception. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
