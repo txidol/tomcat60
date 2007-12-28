@@ -133,6 +133,11 @@
         a scriptlet there is a one to one line mapping. (markt/jim)
       </fix>
       <fix>
+        <bug>43839</bug>: URL based session tracking failed when a session
+        cookie from a parent context was present. Based on a patch by Yuan
+        Qingyun. (markt)
+      </fix>
+      <fix>
         <bug>43914</bug>: URLs in location headers should be encoded. Patch
         provided by Ivan Todoroski. (markt)
       </fix>
