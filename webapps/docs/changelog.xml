@@ -107,6 +107,10 @@
       <fix>
         <bug>44041</bug>: Fix duplicate class definition under load. (markt)
       </fix>
+      <fix>
+        <bug>44084</bug>: JASSRealm was broken for application provided
+        Principals. Patch provided by Noah Levitt. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
