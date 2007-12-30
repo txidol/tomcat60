@@ -67,6 +67,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>42503</bug>: ServletContext.getResourceAsStream() could return
+        stale data. Patch provided by Arvind Srinivasan. (funkman/jim)
+      </fix>
+      <fix>
         <bug>43236</bug>: When resetting the response, also reset the flags
         associated with using a writer or an output stream to allow the user to
         change character set after the reset. (markt)
@@ -132,6 +136,10 @@
   </subsection>
   <subsection name="Jasper">
     <changelog>
+      <fix>
+        <bug>43285</bug>: Missing EL Coercion causes argument type mismatch.
+        Patch provided by Bernhard Huemer. (funkman/jim)
+      </fix>
       <fix>
         <bug>43675</bug>: Fix a possible logging related classloader leak.
         (markt)
