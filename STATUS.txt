@@ -33,7 +33,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Smallest fix to the above patches.
   http://people.apache.org/~jfclere/patches/Request.patch  
-  +1: jfclere, fhanik, markt, yoavs
+  +1: jfclere, fhanik, markt, yoavs, jim
   -1:
 
 * Fix CVE-2007-5342
@@ -45,17 +45,17 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=42503
   ServletContext.getResourceAsStream returns stale data
   http://svn.apache.org/viewvc?rev=606994&view=rev
-  +1: funkman, markt, pero, yoavs
+  +1: funkman, markt, pero, yoavs, jim
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43285
   Missing EL Coercion causes argument type mismatch
   http://svn.apache.org/viewvc?rev=606996&view=rev
-  +1: funkman, markt, pero, yoavs
+  +1: funkman, markt, pero, yoavs, jim
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43868
   MBean methods getInvoke() and getSetter() were broken
   http://svn.apache.org/viewvc?rev=607483&view=rev
-  +1: markt
+  +1: markt, jim
   -1:
