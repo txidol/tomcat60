@@ -47,3 +47,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=607483&view=rev
   +1: markt, jim
   -1:
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43840
+  Include user principal if possible when serializing / de-serializing
+  http://svn.apache.org/viewvc?rev=607596&view=rev
+  http://svn.apache.org/viewvc?rev=607597&view=rev
+  +1: markt
+  -1:
