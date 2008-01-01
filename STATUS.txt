@@ -67,4 +67,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-  
+  Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43775
+  Don't change line endings for binary files
+  http://svn.apache.org/viewvc?rev=607888&view=rev
+  +1: markt
+  -1:
