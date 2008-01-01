@@ -54,3 +54,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=607597&view=rev
   +1: markt
   -1:
+
+* Improve Jasper docs. Note rather than remove unused option, it will be
+  deprecated in 6.0.x.
+  http://svn.apache.org/viewvc?rev=607860&view=rev
+  +1: markt
+  -1: 
