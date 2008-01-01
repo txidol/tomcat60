@@ -72,3 +72,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=607888&view=rev
   +1: markt
   -1:
+
+  Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43758
+  Prevent NPEs when scripting elements are empty
+  http://svn.apache.org/viewvc?rev=607903&view=rev
+  +1: markt
+  -1: 
