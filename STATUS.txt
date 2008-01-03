@@ -50,10 +50,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43840
   Include user principal if possible when serializing / de-serializing
-  http://svn.apache.org/viewvc?rev=607596&view=rev
-  http://svn.apache.org/viewvc?rev=607597&view=rev
-  +1: markt, funkman
-  -1: fhanik - lets not do e.printStackTrace, handle the error and log it correctly, also, have the diff only change lines that are actually changed. makes it easier to review
+  http://people.apache.org/~markt/dev/bug43840.txt
+  +1: markt
+  -1:
 
 * Improve Jasper docs. Note rather than remove unused option, it will be
   deprecated in 6.0.x.
