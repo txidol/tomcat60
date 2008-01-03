@@ -52,25 +52,25 @@ PATCHES PROPOSED TO BACKPORT:
   Include user principal if possible when serializing / de-serializing
   http://svn.apache.org/viewvc?rev=607596&view=rev
   http://svn.apache.org/viewvc?rev=607597&view=rev
-  +1: markt
+  +1: markt, funkman
   -1:
 
 * Improve Jasper docs. Note rather than remove unused option, it will be
   deprecated in 6.0.x.
   http://svn.apache.org/viewvc?rev=607860&view=rev
-  +1: markt
+  +1: markt, funkman
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43800
   Make link between APR and Native clearer
   http://svn.apache.org/viewvc?rev=607875&view=rev
-  +1: markt
+  +1: markt, funkman
   -1:
 
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43775
   Don't change line endings for binary files
   http://svn.apache.org/viewvc?rev=607888&view=rev
-  +1: markt
+  +1: markt, funkman
   -1:
 
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43758
