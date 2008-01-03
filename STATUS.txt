@@ -53,7 +53,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=607596&view=rev
   http://svn.apache.org/viewvc?rev=607597&view=rev
   +1: markt, funkman
-  -1:
+  -1: fhanik - lets not do e.printStackTrace, handle the error and log it correctly, also, have the diff only change lines that are actually changed. makes it easier to review
 
 * Improve Jasper docs. Note rather than remove unused option, it will be
   deprecated in 6.0.x.
