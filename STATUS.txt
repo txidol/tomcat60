@@ -51,7 +51,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43840
   Include user principal if possible when serializing / de-serializing
   http://people.apache.org/~markt/dev/bug43840.txt
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Improve Jasper docs. Note rather than remove unused option, it will be
