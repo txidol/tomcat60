@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix CVE-2007-5342
-  JULI permissions need to be restricted
-  http://svn.apache.org/viewvc?rev=606594&view=rev
-  +1: markt,funkman, pero, yoavs
-  -1:
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43868
   MBean methods getInvoke() and getSetter() were broken
   http://svn.apache.org/viewvc?rev=607483&view=rev
