@@ -72,3 +72,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=609003&view=rev
   +1: markt
   -1: 
+
+  Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43743
+  Correctly handle nest tag files packaged in a jar.
+  http://svn.apache.org/viewvc?rev=609803&view=rev
+  +1: markt
+  -1: 
