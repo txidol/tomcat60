@@ -34,7 +34,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43868
   MBean methods getInvoke() and getSetter() were broken
   http://svn.apache.org/viewvc?rev=607483&view=rev
-  +1: markt, jim
+  +1: markt, jim, fhanik
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43840
@@ -46,35 +46,35 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve Jasper docs. Note rather than remove unused option, it will be
   deprecated in 6.0.x.
   http://svn.apache.org/viewvc?rev=607860&view=rev
-  +1: markt, funkman
+  +1: markt, funkman, fhanik
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43800
   Make link between APR and Native clearer
   http://svn.apache.org/viewvc?rev=607875&view=rev
-  +1: markt, funkman
+  +1: markt, funkman, fhanik
   -1:
 
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43775
   Don't change line endings for binary files
   http://svn.apache.org/viewvc?rev=607888&view=rev
-  +1: markt, funkman
+  +1: markt, funkman, fhanik
   -1:
 
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43758
   Prevent NPEs when scripting elements are empty
   http://svn.apache.org/viewvc?rev=607903&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
   Fix possible NPE in previous fix for
   http://issues.apache.org/bugzilla/show_bug.cgi?id=43839
   http://svn.apache.org/viewvc?rev=609003&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43743
   Correctly handle nest tag files packaged in a jar.
   http://svn.apache.org/viewvc?rev=609803&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
