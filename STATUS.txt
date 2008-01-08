@@ -78,3 +78,17 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=609803&view=rev
   +1: markt, fhanik, pero
   -1: 
+
+  CometProcessor should implement the Servlet interface, since it is defined in web.xml
+  http://people.apache.org/~fhanik/patches/comet-interface.patch
+  +1: fhanik
+  -1: 
+  
+  Fix for http://issues.apache.org/bugzilla/show_bug.cgi?id=11117 regression
+  The ratio of when needCRLFParse=true vs direct parseCRLF is low:high, meaning
+  The original fix for Comet not needing to block will be 95% satisfied
+  This fix also corrects the CRLF parsing, previously both CRCRLF and just LF 
+  would have been valid as well, but they are not
+  http://people.apache.org/~fhanik/patches/fix-bz11117-alt-1.patch
+  +1: fhanik
+  -1: 
