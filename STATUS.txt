@@ -92,3 +92,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~fhanik/patches/fix-bz11117-alt-1.patch
   +1: fhanik
   -1: 
+
+  Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43692
+  Clean up build files. Patch by  Paul Shemansky
+  http://svn.apache.org/viewvc?rev=610157&view=rev
+  +1: markt
+  -1: 
