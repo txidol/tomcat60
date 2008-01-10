@@ -54,5 +54,5 @@ PATCHES PROPOSED TO BACKPORT:
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43344
   Fix typo in if.jsp example
   http://svn.apache.org/viewvc/tomcat/trunk/webapps/examples/jsp/tagplugin/if.jsp?r1=610946&r2=610945&pathrev=610946
-  +1: markt
+  +1: markt, fhanik
   -1: 
