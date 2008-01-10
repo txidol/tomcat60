@@ -89,6 +89,9 @@
         <bug>43675</bug>: Fix a possible logging related classloader leak.
         (markt)
       </fix>
+      <fix><bug>43687</bug> Remove conditional headers on Form Auth replay, 
+           since the UA (esp. FireFox) isn't expecting it.
+      </fix>
       <fix>
         <bug>43706</bug>: WebDAV copy/move now returns 201 on success. Based on
         a patch by Panagiotis Astithas. (markt)
@@ -105,8 +108,9 @@
         Improve the webDAV Servlet Javadocs to make clear that the WebDAV
         Servlet can not be used as the default servlet. (markt)
       </update>
-      <fix><bug>43687</bug> Remove conditional headers on Form Auth replay, 
-           since the UA (esp. FireFox) isn't expecting it.
+      <fix>
+        <bug>43868</bug>: MBean methods getInvoke and getSetter were broken.
+        (markt)
       </fix>
       <fix>
         <bug>43993</bug>: mime mapping for WS-Policy. Patch by Fabian Ritzmann  (funkman)
