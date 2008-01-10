@@ -173,7 +173,7 @@
       </fix>
       <fix>
         Improve docs for Jasper configuration. Put options in alphabetcial
-        order, add some missing options, remove an unused one and address
+        order, add some missing options, deprecate an unused one and address
         feedback about the page provided on the users list.
       </fix> 
     </changelog>
@@ -184,6 +184,10 @@
         <bug>43611</bug>: Provide an error message if user tries to upload a war
         for a context defined in server.xml rather than failing silently.
         (markt/jim)
+      </fix>
+      <fix>
+        <bug>43800</bug>: Make relationship between APR and the native connector
+        clearer. (markt)
       </fix>
       <fix>
         <bug>44088</bug>: Fix expire session button in manager. (markt)
