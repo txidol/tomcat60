@@ -46,6 +46,10 @@
         to the one in CATALINA_HOME. Patch provided by Shaddy Baddah.
         (markt/jim)
       </fix>
+      <fix>
+        <bug>43775</bug>: Don't try to change line endings of binary files in
+        the source distribution. (markt)
+      </fix>
       <fix><bug>43846</bug>:
         Fix block simulated read and writes causing timeouts.
         Add non blocking parsing of HTTP request headers.
