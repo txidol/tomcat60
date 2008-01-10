@@ -33,7 +33,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   CometProcessor should implement the Servlet interface, since it is defined in web.xml
   http://people.apache.org/~fhanik/patches/comet-interface.patch
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
   
   Fix for http://issues.apache.org/bugzilla/show_bug.cgi?id=11117 regression
@@ -42,7 +42,7 @@ PATCHES PROPOSED TO BACKPORT:
   This fix also corrects the CRLF parsing, previously both CRCRLF and just LF 
   would have been valid as well, but they are not
   http://people.apache.org/~fhanik/patches/fix-bz11117-alt-1.patch
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43692
