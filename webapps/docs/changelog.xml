@@ -164,6 +164,10 @@
         (markt)
       </fix>
       <fix>
+        <bug>43743</bug>: Fix NPE when compiling nest tag files packaged in a
+        JAR. (markt)
+      </fix>
+      <fix>
         <bug>43757</bug>: Rather than use string matching to work out the line
         in the JSP with the error, use the SMAP info and the knowledge that for
         a scriptlet there is a one to one line mapping. (markt/jim)

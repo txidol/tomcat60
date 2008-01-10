@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-  Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43743
-  Correctly handle nest tag files packaged in a jar.
-  http://svn.apache.org/viewvc?rev=609803&view=rev
-  +1: markt, fhanik, pero
-  -1: 
-
   CometProcessor should implement the Servlet interface, since it is defined in web.xml
   http://people.apache.org/~fhanik/patches/comet-interface.patch
   +1: fhanik
