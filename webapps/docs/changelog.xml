@@ -171,6 +171,11 @@
       <fix>
         <bug>43944</bug>: Fix a missing resource exception. (markt)
       </fix>
+      <fix>
+        Improve docs for Jasper configuration. Put options in alphabetcial
+        order, add some missing options, remove an unused one and address
+        feedback about the page provided on the users list.
+      </fix> 
     </changelog>
   </subsection>
   <subsection name="Webapps">

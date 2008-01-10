@@ -414,8 +414,11 @@ public class JspC implements Options {
         return null;
     }
 
+    /**
+     * @deprecated
+     */
+    @Deprecated
     public boolean getSendErrorToClient() {
-        // implied send to System.err
         return true;
     }
 

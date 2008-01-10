@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Improve Jasper docs. Note rather than remove unused option, it will be
-  deprecated in 6.0.x.
-  http://svn.apache.org/viewvc?rev=607860&view=rev
-  +1: markt, funkman, fhanik, pero
-  -1: 
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43800
   Make link between APR and Native clearer
   http://svn.apache.org/viewvc?rev=607875&view=rev

@@ -57,7 +57,9 @@ public interface Options {
 
     /**
      * Should errors be sent to client or thrown into stderr?
+     * @deprecated
      */
+    @Deprecated
     public boolean getSendErrorToClient();
  
     /**
