@@ -169,6 +169,9 @@
         a scriptlet there is a one to one line mapping. (markt/jim)
       </fix>
       <fix>
+        <bug>43758</bug>: Fix NPE when scripting elements are empty. (markt)
+      </fix>
+      <fix>
         <bug>43909</bug>: Make sure locale maps to wrapped ELContext. Patch
         provided by Tuomas Kiviaho. (markt)
       </fix>
