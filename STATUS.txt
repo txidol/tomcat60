@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43840
-  Include user principal if possible when serializing / de-serializing
-  http://people.apache.org/~markt/dev/bug43840.txt
-  +1: markt, fhanik, pero
-  -1:
-
 * Improve Jasper docs. Note rather than remove unused option, it will be
   deprecated in 6.0.x.
   http://svn.apache.org/viewvc?rev=607860&view=rev

@@ -19,31 +19,47 @@
 package org.apache.catalina.ha.session;
 
 
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.io.Serializable;
+
+import java.security.Principal;
+
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.catalina.Realm;
+import org.apache.catalina.realm.GenericPrincipal;
+import org.apache.catalina.util.StringManager;
 
 
 /**
  * Generic implementation of <strong>java.security.Principal</strong> that
  * is available for use by <code>Realm</code> implementations.
- * The GenericPrincipal does NOT implement serializable and I didn't want to change that implementation
- * hence I implemented this one instead.
+ * The GenericPrincipal does NOT implement serializable and I didn't want to
+ * change that implementation hence I implemented this one instead.
  * @author Filip Hanik
  * @version $Revision$ $Date$
  */
-import org.apache.catalina.realm.GenericPrincipal;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
 public class SerializablePrincipal  implements java.io.Serializable {
 
+    protected static org.apache.juli.logging.Log log =
+        org.apache.juli.logging.LogFactory.getLog(SerializablePrincipal.class);
+    
+    /**
+     * The string manager for this package.
+     */
+    protected static StringManager sm =
+        StringManager.getManager(Constants.Package);
 
     // ----------------------------------------------------------- Constructors
 
-    public SerializablePrincipal()
-    {
+    public SerializablePrincipal() {
         super();
     }
+    
+    
     /**
      * Construct a new Principal, associated with the specified Realm, for the
      * specified username and password.
@@ -70,7 +86,24 @@ public class SerializablePrincipal  implements java.io.Serializable {
      * @param roles List of roles (must be Strings) possessed by this user
      */
     public SerializablePrincipal(Realm realm, String name, String password,
-                            List roles) {
+                            List<String> roles) {
+        this(realm, name, password, roles, null);
+    }
+
+    
+    /**
+     * Construct a new Principal, associated with the specified Realm, for the
+     * specified username and password, with the specified role names
+     * (as Strings).
+     *
+     * @param realm The Realm that owns this principal
+     * @param name The username of the user represented by this Principal
+     * @param password Credentials used to authenticate this user
+     * @param roles List of roles (must be Strings) possessed by this user
+     * @param userPrincipal The user principal to be exposed to applications
+     */
+    public SerializablePrincipal(Realm realm, String name, String password,
+                            List<String> roles, Principal userPrincipal) {
 
         super();
         this.realm = realm;
@@ -78,11 +111,13 @@ public class SerializablePrincipal  implements java.io.Serializable {
         this.password = password;
         if (roles != null) {
             this.roles = new String[roles.size()];
-            this.roles = (String[]) roles.toArray(this.roles);
+            this.roles = roles.toArray(this.roles);
             if (this.roles.length > 0)
                 Arrays.sort(this.roles);
         }
-
+        if (userPrincipal instanceof Serializable) {
+            this.userPrincipal = userPrincipal;
+        }
     }
 
 
@@ -136,6 +171,11 @@ public class SerializablePrincipal  implements java.io.Serializable {
     }
 
 
+    /**
+     * The user principal, if present.
+     */
+    protected Principal userPrincipal = null;
+    
     // --------------------------------------------------------- Public Methods
 
 
@@ -160,15 +200,19 @@ public class SerializablePrincipal  implements java.io.Serializable {
         return new SerializablePrincipal(principal.getRealm(),
                                          principal.getName(),
                                          principal.getPassword(),
-                                         principal.getRoles()!=null?Arrays.asList(principal.getRoles()):null);
+                                         principal.getRoles()!=null?Arrays.asList(principal.getRoles()):null,
+                                         principal.getUserPrincipal()!=principal?principal.getUserPrincipal():null);
     }
 
     public GenericPrincipal getPrincipal( Realm realm )
     {
-        return new GenericPrincipal(realm,name,password,getRoles()!=null?Arrays.asList(getRoles()):null);
+        return new GenericPrincipal(realm, name, password,
+                getRoles()!=null?Arrays.asList(getRoles()):null,
+                userPrincipal);
     }
     
-    public static GenericPrincipal readPrincipal(ObjectInput in, Realm realm) throws java.io.IOException{
+    public static GenericPrincipal readPrincipal(ObjectInput in, Realm realm)
+            throws IOException, ClassNotFoundException {
         String name = in.readUTF();
         boolean hasPwd = in.readBoolean();
         String pwd = null;
@@ -176,10 +220,23 @@ public class SerializablePrincipal  implements java.io.Serializable {
         int size = in.readInt();
         String[] roles = new String[size];
         for ( int i=0; i<size; i++ ) roles[i] = in.readUTF();
-        return new GenericPrincipal(realm,name,pwd,Arrays.asList(roles));
+        Principal userPrincipal = null;
+        boolean hasUserPrincipal = in.readBoolean();
+        if (hasUserPrincipal) {
+            try {
+                userPrincipal = (Principal) in.readObject();
+            } catch (ClassNotFoundException e) {
+                log.error(sm.getString(
+                        "serializablePrincipal.readPrincipal.cnfe"), e);
+                throw e;
+            }
+        }
+        return new GenericPrincipal(realm,name,pwd,Arrays.asList(roles),
+                userPrincipal);
     }
     
-    public static void writePrincipal(GenericPrincipal p, ObjectOutput out) throws java.io.IOException {
+    public static void writePrincipal(GenericPrincipal p, ObjectOutput out)
+            throws IOException {
         out.writeUTF(p.getName());
         out.writeBoolean(p.getPassword()!=null);
         if ( p.getPassword()!= null ) out.writeUTF(p.getPassword());
@@ -187,6 +244,10 @@ public class SerializablePrincipal  implements java.io.Serializable {
         if ( roles == null ) roles = new String[0];
         out.writeInt(roles.length);
         for ( int i=0; i<roles.length; i++ ) out.writeUTF(roles[i]);
+        boolean hasUserPrincipal = (p != p.getUserPrincipal() &&
+                p.getUserPrincipal() instanceof Serializable);
+        out.writeBoolean(hasUserPrincipal);
+        if (hasUserPrincipal) out.writeObject(p.getUserPrincipal());
     }
 
 
