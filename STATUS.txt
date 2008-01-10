@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-  Fix possible NPE in previous fix for
-  http://issues.apache.org/bugzilla/show_bug.cgi?id=43839
-  http://svn.apache.org/viewvc?rev=609003&view=rev
-  +1: markt, fhanik, pero
-  -1: 
-
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43743
   Correctly handle nest tag files packaged in a jar.
   http://svn.apache.org/viewvc?rev=609803&view=rev
