@@ -50,3 +50,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=610157&view=rev
   +1: markt
   -1: 
+
+  Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43344
+  Fix typo in if.jsp example
+  http://svn.apache.org/viewvc?rev=610946&view=rev
+  +1: markt
+  -1: 
