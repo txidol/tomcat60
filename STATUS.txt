@@ -56,3 +56,18 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc/tomcat/trunk/webapps/examples/jsp/tagplugin/if.jsp?r1=610946&r2=610945&pathrev=610946
   +1: markt, fhanik
   -1: 
+
+  Fix Windows installer issue that was including files when it should not
+  http://svn.apache.org/viewvc?rev=611660&view=rev
+  +1: markt
+  -1: 
+
+  Update libs. commons-logging-1.1.1, nsis 2.34
+  http://svn.apache.org/viewvc?rev=611635&view=rev
+  +1: markt
+  -1:
+
+  Update the Eclipse calsspath (needs libs update above)
+  http://svn.apache.org/viewvc?rev=611637&view=rev
+  +1: markt
+  -1:
