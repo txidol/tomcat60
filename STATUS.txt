@@ -71,3 +71,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=611637&view=rev
   +1: markt
   -1:
+
+  Update release notes with available libraries
+  http://svn.apache.org/viewvc?rev=611940&view=rev
+  +1: markt
+  -1: 
