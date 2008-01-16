@@ -35,6 +35,16 @@
 <section name="Tomcat 6.0.16 (remm)">
   <subsection name="General">
     <changelog>
+      <update>
+        Change chunked input parsing, always parse CRLF directly after a chunk has been
+        received, except if data is not available. If data is not available for CRLF
+        parsing, we run into BZ 11117, and must defer the parsing of CRLF to the next read event.
+        This fixes the incorrect blocking when using CometProcessor and the draining data during the READ event
+        where it before would block incorrectly waiting for the next chunk (fhanik)
+      </update>
+      <update>
+        The CometProcessor interface now extends the javax.servlet.Servlet interface(fhanik)
+      </update>
       <fix>
         Fix CVE-2007-5342 by limiting permissions granted to JULI. (markt)
       </fix>
