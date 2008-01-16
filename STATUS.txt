@@ -50,3 +50,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=612588&view=rev
   +1: markt
   -1: 
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43173
+  http://svn.apache.org/viewvc?rev=612622&view=rev
+  +1: markt
+  -1: 
