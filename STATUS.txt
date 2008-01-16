@@ -43,7 +43,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Set correct sessionCounter at StandardManager after reload sessions
   http://svn.apache.org/viewvc?view=rev&revision=612455
-  +1: pero, fhanik
+  +1: pero, fhanik, markt
   -1: 
 
 * Improve release note wording on Java version
