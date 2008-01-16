@@ -34,7 +34,7 @@ PATCHES PROPOSED TO BACKPORT:
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43692
   Clean up build files. Patch by  Paul Shemansky
   http://svn.apache.org/viewvc?rev=610157&view=rev
-  +1: markt, pero
+  +1: markt, pero, fhanik
   -1: 
 
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43344
@@ -45,22 +45,22 @@ PATCHES PROPOSED TO BACKPORT:
 
   Fix Windows installer issue that was including files when it should not
   http://svn.apache.org/viewvc?rev=611660&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
   Update libs. commons-logging-1.1.1, nsis 2.34
   http://svn.apache.org/viewvc?rev=611635&view=rev
-  +1: markt, pero
+  +1: markt, pero, fhanik
   -1:
 
   Update the Eclipse classpath (needs libs update above)
   http://svn.apache.org/viewvc?rev=611637&view=rev
-  +1: markt, pero
+  +1: markt, pero, fhanik
   -1:
 
   Update release notes with available libraries
   http://svn.apache.org/viewvc?rev=611940&view=rev
-  +1: markt, pero
+  +1: markt, pero, fhanik
   -1: 
 
   Add global flag to turn off reverse DNS lookups, performance improvement for tribes
@@ -70,5 +70,5 @@ PATCHES PROPOSED TO BACKPORT:
 
   Set correct sessionCounter at StandardManager after reload sessions
   http://svn.apache.org/viewvc?view=rev&revision=612455
-  +1: pero
+  +1: pero, fhanik
   -1: 
