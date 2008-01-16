@@ -38,7 +38,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add global flag to turn off reverse DNS lookups, performance improvement for tribes
   http://svn.apache.org/viewvc?view=rev&revision=612192
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Set correct sessionCounter at StandardManager after reload sessions
