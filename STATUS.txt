@@ -33,7 +33,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   CometProcessor should implement the Servlet interface, since it is defined in web.xml
   http://people.apache.org/~fhanik/patches/comet-interface.patch
-  +1: fhanik, markt
+  +1: fhanik, markt, pero
   -1: 
   
   Fix for http://issues.apache.org/bugzilla/show_bug.cgi?id=11117 regression
@@ -42,19 +42,19 @@ PATCHES PROPOSED TO BACKPORT:
   This fix also corrects the CRLF parsing, previously both CRCRLF and just LF 
   would have been valid as well, but they are not
   http://people.apache.org/~fhanik/patches/fix-bz11117-alt-1.patch
-  +1: fhanik, markt
+  +1: fhanik, markt, pero
   -1: 
 
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43692
   Clean up build files. Patch by  Paul Shemansky
   http://svn.apache.org/viewvc?rev=610157&view=rev
-  +1: markt
+  +1: markt, pero
   -1: 
 
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43344
   Fix typo in if.jsp example
   http://svn.apache.org/viewvc/tomcat/trunk/webapps/examples/jsp/tagplugin/if.jsp?r1=610946&r2=610945&pathrev=610946
-  +1: markt, fhanik
+  +1: markt, fhanik, pero
   -1: 
 
   Fix Windows installer issue that was including files when it should not
@@ -64,17 +64,17 @@ PATCHES PROPOSED TO BACKPORT:
 
   Update libs. commons-logging-1.1.1, nsis 2.34
   http://svn.apache.org/viewvc?rev=611635&view=rev
-  +1: markt
+  +1: markt, pero
   -1:
 
-  Update the Eclipse calsspath (needs libs update above)
+  Update the Eclipse classpath (needs libs update above)
   http://svn.apache.org/viewvc?rev=611637&view=rev
-  +1: markt
+  +1: markt, pero
   -1:
 
   Update release notes with available libraries
   http://svn.apache.org/viewvc?rev=611940&view=rev
-  +1: markt
+  +1: markt, pero
   -1: 
 
   Add global flag to turn off reverse DNS lookups, performance improvement for tribes
