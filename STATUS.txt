@@ -31,12 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-  Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43692
-  Clean up build files. Patch by  Paul Shemansky
-  http://svn.apache.org/viewvc?rev=610157&view=rev
-  +1: markt, pero, fhanik
-  -1: 
-
   Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43344
   Fix typo in if.jsp example
   http://svn.apache.org/viewvc/tomcat/trunk/webapps/examples/jsp/tagplugin/if.jsp?r1=610946&r2=610945&pathrev=610946

@@ -57,6 +57,10 @@
         (markt/jim)
       </fix>
       <fix>
+        <bug>43692</bug>: Clean up unused entires from build scripts. Patch
+        provided by Paul Shemansky. (markt)
+      </fix>
+      <fix>
         <bug>43775</bug>: Don't try to change line endings of binary files in
         the source distribution. (markt)
       </fix>
