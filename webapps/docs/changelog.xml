@@ -36,6 +36,10 @@
   <subsection name="General">
     <changelog>
       <update>
+        Update commons-logging to version 1.1.1 and the NSIS installer to 2.34.
+        (markt)
+      </update>
+      <update>
         Change chunked input parsing, always parse CRLF directly after a chunk has been
         received, except if data is not available. If data is not available for CRLF
         parsing, we run into BZ 11117, and must defer the parsing of CRLF to the next read event.
