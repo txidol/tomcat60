@@ -46,3 +46,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=612971&view=rev
   +1: pero
   -1:
+
+* Fix ManagerServlet.expireSessions throws Exceptions as iterate longer session lists 
+  at production servers.
+  http://svn.apache.org/viewvc?rev=612988&view=rev
+  +1: pero
+  -1:
