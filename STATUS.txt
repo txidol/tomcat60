@@ -36,13 +36,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt, pero
   -1: 
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43468
-  http://svn.apache.org/viewvc?rev=612632&view=rev
-  http://svn.apache.org/viewvc?rev=612647&view=rev
-  (less the build.properties changes)
-  +1: markt, pero, rjung
-  -1:
-
 * http://issues.apache.org/bugzilla/show_bug.cgi?id=43515
   http://svn.apache.org/viewvc?rev=612636&view=rev
   +1: markt, pero, rjung

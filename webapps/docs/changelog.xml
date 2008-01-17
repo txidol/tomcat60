@@ -226,6 +226,10 @@
         Nowaczyk. (markt)
       </fix>
       <fix>
+        <bug>43468</bug>: Fix possible NPE when listing contexts in the Manager
+        application. (markt)
+      </fix>
+      <fix>
         <bug>43611</bug>: Provide an error message if user tries to upload a war
         for a context defined in server.xml rather than failing silently.
         (markt/jim)
