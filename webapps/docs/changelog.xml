@@ -91,6 +91,9 @@
   </subsection>
   <subsection name="Catalina">
     <changelog>
+       <fix>
+         Set correct StandardManager.sessionCounter after reload/restart. (pero)
+      </fix>
       <fix>
         <bug>42503</bug>: ServletContext.getResourceAsStream() could return
         stale data. Patch provided by Arvind Srinivasan. (funkman/jim)
