@@ -218,6 +218,10 @@
   <subsection name="Webapps">
     <changelog>
       <fix>
+        <bug>43173</bug>: Fix typo in logging documentation regarding location
+        of logging.properties. (markt)
+      </fix>
+      <fix>
         <bug>43344</bug>: Fix typo in if.jsp example. Patch provided by Tim
         Nowaczyk. (markt)
       </fix>
