@@ -230,6 +230,10 @@
         application. (markt)
       </fix>
       <fix>
+        <bug>43515</bug>: Fix bug in Manager application that may have caused
+        problems when listing contexts. Patch provided by Lucas Galfaso. (markt)
+      </fix> 
+      <fix>
         <bug>43611</bug>: Provide an error message if user tries to upload a war
         for a context defined in server.xml rather than failing silently.
         (markt/jim)
