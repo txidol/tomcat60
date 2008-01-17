@@ -43,22 +43,24 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Improve release note wording on Java version
   http://svn.apache.org/viewvc?rev=612588&view=rev
-  +1: markt, pero
+  +1: markt, pero, rjung
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43173
   http://svn.apache.org/viewvc?rev=612622&view=rev
-  +1: markt, pero
+  +1: markt, pero, rjung
   -1: 
+  rjung: Although actually it's $CATALINA_BASE, but usually (unfortunately) we don't make
+         a difference between them in the docs
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43468
   http://svn.apache.org/viewvc?rev=612632&view=rev
   http://svn.apache.org/viewvc?rev=612647&view=rev
   (less the build.properties changes)
-  +1: markt, pero
+  +1: markt, pero, rjung
   -1:
 
 * http://issues.apache.org/bugzilla/show_bug.cgi?id=43515
   http://svn.apache.org/viewvc?rev=612636&view=rev
-  +1: markt, pero
+  +1: markt, pero, rjung
   -1:
