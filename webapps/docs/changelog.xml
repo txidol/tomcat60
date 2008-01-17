@@ -87,6 +87,11 @@
       <fix>
         Cookie parsing of $Version regression from 6.0.15 has been fixed
       </fix>
+      <fix>
+        The script that builds the windows installer was including additional
+        files due to the way it processes recurrsive file selectors. The
+        selectors have been modified to only include the intended files. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Catalina">

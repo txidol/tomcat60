@@ -31,11 +31,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere
   -1: fhanik - Can we add the 'package' directive to make the package match the dir structure
 
-* Fix Windows installer issue that was including files when it should not
-  http://svn.apache.org/viewvc?rev=611660&view=rev
-  +1: markt, fhanik, pero
-  -1: 
-
 * Add global flag to turn off reverse DNS lookups, performance improvement for tribes
   http://svn.apache.org/viewvc?view=rev&revision=612192
   +1: fhanik, markt, pero
