@@ -52,10 +52,5 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=612988&view=rev
   +1: pero
   -1:
-  
-* Fix "Restricted listeners property file not found" message fix
-  http://issues.apache.org/bugzilla/show_bug.cgi?id=44261
-  http://svn.apache.org/viewvc?rev=612991&view=rev
-  +1: pero
-  -1:
+
   
