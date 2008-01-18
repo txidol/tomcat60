@@ -48,4 +48,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: pero
   -1: remm (the patch looks like a hack, and we don't know what exactly you are fixing)
 
-  
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44223
+  Add support for remaining truststore system property
+  Not essential for 6.0.16.
+  http://svn.apache.org/viewvc?rev=613266&view=rev
+  +1: markt
+  -1:
