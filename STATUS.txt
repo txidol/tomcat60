@@ -38,7 +38,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Update: native to 1.1.12; commons-pool to 1.4; commons archive locations.
   http://svn.apache.org/viewvc?rev=612950&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
   
 * Add ManagerBase session getLastAccessedTimestamp and getCreationTimestamp for better
@@ -51,6 +51,6 @@ PATCHES PROPOSED TO BACKPORT:
   at production servers.
   http://svn.apache.org/viewvc?rev=612988&view=rev
   +1: pero
-  -1:
+  -1: remm (the patch looks like a hack, and we don't know what exactly you are fixing)
 
   
