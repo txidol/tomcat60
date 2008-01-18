@@ -96,7 +96,8 @@
   </subsection>
   <subsection name="Catalina">
     <changelog>
-       <fix>
+      <update>Add -Dorg.apache.catalina.tribes.dns_lookups=false as default. The ability to turn off reverse DNS lookups for membership.(fhanik)</update>
+      <fix>
          Set correct StandardManager.sessionCounter after reload/restart. (pero)
       </fix>
       <fix>
