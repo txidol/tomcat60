@@ -59,3 +59,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~pero/patches/tc55/2007-11-16-1-FarmWarDeployer-tc55.patch
   +1: pero
   -1:
+
+* Fix WatchedResource does not work if app is outside "webapps"
+  http://issues.apache.org/bugzilla/show_bug.cgi?id=38131
+  http://svn.apache.org/viewvc?rev=613266&view=rev
+  +1: pero
+  -1:
+  
