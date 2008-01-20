@@ -54,3 +54,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~pero/patches/tc55/2007-11-16-1-ReplicationValve-tc55.patch
   +1: pero
   -1:
+
+* Fix FarmWarDeployer can be only config at Host Element (small changes s. tomcat 55 STATUS.txt)
+  http://people.apache.org/~pero/patches/tc55/2007-11-16-1-FarmWarDeployer-tc55.patch
+  +1: pero
+  -1:
