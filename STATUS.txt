@@ -62,7 +62,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix WatchedResource does not work if app is outside "webapps"
   http://issues.apache.org/bugzilla/show_bug.cgi?id=38131
-  http://svn.apache.org/viewvc?rev=613266&view=rev
+  http://svn.apache.org/viewvc?rev=613558&view=rev
   +1: pero
   -1:
   
