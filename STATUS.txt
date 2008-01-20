@@ -52,17 +52,19 @@ PATCHES PROPOSED TO BACKPORT:
   
 * Fix wrong &&
   http://people.apache.org/~pero/patches/tc55/2007-11-16-1-ReplicationValve-tc55.patch
-  +1: pero
+  +1: pero, markt
   -1:
 
 * Fix FarmWarDeployer can be only config at Host Element (small changes s. tomcat 55 STATUS.txt)
   http://people.apache.org/~pero/patches/tc55/2007-11-16-1-FarmWarDeployer-tc55.patch
-  +1: pero
+  +1: pero, markt
   -1:
+      martk - change "FarmWarDeployer can only work as parent from " to
+                     "FarmWarDeployer can only work if parent of "
 
 * Fix WatchedResource does not work if app is outside "webapps"
   http://issues.apache.org/bugzilla/show_bug.cgi?id=38131
   http://svn.apache.org/viewvc?rev=613558&view=rev
-  +1: pero
+  +1: pero, markt
   -1:
   
