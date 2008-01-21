@@ -262,6 +262,9 @@
    <subsection name="Cluster">
     <changelog>
       <fix>
+        Fix FarmWarDeployer can be only configured as host subelement (pero)
+      </fix>
+      <fix>
       	Fix wrong &amp;&amp; at ReplicationValve (pero)
       </fix>
       <update>
