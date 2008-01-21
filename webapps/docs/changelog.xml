@@ -101,7 +101,7 @@
   <subsection name="Catalina">
     <changelog>
       <fix><bug>38131</bug>: WatchedResource doesn't work if app is outside host appbase webapps. 
-        Patch provided by Gernot Pfingstl (pero)
+        Patch provided by Peter Lynch (pero)
       </fix>
       <update>Add -Dorg.apache.catalina.tribes.dns_lookups=false as default. The ability to turn off reverse DNS lookups for membership.(fhanik)</update>
       <fix>
