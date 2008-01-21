@@ -40,8 +40,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix ManagerServlet.expireSessions throws Exceptions as iterate longer session lists 
   at production servers.
   http://svn.apache.org/viewvc?rev=612988&view=rev
-  +1: pero, rjung
-  -1: remm (the patch looks like a hack, and we don't know what exactly you are fixing)
+  +1: pero, rjung, remm
+  -1: 
       rjung: as pero wrote: the patch contains
               - r612944 fixed in HTMLManager but not in Manager
               - a fix aiaginst an exception when listing session idle time
