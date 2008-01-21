@@ -261,6 +261,9 @@
   </subsection>
    <subsection name="Cluster">
     <changelog>
+      <fix>
+      	Fix wrong &amp;&amp; at ReplicationValve (pero)
+      </fix>
       <update>
         Add get/set methods for properties in the Tcp Failure detector.
         (fhanik/jim)

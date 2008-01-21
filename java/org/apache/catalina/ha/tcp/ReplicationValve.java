@@ -467,7 +467,7 @@ public class ReplicationValve
      */
     protected void resetReplicationRequest(Request request, boolean isCrossContext) {
         Session contextSession = request.getSessionInternal(false);
-        if(contextSession != null & contextSession instanceof DeltaSession){
+        if(contextSession != null && contextSession instanceof DeltaSession){
             resetDeltaRequest(contextSession);
             ((DeltaSession)contextSession).setPrimarySession(true);
         }
