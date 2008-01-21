@@ -68,12 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
                      "FarmWarDeployer can only work if parent of "
       rjung - "is an engine!" -> " is an engine!" (space added)
               "work at Host" -> "work as Host"
-
-* Fix WatchedResource does not work if app is outside "webapps"
-  http://issues.apache.org/bugzilla/show_bug.cgi?id=38131
-  http://svn.apache.org/viewvc?rev=613558&view=rev
-  +1: pero, markt, rjung
-  -1:
   
 * Update JNDI docs to use server.xml less and <Context> more
   http://svn.apache.org/viewvc?rev=613689&view=rev
