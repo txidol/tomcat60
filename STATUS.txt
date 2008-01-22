@@ -66,5 +66,5 @@ PATCHES PROPOSED TO BACKPORT:
   Log a warning when a duplicate listener is ignored.
   http://svn.apache.org/viewvc?rev=614012&view=rev
   Not essential for 6.0.16
-  +1: markt, remm
+  +1: markt, remm, pero
   -1: 
