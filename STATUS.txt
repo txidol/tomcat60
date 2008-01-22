@@ -35,7 +35,8 @@ PATCHES PROPOSED TO BACKPORT:
   remote JMX access.
   http://svn.apache.org/viewvc?rev=612971&view=rev
   +1: pero, rjung
-  -1:
+  -1: remm: I believe it would need specific support for certain managers. Interested users
+            could use their own extended manager instead.
 
 * Fix ManagerServlet.expireSessions throws Exceptions as iterate longer session lists 
   at production servers.
@@ -52,18 +53,18 @@ PATCHES PROPOSED TO BACKPORT:
   Add support for remaining truststore system property
   Not essential for 6.0.16.
   http://svn.apache.org/viewvc?rev=613266&view=rev
-  +1: markt, pero
+  +1: markt, pero, remm
   -1:
-  
+
 * Update JNDI docs to use server.xml less and <Context> more
   http://svn.apache.org/viewvc?rev=613689&view=rev
   Not essential for 6.0.16.
-  +1: markt, pero
+  +1: markt, pero, remm
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44268
   Log a warning when a duplicate listener is ignored.
   http://svn.apache.org/viewvc?rev=614012&view=rev
   Not essential for 6.0.16
-  +1: markt
+  +1: markt, remm
   -1: 
