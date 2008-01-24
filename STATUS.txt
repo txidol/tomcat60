@@ -80,5 +80,5 @@ PATCHES PROPOSED TO BACKPORT:
   Otherwise it's only reachable in the HTMLManager.
   http://people.apache.org/~rjung/patches/web_xml_expire.patch
   (backport of r614933 from trunk)
-  +1: rjung
+  +1: rjung, fhanik
   -1:

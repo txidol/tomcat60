@@ -751,7 +751,10 @@ public class Http11NioProcessor implements ActionHook {
                 NioEndpoint.KeyAttachment attach = (NioEndpoint.KeyAttachment)socket.getAttachment(false);
                 if (attach != null) {
                     attach.setComet(comet);
-                    if (!comet) {
+                    if (comet) {
+                        Integer comettimeout = (Integer) request.getAttribute("org.apache.tomcat.comet.timeout");
+                        if (comettimeout != null) attach.setTimeout(comettimeout.longValue());
+                    } else {
                         //reset the timeout
                         attach.setTimeout(endpoint.getSocketProperties().getSoTimeout());
                     }
@@ -889,6 +892,10 @@ public class Http11NioProcessor implements ActionHook {
                         NioEndpoint.KeyAttachment attach = (NioEndpoint.KeyAttachment) key.attachment();
                         if (attach != null)  {
                             attach.setComet(comet);
+                            if (comet) {
+                                Integer comettimeout = (Integer) request.getAttribute("org.apache.tomcat.comet.timeout");
+                                if (comettimeout != null) attach.setTimeout(comettimeout.longValue());
+                            }
                         }
                     }
                 } catch (InterruptedIOException e) {
