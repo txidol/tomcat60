@@ -72,5 +72,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix regression to removal of connection specific comet timeout
   http://people.apache.org/~fhanik/patches/comet-timeout.patch
   Would like for 6.0.16, trivial fix
-  +1: fhanik, jim (by inspection)
+  +1: fhanik, jim (by inspection), pero
   -1:
