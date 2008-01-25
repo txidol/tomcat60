@@ -69,12 +69,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm, pero
   -1: 
 
-* Fix regression to removal of connection specific comet timeout
-  http://people.apache.org/~fhanik/patches/comet-timeout.patch
-  Would like for 6.0.16, trivial fix
-  +1: fhanik, jim (by inspection), pero
-  -1:
-
 * Include expire command of manager webapp's Manager servlet
   in URL mapping and security constraint.
   Otherwise it's only reachable in the HTMLManager.
