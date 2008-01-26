@@ -38,17 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: I believe it would need specific support for certain managers. Interested users
             could use their own extended manager instead.
 
-* Fix ManagerServlet.expireSessions throws Exceptions as iterate longer session lists 
-  at production servers.
-  http://svn.apache.org/viewvc?rev=612988&view=rev
-  +1: pero, rjung, remm
-  -1: 
-      rjung: as pero wrote: the patch contains
-              - r612944 fixed in HTMLManager but not in Manager
-              - a fix aiaginst an exception when listing session idle time
-                histogram and at least one session timed out since last
-                run of invalidation background task
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44223
   Add support for remaining truststore system property
   Not essential for 6.0.16.
