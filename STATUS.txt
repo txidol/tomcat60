@@ -57,3 +57,9 @@ PATCHES PROPOSED TO BACKPORT:
   Not essential for 6.0.16
   +1: markt, remm, pero
   -1: 
+
+* Correct svn properties.
+  http://people.apache.org/~rjung/patches/fix-svn-props.txt
+  Backport of r615583
+  +1: rjung
+  -1: 
