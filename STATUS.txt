@@ -41,5 +41,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Correct svn properties.
   http://people.apache.org/~rjung/patches/fix-svn-props.txt
   Backport of r615583
-  +1: rjung, pero
+  +1: rjung, pero, fhanik
   -1: 
