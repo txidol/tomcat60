@@ -38,13 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: I believe it would need specific support for certain managers. Interested users
             could use their own extended manager instead.
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44268
-  Log a warning when a duplicate listener is ignored.
-  http://svn.apache.org/viewvc?rev=614012&view=rev
-  Not essential for 6.0.16
-  +1: markt, remm, pero, jim
-  -1: 
-
 * Correct svn properties.
   http://people.apache.org/~rjung/patches/fix-svn-props.txt
   Backport of r615583
