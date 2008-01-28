@@ -42,20 +42,20 @@ PATCHES PROPOSED TO BACKPORT:
   Add support for remaining truststore system property
   Not essential for 6.0.16.
   http://svn.apache.org/viewvc?rev=613266&view=rev
-  +1: markt, pero, remm
+  +1: markt, pero, remm, jim
   -1:
 
 * Update JNDI docs to use server.xml less and <Context> more
   http://svn.apache.org/viewvc?rev=613689&view=rev
   Not essential for 6.0.16.
-  +1: markt, pero, remm
+  +1: markt, pero, remm, jim
   -1: 
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44268
   Log a warning when a duplicate listener is ignored.
   http://svn.apache.org/viewvc?rev=614012&view=rev
   Not essential for 6.0.16
-  +1: markt, remm, pero
+  +1: markt, remm, pero, jim
   -1: 
 
 * Correct svn properties.
