@@ -168,6 +168,15 @@
         <bug>44084</bug>: JASSRealm was broken for application provided
         Principals. Patch provided by Noah Levitt. (markt)
       </fix>
+      <fix>
+        <bug>44223</bug>: Use the javax.net.ssl.trustStoreType setting if no
+        explicit connector configuration is provided and the property is set.
+        (markt/jim)
+      </fix>
+      <update>
+        <bug>44268</bug>: Log a warning if a duplicate listener configuration is
+        ignored. (markt/jim)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -261,6 +270,10 @@
         <bug>44094</bug>: Add a note about the side effects of configuring a
         context as privileged. (markt)
       </fix>
+      <update>
+        Update JNDI documentation to refer to configuring contexts via
+        context.xml rather than server.xml. (markt/jim)
+      </update>
     </changelog>
   </subsection>
    <subsection name="Cluster">
