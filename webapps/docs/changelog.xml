@@ -101,7 +101,7 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
-        Fix ManagerServlet.exipreSession throws Exceptions as iterate longer 
+        Fix ManagerServlet.exipreSessions throws Exceptions as iterate longer 
         session lists at production servers. (pero)
       </fix>
       <fix><bug>38131</bug>: WatchedResource doesn't work if app is outside host appbase webapps. 
