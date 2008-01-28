@@ -38,13 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: I believe it would need specific support for certain managers. Interested users
             could use their own extended manager instead.
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44223
-  Add support for remaining truststore system property
-  Not essential for 6.0.16.
-  http://svn.apache.org/viewvc?rev=613266&view=rev
-  +1: markt, pero, remm, jim
-  -1:
-
 * Update JNDI docs to use server.xml less and <Context> more
   http://svn.apache.org/viewvc?rev=613689&view=rev
   Not essential for 6.0.16.
