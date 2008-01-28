@@ -37,9 +37,3 @@ PATCHES PROPOSED TO BACKPORT:
   +1: pero, rjung, fhanik
   -1: remm: I believe it would need specific support for certain managers. Interested users
             could use their own extended manager instead.
-
-* Correct svn properties.
-  http://people.apache.org/~rjung/patches/fix-svn-props.txt
-  Backport of r615583
-  +1: rjung, pero, fhanik
-  -1: 
