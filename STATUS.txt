@@ -44,3 +44,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=616556&view=rev
   +1: markt
   -1:
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43878
+  Use a single class loader when not reloading JSPs and tag files to reduce perm
+  gen usage.
+  http://svn.apache.org/viewvc?rev=616563&view=rev
+  +1: markt
+  -1:
