@@ -67,3 +67,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=616897&view=rev
   +1: markt
   -1:
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44282
+  Do call to getClassLoader() in a privileged block.
+  http://svn.apache.org/viewvc?rev=616953&view=rev
+  +1: markt
+  -1:
