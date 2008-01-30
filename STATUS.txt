@@ -51,3 +51,19 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=616563&view=rev
   +1: markt
   -1:
+
+* Remove old TLS code
+  http://svn.apache.org/viewvc?rev=616894&view=rev
+  +1: markt
+  -1:
+
+* Modify NIo connector to use JSSE SSL implementation directly
+  http://svn.apache.org/viewvc?rev=616896&view=rev
+  +1: markt
+  -1: 
+
+* Remove JSSE dependency from SSL abstraction
+  Requires NIO patch above
+  http://svn.apache.org/viewvc?rev=616897&view=rev
+  +1: markt
+  -1:
