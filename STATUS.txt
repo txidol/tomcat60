@@ -43,33 +43,37 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Anthony Berglas
   http://svn.apache.org/viewvc?rev=616556&view=rev
   +1: markt
-  -1:
+  -1: remm: I didn't test the performance issue. If it exists, then the patch could be improved
+            (move any check logic to the Compiler class - and maybe try to handle JAR updates ?).
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43878
   Use a single class loader when not reloading JSPs and tag files to reduce perm
   gen usage.
   http://svn.apache.org/viewvc?rev=616563&view=rev
   +1: markt
+  +0: remm: The patch will now no longer blow up with the background reloading thread,
+            but the use case intersects with precompilation, so it's probably not very useful.
   -1:
 
 * Remove old TLS code
   http://svn.apache.org/viewvc?rev=616894&view=rev
   +1: markt
-  -1:
+  -1: remm: I don't see the point of backporting these API changing cleanups
 
 * Modify NIo connector to use JSSE SSL implementation directly
   http://svn.apache.org/viewvc?rev=616896&view=rev
   +1: markt
-  -1: 
+  -1: remm: I don't see the point of backporting these API changing cleanups
 
 * Remove JSSE dependency from SSL abstraction
   Requires NIO patch above
   http://svn.apache.org/viewvc?rev=616897&view=rev
   +1: markt
-  -1:
+  -1: remm: I don't see the point of backporting these API changing cleanups
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44282
   Do call to getClassLoader() in a privileged block.
   http://svn.apache.org/viewvc?rev=616953&view=rev
   +1: markt
+  +0: remm: do we really want to fix these sort of "bugs" ?
   -1:
