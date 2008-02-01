@@ -38,14 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: I believe it would need specific support for certain managers. Interested users
             could use their own extended manager instead.
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43741
-  Only compile tags in a JAR file once rather than once per JSP that uses it.
-  Patch provided by Anthony Berglas
-  http://svn.apache.org/viewvc?rev=616556&view=rev
-  +1: markt
-  -1: remm: I didn't test the performance issue. If it exists, then the patch could be improved
-            (move any check logic to the Compiler class - and maybe try to handle JAR updates ?).
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43878
   Use a single class loader when not reloading JSPs and tag files to reduce perm
   gen usage.
