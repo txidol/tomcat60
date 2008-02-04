@@ -76,4 +76,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: funkman
   -1:
 
-
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43741
+  Correctly handle dependencies on tags in JARs
+  http://svn.apache.org/viewvc?rev=618481&view=rev
+  +1: markt
+  -1:
