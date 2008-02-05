@@ -81,3 +81,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=618481&view=rev
   +1: markt
   -1:
+
+* Handle case of NIO/SSL when transferring bytes to a disconnected socket
+  http://svn.apache.org/viewvc?rev=618420&view=rev
+  +1: fhanik
+  -1: 
+  
