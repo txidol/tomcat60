@@ -84,10 +84,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Handle case of NIO/SSL when transferring bytes to a disconnected socket
   http://svn.apache.org/viewvc?rev=618420&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
   
 * Use a single lock for synchronized session manipulation
   http://svn.apache.org/viewvc?rev=618823&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
