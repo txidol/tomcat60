@@ -70,12 +70,6 @@ PATCHES PROPOSED TO BACKPORT:
   +0: remm: do we really want to fix these sort of "bugs" ?
   -1:
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44337
-  Dir listing crashes if no readme-file present
-  http://svn.apache.org/viewvc?rev=618150&view=rev
-  +1: funkman, markt, fhanik, pero
-  -1:
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43741
   Correctly handle dependencies on tags in JARs
   http://svn.apache.org/viewvc?rev=618481&view=rev

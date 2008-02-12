@@ -32,6 +32,13 @@
   </properties>
 
 <body>
+<section name="Tomcat 6.0.17 (remm)">
+  <subsection name="Catalina">
+    <changelog>
+        <bug>44337</bug>:   Dir listing crashes if no readme-file present (funkman)
+    </changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.16 (remm)">
   <subsection name="General">
     <changelog>
