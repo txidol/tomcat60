@@ -88,5 +88,11 @@ PATCHES PROPOSED TO BACKPORT:
 
 * ExtendedAccessLogValve cs-uri not print empty querystring
   http://svn.apache.org/viewvc?rev=620778&view=rev
-  +1: pero
+  +1: pero,funkman
+
+
+* Remove duplicate listner additions
+  http://svn.apache.org/viewvc?rev=620844&view=rev
+  +1: funkman
   -1: 
+
