@@ -93,6 +93,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove duplicate listner additions
   http://svn.apache.org/viewvc?rev=620844&view=rev
-  +1: funkman
+  +1: funkman, pero
   -1: 
 
