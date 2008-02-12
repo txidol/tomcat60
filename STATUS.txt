@@ -91,3 +91,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=618823&view=rev
   +1: fhanik, markt
   -1: 
+
+* ExtendedAccessLogValve cs-uri not print empty querystring
+  http://svn.apache.org/viewvc?rev=620778&view=rev
+  +1: pero
+  -1: 
