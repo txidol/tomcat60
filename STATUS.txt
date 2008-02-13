@@ -90,8 +90,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=620778&view=rev
   +1: pero,funkman,markt
 
-
 * Remove duplicate listner additions
   http://svn.apache.org/viewvc?rev=620844&view=rev
   +1: funkman, pero, jfclere, markt
 
+* lib is relative to catalina home, not base
+  http://svn.apache.org/viewvc?rev=627602&view=rev
+  +1: markt
+  -1:
