@@ -35,7 +35,23 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix>
         <bug>44337</bug>:   Dir listing crashes if no readme-file present (funkman)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <update>   
+        Fix NIO/SSL live lock during client disconnect (fhanik)
+      </update>
+    </changelog>
+  </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <update>   
+        Fix session replication dead lock during non sticky load balancing (fhanik)
+      </update>
     </changelog>
   </subsection>
 </section>
