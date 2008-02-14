@@ -104,3 +104,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
+* Fix ArrayIndexOutOfBoundsException when empty URL is requested
+  http://svn.apache.org/viewvc?rev=627883&view=rev
+  +1: markt
+  -1:
