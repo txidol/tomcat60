@@ -97,4 +97,10 @@ PATCHES PROPOSED TO BACKPORT:
 * lib is relative to catalina home, not base
   http://svn.apache.org/viewvc?rev=627602&view=rev
   +1: markt
+  -1: fhanik - lib should be relative to catalina.home
+
+* Fix NPE when iterating through sessions for expiration
+  http://svn.apache.org/viewvc?view=rev&revision=627689
+  +1: fhanik
   -1:
+  
