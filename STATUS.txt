@@ -91,17 +91,17 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix NPE when iterating through sessions for expiration
   http://svn.apache.org/viewvc?view=rev&revision=627689
-  +1: fhanik
+  +1: fhanik, markt
   -1:
   
 * Allow old style cookie values to work(auto switch to v1) (regression)
   http://svn.apache.org/viewvc?view=rev&revision=627743 (ServerCookie.java)
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
   
 * Allow ServletContext.getResource("noslash/resource") (regression)
   http://svn.apache.org/viewvc?view=rev&revision=627743 (ApplicationContext.java)
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix ArrayIndexOutOfBoundsException when empty URL is requested
