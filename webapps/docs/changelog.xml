@@ -38,6 +38,9 @@
       <fix>
         <bug>44337</bug>:   Dir listing crashes if no readme-file present (funkman)
       </fix>
+      <fix>
+        If listener declared in web.xml, only add it once. (funkman)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
