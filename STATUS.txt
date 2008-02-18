@@ -68,7 +68,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43741
   Correctly handle dependencies on tags in JARs
   http://svn.apache.org/viewvc?rev=618481&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * ExtendedAccessLogValve cs-uri not print empty querystring
@@ -100,16 +100,17 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix ArrayIndexOutOfBoundsException when empty URL is requested
   http://svn.apache.org/viewvc?rev=627883&view=rev
   +1: markt
+  +1: fhanik - although, I just don't see how this would ever happen, the smallest URI is "/"
   -1:
 
 * Allow to specify the random device to use. (/dev/urandom is faster).
   http://svn.apache.org/viewvc?view=rev&revision=602114
   http://svn.apache.org/viewvc?view=rev&revision=601795
-  +1: jfclere
+  +1: jfclere, fhanik
   -1:
 
 * Add tests for the cookie parsing and use package org.apache.catalina.tomcat.util.http
   http://people.apache.org/~jfclere/patches/test_cookies.patch2
-  +1: jfclere
+  +1: jfclere, fhanik
   -1:
 
