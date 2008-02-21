@@ -92,11 +92,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=602114
   http://svn.apache.org/viewvc?view=rev&revision=601795
   +1: jfclere, fhanik
+  +0: markt - should really be added to the docs as well
   -1:
 
 * Add tests for the cookie parsing and use package org.apache.catalina.tomcat.util.http
   http://people.apache.org/~jfclere/patches/test_cookies.patch2
-  +1: jfclere, fhanik
+  +1: jfclere, fhanik, markt
   -1:
 
 * Point to Wiki for latest status and remove very out of date status page from
