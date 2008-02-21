@@ -105,3 +105,14 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, fhanik
   -1:
 
+* Point to Wiki for latest status and remove very out of date status page from
+  docs
+  http://svn.apache.org/viewvc?rev=630006&view=rev
+  +1: markt
+  -1:
+
+* Update docs. Correct version number, paths and use of $CATALINA_HOME vs.
+  $CATALINA_BASE
+  http://svn.apache.org/viewvc?rev=630013&view=rev
+  +1: markt
+  -1:
