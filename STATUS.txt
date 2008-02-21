@@ -37,17 +37,22 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=616894&view=rev
   +1: markt
   -1: remm: I don't see the point of backporting these API changing cleanups
+            (markt) This is not an API change. It is just removing the TLS code
+                    that has never been included in a 6.0.x src or bin release
 
 * Modify NIo connector to use JSSE SSL implementation directly
   http://svn.apache.org/viewvc?rev=616896&view=rev
   +1: markt
   -1: remm: I don't see the point of backporting these API changing cleanups
+            (markt) This is not an API change. It is preparation for an API
+                    change which will now be in a future release. The method
+                    that needs to be removed will now be marked as deprecated
+                    in 6.0.x (see patch below).
 
-* Remove JSSE dependency from SSL abstraction
-  Requires NIO patch above
-  http://svn.apache.org/viewvc?rev=616897&view=rev
+* Mark method that adds a JSSE dependency to the SSL abstraction as deprecated
+  http://people.apache.org/~markt/patches/2008-02-21-SSL-JSSE.patch
   +1: markt
-  -1: remm: I don't see the point of backporting these API changing cleanups
+  -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44282
   Do call to getClassLoader() in a privileged block.
