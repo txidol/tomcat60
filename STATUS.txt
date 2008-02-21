@@ -89,7 +89,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=627743 (ServerCookie.java)
   +1: fhanik, markt
   +0: remm (the property name is inconsistent with what has been used recently, but that
-      convention was never really discussed either)
+      convention was never really discussed either) fhanik: the propperty name is the same as everywhere else
   -1: 
   
 * Fix ArrayIndexOutOfBoundsException when empty URL is requested
