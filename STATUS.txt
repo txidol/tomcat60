@@ -61,12 +61,6 @@ PATCHES PROPOSED TO BACKPORT:
   +0: remm: do we really want to fix these sort of "bugs" ?
   -1:
 
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=43741
-  Correctly handle dependencies on tags in JARs
-  http://svn.apache.org/viewvc?rev=618481&view=rev
-  +1: markt, remm, fhanik
-  -1:
-
 * ExtendedAccessLogValve cs-uri not print empty querystring
   http://svn.apache.org/viewvc?rev=620778&view=rev
   +1: pero,funkman,markt
