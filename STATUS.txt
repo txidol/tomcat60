@@ -36,14 +36,16 @@ PATCHES PROPOSED TO BACKPORT:
 * Remove old TLS code
   http://svn.apache.org/viewvc?rev=616894&view=rev
   +1: markt
-  -1: remm: I don't see the point of backporting these API changing cleanups
+  +0: remm: I don't see the point of backporting these API changing cleanups
             (markt) This is not an API change. It is just removing the TLS code
                     that has never been included in a 6.0.x src or bin release
+           It's my fault for not building it in then. I'm not sure this is intentional,
+           but I am ok with the change.
 
 * Modify NIo connector to use JSSE SSL implementation directly
   http://svn.apache.org/viewvc?rev=616896&view=rev
   +1: markt
-  -1: remm: I don't see the point of backporting these API changing cleanups
+  +1: remm: ok
             (markt) This is not an API change. It is preparation for an API
                     change which will now be in a future release. The method
                     that needs to be removed will now be marked as deprecated
@@ -80,6 +82,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt
   +0: remm (the property name is inconsistent with what has been used recently, but that
       convention was never really discussed either) fhanik: the propperty name is the same as everywhere else
+      I posted about that: could have its own property in addition to the strict thing, and the field should be uppercase 
   -1: 
   
 * Fix ArrayIndexOutOfBoundsException when empty URL is requested
