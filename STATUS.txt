@@ -92,11 +92,6 @@ PATCHES PROPOSED TO BACKPORT:
       convention was never really discussed either)
   -1: 
   
-* Allow ServletContext.getResource("noslash/resource") (regression)
-  http://svn.apache.org/viewvc?view=rev&revision=627743 (ApplicationContext.java)
-  +1: fhanik, markt, remm
-  -1: 
-
 * Fix ArrayIndexOutOfBoundsException when empty URL is requested
   http://svn.apache.org/viewvc?rev=627883&view=rev
   +1: markt

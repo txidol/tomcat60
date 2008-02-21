@@ -35,6 +35,10 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <update>
+        ServletContext.getResource("noslash/resource") only requires forward slash if STRICT_SERVLET_COMPLIANCE
+        flag is set to true. This mimics the behavior of 6.0.15 and earlier. (fhanik)
+      </update>
       <fix>
         <bug>44337</bug>:   Dir listing crashes if no readme-file present (funkman)
       </fix>
@@ -45,14 +49,14 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
-      <update>   
+      <update>
         Fix NIO/SSL live lock during client disconnect (fhanik)
       </update>
     </changelog>
   </subsection>
   <subsection name="Cluster">
     <changelog>
-      <update>   
+      <update>
         Fix session replication dead lock during non sticky load balancing (fhanik)
       </update>
     </changelog>
@@ -127,10 +131,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
-        Fix ManagerServlet.expireSessions throws Exceptions as iterate longer 
+        Fix ManagerServlet.expireSessions throws Exceptions as iterate longer
         session lists at production servers. (pero)
       </fix>
-      <fix><bug>38131</bug>: WatchedResource doesn't work if app is outside host appbase webapps. 
+      <fix><bug>38131</bug>: WatchedResource doesn't work if app is outside host appbase webapps.
         Patch provided by Peter Lynch (pero)
       </fix>
       <update>Add -Dorg.apache.catalina.tribes.dns_lookups=false as default. The ability to turn off reverse DNS lookups for membership.(fhanik)</update>
@@ -157,7 +161,7 @@
         <bug>43675</bug>: Fix a possible logging related classloader leak.
         (markt)
       </fix>
-      <fix><bug>43687</bug> Remove conditional headers on Form Auth replay, 
+      <fix><bug>43687</bug> Remove conditional headers on Form Auth replay,
            since the UA (esp. FireFox) isn't expecting it.
       </fix>
       <fix>
@@ -259,7 +263,7 @@
         Improve docs for Jasper configuration. Put options in alphabetcial
         order, add some missing options, deprecate an unused one and address
         feedback about the page provided on the users list.
-      </fix> 
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
@@ -279,7 +283,7 @@
       <fix>
         <bug>43515</bug>: Fix bug in Manager application that may have caused
         problems when listing contexts. Patch provided by Lucas Galfaso. (markt)
-      </fix> 
+      </fix>
       <fix>
         <bug>43611</bug>: Provide an error message if user tries to upload a war
         for a context defined in server.xml rather than failing silently.
@@ -340,7 +344,7 @@
       <update>Add mbean descriptor for virtual webapp loader</update>
       <fix><bug>43487</bug>:
         Fix request processing stats
-      </fix>  
+      </fix>
       <fix>
         <bug>43435</bug>: Don't iterate and relocate sessions if they are not part of the map.
       </fix>
@@ -386,14 +390,14 @@
       </update>
       <add>
         Support logging of all response header values at ExtendedAccessLogValve (ex. add x-O(Set-Cookie) to your pattern). (pero)
-      </add>     
+      </add>
       <add>
         Support logging of current thread name at AccessLogValve (ex. add %I to your pattern).
         Usefull to compare access logging entry later with a stacktraces. (pero)
       </add>
       <fix>
         Improve large-file support (more then 4 Gb) at all AccessLogValves, backport from 5.5.25. (pero)
-      </fix>     
+      </fix>
       <update>
         Optimized JDBCAccessLogValve combined pattern request attribute access. (pero)
       </update>
@@ -409,7 +413,7 @@
         Patch by Tuomas Kiviaho- tuomas.kiviahos at ikis fi (funkman)
       </fix>
       <fix>
-        <bug>43453</bug>: ClassCastException at 
+        <bug>43453</bug>: ClassCastException at
         org.apache.catalina.core.StandardContext.findStatusPage(int)
          (funkman)
       </fix>
@@ -493,7 +497,7 @@
       </add>
     </changelog>
   </subsection>
-  
+
 </section>
 <section name="Tomcat 6.0.14 (remm)">
   <subsection name="General">
@@ -563,7 +567,7 @@
         Fix persistence API annotation, submitted by Bill Burke (remm)
       </fix>
       <fix>
-        In Comet mode, if bytes are not read, send an error event (otherwise, 
+        In Comet mode, if bytes are not read, send an error event (otherwise,
         fields referring to the connection could remain) (remm)
       </fix>
       <fix>
@@ -653,7 +657,7 @@
   <subsection name="Coyote">
     <changelog>
       <fix>
-         Add heartbeatBackgroundEnabled flag to SimpleTcpCluster. 
+         Add heartbeatBackgroundEnabled flag to SimpleTcpCluster.
          Enable this flag don't forget to disable the channel heartbeat thread (pero)
       </fix>
       <fix>
@@ -671,7 +675,7 @@
   <subsection name="Cluster">
     <changelog>
       <fix>
-         Add heartbeatBackgroundEnabled flag to SimpleTcpCluster. 
+         Add heartbeatBackgroundEnabled flag to SimpleTcpCluster.
          Enable this flag don't forget to disable the channel heartbeat thread (pero)
       </fix>
       <fix>
@@ -712,7 +716,7 @@
         Add enabled attribute to AccessLogValve (pero)
       </add>
       <fix>
-        <bug>42085</bug>: Avoid adding handlers for the root logger twice when they are explicitly 
+        <bug>42085</bug>: Avoid adding handlers for the root logger twice when they are explicitly
         specified. (remm)
       </fix>
       <fix>
@@ -737,7 +741,7 @@
         Leigh L Klotz Jr. (markt)
       </fix>
       <update>
-        Move away from using a thread local processor for the APR and java.io 
+        Move away from using a thread local processor for the APR and java.io
         connectors, as this does not work well when using an executor. (remm)
       </update>
       <fix>
@@ -881,7 +885,7 @@
         Adjustments to handling exceptions with Comet. (remm)
       </fix>
       <fix>
-        If the event is closed asynchronously, generate an end event for cleanup on the 
+        If the event is closed asynchronously, generate an end event for cleanup on the
         next event. (remm)
       </fix>
       <fix>
@@ -917,11 +921,11 @@
         Reuse digester used by the modeler. (remm)
       </fix>
       <update>
-        When the platform does not support deferred accept, put accepted sockets in the 
+        When the platform does not support deferred accept, put accepted sockets in the
         poller. (remm)
       </update>
       <fix>
-        Fix problem with blocking reads for keepalive when using an executor (the number 
+        Fix problem with blocking reads for keepalive when using an executor (the number
         of busy threads is always 0). (remm)
       </fix>
       <update>
@@ -968,7 +972,7 @@
         Fix reporting of errors which do not correspond to a portion of the JSP source. (remm)
       </fix>
       <fix>
-        Remove try/catch usage for annotation processing in classic tags. The usage 
+        Remove try/catch usage for annotation processing in classic tags. The usage
         of the log method might have been questionable as well. (remm)
       </fix>
       <fix>
@@ -1142,7 +1146,7 @@
         platform doesn't support IPV4 mapped addresses on IPV6 sockets.
       </fix>
   </changelog>
-  </subsection>  
+  </subsection>
   <subsection name="Jasper">
     <changelog>
       <fix>
