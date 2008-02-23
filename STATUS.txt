@@ -35,7 +35,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove old TLS code
   http://svn.apache.org/viewvc?rev=616894&view=rev
-  +1: markt
+  +1: markt, fhanik
   +0: remm: I don't see the point of backporting these API changing cleanups
             (markt) This is not an API change. It is just removing the TLS code
                     that has never been included in a 6.0.x src or bin release
@@ -44,7 +44,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Modify NIo connector to use JSSE SSL implementation directly
   http://svn.apache.org/viewvc?rev=616896&view=rev
-  +1: markt
+  +1: markt, fhanik
   +1: remm: ok
             (markt) This is not an API change. It is preparation for an API
                     change which will now be in a future release. The method
@@ -53,13 +53,13 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Mark method that adds a JSSE dependency to the SSL abstraction as deprecated
   http://people.apache.org/~markt/patches/2008-02-21-SSL-JSSE.patch
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44282
   Do call to getClassLoader() in a privileged block.
   http://svn.apache.org/viewvc?rev=616953&view=rev
-  +1: markt
+  +1: markt, fhanik
   +0: remm: do we really want to fix these sort of "bugs" ?
   -1:
 
@@ -104,11 +104,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Point to Wiki for latest status and remove very out of date status page from
   docs
   http://svn.apache.org/viewvc?rev=630006&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Update docs. Correct version number, paths and use of $CATALINA_HOME vs.
   $CATALINA_BASE
   http://svn.apache.org/viewvc?rev=630013&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1:
