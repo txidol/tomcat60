@@ -74,7 +74,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix NPE when iterating through sessions for expiration
   http://svn.apache.org/viewvc?view=rev&revision=627689
-  +1: fhanik, markt, remm
+  +1: fhanik, markt, remm, jfclere
   -1:
   
 * Allow old style cookie values to work(auto switch to v1) (regression)
@@ -110,5 +110,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Update docs. Correct version number, paths and use of $CATALINA_HOME vs.
   $CATALINA_BASE
   http://svn.apache.org/viewvc?rev=630013&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jfclere
   -1:
