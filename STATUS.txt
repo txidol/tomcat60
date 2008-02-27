@@ -112,3 +112,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=630013&view=rev
   +1: markt, fhanik, jfclere
   -1:
+  
+* Revert back to original patch proposed for UTF8 parsing.
+  This also fixes the regression for 6.0.16 and 5.5.26 (and possibly 4.1.37) mentioned in 
+  http://issues.apache.org/bugzilla/show_bug.cgi?id=44494
+  
+  The original patch can be viewed
+  http://svn.apache.org/viewvc?rev=568307&view=rev
+  http://svn.apache.org/viewvc?rev=568605&view=rev
+  
+  +1: fhanik
+  -1: 
