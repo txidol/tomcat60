@@ -118,8 +118,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://issues.apache.org/bugzilla/show_bug.cgi?id=44494
   
   The original patch can be viewed
+  http://people.apache.org/~fhanik/tomcat/b2c/patch.txt
+
   http://svn.apache.org/viewvc?rev=568307&view=rev
   http://svn.apache.org/viewvc?rev=568605&view=rev
-  
+
   +1: fhanik
   -1: 
