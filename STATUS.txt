@@ -124,5 +124,5 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=568605&view=rev
 
   +1: fhanik
-  -1: billbarker The original patch s*cks bigtime.  I agree with remy (on list) that this issue should have 
+  -0: billbarker The original patch s*cks bigtime.  I agree with remy (on list) that this issue should have 
                  involved a discussion on list on how to fix, rather than just proposing a 5 sec fix.
