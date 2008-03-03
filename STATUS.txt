@@ -126,3 +126,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -0: billbarker The original patch s*cks bigtime.  I agree with remy (on list) that this issue should have 
                  involved a discussion on list on how to fix, rather than just proposing a 5 sec fix.
+  -1: markt This patch removes a method from a public API. With that issue fixed
+            I would vote -0 until I can look at this further as explained in
+            http://marc.info/?l=tomcat-dev&m=120457882215329&w=2
