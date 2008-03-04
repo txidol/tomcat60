@@ -129,3 +129,20 @@ PATCHES PROPOSED TO BACKPORT:
   -1: markt This patch removes a method from a public API. With that issue fixed
             I would vote -0 until I can look at this further as explained in
             http://marc.info/?l=tomcat-dev&m=120457882215329&w=2
+  -0: remm The newer code looks cleaner to me, so I propose this patch (bb.getLength() is equal to the
+           value used as the result of available in the other proposed patch, and thez are thus using
+           the same limit for reading data):
+  Index: java/org/apache/catalina/connector/InputBuffer.java
+===================================================================
+--- java/org/apache/catalina/connector/InputBuffer.java	(revision 633279)
++++ java/org/apache/catalina/connector/InputBuffer.java	(working copy)
+@@ -355,7 +355,7 @@
+         }
+ 
+         state = CHAR_STATE;
+-        conv.convert(bb, cb, len);
++        conv.convert(bb, cb, bb.getLength());
+         bb.setOffset(bb.getEnd());
+ 
+         return cb.getLength();
+  
