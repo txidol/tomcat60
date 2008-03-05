@@ -37,11 +37,6 @@ PATCHES ACCEPTED TO BACKPORT:
                     that needs to be removed will now be marked as deprecated
                     in 6.0.x (see patch below).
 
-* Mark method that adds a JSSE dependency to the SSL abstraction as deprecated
-  http://people.apache.org/~markt/patches/2008-02-21-SSL-JSSE.patch
-  +1: markt, fhanik, jim
-  -1:
-
 * ExtendedAccessLogValve cs-uri not print empty querystring
   http://svn.apache.org/viewvc?rev=620778&view=rev
   +1: pero,funkman,markt

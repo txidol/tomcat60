@@ -85,5 +85,12 @@ abstract public class SSLImplementation {
     abstract public String getImplementationName();
     abstract public ServerSocketFactory getServerSocketFactory();
     abstract public SSLSupport getSSLSupport(Socket sock);
+    
+    /**
+     * @deprecated This method has been deprecated since it adds a JSSE
+     *             dependency to this interface. It will be removed in versions
+     *             after 6.0.x.
+     */
+    @Deprecated
     abstract public SSLSupport getSSLSupport(SSLSession session);
 }    
