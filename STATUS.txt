@@ -22,6 +22,13 @@ $Revision$ $Date$
                          =================================
 
 
+RELEASE SHOWSTOPPERS:
+
+
+PATCHES ACCEPTED TO BACKPORT:
+  [ start all new proposals below, under PATCHES PROPOSED. ]
+
+
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
@@ -53,7 +60,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Mark method that adds a JSSE dependency to the SSL abstraction as deprecated
   http://people.apache.org/~markt/patches/2008-02-21-SSL-JSSE.patch
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44282
@@ -69,7 +76,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * lib is relative to catalina home, not base
   http://svn.apache.org/viewvc?rev=627602&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
   -1: 
 
 * Fix NPE when iterating through sessions for expiration
@@ -80,12 +87,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Allow old style cookie values to work(auto switch to v1) (regression)
   http://svn.apache.org/viewvc?view=rev&revision=627743 (ServerCookie.java)
   http://svn.apache.org/viewvc?view=rev&revision=630533 (use the same variable name for all servlet compliance flags)
-  +1: fhanik, markt
+  +1: fhanik, markt, jim
   -1: 
   
 * Fix ArrayIndexOutOfBoundsException when empty URL is requested
   http://svn.apache.org/viewvc?rev=627883&view=rev
-  +1: markt
+  +1: markt, jim
   +1: fhanik - although, I just don't see how this would ever happen, the smallest URI is "/"
   -1:
 
@@ -93,7 +100,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=602114
   http://svn.apache.org/viewvc?view=rev&revision=601795
   +1: jfclere, fhanik
-  +0: markt - should really be added to the docs as well
+  +0: markt, jim - should really be added to the docs as well
   -1:
 
 * Add tests for the cookie parsing and use package org.apache.catalina.tomcat.util.http
@@ -104,7 +111,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Point to Wiki for latest status and remove very out of date status page from
   docs
   http://svn.apache.org/viewvc?rev=630006&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
   -1:
 
 * Update docs. Correct version number, paths and use of $CATALINA_HOME vs.
