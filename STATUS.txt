@@ -42,11 +42,6 @@ PATCHES ACCEPTED TO BACKPORT:
   +1: markt, fhanik, jim
   -1: 
 
-* Fix NPE when iterating through sessions for expiration
-  http://svn.apache.org/viewvc?view=rev&revision=627689
-  +1: fhanik, markt, remm, jfclere
-  -1:
-  
 * Add tests for the cookie parsing and use package org.apache.catalina.tomcat.util.http
   http://people.apache.org/~jfclere/patches/test_cookies.patch2
   +1: jfclere, fhanik, markt
