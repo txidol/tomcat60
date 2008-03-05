@@ -47,12 +47,6 @@ PATCHES ACCEPTED TO BACKPORT:
   +1: fhanik, markt, remm, jfclere
   -1:
   
-* Fix ArrayIndexOutOfBoundsException when empty URL is requested
-  http://svn.apache.org/viewvc?rev=627883&view=rev
-  +1: markt, jim
-  +1: fhanik - although, I just don't see how this would ever happen, the smallest URI is "/"
-  -1:
-
 * Add tests for the cookie parsing and use package org.apache.catalina.tomcat.util.http
   http://people.apache.org/~jfclere/patches/test_cookies.patch2
   +1: jfclere, fhanik, markt
