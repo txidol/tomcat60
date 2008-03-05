@@ -34,6 +34,12 @@
 <body>
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
+     <changelog>
+      <fix>ExtendedAccessLogValve cs-uri not print empty querystring (pero)
+      </fix>
+     </changelog>
+  </subsection>
+  <subsection name="Catalina">
     <changelog>
       <update>
         ServletContext.getResource("noslash/resource") only requires forward slash if STRICT_SERVLET_COMPLIANCE
