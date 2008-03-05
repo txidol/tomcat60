@@ -28,15 +28,6 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
-* Modify NIo connector to use JSSE SSL implementation directly
-  http://svn.apache.org/viewvc?rev=616896&view=rev
-  +1: markt, fhanik
-  +1: remm: ok
-            (markt) This is not an API change. It is preparation for an API
-                    change which will now be in a future release. The method
-                    that needs to be removed will now be marked as deprecated
-                    in 6.0.x (see patch below).
-
 * Add tests for the cookie parsing and use package org.apache.catalina.tomcat.util.http
   http://people.apache.org/~jfclere/patches/test_cookies.patch2
   +1: jfclere, fhanik, markt
