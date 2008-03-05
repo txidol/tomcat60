@@ -51,6 +51,13 @@ public class ServerCookie implements Serializable {
     private int maxAge = -1;
     private int version = 0;
 
+    /**
+     * If set to true, we parse cookies according to the servlet spec,
+     */
+    public static final boolean STRICT_SERVLET_COMPLIANCE =
+        Boolean.valueOf(System.getProperty("org.apache.catalina.STRICT_SERVLET_COMPLIANCE", "false")).booleanValue();
+
+
     // Note: Servlet Spec =< 2.5 only refers to Netscape and RFC2109,
     // not RFC2965
 
@@ -248,7 +255,7 @@ public class ServerCookie implements Serializable {
         buf.append("=");
         // Servlet implementation does not check anything else
         
-        maybeQuote2(version, buf, value);
+        version = maybeQuote2(version, buf, value);
 
         // Add version 1 specific information
         if (version == 1) {
@@ -329,7 +336,7 @@ public class ServerCookie implements Serializable {
      * @param buf
      * @param value
      */
-    public static void maybeQuote2 (int version, StringBuffer buf, String value) {
+    public static int maybeQuote2 (int version, StringBuffer buf, String value) {
         if (value==null || value.length()==0) {
             buf.append("\"\"");
         }else if (containsCTL(value,version)) 
@@ -338,6 +345,11 @@ public class ServerCookie implements Serializable {
             buf.append('"');
             buf.append(escapeDoubleQuotes(value,1,value.length()-1));
             buf.append('"');
+        } else if ((!STRICT_SERVLET_COMPLIANCE) && version==0 && !isToken2(value)) {
+            buf.append('"');
+            buf.append(escapeDoubleQuotes(value,0,value.length()));
+            buf.append('"');
+            version = 1;
         } else if (version==0 && !isToken(value)) {
             buf.append('"');
             buf.append(escapeDoubleQuotes(value,0,value.length()));
@@ -349,6 +361,7 @@ public class ServerCookie implements Serializable {
         }else {
             buf.append(value);
         }
+        return version;
     }
 
 

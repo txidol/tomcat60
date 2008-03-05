@@ -47,12 +47,6 @@ PATCHES ACCEPTED TO BACKPORT:
   +1: fhanik, markt, remm, jfclere
   -1:
   
-* Allow old style cookie values to work(auto switch to v1) (regression)
-  http://svn.apache.org/viewvc?view=rev&revision=627743 (ServerCookie.java)
-  http://svn.apache.org/viewvc?view=rev&revision=630533 (use the same variable name for all servlet compliance flags)
-  +1: fhanik, markt, jim
-  -1: 
-  
 * Fix ArrayIndexOutOfBoundsException when empty URL is requested
   http://svn.apache.org/viewvc?rev=627883&view=rev
   +1: markt, jim
