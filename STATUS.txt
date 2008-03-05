@@ -28,27 +28,6 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
-
-PATCHES PROPOSED TO BACKPORT:
-  [ New proposals should be added at the end of the list ]
-
-
-* Add ManagerBase session getLastAccessedTimestamp and getCreationTimestamp for better
-  remote JMX access.
-  http://svn.apache.org/viewvc?rev=612971&view=rev
-  +1: pero, rjung, fhanik, markt
-  -1: remm: I believe it would need specific support for certain managers. Interested users
-            could use their own extended manager instead.
-
-* Remove old TLS code
-  http://svn.apache.org/viewvc?rev=616894&view=rev
-  +1: markt, fhanik
-  +0: remm: I don't see the point of backporting these API changing cleanups
-            (markt) This is not an API change. It is just removing the TLS code
-                    that has never been included in a 6.0.x src or bin release
-           It's my fault for not building it in then. I'm not sure this is intentional,
-           but I am ok with the change.
-
 * Modify NIo connector to use JSSE SSL implementation directly
   http://svn.apache.org/viewvc?rev=616896&view=rev
   +1: markt, fhanik
@@ -61,13 +40,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Mark method that adds a JSSE dependency to the SSL abstraction as deprecated
   http://people.apache.org/~markt/patches/2008-02-21-SSL-JSSE.patch
   +1: markt, fhanik, jim
-  -1:
-
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44282
-  Do call to getClassLoader() in a privileged block.
-  http://svn.apache.org/viewvc?rev=616953&view=rev
-  +1: markt, fhanik
-  +0: remm: do we really want to fix these sort of "bugs" ?
   -1:
 
 * ExtendedAccessLogValve cs-uri not print empty querystring
@@ -96,13 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik - although, I just don't see how this would ever happen, the smallest URI is "/"
   -1:
 
-* Allow to specify the random device to use. (/dev/urandom is faster).
-  http://svn.apache.org/viewvc?view=rev&revision=602114
-  http://svn.apache.org/viewvc?view=rev&revision=601795
-  +1: jfclere, fhanik
-  +0: markt, jim - should really be added to the docs as well
-  -1:
-
 * Add tests for the cookie parsing and use package org.apache.catalina.tomcat.util.http
   http://people.apache.org/~jfclere/patches/test_cookies.patch2
   +1: jfclere, fhanik, markt
@@ -120,6 +85,40 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik, jfclere
   -1:
   
+PATCHES PROPOSED TO BACKPORT:
+  [ New proposals should be added at the end of the list ]
+
+
+* Add ManagerBase session getLastAccessedTimestamp and getCreationTimestamp for better
+  remote JMX access.
+  http://svn.apache.org/viewvc?rev=612971&view=rev
+  +1: pero, rjung, fhanik, markt
+  -1: remm: I believe it would need specific support for certain managers. Interested users
+            could use their own extended manager instead.
+
+* Remove old TLS code
+  http://svn.apache.org/viewvc?rev=616894&view=rev
+  +1: markt, fhanik
+  +0: remm: I don't see the point of backporting these API changing cleanups
+            (markt) This is not an API change. It is just removing the TLS code
+                    that has never been included in a 6.0.x src or bin release
+           It's my fault for not building it in then. I'm not sure this is intentional,
+           but I am ok with the change.
+
+* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44282
+  Do call to getClassLoader() in a privileged block.
+  http://svn.apache.org/viewvc?rev=616953&view=rev
+  +1: markt, fhanik
+  +0: remm: do we really want to fix these sort of "bugs" ?
+  -1:
+
+* Allow to specify the random device to use. (/dev/urandom is faster).
+  http://svn.apache.org/viewvc?view=rev&revision=602114
+  http://svn.apache.org/viewvc?view=rev&revision=601795
+  +1: jfclere, fhanik
+  +0: markt, jim - should really be added to the docs as well
+  -1:
+
 * Revert back to original patch proposed for UTF8 parsing.
   This also fixes the regression for 6.0.16 and 5.5.26 (and possibly 4.1.37) mentioned in 
   http://issues.apache.org/bugzilla/show_bug.cgi?id=44494
