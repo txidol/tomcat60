@@ -51,6 +51,9 @@
       <fix>
         If listener declared in web.xml, only add it once. (funkman)
       </fix>
+      <fix>
+        Fix NPE when iterating through sessions for expiration. (fhanik/jim)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -58,6 +61,10 @@
       <update>
         Fix NIO/SSL live lock during client disconnect (fhanik)
       </update>
+      <fix>
+        Fix possible ArrayIndexOutOfBoundsException. Patch provided by Charles R
+        Caldarale. (markt/jim)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
@@ -66,6 +73,15 @@
         <bug>43741</bug>: Correctly handle dependencies for tag files in JARs.
         (markt)
       </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Webapps">
+    <changelog>
+      <update>
+        Update documentation to use correct version number, correct file paths
+        and to use $CATALINA_BASE rather than $CATALINA_HOME where applicable.
+        (markt/jim)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Cluster">
