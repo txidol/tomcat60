@@ -104,5 +104,10 @@ PATCHES PROPOSED TO BACKPORT:
   for v0 cookies.
   http://svn.apache.org/viewvc?view=rev&revision=634513
   +1: fhanik
+  -0: markt If the current code thinks the path needs quoting then you
+            are in very uncertain territory for v0 cookies anyway and
+            the chances are that something is going to break. I would
+            rather keep the consistency of the quoting that might
+            break a browser that have inconsistent handling of
+            elements of the cookie header.
   -1:
-  
