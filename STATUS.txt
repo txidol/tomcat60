@@ -100,3 +100,9 @@ PATCHES PROPOSED TO BACKPORT:
  
          return cb.getLength();
   
+* Cookie addition - due to how inconsistent browsers are we will only quote the value
+  for v0 cookies.
+  http://svn.apache.org/viewvc?view=rev&revision=634513
+  +1: fhanik
+  -1:
+  
