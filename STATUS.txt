@@ -122,4 +122,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=635298&view=rev
   +1: markt
   -1:
-  
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44558
+  http://svn.apache.org/viewvc?rev=635304&view=rev
+  +1: markt
+  -1:
