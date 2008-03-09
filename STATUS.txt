@@ -111,3 +111,15 @@ PATCHES PROPOSED TO BACKPORT:
             break a browser that have inconsistent handling of
             elements of the cookie header.
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44562
+  http://svn.apache.org/viewvc?rev=635294&view=rev (prior code clean up)
+  http://svn.apache.org/viewvc?rev=635297&view=rev (the actual fix)
+  +1: markt
+  -1:
+
+* Fix minor HttpServlet bug. Use localised error message.
+  http://svn.apache.org/viewvc?rev=635298&view=rev
+  +1: markt
+  -1:
+  
