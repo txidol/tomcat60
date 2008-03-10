@@ -63,7 +63,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Allow to specify the random device to use. (/dev/urandom is faster).
   http://svn.apache.org/viewvc?view=rev&revision=602114
   http://svn.apache.org/viewvc?view=rev&revision=601795
-  +1: jfclere, fhanik
+  +1: jfclere, fhanik, remm
   +0: markt, jim - should really be added to the docs as well
   -1:
 
@@ -83,9 +83,11 @@ PATCHES PROPOSED TO BACKPORT:
   -1: markt This patch removes a method from a public API. With that issue fixed
             I would vote -0 until I can look at this further as explained in
             http://marc.info/?l=tomcat-dev&m=120457882215329&w=2
-  -0: remm The newer code looks cleaner to me, so I propose this patch (bb.getLength() is equal to the
-           value used as the result of available in the other proposed patch, and thez are thus using
-           the same limit for reading data):
+  -0: remm The newer code looks cleaner to me
+  
+* As an alternate fix to 44494, I propose this patch (bb.getLength() is equal to the
+  value used as the result of available in the other proposed patch, and both  
+  patches are thus using the same limit for reading data):
   Index: java/org/apache/catalina/connector/InputBuffer.java
 ===================================================================
 --- java/org/apache/catalina/connector/InputBuffer.java	(revision 633279)
@@ -99,11 +101,14 @@ PATCHES PROPOSED TO BACKPORT:
          bb.setOffset(bb.getEnd());
  
          return cb.getLength();
-  
+
+  +1 : remm
+
 * Cookie addition - due to how inconsistent browsers are we will only quote the value
   for v0 cookies.
   http://svn.apache.org/viewvc?view=rev&revision=634513
   +1: fhanik
+  +0: remm
   -0: markt If the current code thinks the path needs quoting then you
             are in very uncertain territory for v0 cookies anyway and
             the chances are that something is going to break. I would
@@ -115,15 +120,15 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44562
   http://svn.apache.org/viewvc?rev=635294&view=rev (prior code clean up)
   http://svn.apache.org/viewvc?rev=635297&view=rev (the actual fix)
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix minor HttpServlet bug. Use localised error message.
   http://svn.apache.org/viewvc?rev=635298&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44558
   http://svn.apache.org/viewvc?rev=635304&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
