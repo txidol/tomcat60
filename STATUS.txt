@@ -132,3 +132,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=635304&view=rev
   +1: markt, remm
   -1:
+
+* Add system property docs
+  http://svn.apache.org/viewvc?rev=620335&view=rev
+  http://svn.apache.org/viewvc/tomcat/trunk/webapps/docs/config/systemprops.xml?r1=627743&r2=627742&pathrev=627743
+  +1: markt
+  -1:
