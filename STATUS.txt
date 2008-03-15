@@ -113,9 +113,12 @@ PATCHES PROPOSED TO BACKPORT:
             are in very uncertain territory for v0 cookies anyway and
             the chances are that something is going to break. I would
             rather keep the consistency of the quoting that might
-            break a browser that have inconsistent handling of
+            break a browser than have inconsistent handling of
             elements of the cookie header.
   -1:
+* As an alternative to the above patch, I propose:
+  http://people.apache.org/~markt/patches/2008-03-15-cookie-path.patch
+  +1: markt
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44562
   http://svn.apache.org/viewvc?rev=635294&view=rev (prior code clean up)
