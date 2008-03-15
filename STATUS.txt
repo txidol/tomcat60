@@ -102,7 +102,7 @@ PATCHES PROPOSED TO BACKPORT:
  
          return cb.getLength();
 
-  +1 : remm
+  +1 : remm, markt
 
 * Cookie addition - due to how inconsistent browsers are we will only quote the value
   for v0 cookies.
