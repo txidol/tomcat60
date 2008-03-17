@@ -119,12 +119,12 @@ PATCHES PROPOSED TO BACKPORT:
 
 * As an alternative to the above patch, I propose:
   http://people.apache.org/~markt/patches/2008-03-15-cookie-path.patch
-  +1: markt, remm
+  +1: markt, remm, jfclere
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44562
   http://svn.apache.org/viewvc?rev=635294&view=rev (prior code clean up)
   http://svn.apache.org/viewvc?rev=635297&view=rev (the actual fix)
-  +1: markt, remm
+  +1: markt, remm, jfclere
   -1:
 
 * Fix minor HttpServlet bug. Use localised error message.
@@ -134,7 +134,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44558
   http://svn.apache.org/viewvc?rev=635304&view=rev
-  +1: markt, remm
+  +1: markt, remm, jfclere
   -1:
 
 * Add system property docs
