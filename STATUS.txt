@@ -55,13 +55,6 @@ PATCHES PROPOSED TO BACKPORT:
   +0: remm: do we really want to fix these sort of "bugs" ?
   -1:
 
-* Allow to specify the random device to use. (/dev/urandom is faster).
-  http://svn.apache.org/viewvc?view=rev&revision=602114
-  http://svn.apache.org/viewvc?view=rev&revision=601795
-  +1: jfclere, fhanik, remm
-  +0: markt, jim - should really be added to the docs as well
-  -1:
-
 * Revert back to original patch proposed for UTF8 parsing.
   This also fixes the regression for 6.0.16 and 5.5.26 (and possibly 4.1.37) mentioned in 
   http://issues.apache.org/bugzilla/show_bug.cgi?id=44494

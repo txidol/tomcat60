@@ -57,6 +57,9 @@
   <subsection name="Coyote">
     <changelog>
       <update>
+        APR: Allow to specify the "random device" to use to collect the entropy. (jfclere)
+      </update>
+      <update>
         Fix NIO/SSL live lock during client disconnect (fhanik)
       </update>
       <fix>
