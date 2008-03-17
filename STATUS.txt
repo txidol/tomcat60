@@ -28,11 +28,6 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
-* Add tests for the cookie parsing and use package org.apache.catalina.tomcat.util.http
-  http://people.apache.org/~jfclere/patches/test_cookies.patch2
-  +1: jfclere, fhanik, markt
-  -1:
-
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 

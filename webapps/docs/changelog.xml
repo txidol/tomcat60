@@ -91,6 +91,13 @@
       </update>
     </changelog>
   </subsection>
+  <subsection name="Other">
+    <changelog>
+      <add>
+         Improve the Tests for unit tests for the cookie issues. (jfclere)
+      </add>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.16 (remm)">
   <subsection name="General">
