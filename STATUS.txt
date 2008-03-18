@@ -90,7 +90,7 @@ PATCHES PROPOSED TO BACKPORT:
  
          return cb.getLength();
 
-  +1 : remm, markt
+  +1 : remm, markt, fhanik
 
 * Cookie addition - due to how inconsistent browsers are we will only quote the value
   for v0 cookies.
@@ -119,7 +119,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix minor HttpServlet bug. Use localised error message.
   http://svn.apache.org/viewvc?rev=635298&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44558
@@ -130,5 +130,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Add system property docs
   http://svn.apache.org/viewvc?rev=620335&view=rev
   http://svn.apache.org/viewvc/tomcat/trunk/webapps/docs/config/systemprops.xml?r1=627743&r2=627742&pathrev=627743
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
