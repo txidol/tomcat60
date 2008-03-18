@@ -105,10 +105,11 @@ PATCHES PROPOSED TO BACKPORT:
             elements of the cookie header.
   -1:
 
-* As an alternative to the above patch, I propose:
-  http://people.apache.org/~markt/patches/2008-03-15-cookie-path.patch
-  +1: markt, remm, jfclere
-  -1: maybeQuote2 should not be applied to the path, since / is a valid value without quotes
+* As an alternative to the above patch, I propose an improved patch that
+  addresses the concerns with the previous alternative:
+  http://people.apache.org/~markt/patches/2008-03-18-cookie-path.patch
+  +1: markt
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44562
   http://svn.apache.org/viewvc?rev=635294&view=rev (prior code clean up)
