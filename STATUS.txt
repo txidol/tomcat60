@@ -90,7 +90,8 @@ PATCHES PROPOSED TO BACKPORT:
  
          return cb.getLength();
 
-  +1 : remm, markt, fhanik
+  +1 : remm, markt
+  -1 : fhanik - I tried this patch, and it doesn't work, it hangs. I also saw the bug report, informing about further issues that are still valid
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44562
   http://svn.apache.org/viewvc?rev=635294&view=rev (prior code clean up)
