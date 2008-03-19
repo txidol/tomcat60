@@ -109,5 +109,5 @@ PATCHES PROPOSED TO BACKPORT:
 ---
 >         } else if (allowVersionSwitch && (!STRICT_SERVLET_COMPLIANCE) && version==0 && !isToken2(value)) {
 
-   +1: fhanik
+   +1: fhanik, markt
    -1: 
