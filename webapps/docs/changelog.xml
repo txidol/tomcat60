@@ -70,10 +70,10 @@
         Fix possible ArrayIndexOutOfBoundsException. Patch provided by Charles R
         Caldarale. (markt/jim)
       </fix>
-      <update>
+      <fix>
         <bug>44558</bug>: Improve error message so address is included if
         binding fails.
-      </update>
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
@@ -91,6 +91,10 @@
         and to use $CATALINA_BASE rather than $CATALINA_HOME where applicable.
         (markt/jim)
       </update>
+      <add>
+        Add a section on available system property configuration options.
+        (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Cluster">
