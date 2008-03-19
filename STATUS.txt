@@ -94,11 +94,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1 : fhanik - I don't think we should support mark/reset, we can supply a filter that does it at the app level by wrapping getReader with a reader that bufferes
   -1 : 
 
-* Fix minor HttpServlet bug. Use localised error message.
-  http://svn.apache.org/viewvc?rev=635298&view=rev
-  +1: markt, remm, fhanik
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44558
   http://svn.apache.org/viewvc?rev=635304&view=rev
   +1: markt, remm, jfclere
