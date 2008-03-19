@@ -52,6 +52,10 @@
       <fix>
         Fix NPE when iterating through sessions for expiration. (fhanik/jim)
       </fix>
+      <fix>
+        <bug>44562</bug>: HEAD requests cannot use includes. Patch provided by
+        David Jencks. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
