@@ -92,19 +92,6 @@ PATCHES PROPOSED TO BACKPORT:
 
   +1 : remm, markt, fhanik
 
-* Cookie addition - due to how inconsistent browsers are we will only quote the value
-  for v0 cookies.
-  http://svn.apache.org/viewvc?view=rev&revision=634513
-  +1: fhanik
-  +0: remm
-  -0: markt If the current code thinks the path needs quoting then you
-            are in very uncertain territory for v0 cookies anyway and
-            the chances are that something is going to break. I would
-            rather keep the consistency of the quoting that might
-            break a browser than have inconsistent handling of
-            elements of the cookie header.
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44562
   http://svn.apache.org/viewvc?rev=635294&view=rev (prior code clean up)
   http://svn.apache.org/viewvc?rev=635297&view=rev (the actual fix)
@@ -126,3 +113,21 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc/tomcat/trunk/webapps/docs/config/systemprops.xml?r1=627743&r2=627742&pathrev=627743
   +1: markt, remm, fhanik
   -1:
+
+* Cookie completion. Only do the autoswitch on the value of the cookie, quote domain/path same way as we did before
+258c258
+<         version = maybeQuote2(version, buf, value);
+---
+>         version = maybeQuote2(version, buf, value,true);
+339a340,343
+>         return maybeQuote2(version,buf,value,false);
+>     }
+>
+>     public static int maybeQuote2 (int version, StringBuffer buf, String value, boolean allowVersionSwitch) {
+348c352
+<         } else if ((!STRICT_SERVLET_COMPLIANCE) && version==0 && !isToken2(value)) {
+---
+>         } else if (allowVersionSwitch && (!STRICT_SERVLET_COMPLIANCE) && version==0 && !isToken2(value)) {
+
+   +1: fhanik
+   -1: 
