@@ -70,6 +70,10 @@
         Fix possible ArrayIndexOutOfBoundsException. Patch provided by Charles R
         Caldarale. (markt/jim)
       </fix>
+      <update>
+        <bug>44558</bug>: Improve error message so address is included if
+        binding fails.
+      </update>
     </changelog>
   </subsection>
   <subsection name="Jasper">
