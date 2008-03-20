@@ -90,8 +90,13 @@ PATCHES PROPOSED TO BACKPORT:
  
          return cb.getLength();
 
-  +1 : remm, markt
+  +1 : markt
   +1 : fhanik - I don't think we should support mark/reset, we can supply a filter that does it at the app level by wrapping getReader with a reader that bufferes
+  +1 : remm: Along with the cookie fix, I would like to get a better review of all issues
+       before the next release (this fix as far as my testing goes improves things, though, so I think
+       it should go in for now), in particular marks (used by CoyoteReader.readLine, and which should 
+       continue to be supported since the BufferedReader type returned by the Servlet API supports
+       marking)
   -1 : 
 
 * Cookie completion. Only do the autoswitch on the value of the cookie, quote domain/path same way as we did before
