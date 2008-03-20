@@ -111,3 +111,8 @@ PATCHES PROPOSED TO BACKPORT:
 
    +1: fhanik, markt
    -1: 
+
+* Remove reference to admin application
+  http://svn.apache.org/viewvc?rev=639198&view=rev
+  +1: markt
+  -1:
