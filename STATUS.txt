@@ -57,15 +57,15 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove reference to admin application
   http://svn.apache.org/viewvc?rev=639198&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * Update comments re JAR renaming in web.xml
   http://svn.apache.org/viewvc?rev=639771&view=rev
-  +1:
+  +1: fhanik
   -1: 
 
 * Fix docs re use of maxActive
   http://svn.apache.org/viewvc?rev=639842&view=rev
-  +1:
+  +1: fhanik
   -1:
