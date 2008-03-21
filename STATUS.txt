@@ -55,50 +55,6 @@ PATCHES PROPOSED TO BACKPORT:
   +0: remm: do we really want to fix these sort of "bugs" ?
   -1:
 
-* Revert back to original patch proposed for UTF8 parsing.
-  This also fixes the regression for 6.0.16 and 5.5.26 (and possibly 4.1.37) mentioned in 
-  http://issues.apache.org/bugzilla/show_bug.cgi?id=44494
-  
-  The original patch can be viewed
-  http://people.apache.org/~fhanik/tomcat/b2c/patch.txt
-
-  http://svn.apache.org/viewvc?rev=568307&view=rev
-  http://svn.apache.org/viewvc?rev=568605&view=rev
-
-  +1: fhanik
-  -0: billbarker The original patch s*cks bigtime.  I agree with remy (on list) that this issue should have 
-                 involved a discussion on list on how to fix, rather than just proposing a 5 sec fix.
-  -1: markt This patch removes a method from a public API. With that issue fixed
-            I would vote -0 until I can look at this further as explained in
-            http://marc.info/?l=tomcat-dev&m=120457882215329&w=2
-  -0: remm The newer code looks cleaner to me
-  
-* As an alternate fix to 44494, I propose this patch (bb.getLength() is equal to the
-  value used as the result of available in the other proposed patch, and both  
-  patches are thus using the same limit for reading data):
-  Index: java/org/apache/catalina/connector/InputBuffer.java
-===================================================================
---- java/org/apache/catalina/connector/InputBuffer.java	(revision 633279)
-+++ java/org/apache/catalina/connector/InputBuffer.java	(working copy)
-@@ -355,7 +355,7 @@
-         }
- 
-         state = CHAR_STATE;
--        conv.convert(bb, cb, len);
-+        conv.convert(bb, cb, bb.getLength());
-         bb.setOffset(bb.getEnd());
- 
-         return cb.getLength();
-
-  +1 : markt
-  +1 : fhanik - I don't think we should support mark/reset, we can supply a filter that does it at the app level by wrapping getReader with a reader that bufferes
-  +1 : remm: Along with the cookie fix, I would like to get a better review of all issues
-       before the next release (this fix as far as my testing goes improves things, though, so I think
-       it should go in for now), in particular marks (used by CoyoteReader.readLine, and which should 
-       continue to be supported since the BufferedReader type returned by the Servlet API supports
-       marking)
-  -1 : 
-
 * Cookie completion. Only do the autoswitch on the value of the cookie, quote domain/path same way as we did before
 258c258
 <         version = maybeQuote2(version, buf, value);
@@ -114,12 +70,12 @@ PATCHES PROPOSED TO BACKPORT:
 ---
 >         } else if (allowVersionSwitch && (!STRICT_SERVLET_COMPLIANCE) && version==0 && !isToken2(value)) {
 
-   +1: fhanik, markt
+   +1: fhanik, markt, remm
    -1: 
 
 * Remove reference to admin application
   http://svn.apache.org/viewvc?rev=639198&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Update comments re JAR renaming in web.xml

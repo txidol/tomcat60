@@ -74,6 +74,9 @@
         <bug>44558</bug>: Improve error message so address is included if
         binding fails.
       </fix>
+      <fix>
+        <bug>44494</bug>: Character input limited to 8KB. (remm)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
