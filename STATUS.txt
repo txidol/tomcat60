@@ -55,24 +55,6 @@ PATCHES PROPOSED TO BACKPORT:
   +0: remm: do we really want to fix these sort of "bugs" ?
   -1:
 
-* Cookie completion. Only do the autoswitch on the value of the cookie, quote domain/path same way as we did before
-258c258
-<         version = maybeQuote2(version, buf, value);
----
->         version = maybeQuote2(version, buf, value,true);
-339a340,343
->         return maybeQuote2(version,buf,value,false);
->     }
->
->     public static int maybeQuote2 (int version, StringBuffer buf, String value, boolean allowVersionSwitch) {
-348c352
-<         } else if ((!STRICT_SERVLET_COMPLIANCE) && version==0 && !isToken2(value)) {
----
->         } else if (allowVersionSwitch && (!STRICT_SERVLET_COMPLIANCE) && version==0 && !isToken2(value)) {
-
-   +1: fhanik, markt, remm
-   -1: 
-
 * Remove reference to admin application
   http://svn.apache.org/viewvc?rev=639198&view=rev
   +1: markt, remm
