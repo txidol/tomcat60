@@ -121,3 +121,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=639198&view=rev
   +1: markt
   -1:
+
+* Update comments re JAR renaming in web.xml
+  http://svn.apache.org/viewvc?rev=639771&view=rev
+  +1:
+  -1: 
