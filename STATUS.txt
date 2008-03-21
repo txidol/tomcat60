@@ -126,3 +126,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=639771&view=rev
   +1:
   -1: 
+
+* Fix docs re use of maxActive
+  http://svn.apache.org/viewvc?rev=639842&view=rev
+  +1:
+  -1:
