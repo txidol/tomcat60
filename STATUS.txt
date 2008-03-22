@@ -62,5 +62,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix docs re use of maxActive
   http://svn.apache.org/viewvc?rev=639842&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, rjung
   -1:
