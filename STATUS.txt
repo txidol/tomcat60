@@ -78,3 +78,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=640572&view=rev
   +1: markt
   -1:
+
+* Fix issues with DirContextURLConnection has bugs:
+  1) Does not implement the getHeaderFields() method
+  2) It's implementation of getHeaderField(String name) is case sensitive.
+  3) It returns an empty string "", rather than null, for header values which
+     don't exist.
+  Patch provided by Chris Hubick
+  http://svn.apache.org/viewvc?rev=640584&view=rev
+  +1: markt
+  -1:
