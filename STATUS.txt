@@ -70,7 +70,7 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44633#
   http://svn.apache.org/viewvc?rev=640451&view=rev
   http://svn.apache.org/viewvc?rev=640559&view=rev (Rainer's improvement)
-  +1: markt
+  +1: markt, rjung
   -1:
 
 * Prevent the connector entering an infinite loop
