@@ -77,3 +77,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=640559&view=rev (Rainer's improvement)
   +1: markt
   -1:
+
+* Prevent the connector entering an infinite loop
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=44620
+  http://svn.apache.org/viewvc?rev=640572&view=rev
+  +1: markt
+  -1:
