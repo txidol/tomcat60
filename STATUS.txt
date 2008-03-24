@@ -60,11 +60,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Fix docs re use of maxActive
-  http://svn.apache.org/viewvc?rev=639842&view=rev
-  +1: markt, fhanik, rjung
-  -1:
-
 * Get o.a.c.valves.CometConnectionManagerValve working
   Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44646
   http://svn.apache.org/viewvc?rev=640273&view=rev

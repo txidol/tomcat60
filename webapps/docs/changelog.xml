@@ -98,6 +98,10 @@
         Add a section on available system property configuration options.
         (markt)
       </add>
+      <fix>
+        Amend the JNDI datasource doc to reflect new value for no limit used by
+        updated commons-pool and commons-DBCP. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
