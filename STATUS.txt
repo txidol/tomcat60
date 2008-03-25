@@ -67,7 +67,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Provide more helpful error message when class can't load due to wrong version
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=44633#
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=44633
   http://svn.apache.org/viewvc?rev=640451&view=rev
   http://svn.apache.org/viewvc?rev=640559&view=rev (Rainer's improvement)
   +1: markt, rjung
@@ -84,6 +84,7 @@ PATCHES PROPOSED TO BACKPORT:
   2) It's implementation of getHeaderField(String name) is case sensitive.
   3) It returns an empty string "", rather than null, for header values which
      don't exist.
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=44611
   Patch provided by Chris Hubick
   http://svn.apache.org/viewvc?rev=640584&view=rev
   +1: markt
