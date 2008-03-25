@@ -93,5 +93,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Document packetSize attribute for AJP connector
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44541
   http://svn.apache.org/viewvc?rev=640994&view=rev
-  +1: markt
+  +1: markt, rjung
   -1:
