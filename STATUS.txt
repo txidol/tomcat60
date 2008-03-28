@@ -101,3 +101,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=641076&view=rev
   +1: markt
   -1:
+
+* Fix CGI and env on vista (and prob, other OS's)
+  http://svn.apache.org/viewvc?rev=642391&view=rev
+  +1: markt
+  -1:
