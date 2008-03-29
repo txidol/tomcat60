@@ -106,3 +106,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=642391&view=rev
   +1: markt
   -1:
+
+* No roles (deny all) trumps no auth-constraint (allow all)
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=44529
+  +1: markt
+  -1:
