@@ -111,3 +111,9 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44529
   +1: markt
   -1:
+
+* Fix reading of multi-byte request data
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
+  This is Remy's patch from comment #23 less the one bad line (comment #28)
+  +1: markt
+  -1: 
