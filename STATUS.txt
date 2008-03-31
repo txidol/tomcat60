@@ -63,7 +63,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Get o.a.c.valves.CometConnectionManagerValve working
   Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44646
   http://svn.apache.org/viewvc?rev=640273&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Provide more helpful error message when class can't load due to wrong version
@@ -87,7 +87,7 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44611
   Patch provided by Chris Hubick
   http://svn.apache.org/viewvc?rev=640584&view=rev
-  +1: markt
+  +1: markt, remm (I wonder where these methods are used)
   -1:
 
 * Document packetSize attribute for AJP connector
@@ -99,21 +99,21 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix ServletInputStream still readable when closed
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44673
   http://svn.apache.org/viewvc?rev=641076&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix CGI and env on vista (and prob, other OS's)
   http://svn.apache.org/viewvc?rev=642391&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * No roles (deny all) trumps no auth-constraint (allow all)
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44529
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix reading of multi-byte request data
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
   This is Remy's patch from comment #23 less the one bad line (comment #28)
-  +1: markt
+  +1: markt, remm
   -1: 
