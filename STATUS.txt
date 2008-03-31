@@ -109,11 +109,21 @@ PATCHES PROPOSED TO BACKPORT:
 
 * No roles (deny all) trumps no auth-constraint (allow all)
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44529
+  http://svn.apache.org/viewvc?rev=642542&view=rev
   +1: markt, remm
   -1:
 
 * Fix reading of multi-byte request data
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
+  http://svn.apache.org/viewvc?rev=642814&view=rev (clean-up)
+  http://svn.apache.org/viewvc?rev=642816&view=rev (more clean-up)
+  http://svn.apache.org/viewvc?rev=642819&view=rev (the fix)
   This is Remy's patch from comment #23 less the one bad line (comment #28)
   +1: markt, remm
   -1: 
+
+* Document missing secret attributes
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=44715
+  http://svn.apache.org/viewvc?rev=643181&view=rev
+  +1: mark
+  -1:
