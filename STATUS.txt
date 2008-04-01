@@ -124,6 +124,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Document missing secret attributes
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44715
-  http://svn.apache.org/viewvc?rev=643181&view=rev
+  http://svn.apache.org/viewvc?rev=643497&view=rev
   +1: mark
   -1:
