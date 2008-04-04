@@ -63,20 +63,20 @@ PATCHES PROPOSED TO BACKPORT:
 * Get o.a.c.valves.CometConnectionManagerValve working
   Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44646
   http://svn.apache.org/viewvc?rev=640273&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * Provide more helpful error message when class can't load due to wrong version
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44633
   http://svn.apache.org/viewvc?rev=640451&view=rev
   http://svn.apache.org/viewvc?rev=640559&view=rev (Rainer's improvement)
-  +1: markt, rjung
+  +1: markt, rjung, fhanik
   -1:
 
 * Prevent the connector entering an infinite loop
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44620
   http://svn.apache.org/viewvc?rev=640572&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Fix issues with DirContextURLConnection has bugs:
@@ -87,30 +87,30 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44611
   Patch provided by Chris Hubick
   http://svn.apache.org/viewvc?rev=640584&view=rev
-  +1: markt, remm (I wonder where these methods are used)
+  +1: markt, fhanik, remm (I wonder where these methods are used)
   -1:
 
 * Document packetSize attribute for AJP connector
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44541
   http://svn.apache.org/viewvc?rev=640994&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, fhanik
   -1:
 
 * Fix ServletInputStream still readable when closed
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44673
   http://svn.apache.org/viewvc?rev=641076&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * Fix CGI and env on vista (and prob, other OS's)
   http://svn.apache.org/viewvc?rev=642391&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * No roles (deny all) trumps no auth-constraint (allow all)
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44529
   http://svn.apache.org/viewvc?rev=642542&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * Fix reading of multi-byte request data
@@ -122,14 +122,14 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   +1: fhanik - for the actual fix
   -1: fhanik - for the code cleanup, makes it hard to look back, 
-      and since this code is now in its third fix stage, I would prefer it to  
-      be kept so that one can easily see change to change
+      and since this code is now in its third fix stage for something I believed could have been fixed simple, I would prefer it to  
+      be kept so that one can easily see change to change, without having to circumvent code cleanup and formatting
       +1 for the code cleanup in trunk
 
 * Document missing secret attributes
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44715
   http://svn.apache.org/viewvc?rev=643497&view=rev
-  +1: mark
+  +1: mark, fhanik
   -1:
 
 * Fix NIO/Sendfile problem
