@@ -120,7 +120,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=642819&view=rev (the fix)
   This is Remy's patch from comment #23 less the one bad line (comment #28)
   +1: markt, remm
-  -1: 
+  +1: fhanik - for the actual fix
+  -1: fhanik - for the code cleanup, makes it hard to look back, 
+      and since this code is now in its third fix stage, I would prefer it to  
+      be kept so that one can easily see change to change
+      +1 for the code cleanup in trunk
 
 * Document missing secret attributes
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44715
