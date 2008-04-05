@@ -53,6 +53,10 @@
         Fix NPE when iterating through sessions for expiration. (fhanik/jim)
       </fix>
       <fix>
+        <bug>44529</bug>: Correct handling of resource constraints so no roles
+        (deny all) overrides no aoth-constraint (allow all). (markt)
+      </fix>
+      <fix>
         <bug>44562</bug>: HEAD requests cannot use includes. Patch provided by
         David Jencks. (markt)
       </fix>
