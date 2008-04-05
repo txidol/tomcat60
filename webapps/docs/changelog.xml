@@ -71,6 +71,10 @@
         provided by Chris Hubick. (markt)
       </fix>
       <fix>
+        <bug>44633</bug>: Provide a more helpful error message if a class can't
+        be loaded due to a version error. (rjung/markt)
+      </fix>
+      <fix>
         <bug>44673</bug>: ServletInputStream is no longer readable once closed.
         (markt)
       </fix>

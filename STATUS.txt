@@ -66,13 +66,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm, fhanik
   -1:
 
-* Provide more helpful error message when class can't load due to wrong version
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=44633
-  http://svn.apache.org/viewvc?rev=640451&view=rev
-  http://svn.apache.org/viewvc?rev=640559&view=rev (Rainer's improvement)
-  +1: markt, rjung, fhanik
-  -1:
-
 * Prevent the connector entering an infinite loop
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44620
   http://svn.apache.org/viewvc?rev=640572&view=rev
