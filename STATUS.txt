@@ -113,19 +113,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm, fhanik
   -1:
 
-* Fix reading of multi-byte request data
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
-  http://svn.apache.org/viewvc?rev=642814&view=rev (clean-up)
-  http://svn.apache.org/viewvc?rev=642816&view=rev (more clean-up)
-  http://svn.apache.org/viewvc?rev=642819&view=rev (the fix)
-  This is Remy's patch from comment #23 less the one bad line (comment #28)
-  +1: markt, remm
-  +1: fhanik - for the actual fix
-  -1: fhanik - for the code cleanup, makes it hard to look back, 
-      and since this code is now in its third fix stage for something I believed could have been fixed simple, I would prefer it to  
-      be kept so that one can easily see change to change, without having to circumvent code cleanup and formatting
-      +1 for the code cleanup in trunk
-
 * Document missing secret attributes
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44715
   http://svn.apache.org/viewvc?rev=643497&view=rev
