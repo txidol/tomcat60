@@ -60,6 +60,10 @@
         <bug>44562</bug>: HEAD requests cannot use includes. Patch provided by
         David Jencks. (markt)
       </fix>
+      <fix>
+        Fix CGI Servlet so it correctly reads the environment variables on
+        Vista. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
