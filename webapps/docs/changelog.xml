@@ -65,6 +65,12 @@
         Vista. (markt)
       </fix>
       <fix>
+        <bug>44611</bug>: DirContextURLConnection didn't implement
+        getHeaderFields(), getHeaderField(String name) was case sensitive and
+        returned "" rather than null for header values that did not exist. Patch
+        provided by Chris Hubick. (markt)
+      </fix>
+      <fix>
         <bug>44673</bug>: ServletInputStream is no longer readable once closed.
         (markt)
       </fix>
