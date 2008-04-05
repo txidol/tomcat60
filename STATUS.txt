@@ -75,7 +75,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix NIO/Sendfile problem
   http://svn.apache.org/viewvc?rev=644858&view=rev
   http://svn.apache.org/viewvc?rev=644860&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44759
