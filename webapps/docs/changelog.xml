@@ -75,6 +75,10 @@
         be loaded due to a version error. (rjung/markt)
       </fix>
       <fix>
+        <bug>44646</bug>: Correct various issues, including an ISE, in
+        CometConnectionManagerValve. (markt)
+      </fix>
+      <fix>
         <bug>44673</bug>: ServletInputStream is no longer readable once closed.
         (markt)
       </fix>
