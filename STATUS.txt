@@ -77,3 +77,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=644860&view=rev
   +1: fhanik
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44759
+  Need source to build java docs
+  http://svn.apache.org/viewvc?rev=645169&view=rev
+  +1: markt
+  -1:
