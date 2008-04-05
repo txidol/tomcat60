@@ -64,6 +64,10 @@
         Fix CGI Servlet so it correctly reads the environment variables on
         Vista. (markt)
       </fix>
+      <fix>
+        <bug>44673</bug>: ServletInputStream is no longer readable once closed.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

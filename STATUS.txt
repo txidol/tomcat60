@@ -96,12 +96,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung, fhanik
   -1:
 
-* Fix ServletInputStream still readable when closed
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=44673
-  http://svn.apache.org/viewvc?rev=641076&view=rev
-  +1: markt, remm, fhanik
-  -1:
-
 * Document missing secret attributes
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44715
   http://svn.apache.org/viewvc?rev=643497&view=rev
