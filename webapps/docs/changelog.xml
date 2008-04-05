@@ -114,6 +114,10 @@
         Amend the JNDI datasource doc to reflect new value for no limit used by
         updated commons-pool and commons-DBCP. (markt)
       </fix>
+      <fix>
+        <bug>44541</bug>: Document packetSize attribute for AJP connector.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
