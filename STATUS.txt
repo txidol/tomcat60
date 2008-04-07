@@ -81,7 +81,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44759
   Need source to build java docs
   http://svn.apache.org/viewvc?rev=645169&view=rev
-  +1: markt
+  +1: markt,fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42662
@@ -91,6 +91,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44595
   http://svn.apache.org/viewvc?view=rev&revision=645428
-  +1: jfclere, rjung
+  +1: jfclere, rjung, fhanik
   -1:
  
