@@ -100,5 +100,5 @@ PATCHES PROPOSED TO BACKPORT:
   cases I could think of.
   http://svn.apache.org/viewvc?rev=645719&view=rev (Remy's resizing fix)
   http://svn.apache.org/viewvc?rev=645722&view=rev (mark/reset fix)
-  +1: markt
+  +1: markt, fhanik
   -1:
