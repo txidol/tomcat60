@@ -91,7 +91,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44595
   http://svn.apache.org/viewvc?view=rev&revision=645428
-  +1: jfclere, rjung, fhanik
+  +1: jfclere, rjung, fhanik, remm
   -1:
  
 * Final fixes for https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
@@ -100,15 +100,15 @@ PATCHES PROPOSED TO BACKPORT:
   cases I could think of.
   http://svn.apache.org/viewvc?rev=645719&view=rev (Remy's resizing fix)
   http://svn.apache.org/viewvc?rev=645722&view=rev (mark/reset fix)
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1:
 
 * Better handling of lack of permission for context specific logging
   http://svn.apache.org/viewvc?rev=646543&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Additional permission required to read JDK logging config
   http://svn.apache.org/viewvc?rev=646550&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
