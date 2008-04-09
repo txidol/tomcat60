@@ -118,3 +118,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=646559&view=rev
   +1: markt
   -1:
+
+* Clean up type checking code. Patch provided by Konstantin Kolinko.
+  http://svn.apache.org/viewvc?rev=646571&view=rev
+  +1: markt
+  -1:
