@@ -102,3 +102,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=645722&view=rev (mark/reset fix)
   +1: markt, fhanik
   -1:
+
+* Better handling of lack of permission for context specific logging
+  http://svn.apache.org/viewvc?rev=646543&view=rev
+  +1: markt
+  -1:
