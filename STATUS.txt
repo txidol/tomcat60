@@ -123,3 +123,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=646571&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44428
+  Prevent NPE
+  http://svn.apache.org/viewvc?rev=646574&view=rev
+  +1: markt
+  -1:
