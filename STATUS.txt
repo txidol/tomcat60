@@ -130,3 +130,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=646574&view=rev
   +1: markt, remm
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44766
+  Handle custom subtypes of java.lang.Number
+  http://svn.apache.org/viewvc?view=rev&revision=646106
+  +1: markt
+  -1:
