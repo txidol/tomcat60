@@ -116,16 +116,17 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44785
   Correct default maxThreads for AJP connector
   http://svn.apache.org/viewvc?rev=646559&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Clean up type checking code. Patch provided by Konstantin Kolinko.
   http://svn.apache.org/viewvc?rev=646571&view=rev
   +1: markt
+  -0: remm (44766: the first patch http://svn.apache.org/viewvc?rev=646106&view=rev is not mentioned ?)
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44428
   Prevent NPE
   http://svn.apache.org/viewvc?rev=646574&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
