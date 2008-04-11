@@ -138,3 +138,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=647289&view=rev
   +1: markt
   -1:
+
+* Another fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
+  Fix read when maxHttpHeaderSize > 8192
+  http://svn.apache.org/viewvc?rev=647304&view=rev (rjung)
+  +1: markt
+  -1:
