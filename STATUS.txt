@@ -158,3 +158,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=647316&view=rev
   +1: markt, remm
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44389
+  Memory leak on app re-load
+  http://svn.apache.org/viewvc?rev=647339&view=rev
+  +1: markt
+  -1:
