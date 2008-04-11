@@ -94,16 +94,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm
   -1:
  
-* Final fixes for https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
-  With these patches the test case provided in the bug report
-  passes for multibyte and single bytes tests including the edge
-  cases I could think of.
-  http://svn.apache.org/viewvc?rev=645719&view=rev (Remy's resizing fix)
-  http://svn.apache.org/viewvc?rev=645722&view=rev (mark/reset fix)
-  +1: markt, remm
-  -1:
-  +1: fhanik, still not completely fixed
-
 * Better handling of lack of permission for context specific logging
   http://svn.apache.org/viewvc?rev=646543&view=rev
   +1: markt, remm
