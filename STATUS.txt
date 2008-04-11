@@ -131,29 +131,30 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid bottleneck by calling synchronized method only once
   http://svn.apache.org/viewvc?rev=646889&view=rev
   +1: markt
+  +1: remm (I never tested this was a problem in the past, though, maybe I didn't test right)
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44392
   Correct handling of HTML entities in SSI processing
   http://svn.apache.org/viewvc?rev=647289&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Another fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
   Fix read when maxHttpHeaderSize > 8192
   http://svn.apache.org/viewvc?rev=647304&view=rev (rjung)
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Last (hopefully) fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
   Clear buffer if not all data is read.
   Patch provided by Suzuki Yuichiro.
   http://svn.apache.org/viewvc?rev=647307&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44391
   Handling of escaped characters was incorrect.
   http://svn.apache.org/viewvc?rev=647316&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
