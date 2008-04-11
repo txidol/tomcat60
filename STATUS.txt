@@ -164,3 +164,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=647339&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44380
+  Don't scan non-file URLs for TLDs
+  http://svn.apache.org/viewvc?rev=647345&view=rev
+  +1: markt
+  -1:
