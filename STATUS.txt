@@ -144,3 +144,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=647304&view=rev (rjung)
   +1: markt
   -1:
+
+* Last (hopefully) fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
+  Clear buffer if not all data is read.
+  Patch provided by Suzuki Yuichiro.
+  http://svn.apache.org/viewvc?rev=647307&view=rev
+  +1: markt
+  -1:
