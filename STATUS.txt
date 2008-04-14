@@ -170,3 +170,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=647345&view=rev
   +1: markt
   -1:
+
+* Fix some links in ROOT app is renamed. Minor clean-up.
+  http://svn.apache.org/viewvc?rev=648017&view=rev
+  +1: markt
+  -1:
