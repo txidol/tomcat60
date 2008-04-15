@@ -175,3 +175,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=648017&view=rev
   +1: markt
   -1:
+
+* Align different Realm docs
+  http://svn.apache.org/viewvc?rev=648161&view=rev
+  +1: markt
+  -1:
