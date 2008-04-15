@@ -84,6 +84,9 @@
         Better handling of lack of permission for context specific logging.
         (markt)
       </fix>
+      <fix>
+        Add permission required to read JDK logging config. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
