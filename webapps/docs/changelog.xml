@@ -51,6 +51,10 @@
         Fix NPE when iterating through sessions for expiration. (fhanik/jim)
       </fix>
       <fix>
+        <bug>44380</bug>: Don't scan non-file URLs for TLDs. Patch provided by
+        Florent Benoit. (markt)
+      </fix>
+      <fix>
         <bug>44529</bug>: Correct handling of resource constraints so no roles
         (deny all) overrides no aoth-constraint (allow all). (markt)
       </fix>
