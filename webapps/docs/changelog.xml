@@ -133,6 +133,9 @@
         <bug>44541</bug>: Document packetSize attribute for AJP connector.
         (markt)
       </fix>
+      <fix>
+        <bug>44715</bug>: Document secret attribute for AJP connector. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
