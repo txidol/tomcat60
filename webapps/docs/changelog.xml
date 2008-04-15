@@ -111,6 +111,10 @@
       <fix>
         <bug>44620</bug>: Infinite loop in NIO connector. (markt)
       </fix>
+      <fix>
+        <bug>44785</bug>: Correctly document default maxThreads for AJP
+        connector. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
