@@ -162,21 +162,21 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44389
   Memory leak on app re-load
   http://svn.apache.org/viewvc?rev=647339&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44380
   Don't scan non-file URLs for TLDs
   http://svn.apache.org/viewvc?rev=647345&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix some links in ROOT app is renamed. Minor clean-up.
   http://svn.apache.org/viewvc?rev=648017&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Align different Realm docs
   http://svn.apache.org/viewvc?rev=648161&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
