@@ -34,11 +34,9 @@
 <body>
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
-     <changelog>
+    <changelog>
       <fix>ExtendedAccessLogValve cs-uri not print empty querystring (pero)
       </fix>
-     </changelog>
-    <changelog>
       <update>
         ServletContext.getResource("noslash/resource") only requires forward slash if STRICT_SERVLET_COMPLIANCE
         flag is set to true. This mimics the behavior of 6.0.15 and earlier. (fhanik)
@@ -102,6 +100,9 @@
       </fix>
       <fix>
         <bug>44494</bug>: Character input limited to 8KB. (remm)
+      </fix>
+      <fix>
+        <bug>44620</bug>: Infinite loop in NIO connector. (markt)
       </fix>
     </changelog>
   </subsection>
