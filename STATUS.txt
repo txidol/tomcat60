@@ -82,11 +82,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm
   -1:
  
-* Better handling of lack of permission for context specific logging
-  http://svn.apache.org/viewvc?rev=646543&view=rev
-  +1: markt, remm, pero
-  -1:
-
 * Additional permission required to read JDK logging config
   http://svn.apache.org/viewvc?rev=646550&view=rev
   +1: markt, remm, pero

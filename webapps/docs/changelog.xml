@@ -80,6 +80,10 @@
         <bug>44673</bug>: ServletInputStream is no longer readable once closed.
         (markt)
       </fix>
+      <fix>
+        Better handling of lack of permission for context specific logging.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
