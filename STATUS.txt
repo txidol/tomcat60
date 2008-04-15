@@ -63,19 +63,19 @@ PATCHES PROPOSED TO BACKPORT:
 * Prevent the connector entering an infinite loop
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44620
   http://svn.apache.org/viewvc?rev=640572&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, pero
   -1:
 
 * Document missing secret attributes
   https://issues.apache.org/bugzilla/show_bug.cgi?id=44715
   http://svn.apache.org/viewvc?rev=643497&view=rev
-  +1: mark, fhanik
+  +1: mark, fhanik, pero
   -1:
 
 * Fix NIO/Sendfile problem
   http://svn.apache.org/viewvc?rev=644858&view=rev
   http://svn.apache.org/viewvc?rev=644860&view=rev
-  +1: fhanik, markt
+  +1: fhanik, markt, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44759
@@ -96,23 +96,23 @@ PATCHES PROPOSED TO BACKPORT:
  
 * Better handling of lack of permission for context specific logging
   http://svn.apache.org/viewvc?rev=646543&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1:
 
 * Additional permission required to read JDK logging config
   http://svn.apache.org/viewvc?rev=646550&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44785
   Correct default maxThreads for AJP connector
   http://svn.apache.org/viewvc?rev=646559&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1:
 
 * Clean up type checking code. Patch provided by Konstantin Kolinko.
   http://svn.apache.org/viewvc?rev=646571&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44428
@@ -168,15 +168,15 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44380
   Don't scan non-file URLs for TLDs
   http://svn.apache.org/viewvc?rev=647345&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1:
 
 * Fix some links in ROOT app is renamed. Minor clean-up.
   http://svn.apache.org/viewvc?rev=648017&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1:
 
 * Align different Realm docs
   http://svn.apache.org/viewvc?rev=648161&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1:
