@@ -94,6 +94,10 @@
       <fix>
         Update web.xml to reflect packaging of SSI and CGI. (markt)
       </fix>
+      <fix>
+        <bug>44389</bug>: Fix memory leak that occurred if using a
+        RequestDispatcher. Patch provided by Arto Huusko. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
