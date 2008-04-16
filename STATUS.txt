@@ -57,7 +57,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Update comments re JAR renaming in web.xml
   http://svn.apache.org/viewvc?rev=639771&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, rjung
   -1: 
 
 * Fix NIO/Sendfile problem
@@ -69,7 +69,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44759
   Need source to build java docs
   http://svn.apache.org/viewvc?rev=645169&view=rev
-  +1: markt,fhanik
+  +1: markt,fhanik,rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42662
@@ -91,15 +91,18 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44766
   Handle custom subtypes of java.lang.Number
   http://svn.apache.org/viewvc?view=rev&revision=646106
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1:
+  rjung: Simply use: "return Number.class.isAssignableFrom(type);"
+         since all other conditions are special cases of this one.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44408
   Avoid bottleneck by calling synchronized method only once
   http://svn.apache.org/viewvc?rev=646889&view=rev
-  +1: markt
+  +1: markt, rjung
   +1: remm (I never tested this was a problem in the past, though, maybe I didn't test right)
   -1:
+  rjung: Please also fix indentation.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44392
   Correct handling of HTML entities in SSI processing
@@ -110,15 +113,17 @@ PATCHES PROPOSED TO BACKPORT:
 * Another fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
   Fix read when maxHttpHeaderSize > 8192
   http://svn.apache.org/viewvc?rev=647304&view=rev (rjung)
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1:
 
 * Last (hopefully) fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
   Clear buffer if not all data is read.
   Patch provided by Suzuki Yuichiro.
   http://svn.apache.org/viewvc?rev=647307&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1:
+  rjung: Not sure, if this is the most efficient solution, but
+         at least it's a fix.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44391
   Handling of escaped characters was incorrect.
@@ -129,5 +134,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44389
   Memory leak on app re-load
   http://svn.apache.org/viewvc?rev=647339&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1:
