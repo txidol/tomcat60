@@ -91,6 +91,9 @@
       <fix>
         Add permission required to read JDK logging config. (markt)
       </fix>
+      <fix>
+        Update web.xml to reflect packaging of SSI and CGI. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

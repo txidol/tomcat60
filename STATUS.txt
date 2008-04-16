@@ -55,11 +55,6 @@ PATCHES PROPOSED TO BACKPORT:
   +0: remm: do we really want to fix these sort of "bugs" ?
   -1:
 
-* Update comments re JAR renaming in web.xml
-  http://svn.apache.org/viewvc?rev=639771&view=rev
-  +1: markt, fhanik, rjung
-  -1: 
-
 * Fix NIO/Sendfile problem
   http://svn.apache.org/viewvc?rev=644858&view=rev
   http://svn.apache.org/viewvc?rev=644860&view=rev
