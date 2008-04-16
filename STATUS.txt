@@ -85,14 +85,6 @@ PATCHES PROPOSED TO BACKPORT:
   rjung: Simply use: "return Number.class.isAssignableFrom(type);"
          since all other conditions are special cases of this one.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44408
-  Avoid bottleneck by calling synchronized method only once
-  http://svn.apache.org/viewvc?rev=646889&view=rev
-  +1: markt, rjung
-  +1: remm (I never tested this was a problem in the past, though, maybe I didn't test right)
-  -1:
-  rjung: Please also fix indentation.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44392
   Correct handling of HTML entities in SSI processing
   http://svn.apache.org/viewvc?rev=647289&view=rev

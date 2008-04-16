@@ -130,6 +130,10 @@
         <bug>43741</bug>: Correctly handle dependencies for tag files in JARs.
         (markt)
       </fix>
+      <fix>
+        <bug>44408</bug>: Reduce synchronisation when evaluating EL expressions.
+        Patch provided by Robert Andersson. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
