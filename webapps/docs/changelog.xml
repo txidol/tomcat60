@@ -151,6 +151,10 @@
       <fix>
         <bug>44715</bug>: Document secret attribute for AJP connector. (markt)
       </fix>
+      <fix>
+        Fix some links in the ROOT application that are broken if ROOT is
+        renamed. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
