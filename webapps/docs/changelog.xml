@@ -174,8 +174,11 @@
   <subsection name="Other">
     <changelog>
       <add>
-         Improve the Tests for unit tests for the cookie issues. (jfclere)
+        Improve the Tests for unit tests for the cookie issues. (jfclere)
       </add>
+      <fix>
+        Fix build for JavaDoc. Patch provided by Stephen Bannasch. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
