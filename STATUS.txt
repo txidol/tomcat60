@@ -91,15 +91,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1:
 
-* Last (hopefully) fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=44494
-  Clear buffer if not all data is read.
-  Patch provided by Suzuki Yuichiro.
-  http://svn.apache.org/viewvc?rev=647307&view=rev
-  +1: markt, remm, rjung
-  -1:
-  rjung: Not sure, if this is the most efficient solution, but
-         at least it's a fix.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44391
   Handling of escaped characters was incorrect.
   http://svn.apache.org/viewvc?rev=647316&view=rev
