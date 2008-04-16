@@ -155,6 +155,10 @@
         Fix some links in the ROOT application that are broken if ROOT is
         renamed. (markt)
       </fix>
+      <fix>
+        Align the Realm documentation so that both the configuration and the
+        how-to are consistent. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
