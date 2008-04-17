@@ -142,6 +142,9 @@
         <bug>44408</bug>: Reduce synchronisation when evaluating EL expressions.
         Patch provided by Robert Andersson. (markt)
       </fix>
+      <fix>
+        <bug>44428</bug>: Fix possible NPE during serialization. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
