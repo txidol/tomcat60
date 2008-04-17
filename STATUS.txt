@@ -65,12 +65,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm
   -1:
  
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44766
-  Handle custom subtypes of java.lang.Number
-  http://svn.apache.org/viewvc?view=rev&revision=646106
-  +1: markt, remm, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44392
   Correct handling of HTML entities in SSI processing
   http://svn.apache.org/viewvc?rev=647289&view=rev

@@ -145,6 +145,9 @@
       <fix>
         <bug>44428</bug>: Fix possible NPE during serialization. (markt)
       </fix>
+      <fix>
+        <bug>44766</bug>: EL doesn't coerce custom Number subclasses. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
