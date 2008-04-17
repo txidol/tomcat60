@@ -71,3 +71,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
   
+* Expose always send flag for configuration
+  http://svn.apache.org/viewvc?view=rev&revision=649252
+  +1: fhanik
+  -1: 
