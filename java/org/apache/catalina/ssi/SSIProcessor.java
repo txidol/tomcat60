@@ -208,11 +208,10 @@ public class SSIProcessor {
                     // Need to skip escaped characters
                     if (c == '\\' && !escaped) {
                         escaped = true;
-                        bIdx++;
                         continue;
                     }
+                    if (c == '"' && !escaped) quotes++;
                     escaped = false;
-                    if (c == '"') quotes++;
                 }
             }
         }
