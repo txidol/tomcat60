@@ -82,8 +82,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=646106
   +1: markt, remm, rjung
   -1:
-  rjung: Simply use: "return Number.class.isAssignableFrom(type);"
-         since all other conditions are special cases of this one.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44392
   Correct handling of HTML entities in SSI processing
