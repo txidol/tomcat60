@@ -117,6 +117,10 @@
         Caldarale. (markt/jim)
       </fix>
       <fix>
+        <bug>44392</bug>: HTML entities now handled correctly in SSI processing.
+        (markt)
+      </fix>
+      <fix>
         <bug>44558</bug>: Improve error message so address is included if
         binding fails.
       </fix>
