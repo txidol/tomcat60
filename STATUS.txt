@@ -68,10 +68,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Correctly override methods
   Fixes: https://issues.apache.org/bugzilla/show_bug.cgi?id=44833
   http://svn.apache.org/viewvc?view=rev&revision=649238
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
   
 * Expose always send flag for configuration
   http://svn.apache.org/viewvc?view=rev&revision=649252
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
