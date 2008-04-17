@@ -103,6 +103,10 @@
   <subsection name="Coyote">
     <changelog>
       <update>
+        NIO: Fix bug in NIO sendfile, symptoms during heavy traffic is that connection don't get closed. For previous versions, one can disable sendfile to work
+        around the problem. (fhanik)
+      </update>
+      <update>
         APR: Allow to specify the "random device" to use to collect the entropy. (jfclere)
       </update>
       <update>
