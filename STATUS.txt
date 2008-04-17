@@ -75,3 +75,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=649252
   +1: fhanik, markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43683
+  Need to identify new wrapper for queued request after reload
+  http://svn.apache.org/viewvc?rev=649302&view=rev
+  +1: markt
+  -1:
