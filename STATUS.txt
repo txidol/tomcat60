@@ -87,3 +87,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=649638&view=rev
   +1: markt
   -1: 
+
+* Add test case for https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
+  http://svn.apache.org/viewvc?rev=649783&view=rev
+  http://svn.apache.org/viewvc?rev=649785&view=rev
+  +1: markt
+  -1: 
+
+* Fixes to make test case above pass
+  http://svn.apache.org/viewvc?rev=649784&view=rev
+  +1: markt
+  -1: 
