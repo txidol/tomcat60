@@ -105,3 +105,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=649974&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=31257
+  Quote endorsed dirs if they contain a space
+  http://svn.apache.org/viewvc?rev=649993&view=rev
+  +1: markt
+  -1: 
