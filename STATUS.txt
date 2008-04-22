@@ -78,29 +78,14 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43683
   Need to identify new wrapper for queued request after reload
-  http://svn.apache.org/viewvc?rev=649302&view=rev
+  http://svn.apache.org/viewvc?rev=650648&view=rev
   +1: markt
   -1: remm (there's a check for null on the next line -> not good; other than that small glitch,
       this is not an expensive check unless it is unavailable so it's probably fine; honestly,
       I would still consider adding isStarted to Container - maybe it should be in Lifecycle, 
       but I'd say any container should have the flag)
-      
-        // Select the Wrapper to be used for this Request
-        Wrapper wrapper = request.getWrapper();
-        if (wrapper == null) {
-            String requestURI = request.getDecodedRequestURI();
-            notFound(requestURI, response);
-            return;
-        } else if (wrapper.isUnavailable()) {
-         // May be as a result of a reload, try and find the new wrapper
-            wrapper = (Wrapper) container.findChild(wrapper.getName());
-            if (wrapper == null) {
-                String requestURI = request.getDecodedRequestURI();
-                notFound(requestURI, response);
-                return;
-            }
-        }
-      
+      markt - It was easy to work around this time.
+              Maybe adding isStarted is something for 6.2.x/7.0.x?
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
