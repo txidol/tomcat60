@@ -135,3 +135,10 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Ray Sauers
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43425
+  Annotations not spec compliant
+  Patch provided by Dain Sundstrom
+  http://svn.apache.org/viewvc?rev=651732&view=rev
+  +1: markt
+  -1: 
