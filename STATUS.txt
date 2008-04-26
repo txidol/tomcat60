@@ -142,3 +142,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=651732&view=rev
   +1: markt
   -1: 
+
+* Log errors for AJP signoffs at DEBUG level, since it is harmless if mod_jk has hung up the phone.
+  http://svn.apache.org/viewvc?rev=651792&view=rev
+  +1: billbarker
+  -1: 
