@@ -145,7 +145,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Log errors for AJP signoffs at DEBUG level, since it is harmless if mod_jk has hung up the phone.
   http://svn.apache.org/viewvc?rev=651792&view=rev
-  +1: billbarker
+  +1: billbarker, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44877
