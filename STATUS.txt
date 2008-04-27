@@ -153,3 +153,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=651984&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43366
+  provide backwards compatibility for manager sessions command
+  http://svn.apache.org/viewvc?rev=651988&view=rev
+  +1: markt
+  -1: 
