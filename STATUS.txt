@@ -147,3 +147,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=651792&view=rev
   +1: billbarker
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44877
+  Prevent collisions in tag pool names
+  http://svn.apache.org/viewvc?rev=651984&view=rev
+  +1: markt
+  -1:
