@@ -76,11 +76,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt
   -1: 
 
-* Add missing access check for ThreadWithAttributes
-  http://svn.apache.org/viewvc?rev=651662&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43470
   Various copy and paste errors
   http://svn.apache.org/viewvc?rev=651675&view=rev

@@ -106,6 +106,9 @@
         <bug>44389</bug>: Fix memory leak that occurred if using a
         RequestDispatcher. Patch provided by Arto Huusko. (markt)
       </fix>
+      <fix>
+        Add missing access check for ThreadWithAttributes. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
