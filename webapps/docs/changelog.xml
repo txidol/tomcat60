@@ -191,6 +191,9 @@
       <fix>
         <bug>44766</bug>: EL doesn't coerce custom Number subclasses. (markt)
       </fix>
+      <fix>
+        <bug>44877</bug>: Prevent collisions on tag pool names. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
