@@ -40,6 +40,10 @@
         using the webapp class loader when we create them. (markt)
       </fix>
       <fix>
+        <bug>43142</bug>: Don't assume a directory named xxx.war is a war file.
+        (markt)
+      </fix>
+      <fix>
         <bug>43425</bug>: Make annotations spec compliant. Patch provided by
         Dain Sundstrom. (markt)
       </fix>
