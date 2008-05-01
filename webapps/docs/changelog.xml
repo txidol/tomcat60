@@ -35,6 +35,10 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix>
+        <bug>43683</bug>: Fix 404 that could occur if a Servlet is accessed
+        while the context is reloading. (markt)
+      </fix>
       <fix>ExtendedAccessLogValve cs-uri not print empty querystring (pero)
       </fix>
       <update>
