@@ -212,6 +212,10 @@
         updated commons-pool and commons-DBCP. (markt)
       </fix>
       <fix>
+        <bug>43366</bug>: Provide backwards compatibility for manager sessions
+        command. (markt)
+      </fix> 
+      <fix>
         <bug>44541</bug>: Document packetSize attribute for AJP connector.
         (markt)
       </fix>
