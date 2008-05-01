@@ -80,3 +80,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=651792&view=rev
   +1: billbarker, markt, remm, fhanik
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43343
+  http://svn.apache.org/viewvc?rev=652662&view=rev
+  Based on a suggestion by Wade Chandler
+  +1: markt
+  -1: 
