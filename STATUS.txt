@@ -76,23 +76,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
-  coerceToType() modifies some values. Patch provided by Nils Eckert
-  http://svn.apache.org/viewvc?rev=649638&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
-* Add test case for https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
-  http://svn.apache.org/viewvc?rev=649783&view=rev
-  http://svn.apache.org/viewvc?rev=649785&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
-* Fixes to make test case above pass
-  http://svn.apache.org/viewvc?rev=649784&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=29936
   Create digesters and parsers earlier so we aren't using the webapp class
   loader when we create them.

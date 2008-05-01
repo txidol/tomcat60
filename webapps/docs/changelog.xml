@@ -147,6 +147,11 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
+        <bug>43656</bug>: Fix various numeric coercion bugs. Includes a patch by
+        Nils Eckert and fixes related issues identified in a test case provided
+        by Konstantin Kolinko. (markt)
+      </fix>
+      <fix>
         <bug>43741</bug>: Correctly handle dependencies for tag files in JARs.
         (markt)
       </fix>
