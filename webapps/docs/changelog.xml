@@ -40,6 +40,10 @@
         using the webapp class loader when we create them. (markt)
       </fix>
       <fix>
+        <bug>43470</bug>: Fix various class cast exceptions. Based on a patch
+        by Lucas Galfaso. (markt)
+      </fix>
+      <fix>
         <bug>43683</bug>: Fix 404 that could occur if a Servlet is accessed
         while the context is reloading. (markt)
       </fix>
