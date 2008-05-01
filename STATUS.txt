@@ -115,53 +115,53 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43617
   Correctly handle quotes in attribute values for tag(x) files
   http://svn.apache.org/viewvc?rev=651729&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Add missing access check for ThreadWithAttributes
   http://svn.apache.org/viewvc?rev=651662&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43470
   Various copy and paste errors
   http://svn.apache.org/viewvc?rev=651675&view=rev
-  +1: markt
+  +1: markt, remm (my fault)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43578
   http://svn.apache.org/viewvc?rev=651713&view=rev
   Tomcat doesn't start if installation path contains a space
   Patch provided by Ray Sauers
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43425
   Annotations not spec compliant
   Patch provided by Dain Sundstrom
   http://svn.apache.org/viewvc?rev=651732&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Log errors for AJP signoffs at DEBUG level, since it is harmless if mod_jk has hung up the phone.
   http://svn.apache.org/viewvc?rev=651792&view=rev
-  +1: billbarker, markt
+  +1: billbarker, markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44877
   Prevent collisions in tag pool names
   http://svn.apache.org/viewvc?rev=651984&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43366
   provide backwards compatibility for manager sessions command
   http://svn.apache.org/viewvc?rev=651988&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43142
   Don't assume a directory named xxx.war is a war file
   http://svn.apache.org/viewvc?rev=652441&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
