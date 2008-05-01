@@ -44,6 +44,10 @@
         by Lucas Galfaso. (markt)
       </fix>
       <fix>
+        <bug>43578</bug>: Fix startup when installation path contains a space.
+        Patch provided by Ray Sauers. (markt)
+      </fix>
+      <fix>
         <bug>43683</bug>: Fix 404 that could occur if a Servlet is accessed
         while the context is reloading. (markt)
       </fix>
