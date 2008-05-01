@@ -80,88 +80,89 @@ PATCHES PROPOSED TO BACKPORT:
   Need to identify new wrapper for queued request after reload
   http://svn.apache.org/viewvc?rev=650648&view=rev
   +1: markt, remm
+  +1: fhanik - is this 404? shouldn't it send UNAVAILABLE?
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
   coerceToType() modifies some values. Patch provided by Nils Eckert
   http://svn.apache.org/viewvc?rev=649638&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Add test case for https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
   http://svn.apache.org/viewvc?rev=649783&view=rev
   http://svn.apache.org/viewvc?rev=649785&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fixes to make test case above pass
   http://svn.apache.org/viewvc?rev=649784&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=29936
   Create digesters and parsers earlier so we aren't using the webapp class
   loader when we create them.
   http://svn.apache.org/viewvc?rev=649974&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=31257
   Quote endorsed dirs if they contain a space
   http://svn.apache.org/viewvc?rev=649993&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43617
   Correctly handle quotes in attribute values for tag(x) files
   http://svn.apache.org/viewvc?rev=651729&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * Add missing access check for ThreadWithAttributes
   http://svn.apache.org/viewvc?rev=651662&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43470
   Various copy and paste errors
   http://svn.apache.org/viewvc?rev=651675&view=rev
-  +1: markt, remm (my fault)
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43578
   http://svn.apache.org/viewvc?rev=651713&view=rev
   Tomcat doesn't start if installation path contains a space
   Patch provided by Ray Sauers
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43425
   Annotations not spec compliant
   Patch provided by Dain Sundstrom
   http://svn.apache.org/viewvc?rev=651732&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Log errors for AJP signoffs at DEBUG level, since it is harmless if mod_jk has hung up the phone.
   http://svn.apache.org/viewvc?rev=651792&view=rev
-  +1: billbarker, markt, remm
+  +1: billbarker, markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44877
   Prevent collisions in tag pool names
   http://svn.apache.org/viewvc?rev=651984&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43366
   provide backwards compatibility for manager sessions command
   http://svn.apache.org/viewvc?rev=651988&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43142
   Don't assume a directory named xxx.war is a war file
   http://svn.apache.org/viewvc?rev=652441&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
