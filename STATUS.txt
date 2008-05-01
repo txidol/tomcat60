@@ -159,3 +159,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=651988&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43142
+  Don't assume a directory named xxx.war is a war file
+  http://svn.apache.org/viewvc?rev=652441&view=rev
+  +1: markt
+  -1: 
