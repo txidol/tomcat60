@@ -154,6 +154,10 @@
         <bug>31257</bug>: Quote endorsed dirs if they contain a space. (markt)
       </fix>
       <fix>
+        <bug>43617</bug>: Correctly escape attribute values in tag files.
+        Based on a patch by Lucas Galfaso. (markt)
+      </fix>
+      <fix>
         <bug>43656</bug>: Fix various numeric coercion bugs. Includes a patch by
         Nils Eckert and fixes related issues identified in a test case provided
         by Konstantin Kolinko. (markt)
