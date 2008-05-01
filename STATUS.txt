@@ -76,12 +76,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=31257
-  Quote endorsed dirs if they contain a space
-  http://svn.apache.org/viewvc?rev=649993&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43617
   Correctly handle quotes in attribute values for tag(x) files
   http://svn.apache.org/viewvc?rev=651729&view=rev
