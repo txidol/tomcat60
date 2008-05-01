@@ -76,13 +76,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=29936
-  Create digesters and parsers earlier so we aren't using the webapp class
-  loader when we create them.
-  http://svn.apache.org/viewvc?rev=649974&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=31257
   Quote endorsed dirs if they contain a space
   http://svn.apache.org/viewvc?rev=649993&view=rev

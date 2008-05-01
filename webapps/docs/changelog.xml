@@ -36,6 +36,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>29936</bug>: Create digesters and parsers earlier so we aren't
+        using the webapp class loader when we create them. (markt)
+      </fix>
+      <fix>
         <bug>43683</bug>: Fix 404 that could occur if a Servlet is accessed
         while the context is reloading. (markt)
       </fix>
