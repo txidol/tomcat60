@@ -100,3 +100,16 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=652669&view=rev
   +1: markt
   -1: 
+
+* Possible NPE in EL (one liner regression fix in org.apache.el.lang.ELSupport)
+@@ -343,7 +343,7 @@
+     public final static Object coerceToType(final Object obj, final Class type)
+             throws IllegalArgumentException {
+         if (type == null || Object.class.equals(type) ||
+-                type.equals(obj.getClass())) {
++                (obj != null && type.equals(obj.getClass()))) {
+             return obj;
+         }
+         if (String.class.equals(type)) {
+  +1: remm
+  -1: 
