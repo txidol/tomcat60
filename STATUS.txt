@@ -113,3 +113,10 @@ PATCHES PROPOSED TO BACKPORT:
          if (String.class.equals(type)) {
   +1: remm
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43191
+  No way to turn off compression for some miime-types
+  Based on a patch by Len Popp
+  http://svn.apache.org/viewvc?rev=653032&view=rev
+  +1: markt
+  -1: 
