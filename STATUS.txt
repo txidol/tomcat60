@@ -127,3 +127,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=653113&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43094
+  Support keystoreTypes that don't need a file
+  Based on a patch by Bruno Harbulot
+  http://svn.apache.org/viewvc?rev=653128&view=rev
+  +1: markt
+  -1: 
