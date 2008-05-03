@@ -111,7 +111,7 @@ PATCHES PROPOSED TO BACKPORT:
              return obj;
          }
          if (String.class.equals(type)) {
-  +1: remm
+  +1: remm, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43191
