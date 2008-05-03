@@ -86,19 +86,19 @@ PATCHES PROPOSED TO BACKPORT:
   persisting
   http://svn.apache.org/viewvc?rev=652662&view=rev
   Based on a suggestion by Wade Chandler
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43333
   Correct sendfile docs
   http://svn.apache.org/viewvc?rev=652666&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43150
   Start if the installation path contains #
   http://svn.apache.org/viewvc?rev=652669&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Possible NPE in EL (one liner regression fix in org.apache.el.lang.ELSupport)
@@ -115,8 +115,8 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43191
-  No way to turn off compression for some miime-types
+  No way to turn off compression for some mime-types
   Based on a patch by Len Popp
   http://svn.apache.org/viewvc?rev=653032&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
