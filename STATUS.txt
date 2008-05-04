@@ -134,3 +134,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=653128&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43079
+  and https://issues.apache.org/bugzilla/show_bug.cgi?id=43080
+  http://svn.apache.org/viewvc?rev=653195&view=rev
+  Move odd url-pattern warning to StandardContext so a) we catch all patterns
+  and b) it isn't logged to the wrong webapp
+  Based on a patch by John Kew
+  +1: markt
+  -1: 
