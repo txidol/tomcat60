@@ -163,3 +163,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=654630&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42943
+  Make sure nested element is inside <jsp:text> element before throwing
+  exception.
+  http://svn.apache.org/viewvc?rev=654640&view=rev
+  +1: markt
+  -1: 
