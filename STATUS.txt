@@ -157,3 +157,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=654177&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44955
+  Use correct location for endorsed dir
+  http://svn.apache.org/viewvc?rev=654630&view=rev
+  +1: markt
+  -1: 
