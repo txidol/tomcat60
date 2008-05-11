@@ -76,11 +76,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt
   -1: 
 
-* Log errors for AJP signoffs at DEBUG level, since it is harmless if mod_jk has hung up the phone.
-  http://svn.apache.org/viewvc?rev=651792&view=rev
-  +1: billbarker, markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43343
   Correctly handle requesting a session we are in the middle of
   persisting
