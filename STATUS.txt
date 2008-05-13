@@ -166,3 +166,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=654640&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44988
+  Use new Java 5 syntax for debugger options
+  Patch provided by Cédrik Lime
+  http://svn.apache.org/viewvc?rev=655992&view=rev
+  +1: markt
+  -1: 
