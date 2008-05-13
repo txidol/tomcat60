@@ -173,3 +173,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=655992&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44986
+  Page encoding consistency checks should be case insensitive
+  http://svn.apache.org/viewvc?rev=656024&view=rev
+  +1: markt
+  -1: 
