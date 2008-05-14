@@ -183,5 +183,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44968
   Provide more information when keystore load fails
   http://svn.apache.org/viewvc?rev=656035&view=rev
+  http://svn.apache.org/viewvc?rev=656124&view=rev
   +1: markt
   -1: 
