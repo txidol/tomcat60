@@ -47,6 +47,10 @@
         using the webapp class loader when we create them. (markt)
       </fix>
       <fix>
+        <bug>43343</bug>: Correctly handle requesting a session we are in the
+        middle of persisting. Based on a suggestion by Wade Chandler. (markt)
+      </fix>
+      <fix>
         <bug>43142</bug>: Don't assume a directory named xxx.war is a war file.
         (markt)
       </fix>

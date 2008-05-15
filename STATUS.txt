@@ -51,14 +51,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm, pero
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43343
-  Correctly handle requesting a session we are in the middle of
-  persisting
-  http://svn.apache.org/viewvc?rev=652662&view=rev
-  Based on a suggestion by Wade Chandler
-  +1: markt, remm, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43333
   Correct sendfile docs
   http://svn.apache.org/viewvc?rev=652666&view=rev
