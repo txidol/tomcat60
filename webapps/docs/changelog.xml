@@ -253,6 +253,10 @@
       <fix>
         <bug>44877</bug>: Prevent collisions on tag pool names. (markt)
       </fix>
+      <fix>
+        <bug>44986</bug>: Make page encoding consistency checks case-insensitive.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
