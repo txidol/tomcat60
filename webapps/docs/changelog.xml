@@ -159,6 +159,10 @@
         Caldarale. (markt/jim)
       </fix>
       <fix>
+        <bug>43191</bug>: Make it possible to override the defaults with the
+        compressableMimeType attribute. Based on a patch by Len Popp. (markt)
+      </fix>
+      <fix>
         <bug>44391</bug>: Correct handling of escaped values in SSI processing.
         (markt) 
       </fix>
