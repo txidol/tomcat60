@@ -144,5 +144,5 @@ PATCHES PROPOSED TO BACKPORT:
   Provide more information when keystore load fails
   http://svn.apache.org/viewvc?rev=656739&view=rev
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/net/jsse/res/LocalStrings.properties?r1=656035&r2=656034&pathrev=656035
-  +1: markt, remm
-  -1:  fhanik - doesnt compile
+  +1: markt, remm, fhanik
+  -1: 
