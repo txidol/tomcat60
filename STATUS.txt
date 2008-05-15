@@ -61,11 +61,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm, pero
   -1:
 
-* Expose always send flag for configuration
-  http://svn.apache.org/viewvc?view=rev&revision=649252
-  +1: fhanik, markt, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43343
   Correctly handle requesting a session we are in the middle of
   persisting

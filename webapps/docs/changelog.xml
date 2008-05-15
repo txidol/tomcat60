@@ -35,6 +35,7 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <update>expose alwaysSend flag for message dispatch interceptor</update>  
       <fix><bug>44833</bug>
         correctly override StandardSession methods from DeltaSession
       </fix>
