@@ -224,8 +224,8 @@
         <bug>31257</bug>: Quote endorsed dirs if they contain a space. (markt)
       </fix>
       <fix>
-        <bug>42943</bug>: Make sure nested element is inside <jsp:text> element
-        before throwing exception. (markt)
+        <bug>42943</bug>: Make sure nested element is inside &lt;jsp:text&gt;
+        element before throwing exception. (markt)
       </fix>
       <fix>
         <bug>43617</bug>: Correctly escape attribute values in tag files.
