@@ -160,6 +160,10 @@
         <bug>44943</bug>: Use the same engine name in server.xml comments to
         reduce copy and pastes issues. (markt)
       </fix>
+      <fix>
+        <bug?44988</bug>: Use Java5 syntax for debug options. Patch provided
+        by Cedrik Lime. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

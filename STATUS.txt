@@ -57,13 +57,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44988
-  Use new Java 5 syntax for debugger options
-  Patch provided by Cedrik Lime
-  http://svn.apache.org/viewvc?rev=655992&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44986
   Page encoding consistency checks should be case insensitive
   http://svn.apache.org/viewvc?rev=656024&view=rev
