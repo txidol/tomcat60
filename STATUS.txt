@@ -51,12 +51,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm, pero
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43150
-  Start if the installation path contains #
-  http://svn.apache.org/viewvc?rev=652669&view=rev
-  +1: markt, remm, pero
-  -1: 
-
 * Possible NPE in EL (one liner regression fix in org.apache.el.lang.ELSupport)
 @@ -343,7 +343,7 @@
      public final static Object coerceToType(final Object obj, final Class type)
