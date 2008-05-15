@@ -93,6 +93,10 @@
         flag is set to true. This mimics the behavior of 6.0.15 and earlier. (fhanik)
       </update>
       <fix>
+        <bug>44021</bug>: Add support for using the # character to define
+        multi-level contexts in WARs and dirctories in the appBase. (markt)
+      </fix>
+      <fix>
         <bug>44337</bug>:   Dir listing crashes if no readme-file present (funkman)
       </fix>
       <fix>

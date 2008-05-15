@@ -463,14 +463,14 @@ public class HostConfig
 
     
     /**
-     * Given a context path, get the config file name.
+     * Given a context path, get the docBase.
      */
     protected String getDocBase(String path) {
         String basename = null;
         if (path.equals("")) {
             basename = "ROOT";
         } else {
-            basename = path.substring(1);
+            basename = path.substring(1).replace('/', '#');
         }
         return (basename);
     }
@@ -503,7 +503,7 @@ public class HostConfig
         File appBase = appBase();
         File configBase = configBase();
         String baseName = getConfigFile(name);
-        String docBase = getConfigFile(name);
+        String docBase = getDocBase(name);
         
         // Deploy XML descriptors from configBase
         File xml = new File(configBase, baseName + ".xml");
@@ -703,7 +703,7 @@ public class HostConfig
             if (files[i].toLowerCase().endsWith(".war") && dir.isFile()) {
                 
                 // Calculate the context path and make sure it is unique
-                String contextPath = "/" + files[i];
+                String contextPath = "/" + files[i].replace('#','/');
                 int period = contextPath.lastIndexOf(".");
                 if (period >= 0)
                     contextPath = contextPath.substring(0, period);
@@ -841,6 +841,7 @@ public class HostConfig
                         name = path;
                     }
                 }
+                name = name.replace('/', '#');
                 File docBase = new File(name);
                 if (!docBase.isAbsolute()) {
                     docBase = new File(appBase(), name);
@@ -877,7 +878,7 @@ public class HostConfig
             if (dir.isDirectory()) {
 
                 // Calculate the context path and make sure it is unique
-                String contextPath = "/" + files[i];
+                String contextPath = "/" + files[i].replace('#','/');
                 if (files[i].equals("ROOT"))
                     contextPath = "";
 
