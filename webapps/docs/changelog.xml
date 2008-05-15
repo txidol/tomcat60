@@ -47,6 +47,14 @@
         using the webapp class loader when we create them. (markt)
       </fix>
       <fix>
+        <bug>43079</bug>: Fix identification of suspicious URL patterns. Patch
+        provided by John Kew. (markt)
+      </fix>
+      <fix>
+        <bug>43080</bug>: Log suspicious URL patterns to the correct web app.
+        (markt)
+      </fix>
+      <fix>
         <bug>43117</bug>: Setting an empty workDir could result in all of
         CATALINA_HOME being deleted. Patch provided by Takayuki Kaneko. (markt)
       </fix>

@@ -51,15 +51,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm, pero
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43079
-  and https://issues.apache.org/bugzilla/show_bug.cgi?id=43080
-  http://svn.apache.org/viewvc?rev=653195&view=rev
-  Move odd url-pattern warning to StandardContext so a) we catch all patterns
-  and b) it isn't logged to the wrong webapp
-  Based on a patch by John Kewl
-  +1: markt, remm, billbarker
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44021
   and https://issues.apache.org/bugzilla/show_bug.cgi?id=43013
   Add support for # to signify multi-level contexts for directories and
