@@ -39,16 +39,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: I believe it would need specific support for certain managers. Interested users
             could use their own extended manager instead.
 
-* Remove old TLS code
-  http://svn.apache.org/viewvc?rev=616894&view=rev
-  +1: markt, fhanik, billbarker
-  +0: remm: I don't see the point of backporting these API changing cleanups
-            (markt) This is not an API change. It is just removing the TLS code
-                    that has never been included in a 6.0.x src or bin release
-           It's my fault for not building it in then. I'm not sure this is intentional,
-           but I am ok with the change.
-            (billbarker) It was intentional, and discussed on dev@
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=44282
   Do call to getClassLoader() in a privileged block.
   http://svn.apache.org/viewvc?rev=616953&view=rev
