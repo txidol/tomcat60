@@ -35,6 +35,9 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix><bug>42662</bug>
+        properly resolve reflection proxies during session replication
+      </fix>
       <fix>
         <bug>29936</bug>: Create digesters and parsers earlier so we aren't
         using the webapp class loader when we create them. (markt)
