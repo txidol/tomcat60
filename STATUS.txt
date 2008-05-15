@@ -51,13 +51,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm, pero
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43117
-  Setting an empty workDir can delete all of CATALINA_HOME
-  Patch provided by Takayuki Kaneko.
-  http://svn.apache.org/viewvc?rev=653113&view=rev
-  +1: markt, remm, billbarker
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43094
   Support keystoreTypes that don't need a file
   Based on a patch by Bruno Harbulot
