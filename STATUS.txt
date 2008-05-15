@@ -73,7 +73,7 @@ PATCHES PROPOSED TO BACKPORT:
              return obj;
          }
          if (String.class.equals(type)) {
-  +1: remm, markt
+  +1: remm, markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43191
@@ -102,7 +102,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=653195&view=rev
   Move odd url-pattern warning to StandardContext so a) we catch all patterns
   and b) it isn't logged to the wrong webapp
-  Based on a patch by John Kew
+  Based on a patch by John Kewl
   +1: markt, remm, billbarker
   -1: 
 
@@ -111,13 +111,13 @@ PATCHES PROPOSED TO BACKPORT:
   Add support for # to signify multi-level contexts for directories and
   wars.
   http://svn.apache.org/viewvc?rev=653549&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44943
   Reduce issues caused by copy/paste and different engine names
   http://svn.apache.org/viewvc?rev=654177&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44955
@@ -130,20 +130,20 @@ PATCHES PROPOSED TO BACKPORT:
   Make sure nested element is inside <jsp:text> element before throwing
   exception.
   http://svn.apache.org/viewvc?rev=654640&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44988
   Use new Java 5 syntax for debugger options
   Patch provided by Cedrik Lime
   http://svn.apache.org/viewvc?rev=655992&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44986
   Page encoding consistency checks should be case insensitive
   http://svn.apache.org/viewvc?rev=656024&view=rev
-  +1: markt, remm (I had a patch, but yours is better)
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44968
@@ -151,4 +151,4 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=656739&view=rev
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/net/jsse/res/LocalStrings.properties?r1=656035&r2=656034&pathrev=656035
   +1: markt, remm
-  -1: 
+  -1:  fhanik - doesnt compile
