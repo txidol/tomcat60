@@ -51,19 +51,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm, pero
   -1:
 
-* Possible NPE in EL (one liner regression fix in org.apache.el.lang.ELSupport)
-@@ -343,7 +343,7 @@
-     public final static Object coerceToType(final Object obj, final Class type)
-             throws IllegalArgumentException {
-         if (type == null || Object.class.equals(type) ||
--                type.equals(obj.getClass())) {
-+                (obj != null && type.equals(obj.getClass()))) {
-             return obj;
-         }
-         if (String.class.equals(type)) {
-  +1: remm, markt, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43191
   No way to turn off compression for some mime-types
   Based on a patch by Len Popp
