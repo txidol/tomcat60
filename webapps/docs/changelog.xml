@@ -35,6 +35,9 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix><bug>44833</bug>
+        correctly override StandardSession methods from DeltaSession
+      </fix>
       <fix><bug>42662</bug>
         properly resolve reflection proxies during session replication
       </fix>
