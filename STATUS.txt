@@ -140,9 +140,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44955
   Use correct location for endorsed dir
-  http://svn.apache.org/viewvc?rev=654630&view=rev
+  http://svn.apache.org/viewvc?rev=654632&view=rev
   +1: markt
-  -1: remm (the commit is a good cleanup, but doesn't appear to change the endorsed folder used, still common/endorsed)
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42943
   Make sure nested element is inside <jsp:text> element before throwing
