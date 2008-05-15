@@ -51,12 +51,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm, pero
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44943
-  Reduce issues caused by copy/paste and different engine names
-  http://svn.apache.org/viewvc?rev=654177&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44955
   Use correct location for endorsed dir
   http://svn.apache.org/viewvc?rev=654632&view=rev

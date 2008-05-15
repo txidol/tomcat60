@@ -156,6 +156,10 @@
       <fix>
         Add missing access check for ThreadWithAttributes. (markt)
       </fix>
+      <fix>
+        <bug>44943</bug>: Use the same engine name in server.xml comments to
+        reduce copy and pastes issues. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
