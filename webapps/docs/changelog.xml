@@ -231,6 +231,9 @@
         updated commons-pool and commons-DBCP. (markt)
       </fix>
       <fix>
+        <bug>43333</bug>: Fix errors in sendfile documentation. (markt)
+      </fix>
+      <fix>
         <bug>43366</bug>: Provide backwards compatibility for manager sessions
         command. (markt)
       </fix> 
