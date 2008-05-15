@@ -54,7 +54,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44955
   Use correct location for endorsed dir
   http://svn.apache.org/viewvc?rev=654632&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44968
