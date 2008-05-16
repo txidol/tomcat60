@@ -59,11 +59,12 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix NPE in patch for bug 44986
   http://svn.apache.org/viewvc?rev=657149&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
   You can't use an unescaped quote if you quote the value with that character
   http://svn.apache.org/viewvc?rev=657231&view=rev
   +1: markt
-  -1: 
+  -1: remm (I think it is a good patch, but it throws an error for something which was working before,
+            so I would think keeping it for the next release would be better)
