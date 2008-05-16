@@ -216,6 +216,9 @@
         Log errors for AJP signoffs at DEBUG level, 
         since it is harmless if mod_jk has hung up the phone. (billbarker)
       </update>
+      <update>
+        Provide more information when the load of a keystore fails. (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Jasper">
