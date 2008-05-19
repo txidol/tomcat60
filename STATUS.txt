@@ -89,3 +89,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=657954&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
+  Use any META-INF/context.xml in a consistent manner and ensure it is used on
+  initial deployment
+  http://svn.apache.org/viewvc?rev=657995&view=rev
+  +1: markt
+  -1: 
