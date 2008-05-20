@@ -68,6 +68,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: remm (I think it is a good patch, but it throws an error for something which was working before,
             so I would think keeping it for the next release would be better)
+      markt How about making it optional with a system property that can be used
+            to restore the current behaviour is an app depends on it?
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44994
   Correct BNF grammar so ${0 lt a ? 1 lt a ? "many": "one": "none"} works
@@ -93,6 +95,10 @@ PATCHES PROPOSED TO BACKPORT:
             it may not apply to HTTP/1.1, which may be more strict; passing full URLs in the
             request line is normally an HTTP/1.1 thing, from what I remember, usable as an alternative
             to the mandatory Host header)
+      markt Both the HTTP/1.1 and HTTP/1.0 contain broadly the same text
+            regarding tolerant applications. (ie allow multiple SP/HT between
+            method-url and url-httpVersion). However, it is optional so we don't
+            have to support it.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
   Use any META-INF/context.xml in a consistent manner and ensure it is used on
@@ -100,3 +106,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=657995&view=rev
   +1: markt
   -1: remm (would need convincing that this is really well tested, otherwise delay to next release)
+      markt Exactly what would convince you that this was well tested above and
+            beyond the local testing that I have done to convince myself that
+            this patch does what I want it to.
