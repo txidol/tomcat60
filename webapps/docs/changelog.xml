@@ -265,6 +265,10 @@
         <bug>44986</bug>: Make page encoding consistency checks case-insensitive.
         (markt)
       </fix>
+      <fix>
+        <bug>44994</bug>: Enable nested conditional expressions in JSP EL. Patch
+        provided by James Manger. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
