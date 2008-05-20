@@ -44,11 +44,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, rjung, fhanik, remm, pero
   -1:
 
-* Fix NPE in patch for bug 44986
-  http://svn.apache.org/viewvc?rev=657149&view=rev
-  +1: markt, remm, yoavs
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
   You can't use an unescaped quote if you quote the value with that character
   http://svn.apache.org/viewvc?rev=657231&view=rev
