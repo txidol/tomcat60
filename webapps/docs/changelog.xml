@@ -187,9 +187,13 @@
         Caldarale. (markt/jim)
       </fix>
       <update>
-        Add support for keystore types that do not need a file. Based on a patch by
-        Bruno Harbulot. (markt)
-      </update>  
+        Add support for keystore types that do not need a file. Based on a patch
+        by Bruno Harbulot. (markt)
+      </update>
+      <update>
+        <bug>43094</bug>: Allow specification of keystore providers. Based on a
+        patch by Bruno Harbulot. (markt)
+      </update>
       <fix>
         <bug>43191</bug>: Make it possible to override the defaults with the
         compressableMimeType attribute. Based on a patch by Len Popp. (markt)
