@@ -94,7 +94,11 @@
       </update>
       <fix>
         <bug>44021</bug>: Add support for using the # character to define
-        multi-level contexts in WARs and dirctories in the appBase. (markt)
+        multi-level contexts in WARs and directories in the appBase. (markt)
+      </fix>
+      <fix>
+        <bug>44282</bug>: Fix TRACE level class loader logging message when a
+        security manager is used. (markt)
       </fix>
       <fix>
         <bug>44337</bug>:   Dir listing crashes if no readme-file present (funkman)
