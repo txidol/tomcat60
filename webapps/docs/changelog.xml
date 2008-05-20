@@ -321,6 +321,10 @@
       <fix>
         Fix build for JavaDoc. Patch provided by Stephen Bannasch. (markt)
       </fix>
+      <fix>
+        <bug>44955</bug>: Use correct location for endorsed directory in Windows
+        installer. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
