@@ -77,15 +77,12 @@ PATCHES PROPOSED TO BACKPORT:
   Note: This is on the critical path
   http://svn.apache.org/viewvc?rev=657954&view=rev
   +1: markt
-  -1: remm (the library causing this bug cannot possibly have read the little
-            hidden, optional appendix from the HTTP/1.0 spec, and rely on it, so it is simply broken;
-            it may not apply to HTTP/1.1, which may be more strict; passing full URLs in the
-            request line is normally an HTTP/1.1 thing, from what I remember, usable as an alternative
-            to the mandatory Host header)
+  -1: 
       markt Both the HTTP/1.1 and HTTP/1.0 contain broadly the same text
             regarding tolerant applications. (ie allow multiple SP/HT between
             method-url and url-httpVersion). However, it is optional so we don't
             have to support it.
+      remm Apparently httpd does that, so I am changing my vote to "ignore issue"
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
   Use any META-INF/context.xml in a consistent manner and ensure it is used on
@@ -96,3 +93,5 @@ PATCHES PROPOSED TO BACKPORT:
       markt Exactly what would convince you that this was well tested above and
             beyond the local testing that I have done to convince myself that
             this patch does what I want it to.
+      remm I am not sure this was fully tested. For example, the order of redeployResources is 
+           likely significant, and it is changed in deployDirectory
