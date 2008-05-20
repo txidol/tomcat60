@@ -53,13 +53,6 @@ PATCHES PROPOSED TO BACKPORT:
       markt How about making it optional with a system property that can be used
             to restore the current behaviour is an app depends on it?
 
-* Additional patch from https://issues.apache.org/bugzilla/show_bug.cgi?id=43094
-  Allow configuration of JSSE providers
-  Based on a patch by Bruno Harbulot
-  http://svn.apache.org/viewvc?rev=657449&view=rev
-  +1: markt, yoavs, remm
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42750
   Make parsing of request line more tolerant of multiple SP and/or HT
   Note: This is on the critical path
