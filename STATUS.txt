@@ -52,6 +52,8 @@ PATCHES PROPOSED TO BACKPORT:
             so I would think keeping it for the next release would be better)
       markt How about making it optional with a system property that can be used
             to restore the current behaviour is an app depends on it?
+      remm Ok with this addition, but I would only vote +0 for inclusion in this release
+           (this still sounds like a very minor fix)
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42750
   Make parsing of request line more tolerant of multiple SP and/or HT
@@ -63,7 +65,7 @@ PATCHES PROPOSED TO BACKPORT:
             regarding tolerant applications. (ie allow multiple SP/HT between
             method-url and url-httpVersion). However, it is optional so we don't
             have to support it.
-      remm Apparently httpd does that, so I am changing my vote to "ignore issue"
+  +0: remm Apparently httpd does that, so I am changing my vote to +0
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
   Use any META-INF/context.xml in a consistent manner and ensure it is used on
@@ -76,3 +78,26 @@ PATCHES PROPOSED TO BACKPORT:
             this patch does what I want it to.
       remm I am not sure this was fully tested. For example, the order of redeployResources is 
            likely significant, and it is changed in deployDirectory
+
+* After being done with an asynchronous sendfile, the socket should go to the poller (if assigned
+  to a worker, it will block).
+Index: java/org/apache/tomcat/util/net/AprEndpoint.java
+===================================================================
+--- java/org/apache/tomcat/util/net/AprEndpoint.java	(revision 658292)
++++ java/org/apache/tomcat/util/net/AprEndpoint.java	(working copy)
+@@ -1787,11 +1787,9 @@
+                                     // Destroy file descriptor pool, which should close the file
+                                     Pool.destroy(state.fdpool);
+                                     Socket.timeoutSet(state.socket, soTimeout * 1000);
+-                                    // If all done hand this socket off to a worker for
++                                    // If all done put the socket back in the poller for
+                                     // processing of further requests
+-                                    if (!processSocket(state.socket)) {
+-                                        Socket.destroy(state.socket);
+-                                    }
++                                    getPoller().add(state.socket);
+                                 } else {
+                                     // Close the socket since this is
+                                     // the end of not keep-alive request.
+  +1: remm
+  -1: 
