@@ -67,18 +67,6 @@ PATCHES PROPOSED TO BACKPORT:
             have to support it.
   +0: remm Apparently httpd does that, so I am changing my vote to +0
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
-  Use any META-INF/context.xml in a consistent manner and ensure it is used on
-  initial deployment
-  http://svn.apache.org/viewvc?rev=657995&view=rev
-  +1: markt
-  -1: remm (would need convincing that this is really well tested, otherwise delay to next release)
-      markt Exactly what would convince you that this was well tested above and
-            beyond the local testing that I have done to convince myself that
-            this patch does what I want it to.
-      remm I am not sure this was fully tested. For example, the order of redeployResources is 
-           likely significant, and it is changed in deployDirectory
-
 * After being done with an asynchronous sendfile, the socket should go to the poller (if assigned
   to a worker, it will block).
 Index: java/org/apache/tomcat/util/net/AprEndpoint.java
