@@ -61,11 +61,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=657954&view=rev
   +1: markt
   -1: 
-      markt Both the HTTP/1.1 and HTTP/1.0 contain broadly the same text
-            regarding tolerant applications. (ie allow multiple SP/HT between
-            method-url and url-httpVersion). However, it is optional so we don't
-            have to support it.
-  +0: remm Apparently httpd does that, so I am changing my vote to +0
+  +0: remm
 
 * After being done with an asynchronous sendfile, the socket should go to the poller (if assigned
   to a worker, it will block).
