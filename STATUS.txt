@@ -39,11 +39,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: I believe it would need specific support for certain managers. Interested users
             could use their own extended manager instead.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44595
-  http://svn.apache.org/viewvc?view=rev&revision=645428
-  +1: jfclere, rjung, fhanik, remm, pero
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
   You can't use an unescaped quote if you quote the value with that character
   http://svn.apache.org/viewvc?rev=657231&view=rev

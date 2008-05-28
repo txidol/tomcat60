@@ -35,6 +35,9 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix><bug>44595</bug>
+        Add possibility to request the QueueSize of an executor via JMX. (jfclere)
+      </fix>
       <update>expose alwaysSend flag for message dispatch interceptor</update>  
       <fix><bug>44833</bug>
         correctly override StandardSession methods from DeltaSession
