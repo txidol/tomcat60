@@ -59,7 +59,7 @@ PATCHES PROPOSED TO BACKPORT:
   Make parsing of request line more tolerant of multiple SP and/or HT
   Note: This is on the critical path
   http://svn.apache.org/viewvc?rev=657954&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1: 
   +0: remm
 
@@ -83,5 +83,5 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
                                  } else {
                                      // Close the socket since this is
                                      // the end of not keep-alive request.
-  +1: remm
+  +1: remm, jfclere
   -1: 
