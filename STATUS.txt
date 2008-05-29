@@ -87,3 +87,10 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
   http://svn.apache.org/viewvc?rev=661074&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45101
+  Format header dates obtained from DirContextURLConnection as per HTTP spec
+  Patch provided by Chris Hubick
+  http://svn.apache.org/viewvc?rev=661488&view=rev
+  +1: markt
+  -1: 
