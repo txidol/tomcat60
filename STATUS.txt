@@ -85,14 +85,14 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
   Reloaded context has new classloader so the context classloader needs to
   be reset
   http://svn.apache.org/viewvc?rev=661074&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45101
   Format header dates obtained from DirContextURLConnection as per HTTP spec
   Patch provided by Chris Hubick
   http://svn.apache.org/viewvc?rev=661488&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42934
@@ -100,5 +100,5 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
   fired before sessionDidActivate(). The spec isn't 100% clear on the required
   order but this seems more logical than the current behaviour.
   http://svn.apache.org/viewvc?rev=654932&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
