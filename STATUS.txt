@@ -92,7 +92,7 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
   Format header dates obtained from DirContextURLConnection as per HTTP spec
   Patch provided by Chris Hubick
   http://svn.apache.org/viewvc?rev=661488&view=rev
-  +1: markt, remm
+  +1: markt, remm (but there's downside as naming now depends on the utils)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42934
