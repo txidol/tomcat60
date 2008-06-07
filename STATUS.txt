@@ -102,3 +102,9 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
   http://svn.apache.org/viewvc?rev=654932&view=rev
   +1: markt, remm, pero
   -1: 
+
+* Enhancement https://issues.apache.org/bugzilla/show_bug.cgi?id=45155
+  Provide a workaround to a buggy MS WebDAV client.
+  http://svn.apache.org/viewvc?rev=664345&view=rev
+  +1: markt
+  -1: 
