@@ -50,6 +50,13 @@
         using the webapp class loader when we create them. (markt)
       </fix>
       <fix>
+        <bug>42934</bug>: Change the order of events on context start so
+        <code>contextInitialized()</code> event is fired before
+        <code>sessionDidActivate()</code>. The spec isn't 100% clear on the
+        required order but this seems more logical than the current behaviour.
+        (markt)
+      </fix>
+      <fix>
         <bug>43079</bug>: Fix identification of suspicious URL patterns. Patch
         provided by John Kew. (markt)
       </fix>

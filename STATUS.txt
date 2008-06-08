@@ -88,14 +88,6 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
   +1: markt, remm (but there's downside as naming now depends on the utils)
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42934
-  Change the order of events on context start so contextInitialized() event is
-  fired before sessionDidActivate(). The spec isn't 100% clear on the required
-  order but this seems more logical than the current behaviour.
-  http://svn.apache.org/viewvc?rev=654932&view=rev
-  +1: markt, remm, pero
-  -1: 
-
 * Enhancement https://issues.apache.org/bugzilla/show_bug.cgi?id=45155
   Provide a workaround to a buggy MS WebDAV client.
   http://svn.apache.org/viewvc?rev=664345&view=rev
