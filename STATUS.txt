@@ -81,13 +81,6 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
   +1: remm, jfclere
   -1: 
 
-* Further fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43683
-  Reloaded context has new classloader so the context classloader needs to
-  be reset
-  http://svn.apache.org/viewvc?rev=661074&view=rev
-  +1: markt, remm, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45101
   Format header dates obtained from DirContextURLConnection as per HTTP spec
   Patch provided by Chris Hubick
