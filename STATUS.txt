@@ -108,3 +108,9 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
   http://svn.apache.org/viewvc?rev=664345&view=rev
   +1: markt
   -1: 
+
+* Provide belt and braces XSS protection. Really an app responsbility but worth
+  protecting against in case the app forgets.
+  http://svn.apache.org/viewvc?rev=664483&view=rev
+  +1: markt
+  -1: 
