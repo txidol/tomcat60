@@ -35,6 +35,9 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix><bug>42750</bug>
+        request line should be tolerant of multiple whitespaces.
+      </fix>
       <update>
         Add ManagerBase session getLastAccessedTimestamp and getCreationTimestamp for better
         remote JMX access. (pero)

@@ -43,14 +43,6 @@ PATCHES PROPOSED TO BACKPORT:
       remm Ok with this addition, but I would only vote +0 for inclusion in this release
            (this still sounds like a very minor fix)
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42750
-  Make parsing of request line more tolerant of multiple SP and/or HT
-  Note: This is on the critical path
-  http://svn.apache.org/viewvc?rev=657954&view=rev
-  +1: markt, jfclere, fhanik
-  -1: 
-  +0: remm
-
 * After being done with an asynchronous sendfile, the socket should go to the poller (if assigned
   to a worker, it will block).
 Index: java/org/apache/tomcat/util/net/AprEndpoint.java
