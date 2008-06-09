@@ -99,3 +99,10 @@ Index: java/org/apache/tomcat/util/net/AprEndpoint.java
   http://svn.apache.org/viewvc?rev=664483&view=rev
   +1: markt
   -1: 
+
+* Make fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43285 optional
+  Coercion of null and "" to zero can now be disabled if required
+  Patch by Nils Eckert
+  http://svn.apache.org/viewvc?rev=665756&view=rev
+  +1: markt
+  -1: 
