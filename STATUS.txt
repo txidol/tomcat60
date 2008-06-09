@@ -48,18 +48,19 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Chris Hubick
   http://svn.apache.org/viewvc?rev=661488&view=rev
   +1: markt, remm (but there's downside as naming now depends on the utils)
+  +1: fhanik
   -1: 
 
 * Enhancement https://issues.apache.org/bugzilla/show_bug.cgi?id=45155
   Provide a workaround to a buggy MS WebDAV client.
   http://svn.apache.org/viewvc?rev=664345&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Provide belt and braces XSS protection. Really an app responsbility but worth
   protecting against in case the app forgets.
   http://svn.apache.org/viewvc?rev=664483&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Make fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43285 optional
@@ -67,4 +68,5 @@ PATCHES PROPOSED TO BACKPORT:
   Patch by Nils Eckert
   http://svn.apache.org/viewvc?rev=665756&view=rev
   +1: markt
+  +1: fhanik - candidate for STRICT_SERVLET_COMPLIANCE?
   -1: 
