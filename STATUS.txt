@@ -43,29 +43,6 @@ PATCHES PROPOSED TO BACKPORT:
       remm Ok with this addition, but I would only vote +0 for inclusion in this release
            (this still sounds like a very minor fix)
 
-* After being done with an asynchronous sendfile, the socket should go to the poller (if assigned
-  to a worker, it will block).
-Index: java/org/apache/tomcat/util/net/AprEndpoint.java
-===================================================================
---- java/org/apache/tomcat/util/net/AprEndpoint.java	(revision 658292)
-+++ java/org/apache/tomcat/util/net/AprEndpoint.java	(working copy)
-@@ -1787,11 +1787,9 @@
-                                     // Destroy file descriptor pool, which should close the file
-                                     Pool.destroy(state.fdpool);
-                                     Socket.timeoutSet(state.socket, soTimeout * 1000);
--                                    // If all done hand this socket off to a worker for
-+                                    // If all done put the socket back in the poller for
-                                     // processing of further requests
--                                    if (!processSocket(state.socket)) {
--                                        Socket.destroy(state.socket);
--                                    }
-+                                    getPoller().add(state.socket);
-                                 } else {
-                                     // Close the socket since this is
-                                     // the end of not keep-alive request.
-  +1: remm, jfclere, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45101
   Format header dates obtained from DirContextURLConnection as per HTTP spec
   Patch provided by Chris Hubick

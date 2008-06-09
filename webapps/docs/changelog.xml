@@ -35,6 +35,9 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix>
+        APR connector now adds connection to poller after using send file (remm)
+      </fix>
       <fix><bug>42750</bug>
         request line should be tolerant of multiple whitespaces.
       </fix>
