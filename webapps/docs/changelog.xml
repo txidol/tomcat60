@@ -35,6 +35,10 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <update>
+        Add ManagerBase session getLastAccessedTimestamp and getCreationTimestamp for better
+        remote JMX access. (pero)
+      </update>
       <fix><bug>44595</bug>
         Add possibility to request the QueueSize of an executor via JMX. (jfclere)
       </fix>

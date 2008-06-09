@@ -32,13 +32,6 @@ PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
 
-* Add ManagerBase session getLastAccessedTimestamp and getCreationTimestamp for better
-  remote JMX access.
-  http://svn.apache.org/viewvc?rev=612971&view=rev
-  +1: pero, rjung, fhanik, markt
-  -1: remm: I believe it would need specific support for certain managers. Interested users
-            could use their own extended manager instead.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
   You can't use an unescaped quote if you quote the value with that character
   http://svn.apache.org/viewvc?rev=657231&view=rev
