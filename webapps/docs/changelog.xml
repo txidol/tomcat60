@@ -188,6 +188,11 @@
         <bug>44988</bug>: Use Java5 syntax for debug options. Patch provided
         by Cedrik Lime. (markt)
       </fix>
+      <fix>
+        <bug>45101</bug>: Format header dates obtained from
+        <code>DirContextURLConnection</code> as per the HTTP spec. Patch
+        provided by Chris Hubick. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

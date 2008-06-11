@@ -43,14 +43,6 @@ PATCHES PROPOSED TO BACKPORT:
       remm Ok with this addition, but I would only vote +0 for inclusion in this release
            (this still sounds like a very minor fix)
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45101
-  Format header dates obtained from DirContextURLConnection as per HTTP spec
-  Patch provided by Chris Hubick
-  http://svn.apache.org/viewvc?rev=661488&view=rev
-  +1: markt, remm (but there's downside as naming now depends on the utils)
-  +1: fhanik
-  -1: 
-
 * Enhancement https://issues.apache.org/bugzilla/show_bug.cgi?id=45155
   Provide a workaround to a buggy MS WebDAV client.
   http://svn.apache.org/viewvc?rev=664345&view=rev
