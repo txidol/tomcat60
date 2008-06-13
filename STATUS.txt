@@ -62,3 +62,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   +1: fhanik - candidate for STRICT_SERVLET_COMPLIANCE?
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45195
+  NPE when calling getAttribute(null). The spec is unclear but this
+  is a regression from 5.0.x
+  http://svn.apache.org/viewvc?rev=667604&view=rev
+  +1: markt
+  -1: 
