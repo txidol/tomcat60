@@ -82,6 +82,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45212
   Map.entrySet() should return entries, not values
-  http://svn.apache.org/viewvc?rev=668249&view=rev
+  http://svn.apache.org/viewvc?rev=668849&view=rev
   +1: markt
   -1: 
