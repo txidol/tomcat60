@@ -34,17 +34,12 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
   You can't use an unescaped quote if you quote the value with that character
+  The second svn commit provides an option to disable the error raised
+  by the first.
   http://svn.apache.org/viewvc?rev=657231&view=rev
   http://svn.apache.org/viewvc?rev=670074&view=rev
   +1: markt, remm
-  -1: remm (I think it is a good patch, but it throws an error for something which was working before,
-            so I would think keeping it for the next release would be better)
-      markt How about making it optional with a system property that can be used
-            to restore the current behaviour is an app depends on it?
-      remm Ok with this addition, but I would only vote +0 for inclusion in this release
-           (this still sounds like a very minor fix)
-      markt The second svn commit provides an option to disable the error raised
-            by the first.
+  -1: 
 
 * Enhancement https://issues.apache.org/bugzilla/show_bug.cgi?id=45155
   Provide a workaround to a buggy MS WebDAV client.
