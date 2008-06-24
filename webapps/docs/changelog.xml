@@ -303,6 +303,12 @@
         <bug>44994</bug>: Enable nested conditional expressions in JSP EL. Patch
         provided by James Manger. (markt)
       </fix>
+      <add>
+        Add HTML filtering of error messages for included resources in case the
+        app has tried to include an unsafe URL that does not exist. This is
+        really an app responsibility but the filtering has been added for XSS
+        safety. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Webapps">

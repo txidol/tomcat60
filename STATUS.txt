@@ -41,12 +41,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1: 
 
-* Provide belt and braces XSS protection. Really an app responsbility but worth
-  protecting against in case the app forgets.
-  http://svn.apache.org/viewvc?rev=664483&view=rev
-  +1: markt, fhanik, remm
-  -1: 
-
 * Make fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43285 optional
   Coercion of null and "" to zero can now be disabled if required
   Patch by Nils Eckert
