@@ -193,6 +193,11 @@
         <code>DirContextURLConnection</code> as per the HTTP spec. Patch
         provided by Chris Hubick. (markt)
       </fix>
+      <add>
+        A new valve, <code>org.apache.catalina.valves.WebdavFixValve<code>,
+        that forces MS clients connecting to the WebDAV Servlet on port 80 to
+        use a client that works rather than the default broken one. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

@@ -41,12 +41,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1: 
 
-* Enhancement https://issues.apache.org/bugzilla/show_bug.cgi?id=45155
-  Provide a workaround to a buggy MS WebDAV client.
-  http://svn.apache.org/viewvc?rev=664345&view=rev
-  +1: markt, fhanik, remm
-  -1: 
-
 * Provide belt and braces XSS protection. Really an app responsbility but worth
   protecting against in case the app forgets.
   http://svn.apache.org/viewvc?rev=664483&view=rev
