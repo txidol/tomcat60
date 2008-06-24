@@ -36,7 +36,7 @@ PATCHES PROPOSED TO BACKPORT:
   You can't use an unescaped quote if you quote the value with that character
   http://svn.apache.org/viewvc?rev=657231&view=rev
   http://svn.apache.org/viewvc?rev=670074&view=rev
-  +1: markt
+  +1: markt, remm
   -1: remm (I think it is a good patch, but it throws an error for something which was working before,
             so I would think keeping it for the next release would be better)
       markt How about making it optional with a system property that can be used
@@ -49,20 +49,20 @@ PATCHES PROPOSED TO BACKPORT:
 * Enhancement https://issues.apache.org/bugzilla/show_bug.cgi?id=45155
   Provide a workaround to a buggy MS WebDAV client.
   http://svn.apache.org/viewvc?rev=664345&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1: 
 
 * Provide belt and braces XSS protection. Really an app responsbility but worth
   protecting against in case the app forgets.
   http://svn.apache.org/viewvc?rev=664483&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1: 
 
 * Make fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43285 optional
   Coercion of null and "" to zero can now be disabled if required
   Patch by Nils Eckert
   http://svn.apache.org/viewvc?rev=665756&view=rev
-  +1: markt
+  +1: markt, remm
   +1: fhanik - candidate for STRICT_SERVLET_COMPLIANCE?
       markt  - Probably not. STRICT_SERVLET_COMPLIANCE is a shortcut to set all
                options that are non-compliant by default. This one is already
@@ -74,14 +74,14 @@ PATCHES PROPOSED TO BACKPORT:
   is a regression from 5.0.x. Also avoid NPE on remove.
   http://svn.apache.org/viewvc?rev=667604&view=rev
   http://svn.apache.org/viewvc?rev=668854&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Another fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43683
   JMX re-registration was causing the context to briefly disappear from the
   mapper during reload causing 404s
   http://svn.apache.org/viewvc?rev=667644&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45212
