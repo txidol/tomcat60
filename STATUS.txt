@@ -41,17 +41,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1: 
 
-* Make fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43285 optional
-  Coercion of null and "" to zero can now be disabled if required
-  Patch by Nils Eckert
-  http://svn.apache.org/viewvc?rev=665756&view=rev
-  +1: markt, remm
-  +1: fhanik - candidate for STRICT_SERVLET_COMPLIANCE?
-      markt  - Probably not. STRICT_SERVLET_COMPLIANCE is a shortcut to set all
-               options that are non-compliant by default. This one is already
-               compliant by defult
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45195
   NPE when calling getAttribute(null). The spec is unclear but this
   is a regression from 5.0.x. Also avoid NPE on remove.

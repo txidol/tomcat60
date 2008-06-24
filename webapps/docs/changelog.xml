@@ -86,6 +86,13 @@
         <bug>43150</bug>: Allow Tomcat to start correctly when installed on a
         path that contains a # character. (markt)
       </fix>
+      <add>
+        The fix for <bug>43285</bug> had the side-effct of coercing
+        <code>null</code> values to zero. This side-effect has been made
+        configurable with a system property,
+        <code>org.apache.el.parser.COERCE_TO_ZERO</code> which defaults to
+        <code>true</code>. Patch provided by Nils Eckert. (markt)
+      </add>
       <fix>
         <bug>43343</bug>: Correctly handle requesting a session we are in the
         middle of persisting. Based on a suggestion by Wade Chandler. (markt)
