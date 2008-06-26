@@ -49,13 +49,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm, fhanik
   -1: 
 
-* Another fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43683
-  JMX re-registration was causing the context to briefly disappear from the
-  mapper during reload causing 404s
-  http://svn.apache.org/viewvc?rev=667644&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45212
   Map.entrySet() should return entries, not values
   http://svn.apache.org/viewvc?rev=668849&view=rev
