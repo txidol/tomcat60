@@ -35,6 +35,9 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix><bug>45195</bug>
+        Passing in null into setAttribute or removeAttribute cause NPE
+      </fix>
       <fix>
         APR connector now adds connection to poller after using send file (remm)
       </fix>

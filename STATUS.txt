@@ -41,14 +41,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm, fhanik
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45195
-  NPE when calling getAttribute(null). The spec is unclear but this
-  is a regression from 5.0.x. Also avoid NPE on remove.
-  http://svn.apache.org/viewvc?rev=667604&view=rev
-  http://svn.apache.org/viewvc?rev=668854&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45212
   Map.entrySet() should return entries, not values
   http://svn.apache.org/viewvc?rev=668849&view=rev
