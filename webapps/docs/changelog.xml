@@ -273,6 +273,10 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
+        <bug>45015</bug>
+        You can't use an unescaped quote if you quote the value with that character  
+      </fix>  
+      <fix>
         <bug>31257</bug>: Quote endorsed dirs if they contain a space. (markt)
       </fix>
       <fix>

@@ -32,15 +32,6 @@ PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
-  You can't use an unescaped quote if you quote the value with that character
-  The second svn commit provides an option to disable the error raised
-  by the first.
-  http://svn.apache.org/viewvc?rev=657231&view=rev
-  http://svn.apache.org/viewvc?rev=670074&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45212
   Map.entrySet() should return entries, not values
   http://svn.apache.org/viewvc?rev=668849&view=rev
