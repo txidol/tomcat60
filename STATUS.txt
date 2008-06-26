@@ -41,11 +41,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45279
   Properly close multicast socket
   http://svn.apache.org/viewvc?rev=671650&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45272
   Patch attached in bugzilla issue
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
   
