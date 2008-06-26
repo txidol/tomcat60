@@ -35,32 +35,28 @@
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="Catalina">
     <changelog>
-      <fix><bug>45195</bug>
-        Passing in null into setAttribute or removeAttribute cause NPE
-      </fix>
       <fix>
-        APR connector now adds connection to poller after using send file (remm)
-      </fix>
-      <fix><bug>42750</bug>
-        request line should be tolerant of multiple whitespaces.
+        APR connector now adds connection to poller after using send file.
+        (remm)
       </fix>
       <update>
-        Add ManagerBase session getLastAccessedTimestamp and getCreationTimestamp for better
-        remote JMX access. (pero)
+        Add ManagerBase session getLastAccessedTimestamp and
+        getCreationTimestamp for better remote JMX access. (pero)
       </update>
-      <fix><bug>44595</bug>
-        Add possibility to request the QueueSize of an executor via JMX. (jfclere)
-      </fix>
-      <update>expose alwaysSend flag for message dispatch interceptor</update>  
-      <fix><bug>44833</bug>
-        correctly override StandardSession methods from DeltaSession
-      </fix>
-      <fix><bug>42662</bug>
-        properly resolve reflection proxies during session replication
-      </fix>
+      <update>
+        Expose alwaysSend flag for message dispatch interceptor. (fhanik)
+      </update>  
       <fix>
         <bug>29936</bug>: Create digesters and parsers earlier so we aren't
         using the webapp class loader when we create them. (markt)
+      </fix>
+      <fix>
+        <bug>42662</bug>: Properly resolve reflection proxies during session
+        replication. (fhanik)
+      </fix>
+      <fix>
+        <bug>42750</bug>: Request line should be tolerant of multiple
+        whitespaces. (markt/fhanik)
       </fix>
       <fix>
         <bug>42934</bug>: Change the order of events on context start so
@@ -116,11 +112,12 @@
         <bug>43683</bug>: Fix 404 that could occur if a Servlet is accessed
         while the context is reloading. (markt)
       </fix>
-      <fix>ExtendedAccessLogValve cs-uri not print empty querystring (pero)
+      <fix>ExtendedAccessLogValve cs-uri not print empty querystring. (pero)
       </fix>
       <update>
-        ServletContext.getResource("noslash/resource") only requires forward slash if STRICT_SERVLET_COMPLIANCE
-        flag is set to true. This mimics the behavior of 6.0.15 and earlier. (fhanik)
+        ServletContext.getResource("noslash/resource") only requires forward
+        slash if STRICT_SERVLET_COMPLIANCE flag is set to true. This mimics the
+        behavior of 6.0.15 and earlier. (fhanik)
       </update>
       <fix>
         <bug>44021</bug>: Add support for using the # character to define
@@ -131,7 +128,8 @@
         security manager is used. (markt)
       </fix>
       <fix>
-        <bug>44337</bug>:   Dir listing crashes if no readme-file present (funkman)
+        <bug>44337</bug>: Dir listing crashes if no readme-file present.
+        (funkman)
       </fix>
       <fix>
         If listener declared in web.xml, only add it once. (funkman)
@@ -144,12 +142,20 @@
         Florent Benoit. (markt)
       </fix>
       <fix>
+        <bug>44389</bug>: Fix memory leak that occurred if using a
+        RequestDispatcher. Patch provided by Arto Huusko. (markt)
+      </fix>
+      <fix>
         <bug>44529</bug>: Correct handling of resource constraints so no roles
         (deny all) overrides no aoth-constraint (allow all). (markt)
       </fix>
       <fix>
         <bug>44562</bug>: HEAD requests cannot use includes. Patch provided by
         David Jencks. (markt)
+      </fix>
+      <fix>
+        <bug>44595</bug>: Add possibility to request the QueueSize of an
+        executor via JMX. (jfclere)
       </fix>
       <fix>
         Fix CGI Servlet so it correctly reads the environment variables on
@@ -184,11 +190,11 @@
         Update web.xml to reflect packaging of SSI and CGI. (markt)
       </fix>
       <fix>
-        <bug>44389</bug>: Fix memory leak that occurred if using a
-        RequestDispatcher. Patch provided by Arto Huusko. (markt)
+        Add missing access check for ThreadWithAttributes. (markt)
       </fix>
       <fix>
-        Add missing access check for ThreadWithAttributes. (markt)
+        <bug>44833</bug>: Correctly override StandardSession methods from
+        DeltaSession. (fhanik)
       </fix>
       <fix>
         <bug>44943</bug>: Use the same engine name in server.xml comments to
@@ -208,19 +214,25 @@
         that forces MS clients connecting to the WebDAV Servlet on port 80 to
         use a client that works rather than the default broken one. (markt)
       </add>
+      <fix>
+        <bug>45195</bug>: Passing in null into setAttribute or removeAttribute
+        cause NPE. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
     <changelog>
       <update>
-        NIO: Fix bug in NIO sendfile, symptoms during heavy traffic is that connection don't get closed. For previous versions, one can disable sendfile to work
-        around the problem. (fhanik)
+        NIO: Fix bug in NIO sendfile, symptoms during heavy traffic is that
+        connection don't get closed. For previous versions, one can disable
+        sendfile to work around the problem. (fhanik)
       </update>
       <update>
-        APR: Allow to specify the "random device" to use to collect the entropy. (jfclere)
+        APR: Allow to specify the "random device" to use to collect the entropy.
+        (jfclere)
       </update>
       <update>
-        Fix NIO/SSL live lock during client disconnect (fhanik)
+        Fix NIO/SSL live lock during client disconnect. (fhanik)
       </update>
       <fix>
         Fix possible ArrayIndexOutOfBoundsException. Patch provided by Charles R
@@ -248,7 +260,7 @@
       </fix>
       <fix>
         <bug>44558</bug>: Improve error message so address is included if
-        binding fails.
+        binding fails. (markt)
       </fix>
       <fix>
         <bug>44494</bug>: Character input limited to 8KB. (remm)
@@ -272,10 +284,6 @@
   </subsection>
   <subsection name="Jasper">
     <changelog>
-      <fix>
-        <bug>45015</bug>
-        You can't use an unescaped quote if you quote the value with that character  
-      </fix>  
       <fix>
         <bug>31257</bug>: Quote endorsed dirs if they contain a space. (markt)
       </fix>
@@ -310,13 +318,17 @@
         <bug>44877</bug>: Prevent collisions on tag pool names. (markt)
       </fix>
       <fix>
-        <bug>44986</bug>: Make page encoding consistency checks case-insensitive.
-        (markt)
+        <bug>44986</bug>: Make page encoding consistency checks
+        case-insensitive. (markt)
       </fix>
       <fix>
         <bug>44994</bug>: Enable nested conditional expressions in JSP EL. Patch
         provided by James Manger. (markt)
       </fix>
+      <fix>
+        <bug>45015</bug>: You can't use an unescaped quote if you quote the
+        value with that character. (markt/fhanik)  
+      </fix>  
       <add>
         Add HTML filtering of error messages for included resources in case the
         app has tried to include an unsafe URL that does not exist. This is
@@ -367,7 +379,8 @@
   <subsection name="Cluster">
     <changelog>
       <update>
-        Fix session replication dead lock during non sticky load balancing (fhanik)
+        Fix session replication dead lock during non sticky load balancing.
+        (fhanik)
       </update>
     </changelog>
   </subsection>
