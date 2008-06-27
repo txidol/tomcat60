@@ -48,4 +48,11 @@ PATCHES PROPOSED TO BACKPORT:
   Patch attached in bugzilla issue
   +1: fhanik, markt
   -1: 
-  
+
+* Another fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43683
+  This isn't perfect but it narrows the window for the race condition
+  significantly. A perfect fix would require syncing most (all?) of allocate()
+  which is on the critical path.
+  http://svn.apache.org/viewvc?rev=672397&view=rev
+  +1: markt
+  -1: 
