@@ -62,3 +62,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=672399&view=rev
   +1: markt
   -1: 
+
+*  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36155
+   Port the fix from the JK Connector to the AJP and APR Connectors
+   http://svn.apache.org/viewvc?rev=672454&view=rev
+   +1: billbarker
+   -1:
