@@ -41,12 +41,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45279
   Properly close multicast socket
   http://svn.apache.org/viewvc?rev=671650&view=rev
-  +1: fhanik, markt
+  +1: fhanik, markt, remm
   -1: 
 
 * Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45272
   Patch attached in bugzilla issue
-  +1: fhanik, markt
+  +1: fhanik, markt, remm (pfff, use ff)
   -1: 
 
 * Another fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43683
@@ -56,6 +56,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=672397&view=rev
   +1: markt
   -1: 
+  -0: remm: This cannot be fixed from what you are saying, so this stream of fixes
+      seems pointless to me right now
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45277
   Correct typo
@@ -67,4 +69,8 @@ PATCHES PROPOSED TO BACKPORT:
    Port the fix from the JK Connector to the AJP and APR Connectors
    http://svn.apache.org/viewvc?rev=672454&view=rev
    +1: billbarker
-   -1:
+   -1: remm: No, this gets called all the time, and we're trying to fix a small issue. The real
+             solution would be to recycle the fields (when exiting the process method of the processors)
+             since as mentioned here it is the cause of the problem (the "local" fields will often never
+             change, but there's no real guarantee overall):
+             https://issues.apache.org/bugzilla/show_bug.cgi?id=36155#c17
