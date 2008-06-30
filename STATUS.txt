@@ -43,7 +43,7 @@ PATCHES PROPOSED TO BACKPORT:
   significantly. A perfect fix would require syncing most (all?) of allocate()
   which is on the critical path.
   http://svn.apache.org/viewvc?rev=672397&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
   -0: remm: This cannot be fixed from what you are saying, so this stream of fixes
       seems pointless to me right now
@@ -51,7 +51,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45277
   Correct typo
   http://svn.apache.org/viewvc?rev=672399&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 *  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36155
