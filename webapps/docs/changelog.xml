@@ -378,6 +378,7 @@
   </subsection>
   <subsection name="Cluster">
     <changelog>
+      <fix><bug>45279</bug>Properly close multicast socket.</fix>
       <update>
         Fix session replication dead lock during non sticky load balancing.
         (fhanik)
