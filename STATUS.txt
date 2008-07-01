@@ -51,7 +51,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45277
   Correct typo
   http://svn.apache.org/viewvc?rev=672399&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jfclere
   -1: 
 
 *  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36155
@@ -68,5 +68,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Add Unix support for NSIS (unfortunately, I do not have any Windows computer left, so I need this
   for 6.0.17)
   https://issues.apache.org/bugzilla/show_bug.cgi?id=45315
-  +1: remm
+  +1: remm, jfclere
   -1: 
