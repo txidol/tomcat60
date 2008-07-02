@@ -68,5 +68,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Add Unix support for NSIS (unfortunately, I do not have any Windows computer left, so I need this
   for 6.0.17)
   https://issues.apache.org/bugzilla/show_bug.cgi?id=45315
-  +1: remm, jfclere
+  +1: remm, jfclere, fhanik
   -1: 
+
+* Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45317
+  http://svn.apache.org/viewvc?rev=673487&view=rev
+  Properly document and print out the value of the state transfer timeout setting
+  +1: fhanik
+  -1: 
+  
