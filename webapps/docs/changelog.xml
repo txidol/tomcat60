@@ -33,6 +33,13 @@
 
 <body>
 <section name="Tomcat 6.0.17 (remm)">
+  <subsection name="General">
+    <changelog>
+      <update>
+        <bug>45315</bug>: Add Unix support for NSIS. (remm)
+      </update>
+    </changelog>
+  </subsection>
   <subsection name="Catalina">
     <changelog>
       <fix><bug>45272</bug>Put in work around for Internet Explorer not accepting a quoted Path: value using the Set-Cookie header (fhanik)</fix>
