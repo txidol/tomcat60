@@ -48,12 +48,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: remm: This cannot be fixed from what you are saying, so this stream of fixes
       seems pointless to me right now
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45277
-  Correct typo
-  http://svn.apache.org/viewvc?rev=672399&view=rev
-  +1: markt, fhanik, jfclere
-  -1: 
-
 *  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36155
    Port the fix from the JK Connector to the AJP and APR Connectors
    http://svn.apache.org/viewvc?rev=672454&view=rev

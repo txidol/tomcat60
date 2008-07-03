@@ -375,6 +375,9 @@
         Align the Realm documentation so that both the configuration and the
         how-to are consistent. (markt)
       </fix>
+      <fix>
+        <bug>45277</bug>: Fix typo in logging docs. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
