@@ -43,13 +43,8 @@ PATCHES PROPOSED TO BACKPORT:
   significantly. A perfect fix would require syncing most (all?) of allocate()
   which is on the critical path.
   http://svn.apache.org/viewvc?rev=672397&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1: 
-  -0: remm: This cannot be fixed from what you are saying, so this stream of fixes
-      seems pointless to me right now
-      markt: This could be fixed, but I don't think the cost is worth it. It is
-             already pretty difficult to trigger (need a reload during a Servlet
-             init) and this patch makes it even less likely.
 
 *  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36155
    Port the fix from the JK Connector to the AJP and APR Connectors
@@ -67,4 +62,3 @@ PATCHES PROPOSED TO BACKPORT:
   Properly document and print out the value of the state transfer timeout setting
   +1: fhanik
   -1: 
-  
