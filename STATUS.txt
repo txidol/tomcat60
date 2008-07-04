@@ -38,14 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Another fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43683
-  This isn't perfect but it narrows the window for the race condition
-  significantly. A perfect fix would require syncing most (all?) of allocate()
-  which is on the critical path.
-  http://svn.apache.org/viewvc?rev=672397&view=rev
-  +1: markt, fhanik, remm
-  -1: 
-
 *  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36155
    Port the fix from the JK Connector to the AJP and APR Connectors
    http://svn.apache.org/viewvc?rev=672454&view=rev

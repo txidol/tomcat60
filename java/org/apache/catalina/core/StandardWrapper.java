@@ -792,6 +792,8 @@ public class StandardWrapper
             throw new ServletException
               (sm.getString("standardWrapper.unloading", getName()));
 
+        boolean newInstance = false;
+        
         // If not SingleThreadedModel, return the same instance every time
         if (!singleThreadModel) {
 
@@ -804,6 +806,12 @@ public class StandardWrapper
                                 log.debug("Allocating non-STM instance");
 
                             instance = loadServlet();
+                            // For non-STM, increment here to prevent a race
+                            // condition with unload. Bug 43683, test case #3
+                            if (!singleThreadModel) {
+                                newInstance = true;
+                                countAllocated++;
+                            }
                         } catch (ServletException e) {
                             throw e;
                         } catch (Throwable e) {
@@ -817,10 +825,13 @@ public class StandardWrapper
             if (!singleThreadModel) {
                 if (log.isTraceEnabled())
                     log.trace("  Returning non-STM instance");
-                countAllocated++;
+                // For new instances, count will have been incremented at the
+                // time of creation
+                if (!newInstance) {
+                    countAllocated++;
+                }
                 return (instance);
             }
-
         }
 
         synchronized (instancePool) {
