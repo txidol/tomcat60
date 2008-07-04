@@ -35,7 +35,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45212
   Map.entrySet() should return entries, not values
   http://svn.apache.org/viewvc?rev=668849&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jfclere
   -1: 
 
 *  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36155
@@ -70,5 +70,5 @@ Index: dist.xml
        <arg value="tomcat.nsi" />
      </exec>
 
-  +1: remm
+  +1: remm, jfclere
   -1: 
