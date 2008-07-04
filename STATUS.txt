@@ -54,3 +54,21 @@ PATCHES PROPOSED TO BACKPORT:
   Properly document and print out the value of the state transfer timeout setting
   +1: fhanik, markt
   -1: 
+
+* Supposedly Windows should be used with osfamily too.
+Index: dist.xml
+===================================================================
+--- dist.xml   (revision 673938)
++++ dist.xml   (working copy)
+@@ -454,7 +454,7 @@
+     <filter token="VERSION_NUMBER" value="${version.number}"/>
+ 
+     <copy file="res/tomcat.nsi" tofile="${tomcat.dist}/tomcat.nsi" filtering="true" overwrite="true"/>
+-    <exec dir="${tomcat.dist}" executable="${nsis.exe}" os="windows">
++    <exec dir="${tomcat.dist}" executable="${nsis.exe}" osfamily="windows">
+       <arg value="/DNSISDIR=${nsis.home}" />
+       <arg value="tomcat.nsi" />
+     </exec>
+
+  +1: remm
+  -1: 
