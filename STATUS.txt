@@ -52,5 +52,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45317
   http://svn.apache.org/viewvc?rev=673487&view=rev
   Properly document and print out the value of the state transfer timeout setting
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
