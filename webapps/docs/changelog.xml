@@ -389,6 +389,10 @@
   </subsection>
   <subsection name="Cluster">
     <changelog>
+      <fix>
+        <bug>45212</bug>: AbstractReplicatedMap.entrySet() now returns entries
+        rather than vaules. (markt)
+      </fix>
       <fix><bug>45279</bug>Properly close multicast socket.</fix>
       <update>
         Fix session replication dead lock during non sticky load balancing.
