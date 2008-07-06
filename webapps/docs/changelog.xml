@@ -32,6 +32,16 @@
   </properties>
 
 <body>
+<section name="Tomcat 6.0.18 (remm)">
+  <subsection name="Webapps">
+    <changelog>
+      <update>
+        <bug>45323</bug>: Add note that context.xml files can only contain a
+        single Context element. (markt)
+      </update>
+    </changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="General">
     <changelog>
