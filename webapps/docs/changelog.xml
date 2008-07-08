@@ -41,6 +41,13 @@
       </update>
     </changelog>
   </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <update>
+        <bug>45317</bug>: Properly document and log the value of the state transfer timeout flag (fhanik)
+      </update>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="General">
