@@ -52,11 +52,11 @@ PATCHES PROPOSED TO BACKPORT:
   Don't assume UTF-8 and use the correct encoding when generating
   tomcat-users.xml from the Windows installer.
   http://svn.apache.org/viewvc?rev=674335&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jfclere
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45285
   Need to look for annotations in class hierarchy
   http://people.apache.org/~markt/patches/2008-07-09-bug45285.patch
-  +1: markt
+  +1: markt, jfclere
   -1: 
