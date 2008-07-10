@@ -67,3 +67,18 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=675650&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42565
+  Make EL ternary expression without space before colon work
+  Patch provided by Lucas Galfaso
+  This is just the jjt patch. There will also be changes to generated code
+  http://svn.apache.org/viewvc?rev=675726&view=rev
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42722
+  Possible NPE in CGI Servlet
+  Patch provided by Nils Hammar
+  http://svn.apache.org/viewvc?rev=675751&view=rev
+  +1: markt
+  -1: 
