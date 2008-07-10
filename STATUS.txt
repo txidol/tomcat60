@@ -82,3 +82,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=675751&view=rev
   +1: markt
   -1: 
+
+* Fix startup failure when security is enabled
+  http://svn.apache.org/viewvc?rev=675796&view=rev
+  +1: markt
+  -1: 
