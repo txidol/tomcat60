@@ -48,6 +48,15 @@
       </update>
     </changelog>
   </subsection>
+  <subsection name="Other">
+    <changelog>
+      <update>
+        <bug>45332</bug>: Specify the correct encoding (the current Windows code
+        page) rather than assuming UTF-8 when creating tomcat-users.xml with the
+        Windows installer. (markt)
+      </update>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.17 (remm)">
   <subsection name="General">
