@@ -33,6 +33,13 @@
 
 <body>
 <section name="Tomcat 6.0.18 (remm)">
+  <subsection name="Cataina">
+    <changelog>
+      <update>
+        <bug>45285</bug>: Look for annotations in class hierarchy. (markt)
+      </update>
+    </changelog>
+  </subsection>
   <subsection name="Webapps">
     <changelog>
       <update>
