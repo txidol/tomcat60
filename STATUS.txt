@@ -31,6 +31,12 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
+*  Backport r676510 from trunk. The patch embeds tcnative-1.dll inside
+   exe installer and uses the released binary from ASF site instead
+   downloading tomcat-native at install time from tomcat.heanet.ie.
+   +1: mturk
+   -1:
+
 *  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36155
    Port the fix from the JK Connector to the AJP and APR Connectors
    http://svn.apache.org/viewvc?rev=672454&view=rev
