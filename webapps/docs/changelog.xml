@@ -47,6 +47,14 @@
       </update>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>42565</bug>: Make EL ternary expression without space before colon
+        work. Patch provided by Lucas Galfaso. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Webapps">
     <changelog>
       <update>

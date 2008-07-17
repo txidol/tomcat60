@@ -48,14 +48,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42565
-  Make EL ternary expression without space before colon work
-  Patch provided by Lucas Galfaso
-  This is just the jjt patch. There will also be changes to generated code
-  http://svn.apache.org/viewvc?rev=675726&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix comet behavior
   Invoke READ when there is a body and make sure END is called if CometEvent.close is called during an invokation
   http://svn.apache.org/viewvc?rev=677473&view=rev
