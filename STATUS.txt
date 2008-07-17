@@ -75,3 +75,8 @@ PATCHES PROPOSED TO BACKPORT:
    +1: mturk, remm, fhanik
    -1:
 
+* Fix comet behavior
+  Invoke READ when there is a body and make sure END is called if CometEvent.close is called during an invokation
+  http://svn.apache.org/viewvc?rev=677473&view=rev
+  +1: fhanik
+  -1: 
