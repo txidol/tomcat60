@@ -35,6 +35,10 @@
 <section name="Tomcat 6.0.18 (remm)">
   <subsection name="Cataina">
     <changelog>
+      <fix>
+        <bug>42678</bug>: Only ignore docBase it it really is a subdir of
+        appBase. Patch provided by juergen. (markt)
+      </fix>
       <update>
         <bug>45285</bug>: Look for annotations in class hierarchy. (markt)
       </update>
