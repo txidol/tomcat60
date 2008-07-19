@@ -45,6 +45,9 @@
       <update>
         <bug>45285</bug>: Look for annotations in class hierarchy. (markt)
       </update>
+      <fix>
+        Add additional checks for URI normalization. (remm)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
