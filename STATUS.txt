@@ -58,5 +58,5 @@ PATCHES PROPOSED TO BACKPORT:
   Correctly handle request lines that are exact multiples of 4096 in length.
   Patch provided by Will Pugh.
   http://svn.apache.org/viewvc?rev=677759&view=rev
-  +1: markt
+  +1: markt, remm
   -1:
