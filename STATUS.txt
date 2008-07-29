@@ -53,3 +53,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=677473&view=rev
   +1: fhanik
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45459
+  Include possible cause in error message since excpetion isn't that clear
+  http://svn.apache.org/viewvc?rev=680710&view=rev
+  +1: markt
+  -1: 
