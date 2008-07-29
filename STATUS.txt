@@ -59,3 +59,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=680710&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45453
+  Add required sync to race condition
+  Based on a patch by Santtu Hyrkk
+  http://svn.apache.org/viewvc?rev=680725&view=rev
+  +1: markt
+  -1: 
