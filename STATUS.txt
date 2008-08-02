@@ -71,7 +71,7 @@ PATCHES PROPOSED TO BACKPORT:
   Revert fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=42565
   and implement alternative
   http://svn.apache.org/viewvc?rev=681735&view=rev (revert)
-  http://svn.apache.org/viewvc?rev=681736&view=rev (new fix)
+  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/el/parser/ELParser.jjt?r1=681735&r2=681789 (new fix)
   Note: Auto-generated files will also need to be updated
   +1: markt
   -1: 
