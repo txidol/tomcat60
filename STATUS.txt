@@ -58,13 +58,14 @@ PATCHES PROPOSED TO BACKPORT:
   Include possible cause in error message since excpetion isn't that clear
   http://svn.apache.org/viewvc?rev=680710&view=rev
   +1: markt
-  -1: 
+  -1: remm (this error seems to be displayed by Class.newInstance() which should be ok to use; I am
+            not ok with the idea of working around every error message from JDKs)
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45453
   Add required sync to race condition
   Based on a patch by Santtu Hyrkk
   http://svn.apache.org/viewvc?rev=680725&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45511
@@ -73,5 +74,5 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=681735&view=rev (revert)
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/el/parser/ELParser.jjt?r1=681735&r2=681789 (new fix)
   Note: Auto-generated files will also need to be updated
-  +1: markt
+  +1: markt, remm
   -1: 
