@@ -95,3 +95,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=684001&view=rev
   +1: markt
   -1: 
+
+* JAASMemoryLoginModule didn't confirm to JAASRealm contract. This prevented any
+  user from being assigned a role.
+  http://svn.apache.org/viewvc?rev=684081&view=rev
+  +1: markt
+  -1: 
