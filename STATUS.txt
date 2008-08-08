@@ -88,3 +88,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=683982&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45585
+  Tomcat failed to start if using $CATALINA_BASE but not JULI. Patch based on a
+  suggestion by Ian Ward Comfort
+  http://svn.apache.org/viewvc?rev=684001&view=rev
+  +1: markt
+  -1: 
