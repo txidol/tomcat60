@@ -82,3 +82,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=683969
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45591
+  NPE on start-up failure in some cases. Based on a patch by Matt Passell
+  http://svn.apache.org/viewvc?rev=683982&view=rev
+  +1: markt
+  -1: 
