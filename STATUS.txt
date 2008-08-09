@@ -81,35 +81,36 @@ PATCHES PROPOSED TO BACKPORT:
   still exists.
   http://svn.apache.org/viewvc?view=rev&revision=683969
   +1: markt
+   0: remm (looks risky, very minor problem)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45591
   NPE on start-up failure in some cases. Based on a patch by Matt Passell
   http://svn.apache.org/viewvc?rev=683982&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45585
   Tomcat failed to start if using $CATALINA_BASE but not JULI. Patch based on a
   suggestion by Ian Ward Comfort
   http://svn.apache.org/viewvc?rev=684001&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * JAASMemoryLoginModule didn't conform to JAASRealm contract. This prevented any
   user from being assigned a role.
   http://svn.apache.org/viewvc?rev=684081&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45576
   Add support for DIGEST to the JAASRealm
   http://svn.apache.org/viewvc?rev=684234&view=rev
-  +1: markt
+  +1: markt, remm (the two people using digest could be interested)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
   Add support for CLIENT-CERT to the JASSRealm. Builds on DIGEST patch above.
   https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
-  +1: markt
+  +1: markt, remm
   -1: 
