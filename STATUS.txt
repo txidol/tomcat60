@@ -107,3 +107,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=684234&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
+  Add support for CLIENT-CERT to the JASSRealm. Builds on DIGEST patch above.
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
+  +1: markt
+  -1: 
