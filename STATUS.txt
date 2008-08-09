@@ -104,6 +104,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45576
   Add support for DIGEST to the JAASRealm
-  
+  http://svn.apache.org/viewvc?rev=684234&view=rev
   +1: markt
   -1: 
