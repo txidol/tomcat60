@@ -114,3 +114,9 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
   +1: markt, remm
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45528
+  Test the SSL socket for cert/cipher compatibility before returning it
+  http://svn.apache.org/viewvc?rev=684559&view=rev
+  +1: markt
+  -1: 
