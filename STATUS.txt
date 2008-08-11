@@ -119,4 +119,6 @@ PATCHES PROPOSED TO BACKPORT:
   Test the SSL socket for cert/cipher compatibility before returning it
   http://svn.apache.org/viewvc?rev=684559&view=rev
   +1: markt
-  -1: 
+  -1: billbarker The patch is horrible, since it drops connections for no good reason, simply to 
+                 protect against a totally brain-dead miss-configurations.  If the check is moved into
+                 the main except loop, then I can go for -0.
