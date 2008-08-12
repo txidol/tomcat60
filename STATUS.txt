@@ -52,6 +52,7 @@ PATCHES PROPOSED TO BACKPORT:
   Invoke READ when there is a body and make sure END is called if CometEvent.close is called during an invokation
   http://svn.apache.org/viewvc?rev=677473&view=rev
   +1: fhanik
+   0: remm: no idea if it's better or worse (the fact that it's been closed is visible)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45459
@@ -119,6 +120,7 @@ PATCHES PROPOSED TO BACKPORT:
   Test the SSL socket for cert/cipher compatibility before returning it
   http://svn.apache.org/viewvc?rev=684559&view=rev
   +1: markt
+   0: remm: It does look like a hack indeed, but it detects the problem
   -1: billbarker The patch is horrible, since it drops connections for no good reason, simply to 
                  protect against a totally brain-dead miss-configurations.  If the check is moved into
                  the main except loop, then I can go for -0.
@@ -127,4 +129,6 @@ PATCHES PROPOSED TO BACKPORT:
   Prevent race condition for allocate/deallocate in StandardWrapper
   http://svn.apache.org/viewvc?rev=685177&view=rev
   +1: markt
+   0: remm: The only unsafe usage of this field is to implement the gimmick loop-wait hack,
+            which to me means adding any sort of sync is not worth it.
   -1: 
