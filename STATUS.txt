@@ -122,3 +122,9 @@ PATCHES PROPOSED TO BACKPORT:
   -1: billbarker The patch is horrible, since it drops connections for no good reason, simply to 
                  protect against a totally brain-dead miss-configurations.  If the check is moved into
                  the main except loop, then I can go for -0.
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
+  Prevent race condition for allocate/deallocate in StandardWrapper
+  http://svn.apache.org/viewvc?rev=685177&view=rev
+  +1: markt
+  -1: 
