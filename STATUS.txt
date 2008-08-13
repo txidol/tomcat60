@@ -71,12 +71,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem)
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45591
-  NPE on start-up failure in some cases. Based on a patch by Matt Passell
-  http://svn.apache.org/viewvc?rev=683982&view=rev
-  +1: markt, remm, funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45585
   Tomcat failed to start if using $CATALINA_BASE but not JULI. Patch based on a
   suggestion by Ian Ward Comfort

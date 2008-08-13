@@ -39,6 +39,14 @@
         <bug>45453</bug>: Remove potential race condition in JDBC Realm.
         Based on a patch by Santtu Hyrkk. (markt)
       </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <fix>
+        <bug>45591</bug>: NPE on start-up failure in some cases. Based on a
+        patch by Matt Passell. (markt)
+      </fix>
 	</changelog>
   </subsection>
   <subsection name="Jasper">
