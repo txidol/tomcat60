@@ -114,7 +114,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
   Add support for CLIENT-CERT to the JASSRealm. Builds on DIGEST patch above.
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
+  http://svn.apache.org/viewvc?rev=684270&view=rev
   +1: markt, remm
   -1: 
    0: funkman -  I see the bug URL twice with no patch
