@@ -32,6 +32,16 @@
   </properties>
 
 <body>
+<section name="Tomcat 6.0.19 (remm)">
+  <subsection name="Cataina">
+    <changelog>
+      <fix>
+        <bug>45453</bug>: Remove potential race condition in JDBC Realm.
+        Based on a patch by Santtu Hyrkk. (markt)
+      </fix>
+	</changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.18 (remm)">
   <subsection name="Cataina">
     <changelog>
