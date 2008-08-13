@@ -45,13 +45,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Add in startup options, so that cluster can be started in TCP mode only, when using static membership
   Also document the multicast recovery options
   http://svn.apache.org/viewvc?rev=674125&view=rev
-  +1: fhanik, markt
+  +1: fhanik, markt, funkman
   -1: 
 
 * Fix comet behavior
   Invoke READ when there is a body and make sure END is called if CometEvent.close is called during an invokation
   http://svn.apache.org/viewvc?rev=677473&view=rev
-  +1: fhanik
+  +1: fhanik, funkman
    0: remm: no idea if it's better or worse (the fact that it's been closed is visible)
   -1: 
 
@@ -59,6 +59,8 @@ PATCHES PROPOSED TO BACKPORT:
   Include possible cause in error message since excpetion isn't that clear
   http://svn.apache.org/viewvc?rev=680710&view=rev
   +1: markt
+  -0: funkman ( Agree with Remy - just not as strongly (There is enough in the stacktrace that your fav search
+       engine can tell you what is wrong fairly quickly)
   -1: remm (this error seems to be displayed by Class.newInstance() which should be ok to use; I am
             not ok with the idea of working around every error message from JDKs)
 
@@ -66,7 +68,7 @@ PATCHES PROPOSED TO BACKPORT:
   Add required sync to race condition
   Based on a patch by Santtu Hyrkk
   http://svn.apache.org/viewvc?rev=680725&view=rev
-  +1: markt, remm
+  +1: markt, remm, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45511
@@ -75,7 +77,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=681735&view=rev (revert)
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/el/parser/ELParser.jjt?r1=681735&r2=681789 (new fix)
   Note: Auto-generated files will also need to be updated
-  +1: markt, remm
+  +1: markt, remm, funkman
   -1: 
 
 * Fix issue where the first request for a deleted JSPs returns as if the JSP
@@ -88,26 +90,26 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45591
   NPE on start-up failure in some cases. Based on a patch by Matt Passell
   http://svn.apache.org/viewvc?rev=683982&view=rev
-  +1: markt, remm
+  +1: markt, remm, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45585
   Tomcat failed to start if using $CATALINA_BASE but not JULI. Patch based on a
   suggestion by Ian Ward Comfort
   http://svn.apache.org/viewvc?rev=684001&view=rev
-  +1: markt, remm
+  +1: markt, remm, funkman
   -1: 
 
 * JAASMemoryLoginModule didn't conform to JAASRealm contract. This prevented any
   user from being assigned a role.
   http://svn.apache.org/viewvc?rev=684081&view=rev
-  +1: markt, remm
+  +1: markt, remm, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45576
   Add support for DIGEST to the JAASRealm
   http://svn.apache.org/viewvc?rev=684234&view=rev
-  +1: markt, remm (the two people using digest could be interested)
+  +1: markt, funkman, remm (the two people using digest could be interested)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
@@ -115,7 +117,9 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
   +1: markt, remm
   -1: 
+   0: funkman -  I see the bug URL twice with no patch
 
+ 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45528
   Test the SSL socket for cert/cipher compatibility before returning it
   http://svn.apache.org/viewvc?rev=684559&view=rev
