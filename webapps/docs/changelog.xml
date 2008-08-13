@@ -44,6 +44,9 @@
         <code>$CATALINA_BASE</code> but not JULI. Patch based on a suggestion by
         Ian Ward Comfort. (markt)
       </fix>
+      <fix>
+        The JAAS Realm did not assign roles to authenticated users. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

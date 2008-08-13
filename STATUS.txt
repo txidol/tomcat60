@@ -71,12 +71,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem)
   -1: 
 
-* JAASMemoryLoginModule didn't conform to JAASRealm contract. This prevented any
-  user from being assigned a role.
-  http://svn.apache.org/viewvc?rev=684081&view=rev
-  +1: markt, remm, funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45576
   Add support for DIGEST to the JAASRealm
   http://svn.apache.org/viewvc?rev=684234&view=rev
