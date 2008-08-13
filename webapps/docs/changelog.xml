@@ -39,6 +39,9 @@
         <bug>45453</bug>: Remove potential race condition in JDBC Realm.
         Based on a patch by Santtu Hyrkk. (markt)
       </fix>
+      <add>
+        <bug>45576</bug>: Add DIGEST support to the JAAS Realm. (markt)
+      </add>
       <fix>
         <bug>45585</bug>: Allow Tomcat to start if using
         <code>$CATALINA_BASE</code> but not JULI. Patch based on a suggestion by
