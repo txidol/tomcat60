@@ -64,15 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm (this error seems to be displayed by Class.newInstance() which should be ok to use; I am
             not ok with the idea of working around every error message from JDKs)
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45511
-  Revert fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=42565
-  and implement alternative
-  http://svn.apache.org/viewvc?rev=681735&view=rev (revert)
-  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/el/parser/ELParser.jjt?r1=681735&r2=681789 (new fix)
-  Note: Auto-generated files will also need to be updated
-  +1: markt, remm, funkman
-  -1: 
-
 * Fix issue where the first request for a deleted JSPs returns as if the JSP
   still exists.
   http://svn.apache.org/viewvc?view=rev&revision=683969
