@@ -71,13 +71,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem)
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45585
-  Tomcat failed to start if using $CATALINA_BASE but not JULI. Patch based on a
-  suggestion by Ian Ward Comfort
-  http://svn.apache.org/viewvc?rev=684001&view=rev
-  +1: markt, remm, funkman
-  -1: 
-
 * JAASMemoryLoginModule didn't conform to JAASRealm contract. This prevented any
   user from being assigned a role.
   http://svn.apache.org/viewvc?rev=684081&view=rev
