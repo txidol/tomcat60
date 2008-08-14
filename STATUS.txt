@@ -78,27 +78,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
    0: funkman -  I see the bug URL twice with no patch
 
- 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45528
-  Test the SSL socket for cert/cipher compatibility before returning it
-  http://svn.apache.org/viewvc?rev=684559&view=rev
-  +1: markt
-   0: remm: It does look like a hack indeed, but it detects the problem
-  -1: billbarker The patch is horrible, since it drops connections for no good reason, simply to 
-                 protect against a totally brain-dead miss-configurations.  If the check is moved into
-                 the main except loop, then I can go for -0.
-  -1: fhanik - the problem in the bug is obvious, the keystore doesn't contain any private keys
-               that can be checked very easily
-               http://www.exampledepot.com/egs/java.security/ListAliases.html
-               Furthermore SSL-HOWTO in Tomcat, mentions this problem
-             - Whilst this might cause the logging loop (and I agree it is
-               easily checked), the only time I saw the logging loop was when
-               the certificate and the ciphers were not compatible. I could not
-               see anywhere in the javax.net.ssl API that would let me check
-               this. Opening a socket (which throws an excpetion in this case)
-               appears to be the only way to detect it.
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
+ * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
   Prevent race condition for allocate/deallocate in StandardWrapper
   http://svn.apache.org/viewvc?rev=685177&view=rev
   +1: markt
