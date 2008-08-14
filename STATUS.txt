@@ -91,6 +91,12 @@ PATCHES PROPOSED TO BACKPORT:
                that can be checked very easily
                http://www.exampledepot.com/egs/java.security/ListAliases.html
                Furthermore SSL-HOWTO in Tomcat, mentions this problem
+             - Whilst this might cause the logging loop (and I agree it is
+               easily checked), the only time I saw the logging loop was when
+               the certificate and the ciphers were not compatible. I could not
+               see anywhere in the javax.net.ssl API that would let me check
+               this. Opening a socket (which throws an excpetion in this case)
+               appears to be the only way to detect it.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
   Prevent race condition for allocate/deallocate in StandardWrapper
