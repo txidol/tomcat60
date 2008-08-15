@@ -74,9 +74,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
   Add support for CLIENT-CERT to the JASSRealm. Builds on DIGEST patch above.
   http://svn.apache.org/viewvc?rev=684270&view=rev
-  +1: markt, remm
+  +1: markt, remm, funkman
   -1: 
-   0: funkman -  I see the bug URL twice with no patch
 
  * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
   Prevent race condition for allocate/deallocate in StandardWrapper
@@ -85,3 +84,9 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm: The only unsafe usage of this field is to implement the gimmick loop-wait hack,
             which to me means adding any sort of sync is not worth it.
   -1: 
+
+* http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/core/StandardHost.java?r1=593649&r2=685530&diff_format=h
+  Provide full stacktrace/message when ErrorReportValveClass can't be instantiated.
+  +1: funkman
+  -1: 
+
