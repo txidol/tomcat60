@@ -77,7 +77,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm, funkman
   -1: 
 
- * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
   Prevent race condition for allocate/deallocate in StandardWrapper
   http://svn.apache.org/viewvc?rev=685177&view=rev
   +1: markt
@@ -90,3 +90,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: funkman
   -1: 
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45528
+  Improved fix that hopefully addresses previous concerns
+  http://svn.apache.org/viewvc?rev=687503&view=rev
+  +1: markt
+  -1: 
