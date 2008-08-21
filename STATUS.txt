@@ -92,6 +92,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45528
   Improved fix that hopefully addresses previous concerns
-  http://svn.apache.org/viewvc?rev=687503&view=rev
+  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/net/jsse/JSSESocketFactory.java?r1=685981&r2=687645&diff_format=h
+  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/net/jsse/res/LocalStrings.properties?r1=656035&r2=687503
   +1: markt
   -1: 
