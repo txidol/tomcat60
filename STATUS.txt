@@ -87,14 +87,14 @@ PATCHES PROPOSED TO BACKPORT:
 
 * http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/core/StandardHost.java?r1=593649&r2=685530&diff_format=h
   Provide full stacktrace/message when ErrorReportValveClass can't be instantiated.
-  +1: funkman, remm
+  +1: funkman, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45528
   Improved fix that hopefully addresses previous concerns
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/net/jsse/JSSESocketFactory.java?r1=685981&r2=687645&diff_format=h
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/net/jsse/res/LocalStrings.properties?r1=656035&r2=687503
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 
@@ -105,5 +105,5 @@ PATCHES PROPOSED TO BACKPORT:
   once we port IntermediateInputStream.available()
   from TC5.5.x B2CConverter forward.
   I propose to keep the CoyoteAdapter code consistent.
-  +1: rjung
+  +1: rjung, fhanik
   -1: 
