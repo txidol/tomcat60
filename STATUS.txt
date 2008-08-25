@@ -96,3 +96,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/net/jsse/res/LocalStrings.properties?r1=656035&r2=687503
   +1: markt, remm
   -1: 
+
+
+* Fix redirect loop when using URIEncoding="UTF-8"
+  http://svn.apache.org/viewvc?rev=688857&view=rev
+  See also: http://marc.info/?t=121967803300004&r=1&w=2
+  This is not yet a problem for TC6.0.x, but will be
+  once we port IntermediateInputStream.available()
+  from TC5.5.x B2CConverter forward.
+  I propose to keep the CoyoteAdapter code consistent.
+  +1: rjung
+  -1: 
