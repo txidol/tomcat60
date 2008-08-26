@@ -105,5 +105,5 @@ PATCHES PROPOSED TO BACKPORT:
   once we port IntermediateInputStream.available()
   from TC5.5.x B2CConverter forward.
   I propose to keep the CoyoteAdapter code consistent.
-  +1: rjung, fhanik
+  +1: rjung, fhanik, remm
   -1: 
