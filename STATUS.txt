@@ -111,16 +111,17 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43327
   http://svn.apache.org/viewvc?rev=687755&view=rev
   Note use trunk of TC-native to test it as it also needs patches there.
-  +1: jfclere
+  +1: jfclere, remm
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44809
   http://svn.apache.org/viewvc?rev=689395&view=rev
-  +1: jfclere
+  +1: jfclere, remm
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45074
   http://svn.apache.org/viewvc?rev=689402&view=rev
   +1: jfclere
-  -1:
+  -0: remm: configuring this is useless (esp on Windows, only the default behavior gives acceptable performance)
+  -1: 
 
