@@ -113,3 +113,9 @@ PATCHES PROPOSED TO BACKPORT:
   Note use trunk of TC-native to test it as it also needs patches there.
   +1: jfclere
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44809
+  http://svn.apache.org/viewvc?rev=689395&view=rev
+  +1: jfclere
+  -1:
+
