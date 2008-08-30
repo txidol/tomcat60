@@ -110,8 +110,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43327
   http://svn.apache.org/viewvc?rev=687755&view=rev
-  Note use trunk of TC-native to test it as it also needs patches there.
-  +1: jfclere, remm
+  Note use trunk >=r690600 of TC-native to test it as it also needs patches
+  there.
+  +1: jfclere, remm, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44809
