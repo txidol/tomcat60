@@ -129,5 +129,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45691
   http://svn.apache.org/viewvc?rev=690693&view=rev
   NB: Methods deleted in JspUtil to be deprecated rather than deleted
-  +1: markt
+  +1: markt, remm
   -1:
