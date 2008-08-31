@@ -135,11 +135,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45648
   http://svn.apache.org/viewvc?rev=690770&view=rev
   Don't trim the last character from the namespace
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45666
   Prevent infinite loop on include
   http://svn.apache.org/viewvc?rev=690781&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
