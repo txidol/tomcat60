@@ -143,3 +143,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=690781&view=rev
   +1: markt, remm
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45628
+  http://svn.apache.org/viewvc?rev=691282&view=rev
+  JARs without deps should always be fulfilled
+  +1: markt
+  -1: 
