@@ -137,7 +137,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45628
   http://svn.apache.org/viewvc?rev=691282&view=rev
   JARs without deps should always be fulfilled
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45618
@@ -157,4 +157,5 @@ PATCHES PROPOSED TO BACKPORT:
   because it is low risk (generics) and keeps the class
   in sync between trunk and tc6.0.x.
   +1: rjung
+   0: remm: the logging should be grouped into a single log entry, I think
   -1: 
