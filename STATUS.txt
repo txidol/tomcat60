@@ -107,7 +107,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44809
   http://svn.apache.org/viewvc?rev=689395&view=rev
-  +1: jfclere, remm
+  +1: jfclere, remm, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45074
@@ -131,7 +131,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45666
   Prevent infinite loop on include
   http://svn.apache.org/viewvc?rev=690781&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45628
