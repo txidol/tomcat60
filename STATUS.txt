@@ -157,3 +157,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=691392&view=rev
   +1: markt
   -1: 
+
+* Backport Logging of access control problems when setting up
+  per context logging under the security manager.
+  http://svn.apache.org/viewvc?rev=691675&view=rev
+  http://svn.apache.org/viewvc?rev=691677&view=rev
+  I suggest to also backport
+  http://svn.apache.org/viewvc?view=rev&revision=687508
+  because it is low risk (generics) and keeps the class
+  in sync between trunk and tc6.0.x.
+  +1: rjung
+  -1: 
