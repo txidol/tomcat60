@@ -33,7 +33,7 @@
 
 <body>
 <section name="Tomcat 6.0.19 (remm)">
-  <subsection name="Cataina">
+  <subsection name="Catalina">
     <changelog>
       <fix>
         <bug>45453</bug>: Remove potential race condition in JDBC Realm.
