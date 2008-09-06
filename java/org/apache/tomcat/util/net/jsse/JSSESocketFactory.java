@@ -421,6 +421,9 @@ public class JSSESocketFactory
             enabledCiphers = getEnabledCiphers(requestedCiphers,
                                                sslProxy.getSupportedCipherSuites());
 
+            // Check the SSL config is OK
+            checkConfig();
+
         } catch(Exception e) {
             if( e instanceof IOException )
                 throw (IOException)e;
@@ -695,4 +698,46 @@ public class JSSESocketFactory
         configureClientAuth(socket);
     }
 
+    /**
+     * Checks that the certificate is compatible with the enabled cipher suites.
+     * If we don't check now, the JIoEndpoint can enter a nasty logging loop.
+     * See bug 45528.
+     */
+    private void checkConfig() throws IOException {
+        // Create an unbound server socket
+        ServerSocket socket = sslProxy.createServerSocket();
+        initServerSocket(socket);
+
+        try {
+            // Set the timeout to 1ms as all we care about is if it throws an
+            // SSLException on accept. 
+            socket.setSoTimeout(1);
+
+            socket.accept();
+            // Will never get here - no client can connect to an unbound port
+        } catch (SSLException ssle) {
+            // SSL configuration is invalid. Possibly cert doesn't match ciphers
+            IOException ioe = new IOException(sm.getString(
+                    "jsse.invalid_ssl_conf", ssle.getMessage()));
+            ioe.initCause(ssle);
+            throw ioe;
+        } catch (Exception e) {
+            /*
+             * Possible ways of getting here
+             * socket.accept() throws a SecurityException
+             * socket.setSoTimeout() throws a SocketException
+             * socket.accept() throws some other exception (after a JDK change)
+             *      In these cases the test won't work so carry on - essentially
+             *      the behaviour before this patch
+             * socket.accept() throws a SocketTimeoutException
+             *      In this case all is well so carry on
+             */
+        } finally {
+            // Should be open here but just in case
+            if (!socket.isClosed()) {
+                socket.close();
+            }
+        }
+        
+    }
 }
