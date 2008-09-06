@@ -35,6 +35,10 @@
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix>
+        Log AccessControlException for context specific logging.properties
+        during startup with security manager. (rjung)
+      </fix>
       <add>
         <bug>41407</bug>: Add CLIENT-CERT support to the JAAS Realm. (markt)
       </add>
