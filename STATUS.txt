@@ -137,10 +137,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=687508
   because it is low risk (generics) and keeps the class
   in sync between trunk and tc6.0.x.
-  +1: rjung, remm
+  +1: rjung, remm, markt
   -1: 
   rjung: improved the logging with r691887.
 
 * ETag improvement: https://issues.apache.org/bugzilla/show_bug.cgi?id=45735
-  +1: remm
+  +1: remm, markt
   -1: 
