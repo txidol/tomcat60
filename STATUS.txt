@@ -71,12 +71,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem)
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41407
-  Add support for CLIENT-CERT to the JASSRealm. Builds on DIGEST patch above.
-  http://svn.apache.org/viewvc?rev=684270&view=rev
-  +1: markt, remm, funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
   Prevent race condition for allocate/deallocate in StandardWrapper
   http://svn.apache.org/viewvc?rev=685177&view=rev

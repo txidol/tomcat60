@@ -35,6 +35,9 @@
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <add>
+        <bug>41407</bug>: Add CLIENT-CERT support to the JAAS Realm. (markt)
+      </add>
       <fix>
         <bug>45453</bug>: Remove potential race condition in JDBC Realm.
         Based on a patch by Santtu Hyrkk. (markt)
@@ -134,7 +137,7 @@
   </subsection>
   <subsection name="Catalina">
     <changelog>
-      <fix><bug>45272</bug>Put in work around for Internet Explorer not accepting a quoted Path: value using the Set-Cookie header (fhanik)</fix>
+      <fix><bug>45272</bug>: Put in work around for Internet Explorer not accepting a quoted Path: value using the Set-Cookie header (fhanik)</fix>
       <fix>
         APR connector now adds connection to poller after using send file.
         (remm)
