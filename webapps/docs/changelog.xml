@@ -42,10 +42,6 @@
         <bug>45453</bug>: Remove potential race condition in JDBC Realm.
         Based on a patch by Santtu Hyrkk. (markt)
       </fix>
-      <fix>
-        <bug>45528</bug>: Add detection for invalid SSL configuration to prevent
-        infinite logging loop on start-up. (markt)
-      </fix>
       <add>
         <bug>45576</bug>: Add DIGEST support to the JAAS Realm. (markt)
       </add>
@@ -62,6 +58,10 @@
   <subsection name="Coyote">
     <changelog>
       <fix>
+        <bug>45528</bug>: Add detection for invalid SSL configuration to prevent
+        infinite logging loop on start-up. (markt)
+      </fix>
+      <fix>
         <bug>45591</bug>: NPE on start-up failure in some cases. Based on a
         patch by Matt Passell. (markt)
       </fix>
@@ -75,6 +75,9 @@
         fix for <bug>42565</bug> has been reverted and a new fix applied.
         (markt)
       </fix> 
+      <fix>
+        <bug>45666</bug>: Prevent infinite loop on include. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
