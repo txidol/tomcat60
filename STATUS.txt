@@ -131,3 +131,9 @@ PATCHES PROPOSED TO BACKPORT:
 * ETag improvement: https://issues.apache.org/bugzilla/show_bug.cgi?id=45735
   +1: remm, markt
   -1: 
+
+* Handle session suffix rewrite at JvmRouteBinderValve with parallel requests from same client
+  http://svn.apache.org/viewvc?rev=693378&view=rev
+  +1: pero
+  -1: 
+ 
