@@ -136,4 +136,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=693378&view=rev
   +1: pero
   -1: 
- 
+
+* Fix cut and paste error in JSP EL examples
+  http://svn.apache.org/viewvc?rev=694791&view=rev
+  +1: markt
+  -1: 
