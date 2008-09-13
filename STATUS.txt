@@ -146,3 +146,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=694951&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44382
+  Use HttpOnly for session cookies. This is enabled by default. Feel free to
+  caveat you vote with a preference for disabled by default.
+  http://svn.apache.org/viewvc?rev=694992&view=rev
+  +1: mark (prefer enabled, happy with disabled)
+  -1: 
