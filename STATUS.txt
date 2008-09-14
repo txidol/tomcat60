@@ -91,11 +91,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, remm, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44809
-  http://svn.apache.org/viewvc?rev=689395&view=rev
-  +1: jfclere, remm, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45074
   http://svn.apache.org/viewvc?rev=689402&view=rev
   +1: jfclere

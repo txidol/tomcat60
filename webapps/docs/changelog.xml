@@ -35,6 +35,7 @@
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix><bug>44809</bug>Improve AprLifecycleListener Error Messages. (jfclere)</fix>
       <fix>
         Log AccessControlException for context specific logging.properties
         during startup with security manager. (rjung)
