@@ -153,3 +153,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=694992&view=rev
   +1: mark (prefer enabled, happy with disabled)
   -1: 
+
+* Exclude wsdl4j stuff from .classpath (it can't build anyway).
+  http://people.apache.org/~jfclere/patches/patch.classpath
+  +1: jfclere
+  -1: 
