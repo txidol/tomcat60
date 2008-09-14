@@ -153,3 +153,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~jfclere/patches/patch.classpath
   +1: jfclere
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45785
+  Ignore directories named xxx.jar in WEB-INF/lib
+  http://svn.apache.org/viewvc?rev=695274&view=rev
+  +1: markt
+  -1: 
