@@ -169,3 +169,9 @@ PATCHES PROPOSED TO BACKPORT:
         deleted when ported to 6.0.x
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45447
+  Update Spanish translations. Patch by Jesus Marin
+  http://svn.apache.org/viewvc?rev=696073&view=rev
+  +1: markt
+  -1: 
