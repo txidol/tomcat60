@@ -175,3 +175,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=696073&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45823
+  LOg missing request headers as - not null
+  Based on a patch by Per Landberg
+  http://svn.apache.org/viewvc?rev=696234&view=rev
+  +1: markt
+  -1: 
