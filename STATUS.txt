@@ -199,3 +199,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=696278&view=rev
   +1: markt, remm
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45419
+  Set Accept-Ranges for static resources served by DefaultServlet
+  http://svn.apache.org/viewvc?rev=696408&view=rev
+  +1: markt
+  -1: 
