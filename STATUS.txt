@@ -205,3 +205,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=696408&view=rev
   +1: markt
   -1: 
+
+* Allow asynchronous close() and setTimeout() on CometEvents
+  http://svn.apache.org/viewvc?view=rev&revision=645175
+  +1: fhanik
+  -1: 
