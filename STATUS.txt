@@ -141,6 +141,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=694951&view=rev
   +1: markt
    0: remm (other endpoints have the same logic but no patch, and logging could pile up quickly)
+      markt Because thread count only grows there will only ever be one log message
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44382
@@ -149,6 +150,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=694992&view=rev
   +1: mark (prefer enabled, happy with disabled)
    0: remm (not so elegant, not sure about default value)
+      markt It can be improved once the API is fixed in the 3.0 spec
   -1: 
 
 * Exclude wsdl4j stuff from .classpath (it can't build anyway).
