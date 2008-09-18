@@ -81,7 +81,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/core/StandardHost.java?r1=593649&r2=685530&diff_format=h
   Provide full stacktrace/message when ErrorReportValveClass can't be instantiated.
-  +1: funkman, remm, fhanik
+  +1: funkman, remm, fhanik, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43327
@@ -162,7 +162,7 @@ PATCHES PROPOSED TO BACKPORT:
   Ignore directories named xxx.jar in WEB-INF/lib
   http://svn.apache.org/viewvc?rev=695274&view=rev
   http://svn.apache.org/viewvc?rev=695284&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45451
@@ -181,20 +181,20 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45447
   Update Spanish translations. Patch by Jesus Marin
   http://svn.apache.org/viewvc?rev=696073&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45823
   Log missing request headers as - not null
   Based on a patch by Per Landberg
   http://svn.apache.org/viewvc?rev=696234&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45441
   Correctly map filters for FORWARD and INCLUDE
   http://svn.apache.org/viewvc?rev=696240&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45427
@@ -206,11 +206,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45419
   Set Accept-Ranges for static resources served by DefaultServlet
   http://svn.apache.org/viewvc?rev=696408&view=rev
-  +1: markt, remm
+  +1: markt, remm, pero
   -1: 
 
 * Allow asynchronous close() and setTimeout() on CometEvents
   http://svn.apache.org/viewvc?view=rev&revision=645175
   +1: fhanik
-   0: remm (maybe, don't know ...)
+   0: remm (maybe, don't know ...), pero ( Is close and timeout also working with APR?)
   -1: 
