@@ -173,6 +173,9 @@ PATCHES PROPOSED TO BACKPORT:
         deleted when ported to 6.0.x
   +1: markt
    0: remm (big patch for a minor issue, so how was this tested ? tck ?)
+      markt: No change in the TCK results with this patch. We have the
+             same EL related failures we have without the patch. I'll
+             look into them as separate issues.
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45447
