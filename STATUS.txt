@@ -73,13 +73,6 @@ PATCHES PROPOSED TO BACKPORT:
             which to me means adding any sort of sync is not worth it.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43327
-  http://svn.apache.org/viewvc?rev=687755&view=rev
-  Note use trunk >=r690600 of TC-native to test it as it also needs patches
-  there.
-  +1: jfclere, remm, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45074
   http://svn.apache.org/viewvc?rev=689402&view=rev
   +1: jfclere

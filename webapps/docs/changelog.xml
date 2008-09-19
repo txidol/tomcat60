@@ -67,6 +67,10 @@
   <subsection name="Coyote">
     <changelog>
       <fix>
+        <bug>43327</bug>: Socket bind fails when using APR on a system with IPv6
+        enabled but no explicit IPv6 address configured. (markt/jfclere)
+      </fix>
+      <fix>
         <bug>45528</bug>: Add detection for invalid SSL configuration to prevent
         infinite logging loop on start-up. (markt)
       </fix>
