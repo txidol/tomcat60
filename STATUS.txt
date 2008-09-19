@@ -214,3 +214,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=697158&view=rev
   +1: rjung
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
+  Never use empty reason phrase.
+  http://svn.apache.org/viewvc?rev=697183&view=rev
+  +1: rjung
+  -1: 
