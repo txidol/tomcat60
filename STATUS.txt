@@ -220,3 +220,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=697183&view=rev
   +1: rjung
   -1: 
+
+* Allow huge request body packets for AJP13.
+  This was already applied to connectors, but never
+  carried forward to trunk and tc6.0.x.
+  http://svn.apache.org/viewvc?rev=697192&view=rev
+  Original change: http://svn.apache.org/viewvc?rev=486217&view=rev
+  +1: rjung
+  -1: 
