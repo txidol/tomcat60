@@ -205,3 +205,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=696716&view=rev
   +1: rjung, markt
   -1: 
+
+* Correct wrong "No role found" debug message,
+  logged in RealmBase even if a role was found.
+  http://svn.apache.org/viewvc?rev=697158&view=rev
+  +1: rjung
+  -1: 
