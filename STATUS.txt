@@ -140,13 +140,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jfclere, remm
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45785
-  Ignore directories named xxx.jar in WEB-INF/lib
-  http://svn.apache.org/viewvc?rev=695274&view=rev
-  http://svn.apache.org/viewvc?rev=695284&view=rev
-  +1: markt, remm, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45451
   Don't unescape tag attribute values with EL twice
   Also fix numerous \${...} issues

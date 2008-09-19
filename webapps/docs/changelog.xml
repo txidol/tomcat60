@@ -62,6 +62,10 @@
         Provide full stacktrace and message when the ErrorReportValveClass can't
         be instantiated. (funkman) 
       </add>
+      <fix>
+        <bug>45785</bug>: Ignore directories named xxx.jar in WEB-INF/lib.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
