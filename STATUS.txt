@@ -76,6 +76,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45074
   http://svn.apache.org/viewvc?rev=689402&view=rev
   +1: jfclere
+   0: markt: The OP was using linux so I assume they saw some benefit.
+             If this is goign to be applied, the docs should be
+             updated as well.
   -0: remm: configuring this is useless (esp on Windows, only the default behavior gives acceptable performance)
   -1: 
 
@@ -137,7 +140,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Exclude wsdl4j stuff from .classpath (it can't build anyway).
   http://people.apache.org/~jfclere/patches/patch.classpath
-  +1: jfclere, remm
+  +1: jfclere, remm, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45451
@@ -167,7 +170,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Tab and trailing space cleanup of EL.
   http://svn.apache.org/viewvc?rev=696702&view=rev
-  +1: rjung
+  +1: rjung, markt
   -1: 
 
 * More EL fixes. Add lookaheads to prevent parsing ambiguity
@@ -190,7 +193,7 @@ PATCHES PROPOSED TO BACKPORT:
   problem with other components or older, already
   persisted Maps?
   http://svn.apache.org/viewvc?rev=696714&view=rev
-  +1: rjung
+  +1: rjung, markt
   -1: 
 
 * Fix ClassCastException in EL ExpressionBuilder when we
@@ -200,5 +203,5 @@ PATCHES PROPOSED TO BACKPORT:
   Use a cast if possible and recreate exception
   otherwise.
   http://svn.apache.org/viewvc?rev=696716&view=rev
-  +1: rjung
+  +1: rjung, markt
   -1: 
