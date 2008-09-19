@@ -85,14 +85,26 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <add>
+        Provide TCP only start-up option when using static membership. (fhanik)
+      </add>
+      <add>
+        Document the multicast recovery options. (fhanik)
+      </add>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.18 (remm)">
   <subsection name="Cataina">
     <changelog>
-      <fix><bug>42727</bug>: Correctly handle request lines that are exact multiples of 4096 in length.
-  Patch provided by Will Pugh.</fix>
       <fix>
-        <bug>42678</bug>: Only ignore docBase it it really is a subdir of
+        <bug>42727</bug>: Correctly handle request lines that are exact
+        multiples of 4096 in length. Patch provided by Will Pugh. (markt)
+      </fix>
+      <fix>
+        <bug>42678</bug>: Only ignore docBase if it really is a subdir of
         appBase. Patch provided by juergen. (markt)
       </fix>
       <fix>

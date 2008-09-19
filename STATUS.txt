@@ -42,12 +42,6 @@ PATCHES PROPOSED TO BACKPORT:
              and seems impossible to anticipate):
              https://issues.apache.org/bugzilla/show_bug.cgi?id=36155#c17
 
-* Add in startup options, so that cluster can be started in TCP mode only, when using static membership
-  Also document the multicast recovery options
-  http://svn.apache.org/viewvc?rev=674125&view=rev
-  +1: fhanik, markt, funkman
-  -1: 
-
 * Fix comet behavior
   Invoke READ when there is a body and make sure END is called if CometEvent.close is called during an invokation
   http://svn.apache.org/viewvc?rev=677473&view=rev

@@ -178,6 +178,8 @@ public class SimpleTcpCluster
     private Map properties = new HashMap();
     
     private int channelSendOptions = Channel.SEND_OPTIONS_ASYNCHRONOUS;
+    
+    private int channelStartOptions = Channel.DEFAULT;
 
     // ------------------------------------------------------------- Properties
 
@@ -666,7 +668,7 @@ public class SimpleTcpCluster
             registerClusterValve();
             channel.addMembershipListener(this);
             channel.addChannelListener(this);
-            channel.start(channel.DEFAULT);
+            channel.start(channelStartOptions);
             if (clusterDeployer != null) clusterDeployer.start();
             this.started = true;
             // Notify our interested LifecycleListeners
@@ -760,7 +762,7 @@ public class SimpleTcpCluster
         this.managers.clear();
         try {
             if ( clusterDeployer != null ) clusterDeployer.setCluster(null);
-            channel.stop(Channel.DEFAULT);
+            channel.stop(channelStartOptions);
             channel.removeChannelListener(this);
             channel.removeMembershipListener(this);
             this.unregisterClusterValve();
@@ -937,5 +939,13 @@ public class SimpleTcpCluster
      */
     public String getProtocol() {
         return null;
+    }
+
+    public int getChannelStartOptions() {
+        return channelStartOptions;
+    }
+
+    public void setChannelStartOptions(int channelStartOptions) {
+        this.channelStartOptions = channelStartOptions;
     }
 }
