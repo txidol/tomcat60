@@ -153,12 +153,6 @@ PATCHES PROPOSED TO BACKPORT:
              look into them as separate issues.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45441
-  Correctly map filters for FORWARD and INCLUDE
-  http://svn.apache.org/viewvc?rev=696240&view=rev
-  +1: markt, remm, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45427
   Correct parsing of quoted stings in EL
   http://svn.apache.org/viewvc?rev=696278&view=rev

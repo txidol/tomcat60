@@ -44,6 +44,9 @@
         <bug>41407</bug>: Add CLIENT-CERT support to the JAAS Realm. (markt)
       </add>
       <fix>
+        <bug>45441</bug>: Correctly map filters for FORWARD and INCLUDE. (markt)
+      </fix>
+      <fix>
         <bug>45453</bug>: Remove potential race condition in JDBC Realm.
         Based on a patch by Santtu Hyrkk. (markt)
       </fix>
