@@ -91,13 +91,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45648
   http://svn.apache.org/viewvc?rev=690770&view=rev
   Don't trim the last character from the namespace
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45628
   http://svn.apache.org/viewvc?rev=691282&view=rev
   JARs without deps should always be fulfilled
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45618
@@ -105,12 +105,13 @@ PATCHES PROPOSED TO BACKPORT:
   Unlikely to be an issue for most (all?) circumstances but technically
   needs fixing,
   http://svn.apache.org/viewvc?rev=691392&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * ETag improvement: https://issues.apache.org/bugzilla/show_bug.cgi?id=45735
-  +1: remm, markt
+  +1: remm, markt, rjung
   -1: 
+  rjung: I assume you are going to add it to trunk as well. Backport also applies to 5.5 and 4.1.
 
 * Handle session suffix rewrite at JvmRouteBinderValve with parallel requests from same client
   http://svn.apache.org/viewvc?rev=693378&view=rev
@@ -119,7 +120,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix cut and paste error in JSP EL examples
   http://svn.apache.org/viewvc?rev=694791&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix log a warning if we create maxThreads
@@ -133,10 +134,12 @@ PATCHES PROPOSED TO BACKPORT:
   Use HttpOnly for session cookies. This is enabled by default. Feel free to
   caveat you vote with a preference for disabled by default.
   http://svn.apache.org/viewvc?rev=694992&view=rev
-  +1: mark (prefer enabled, happy with disabled)
+  +1: mark (prefer enabled, happy with disabled), rjung
    0: remm (not so elegant, not sure about default value)
       markt It can be improved once the API is fixed in the 3.0 spec
   -1: 
+  rjung: slightly prefer enabled for 6.0.x because of increased security by default,
+         but disabled for tc5.5.x because of the small risk of breaking existing apps.
 
 * Exclude wsdl4j stuff from .classpath (it can't build anyway).
   http://people.apache.org/~jfclere/patches/patch.classpath
@@ -183,7 +186,7 @@ PATCHES PROPOSED TO BACKPORT:
   More Spanish translations that I missed in the previous commit
   Patch by Jesus Marin
   http://svn.apache.org/viewvc?rev=696810&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Use generics in EL to improve type safetyness.
