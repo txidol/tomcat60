@@ -73,11 +73,6 @@ PATCHES PROPOSED TO BACKPORT:
             which to me means adding any sort of sync is not worth it.
   -1: 
 
-* http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/core/StandardHost.java?r1=593649&r2=685530&diff_format=h
-  Provide full stacktrace/message when ErrorReportValveClass can't be instantiated.
-  +1: funkman, remm, fhanik, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43327
   http://svn.apache.org/viewvc?rev=687755&view=rev
   Note use trunk >=r690600 of TC-native to test it as it also needs patches

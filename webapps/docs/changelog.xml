@@ -58,6 +58,10 @@
       <fix>
         The JAAS Realm did not assign roles to authenticated users. (markt)
       </fix>
+      <add>
+        Provide full stacktrace and message when the ErrorReportValveClass can't
+        be instantiated. (funkman) 
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
