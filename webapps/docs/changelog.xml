@@ -44,6 +44,10 @@
         <bug>41407</bug>: Add CLIENT-CERT support to the JAAS Realm. (markt)
       </add>
       <fix>
+        <bug>45419</bug>: Set Accept-Ranges for static resources served by
+        DefaultServlet. (markt)
+      </fix>
+      <fix>
         <bug>45441</bug>: Correctly map filters for FORWARD and INCLUDE. (markt)
       </fix>
       <fix>
