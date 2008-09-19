@@ -153,13 +153,6 @@ PATCHES PROPOSED TO BACKPORT:
              look into them as separate issues.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45823
-  Log missing request headers as - not null
-  Based on a patch by Per Landberg
-  http://svn.apache.org/viewvc?rev=696234&view=rev
-  +1: markt, remm, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45441
   Correctly map filters for FORWARD and INCLUDE
   http://svn.apache.org/viewvc?rev=696240&view=rev

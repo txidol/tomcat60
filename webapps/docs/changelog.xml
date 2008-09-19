@@ -66,6 +66,10 @@
         <bug>45785</bug>: Ignore directories named xxx.jar in WEB-INF/lib.
         (markt)
       </fix>
+      <fix>
+        <bug>45823</bug>: Log missing request headers as '-' not 'null'. Based
+        on a patch by Per Landberg. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
