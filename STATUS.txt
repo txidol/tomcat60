@@ -228,3 +228,8 @@ PATCHES PROPOSED TO BACKPORT:
   Original change: http://svn.apache.org/viewvc?rev=486217&view=rev
   +1: rjung
   -1: 
+
+* Remove admin app from logging configuration
+  http://svn.apache.org/viewvc?rev=698012&view=rev
+  +1: markt
+  -1: 
