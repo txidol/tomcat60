@@ -233,3 +233,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=698012&view=rev
   +1: markt
   -1: 
+
+* Add CombinedRealm and LockOutRealm with docs
+  http://people.apache.org/~markt/patches/2008-09-24-lockout-realm.patch
+  +1: markt
+  -1: 
