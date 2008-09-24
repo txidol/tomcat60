@@ -238,3 +238,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2008-09-24-lockout-realm.patch
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45852
+  Add special handing to the Windows installer for a charset that doesn't follow
+  the standard naming convention
+  http://svn.apache.org/viewvc?rev=698613&view=rev
+  +1: markt
+  -1: 
