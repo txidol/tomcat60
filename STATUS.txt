@@ -245,3 +245,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=698613&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45879
+  Move NOTICE file from docs webapp to install dir
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=45879
+  +1: markt
+  -1:
