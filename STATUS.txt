@@ -152,13 +152,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Correct wrong "No role found" debug message,
   logged in RealmBase even if a role was found.
   http://svn.apache.org/viewvc?rev=697158&view=rev
-  +1: rjung, mturk
+  +1: rjung, mturk, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
   Never use empty reason phrase.
   http://svn.apache.org/viewvc?rev=697183&view=rev
-  +1: rjung, mturk
+  +1: rjung, mturk, markt
   -1: 
 
 * Allow huge request body packets for AJP13.
@@ -166,7 +166,7 @@ PATCHES PROPOSED TO BACKPORT:
   carried forward to trunk and tc6.0.x.
   http://svn.apache.org/viewvc?rev=697192&view=rev
   Original change: http://svn.apache.org/viewvc?rev=486217&view=rev
-  +1: rjung, mturk
+  +1: rjung, mturk, markt
   -1: 
 
 * Remove admin app from logging configuration
@@ -186,20 +186,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, mturk
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45879
-  Move NOTICE file from docs webapp to install dir
-  http://svn.apache.org/viewvc?rev=698629&view=rev
-  +1: markt, mturk, rjung
-  -1:
-  rjung: Please add NOTICE to the uninstall section of the nsi file as well.
-
 * Update tc-native to lastest version:
   http://people.apache.org/~jfclere/patches/patch.new-tcnative
-  +1: jclere
+  +1: jclere, markt
   -1:
 
 * Backport "Remove unused code" in ELSupport.java.
   Keeps trunk and tc6 in sync and is no risk.
   http://svn.apache.org/viewvc?rev=649637&view=rev
-  +1: rjung
+  +1: rjung, markt
   -1:
