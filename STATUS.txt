@@ -227,3 +227,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~jfclere/patches/patch.new-tcnative
   +1: jclere
   -1:
+
+* Backport "Remove unused code" in ELSupport.java.
+  Keeps trunk and tc6 in sync and is no risk.
+  http://svn.apache.org/viewvc?rev=649637&view=rev
+  +1: rjung
+  -1:
