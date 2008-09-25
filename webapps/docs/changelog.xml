@@ -97,6 +97,9 @@
   </subsection>
   <subsection name="Jasper">
     <changelog>
+      <fix>
+        ClassCastException in EL ExpressionBuilder. (rjung)
+      </fix>
       <update>
         Use more generics in EL to improve type safety. (rjung)
       </update>

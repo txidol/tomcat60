@@ -179,16 +179,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung, mturk
   -1: 
 
-* Fix ClassCastException in EL ExpressionBuilder when we
-  try to cast a NullPointerException to an ELException.
-  I still need to investigate where the NPE came from,
-  but simply casting seems unsafe in any case.
-  Use a cast if possible and recreate exception
-  otherwise.
-  http://svn.apache.org/viewvc?rev=696716&view=rev
-  +1: rjung, markt, mturk
-  -1: 
-
 * Correct wrong "No role found" debug message,
   logged in RealmBase even if a role was found.
   http://svn.apache.org/viewvc?rev=697158&view=rev
