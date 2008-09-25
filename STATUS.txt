@@ -149,13 +149,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mark
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45447
-  More Spanish translations that I missed in the previous commit
-  Patch by Jesus Marin
-  http://svn.apache.org/viewvc?rev=696810&view=rev
-  +1: markt, rjung, mturk
-  -1: 
-
 * Correct wrong "No role found" debug message,
   logged in RealmBase even if a role was found.
   http://svn.apache.org/viewvc?rev=697158&view=rev

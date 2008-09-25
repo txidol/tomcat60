@@ -51,6 +51,11 @@
         <bug>45441</bug>: Correctly map filters for FORWARD and INCLUDE. (markt)
       </fix>
       <fix>
+        <bug>45447</bug>: Convert Spanish resource files to use UTF-8 and provide
+        translations where previously missing. Patch provided by Jesus Marin.
+        (markt)
+      </fix>
+      <fix>
         <bug>45453</bug>: Remove potential race condition in JDBC Realm.
         Based on a patch by Santtu Hyrkk. (markt)
       </fix>
