@@ -106,11 +106,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: pero
   -1: 
 
-* Fix cut and paste error in JSP EL examples
-  http://svn.apache.org/viewvc?rev=694791&view=rev
-  +1: markt, remm, rjung
-  -1: 
-
 * Fix log a warning if we create maxThreads
   http://svn.apache.org/viewvc?rev=694951&view=rev
   +1: markt
