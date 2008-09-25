@@ -108,7 +108,11 @@
         regression caused by the previous fix for <bug>42565</bug>. The original
         fix for <bug>42565</bug> has been reverted and a new fix applied.
         (markt)
-      </fix> 
+      </fix>
+      <fix>
+        <bug>45648</bug>: Don't trim the last character when parsing the EL
+        namespace. (markt)
+      </fix>
       <fix>
         <bug>45666</bug>: Prevent infinite loop on include. (markt)
       </fix>
