@@ -171,11 +171,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (maybe, don't know ...), pero ( Is close and timeout also working with APR?)
   -1: 
 
-* Tab and trailing space cleanup of EL.
-  http://svn.apache.org/viewvc?rev=696702&view=rev
-  +1: rjung, markt, mturk
-  -1: 
-
 * More EL fixes. Add lookaheads to prevent parsing ambiguity
   http://svn.apache.org/viewvc?rev=696780&view=rev (the change)
   http://svn.apache.org/viewvc?rev=696782&view=rev (the auto generated code)

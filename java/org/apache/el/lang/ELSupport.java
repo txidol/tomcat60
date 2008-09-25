@@ -139,7 +139,7 @@ public class ELSupport {
             return obj0.equals(obj1);
         }
     }
-    
+
     /**
      * @param obj
      * @param type
