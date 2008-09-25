@@ -149,12 +149,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mark, remm
   -1: 
 
-* Correct wrong "No role found" debug message,
-  logged in RealmBase even if a role was found.
-  http://svn.apache.org/viewvc?rev=697158&view=rev
-  +1: rjung, mturk, markt, remm
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
   Never use empty reason phrase.
   http://svn.apache.org/viewvc?rev=697183&view=rev

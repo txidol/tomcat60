@@ -35,6 +35,10 @@
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix>
+        Correct wrong "No role found" debug message,
+        logged in RealmBase even if a role was found. (rjung)
+      </fix>
       <fix><bug>44809</bug>Improve AprLifecycleListener Error Messages. (jfclere)</fix>
       <fix>
         Log AccessControlException for context specific logging.properties
