@@ -196,3 +196,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=649637&view=rev
   +1: rjung, markt, remm (but cosmetic changes should stop in this branch)
   -1:
+
+* Partial fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45878
+  Add proper manifests (regression from 5.5.x) and LICENSE & NOTICE files
+  Lots of ways to do this. Alternative/better suggestions welcome
+  http://svn.apache.org/viewvc?rev=699128&view=rev
+  +1: markt
+  -1: 
