@@ -242,3 +242,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, mturk, rjung
   -1:
   rjung: Please add NOTICE to the uninstall section of the nsi file as well.
+
+* Update tc-native to lastest version:
+  http://people.apache.org/~jfclere/patches/patch.new-tcnative
+  +1: jclere
+  -1:
