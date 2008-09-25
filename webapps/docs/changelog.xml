@@ -111,6 +111,10 @@
         Correct typo in JSP EL examples. (markt)
       </fix>
       <fix>
+        <bug>45427</bug>: Correctly handle unmatched quotes in EL expressions.
+        (markt)
+      </fix>
+      <fix>
         <bug>45511</bug>: The failure of the <code>empty</code> keyword was a
         regression caused by the previous fix for <bug>42565</bug>. The original
         fix for <bug>42565</bug> has been reverted and a new fix applied.

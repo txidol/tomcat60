@@ -115,7 +115,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44382
   Use HttpOnly for session cookies. This is enabled by default. Feel free to
-  caveat you vote with a preference for disabled by default.
+  caveat your vote with a preference for disabled by default.
   http://svn.apache.org/viewvc?rev=694992&view=rev
   +1: mark (prefer enabled, happy with disabled), rjung
    0: remm (not so elegant, not sure about default value)
@@ -135,12 +135,6 @@ PATCHES PROPOSED TO BACKPORT:
       markt: No change in the TCK results with this patch. We have the
              same EL related failures we have without the patch. I'll
              look into them as separate issues.
-  -1: 
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45427
-  Correct parsing of quoted stings in EL
-  http://svn.apache.org/viewvc?rev=696278&view=rev
-  +1: markt, remm, mturk
   -1: 
 
 * Allow asynchronous close() and setTimeout() on CometEvents
