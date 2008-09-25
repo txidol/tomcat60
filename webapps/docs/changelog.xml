@@ -70,6 +70,10 @@
         be instantiated. (funkman) 
       </add>
       <fix>
+        <bug>45628</bug>: When checking MANIFEST dependancies, JARs without
+        dependencies should allows be considered to be full-filled. (markt) 
+      </fix>
+      <fix>
         <bug>45785</bug>: Ignore directories named xxx.jar in WEB-INF/lib.
         (markt)
       </fix>
