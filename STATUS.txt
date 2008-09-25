@@ -140,7 +140,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Allow asynchronous close() and setTimeout() on CometEvents
   http://svn.apache.org/viewvc?view=rev&revision=645175
   +1: fhanik
-   0: remm (maybe, don't know ...), pero ( Is close and timeout also working with APR?)
+   0: remm (maybe, don't know ...), pero ( Is close and timeout also working with APR? remm: APR does not do per connection timeout)
   -1: 
 
 * More EL fixes. Add lookaheads to prevent parsing ambiguity
@@ -155,7 +155,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, mturk, markt
   -1: remm (I think HttpMessages.getMessage should return something rather than null, 
             most likely something like sc.ZZZ like you are doing, otherwise you need to fix
-            the APR implementation as well; 
+            the two other AJP implementations as well; 
             if I understand correctly, trouble will occur with AJP if status is something 467,
             with no message set)
 
@@ -165,9 +165,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=697192&view=rev
   Original change: http://svn.apache.org/viewvc?rev=486217&view=rev
   +1: rjung, mturk, markt
-  -1: remm (- bodyMsg.appendInt(AjpConstants.MAX_READ_SIZE + packetSize - AjpConstants.MAX_PACKET_SIZE); looks wrong
-            - also partially applies to the two other AJP connectors
-            - not sure why forcing AjpConstants.MAX_PACKET_SIZE; either this shouldn't be done or the constant name should change)
+   0: remm (also partially applies to the two other AJP connectors)
 
 * Remove admin app from logging configuration
   http://svn.apache.org/viewvc?rev=698012&view=rev
