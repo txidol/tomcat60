@@ -93,10 +93,13 @@
         <bug>45591</bug>: NPE on start-up failure in some cases. Based on a
         patch by Matt Passell. (markt)
       </fix>
-	</changelog>
+    </changelog>
   </subsection>
   <subsection name="Jasper">
     <changelog>
+      <update>
+        Use more generics in EL to improve type safety. (rjung)
+      </update>
       <fix>
         <bug>45511</bug>: The failure of the <code>empty</code> keyword was a
         regression caused by the previous fix for <bug>42565</bug>. The original
@@ -120,7 +123,7 @@
   </subsection>
 </section>
 <section name="Tomcat 6.0.18 (remm)">
-  <subsection name="Cataina">
+  <subsection name="Catalina">
     <changelog>
       <fix>
         <bug>42727</bug>: Correctly handle request lines that are exact
@@ -807,7 +810,7 @@
         Fix FarmWarDeployer can be only configured as host subelement (pero)
       </fix>
       <fix>
-      	Fix wrong &amp;&amp; at ReplicationValve (pero)
+        Fix wrong &amp;&amp; at ReplicationValve (pero)
       </fix>
       <update>
         Add get/set methods for properties in the Tcp Failure detector.

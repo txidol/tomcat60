@@ -179,16 +179,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung, mturk
   -1: 
 
-* Use generics in EL to improve type safetyness.
-  Please check readExternal() in FunctionMapperImpl
-  and VariableMapperImpl. The type of the persisted
-  Map does change. Does this pose a consistency
-  problem with other components or older, already
-  persisted Maps?
-  http://svn.apache.org/viewvc?rev=696714&view=rev
-  +1: rjung, markt, mturk
-  -1: 
-
 * Fix ClassCastException in EL ExpressionBuilder when we
   try to cast a NullPointerException to an ELException.
   I still need to investigate where the NPE came from,
