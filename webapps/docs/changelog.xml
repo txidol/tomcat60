@@ -144,6 +144,14 @@
       </add>
     </changelog>
   </subsection>
+  <subsection name="Other">
+    <changelog>
+      <fix>
+        <bug>45879</bug>: Move NOTICE file from documentation webapp to the
+        installation directory. (markt)
+      </fix>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.18 (remm)">
   <subsection name="Catalina">

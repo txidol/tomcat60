@@ -136,6 +136,7 @@ Section "Core" SecTomcatCore
   SetOutPath $INSTDIR
   File tomcat.ico
   File LICENSE
+  File NOTICE
   SetOutPath $INSTDIR\lib
   File /r lib\*.*
   SetOutPath $INSTDIR\logs
@@ -668,6 +669,7 @@ Section Uninstall
   RMDir /r "$SMPROGRAMS\Apache Tomcat 6.0"
   Delete "$INSTDIR\tomcat.ico"
   Delete "$INSTDIR\LICENSE"
+  Delete "$INSTDIR\NOTICE"
   RMDir /r "$INSTDIR\bin"
   RMDir /r "$INSTDIR\lib"
   Delete "$INSTDIR\conf\*.dtd"
