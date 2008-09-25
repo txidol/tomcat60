@@ -231,7 +231,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove admin app from logging configuration
   http://svn.apache.org/viewvc?rev=698012&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Add CombinedRealm and LockOutRealm with docs
@@ -248,6 +248,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45879
   Move NOTICE file from docs webapp to install dir
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=45879
-  +1: markt, mturk
+  http://svn.apache.org/viewvc?rev=698629&view=rev
+  +1: markt, mturk, rjung
   -1:
+  rjung: Please add NOTICE to the uninstall section of the nsi file as well.
