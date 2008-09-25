@@ -162,7 +162,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45427
   Correct parsing of quoted stings in EL
   http://svn.apache.org/viewvc?rev=696278&view=rev
-  +1: markt, remm
+  +1: markt, remm, mturk
   -1: 
 
 * Allow asynchronous close() and setTimeout() on CometEvents
@@ -173,7 +173,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Tab and trailing space cleanup of EL.
   http://svn.apache.org/viewvc?rev=696702&view=rev
-  +1: rjung, markt
+  +1: rjung, markt, mturk
   -1: 
 
 * More EL fixes. Add lookaheads to prevent parsing ambiguity
@@ -186,7 +186,7 @@ PATCHES PROPOSED TO BACKPORT:
   More Spanish translations that I missed in the previous commit
   Patch by Jesus Marin
   http://svn.apache.org/viewvc?rev=696810&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, mturk
   -1: 
 
 * Use generics in EL to improve type safetyness.
@@ -196,7 +196,7 @@ PATCHES PROPOSED TO BACKPORT:
   problem with other components or older, already
   persisted Maps?
   http://svn.apache.org/viewvc?rev=696714&view=rev
-  +1: rjung, markt
+  +1: rjung, markt, mturk
   -1: 
 
 * Fix ClassCastException in EL ExpressionBuilder when we
@@ -206,19 +206,19 @@ PATCHES PROPOSED TO BACKPORT:
   Use a cast if possible and recreate exception
   otherwise.
   http://svn.apache.org/viewvc?rev=696716&view=rev
-  +1: rjung, markt
+  +1: rjung, markt, mturk
   -1: 
 
 * Correct wrong "No role found" debug message,
   logged in RealmBase even if a role was found.
   http://svn.apache.org/viewvc?rev=697158&view=rev
-  +1: rjung
+  +1: rjung, mturk
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
   Never use empty reason phrase.
   http://svn.apache.org/viewvc?rev=697183&view=rev
-  +1: rjung
+  +1: rjung, mturk
   -1: 
 
 * Allow huge request body packets for AJP13.
@@ -226,7 +226,7 @@ PATCHES PROPOSED TO BACKPORT:
   carried forward to trunk and tc6.0.x.
   http://svn.apache.org/viewvc?rev=697192&view=rev
   Original change: http://svn.apache.org/viewvc?rev=486217&view=rev
-  +1: rjung
+  +1: rjung, mturk
   -1: 
 
 * Remove admin app from logging configuration
@@ -243,11 +243,11 @@ PATCHES PROPOSED TO BACKPORT:
   Add special handing to the Windows installer for a charset that doesn't follow
   the standard naming convention
   http://svn.apache.org/viewvc?rev=698613&view=rev
-  +1: markt
+  +1: markt, mturk
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45879
   Move NOTICE file from docs webapp to install dir
   https://issues.apache.org/bugzilla/show_bug.cgi?id=45879
-  +1: markt
+  +1: markt, mturk
   -1:
