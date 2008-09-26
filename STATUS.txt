@@ -183,3 +183,20 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=699128&view=rev
   +1: markt
   -1: 
+
+* Make the size limit on objects placed in the static resource cache configurable
+  http://svn.apache.org/viewvc?rev=699287&view=rev
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45851
+  Fix NPE and outof order message processing issues
+  http://svn.apache.org/viewvc?rev=699427&view=rev
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45285
+  Check super class for preDestroy and postContruct
+  http://people.apache.org/~markt/patches/2008-09-26-bug45285.patch
+  +1: markt
+  -1:
