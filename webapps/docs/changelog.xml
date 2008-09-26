@@ -151,6 +151,10 @@
   <subsection name="Other">
     <changelog>
       <fix>
+        <bug>45852</bug>: Add special handling for cp932 (aka ms932) when
+        creating tomcat-users.xml with Windows installer. (markt)
+      </fix>
+      <fix>
         <bug>45879</bug>: Move NOTICE file from documentation webapp to the
         installation directory. (markt)
       </fix>

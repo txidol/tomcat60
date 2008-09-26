@@ -172,13 +172,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm (but you should stop adding features at some point)
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45852
-  Add special handing to the Windows installer for a charset that doesn't follow
-  the standard naming convention
-  http://svn.apache.org/viewvc?rev=698613&view=rev
-  +1: markt, mturk, remm (arg, hack)
-  -1: 
-
 * Update tc-native to lastest version:
   http://people.apache.org/~jfclere/patches/patch.new-tcnative
   +1: jclere, markt, remm
