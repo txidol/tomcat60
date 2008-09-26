@@ -167,11 +167,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, mturk, markt
    0: remm (also partially applies to the two other AJP connectors)
 
-* Remove admin app from logging configuration
-  http://svn.apache.org/viewvc?rev=698012&view=rev
-  +1: markt, rjung, remm
-  -1: 
-
 * Add CombinedRealm and LockOutRealm with docs
   http://people.apache.org/~markt/patches/2008-09-24-lockout-realm.patch
   +1: markt, remm (but you should stop adding features at some point)
