@@ -189,12 +189,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: jclere, markt, remm
   -1:
 
-* Backport "Remove unused code" in ELSupport.java.
-  Keeps trunk and tc6 in sync and is no risk.
-  http://svn.apache.org/viewvc?rev=649637&view=rev
-  +1: rjung, markt, remm (but cosmetic changes should stop in this branch)
-  -1:
-
 * Partial fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45878
   Add proper manifests (regression from 5.5.x) and LICENSE & NOTICE files
   Lots of ways to do this. Alternative/better suggestions welcome
