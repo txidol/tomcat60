@@ -233,3 +233,7 @@ PATCHES PROPOSED TO BACKPORT:
   -0: remm (actually, the optimization would be to return the original String
             if it was not modified, and avoid doing things with a StringBuffer)
 
+* Fix SSI date format sync issue reported by Find Bugs
+  http://svn.apache.org/viewvc?rev=699714&view=rev
+  +1: markt
+  -1: 
