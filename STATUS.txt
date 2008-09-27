@@ -186,7 +186,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Make the size limit on objects placed in the static resource cache configurable
   http://svn.apache.org/viewvc?rev=699287&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45851
@@ -198,12 +198,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45285
   Check super class for preDestroy and postContruct
   http://people.apache.org/~markt/patches/2008-09-26-bug45285.patch
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Fix serialisation issue reported by Find Bugs
   http://svn.apache.org/viewvc?rev=699633&view=rev
   +1: markt
+   0: remm (StdContext was marked as Serializable for an experiment; obviously it won't work)
   -1:
 
 * Fix small memory leak found by Find Bugs
@@ -213,21 +214,22 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix HTML decoding bug found by Find Bugs
   http://svn.apache.org/viewvc?rev=699635&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix ASCII parsing bug found by Find Bugs
   http://svn.apache.org/viewvc?rev=699644&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix casting bug found by Find Bugs
   http://svn.apache.org/viewvc?rev=699645&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix String comparision bugs found by Find Bugs
   http://svn.apache.org/viewvc?rev=699646&view=rev
   +1: markt
-  -1: 
+  -0: remm (actually, the optimization would be to return the original String
+            if it was not modified, and avoid doing things with a StringBuffer)
 
