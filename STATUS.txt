@@ -200,3 +200,34 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2008-09-26-bug45285.patch
   +1: markt
   -1:
+
+* Fix serialisation issue reported by Find Bugs
+  http://svn.apache.org/viewvc?rev=699633&view=rev
+  +1: markt
+  -1:
+
+* Fix small memory leak found by Find Bugs
+  http://svn.apache.org/viewvc?rev=699634&view=rev
+  +1: markt
+  -1: 
+
+* Fix HTML decoding bug found by Find Bugs
+  http://svn.apache.org/viewvc?rev=699635&view=rev
+  +1: markt
+  -1: 
+
+* Fix ASCII parsing bug found by Find Bugs
+  http://svn.apache.org/viewvc?rev=699644&view=rev
+  +1: markt
+  -1: 
+
+* Fix casting bug found by Find Bugs
+  http://svn.apache.org/viewvc?rev=699645&view=rev
+  +1: markt
+  -1: 
+
+* Fix String comparision bugs found by Find Bugs
+  http://svn.apache.org/viewvc?rev=699646&view=rev
+  +1: markt
+  -1: 
+
