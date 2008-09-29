@@ -164,7 +164,7 @@ PATCHES PROPOSED TO BACKPORT:
   carried forward to trunk and tc6.0.x.
   http://svn.apache.org/viewvc?rev=697192&view=rev
   Original change: http://svn.apache.org/viewvc?rev=486217&view=rev
-  +1: rjung, mturk, markt
+  +1: rjung, mturk, markt, pero
    0: remm (also partially applies to the two other AJP connectors)
 
 * Add CombinedRealm and LockOutRealm with docs
