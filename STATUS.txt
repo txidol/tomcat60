@@ -153,11 +153,7 @@ PATCHES PROPOSED TO BACKPORT:
   Never use empty reason phrase.
   http://svn.apache.org/viewvc?rev=697183&view=rev
   +1: rjung, mturk, markt
-  -1: remm (I think HttpMessages.getMessage should return something rather than null, 
-            most likely something like sc.ZZZ like you are doing, otherwise you need to fix
-            the two other AJP implementations as well; 
-            if I understand correctly, trouble will occur with AJP if status is something 467,
-            with no message set)
+   0: remm (also affects to the two other AJP connectors)
 
 * Allow huge request body packets for AJP13.
   This was already applied to connectors, but never
@@ -165,7 +161,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=697192&view=rev
   Original change: http://svn.apache.org/viewvc?rev=486217&view=rev
   +1: rjung, mturk, markt, pero
-   0: remm (also partially applies to the two other AJP connectors)
+   0: remm (also affects to the two other AJP connectors)
 
 * Add CombinedRealm and LockOutRealm with docs
   http://people.apache.org/~markt/patches/2008-09-24-lockout-realm.patch
@@ -236,6 +232,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix SSI date format sync issue reported by Find Bugs
   http://svn.apache.org/viewvc?rev=699714&view=rev
   +1: markt
+   0: remm (ServerCookie needs the same patch, after looking at the code using DateTool)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45906
@@ -243,5 +240,5 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Chris Hubick
   http://svn.apache.org/viewvc?rev=700125&view=rev
   Note: Deleted getETag(boolean) method to remain but deprecated
-  +1: markt
+  +1: markt, remm (I was -1 originally, but it may not be so bad)
   -1: 
