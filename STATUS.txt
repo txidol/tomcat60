@@ -237,3 +237,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=699714&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45906
+  Improve ETag handling in ResourceAttributes
+  Patch provided by Chris Hubick
+  http://svn.apache.org/viewvc?rev=700125&view=rev
+  Note: Deleted getETag(boolean) method to remain but deprecated
+  +1: markt
+  -1: 
