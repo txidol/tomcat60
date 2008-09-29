@@ -236,3 +236,10 @@ PATCHES PROPOSED TO BACKPORT:
   Note: Deleted getETag(boolean) method to remain but deprecated
   +1: markt, remm (I was -1 originally, but it may not be so bad)
   -1: 
+
+* Fix some thread safety issues.
+  Deprecate (rather than delete) any deleted code that isn't already deprecated
+  http://svn.apache.org/viewvc?rev=699714&view=rev (previous patch)
+  http://svn.apache.org/viewvc?rev=700167&view=rev (additional changes)
+  +1: mark
+  -1: 
