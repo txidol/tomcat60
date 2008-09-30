@@ -228,6 +228,15 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -0: remm (actually, the optimization would be to return the original String
             if it was not modified, and avoid doing things with a StringBuffer)
+    The simplest would be to add a (redundant) check at the beginning of replaceProperties,
+    and although the "bug" finder program would complain, I think the == check for the string
+    is acceptable:
+    public static String replaceProperties(String value, Hashtable staticProp,
+            PropertySource dynamicProp[]) {
+        if (value.indexOf("$") < 0) {
+            return value;
+        }
+        StringBuffer sb = new StringBuffer();
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45906
   Improve ETag handling in ResourceAttributes
@@ -241,5 +250,5 @@ PATCHES PROPOSED TO BACKPORT:
   Deprecate (rather than delete) any deleted code that isn't already deprecated
   http://svn.apache.org/viewvc?rev=699714&view=rev (previous patch)
   http://svn.apache.org/viewvc?rev=700167&view=rev (additional changes)
-  +1: mark
+  +1: mark, remm
   -1: 
