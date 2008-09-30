@@ -252,3 +252,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=700167&view=rev (additional changes)
   +1: mark, remm
   -1: 
+
+* Add a new listener that fixes the ports used by JMX so jconsole etc can be used
+  through a firewall, ssh tunnel, etc
+  http://svn.apache.org/viewvc?rev=699523&view=rev
+  +1: markt
+  -1: 
