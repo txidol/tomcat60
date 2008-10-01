@@ -252,3 +252,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=700167&view=rev (additional changes)
   +1: mark, remm
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
+  Don't include invalid (usually linked when allowLinking=false) resources to be
+  inclued when listing the resources in a collection.
+  http://svn.apache.org/viewvc?rev=700784&view=rev
+  +1: markt
+  -1: 
