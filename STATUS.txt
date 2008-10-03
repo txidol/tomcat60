@@ -259,3 +259,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=701355&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
+  See commit message for details of negligable performance impact
+  http://svn.apache.org/viewvc?rev=701358&view=rev
+  +1: markt
+  -1: 
