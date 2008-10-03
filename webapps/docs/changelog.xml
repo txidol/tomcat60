@@ -148,6 +148,14 @@
       </add>
     </changelog>
   </subsection>
+  <subsection name="Webapps">
+    <changelog>
+      <fix>
+        <bug>45940</bug>: Correct name of username attribute for JDBC resources
+        in JNDI how to. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <fix>
