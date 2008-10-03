@@ -254,3 +254,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mark, remm
   -1: 
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45933
+  Don't use xml parser from web-app to process tld files
+  http://svn.apache.org/viewvc?rev=701355&view=rev
+  +1: markt
+  -1: 
