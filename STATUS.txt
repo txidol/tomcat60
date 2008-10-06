@@ -271,3 +271,8 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
   +1: markt
   -1: 
+
+* Fix issue with nested contexts and context.xml files
+  http://svn.apache.org/viewvc?rev=702208&view=rev
+  +1: markt
+  -1: 
