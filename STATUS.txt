@@ -124,20 +124,6 @@ PATCHES PROPOSED TO BACKPORT:
   rjung: slightly prefer enabled for 6.0.x because of increased security by default,
          but disabled for tc5.5.x because of the small risk of breaking existing apps.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45451
-  Don't unescape tag attribute values with EL twice
-  Also fix numerous \${...} issues
-  http://svn.apache.org/viewvc?rev=696061&view=rev
-  Note: Methods deleted in the above patch will be deprecated rather than
-        deleted when ported to 6.0.x
-  +1: markt
-   0: 
-      markt: No change in the TCK results with this patch. We have the
-             same EL related failures we have without the patch. I'll
-             look into them as separate issues.
-  -1: remm (this is the change that causes the test regression, so the test should be confirmed or invalidated
-            before this is considered for inclusion)
-
 * Allow asynchronous close() and setTimeout() on CometEvents
   http://svn.apache.org/viewvc?view=rev&revision=645175
   +1: fhanik
