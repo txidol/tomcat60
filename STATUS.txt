@@ -254,7 +254,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix regression in https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
   Patch provided by Nils Eckert
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
+  http://svn.apache.org/viewvc?rev=702632&view=rev
   +1: markt
   -1: 
 
