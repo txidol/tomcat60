@@ -93,7 +93,7 @@ PATCHES PROPOSED TO BACKPORT:
   Unlikely to be an issue for most (all?) circumstances but technically
   needs fixing,
   http://svn.apache.org/viewvc?rev=691392&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, fhanik
   -1: 
 
 * ETag improvement: https://issues.apache.org/bugzilla/show_bug.cgi?id=45735
@@ -103,7 +103,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Handle session suffix rewrite at JvmRouteBinderValve with parallel requests from same client
   http://svn.apache.org/viewvc?rev=693378&view=rev
-  +1: pero
+  +1: pero, fhanik
   -1: 
 
 * Fix log a warning if we create maxThreads
@@ -268,3 +268,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=702219&view=rev
   +1: markt
   -1: 
+
+* Derefence socket when the request is complete
+  http://svn.apache.org/viewvc?rev=702676&view=rev
+  +1: fhanik
+  
