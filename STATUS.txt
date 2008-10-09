@@ -88,14 +88,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45618
-  Make sure selector is closed.
-  Unlikely to be an issue for most (all?) circumstances but technically
-  needs fixing,
-  http://svn.apache.org/viewvc?rev=691392&view=rev
-  +1: markt, rjung, fhanik
-  -1: 
-
 * ETag improvement: https://issues.apache.org/bugzilla/show_bug.cgi?id=45735
   +1: remm, markt, rjung
   -1: 
