@@ -277,3 +277,7 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by Florent BENOIT
   +1: markt
   -1: 
+
+* Fix classcast exception upon shutdown(edgecase)
+  http://svn.apache.org/viewvc?rev=706433&view=rev 
+  +1: fhanik
