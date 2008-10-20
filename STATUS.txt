@@ -170,12 +170,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45285
-  Check super class for preDestroy and postContruct
-  http://people.apache.org/~markt/patches/2008-09-26-bug45285.patch
-  +1: markt, remm
-  -1:
-
 * Fix serialisation issue reported by Find Bugs
   http://svn.apache.org/viewvc?rev=699633&view=rev
   +1: markt
