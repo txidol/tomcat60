@@ -230,23 +230,23 @@ PATCHES PROPOSED TO BACKPORT:
   Don't use xml parser from web-app to process tld files
   http://svn.apache.org/viewvc?rev=701355&view=rev
   +1: markt
-  -1: 
+  -0: remm (it is a refactoring, and is not appropriate to me in 6.0.x)
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
   See commit message for details of negligable performance impact
   http://svn.apache.org/viewvc?rev=701358&view=rev
   +1: markt
-  -1: 
+  -0: remm (I also do not think the patch is a good idea as a backport)
 
 * Fix regression in https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
   Patch provided by Nils Eckert
   http://svn.apache.org/viewvc?rev=702632&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix issue with nested contexts and context.xml files
   http://svn.apache.org/viewvc?rev=702208&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45951
@@ -257,27 +257,31 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Derefence socket when the request is complete
   http://svn.apache.org/viewvc?rev=702676&view=rev
-  +1: fhanik
+  +1: fhanik, remm
   -1: 
 
 * Port remaining EL changes. This is all the remaining EL related
   patches from trunk
   http://people.apache.org/~markt/patches/2008-10-19-el-tck-various.patch
-  +1: markt
+  +1: markt, remm (let's try it)
   -1: 
 
 * Backport NCDFE fix from trunk (TCK failures without it)
   http://svn.apache.org/viewvc?rev=640888&view=rev 
   +1: markt
+   0: remm (no clue how it can cause a NCDF, and the TCK actually works for me; besides that code is 
+            really old to me, so where would this come from ?)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45285
   Correctly handle annotations in parent classes
   http://people.apache.org/~markt/patches/2008-10-20-bug45285-v2.patch
   Based on a patch by Florent BENOIT
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix classcast exception upon shutdown(edgecase)
   http://svn.apache.org/viewvc?rev=706433&view=rev 
   +1: fhanik
+  -1: 
+  
