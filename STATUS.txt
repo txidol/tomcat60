@@ -285,3 +285,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
   
+* maxThreads should have the correct default value
+  http://svn.apache.org/viewvc?rev=707175&view=rev 
+  +1: fhanik
+  -1: 
+  
