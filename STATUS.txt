@@ -285,8 +285,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
   
-* maxThreads should have the correct default value
-  http://svn.apache.org/viewvc?rev=707175&view=rev 
+* maxThreads to be 200 by default
+  http://svn.apache.org/viewvc?rev=707264&view=rev 
   +1: fhanik
   -1: 
   
