@@ -85,7 +85,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45691
   http://svn.apache.org/viewvc?rev=690693&view=rev
   NB: Methods deleted in JspUtil to be deprecated rather than deleted
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1:
 
 * ETag improvement: https://issues.apache.org/bugzilla/show_bug.cgi?id=45735
@@ -103,6 +103,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
    0: remm (other endpoints have the same logic but no patch, and logging could pile up quickly)
       markt Because thread count only grows there will only ever be one log message
+      fhanik would be useful to have the patch consistent across endpoints
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44382
@@ -112,6 +113,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mark (prefer enabled, happy with disabled), rjung
    0: remm (not so elegant, not sure about default value)
       markt It can be improved once the API is fixed in the 3.0 spec
+      fhanik why did we change it in trunk to begin with if we are gonna change it again when the spec comes out
+             lets just implement the spec in trunk, and discuss the simplest solution for 6.0.x
+             but I don't agree with changing the default value
   -1: 
   rjung: slightly prefer enabled for 6.0.x because of increased security by default,
          but disabled for tc5.5.x because of the small risk of breaking existing apps.
@@ -144,7 +148,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add CombinedRealm and LockOutRealm with docs
   http://people.apache.org/~markt/patches/2008-09-24-lockout-realm.patch
-  +1: markt, remm (but you should stop adding features at some point)
+  +1: markt, remm (but you should stop adding features at some point), fhanik
   -1: 
 
 * Update tc-native to lastest version:
@@ -156,18 +160,19 @@ PATCHES PROPOSED TO BACKPORT:
   Add proper manifests (regression from 5.5.x) and LICENSE & NOTICE files
   Lots of ways to do this. Alternative/better suggestions welcome
   http://svn.apache.org/viewvc?rev=699128&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Make the size limit on objects placed in the static resource cache configurable
   http://svn.apache.org/viewvc?rev=699287&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45851
   Fix NPE and outof order message processing issues
   http://svn.apache.org/viewvc?rev=699427&view=rev
   +1: markt
+   0: 
   -1: 
 
 * Fix serialisation issue reported by Find Bugs
@@ -178,22 +183,22 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix small memory leak found by Find Bugs
   http://svn.apache.org/viewvc?rev=699634&view=rev
-  +1: markt
+  +1: markt,fhanik
   -1: 
 
 * Fix HTML decoding bug found by Find Bugs
   http://svn.apache.org/viewvc?rev=699635&view=rev
-  +1: markt, remm
+  +1: markt, remm,fhanik
   -1: 
 
 * Fix ASCII parsing bug found by Find Bugs
   http://svn.apache.org/viewvc?rev=699644&view=rev
-  +1: markt, remm
+  +1: markt, remm,fhanik
   -1: 
 
 * Fix casting bug found by Find Bugs
   http://svn.apache.org/viewvc?rev=699645&view=rev
-  +1: markt, remm
+  +1: markt, remm,fhanik
   -1: 
 
 * Fix String comparision bugs found by Find Bugs
@@ -216,14 +221,14 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Chris Hubick
   http://svn.apache.org/viewvc?rev=700125&view=rev
   Note: Deleted getETag(boolean) method to remain but deprecated
-  +1: markt, remm (I was -1 originally, but it may not be so bad)
+  +1: markt, remm (I was -1 originally, but it may not be so bad),fhanik
   -1: 
 
 * Fix some thread safety issues.
   Deprecate (rather than delete) any deleted code that isn't already deprecated
   http://svn.apache.org/viewvc?rev=699714&view=rev (previous patch)
   http://svn.apache.org/viewvc?rev=700167&view=rev (additional changes)
-  +1: mark, remm
+  +1: mark, remm,fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45933
@@ -241,18 +246,18 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix regression in https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
   Patch provided by Nils Eckert
   http://svn.apache.org/viewvc?rev=702632&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix issue with nested contexts and context.xml files
   http://svn.apache.org/viewvc?rev=702208&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45951
   Support changing of JSESSIONID cookie name and jsessionid path parameter name
   http://svn.apache.org/viewvc?rev=702219&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Derefence socket when the request is complete
@@ -263,7 +268,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Port remaining EL changes. This is all the remaining EL related
   patches from trunk
   http://people.apache.org/~markt/patches/2008-10-19-el-tck-various.patch
-  +1: markt, remm (let's try it)
+  +1: markt, remm (let's try it), fhanik
   -1: 
 
 * Backport NCDFE fix from trunk (TCK failures without it)
