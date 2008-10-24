@@ -83,6 +83,9 @@
         dependencies should allows be considered to be full-filled. (markt) 
       </fix>
       <fix>
+        <bug>45735</bug>: Improve ETag handling. (remm)
+      </fix>
+      <fix>
         <bug>45785</bug>: Ignore directories named xxx.jar in WEB-INF/lib.
         (markt)
       </fix>

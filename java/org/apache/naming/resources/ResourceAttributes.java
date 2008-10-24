@@ -718,29 +718,29 @@ public class ResourceAttributes implements Attributes {
      * @return ETag
      */
     public String getETag(boolean strong) {
-        String result = null;
-        if (attributes != null) {
-            Attribute attribute = attributes.get(ETAG);
-            if (attribute != null) {
-                try {
-                    result = attribute.get().toString();
-                } catch (NamingException e) {
-                    ; // No value for the attribute
-                }
-            }
-        }
         if (strong) {
             // The strong ETag must always be calculated by the resources
-            result = strongETag;
+            if (strongETag != null)
+                return strongETag;
+            if (attributes != null) {
+                Attribute attribute = attributes.get(ETAG);
+                if (attribute != null) {
+                    try {
+                        strongETag = attribute.get().toString();
+                    } catch (NamingException e) {
+                        ; // No value for the attribute
+                    }
+                }
+            }
+            return strongETag;
         } else {
             // The weakETag is contentLenght + lastModified
             if (weakETag == null) {
                 weakETag = "W/\"" + getContentLength() + "-" 
                     + getLastModified() + "\"";
             }
-            result = weakETag;
+            return weakETag;
         }
-        return result;
     }
 
 

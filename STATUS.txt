@@ -73,11 +73,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: remm: configuring this is useless (esp on Windows, only the default behavior gives acceptable performance)
   -1: 
 
-* ETag improvement: https://issues.apache.org/bugzilla/show_bug.cgi?id=45735
-  +1: remm, markt, rjung
-  -1: 
-  rjung: I assume you are going to add it to trunk as well. Backport also applies to 5.5 and 4.1.
-
 * Handle session suffix rewrite at JvmRouteBinderValve with parallel requests from same client
   http://svn.apache.org/viewvc?rev=693378&view=rev
   +1: pero, fhanik
