@@ -126,11 +126,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, mturk, markt, pero
    0: remm (also affects to the two other AJP connectors)
 
-* Add CombinedRealm and LockOutRealm with docs
-  http://people.apache.org/~markt/patches/2008-09-24-lockout-realm.patch
-  +1: markt, remm (but you should stop adding features at some point), fhanik
-  -1: 
-
 * Update tc-native to lastest version:
   http://people.apache.org/~jfclere/patches/patch.new-tcnative
   +1: jclere, markt, remm
