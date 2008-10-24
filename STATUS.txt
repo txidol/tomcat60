@@ -282,7 +282,7 @@ PATCHES PROPOSED TO BACKPORT:
   Correctly handle annotations in parent classes
   http://people.apache.org/~markt/patches/2008-10-20-bug45285-v2.patch
   Based on a patch by Florent BENOIT
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix classcast exception upon shutdown(edgecase)
@@ -295,3 +295,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
   
+* Fix read/write timeout during async comet access
+  http://svn.apache.org/viewvc?rev=707670&view=rev 
+  +1: fhanik
+  -1:  
