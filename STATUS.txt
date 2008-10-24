@@ -49,15 +49,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm: no idea if it's better or worse (the fact that it's been closed is visible)
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45459
-  Include possible cause in error message since excpetion isn't that clear
-  http://svn.apache.org/viewvc?rev=680710&view=rev
-  +1: markt
-  -0: funkman ( Agree with Remy - just not as strongly (There is enough in the stacktrace that your fav search
-       engine can tell you what is wrong fairly quickly)
-  -1: remm (this error seems to be displayed by Class.newInstance() which should be ok to use; I am
-            not ok with the idea of working around every error message from JDKs)
-
 * Fix issue where the first request for a deleted JSPs returns as if the JSP
   still exists.
   http://svn.apache.org/viewvc?view=rev&revision=683969
