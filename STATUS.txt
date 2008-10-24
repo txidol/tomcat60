@@ -73,12 +73,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: remm: configuring this is useless (esp on Windows, only the default behavior gives acceptable performance)
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45691
-  http://svn.apache.org/viewvc?rev=690693&view=rev
-  NB: Methods deleted in JspUtil to be deprecated rather than deleted
-  +1: markt, remm, fhanik
-  -1:
-
 * ETag improvement: https://issues.apache.org/bugzilla/show_bug.cgi?id=45735
   +1: remm, markt, rjung
   -1: 
