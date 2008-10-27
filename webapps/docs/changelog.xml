@@ -98,6 +98,10 @@
         on a patch by Per Landberg. (markt)
       </fix>
       <fix>
+        <bug>45825</bug>: Correctly handle annotations in parent classes. Based
+        on a patch by Florent Benoit. (markt)
+      </fix>
+      <fix>
         <bug>45906</bug>: Further ETag handling improvements. Patch provided by
         Chris Hubick. (markt)
       </fix>
