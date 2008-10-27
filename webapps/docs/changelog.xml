@@ -48,6 +48,10 @@
         <bug>41407</bug>: Add CLIENT-CERT support to the JAAS Realm. (markt)
       </add>
       <fix>
+        <bug>43656</bug>: Correct regression in previous fix for this bug. Patch
+        provided by Nils Eckert. (markt)
+      </fix>
+      <fix>
         <bug>45419</bug>: Set Accept-Ranges for static resources served by
         DefaultServlet. (markt)
       </fix>
