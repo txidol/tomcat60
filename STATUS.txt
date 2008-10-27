@@ -151,21 +151,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt,fhanik
   -1: 
 
-* Fix String comparision bugs found by Find Bugs
-  http://svn.apache.org/viewvc?rev=699646&view=rev
-  +1: markt
-  -0: remm (actually, the optimization would be to return the original String
-            if it was not modified, and avoid doing things with a StringBuffer)
-    The simplest would be to add a (redundant) check at the beginning of replaceProperties,
-    and although the "bug" finder program would complain, I think the == check for the string
-    is acceptable:
-    public static String replaceProperties(String value, Hashtable staticProp,
-            PropertySource dynamicProp[]) {
-        if (value.indexOf("$") < 0) {
-            return value;
-        }
-        StringBuffer sb = new StringBuffer();
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45933
   Don't use xml parser from web-app to process tld files
   http://svn.apache.org/viewvc?rev=701355&view=rev
@@ -212,4 +197,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix read/write timeout during async comet access
   http://svn.apache.org/viewvc?rev=707670&view=rev 
   +1: fhanik, pero
-  -1:  
+  -1: 
+
+* Fix String comparison bugs found by Find Bugs using Remy's alternative solution
+  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/IntrospectionUtils.java?r1=708185&r2=708184&pathrev=708185
+  +1: markt
+  -1: 
