@@ -210,3 +210,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=708273&view=rev
   +1: markt, fhanik
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46077
+  Expose deferAccept
+  Patch provided by Michael Leinartas
+  http://svn.apache.org/viewvc?rev=708344&view=rev
+  +1: markt
+  -1: 
