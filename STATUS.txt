@@ -178,11 +178,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -0: remm (I also do not think the patch is a good idea as a backport)
 
-* Fix issue with nested contexts and context.xml files
-  http://svn.apache.org/viewvc?rev=702208&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45951
   Support changing of JSESSIONID cookie name and jsessionid path parameter name
   http://svn.apache.org/viewvc?rev=702219&view=rev

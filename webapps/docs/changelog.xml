@@ -124,6 +124,10 @@
       <fix>
         Fix some thread safety issues in date formatting. (markt)
       </fix>
+      <fix>
+        Correct handle multi-level contexts defined using context.xml files.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
