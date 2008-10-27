@@ -183,8 +183,12 @@ public class Constants {
     /**
      * A replacement char for "\$".
      * XXX This is a hack to avoid changing EL interpreter to recognize "\$"
+     * @deprecated
      */
     public static final char ESC = '\u001b';
+    /**
+     * @deprecated
+     */
     public static final String ESCStr = "'\\u001b'";
 
     /**

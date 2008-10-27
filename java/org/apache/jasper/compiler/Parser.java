@@ -27,7 +27,6 @@ import javax.servlet.jsp.tagext.TagFileInfo;
 import javax.servlet.jsp.tagext.TagInfo;
 import javax.servlet.jsp.tagext.TagLibraryInfo;
 
-import org.apache.jasper.Constants;
 import org.apache.jasper.JasperException;
 import org.apache.jasper.JspCompilationContext;
 import org.xml.sax.Attributes;
@@ -286,11 +285,10 @@ class Parser implements TagConstants {
             } else if (ch == '\\' && i + 1 < size) {
                 ch = tx.charAt(i + 1);
                 if (ch == '\\' || ch == '\"' || ch == '\'' || ch == '>') {
+                    // \ " and ' are always unescaped regardless of if they are
+                    // inside or outside of an EL expression. JSP.1.6 takes
+                    // precedence over JSP.1.3.10 (confirmed with EG).
                     buf.append(ch);
-                    i += 2;
-                } else if (ch == '$') {
-                    // Replace "\$" with some special char. XXX hack!
-                    buf.append(Constants.ESC);
                     i += 2;
                 } else {
                     buf.append('\\');
@@ -1335,11 +1333,8 @@ class Parser implements TagConstants {
                 }
                 char next = (char) reader.peekChar();
                 // Looking for \% or \$ or \#
-                // TODO: only recognize \$ or \# if isELIgnored is false, but since
-                // it can be set in a page directive, it cannot be determined
-                // here. Argh! (which is the way it should be since we shouldn't
-                // convolude multiple steps at once and create confusing parsers...)
-                if (next == '%' || next == '$' || next == '#') {
+                if (next == '%' || ((next == '$' || next == '#') &&
+                        !pageInfo.isELIgnored())) {
                     ch = reader.nextChar();
                 }
             }
