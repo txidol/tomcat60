@@ -93,6 +93,10 @@
         <bug>45823</bug>: Log missing request headers as '-' not 'null'. Based
         on a patch by Per Landberg. (markt)
       </fix>
+      <fix>
+        <bug>45906</bug>: Further ETag handling improvements. Patch provided by
+        Chris Hubick. (markt)
+      </fix>
       <add>
         Add the CombinedRealm that enables authentication to be attempted
         against multiple realms. (markt) 

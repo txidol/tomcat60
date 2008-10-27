@@ -2131,7 +2131,7 @@ public class WebdavServlet
                                                contentType);
                 }
                 generatedXML.writeProperty(null, "getetag",
-                                           getETag(cacheEntry.attributes));
+                                           cacheEntry.attributes.getETag());
                 generatedXML.writeElement(null, "resourcetype",
                                           XMLWriter.NO_CONTENT);
             } else {
@@ -2257,7 +2257,7 @@ public class WebdavServlet
                         propertiesNotFound.addElement(property);
                     } else {
                         generatedXML.writeProperty
-                            (null, "getetag", getETag(cacheEntry.attributes));
+                            (null, "getetag", cacheEntry.attributes.getETag());
                     }
                 } else if (property.equals("getlastmodified")) {
                     if (cacheEntry.context != null) {

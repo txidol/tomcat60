@@ -166,14 +166,6 @@ PATCHES PROPOSED TO BACKPORT:
         }
         StringBuffer sb = new StringBuffer();
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45906
-  Improve ETag handling in ResourceAttributes
-  Patch provided by Chris Hubick
-  http://svn.apache.org/viewvc?rev=700125&view=rev
-  Note: Deleted getETag(boolean) method to remain but deprecated
-  +1: markt, remm (I was -1 originally, but it may not be so bad),fhanik
-  -1: 
-
 * Fix some thread safety issues.
   Deprecate (rather than delete) any deleted code that isn't already deprecated
   http://svn.apache.org/viewvc?rev=699714&view=rev (previous patch)
