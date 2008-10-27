@@ -126,11 +126,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, mturk, markt, pero
    0: remm (also affects to the two other AJP connectors)
 
-* Update tc-native to lastest version:
-  http://people.apache.org/~jfclere/patches/patch.new-tcnative
-  +1: jclere, markt, remm
-  -1:
-
 * Partial fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45878
   Add proper manifests (regression from 5.5.x) and LICENSE & NOTICE files
   Lots of ways to do this. Alternative/better suggestions welcome

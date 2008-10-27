@@ -106,6 +106,9 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
+      <update>
+        Update tc-native to 1.1.15 in build.properties.default (jfclere)
+      </update>
       <fix>
         <bug>43327</bug>: Socket bind fails when using APR on a system with IPv6
         enabled but no explicit IPv6 address configured. (markt/jfclere)
