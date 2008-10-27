@@ -184,12 +184,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45951
   Support changing of JSESSIONID cookie name and jsessionid path parameter name
   http://svn.apache.org/viewvc?rev=702219&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, pero
   -1: 
 
 * Derefence socket when the request is complete
   http://svn.apache.org/viewvc?rev=702676&view=rev
-  +1: fhanik, remm, markt
+  +1: fhanik, remm, markt, pero
   -1: 
 
 * Backport NCDFE fix from trunk (TCK failures without it)
@@ -201,15 +201,15 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix classcast exception upon shutdown(edgecase)
   http://svn.apache.org/viewvc?rev=706433&view=rev 
-  +1: fhanik, markt
+  +1: fhanik, markt, pero
   -1: 
   
 * maxThreads to be 200 by default
   http://svn.apache.org/viewvc?rev=707264&view=rev 
-  +1: fhanik, markt
+  +1: fhanik, markt, pero
   -1: 
   
 * Fix read/write timeout during async comet access
   http://svn.apache.org/viewvc?rev=707670&view=rev 
-  +1: fhanik
+  +1: fhanik, pero
   -1:  
