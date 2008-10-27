@@ -80,10 +80,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix log a warning if we create maxThreads
   http://svn.apache.org/viewvc?rev=694951&view=rev
+  http://svn.apache.org/viewvc?rev=708195&view=rev
   +1: markt
-   0: remm (other endpoints have the same logic but no patch, and logging could pile up quickly)
+   0: remm (logging could pile up quickly)
       markt Because thread count only grows there will only ever be one log message
-      fhanik would be useful to have the patch consistent across endpoints
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44382
