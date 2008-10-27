@@ -221,6 +221,9 @@
         <bug>45940</bug>: Correct name of username attribute for JDBC resources
         in JNDI how to. (markt)
       </fix>
+      <fix>
+        <bug>46067</bug>: Fix typos in Advanced IO how to. (markt) 
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
