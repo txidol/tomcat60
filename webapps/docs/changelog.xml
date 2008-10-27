@@ -132,6 +132,10 @@
         Correct handle multi-level contexts defined using context.xml files.
         (markt)
       </fix>
+      <add>
+        Support changing of JSESSIONID cookie name and jsessionid path parameter
+        name. Based on a patch by Jean-frederic Clere. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
