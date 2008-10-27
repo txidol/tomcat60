@@ -166,13 +166,6 @@ PATCHES PROPOSED TO BACKPORT:
         }
         StringBuffer sb = new StringBuffer();
 
-* Fix some thread safety issues.
-  Deprecate (rather than delete) any deleted code that isn't already deprecated
-  http://svn.apache.org/viewvc?rev=699714&view=rev (previous patch)
-  http://svn.apache.org/viewvc?rev=700167&view=rev (additional changes)
-  +1: mark, remm,fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45933
   Don't use xml parser from web-app to process tld files
   http://svn.apache.org/viewvc?rev=701355&view=rev

@@ -117,6 +117,9 @@
       <fix>
         Fix cast error in JULI log factory. (markt)
       </fix>
+      <fix>
+        Fix some thread safety issues in date formatting. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

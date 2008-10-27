@@ -20,6 +20,10 @@ package org.apache.catalina.ssi;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
@@ -27,7 +31,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
-import org.apache.catalina.util.DateTool;
 /**
  * A HttpServletResponseWrapper, used from
  * <code>SSIServletExternalResolver</code>
@@ -42,6 +45,9 @@ public class ResponseIncludeWrapper extends HttpServletResponseWrapper {
      */
     private static final String CONTENT_TYPE = "content-type";
     private static final String LAST_MODIFIED = "last-modified";
+    private static final DateFormat RFC1123_FORMAT;
+    private final static String RFC1123_PATTERN = "EEE, dd MMM yyyy HH:mm:ss z";
+
     protected long lastModified = -1;
     private String contentType = null;
 
@@ -55,7 +61,11 @@ public class ResponseIncludeWrapper extends HttpServletResponseWrapper {
     private ServletContext context;
     private HttpServletRequest request;
 
-
+    static {
+        RFC1123_FORMAT = new SimpleDateFormat(RFC1123_PATTERN, Locale.US);
+        RFC1123_FORMAT.setTimeZone(TimeZone.getTimeZone("GMT"));
+    }
+    
     /**
      * Initialize our wrapper with the current HttpServletResponse and
      * ServletOutputStream.
@@ -208,7 +218,9 @@ public class ResponseIncludeWrapper extends HttpServletResponseWrapper {
         String lname = name.toLowerCase();
         if (lname.equals(LAST_MODIFIED)) {
             try {
-                lastModified = DateTool.rfc1123Format.parse(value).getTime();
+                synchronized(RFC1123_FORMAT) {
+                    lastModified = RFC1123_FORMAT.parse(value).getTime();
+                }
             } catch (Throwable ignore) { }
         } else if (lname.equals(CONTENT_TYPE)) {
             contentType = value;
@@ -228,7 +240,9 @@ public class ResponseIncludeWrapper extends HttpServletResponseWrapper {
         String lname = name.toLowerCase();
         if (lname.equals(LAST_MODIFIED)) {
             try {
-                lastModified = DateTool.rfc1123Format.parse(value).getTime();
+                synchronized(RFC1123_FORMAT) {
+                    lastModified = RFC1123_FORMAT.parse(value).getTime();
+                }
             } catch (Throwable ignore) { }
         }
         else if (lname.equals(CONTENT_TYPE))

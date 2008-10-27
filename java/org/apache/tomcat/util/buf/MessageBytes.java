@@ -568,6 +568,9 @@ public final class MessageBytes implements Cloneable, Serializable {
 	type=T_STR;   
     }
 
+    /**
+     * @deprecated
+     */
     public void setTime(long t) {
 	setTime( t, null );
     }
