@@ -186,7 +186,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Derefence socket when the request is complete
   http://svn.apache.org/viewvc?rev=702676&view=rev
-  +1: fhanik, remm
+  +1: fhanik, remm, markt
   -1: 
 
 * Backport NCDFE fix from trunk (TCK failures without it)
@@ -198,12 +198,12 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix classcast exception upon shutdown(edgecase)
   http://svn.apache.org/viewvc?rev=706433&view=rev 
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
   
 * maxThreads to be 200 by default
   http://svn.apache.org/viewvc?rev=707264&view=rev 
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
   
 * Fix read/write timeout during async comet access
