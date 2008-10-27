@@ -110,6 +110,9 @@
       <fix>
         Fix HTML decoding error in SSI processing. (markt)
       </fix>
+      <fix>
+        Fix cast error in JULI log factory. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
