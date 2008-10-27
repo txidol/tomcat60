@@ -171,6 +171,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=701355&view=rev
   +1: markt
   -0: remm (it is a refactoring, and is not appropriate to me in 6.0.x)
+           markt - It is a refactoring but the refactoring was necessary
+                   to change when TLDs were processed to avoid the bug. It
+                   isn't refactoring for the sake of refactoring.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
   See commit message for details of negligable performance impact
