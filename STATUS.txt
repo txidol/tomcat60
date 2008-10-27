@@ -133,13 +133,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Make the size limit on objects placed in the static resource cache configurable
-  http://svn.apache.org/viewvc?rev=699287&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45851
-  Fix NPE and outof order message processing issues
+  Fix NPE and out of order message processing issues
   http://svn.apache.org/viewvc?rev=699427&view=rev
   +1: markt
    0: 

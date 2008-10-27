@@ -102,6 +102,11 @@
         the functionality to lock out a user after too many failed logins.
         (markt)
       </add>
+      <add>
+        Make the upper size limit of the static resource cache configurable
+        since the default of <code>cacheMaxSize/20</code> gave too high a value
+        for large caches. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
