@@ -163,6 +163,9 @@
         <bug>45691</bug>: Prevent generation of duplicate variable names when
         generating code for JSPs. (markt)
       </fix>
+      <fix>
+        Correct signed/unsigned conversion error in ASCII parsing. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
