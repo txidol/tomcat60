@@ -189,12 +189,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, remm
   -1: 
 
-* Port remaining EL changes. This is all the remaining EL related
-  patches from trunk
-  http://people.apache.org/~markt/patches/2008-10-19-el-tck-various.patch
-  +1: markt, remm (let's try it), fhanik
-  -1: 
-
 * Backport NCDFE fix from trunk (TCK failures without it)
   http://svn.apache.org/viewvc?rev=640888&view=rev 
   +1: markt

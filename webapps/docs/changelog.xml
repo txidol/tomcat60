@@ -184,6 +184,12 @@
       <fix>
         Correct signed/unsigned conversion error in ASCII parsing. (markt)
       </fix>
+      <fix>
+        Fix various edge-cases when parsing EL, particularly inside attribute
+        values. Note the the Expert Group has confirmed that JSP.1.6 takes
+        precedence over JSP.1.3.10. Therefore EL in attributes must be escaped
+        twice.
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
