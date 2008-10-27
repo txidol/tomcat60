@@ -217,3 +217,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=708344&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46075
+  Don't create ByteArrayOutputStream at maxmimum possible size
+  http://svn.apache.org/viewvc?rev=708361&view=rev
+  +1: markt
+  -1: 
