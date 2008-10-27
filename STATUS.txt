@@ -151,11 +151,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt,fhanik
   -1: 
 
-* Fix HTML decoding bug found by Find Bugs
-  http://svn.apache.org/viewvc?rev=699635&view=rev
-  +1: markt, remm,fhanik
-  -1: 
-
 * Fix ASCII parsing bug found by Find Bugs
   http://svn.apache.org/viewvc?rev=699644&view=rev
   +1: markt, remm,fhanik

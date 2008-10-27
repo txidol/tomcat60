@@ -107,6 +107,9 @@
         since the default of <code>cacheMaxSize/20</code> gave too high a value
         for large caches. (markt)
       </add>
+      <fix>
+        Fix HTML decoding error in SSI processing. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
