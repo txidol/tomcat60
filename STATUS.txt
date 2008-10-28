@@ -210,6 +210,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=708273&view=rev
   +1: markt, fhanik
    0: remm (volatile seems equivalent to an AtomicLong)
+        I did devise something by replacing the accessedTimes as long by an int offset
+        based on the creation date. From what I understand, this should also address
+        the corruption issue, but the patch is more complex. 
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46077
