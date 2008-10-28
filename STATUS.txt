@@ -186,7 +186,7 @@ PATCHES PROPOSED TO BACKPORT:
   
 * maxThreads to be 200 by default
   http://svn.apache.org/viewvc?rev=707264&view=rev 
-  +1: fhanik, markt, pero
+  +1: fhanik, markt, pero, remm
   -1: 
   
 * Fix read/write timeout during async comet access
@@ -196,30 +196,31 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix String comparison bugs found by Find Bugs using Remy's alternative solution
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/IntrospectionUtils.java?r1=708185&r2=708184&pathrev=708185
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46096
   Support annotation processing whilst running under a security manager
   http://people.apache.org/~markt/patches/2008-10-27-bug46096.patch
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46085
   Hard to reproduce thread safety issue with session expiration
   http://svn.apache.org/viewvc?rev=708273&view=rev
   +1: markt, fhanik
-  -1: 
+   0: remm (volatile seems equivalent to an AtomicLong)
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46077
   Expose deferAccept
   Patch provided by Michael Leinartas
   http://svn.apache.org/viewvc?rev=708344&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46075
   Don't create ByteArrayOutputStream at maxmimum possible size
   http://svn.apache.org/viewvc?rev=708361&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
