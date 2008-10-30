@@ -233,3 +233,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46105
+  Correctly set URI encoding when replaying a request after FORM auth
+  http://svn.apache.org/viewvc?rev=709294&view=rev
+  +1: markt
+  -1: 
