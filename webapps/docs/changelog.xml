@@ -224,6 +224,10 @@
       <fix>
         <bug>46067</bug>: Fix typos in Advanced IO how to. (markt) 
       </fix>
+      <fix>
+        Remove unsed parameters from Native/APR example connector configuration
+        in docs. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
