@@ -238,3 +238,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=709294&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46125
+  Change the exception to cause a 400 status code if the request headers are too
+  big
+  http://svn.apache.org/viewvc?rev=709811&view=rev
+  +1: markt
+  -1:
