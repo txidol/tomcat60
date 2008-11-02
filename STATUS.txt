@@ -245,3 +245,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=709811&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46115
+  Path is required when using deploy
+  http://svn.apache.org/viewvc?rev=709816&view=rev
+  +1: markt
+  -1: 
