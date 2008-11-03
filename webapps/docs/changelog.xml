@@ -228,6 +228,11 @@
         <bug>46067</bug>: Fix typos in Advanced IO how to. (markt) 
       </fix>
       <fix>
+        <bug>46121</bug>: Add note to manager documentation regarding possible
+        naming clash with new Ant 1.7 resources datatype and how to avoid it.
+        (markt)
+      </fix>
+      <fix>
         Remove unsed parameters from Native/APR example connector configuration
         in docs. (markt)
       </fix>
