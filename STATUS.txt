@@ -262,6 +262,7 @@ PATCHES PROPOSED TO BACKPORT:
   Use resetBuffer() as suggested by the spec. Makes custom and standard error
   page handling consistent
   http://svn.apache.org/viewvc?rev=710063&view=rev
+  http://svn.apache.org/viewvc?rev=710125&view=rev
   +1: markt
   -1: remm (will cause a major behavior change; I would recommend doing a resetBuffer,
       plus setting usingOutputStream, usingWriter and isCharacterEncodingSet to false;
