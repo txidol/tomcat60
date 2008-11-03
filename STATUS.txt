@@ -252,12 +252,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46035
-  Lots and lots of typos
-  http://svn.apache.org/viewvc?rev=709823&view=rev
-  +1: markt
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42409
   Use resetBuffer() as suggested by the spec. Makes custom and standard error
   page handling consistent

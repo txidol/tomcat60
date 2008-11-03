@@ -222,6 +222,9 @@
         in JNDI how to. (markt)
       </fix>
       <fix>
+        <bug>46035</bug>: Fix multiple typos in monitoring how to. (markt)
+      </fix>
+      <fix>
         <bug>46067</bug>: Fix typos in Advanced IO how to. (markt) 
       </fix>
       <fix>
