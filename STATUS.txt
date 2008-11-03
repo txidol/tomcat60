@@ -278,3 +278,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2008-11-03-invoker.patch
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46047
+  Include jar in path for dependencies if they are in a JAR	 
+  Patch provided by CŽdric Mailleux
+  http://svn.apache.org/viewvc?rev=710205&view=rev
+  +1: markt
+  -1: 
