@@ -131,7 +131,7 @@ PATCHES PROPOSED TO BACKPORT:
   Add proper manifests (regression from 5.5.x) and LICENSE & NOTICE files
   Lots of ways to do this. Alternative/better suggestions welcome
   http://svn.apache.org/viewvc?rev=699128&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45851
@@ -208,7 +208,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46085
   Hard to reproduce thread safety issue with session expiration
   http://svn.apache.org/viewvc?rev=708273&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, rjung
    0: remm (volatile seems equivalent to an AtomicLong)
         I did devise something by replacing the accessedTimes as long by an int offset
         based on the creation date. From what I understand, this should also address
@@ -219,13 +219,13 @@ PATCHES PROPOSED TO BACKPORT:
   Expose deferAccept
   Patch provided by Michael Leinartas
   http://svn.apache.org/viewvc?rev=708344&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46075
   Don't create ByteArrayOutputStream at maxmimum possible size
   http://svn.apache.org/viewvc?rev=708361&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Start poller before acceptor in NIO, bug 43701
@@ -249,7 +249,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46115
   Path is required when using deploy
   http://svn.apache.org/viewvc?rev=709816&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42409
@@ -265,16 +265,23 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41861
   Add major version number to Tomcat service name created by Windows installer
   http://svn.apache.org/viewvc?rev=710066&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
+  rjung: tomcat.nsi already uses replacement patterns like @VERSION@.
+         So it might be more robust, to add another replacement like
+         VERSION_MAJOR or VERSION_MAIN to dist.xml resolving
+         to ${version.major} or $version.major}.${version.minor}
+         and then replace all occurences of "6" with @VERSION_MAJOR@
+         or @VERSION_MAIN@.
 
 * Deprecate the invoker servlet ready for its removal in 7.0.x
   http://people.apache.org/~markt/patches/2008-11-03-invoker.patch
-  +1: markt
+  +1: markt, rjung
   -1: 
+  rjung: You might also add the deprecation info to the default conf/web.xml.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46047
-  Include jar in path for dependencies if they are in a JAR	 
+  Include jar in path for dependencies if they are in a JAR
   Patch provided by CŽdric Mailleux
   http://svn.apache.org/viewvc?rev=710205&view=rev
   +1: markt
