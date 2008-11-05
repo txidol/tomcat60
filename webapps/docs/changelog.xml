@@ -129,6 +129,10 @@
         Fix some thread safety issues in date formatting. (markt)
       </fix>
       <fix>
+        Fix a String comparison bug in the digester property replacement that
+        resulted in non-optimal operation. (markt)
+      </fix>
+      <fix>
         Correct handle multi-level contexts defined using context.xml files.
         (markt)
       </fix>

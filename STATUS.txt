@@ -187,11 +187,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, pero
   -1: 
 
-* Fix String comparison bugs found by Find Bugs using Remy's alternative solution
-  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/IntrospectionUtils.java?r1=708185&r2=708184&pathrev=708185
-  +1: markt, fhanik, remm
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46096
   Support annotation processing whilst running under a security manager
   http://people.apache.org/~markt/patches/2008-10-27-bug46096.patch
