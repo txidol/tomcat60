@@ -127,13 +127,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, mturk, markt, pero
    0: remm (also affects to the two other AJP connectors)
 
-* Partial fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45878
-  Add proper manifests (regression from 5.5.x) and LICENSE & NOTICE files
-  Lots of ways to do this. Alternative/better suggestions welcome
-  http://svn.apache.org/viewvc?rev=699128&view=rev
-  +1: markt, fhanik, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45851
   Fix NPE and out of order message processing issues
   http://svn.apache.org/viewvc?rev=699427&view=rev

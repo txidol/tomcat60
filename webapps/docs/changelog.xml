@@ -245,6 +245,10 @@
         creating tomcat-users.xml with Windows installer. (markt)
       </fix>
       <fix>
+        <bug>45878</bug>: Restore manifest, licence and notice files to the jsp
+        and servlet jars. (markt)
+      </fix>
+      <fix>
         <bug>45879</bug>: Move NOTICE file from documentation webapp to the
         installation directory. (markt)
       </fix>
