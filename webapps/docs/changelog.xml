@@ -141,6 +141,10 @@
         jsessionid path parameter name. Based on a patch by Jean-frederic Clere.
         (markt)
       </add>
+      <fix>
+        <bug>46096</bug>:  Support annotation processing whilst running under a
+        security manager. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

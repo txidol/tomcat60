@@ -21,6 +21,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -32,6 +34,7 @@ import javax.persistence.PersistenceUnit;
 import javax.xml.ws.WebServiceRef;
 
 import org.apache.AnnotationProcessor;
+import org.apache.catalina.Globals;
 
 
 /**
@@ -59,7 +62,18 @@ public class DefaultAnnotationProcessor implements AnnotationProcessor {
         Class<?> clazz = instance.getClass();
         
         while (clazz != null) {
-            Method[] methods = clazz.getDeclaredMethods();
+            Method[] methods = null;
+            if (Globals.IS_SECURITY_ENABLED) {
+                final Class<?> clazz2 = clazz;
+                methods = AccessController.doPrivileged(
+                        new PrivilegedAction<Method[]>(){
+                    public Method[] run(){
+                        return clazz2.getDeclaredMethods();
+                    }
+                });
+            } else {
+                methods = clazz.getDeclaredMethods();
+            }
             Method postConstruct = null;
             for (int i = 0; i < methods.length; i++) {
                 if (methods[i].isAnnotationPresent(PostConstruct.class)) {
@@ -141,7 +155,18 @@ public class DefaultAnnotationProcessor implements AnnotationProcessor {
         
         while (clazz != null) {
             // Initialize fields annotations
-            Field[] fields = clazz.getDeclaredFields();
+            Field[] fields = null;
+            if (Globals.IS_SECURITY_ENABLED) {
+                final Class<?> clazz2 = clazz;
+                fields = AccessController.doPrivileged(
+                        new PrivilegedAction<Field[]>(){
+                    public Field[] run(){
+                        return clazz2.getDeclaredFields();
+                    }
+                });
+            } else {
+                fields = clazz.getDeclaredFields();
+            }
             for (int i = 0; i < fields.length; i++) {
                 if (fields[i].isAnnotationPresent(Resource.class)) {
                     Resource annotation =
@@ -175,7 +200,18 @@ public class DefaultAnnotationProcessor implements AnnotationProcessor {
             }
             
             // Initialize methods annotations
-            Method[] methods = clazz.getDeclaredMethods();
+            Method[] methods = null;
+            if (Globals.IS_SECURITY_ENABLED) {
+                final Class<?> clazz2 = clazz;
+                methods = AccessController.doPrivileged(
+                        new PrivilegedAction<Method[]>(){
+                    public Method[] run(){
+                        return clazz2.getDeclaredMethods();
+                    }
+                });
+            } else {
+                methods = clazz.getDeclaredMethods();
+            }
             for (int i = 0; i < methods.length; i++) {
                 if (methods[i].isAnnotationPresent(Resource.class)) {
                     Resource annotation = methods[i].getAnnotation(Resource.class);

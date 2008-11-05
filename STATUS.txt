@@ -187,12 +187,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, pero
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46096
-  Support annotation processing whilst running under a security manager
-  http://people.apache.org/~markt/patches/2008-10-27-bug46096.patch
-  +1: markt, fhanik, remm
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46085
   Hard to reproduce thread safety issue with session expiration
   http://svn.apache.org/viewvc?rev=708273&view=rev
