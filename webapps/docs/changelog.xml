@@ -142,6 +142,11 @@
         (markt)
       </add>
       <fix>
+        <bug>46075</bug>: When uploading files, don't create buffers at the
+        maximum configured size. Use the default size and let the buffers grow
+        to the maximum size if necessary. (markt)
+      </fix>
+      <fix>
         <bug>46085</bug>: Fix a rare thread safety issue with session
         expiration. (markt)
       </fix>

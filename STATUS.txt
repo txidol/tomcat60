@@ -187,12 +187,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, pero
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46075
-  Don't create ByteArrayOutputStream at maxmimum possible size
-  http://svn.apache.org/viewvc?rev=708361&view=rev
-  +1: markt, remm, rjung
-  -1: 
-
 * Start poller before acceptor in NIO, bug 43701
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/tomcat/util/net/NioEndpoint.java?view=diff&r1=618058&r2=618059
   +1: fhanik
