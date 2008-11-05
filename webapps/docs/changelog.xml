@@ -142,6 +142,10 @@
         (markt)
       </add>
       <fix>
+        <bug>46085</bug>: Fix a rare thread safety issue with session
+        expiration. (markt)
+      </fix>
+      <fix>
         <bug>46096</bug>:  Support annotation processing whilst running under a
         security manager. (markt)
       </fix>

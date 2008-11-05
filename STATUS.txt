@@ -187,16 +187,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, pero
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46085
-  Hard to reproduce thread safety issue with session expiration
-  http://svn.apache.org/viewvc?rev=708273&view=rev
-  +1: markt, fhanik, rjung
-   0: remm (volatile seems equivalent to an AtomicLong)
-        I did devise something by replacing the accessedTimes as long by an int offset
-        based on the creation date. From what I understand, this should also address
-        the corruption issue, but the patch is more complex. 
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46077
   Expose deferAccept
   Patch provided by Michael Leinartas
