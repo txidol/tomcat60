@@ -168,6 +168,10 @@
         <bug>45591</bug>: NPE on start-up failure in some cases. Based on a
         patch by Matt Passell. (markt)
       </fix>
+      <fix>
+        <bug>46077</bug>: Expose deferAccept for configuration. Patch provided
+        by Michael Leinartas. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
