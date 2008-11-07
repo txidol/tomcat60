@@ -253,7 +253,7 @@ PATCHES PROPOSED TO BACKPORT:
   Make Principal accessible (if set) via
   Subject.getSubject(AccessController.getContext()) when processing filters.
   Based on a patch provided by tsveg1
-  +1: markt
+  +1: markt, pero
   -1: 
 
 * Fix http://svn.apache.org/viewvc?rev=712274&view=rev
