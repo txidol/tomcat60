@@ -255,3 +255,9 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch provided by tsveg1
   +1: markt
   -1: 
+
+* Fix http://svn.apache.org/viewvc?rev=712274&view=rev
+  ReplicationValve can throw NPE as context doesn't exists! (Config as Engine level)
+  +1: pero
+  -1: 
+ 
