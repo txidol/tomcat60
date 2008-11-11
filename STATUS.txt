@@ -153,11 +153,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -0: remm (I also do not think the patch is a good idea as a backport)
 
-* Derefence socket when the request is complete
-  http://svn.apache.org/viewvc?rev=702676&view=rev
-  +1: fhanik, remm, markt, pero
-  -1: 
-
 * Backport NCDFE fix from trunk (TCK failures without it)
   http://svn.apache.org/viewvc?rev=640888&view=rev 
   +1: markt
