@@ -42,13 +42,6 @@ PATCHES PROPOSED TO BACKPORT:
              and seems impossible to anticipate):
              https://issues.apache.org/bugzilla/show_bug.cgi?id=36155#c17
 
-* Fix comet behavior
-  Invoke READ when there is a body and make sure END is called if CometEvent.close is called during an invokation
-  http://svn.apache.org/viewvc?rev=677473&view=rev
-  +1: fhanik, funkman, pero
-   0: remm: no idea if it's better or worse (the fact that it's been closed is visible)
-  -1: 
-
 * Fix issue where the first request for a deleted JSPs returns as if the JSP
   still exists.
   http://svn.apache.org/viewvc?view=rev&revision=683969
