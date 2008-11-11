@@ -36,6 +36,9 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        Default thread count for HTTP connectors is 200. (r713186)
+      </fix>
+      <fix>
         Comet should always invoke END and properly invoke READ (r713174)
      </fix>
       <fix>

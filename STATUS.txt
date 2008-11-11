@@ -160,11 +160,6 @@ PATCHES PROPOSED TO BACKPORT:
             really old to me, so where would this come from ?)
   -1: 
 
-* maxThreads to be 200 by default
-  http://svn.apache.org/viewvc?rev=707264&view=rev 
-  +1: fhanik, markt, pero, remm
-  -1: 
-  
 * Fix read/write timeout during async comet access
   http://svn.apache.org/viewvc?rev=707670&view=rev 
   +1: fhanik, pero
