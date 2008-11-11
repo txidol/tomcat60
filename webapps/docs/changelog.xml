@@ -36,6 +36,15 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        Comet should always invoke END and properly invoke READ (r713174)
+     </fix>
+      <fix>
+        Fix class cast exception when shutting down a replicated context but no cluster has been configured in server.xml (r713177)
+     </fix>
+      <fix>
+        Dererence socket when its no longer used. Frees up socket buffers and memory. No functional change. (r713175)
+      </fix>
+      <fix>
         Correct wrong "No role found" debug message,
         logged in RealmBase even if a role was found. (rjung)
       </fix>
