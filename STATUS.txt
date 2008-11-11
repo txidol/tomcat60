@@ -82,7 +82,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=694951&view=rev (JIO)
   http://svn.apache.org/viewvc?rev=708195&view=rev (APR, NIO)
   http://svn.apache.org/viewvc?rev=708223&view=rev (Change log level)
-  +1: markt
+  +1: markt, fhanik
    0: remm (logging could pile up quickly)
       markt Because thread count only grows there will only ever be one log message
   -1: 
@@ -110,7 +110,7 @@ PATCHES PROPOSED TO BACKPORT:
 * More EL fixes. Add lookaheads to prevent parsing ambiguity
   http://svn.apache.org/viewvc?rev=696780&view=rev (the change)
   http://svn.apache.org/viewvc?rev=696782&view=rev (the auto generated code)
-  +1: mark, remm
+  +1: mark, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
@@ -195,7 +195,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46105
   Correctly set URI encoding when replaying a request after FORM auth
   http://svn.apache.org/viewvc?rev=709294&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46125
@@ -203,7 +203,7 @@ PATCHES PROPOSED TO BACKPORT:
   big
   http://svn.apache.org/viewvc?rev=709811&view=rev
   +1: markt
-  -1:
+  -1: fhanik - InternalAprInputBuffer/InternalNioInputBuffer should provide the same behavior
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46115
   Path is required when using deploy
@@ -238,7 +238,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Deprecate the invoker servlet ready for its removal in 7.0.x
   http://people.apache.org/~markt/patches/2008-11-03-invoker.patch
-  +1: markt, rjung
+  +1: markt, rjung, fhanik
   -1: 
   rjung: You might also add the deprecation info to the default conf/web.xml.
 
@@ -247,6 +247,7 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by CŽdric Mailleux
   http://svn.apache.org/viewvc?rev=710205&view=rev
   +1: markt
+   0: is there a trunk checkin or a diff?
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46011
@@ -258,20 +259,20 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix http://svn.apache.org/viewvc?rev=712274&view=rev
   ReplicationValve can throw NPE as context doesn't exists! (Config as Engine level)
-  +1: pero
+  +1: pero, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42673
   Correctly handle includes with multi-level contexts
   Patch provided by Peter Jodeleit
   http://svn.apache.org/viewvc?rev=712461&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
   Ensure context.xml takes effect on first deployment. Make processing of
   context.xml consistent.
   http://svn.apache.org/viewvc?rev=712464&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
