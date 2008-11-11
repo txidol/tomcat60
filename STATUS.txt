@@ -160,11 +160,6 @@ PATCHES PROPOSED TO BACKPORT:
             really old to me, so where would this come from ?)
   -1: 
 
-* Fix classcast exception upon shutdown(edgecase)
-  http://svn.apache.org/viewvc?rev=706433&view=rev 
-  +1: fhanik, markt, pero
-  -1: 
-  
 * maxThreads to be 200 by default
   http://svn.apache.org/viewvc?rev=707264&view=rev 
   +1: fhanik, markt, pero, remm
