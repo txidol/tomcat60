@@ -287,6 +287,10 @@
         Remove unsed parameters from Native/APR example connector configuration
         in docs. (markt)
       </fix>
+      <fix>
+        Use CSS based solution for printer-friendly docs. Patch provided by
+        vitezslav.smid as part of GSoc with additional work by Tim Funk. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
