@@ -291,6 +291,10 @@
         Use CSS based solution for printer-friendly docs. Patch provided by
         vitezslav.smid as part of GSoc with additional work by Tim Funk. (markt)
       </fix>
+      <fix>
+        Update the FAQ linsk in the docs to refer to the wiki. Use xlst task
+        rather than style task to generate docs. (funkman/markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
