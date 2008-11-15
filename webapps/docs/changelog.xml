@@ -200,6 +200,9 @@
         Use more generics in EL to improve type safety. (rjung)
       </update>
       <fix>
+        Use a lookahead to remove potential ambiguity in EL parsing. (markt)
+      </fix>
+      <fix>
         Correct typo in JSP EL examples. (markt)
       </fix>
       <fix>

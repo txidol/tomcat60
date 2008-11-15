@@ -100,12 +100,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (maybe, don't know ...)
   -1: 
 
-* More EL fixes. Add lookaheads to prevent parsing ambiguity
-  http://svn.apache.org/viewvc?rev=696780&view=rev (the change)
-  http://svn.apache.org/viewvc?rev=696782&view=rev (the auto generated code)
-  +1: mark, remm, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
   Never use empty reason phrase.
   http://svn.apache.org/viewvc?rev=697183&view=rev
