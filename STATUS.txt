@@ -234,3 +234,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=653247
   +1: markt
   -1: 
+
+* Remove unnecessary commons-logging reference from manifest
+  http://svn.apache.org/viewvc?view=rev&revision=612607
+  +1: markt
+  -1: 
+  
