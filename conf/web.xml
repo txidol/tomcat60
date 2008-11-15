@@ -102,6 +102,9 @@
     </servlet>
 
 
+  <!-- This servlet has been deprecated due to security concerns. Servlets  -->
+  <!-- should be explicitly mapped in web.xml                               -->
+  <!--                                                                      -->
   <!-- The "invoker" servlet, which executes anonymous servlet classes      -->
   <!-- that have not been defined in a web.xml file.  Traditionally, this   -->
   <!-- servlet is mapped to the URL pattern "/servlet/*", but you can map   -->
@@ -364,7 +367,7 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- The mapping for the invoker servlet -->
+    <!-- The mapping for the deprecated invoker servlet -->
 <!--
     <servlet-mapping>
         <servlet-name>invoker</servlet-name>

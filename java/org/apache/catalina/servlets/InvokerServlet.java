@@ -40,6 +40,8 @@ import org.apache.catalina.util.StringManager;
  * used to serve requests to servlets that have not been registered
  * in the web application deployment descriptor.
  *
+ * @deprecated Servlets should be explicitly mapped in web.xml
+ *
  * @author Craig R. McClanahan
  * @version $Revision$ $Date$
  */

@@ -166,6 +166,10 @@
         <bug>46096</bug>:  Support annotation processing whilst running under a
         security manager. (markt)
       </fix>
+      <fix>
+        The invoker servlet has been deprecated and will be removed in Tomcat 7
+        onwards. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

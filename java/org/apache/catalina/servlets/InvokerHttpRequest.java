@@ -29,6 +29,8 @@ import javax.servlet.http.HttpServletRequestWrapper;
  * for an invoked servlet.  Subsequent requests will be mapped directly
  * to the servlet, because a new servlet mapping will have been created.
  *
+ * @deprecated Servlets should be explicitly mapped in web.xml
+ *
  * @author Craig R. McClanahan
  * @version $Revision$ $Date$
  */
