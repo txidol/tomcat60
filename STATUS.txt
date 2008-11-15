@@ -224,3 +224,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
+* Don't swallow input if we know the connection is going to be closed
+  http://svn.apache.org/viewvc?rev=714214&view=rev
+  +1: billbarker
+  -1: 
+
+* Add Costin's DBCP check so you can build Tomcat 6 on a 1.6 JDK
+  http://svn.apache.org/viewvc?view=rev&revision=652744
+  http://svn.apache.org/viewvc?view=rev&revision=653247
+  +1: markt
+  -1: 
