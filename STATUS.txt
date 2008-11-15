@@ -114,13 +114,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, mturk, markt, pero
    0: remm (also affects to the two other AJP connectors)
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45851
-  Fix NPE and out of order message processing issues
-  http://svn.apache.org/viewvc?rev=699427&view=rev
-  +1: markt, fhanik, pero
-   0: 
-  -1: 
-
 * Fix serialisation issue reported by Find Bugs
   http://svn.apache.org/viewvc?rev=699633&view=rev
   +1: markt
@@ -248,7 +241,3 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Don't swallow input if we know the connection is going to be closed
-  http://svn.apache.org/viewvc?rev=714214&view=rev
-  +1: billbarker
-  -1:

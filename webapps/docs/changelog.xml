@@ -249,6 +249,10 @@
         <bug>45618</bug>: Make sure NIO selector is closed when no longer used.
         Unlikely to be an issue in normal usage. (markt)
       </fix>
+      <fix>
+        <bug>45851</bug>: Fix out of order message processing issues with the
+        FarmWarDeployer. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
