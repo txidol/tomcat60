@@ -253,6 +253,9 @@
         <bug>45851</bug>: Fix out of order message processing issues with the
         FarmWarDeployer. (markt)
       </fix>
+      <fix>
+        Fix small memory leak in FarmWarDeployer. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
