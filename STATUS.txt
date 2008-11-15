@@ -165,12 +165,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: fhanik - InternalAprInputBuffer/InternalNioInputBuffer should provide the same behavior
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46115
-  Path is required when using deploy
-  http://svn.apache.org/viewvc?rev=709816&view=rev
-  +1: markt, rjung, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42409
   Use resetBuffer() as suggested by the spec. Makes custom and standard error
   page handling consistent

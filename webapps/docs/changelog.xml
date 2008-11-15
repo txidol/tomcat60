@@ -271,6 +271,10 @@
         <bug>46067</bug>: Fix typos in Advanced IO how to. (markt) 
       </fix>
       <fix>
+        <bug>46115</bug>: Correct Manager UI to show that path is required when
+        using the deploy command. (markt)
+      </fix>
+      <fix>
         <bug>46121</bug>: Add note to manager documentation regarding possible
         naming clash with new Ant 1.7 resources datatype and how to avoid it.
         (markt)
