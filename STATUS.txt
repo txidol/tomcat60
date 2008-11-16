@@ -239,4 +239,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=612607
   +1: markt
   -1: 
-  
+
+* Fix broken URL mapping in examples
+  http://svn.apache.org/viewvc?view=rev&revision=630314
+  +1: markt
+  -1: 
