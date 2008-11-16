@@ -195,7 +195,6 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by CŽdric Mailleux
   http://svn.apache.org/viewvc?rev=710205&view=rev
   +1: markt
-   0: is there a trunk checkin or a diff?
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46011
