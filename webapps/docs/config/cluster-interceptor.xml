@@ -100,6 +100,7 @@
      <attribute name="optionFlag" required="false">
        The default and hard coded value is <code>8 (org.apache.catalina.tribes.Channel.SEND_OPTIONS_ASYNCHRONOUS)</code>.
        The dispatcher will trigger on this value only, as it is predefined by Tribes.
+       The other attributes are inherited from its base class <code>org.apache.catalina.tribes.group.interceptors.MessageDispatchInterceptor</code>.
      </attribute>
    </attributes>
   </subsection>

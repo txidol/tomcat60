@@ -738,10 +738,10 @@
     Classname         Http11Protocol                  Http11NioProtocol         Http11AprProtocol
     Tomcat Version   3.x 4.x 5.x 6.x                       6.x                     5.5.x 6.x
     Support Polling         NO                             YES                        YES
-    Polling Size           N/A                   Unlimited - Restricted by mem        Unlimited
-    Read HTTP Request     Blocking                     Non blocking                   Blocking
-    Read HTTP Body        Blocking                     Sim blocking                   Blocking
-    Write HTTP Response   Blocking                     Sim blocking                   Blocking
+    Polling Size           N/A                   Unlimited - Restricted by mem        Unlimited - Configurable
+    Read HTTP Request     Blocking                     Non Blocking                   Blocking
+    Read HTTP Body        Blocking                     Sim Blocking                   Blocking
+    Write HTTP Response   Blocking                     Sim Blocking                   Blocking
     SSL Support           Java SSL                     Java SSL                       OpenSSL
     SSL Handshake         Blocking                     Non blocking                   Blocking
     Max Connections       maxThreads                   See polling size               See polling size
