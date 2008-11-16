@@ -295,6 +295,9 @@
         Update the FAQ linsk in the docs to refer to the wiki. Use xlst task
         rather than style task to generate docs. (funkman/markt)
       </fix>
+      <fix>
+        Document the LifecycleListeners. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
