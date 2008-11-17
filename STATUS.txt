@@ -244,3 +244,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=718360&view=rev
   +1: markt
   -1: 
+
+* Make sure DIR deployment with context.xml works when configBase does no exist.
+  This is required as a result of my previous changes to HostConfig
+  http://svn.apache.org/viewvc?rev=718436&view=rev
+  +1: markt
+  -1: 
