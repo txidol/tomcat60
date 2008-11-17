@@ -193,6 +193,10 @@
         <bug>46077</bug>: Expose deferAccept for configuration. Patch provided
         by Michael Leinartas. (markt)
       </fix>
+      <add>
+         Don't swallow input if we know the connection is going to be closed. (billbarker)
+      </add>
+          
     </changelog>
   </subsection>
   <subsection name="Jasper">
