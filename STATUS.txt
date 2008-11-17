@@ -239,3 +239,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=630314
   +1: markt
   -1: 
+
+* Clean up dist.xml
+  http://svn.apache.org/viewvc?rev=718360&view=rev
+  +1: markt
+  -1: 
