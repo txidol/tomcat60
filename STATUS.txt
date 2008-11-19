@@ -250,3 +250,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=718436&view=rev
   +1: markt
   -1: 
+
+* Fix possible NPE in NioEndpoint
+  http://svn.apache.org/viewvc?rev=719096&view=rev
+  +1: fhanik
+  -1: 
+
+* Fix send file bug
+  http://svn.apache.org/viewvc?rev=719129&view=rev
+  +1: fhanik
+  -1: 
