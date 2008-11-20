@@ -35,6 +35,10 @@
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <update>
+        Fix read/write timeout of async comet operations
+        (r719264)
+      </update>
       <update> 
         Implement async close behaviour for Comet/NIO.
         No-op for APR (same behavior as before)
