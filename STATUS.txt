@@ -211,7 +211,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Add Costin's DBCP check so you can build Tomcat 6 on a 1.6 JDK
   http://svn.apache.org/viewvc?view=rev&revision=652744
   http://svn.apache.org/viewvc?view=rev&revision=653247
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Remove unnecessary commons-logging reference from manifest
@@ -232,7 +232,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Make sure DIR deployment with context.xml works when configBase does no exist.
   This is required as a result of my previous changes to HostConfig
   http://svn.apache.org/viewvc?rev=718436&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix possible NPE in NioEndpoint
