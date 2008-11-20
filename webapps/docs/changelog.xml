@@ -35,6 +35,11 @@
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <update> 
+        Implement async close behaviour for Comet/NIO.
+        No-op for APR (same behavior as before)
+        (r719262)
+      </update>
       <fix>
         Default thread count for HTTP connectors is 200. (r713186)
       </fix>
