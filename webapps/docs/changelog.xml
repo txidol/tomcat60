@@ -35,6 +35,7 @@
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix><bug>43071</bug>Start poller before acceptor (r719267)</fix>
       <update>
         Fix read/write timeout of async comet operations
         (r719264)
