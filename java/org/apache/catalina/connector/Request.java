@@ -2262,6 +2262,13 @@ public class Request
         return (inputBuffer.available() > 0);
     }
 
+    public void cometClose() {
+        coyoteRequest.action(ActionCode.ACTION_COMET_CLOSE,getEvent());
+    }
+    
+    public void setCometTimeout(long timeout) {
+        coyoteRequest.action(ActionCode.ACTION_COMET_SETTIMEOUT,new Long(timeout));
+    }
     
     // ------------------------------------------------------ Protected Methods
 
