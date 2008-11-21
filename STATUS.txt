@@ -247,5 +247,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Make thread pool limits dynamically configurable
   http://svn.apache.org/viewvc?rev=719602&view=rev
-  +1: markt
+  http://svn.apache.org/viewvc?rev=719628&view=rev
+  +1: markt, fhanik
   -1: 
