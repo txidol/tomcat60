@@ -244,3 +244,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=719129&view=rev
   +1: fhanik
   -1: 
+
+* Make thread pool limits dynamically configurable
+  http://svn.apache.org/viewvc?rev=719602&view=rev
+  +1: markt
+  -1: 
