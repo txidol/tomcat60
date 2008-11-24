@@ -250,3 +250,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=719628&view=rev
   +1: markt, fhanik
   -1: 
+
+* Prevent async close NPE on already closed sockets
+  http://people.apache.org/~fhanik/tomcat/comet-close-2.patch
+  +1: fhanik
+  -1: 
+
