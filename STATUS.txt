@@ -237,7 +237,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix possible NPE in NioEndpoint
   http://svn.apache.org/viewvc?rev=719096&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix send file bug
