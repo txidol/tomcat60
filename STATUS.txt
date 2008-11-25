@@ -256,3 +256,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
+* Add ability to fix the keyAlias in NIO/SSL
+  http://svn.apache.org/viewvc?rev=720587&view=rev
+  http://svn.apache.org/viewvc?rev=720553&view=rev 
+  +1: fhanik
+  -1:
+ 
