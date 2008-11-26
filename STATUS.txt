@@ -139,14 +139,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46105
   Correctly set URI encoding when replaying a request after FORM auth
   http://svn.apache.org/viewvc?rev=709294&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46125
   Change the exception to cause a 400 status code if the request headers are too
   big
   http://svn.apache.org/viewvc?rev=709811&view=rev
-  +1: markt
+  +1: markt, remm (with a trivial improvement)
   -1: fhanik - InternalAprInputBuffer/InternalNioInputBuffer should provide the same behavior
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42409
@@ -155,9 +155,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=710063&view=rev
   http://svn.apache.org/viewvc?rev=710125&view=rev (to address Remy's comment)
   +1: markt
-  -1: remm (will cause a major behavior change; I would recommend doing a resetBuffer,
-      plus setting usingOutputStream, usingWriter and isCharacterEncodingSet to false;
-      seriously, this sort of "fix" really needs to stop in the 6.0.x branch)
+   0: remm (I think it should now be ok)
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41861
   Add major version number to Tomcat service name created by Windows installer
@@ -176,16 +175,16 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46047
   Include jar in path for dependencies if they are in a JAR
-  Patch provided by CŽdric Mailleux
+  Patch provided by Cï¿½dric Mailleux
   http://svn.apache.org/viewvc?rev=710205&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46011
   Make Principal accessible (if set) via
   Subject.getSubject(AccessController.getContext()) when processing filters.
   Based on a patch provided by tsveg1
-  +1: markt, pero
+  +1: markt, pero, remm
   -1: 
 
 * Fix http://svn.apache.org/viewvc?rev=712274&view=rev
@@ -197,7 +196,7 @@ PATCHES PROPOSED TO BACKPORT:
   Correctly handle includes with multi-level contexts
   Patch provided by Peter Jodeleit
   http://svn.apache.org/viewvc?rev=712461&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
@@ -205,34 +204,36 @@ PATCHES PROPOSED TO BACKPORT:
   context.xml consistent.
   http://svn.apache.org/viewvc?rev=712464&view=rev
   +1: markt, fhanik
+   0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?)
   -1: 
 
 
 * Add Costin's DBCP check so you can build Tomcat 6 on a 1.6 JDK
   http://svn.apache.org/viewvc?view=rev&revision=652744
   http://svn.apache.org/viewvc?view=rev&revision=653247
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1: 
 
 * Remove unnecessary commons-logging reference from manifest
   http://svn.apache.org/viewvc?view=rev&revision=612607
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix broken URL mapping in examples
   http://svn.apache.org/viewvc?view=rev&revision=630314
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Clean up dist.xml
   http://svn.apache.org/viewvc?rev=718360&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Make sure DIR deployment with context.xml works when configBase does no exist.
   This is required as a result of my previous changes to HostConfig
   http://svn.apache.org/viewvc?rev=718436&view=rev
   +1: markt, fhanik
+   0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?)
   -1: 
 
 * Fix possible NPE in NioEndpoint
@@ -249,6 +250,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=719602&view=rev
   http://svn.apache.org/viewvc?rev=719628&view=rev
   +1: markt, fhanik
+   0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?
+      on this particular one, if people want fancy behavior, maybe they should use an executor)
   -1: 
 
 * Prevent async close NPE on already closed sockets
