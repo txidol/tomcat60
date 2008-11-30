@@ -351,6 +351,11 @@
         <bug>45879</bug>: Move NOTICE file from documentation webapp to the
         installation directory. (markt)
       </fix>
+      <fix>
+        Add a workaround for DBCP-191. Tomcat will now build without error on a
+        1.6 JDK but because it does this by skipping DBCP, release builds must
+        be generated with a 1.5 JDK. (costin/markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
