@@ -1,4 +1,4 @@
-================================================================================
+﻿================================================================================
   Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
   this work for additional information regarding copyright ownership.
@@ -271,4 +271,27 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42693
+  Fix compilation of recursive tags
+  http://svn.apache.org/viewvc?rev=720046&view=rev
+  +1: markt
+  -1: 
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42077
+  Don't include nulls in iterator. Based on a patch by Mathias Broekelmann
+  http://svn.apache.org/viewvc?rev=720069&view=rev
+  +1: markt
+  -1: 
+
+* Use consistent (and more useful) JPDA defaults in catalina.bat
+  http://svn.apache.org/viewvc?rev=721040&view=rev
+  +1: markt
+  -1: 
+
+* Changes required to run with a security manager
+  http://svn.apache.org/viewvc?rev=721286&view=rev
+  http://svn.apache.org/viewvc?rev=721704&view=rev
+  http://svn.apache.org/viewvc?rev=721708&view=rev
+  http://svn.apache.org/viewvc?rev=721886&view=rev
+  +1: markt
+  -1: 
