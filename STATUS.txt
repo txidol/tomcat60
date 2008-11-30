@@ -163,13 +163,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: pero, fhanik, markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42673
-  Correctly handle includes with multi-level contexts
-  Patch provided by Peter Jodeleit
-  http://svn.apache.org/viewvc?rev=712461&view=rev
-  +1: markt, fhanik, remm, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
   Ensure context.xml takes effect on first deployment. Make processing of
   context.xml consistent.

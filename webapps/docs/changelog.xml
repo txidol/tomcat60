@@ -75,6 +75,10 @@
         headers. (markt)
       </fix>
       <fix>
+        <bug>42673</bug>: Fix SSI virtual includes for multi-level contexts.
+        Patch provided by Peter Jodeleit. (markt)
+      </fix>
+      <fix>
         <bug>43656</bug>: Correct regression in previous fix for this bug. Patch
         provided by Nils Eckert. (markt)
       </fix>
