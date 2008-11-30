@@ -158,13 +158,6 @@ PATCHES PROPOSED TO BACKPORT:
          Just did that for trunk (r711934; but it contains also other changes).
          Caution: at the moment there's no @VERSION@ substitution for service.bat.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46011
-  Make Principal accessible (if set) via
-  Subject.getSubject(AccessController.getContext()) when processing filters.
-  Based on a patch provided by tsveg1
-  +1: markt, pero, remm
-  -1: 
-
 * Fix http://svn.apache.org/viewvc?rev=712274&view=rev
   ReplicationValve can throw NPE as context doesn't exists! (Config as Engine level)
   +1: pero, fhanik, markt
