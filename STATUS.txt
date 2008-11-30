@@ -158,13 +158,6 @@ PATCHES PROPOSED TO BACKPORT:
          Just did that for trunk (r711934; but it contains also other changes).
          Caution: at the moment there's no @VERSION@ substitution for service.bat.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46047
-  Include jar in path for dependencies if they are in a JAR
-  Patch provided by C�dric Mailleux
-  http://svn.apache.org/viewvc?rev=710205&view=rev
-  +1: markt, remm, fhanik, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46011
   Make Principal accessible (if set) via
   Subject.getSubject(AccessController.getContext()) when processing filters.

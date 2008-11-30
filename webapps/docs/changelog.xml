@@ -262,6 +262,11 @@
         precedence over JSP.1.3.10. Therefore EL in attributes must be escaped
         twice.
       </fix>
+      <fix>
+        <bug>46047</bug>: Include the path to the JAR when recording
+        dependencies that are located inside a JAR file. Patch provided by
+        Cédric Mailleux. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
