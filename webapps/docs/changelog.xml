@@ -180,6 +180,10 @@
         The invoker servlet has been deprecated and will be removed in Tomcat 7
         onwards. (markt)
       </fix>
+      <fix>
+        <bug>46105</bug>:  Correctly set URI encoding when replaying a request
+        after FORM authentication. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
