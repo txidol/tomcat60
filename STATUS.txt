@@ -171,12 +171,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?)
   -1: 
 
-
-* Remove unnecessary commons-logging reference from manifest
-  http://svn.apache.org/viewvc?view=rev&revision=612607
-  +1: markt, remm, fhanik, pero
-  -1: 
-
 * Fix broken URL mapping in examples
   http://svn.apache.org/viewvc?view=rev&revision=630314
   +1: markt, remm, fhanik

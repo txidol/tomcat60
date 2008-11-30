@@ -198,6 +198,10 @@
         <bug>46105</bug>:  Correctly set URI encoding when replaying a request
         after FORM authentication. (markt)
       </fix>
+      <fix>
+        Remove unnecessary reference to commons-logging from the bootstrap JAR
+        manifest. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
