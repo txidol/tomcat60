@@ -70,6 +70,11 @@
         <bug>41407</bug>: Add CLIENT-CERT support to the JAAS Realm. (markt)
       </add>
       <fix>
+        <bug>42409</bug>: Make custom and standard error page handling
+        consistent by using resetBuffer() which will not alter previously set
+        headers. (markt)
+      </fix>
+      <fix>
         <bug>43656</bug>: Correct regression in previous fix for this bug. Patch
         provided by Nils Eckert. (markt)
       </fix>

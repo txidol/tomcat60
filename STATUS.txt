@@ -143,15 +143,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm (with a trivial improvement)
   -1: fhanik - InternalAprInputBuffer/InternalNioInputBuffer should provide the same behavior (+1 for same changes in all three)
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42409
-  Use resetBuffer() as suggested by the spec. Makes custom and standard error
-  page handling consistent
-  http://svn.apache.org/viewvc?rev=710063&view=rev
-  http://svn.apache.org/viewvc?rev=710125&view=rev (to address Remy's comment)
-  +1: markt, fhanik, pero
-   0: remm (I think it should now be ok)
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41861
   Add major version number to Tomcat service name created by Windows installer
   http://svn.apache.org/viewvc?rev=710066&view=rev
