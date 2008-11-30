@@ -339,6 +339,9 @@
       <fix>
         Document the LifecycleListeners. (markt)
       </fix>
+      <fix>
+        Fix broken URL mapping in the examples. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
