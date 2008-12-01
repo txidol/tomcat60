@@ -171,11 +171,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?)
   -1: 
 
-* Clean up dist.xml
-  http://svn.apache.org/viewvc?rev=718360&view=rev
-  +1: markt, remm, fhanik, pero
-  -1: 
-
 * Make sure DIR deployment with context.xml works when configBase does no exist.
   This is required as a result of my previous changes to HostConfig
   http://svn.apache.org/viewvc?rev=718436&view=rev
