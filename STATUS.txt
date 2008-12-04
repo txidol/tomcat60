@@ -237,3 +237,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=721886&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44285
+  Make SSL session cache size and timeout configurable
+  http://svn.apache.org/viewvc?rev=723404&view=rev
+  +1: markt
+  -1: 
