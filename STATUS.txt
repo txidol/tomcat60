@@ -1,4 +1,4 @@
-﻿================================================================================
+================================================================================
   Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
   this work for additional information regarding copyright ownership.
@@ -242,4 +242,10 @@ PATCHES PROPOSED TO BACKPORT:
   Make SSL session cache size and timeout configurable
   http://svn.apache.org/viewvc?rev=723404&view=rev
   +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46232
+  Don't override the endorsed dir if the user has set it
+  http://svn.apache.org/viewvc?rev=723738&view=rev
+  +1: mart
   -1: 
