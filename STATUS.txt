@@ -216,18 +216,18 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42693
   Fix compilation of recursive tags
   http://svn.apache.org/viewvc?rev=720046&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42077
   Don't include nulls in iterator. Based on a patch by Mathias Broekelmann
   http://svn.apache.org/viewvc?rev=720069&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Use consistent (and more useful) JPDA defaults in catalina.bat
   http://svn.apache.org/viewvc?rev=721040&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Changes required to run with a security manager
@@ -235,17 +235,17 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=721704&view=rev
   http://svn.apache.org/viewvc?rev=721708&view=rev
   http://svn.apache.org/viewvc?rev=721886&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44285
   Make SSL session cache size and timeout configurable
   http://svn.apache.org/viewvc?rev=723404&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46232
   Don't override the endorsed dir if the user has set it
   http://svn.apache.org/viewvc?rev=723738&view=rev
-  +1: mart
+  +1: markt, fhanik
   -1: 
