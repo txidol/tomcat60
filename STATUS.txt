@@ -249,3 +249,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=723738&view=rev
   +1: markt, fhanik
   -1: 
+
+* Fix Comet interest registration bug
+  http://people.apache.org/~fhanik/tomcat/comet-ops.patch
+  +1: fhanik
+  -1: 
+
