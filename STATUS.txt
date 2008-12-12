@@ -140,8 +140,9 @@ PATCHES PROPOSED TO BACKPORT:
   Change the exception to cause a 400 status code if the request headers are too
   big
   http://svn.apache.org/viewvc?rev=709811&view=rev
-  +1: markt, remm (with a trivial improvement)
-  -1: fhanik - InternalAprInputBuffer/InternalNioInputBuffer should provide the same behavior (+1 for same changes in all three)
+  http://svn.apache.org/viewvc?rev=726052&view=rev
+  +1: markt, remm (with a trivial improvement), fhanik
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41861
   Add major version number to Tomcat service name created by Windows installer
