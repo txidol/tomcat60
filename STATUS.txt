@@ -248,6 +248,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46232
   Don't override the endorsed dir if the user has set it
   http://svn.apache.org/viewvc?rev=723738&view=rev
+  http://svn.apache.org/viewvc?rev=727303&view=rev
   +1: markt, fhanik
   -1: 
 
