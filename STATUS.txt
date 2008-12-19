@@ -257,3 +257,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46408
+  Correct potential invalid cast
+  http://svn.apache.org/viewvc?rev=728032&view=rev
+  +1: markt
+  -1: 
+
