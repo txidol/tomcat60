@@ -275,3 +275,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=728947&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46397
+  Don't pool tag instances that implement JspIdConsumer
+  http://svn.apache.org/viewvc?rev=729057&view=rev
+  +1: markt
+  -1: 
