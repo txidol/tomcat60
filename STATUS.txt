@@ -211,6 +211,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45154 (add sendfile support to NIO/SSL)
   http://svn.apache.org/viewvc?rev=720724&view=rev
   http://svn.apache.org/viewvc?rev=720728&view=rev 
+  http://svn.apache.org/viewvc?rev=725417&view=rev
   +1: fhanik
   -1: 
 
@@ -281,3 +282,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=729057&view=rev
   +1: markt
   -1: 
+
+* Fix file descriptor leak during send file behavior in NIO connector
+  http://svn.apache.org/viewvc?rev=729191&view=rev 
+  +1: fhanik
+  -1: 
+
+  
