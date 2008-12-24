@@ -174,11 +174,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?)
   -1: 
 
-* Fix possible NPE in NioEndpoint
-  http://svn.apache.org/viewvc?rev=719096&view=rev
-  +1: fhanik, markt, pero
-  -1: 
-
 * Fix send file bug
   http://svn.apache.org/viewvc?rev=719129&view=rev
   +1: fhanik, pero
