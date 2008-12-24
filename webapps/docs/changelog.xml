@@ -285,6 +285,9 @@
   <subsection name="Cluster">
     <changelog>
       <add>
+        Prevent NPE for ReplicationValve (pero)
+      </add>
+      <add>
         Provide TCP only start-up option when using static membership. (fhanik)
       </add>
       <add>
