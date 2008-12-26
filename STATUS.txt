@@ -284,9 +284,14 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik, billbarker
   -1: 
 
-
 * Make certain that classes are first loaded by trusted code
   when working in a sandbox.
   http://svn.apache.org/viewvc?rev=729206&view=rev
   +1: billbarker, fhanik
   -1:   
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46357
+  Correct test for host's parent must be an engine
+  http://svn.apache.org/viewvc?rev=729567&view=rev
+  +1: markt
+  -1: 
