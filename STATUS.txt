@@ -288,5 +288,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Make certain that classes are first loaded by trusted code
   when working in a sandbox.
   http://svn.apache.org/viewvc?rev=729206&view=rev
-  +1: billbarker
+  +1: billbarker, fhanik
   -1:   
