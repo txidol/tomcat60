@@ -203,6 +203,10 @@
         manifest. (markt)
       </fix>
       <fix>
+        <bug>46403</bug>: Provide a workaround for an IE and Safari bug that
+        means the Max-Age attribute of a cookie is ignored. (markt)
+      </fix>
+      <fix>
         <bug>46408</bug>: Fix invalid cast in security utility package. (markt)
       </fix>
     </changelog>

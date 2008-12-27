@@ -257,13 +257,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46403
-  Always add expires parameter to cookies to work around an IE6/7 bug
-  http://svn.apache.org/viewvc?rev=728947&view=rev
-  +1: markt, billbarker
-  +1: fhanik - browsers suck
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46397
   Don't pool tag instances that implement JspIdConsumer
   http://svn.apache.org/viewvc?rev=729057&view=rev
