@@ -293,6 +293,10 @@
         dependencies that are located inside a JAR file. Patch provided by
         Cédric Mailleux. (markt)
       </fix>
+      <fix>
+        <bug>46397</bug>: Don't pool tag instances that implement JspIdConsumer.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
