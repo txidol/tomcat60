@@ -231,7 +231,10 @@
       <add>
          Don't swallow input if we know the connection is going to be closed. (billbarker)
       </add>
-          
+      <fix>
+        <bug>46125</bug>: Return a status code of 400 if the request headers are
+        too large. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
