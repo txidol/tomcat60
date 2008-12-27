@@ -180,18 +180,18 @@ PATCHES PROPOSED TO BACKPORT:
 
 * [1] Fix send file bug - correctly notify the poller without having to wait for it to wake up
   http://svn.apache.org/viewvc?rev=719129&view=rev
-  +1: fhanik, pero
+  +1: fhanik, pero, markt
   -1: 
 
 * [2] Prevent async close NPE on already closed sockets
   http://people.apache.org/~fhanik/tomcat/comet-close-2.patch
-  +1: fhanik
+  +1: fhanik, markt (need to fix indenting)
   -1: 
 
 * [3] Add ability to fix the keyAlias in NIO/SSL
   http://svn.apache.org/viewvc?rev=720587&view=rev
   http://svn.apache.org/viewvc?rev=720553&view=rev 
-  +1: fhanik
+  +1: fhanik, markt
   -1:
 
 * [4] Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45154 (add sendfile support to NIO/SSL) - performance improvement
@@ -208,7 +208,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * [6] Fix file descriptor leak during send file behavior in NIO connector
   http://svn.apache.org/viewvc?rev=729191&view=rev 
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
   
 
