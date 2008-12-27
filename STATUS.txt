@@ -274,3 +274,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=729569&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46351
+  Build script re-factoring
+  Patch provided by Marc Guillemot
+  http://svn.apache.org/viewvc?rev=729681&view=rev
+  +1: markt
+  -1:
