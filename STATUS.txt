@@ -268,3 +268,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=729567&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46381
+  Composite expressions used for attribute values must be coerced to Strings
+  http://svn.apache.org/viewvc?rev=729569&view=rev
+  +1: markt
+  -1: 
