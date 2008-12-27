@@ -202,6 +202,9 @@
         Remove unnecessary reference to commons-logging from the bootstrap JAR
         manifest. (markt)
       </fix>
+      <fix>
+        <bug>46408</bug>: Fix invalid cast in security utility package. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
