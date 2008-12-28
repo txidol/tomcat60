@@ -281,3 +281,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=729681&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46298
+  Throw and SQLException with a useful message rather than a NPE if the URL for
+  the JDBCRealm is invalid.
+  Based on a patch by Owen Jacobson
+  http://svn.apache.org/viewvc?rev=729809&view=rev
+  +1: markt
+  -1: 
