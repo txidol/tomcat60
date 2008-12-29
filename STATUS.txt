@@ -296,3 +296,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=729571&view=rev 
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42707
+  Make adding a host alias via jmx take effect immediately
+  http://svn.apache.org/viewvc?rev=712467&view=rev 
+  +1: markt
+  -1: 
