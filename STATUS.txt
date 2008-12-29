@@ -31,17 +31,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-*  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36155
-   Port the fix from the JK Connector to the AJP and APR Connectors
-   http://svn.apache.org/viewvc?rev=672454&view=rev
-   +1: billbarker
-   -1: remm: No, this gets called all the time, and we're trying to fix a small issue. The real
-             solution would be to recycle the fields since as mentioned here it is the cause of 
-             the problem (the "local" fields will often never change, but there's no real 
-             guarantee overall - it mostly breaks down if there are multiple connectors, with AJP,
-             and seems impossible to anticipate):
-             https://issues.apache.org/bugzilla/show_bug.cgi?id=36155#c17
-
 * Fix issue where the first request for a deleted JSPs returns as if the JSP
   still exists.
   http://svn.apache.org/viewvc?view=rev&revision=683969
@@ -235,6 +224,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=721708&view=rev
   http://svn.apache.org/viewvc?rev=721886&view=rev
   +1: markt, fhanik
+   0: billbarker: Haven't tried to break it yet, but the 4th patch potentially
+      offers access to static fields in ELContextImpl and ELResolverImpl that could 
+      possibly be exploited by a malicious webapp.
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44285
@@ -256,12 +248,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=728768&view=rev
   +1: markt, fhanik
   -1: 
-
-* Make certain that classes are first loaded by trusted code
-  when working in a sandbox.
-  http://svn.apache.org/viewvc?rev=729206&view=rev
-  +1: billbarker, fhanik, markt
-  -1:   
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46357
   Correct test for host's parent must be an engine

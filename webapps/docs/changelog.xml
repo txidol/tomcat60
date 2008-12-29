@@ -242,6 +242,9 @@
         <bug>46125</bug>: Return a status code of 400 if the request headers are
         too large. (markt)
       </fix>
+      <fix>
+       Make certain that classes are first loaded by trusted code when working in a sandbox. (billbarker)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
