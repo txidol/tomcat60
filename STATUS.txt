@@ -289,3 +289,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=729809&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46261
+  %2F in a context path should be interpreted literally, not as /. That is what
+  # is for.
+  http://svn.apache.org/viewvc?rev=729571&view=rev 
+  +1: markt
+  -1: 
