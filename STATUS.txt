@@ -292,5 +292,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45261
   Add a new SimpleCoordinator for tribes provided by Robert Newson
   http://svn.apache.org/viewvc?rev=729815&view=rev
+  http://svn.apache.org/viewvc?rev=729934&view=rev
   +1: markt
   -1: 
