@@ -215,6 +215,7 @@ PATCHES PROPOSED TO BACKPORT:
   Don't override the endorsed dir if the user has set it
   http://svn.apache.org/viewvc?rev=723738&view=rev
   http://svn.apache.org/viewvc?rev=727303&view=rev
+  http://svn.apache.org/viewvc?rev=730250&view=rev
   +1: markt, fhanik, jim
   -1: 
 
