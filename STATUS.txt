@@ -57,14 +57,14 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Handle session suffix rewrite at JvmRouteBinderValve with parallel requests from same client
   http://svn.apache.org/viewvc?rev=693378&view=rev
-  +1: pero, fhanik, markt
+  +1: pero, fhanik, markt, jim
   -1: 
 
 * Fix log a warning if we create maxThreads
   http://svn.apache.org/viewvc?rev=694951&view=rev (JIO)
   http://svn.apache.org/viewvc?rev=708195&view=rev (APR, NIO)
   http://svn.apache.org/viewvc?rev=708223&view=rev (Change log level)
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
    0: remm (logging could pile up quickly)
       markt Because thread count only grows there will only ever be one log message
   -1: 
@@ -86,7 +86,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
   Never use empty reason phrase.
   http://svn.apache.org/viewvc?rev=697183&view=rev
-  +1: rjung, mturk, markt
+  +1: rjung, mturk, markt, jim
    0: remm (also affects to the two other AJP connectors)
 
 * Allow huge request body packets for AJP13.
@@ -94,7 +94,7 @@ PATCHES PROPOSED TO BACKPORT:
   carried forward to trunk and tc6.0.x.
   http://svn.apache.org/viewvc?rev=697192&view=rev
   Original change: http://svn.apache.org/viewvc?rev=486217&view=rev
-  +1: rjung, mturk, markt, pero
+  +1: rjung, mturk, markt, pero, jim
    0: remm (also affects to the two other AJP connectors)
 
 * Fix serialisation issue reported by Find Bugs
@@ -144,21 +144,21 @@ PATCHES PROPOSED TO BACKPORT:
   Ensure context.xml takes effect on first deployment. Make processing of
   context.xml consistent.
   http://svn.apache.org/viewvc?rev=712464&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
    0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?)
   -1: 
 
 * Make sure DIR deployment with context.xml works when configBase does no exist.
   This is required as a result of my previous changes to HostConfig
   http://svn.apache.org/viewvc?rev=718436&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
    0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?)
   -1: 
 
 * Make thread pool limits dynamically configurable
   http://svn.apache.org/viewvc?rev=719602&view=rev
   http://svn.apache.org/viewvc?rev=719628&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
    0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?
       on this particular one, if people want fancy behavior, maybe they should use an executor)
   -1: 
@@ -169,7 +169,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * [1] Fix send file bug - correctly notify the poller without having to wait for it to wake up
   http://svn.apache.org/viewvc?rev=719129&view=rev
-  +1: fhanik, pero, markt
+  +1: fhanik, pero, markt, jim
   -1: 
 
 * [2] Prevent async close NPE on already closed sockets
@@ -187,7 +187,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=720724&view=rev
   http://svn.apache.org/viewvc?rev=720728&view=rev 
   http://svn.apache.org/viewvc?rev=725417&view=rev
-  +1: fhanik
+  +1: fhanik, jim
   -1: 
   
 * [5] Fix Comet interest registration bug
@@ -197,7 +197,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * [6] Fix file descriptor leak during send file behavior in NIO connector
   http://svn.apache.org/viewvc?rev=729191&view=rev 
-  +1: fhanik, markt
+  +1: fhanik, markt, jim
   -1: 
   
 
@@ -210,7 +210,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42077
   Don't include nulls in iterator. Based on a patch by Mathias Broekelmann
   http://svn.apache.org/viewvc?rev=720069&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
   -1: 
 
 * Use consistent (and more useful) JPDA defaults in catalina.bat
@@ -232,14 +232,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44285
   Make SSL session cache size and timeout configurable
   http://svn.apache.org/viewvc?rev=723404&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46232
   Don't override the endorsed dir if the user has set it
   http://svn.apache.org/viewvc?rev=723738&view=rev
   http://svn.apache.org/viewvc?rev=727303&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46304
@@ -265,7 +265,7 @@ PATCHES PROPOSED TO BACKPORT:
   Build script re-factoring
   Patch provided by Marc Guillemot
   http://svn.apache.org/viewvc?rev=729681&view=rev
-  +1: markt
+  +1: markt, jim
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46298
