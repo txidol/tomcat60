@@ -131,21 +131,6 @@ PATCHES PROPOSED TO BACKPORT:
          Just did that for trunk (r711934; but it contains also other changes).
          Caution: at the moment there's no @VERSION@ substitution for service.bat.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
-  Ensure context.xml takes effect on first deployment. Make processing of
-  context.xml consistent.
-  http://svn.apache.org/viewvc?rev=712464&view=rev
-  +1: markt, fhanik, jim
-   0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?)
-  -1: 
-
-* Make sure DIR deployment with context.xml works when configBase does no exist.
-  This is required as a result of my previous changes to HostConfig
-  http://svn.apache.org/viewvc?rev=718436&view=rev
-  +1: markt, fhanik, jim
-   0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?)
-  -1: 
-
 * Make thread pool limits dynamically configurable
   http://svn.apache.org/viewvc?rev=719602&view=rev
   http://svn.apache.org/viewvc?rev=719628&view=rev

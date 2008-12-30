@@ -35,6 +35,12 @@
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <fix>
+        <bug>42747</bug>: Ensure context.xml takes effect on first deployment
+        for WAR and DIR deployments. context.xml is now copied to
+        CATALINA_BASE/&lt;engine name&gt;/&lt;host name&gt; for DIR as well as
+        WAR deployments. (markt)
+      </fix>
       <fix><bug>43071</bug>Start poller before acceptor (r719267)</fix>
       <update>
         Fix read/write timeout of async comet operations
