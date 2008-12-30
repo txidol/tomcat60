@@ -60,15 +60,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: pero, fhanik, markt, jim
   -1: 
 
-* Fix log a warning if we create maxThreads
-  http://svn.apache.org/viewvc?rev=694951&view=rev (JIO)
-  http://svn.apache.org/viewvc?rev=708195&view=rev (APR, NIO)
-  http://svn.apache.org/viewvc?rev=708223&view=rev (Change log level)
-  +1: markt, fhanik, jim
-   0: remm (logging could pile up quickly)
-      markt Because thread count only grows there will only ever be one log message
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44382
   Use HttpOnly for session cookies. This is enabled by default. Feel free to
   caveat your vote with a preference for disabled by default.

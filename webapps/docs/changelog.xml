@@ -245,6 +245,9 @@
       <fix>
        Make certain that classes are first loaded by trusted code when working in a sandbox. (billbarker)
       </fix>
+      <add>
+        Log a message if we reach maxThreads in a connector thread pool. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Jasper">
