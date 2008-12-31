@@ -254,6 +254,9 @@
       <add>
         Log a message if we reach maxThreads in a connector thread pool. (markt)
       </add>
+      <add>
+        Enable the thread pool limits to be modified via JMX. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Jasper">

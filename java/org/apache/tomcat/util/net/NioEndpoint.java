@@ -52,6 +52,7 @@ import javax.net.ssl.TrustManagerFactory;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.IntrospectionUtils;
+import org.apache.tomcat.util.net.JIoEndpoint.Worker;
 import org.apache.tomcat.util.net.SecureNioChannel.ApplicationBufferHandler;
 import org.apache.tomcat.util.res.StringManager;
 
@@ -350,7 +351,20 @@ public class NioEndpoint {
      * Maximum amount of worker threads.
      */
     protected int maxThreads = 200;
-    public void setMaxThreads(int maxThreads) { this.maxThreads = maxThreads; }
+    public void setMaxThreads(int maxThreads) {
+        this.maxThreads = maxThreads;
+        if (running) {
+            if (getUseExecutor() && executor!=null) {
+                if (executor instanceof ThreadPoolExecutor) {
+                    ((ThreadPoolExecutor)executor).setMaximumPoolSize(maxThreads);
+                }
+            }else if (workers!=null){            
+                synchronized(workers) {
+                    workers.resize(maxThreads);
+                }
+            }
+        }
+    }
     public int getMaxThreads() { return maxThreads; }
 
 
@@ -2018,12 +2032,18 @@ public class NioEndpoint {
         }
 
         /** 
-         * Put the object into the queue.
+         * Put the object into the queue. If the queue is full (for example if
+         * the queue has been reduced in size) the object will be dropped.
          * 
-         * @param   object      the object to be appended to the queue (first element). 
+         * @param   object  the object to be appended to the queue (first
+         *                  element).
          */
         public void push(Worker worker) {
-            workers[end++] = worker;
+            if (end < workers.length) {
+                workers[end++] = worker;
+            } else {
+                curThreads--;
+            }
         }
 
         /**
@@ -2057,6 +2077,22 @@ public class NioEndpoint {
          */
         public int size() {
             return (end);
+        }
+        
+        /**
+         * Resize the queue. If there are too many objects in the queue for the
+         * new size, drop the excess.
+         * 
+         * @param newSize
+         */
+        public void resize(int newSize) {
+            Worker[] newWorkers = new Worker[newSize];
+            int len = workers.length;
+            if (newSize < len) {
+                len = newSize;
+            }
+            System.arraycopy(workers, 0, newWorkers, 0, len);
+            workers = newWorkers;
         }
     }
 

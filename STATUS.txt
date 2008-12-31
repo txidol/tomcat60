@@ -131,14 +131,6 @@ PATCHES PROPOSED TO BACKPORT:
          Just did that for trunk (r711934; but it contains also other changes).
          Caution: at the moment there's no @VERSION@ substitution for service.bat.
 
-* Make thread pool limits dynamically configurable
-  http://svn.apache.org/viewvc?rev=719602&view=rev
-  http://svn.apache.org/viewvc?rev=719628&view=rev
-  +1: markt, fhanik, jim
-   0: remm (risky, would it be possible to stop backporting risky changes and behavior modifications to 6.0.x ?
-      on this particular one, if people want fancy behavior, maybe they should use an executor)
-  -1: 
-
 * I have summarized all the NIO fixes into one patch for those who wish to test it
 * It includes patch [1]-[6] below and can be found at:
 * http://people.apache.org/~fhanik/tomcat/uber-patch.txt
