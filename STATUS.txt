@@ -191,14 +191,6 @@ PATCHES PROPOSED TO BACKPORT:
       possibly be exploited by a malicious webapp.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46232
-  Don't override the endorsed dir if the user has set it
-  http://svn.apache.org/viewvc?rev=723738&view=rev
-  http://svn.apache.org/viewvc?rev=727303&view=rev
-  http://svn.apache.org/viewvc?rev=730250&view=rev
-  +1: markt, fhanik, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46304
   Excludes performance issues
   Use Principal when calling doFilterEvent()
