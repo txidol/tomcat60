@@ -274,6 +274,11 @@
         Correct typo in JSP EL examples. (markt)
       </fix>
       <fix>
+        <bug>42077</bug>: Ensure the iterator returned by
+        javax.el.CompositeELResolver#getFeatureDescriptor() skips any null
+        FeatureDescriptors. Patch provided by Mathias Broekelmann. (markt)
+      </fix>
+      <fix>
         <bug>45427</bug>: Correctly handle unmatched quotes in EL expressions.
         (markt)
       </fix>
