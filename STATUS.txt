@@ -191,12 +191,6 @@ PATCHES PROPOSED TO BACKPORT:
       possibly be exploited by a malicious webapp.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44285
-  Make SSL session cache size and timeout configurable
-  http://svn.apache.org/viewvc?rev=723404&view=rev
-  +1: markt, fhanik, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46232
   Don't override the endorsed dir if the user has set it
   http://svn.apache.org/viewvc?rev=723738&view=rev
