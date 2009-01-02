@@ -262,3 +262,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=730694&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37458
+  Correct sync issue that leads to NPE in rare circumstances
+  Patch provided by Konstantin Kolinko
+  http://svn.apache.org/viewvc?rev=730735&view=rev
+  +1: markt
+  -1: 
