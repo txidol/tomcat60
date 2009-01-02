@@ -255,3 +255,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=730590&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46462
+  Limit package test to just the o.a.jsp package to allow use of packages such
+  as o.a.jspwiki
+  http://svn.apache.org/viewvc?rev=730694&view=rev
+  +1: markt
+  -1: 
