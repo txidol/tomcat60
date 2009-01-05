@@ -269,3 +269,15 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=730735&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46471
+  Use jar url and tag file path to uniquely ID a tag file to prevent naming
+  clashes
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37515
+  Add options for 1.6 and 1.7 source and target to JDT compiler
+  http://svn.apache.org/viewvc?rev=731773&view=rev
+  +1: markt
+  -1: 
