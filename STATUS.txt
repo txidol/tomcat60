@@ -222,7 +222,7 @@ PATCHES PROPOSED TO BACKPORT:
   the JDBCRealm is invalid.
   Based on a patch by Owen Jacobson
   http://svn.apache.org/viewvc?rev=729809&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46261
@@ -247,20 +247,21 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Print user friendly message when attempting to shutdown and shutdown port is disabled
   http://svn.apache.org/viewvc?rev=730178&view=rev
-  +1: fhanik
+  +1: fhanik, remm
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36923
   If EL is disabled, treat it as template text
   http://svn.apache.org/viewvc?rev=730590&view=rev
   +1: markt
+   0: remm (needs TCK testing)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46462
   Limit package test to just the o.a.jsp package to allow use of packages such
   as o.a.jspwiki
   http://svn.apache.org/viewvc?rev=730694&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37458
@@ -274,10 +275,11 @@ PATCHES PROPOSED TO BACKPORT:
   Use jar url and tag file path to uniquely ID a tag file to prevent naming
   clashes
   +1: markt
-  -1: 
+  -1: remm (e.printStackTrace in the patch, and maybe usage of URL constructs which could lead to issues
+            when not filesystem based; also needs TCK testing)
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37515
   Add options for 1.6 and 1.7 source and target to JDT compiler
   http://svn.apache.org/viewvc?rev=731773&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
