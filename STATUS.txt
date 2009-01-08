@@ -255,6 +255,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=730590&view=rev
   +1: markt
    0: remm (needs TCK testing)
+           markt - TCK passes
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46462
