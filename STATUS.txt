@@ -274,9 +274,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46471
   Use jar url and tag file path to uniquely ID a tag file to prevent naming
   clashes
+  http://svn.apache.org/viewvc?rev=731651&view=rev
+  http://svn.apache.org/viewvc?rev=732863&view=rev
   +1: markt
   -1: remm (e.printStackTrace in the patch, and maybe usage of URL constructs which could lead to issues
             when not filesystem based; also needs TCK testing)
+            markt - Second commit removes e.printStackTrace. URLs not used to
+                    locate files. TCK passes.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37515
   Add options for 1.6 and 1.7 source and target to JDT compiler
