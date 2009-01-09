@@ -288,3 +288,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=731773&view=rev
   +1: markt, remm
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46339
+  Before the invocation of a fragment, AT_BEGIN and NESTED variables should be
+  copied from the current JspContext to the JspContext of the fragment
+  (*instead* of the JspContext of the calling page or tag file).
+  Patch provided by kinman@a.o
+  http://svn.apache.org/viewvc?rev=733072&view=rev
+  +1: markt
+  -1: 
