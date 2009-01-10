@@ -201,13 +201,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46357
   Correct test for host's parent must be an engine
   http://svn.apache.org/viewvc?rev=729567&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46381
   Composite expressions used for attribute values must be coerced to Strings
   http://svn.apache.org/viewvc?rev=729569&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46351
@@ -215,6 +215,7 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Marc Guillemot
   http://svn.apache.org/viewvc?rev=729681&view=rev
   +1: markt, jim
+   0: fhanik - not sure its needed in 6.0 branch if all is working with the old script
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46298
@@ -222,20 +223,20 @@ PATCHES PROPOSED TO BACKPORT:
   the JDBCRealm is invalid.
   Based on a patch by Owen Jacobson
   http://svn.apache.org/viewvc?rev=729809&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46261
   %2F in a context path should be interpreted literally, not as /. That is what
   # is for.
   http://svn.apache.org/viewvc?rev=729571&view=rev 
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42707
   Make adding a host alias via jmx take effect immediately
   http://svn.apache.org/viewvc?rev=712467&view=rev 
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45261
@@ -262,14 +263,14 @@ PATCHES PROPOSED TO BACKPORT:
   Limit package test to just the o.a.jsp package to allow use of packages such
   as o.a.jspwiki
   http://svn.apache.org/viewvc?rev=730694&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37458
   Correct sync issue that leads to NPE in rare circumstances
   Patch provided by Konstantin Kolinko
   http://svn.apache.org/viewvc?rev=730735&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46471
@@ -286,7 +287,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37515
   Add options for 1.6 and 1.7 source and target to JDT compiler
   http://svn.apache.org/viewvc?rev=731773&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46339
@@ -295,5 +296,10 @@ PATCHES PROPOSED TO BACKPORT:
   (*instead* of the JspContext of the calling page or tag file).
   Patch provided by kinman@a.o
   http://svn.apache.org/viewvc?rev=733072&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
+
+* Provide deployment feedback - ie when deployment succeeds but startup fails, it should return FAIL
+  http://svn.apache.org/viewvc?rev=731644&view=rev
+  +1: fhanik
+  -1:
