@@ -34,21 +34,21 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix issue where the first request for a deleted JSPs returns as if the JSP
   still exists.
   http://svn.apache.org/viewvc?view=rev&revision=683969
-  +1: markt
+  +1: markt, funkman
    0: remm (looks risky, very minor problem)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
   Prevent race condition for allocate/deallocate in StandardWrapper
   http://svn.apache.org/viewvc?rev=685177&view=rev
-  +1: markt
+  +1: markt, funkman
    0: remm: The only unsafe usage of this field is to implement the gimmick loop-wait hack,
             which to me means adding any sort of sync is not worth it.
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45074
   http://svn.apache.org/viewvc?rev=689402&view=rev
-  +1: jfclere
+  +1: jfclere, funkman
    0: markt: The OP was using linux so I assume they saw some benefit.
              If this is goign to be applied, the docs should be
              updated as well.
@@ -70,6 +70,7 @@ PATCHES PROPOSED TO BACKPORT:
       fhanik why did we change it in trunk to begin with if we are gonna change it again when the spec comes out
              lets just implement the spec in trunk, and discuss the simplest solution for 6.0.x
              but I don't agree with changing the default value
+      funkman: leave as gap until 3.0 spec
   -1: 
   rjung: slightly prefer enabled for 6.0.x because of increased security by default,
          but disabled for tc5.5.x because of the small risk of breaking existing apps.
@@ -91,13 +92,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix serialisation issue reported by Find Bugs
   http://svn.apache.org/viewvc?rev=699633&view=rev
   +1: markt
+  +1: funkman (prefer to also remove Serializable from trunk)
    0: remm (StdContext was marked as Serializable for an experiment; obviously it won't work)
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45933
   Don't use xml parser from web-app to process tld files
   http://svn.apache.org/viewvc?rev=701355&view=rev
-  +1: markt
+  +1: markt, funkman
   -0: remm (it is a refactoring, and is not appropriate to me in 6.0.x)
            markt - It is a refactoring but the refactoring was necessary
                    to change when TLDs were processed to avoid the bug. It
@@ -106,7 +108,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
   See commit message for details of negligable performance impact
   http://svn.apache.org/viewvc?rev=701358&view=rev
-  +1: markt
+  +1: markt, funkman
   -0: remm (I also do not think the patch is a good idea as a backport)
 
 * Backport NCDFE fix from trunk (TCK failures without it)
@@ -119,7 +121,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41861
   Add major version number to Tomcat service name created by Windows installer
   http://svn.apache.org/viewvc?rev=710066&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, funkman
   -1: 
   rjung: tomcat.nsi already uses replacement patterns like @VERSION@.
          So it might be more robust, to add another replacement like
@@ -142,13 +144,13 @@ PATCHES PROPOSED TO BACKPORT:
 
 * [2] Prevent async close NPE on already closed sockets
   http://people.apache.org/~fhanik/tomcat/comet-close-2.patch
-  +1: fhanik, markt (need to fix indenting)
+  +1: fhanik, markt (need to fix indenting), funkman
   -1: 
 
 * [3] Add ability to fix the keyAlias in NIO/SSL
   http://svn.apache.org/viewvc?rev=720587&view=rev
   http://svn.apache.org/viewvc?rev=720553&view=rev 
-  +1: fhanik, markt
+  +1: fhanik, markt, funkman
   -1:
 
 * [4] Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45154 (add sendfile support to NIO/SSL) - performance improvement
@@ -160,24 +162,24 @@ PATCHES PROPOSED TO BACKPORT:
   
 * [5] Fix Comet interest registration bug
   http://people.apache.org/~fhanik/tomcat/comet-ops.patch
-  +1: fhanik
+  +1: fhanik, funkman
   -1: 
 
 * [6] Fix file descriptor leak during send file behavior in NIO connector
   http://svn.apache.org/viewvc?rev=729191&view=rev 
-  +1: fhanik, markt, jim
+  +1: fhanik, markt, jim, funkman
   -1: 
   
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42693
   Fix compilation of recursive tags
   http://svn.apache.org/viewvc?rev=720046&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, funkman
   -1: 
 
 * Use consistent (and more useful) JPDA defaults in catalina.bat
   http://svn.apache.org/viewvc?rev=721040&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, funkman
   -1: 
 
 * Changes required to run with a security manager
@@ -195,19 +197,19 @@ PATCHES PROPOSED TO BACKPORT:
   Excludes performance issues
   Use Principal when calling doFilterEvent()
   http://svn.apache.org/viewvc?rev=728768&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46357
   Correct test for host's parent must be an engine
   http://svn.apache.org/viewvc?rev=729567&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46381
   Composite expressions used for attribute values must be coerced to Strings
   http://svn.apache.org/viewvc?rev=729569&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46351
@@ -216,6 +218,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=729681&view=rev
   +1: markt, jim
    0: fhanik - not sure its needed in 6.0 branch if all is working with the old script
+   0: funkman - ditto
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46298
@@ -236,25 +239,25 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42707
   Make adding a host alias via jmx take effect immediately
   http://svn.apache.org/viewvc?rev=712467&view=rev 
-  +1: markt, fhanik
+  +1: markt, fhanik, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45261
   Add a new SimpleCoordinator for tribes provided by Robert Newson
   http://svn.apache.org/viewvc?rev=729815&view=rev
   http://svn.apache.org/viewvc?rev=729934&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, funkman
   -1: 
 
 * Print user friendly message when attempting to shutdown and shutdown port is disabled
   http://svn.apache.org/viewvc?rev=730178&view=rev
-  +1: fhanik, remm
+  +1: fhanik, remm, funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36923
   If EL is disabled, treat it as template text
   http://svn.apache.org/viewvc?rev=730590&view=rev
-  +1: markt
+  +1: markt, funkman
    0: remm (needs TCK testing)
            markt - TCK passes
   -1: 
@@ -270,7 +273,7 @@ PATCHES PROPOSED TO BACKPORT:
   Correct sync issue that leads to NPE in rare circumstances
   Patch provided by Konstantin Kolinko
   http://svn.apache.org/viewvc?rev=730735&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46471
@@ -292,5 +295,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Provide deployment feedback - ie when deployment succeeds but startup fails, it should return FAIL
   http://svn.apache.org/viewvc?rev=731644&view=rev
-  +1: fhanik
+  +1: fhanik, funkman
   -1:
