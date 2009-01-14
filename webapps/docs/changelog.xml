@@ -299,6 +299,10 @@
         FeatureDescriptors. Patch provided by Mathias Broekelmann. (markt)
       </fix>
       <fix>
+        <bug>42693</bug>: Fix JSP generation error with recursive tag file
+        structure. (markt)
+      </fix>
+      <fix>
         <bug>45427</bug>: Correctly handle unmatched quotes in EL expressions.
         (markt)
       </fix>
