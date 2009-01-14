@@ -435,6 +435,9 @@
         <bug>46366</bug>: Correct information in RUNNING.txt regarding use of
         CATALINA_HOME and CATALINA_BASE. (markt) 
       </fix>
+      <fix>
+        Use more useful JPDA defaults in catalina.bat. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>

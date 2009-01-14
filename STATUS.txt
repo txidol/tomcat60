@@ -130,11 +130,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, funkman, markt
   -1: 
 
-* Use consistent (and more useful) JPDA defaults in catalina.bat
-  http://svn.apache.org/viewvc?rev=721040&view=rev
-  +1: markt, fhanik, funkman
-  -1: 
-
 * Changes required to run with a security manager
   http://svn.apache.org/viewvc?rev=721286&view=rev
   http://svn.apache.org/viewvc?rev=721704&view=rev
