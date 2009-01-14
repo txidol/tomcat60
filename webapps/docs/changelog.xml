@@ -343,6 +343,10 @@
         Cédric Mailleux. (markt)
       </fix>
       <fix>
+        <bug>43681</bug>: Composite expressions used for attribute values must
+        be coerced to Strings. (markt)
+      </fix>
+      <fix>
         <bug>46397</bug>: Don't pool tag instances that implement JspIdConsumer.
         (markt)
       </fix>
