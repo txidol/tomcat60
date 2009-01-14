@@ -213,6 +213,11 @@
         standard endorsed mechanism. (markt)
       </fix>
       <fix>
+        <bug>46298</bug>: Throw an SQLException with a useful message rather
+        than a NPE if the URL for the JDBCRealm is invalid. Based on a patch by
+        Owen Jacobson. (markt)
+      </fix>
+      <fix>
         <bug>46304</bug>: Further fixes to make Principal accessible (if set)
         via <code>Subject.getSubject(AccessController.getContext())</code> when
         processing filters. (markt)
