@@ -407,6 +407,10 @@
   <subsection name="Other">
     <changelog>
       <fix>
+        <bug>41861</bug>: Update service name to Apache Tomcat 6 to prevent
+        conflicts with previous major Tomcat versions. (markt/rjung)
+      </fix>
+      <fix>
         <bug>45852</bug>: Add special handling for cp932 (aka ms932) when
         creating tomcat-users.xml with Windows installer. (markt)
       </fix>

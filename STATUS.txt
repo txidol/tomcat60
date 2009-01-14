@@ -118,21 +118,6 @@ PATCHES PROPOSED TO BACKPORT:
             really old to me, so where would this come from ?)
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41861
-  Add major version number to Tomcat service name created by Windows installer
-  http://svn.apache.org/viewvc?rev=710066&view=rev
-  +1: markt, rjung, funkman
-  -1: 
-  rjung: tomcat.nsi already uses replacement patterns like @VERSION@.
-         So it might be more robust, to add another replacement like
-         VERSION_MAJOR or VERSION_MAIN to dist.xml resolving
-         to ${version.major} or $version.major}.${version.minor}
-         and then replace all occurences of "6" with @VERSION_MAJOR@
-         or @VERSION_MAIN@.
-  rjung: Should be added to PR_DESCRIPTION in bin/service.bat as well.
-         Just did that for trunk (r711934; but it contains also other changes).
-         Caution: at the moment there's no @VERSION@ substitution for service.bat.
-
 * [4] Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45154 (add sendfile support to NIO/SSL) - performance improvement
   http://svn.apache.org/viewvc?rev=720724&view=rev
   http://svn.apache.org/viewvc?rev=720728&view=rev 

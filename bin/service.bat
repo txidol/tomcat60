@@ -57,7 +57,7 @@ set EXECUTABLE=%CATALINA_HOME%\bin\tomcat6.exe
 
 rem Set default Service name
 set SERVICE_NAME=Tomcat6
-set PR_DISPLAYNAME=Apache Tomcat
+set PR_DISPLAYNAME=Apache Tomcat 6
 
 if "%1" == "" goto displayUsage
 if "%2" == "" goto setServiceName
