@@ -122,12 +122,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=720724&view=rev
   http://svn.apache.org/viewvc?rev=720728&view=rev 
   http://svn.apache.org/viewvc?rev=725417&view=rev
-  +1: fhanik, jim
+  +1: fhanik, jim, markt
   -1: 
   
 * [5] Fix Comet interest registration bug
   http://people.apache.org/~fhanik/tomcat/comet-ops.patch
-  +1: fhanik, funkman
+  +1: fhanik, funkman, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42693
