@@ -44,17 +44,21 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
+
+import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLSessionContext;
 import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509KeyManager;
 
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.IntrospectionUtils;
 import org.apache.tomcat.util.net.JIoEndpoint.Worker;
 import org.apache.tomcat.util.net.SecureNioChannel.ApplicationBufferHandler;
+import org.apache.tomcat.util.net.jsse.NioX509KeyManager;
 import org.apache.tomcat.util.res.StringManager;
 
 /**
@@ -572,6 +576,11 @@ public class NioEndpoint {
     }
     public void setKeystore(String s ) { setKeystoreFile(s);}
     public String getKeystore() { return getKeystoreFile();}
+
+    String keyAlias = null;
+    public String getKeyAlias() { return keyAlias;}
+    public void setKeyAlias(String s ) { keyAlias = s;}
+    
     
     protected String algorithm = "SunX509";
     public String getAlgorithm() { return algorithm;}
@@ -785,8 +794,7 @@ public class NioEndpoint {
             ks.load(new FileInputStream(getKeystoreFile()), passphrase);
             KeyStore ts = null;
             if (getTruststoreFile()==null) {
-                ts = KeyStore.getInstance(getKeystoreType());
-                ts.load(new FileInputStream(getKeystoreFile()), passphrase);
+                //no op, same as for BIO connector
             }else {
                 ts = KeyStore.getInstance(ttype);
                 ts.load(new FileInputStream(getTruststoreFile()), tpassphrase);
@@ -799,7 +807,7 @@ public class NioEndpoint {
             tmf.init(ts);
 
             sslContext = SSLContext.getInstance(getSslProtocol());
-            sslContext.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+            sslContext.init(wrap(kmf.getKeyManagers()), tmf.getTrustManagers(), null);
             SSLSessionContext sessionContext =
                 sslContext.getServerSessionContext();
             if (sessionContext != null) {
@@ -812,6 +820,19 @@ public class NioEndpoint {
         selectorPool.open();
         initialized = true;
 
+    }
+    
+    public KeyManager[] wrap(KeyManager[] managers) {
+        if (managers==null) return null;
+        KeyManager[] result = new KeyManager[managers.length];
+        for (int i=0; i<result.length; i++) {
+            if (managers[i] instanceof X509KeyManager && getKeyAlias()!=null) {
+                result[i] = new NioX509KeyManager((X509KeyManager)managers[i],getKeyAlias());
+            } else {
+                result[i] = managers[i];
+            }
+        }
+        return result;
     }
 
 
@@ -1317,6 +1338,7 @@ public class NioEndpoint {
                             int ops = key.interestOps() | interestOps;
                             att.interestOps(ops);
                             key.interestOps(ops);
+                            att.setCometOps(ops);
                         } else {
                             cancel = true;
                         }
@@ -1459,11 +1481,13 @@ public class NioEndpoint {
                     }                    
                 }
                 
+                key.attach(null);
                 if (ka!=null) handler.release(ka.getChannel());
                 if (key.isValid()) key.cancel();
                 if (key.channel().isOpen()) try {key.channel().close();}catch (Exception ignore){}
-                try {ka.channel.close(true);}catch (Exception ignore){}
-                key.attach(null);
+                try {if (ka!=null) ka.channel.close(true);}catch (Exception ignore){}
+                try {if (ka!=null && ka.getSendfileData()!=null && ka.getSendfileData().fchannel!=null && ka.getSendfileData().fchannel.isOpen()) ka.getSendfileData().fchannel.close();}catch (Exception ignore){}
+                if (ka!=null) ka.reset();
             } catch (Throwable e) {
                 if ( log.isDebugEnabled() ) log.error("",e);
                 // Ignore
@@ -1575,7 +1599,7 @@ public class NioEndpoint {
                     NioChannel channel = attachment.getChannel();
                     if (sk.isReadable() || sk.isWritable() ) {
                         if ( attachment.getSendfileData() != null ) {
-                            processSendfile(sk,attachment,true);
+                            processSendfile(sk,attachment,true, false);
                         } else if ( attachment.getComet() ) {
                             //check if thread is available
                             if ( isWorkerAvailable() ) {
@@ -1620,7 +1644,7 @@ public class NioEndpoint {
             return result;
         }
         
-        public boolean processSendfile(SelectionKey sk, KeyAttachment attachment, boolean reg) {
+        public boolean processSendfile(SelectionKey sk, KeyAttachment attachment, boolean reg, boolean event) {
             try {
                 //unreg(sk,attachment);//only do this if we do process send file on a separate thread
                 SendfileData sd = attachment.getSendfileData();
@@ -1643,11 +1667,18 @@ public class NioEndpoint {
                         log.debug("Send file complete for:"+sd.fileName);
                     }
                     attachment.setSendfileData(null);
+                    try {sd.fchannel.close();}catch(Exception ignore){}
                     if ( sd.keepAlive ) {
-                        if (log.isDebugEnabled()) {
-                            log.debug("Connection is keep alive, registering back for OP_READ");
+                        if (reg) {
+                            if (log.isDebugEnabled()) {
+                                log.debug("Connection is keep alive, registering back for OP_READ");
+                            }
+                            if (event) {
+                                this.add(attachment.getChannel(),SelectionKey.OP_READ);
+                            } else {
+                                reg(sk,attachment,SelectionKey.OP_READ);
+                            }
                         }
-                        if (reg) reg(sk,attachment,SelectionKey.OP_READ);
                     } else {
                         if (log.isDebugEnabled()) {
                             log.debug("Send file connection is being closed");
@@ -1658,11 +1689,14 @@ public class NioEndpoint {
                     if (log.isDebugEnabled()) {
                         log.debug("OP_WRITE for sendilfe:"+sd.fileName);
                     }
-
-                    reg(sk,attachment,SelectionKey.OP_WRITE);
+                    if (event) {
+                        add(attachment.getChannel(),SelectionKey.OP_WRITE);
+                    } else {
+                        reg(sk,attachment,SelectionKey.OP_WRITE);
+                    }
                 }
             }catch ( IOException x ) {
-                if ( log.isDebugEnabled() ) log.warn("Unable to complete sendfile request:", x);
+                if ( log.isDebugEnabled() ) log.debug("Unable to complete sendfile request:", x);
                 cancelledKey(sk,SocketStatus.ERROR,false);
                 return false;
             }catch ( Throwable t ) {
@@ -1681,7 +1715,7 @@ public class NioEndpoint {
         protected void reg(SelectionKey sk, KeyAttachment attachment, int intops) {
             sk.interestOps(intops); 
             attachment.interestOps(intops);
-            attachment.setCometOps(intops);
+            //attachment.setCometOps(intops);
         }
 
         protected void timeout(int keyCount, boolean hasEvents) {

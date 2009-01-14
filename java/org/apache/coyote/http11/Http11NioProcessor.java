@@ -940,7 +940,7 @@ public class Http11NioProcessor implements ActionHook {
                 sendfileData.keepAlive = keepAlive;
                 SelectionKey key = socket.getIOChannel().keyFor(socket.getPoller().getSelector());
                 //do the first write on this thread, might as well
-                openSocket = socket.getPoller().processSendfile(key,ka,true);
+                openSocket = socket.getPoller().processSendfile(key,ka,true,true);
                 break;
             }
 
@@ -1227,14 +1227,16 @@ public class Http11NioProcessor implements ActionHook {
         } else if (actionCode == ActionCode.ACTION_COMET_END) {
             comet = false;
         }  else if (actionCode == ActionCode.ACTION_COMET_CLOSE) {
-            NioEndpoint.KeyAttachment attach = (NioEndpoint.KeyAttachment)socket.getAttachment(false);
-            attach.setCometOps(NioEndpoint.OP_CALLBACK);
+            if (socket==null || socket.getAttachment(false)==null) return;
+        	NioEndpoint.KeyAttachment attach = (NioEndpoint.KeyAttachment)socket.getAttachment(false);
+            attach.setCometOps(NioEndpoint.OP_CALLBACK | attach.getCometOps());
             //notify poller if not on a tomcat thread
             RequestInfo rp = request.getRequestProcessor();
             if ( rp.getStage() != org.apache.coyote.Constants.STAGE_SERVICE ) //async handling
                 socket.getPoller().cometInterest(socket);
         } else if (actionCode == ActionCode.ACTION_COMET_SETTIMEOUT) {
             if (param==null) return;
+            if (socket==null || socket.getAttachment(false)==null) return;
             NioEndpoint.KeyAttachment attach = (NioEndpoint.KeyAttachment)socket.getAttachment(false);
             long timeout = ((Long)param).longValue();
             //if we are not piggy backing on a worker thread, set the timeout

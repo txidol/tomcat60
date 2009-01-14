@@ -224,6 +224,18 @@
   <subsection name="Coyote">
     <changelog>
       <update>
+        Fix file descriptor leak during NIO send file behavior. (fhanik)
+      </update>
+      <update>
+        Implement usage of keyAlias attribute for NIO, previously attribute was ignored. (fhanik)
+      </update>
+      <update>
+        Prevent server from calling close on an already closed NIO socket. One that had timed out. (fhanik)
+      </update>
+      <update>
+        Fix bug with SEND_FILE behavior in NIO. Send file would delay until selector timed out, even though socket was ready to be written. (fhanik)
+      </update>
+      <update>
         Fix possible NPE in NioEndpoint.java (fhanik)
       </update>
       <update>
