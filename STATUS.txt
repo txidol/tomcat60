@@ -141,12 +141,6 @@ PATCHES PROPOSED TO BACKPORT:
       possibly be exploited by a malicious webapp.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46357
-  Correct test for host's parent must be an engine
-  http://svn.apache.org/viewvc?rev=729567&view=rev
-  +1: markt, fhanik, funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46381
   Composite expressions used for attribute values must be coerced to Strings
   http://svn.apache.org/viewvc?rev=729569&view=rev

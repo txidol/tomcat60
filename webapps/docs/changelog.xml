@@ -370,6 +370,10 @@
       <fix>
         Fix small memory leak in FarmWarDeployer. (markt)
       </fix>
+      <fix>
+        <bug>46357</bug>: Corrected test for host's parent must be an engine.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
