@@ -47,6 +47,8 @@ public class NioChannel implements ByteChannel{
     protected ApplicationBufferHandler bufHandler;
 
     protected Poller poller;
+    
+    protected boolean sendFile = false;
 
     public NioChannel(SocketChannel channel, ApplicationBufferHandler bufHandler) throws IOException {
         this.sc = channel;
@@ -56,6 +58,7 @@ public class NioChannel implements ByteChannel{
     public void reset() throws IOException {
         bufHandler.getReadBuffer().clear();
         bufHandler.getWriteBuffer().clear();
+        this.sendFile = false;
     }
     
     public int getBufferSize() {
@@ -191,5 +194,27 @@ public class NioChannel implements ByteChannel{
     public String toString() {
         return super.toString()+":"+this.sc.toString();
     }
+    
+    public int getOutboundRemaining() {
+        return 0;
+    }
+    
+    /**
+     * Return true if the buffer wrote data
+     * @return
+     * @throws IOException
+     */
+    public boolean flushOutbound() throws IOException {
+        return false;
+    }
+    
+    public boolean isSendFile() {
+        return sendFile;
+    }
+    
+    public void setSendFile(boolean s) {
+        this.sendFile = s;
+    }
+    
 
 }

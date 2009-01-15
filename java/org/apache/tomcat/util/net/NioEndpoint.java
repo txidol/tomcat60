@@ -30,6 +30,7 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.channels.WritableByteChannel;
 import java.security.KeyStore;
 import java.util.Collection;
 import java.util.Iterator;
@@ -491,7 +492,7 @@ public class NioEndpoint {
     /**
      * Poller thread count.
      */
-    protected int pollerThreadCount = 1;
+    protected int pollerThreadCount = Runtime.getRuntime().availableProcessors();
     public void setPollerThreadCount(int pollerThreadCount) { this.pollerThreadCount = pollerThreadCount; }
     public int getPollerThreadCount() { return pollerThreadCount; }
 
@@ -501,9 +502,15 @@ public class NioEndpoint {
     /**
      * The socket poller.
      */
-    protected Poller poller = null;
+    protected Poller[] pollers = null;
+    protected AtomicInteger pollerRotater = new AtomicInteger(0);
+    /**
+     * Return an available poller in true round robin fashion
+     * @return
+     */
     public Poller getPoller0() {
-        return poller;
+        int idx = Math.abs(pollerRotater.incrementAndGet()) % pollers.length;
+        return pollers[idx];
     }
 
     /**
@@ -652,7 +659,6 @@ public class NioEndpoint {
     }
 
     public void setUseSendfile(boolean useSendfile) {
-
         this.useSendfile = useSendfile;
     }
 
@@ -703,10 +709,14 @@ public class NioEndpoint {
      * Number of keepalive sockets.
      */
     public int getKeepAliveCount() {
-        if (poller == null) {
+        if (pollers == null) {
             return 0;
         } else {
-                return poller.selector.keys().size();
+            int sum = 0;
+            for (int i=0; i<pollers.length; i++) {
+                sum += pollers[i].selector.keys().size();
+            }
+            return sum;
         }
     }
 
@@ -861,12 +871,15 @@ public class NioEndpoint {
                 workers = new WorkerStack(maxThreads);
             }
 
-            // Start poller thread
-            poller = new Poller();
-            Thread pollerThread = new Thread(poller, getName() + "-ClientPoller");
-            pollerThread.setPriority(threadPriority);
-            pollerThread.setDaemon(true);
-            pollerThread.start();
+            // Start poller threads
+            pollers = new Poller[getPollerThreadCount()];
+            for (int i=0; i<pollers.length; i++) {
+                pollers[i] = new Poller();
+                Thread pollerThread = new Thread(pollers[i], getName() + "-ClientPoller-"+i);
+                pollerThread.setPriority(threadPriority);
+                pollerThread.setDaemon(true);
+                pollerThread.start();
+            }
 
             // Start acceptor threads
             for (int i = 0; i < acceptorThreadCount; i++) {
@@ -908,8 +921,11 @@ public class NioEndpoint {
         if (running) {
             running = false;
             unlockAccept();
-                poller.destroy();
-            poller = null;
+            for (int i=0; pollers!=null && i<pollers.length; i++) {
+                if (pollers[i]==null) continue;
+                pollers[i].destroy();
+                pollers[i] = null;
+            }
         }
         eventCache.clear();
         keyCache.clear();
@@ -974,8 +990,7 @@ public class NioEndpoint {
     }
 
     public boolean getUseSendfile() {
-        //send file doesn't work with SSL
-        return useSendfile && (!isSSLEnabled());
+        return useSendfile;
     }
 
     public int getOomParachute() {
@@ -1345,10 +1360,10 @@ public class NioEndpoint {
                     } else {
                         cancel = true;
                     }
-                    if ( cancel ) getPoller0().cancelledKey(key,SocketStatus.ERROR,false);
+                    if ( cancel ) socket.getPoller().cancelledKey(key,SocketStatus.ERROR,false);
                 }catch (CancelledKeyException ckx) {
                     try {
-                        getPoller0().cancelledKey(key,SocketStatus.DISCONNECT,true);
+                        socket.getPoller().cancelledKey(key,SocketStatus.DISCONNECT,true);
                     }catch (Exception ignore) {}
                 }
             }//end if
@@ -1645,6 +1660,7 @@ public class NioEndpoint {
         }
         
         public boolean processSendfile(SelectionKey sk, KeyAttachment attachment, boolean reg, boolean event) {
+            NioChannel sc = null;
             try {
                 //unreg(sk,attachment);//only do this if we do process send file on a separate thread
                 SendfileData sd = attachment.getSendfileData();
@@ -1656,13 +1672,23 @@ public class NioEndpoint {
                     }
                     sd.fchannel = new FileInputStream(f).getChannel();
                 }
-                SocketChannel sc = attachment.getChannel().getIOChannel();
-                long written = sd.fchannel.transferTo(sd.pos,sd.length,sc);
-                if ( written > 0 ) {
-                    sd.pos += written;
-                    sd.length -= written;
+                sc = attachment.getChannel();
+                sc.setSendFile(true);
+                WritableByteChannel wc =(WritableByteChannel) ((sc instanceof SecureNioChannel)?sc:sc.getIOChannel());
+                
+                if (sc.getOutboundRemaining()>0) {
+                    if (sc.flushOutbound()) {
+                        attachment.access();
+                    }
+                } else {
+                    long written = sd.fchannel.transferTo(sd.pos,sd.length,wc);
+                    if ( written > 0 ) {
+                        sd.pos += written;
+                        sd.length -= written;
+                        attachment.access();
+                    }
                 }
-                if ( sd.length <= 0 ) {
+                if ( sd.length <= 0 && sc.getOutboundRemaining()<=0) {
                     if (log.isDebugEnabled()) {
                         log.debug("Send file complete for:"+sd.fileName);
                     }
@@ -1703,6 +1729,8 @@ public class NioEndpoint {
                 log.error("",t);
                 cancelledKey(sk, SocketStatus.ERROR, false);
                 return false;
+            }finally {
+                if (sc!=null) sc.setSendFile(false);
             }
             return true;
         }
@@ -1738,14 +1766,15 @@ public class NioEndpoint {
                     if ( ka == null ) {
                         cancelledKey(key, SocketStatus.ERROR,false); //we don't support any keys without attachments
                     } else if ( ka.getError() ) {
-                        cancelledKey(key, SocketStatus.ERROR,true);
+                        cancelledKey(key, SocketStatus.ERROR,true);//TODO this is not yet being used
                     } else if (ka.getComet() && ka.getCometNotify() ) {
                         ka.setCometNotify(false);
                         reg(key,ka,0);//avoid multiple calls, this gets reregistered after invokation
                         //if (!processSocket(ka.getChannel(), SocketStatus.OPEN_CALLBACK)) processSocket(ka.getChannel(), SocketStatus.DISCONNECT);
                         if (!processSocket(ka.getChannel(), SocketStatus.OPEN)) processSocket(ka.getChannel(), SocketStatus.DISCONNECT);
-                    }else if ((ka.interestOps()&SelectionKey.OP_READ) == SelectionKey.OP_READ) {
-                        //only timeout sockets that we are waiting for a read from
+                    }else if ((ka.interestOps()&SelectionKey.OP_READ) == SelectionKey.OP_READ ||
+                    		  (ka.interestOps()&SelectionKey.OP_WRITE) == SelectionKey.OP_WRITE) {
+                        //only timeout sockets that we are waiting for a read from - or write (send file)
                         long delta = now - ka.getLastAccess();
                         long timeout = (ka.getTimeout()==-1)?((long) socketProperties.getSoTimeout()):(ka.getTimeout());
                         boolean isTimedout = delta > timeout;

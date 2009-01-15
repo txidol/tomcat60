@@ -237,6 +237,9 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
+      <fix><bug>45154</bug>
+        Implement SEND_FILE behavior for SSL connections using NIO (fhanik)
+      </fix>
       <update>
         Fix file descriptor leak during NIO send file behavior. (fhanik)
       </update>

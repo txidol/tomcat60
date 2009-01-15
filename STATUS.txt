@@ -118,18 +118,6 @@ PATCHES PROPOSED TO BACKPORT:
             really old to me, so where would this come from ?)
   -1: 
 
-* [4] Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45154 (add sendfile support to NIO/SSL) - performance improvement
-  http://svn.apache.org/viewvc?rev=720724&view=rev
-  http://svn.apache.org/viewvc?rev=720728&view=rev 
-  http://svn.apache.org/viewvc?rev=725417&view=rev
-  +1: fhanik, jim, markt
-  -1: 
-  
-* [5] Fix Comet interest registration bug
-  http://people.apache.org/~fhanik/tomcat/comet-ops.patch
-  +1: fhanik, funkman, markt
-  -1: 
-
 * Changes required to run with a security manager
   http://svn.apache.org/viewvc?rev=721286&view=rev
   http://svn.apache.org/viewvc?rev=721704&view=rev
