@@ -375,6 +375,10 @@
       <add>
         Document the multicast recovery options. (fhanik)
       </add>
+      <add>
+        <bug>45261</bug>: Add a new SimpleCoordinator for tribes provided by
+        Robert Newson. (markt)
+      </add>
       <fix>
         <bug>45618</bug>: Make sure NIO selector is closed when no longer used.
         Unlikely to be an issue in normal usage. (markt)

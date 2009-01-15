@@ -145,13 +145,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45261
-  Add a new SimpleCoordinator for tribes provided by Robert Newson
-  http://svn.apache.org/viewvc?rev=729815&view=rev
-  http://svn.apache.org/viewvc?rev=729934&view=rev
-  +1: markt, fhanik, funkman
-  -1: 
-
 * Print user friendly message when attempting to shutdown and shutdown port is disabled
   http://svn.apache.org/viewvc?rev=730178&view=rev
   +1: fhanik, remm, funkman
