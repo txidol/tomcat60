@@ -169,12 +169,6 @@ PATCHES PROPOSED TO BACKPORT:
             markt - Second commit removes e.printStackTrace. URLs not used to
                     locate files. TCK passes.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37515
-  Add options for 1.6 and 1.7 source and target to JDT compiler
-  http://svn.apache.org/viewvc?rev=731773&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Provide deployment feedback - ie when deployment succeeds but startup fails, it should return FAIL
   http://svn.apache.org/viewvc?rev=731644&view=rev
   +1: fhanik, funkman

@@ -303,6 +303,10 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
+        <bug>37515</bug>: Support 1.6 and 1.7 as source and target for
+        compilation. (markt)
+      </fix>
+      <fix>
         ClassCastException in EL ExpressionBuilder. (rjung)
       </fix>
       <update>
