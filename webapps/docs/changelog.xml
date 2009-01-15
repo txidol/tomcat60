@@ -355,12 +355,16 @@
         Cédric Mailleux. (markt)
       </fix>
       <fix>
-        <bug>43681</bug>: Composite expressions used for attribute values must
+        <bug>46381</bug>: Composite expressions used for attribute values must
         be coerced to Strings. (markt)
       </fix>
       <fix>
         <bug>46397</bug>: Don't pool tag instances that implement JspIdConsumer.
         (markt)
+      </fix>
+      <fix>
+        <bug>46462</bug>: Limit package test to just the o.a.jsp package to
+        allow use of packages such as o.a.jspwiki. (markt)
       </fix>
     </changelog>
   </subsection>
