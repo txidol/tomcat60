@@ -173,3 +173,19 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=731644&view=rev
   +1: fhanik, funkman
   -1:
+
+* Deprecate unused code (with a view to deleting it in TC7
+  http://svn.apache.org/viewvc?view=rev&revision=719119
+  http://svn.apache.org/viewvc?view=rev&revision=719124
+  +1: markt
+  -1: 
+
+* Remove duplicate definitions and make normalise consistent
+  http://svn.apache.org/viewvc?rev=734734&view=rev
+  +1: markt
+  -1: 
+
+* Align installer licenses with main license file
+  http://svn.apache.org/viewvc?rev=734743&view=rev
+  +1: markt
+  -1: 
