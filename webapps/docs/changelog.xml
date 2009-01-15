@@ -36,6 +36,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>37458</bug>: Correct sync issue that leads to NPE in rare
+        circumstances. Patch provided by Konstantin Kolinko. (markt)
+      </fix>
+      <fix>
         <bug>42747</bug>: Ensure context.xml takes effect on first deployment
         for WAR and DIR deployments. context.xml is now copied to
         CATALINA_BASE/&lt;engine name&gt;/&lt;host name&gt; for DIR as well as

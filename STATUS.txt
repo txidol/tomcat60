@@ -158,13 +158,6 @@ PATCHES PROPOSED TO BACKPORT:
            markt - TCK passes
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37458
-  Correct sync issue that leads to NPE in rare circumstances
-  Patch provided by Konstantin Kolinko
-  http://svn.apache.org/viewvc?rev=730735&view=rev
-  +1: markt, fhanik, funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46471
   Use jar url and tag file path to uniquely ID a tag file to prevent naming
   clashes
