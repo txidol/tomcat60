@@ -157,12 +157,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42707
-  Make adding a host alias via jmx take effect immediately
-  http://svn.apache.org/viewvc?rev=712467&view=rev 
-  +1: markt, fhanik, funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45261
   Add a new SimpleCoordinator for tribes provided by Robert Newson
   http://svn.apache.org/viewvc?rev=729815&view=rev

@@ -85,6 +85,10 @@
         Patch provided by Peter Jodeleit. (markt)
       </fix>
       <fix>
+        <bug>42707</bug>: Make adding a host alias via JMX take effect
+        immediately. (markt)
+      </fix>
+      <fix>
         <bug>43656</bug>: Correct regression in previous fix for this bug. Patch
         provided by Nils Eckert. (markt)
       </fix>
