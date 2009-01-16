@@ -142,7 +142,7 @@ PATCHES PROPOSED TO BACKPORT:
   %2F in a context path should be interpreted literally, not as /. That is what
   # is for.
   http://svn.apache.org/viewvc?rev=729571&view=rev 
-  +1: markt, fhanik
+  +1: markt, fhanik, remm
   -1: 
 
 * Print user friendly message when attempting to shutdown and shutdown port is disabled
@@ -153,9 +153,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36923
   If EL is disabled, treat it as template text
   http://svn.apache.org/viewvc?rev=730590&view=rev
-  +1: markt, funkman
-   0: remm (needs TCK testing)
-           markt - TCK passes
+  +1: markt, funkman, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46471
@@ -163,15 +161,12 @@ PATCHES PROPOSED TO BACKPORT:
   clashes
   http://svn.apache.org/viewvc?rev=731651&view=rev
   http://svn.apache.org/viewvc?rev=732863&view=rev
-  +1: markt
-  -1: remm (e.printStackTrace in the patch, and maybe usage of URL constructs which could lead to issues
-            when not filesystem based; also needs TCK testing)
-            markt - Second commit removes e.printStackTrace. URLs not used to
-                    locate files. TCK passes.
+  +1: markt, remm
+  -1: 
 
 * Provide deployment feedback - ie when deployment succeeds but startup fails, it should return FAIL
   http://svn.apache.org/viewvc?rev=731644&view=rev
-  +1: fhanik, funkman, markt
+  +1: fhanik, funkman, markt, remm
   -1:
 
 * Deprecate unused code (with a view to deleting it in TC7
@@ -182,7 +177,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove duplicate definitions and make normalise consistent
   http://svn.apache.org/viewvc?rev=734734&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Align installer licenses with main license file
