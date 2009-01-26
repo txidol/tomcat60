@@ -164,11 +164,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm, fhanik
   -1: 
 
-* Provide deployment feedback - ie when deployment succeeds but startup fails, it should return FAIL
-  http://svn.apache.org/viewvc?rev=731644&view=rev
-  +1: fhanik, funkman, markt, remm
-  -1:
-
 * Deprecate unused code (with a view to deleting it in TC7
   http://svn.apache.org/viewvc?view=rev&revision=719119
   http://svn.apache.org/viewvc?view=rev&revision=719124

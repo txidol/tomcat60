@@ -35,6 +35,12 @@
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <update>
+        Manager application prints FAIL if application was deployed but failed to start (fhanik)
+      </update>
+      <update>
+        When shutdown port is disabled, print user friendly message and not a stack trace. (fhanik)
+      </update>
       <fix>
         <bug>37458</bug>: Correct sync issue that leads to NPE in rare
         circumstances. Patch provided by Konstantin Kolinko. (markt)
