@@ -35,20 +35,20 @@ PATCHES PROPOSED TO BACKPORT:
   still exists.
   http://svn.apache.org/viewvc?view=rev&revision=683969
   +1: markt, funkman
-   0: remm (looks risky, very minor problem)
+   0: remm (looks risky, very minor problem), fhanik - minor problem
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
   Prevent race condition for allocate/deallocate in StandardWrapper
   http://svn.apache.org/viewvc?rev=685177&view=rev
-  +1: markt, funkman
+  +1: markt, funkman, fhanik
    0: remm: The only unsafe usage of this field is to implement the gimmick loop-wait hack,
             which to me means adding any sort of sync is not worth it.
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45074
   http://svn.apache.org/viewvc?rev=689402&view=rev
-  +1: jfclere, funkman
+  +1: jfclere, funkman, fhanik
    0: markt: The OP was using linux so I assume they saw some benefit.
              If this is goign to be applied, the docs should be
              updated as well.
@@ -94,12 +94,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   +1: funkman (prefer to also remove Serializable from trunk)
    0: remm (StdContext was marked as Serializable for an experiment; obviously it won't work)
+   0: not sure what to serialize here, don't see it as necessary
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45933
   Don't use xml parser from web-app to process tld files
   http://svn.apache.org/viewvc?rev=701355&view=rev
-  +1: markt, funkman
+  +1: markt, funkman, fhanik
   -0: remm (it is a refactoring, and is not appropriate to me in 6.0.x)
            markt - It is a refactoring but the refactoring was necessary
                    to change when TLDs were processed to avoid the bug. It
@@ -110,10 +111,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=701358&view=rev
   +1: markt, funkman
   -0: remm (I also do not think the patch is a good idea as a backport)
+  -0: fhanik - the bug talks about WEB-INF/lib and reload, that would be when reload="true" which should be considered development only
+      So to make this bug actually worth while fixing, and not impact performance, then it should only do this check on files that 
+      are relevant to the reload of an application, in other words a watched resource
 
 * Backport NCDFE fix from trunk (TCK failures without it)
   http://svn.apache.org/viewvc?rev=640888&view=rev 
   +1: markt
+  +1: fhanik - trivial change
    0: remm (no clue how it can cause a NCDF, and the TCK actually works for me; besides that code is 
             really old to me, so where would this come from ?)
   -1: 
@@ -161,7 +166,7 @@ PATCHES PROPOSED TO BACKPORT:
   clashes
   http://svn.apache.org/viewvc?rev=731651&view=rev
   http://svn.apache.org/viewvc?rev=732863&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Provide deployment feedback - ie when deployment succeeds but startup fails, it should return FAIL
@@ -172,15 +177,15 @@ PATCHES PROPOSED TO BACKPORT:
 * Deprecate unused code (with a view to deleting it in TC7
   http://svn.apache.org/viewvc?view=rev&revision=719119
   http://svn.apache.org/viewvc?view=rev&revision=719124
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Remove duplicate definitions and make normalise consistent
   http://svn.apache.org/viewvc?rev=734734&view=rev
-  +1: markt, remm
+  +1: markt, remm, fhanik
   -1: 
 
 * Align installer licenses with main license file
   http://svn.apache.org/viewvc?rev=734743&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
