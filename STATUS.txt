@@ -179,3 +179,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=734743&view=rev
   +1: markt, fhanik
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46564
+  Make page encoding test case insensitive
+  +1: markt
+  -1:
