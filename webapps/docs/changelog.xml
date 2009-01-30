@@ -453,6 +453,10 @@
       <fix>
         Fix broken URL mapping in the examples. (markt)
       </fix>
+      <fix>
+        <bug>46563</bug>: Update doc for correct default for pollerThreadCount.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">

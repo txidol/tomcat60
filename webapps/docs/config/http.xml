@@ -415,8 +415,9 @@
         you might want to increase this value as well. Default value is <code>1</code>.</p>
       </attribute>
       <attribute name="pollerThreadCount" required="false">
-        <p>(int)The number of threads to be used to run for the polling events. Default value is <code>1</code>.
-           Can't see a reason to go above that. But experiment and find your own results.</p>
+        <p>(int)The number of threads to be used to run for the polling events.
+        Default value is <code>1</code> per processor. Can't see a reason to go
+        above that. But experiment and find your own results.</p>
       </attribute>
       <attribute name="pollerThreadPriority" required="false">
         <p>(int)The priority of the poller threads.
