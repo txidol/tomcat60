@@ -132,11 +132,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Remove duplicate definitions and make normalise consistent
-  http://svn.apache.org/viewvc?rev=734734&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Align installer licenses with main license file
   http://svn.apache.org/viewvc?rev=734743&view=rev
   +1: markt, fhanik

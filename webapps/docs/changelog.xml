@@ -256,6 +256,10 @@
       <fix>
         <bug>46408</bug>: Fix invalid cast in security utility package. (markt)
       </fix>
+      <fix>
+        Remove duplicate normalisation implementations and make normalise
+        behaviour consistent throughout code base. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
