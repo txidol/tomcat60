@@ -126,13 +126,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: funkman - ditto
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46261
-  %2F in a context path should be interpreted literally, not as /. That is what
-  # is for.
-  http://svn.apache.org/viewvc?rev=729571&view=rev 
-  +1: markt, fhanik, remm
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36923
   If EL is disabled, treat it as template text
   http://svn.apache.org/viewvc?rev=730590&view=rev
