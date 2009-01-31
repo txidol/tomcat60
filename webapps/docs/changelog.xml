@@ -397,6 +397,10 @@
         <bug>46462</bug>: Limit package test to just the o.a.jsp package to
         allow use of packages such as o.a.jspwiki. (markt)
       </fix>
+      <fix>
+        <bug>46471</bug>: Fix naming clash when tags in different libraries have
+        the same name. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">

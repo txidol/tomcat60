@@ -126,14 +126,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: funkman - ditto
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46471
-  Use jar url and tag file path to uniquely ID a tag file to prevent naming
-  clashes
-  http://svn.apache.org/viewvc?rev=731651&view=rev
-  http://svn.apache.org/viewvc?rev=732863&view=rev
-  +1: markt, remm, fhanik
-  -1: 
-
 * Deprecate unused code (with a view to deleting it in TC7
   http://svn.apache.org/viewvc?view=rev&revision=719119
   http://svn.apache.org/viewvc?view=rev&revision=719124
