@@ -4268,10 +4268,6 @@ public class StandardContext
                     ((Lifecycle) pipeline).start();
                 }
                 
-                if(getProcessTlds()) {
-                    processTlds();
-                }
-                
                 // Notify our interested LifecycleListeners
                 lifecycle.fireLifecycleEvent(START_EVENT, null);
                 
@@ -4442,39 +4438,6 @@ public class StandardContext
         //cacheContext();
     }
 
-    /**
-     * Processes TLDs.
-     *
-     * @throws LifecycleException If an error occurs
-     */
-     protected void processTlds() throws LifecycleException {
-       TldConfig tldConfig = new TldConfig();
-       tldConfig.setContext(this);
-
-       // (1)  check if the attribute has been defined
-       //      on the context element.
-       tldConfig.setTldValidation(tldValidation);
-       tldConfig.setTldNamespaceAware(tldNamespaceAware);
-
-       // (2) if the attribute wasn't defined on the context
-       //     try the host.
-       if (!tldValidation) {
-         tldConfig.setTldValidation
-           (((StandardHost) getParent()).getXmlValidation());
-       }
-
-       if (!tldNamespaceAware) {
-         tldConfig.setTldNamespaceAware
-           (((StandardHost) getParent()).getXmlNamespaceAware());
-       }
-                    
-       try {
-         tldConfig.execute();
-       } catch (Exception ex) {
-         log.error("Error reading tld listeners " 
-                    + ex.toString(), ex); 
-       }
-     }
     
     private void cacheContext() {
         try {
@@ -5356,6 +5319,10 @@ public class StandardContext
                 return;
             }
         }
+        if (processTlds) {
+            this.addLifecycleListener(new TldConfig());
+        }
+
         super.init();
         
         // Notify our interested LifecycleListeners

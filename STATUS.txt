@@ -89,15 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: not sure what to serialize here, don't see it as necessary
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45933
-  Don't use xml parser from web-app to process tld files
-  http://svn.apache.org/viewvc?rev=701355&view=rev
-  +1: markt, funkman, fhanik
-  -0: remm (it is a refactoring, and is not appropriate to me in 6.0.x)
-           markt - It is a refactoring but the refactoring was necessary
-                   to change when TLDs were processed to avoid the bug. It
-                   isn't refactoring for the sake of refactoring.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
   See commit message for details of negligable performance impact
   http://svn.apache.org/viewvc?rev=701358&view=rev

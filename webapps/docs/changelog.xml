@@ -192,6 +192,10 @@
         Correct handle multi-level contexts defined using context.xml files.
         (markt)
       </fix>
+      <fix>
+        <bug>45933</bug>: Don't use xml parser from web-app to process tld
+        files. (markt)
+      </fix>
       <add>
         <bug>45951</bug>: Support changing of JSESSIONID cookie name and
         jsessionid path parameter name. Based on a patch by Jean-frederic Clere.
