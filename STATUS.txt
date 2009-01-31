@@ -38,14 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem), fhanik - minor problem
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45608
-  Prevent race condition for allocate/deallocate in StandardWrapper
-  http://svn.apache.org/viewvc?rev=685177&view=rev
-  +1: markt, funkman, fhanik
-   0: remm: The only unsafe usage of this field is to implement the gimmick loop-wait hack,
-            which to me means adding any sort of sync is not worth it.
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45074
   http://svn.apache.org/viewvc?rev=689402&view=rev
   +1: jfclere, funkman, fhanik

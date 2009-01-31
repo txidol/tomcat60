@@ -134,6 +134,11 @@
         be instantiated. (funkman) 
       </add>
       <fix>
+        <bug>45608</bug>: Make allocated servlet count synchronized to ensure
+        the correct allocated servlet count is available during shutdown.
+        (markt)
+      </fix>
+      <fix>
         <bug>45628</bug>: When checking MANIFEST dependancies, JARs without
         dependencies should allows be considered to be full-filled. (markt) 
       </fix>

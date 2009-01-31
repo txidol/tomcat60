@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Stack;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.security.AccessController;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
@@ -135,7 +136,7 @@ public class StandardWrapper
      * The count of allocations that are currently active (even if they
      * are for the same instance, as will be true on a non-STM servlet).
      */
-    protected int countAllocated = 0;
+    protected AtomicInteger countAllocated = new AtomicInteger(0);
 
 
     /**
@@ -340,7 +341,7 @@ public class StandardWrapper
      */
     public int getCountAllocated() {
 
-        return (this.countAllocated);
+        return (this.countAllocated.get());
 
     }
 
@@ -810,7 +811,7 @@ public class StandardWrapper
                             // condition with unload. Bug 43683, test case #3
                             if (!singleThreadModel) {
                                 newInstance = true;
-                                countAllocated++;
+                                countAllocated.incrementAndGet();
                             }
                         } catch (ServletException e) {
                             throw e;
@@ -828,7 +829,7 @@ public class StandardWrapper
                 // For new instances, count will have been incremented at the
                 // time of creation
                 if (!newInstance) {
-                    countAllocated++;
+                    countAllocated.incrementAndGet();
                 }
                 return (instance);
             }
@@ -836,7 +837,7 @@ public class StandardWrapper
 
         synchronized (instancePool) {
 
-            while (countAllocated >= nInstances) {
+            while (countAllocated.get() >= nInstances) {
                 // Allocate a new instance if possible, or else wait
                 if (nInstances < maxInstances) {
                     try {
@@ -858,7 +859,7 @@ public class StandardWrapper
             }
             if (log.isTraceEnabled())
                 log.trace("  Returning allocated STM instance");
-            countAllocated++;
+            countAllocated.incrementAndGet();
             return (Servlet) instancePool.pop();
 
         }
@@ -879,13 +880,13 @@ public class StandardWrapper
 
         // If not SingleThreadModel, no action is required
         if (!singleThreadModel) {
-            countAllocated--;
+            countAllocated.decrementAndGet();
             return;
         }
 
         // Unlock and free this instance
         synchronized (instancePool) {
-            countAllocated--;
+            countAllocated.decrementAndGet();
             instancePool.push(servlet);
             instancePool.notify();
         }
@@ -1358,13 +1359,13 @@ public class StandardWrapper
 
         // Loaf a while if the current instance is allocated
         // (possibly more than once if non-STM)
-        if (countAllocated > 0) {
+        if (countAllocated.get() > 0) {
             int nRetries = 0;
             long delay = unloadDelay / 20;
-            while ((nRetries < 21) && (countAllocated > 0)) {
+            while ((nRetries < 21) && (countAllocated.get() > 0)) {
                 if ((nRetries % 10) == 0) {
                     log.info(sm.getString("standardWrapper.waiting",
-                                          new Integer(countAllocated)));
+                                          countAllocated.toString()));
                 }
                 try {
                     Thread.sleep(delay);
