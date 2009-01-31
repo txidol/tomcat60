@@ -1313,7 +1313,7 @@ class Parser implements TagConstants {
             if (ch == '<') {
                 reader.pushChar();
                 break;
-            } else if (ch == '$' || ch == '#') {
+            } else if ((ch == '$' || ch == '#') && !pageInfo.isELIgnored()) {
                 if (!reader.hasMoreInput()) {
                     ttext.write(ch);
                     break;
@@ -1453,9 +1453,9 @@ class Parser implements TagConstants {
             parseXMLScriptlet(parent);
         } else if (reader.matches("<jsp:text")) {
             parseXMLTemplateText(parent);
-        } else if (reader.matches("${")) {
+        } else if (reader.matches("${") && !pageInfo.isELIgnored()) {
             parseELExpression(parent, '$');
-        } else if (reader.matches("#{")) {
+        } else if (reader.matches("#{") && !pageInfo.isELIgnored()) {
             parseELExpression(parent, '#');
         } else if (reader.matches("<jsp:")) {
             parseStandardAction(parent);

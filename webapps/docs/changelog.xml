@@ -322,6 +322,10 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
+        <bug>36923</bug>: Treat EL expressions as template text is EL
+        expressions are disabled. (markt)
+      </fix>
+      <fix>
         <bug>37515</bug>: Support 1.6 and 1.7 as source and target for
         compilation. (markt)
       </fix>
