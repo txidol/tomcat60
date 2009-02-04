@@ -482,6 +482,10 @@
         <bug>46563</bug>: Update doc for correct default for pollerThreadCount.
         (markt)
       </fix>
+      <fix>
+        <bug>46600</bug>: Document maxKeepAliveRequests for the NIO connector.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
