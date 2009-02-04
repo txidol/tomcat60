@@ -139,3 +139,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=740635&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38197
+  Take account of jsp:attribute elements when naming tag pools
+  http://svn.apache.org/viewvc?rev=740675&view=rev
+  +1: markt
+  -1: 
