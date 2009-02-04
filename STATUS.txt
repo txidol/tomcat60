@@ -145,3 +145,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=740675&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38553
+  Return 401 rather than 400 if client presents no certs for CLIENT-CERT auth
+  http://svn.apache.org/viewvc?rev=740684&view=rev
+  +1: markt
+  -1: 
