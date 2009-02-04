@@ -81,14 +81,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, mturk, markt, pero, jim
    0: remm (also affects to the two other AJP connectors)
 
-* Fix serialisation issue reported by Find Bugs
-  http://svn.apache.org/viewvc?rev=699633&view=rev
-  +1: markt
-  +1: funkman (prefer to also remove Serializable from trunk)
-   0: remm (StdContext was marked as Serializable for an experiment; obviously it won't work)
-   0: not sure what to serialize here, don't see it as necessary
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
   See commit message for details of negligable performance impact
   http://svn.apache.org/viewvc?rev=701358&view=rev
@@ -139,5 +131,11 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46564
   Make page encoding test case insensitive
+  +1: markt
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46606
+  Make max depth configurable for WebDAV servlet
+  http://svn.apache.org/viewvc?rev=740635&view=rev
   +1: markt
   -1:
