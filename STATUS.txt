@@ -126,33 +126,34 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Align installer licenses with main license file
   http://svn.apache.org/viewvc?rev=734743&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46564
   Make page encoding test case insensitive
   +1: markt, remm
+  +0: funkman: Where's the patch?
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46606
   Make max depth configurable for WebDAV servlet
   http://svn.apache.org/viewvc?rev=740635&view=rev
-  +1: markt, remm
+  +1: markt, remm, funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38197
   Take account of jsp:attribute elements when naming tag pools
   http://svn.apache.org/viewvc?rev=740675&view=rev
-  +1: markt, remm
+  +1: markt, remm, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38553
   Return 401 rather than 400 if client presents no certs for CLIENT-CERT auth
   http://svn.apache.org/viewvc?rev=740684&view=rev
-  +1: markt, remm
+  +1: markt, remm, funkman
   -1: 
 
 * Make sure the 400 is returned to the browser. (like other connectors).
   http://people.apache.org/~jfclere/patches/patch400.txt
-  +1: jfclere, remm
+  +1: jfclere, remm, funkman
   -1:
