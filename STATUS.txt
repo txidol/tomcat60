@@ -150,10 +150,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38553
   Return 401 rather than 400 if client presents no certs for CLIENT-CERT auth
   http://svn.apache.org/viewvc?rev=740684&view=rev
-  +1: markt, remm, funkman
+  +1: markt, remm, funkman, fhanik
   -1: 
 
 * Make sure the 400 is returned to the browser. (like other connectors).
   http://people.apache.org/~jfclere/patches/patch400.txt
-  +1: jfclere, remm, funkman
+  +1: jfclere, remm, funkman, fhanik
   -1:
