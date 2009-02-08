@@ -156,9 +156,5 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Make sure the 400 is returned to the browser. (like other connectors).
-  http://people.apache.org/~jfclere/patches/patch400.txt
-  +1: remm, funkman, fhanik
-  -1: billbarker Even though I'm already out voted, this needs to go through the ActionHook to 
-                 prevent confusing Apache with multiple END_RESPONSE messages
-  -1: jfclere using ep.action(ActionCode.ACTION_CLOSE, ...) requires a different approche but it
-                 will allow a simpler patch.
+  http://people.apache.org/~jfclere/patches/patch400.1.txt
+  +1: jfclere
