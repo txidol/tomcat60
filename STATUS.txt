@@ -157,4 +157,4 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Make sure the 400 is returned to the browser. (like other connectors).
   http://people.apache.org/~jfclere/patches/patch400.1.txt
-  +1: jfclere
+  +1: jfclerem fhanik
