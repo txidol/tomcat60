@@ -173,3 +173,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39396
+  Don't include TRACEE in OPTIONS response unless we know it hasn't been
+  disabled in the connector
+  http://svn.apache.org/viewvc?rev=742714&view=rev
+  +1: markt
+  -1: 
