@@ -165,3 +165,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=742677&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39013
+  When testing for invalid docBase, test for an exact match with the appBase
+  dir
+  http://svn.apache.org/viewvc?rev=742697&view=rev
+  +1: markt
+  -1: 
+
