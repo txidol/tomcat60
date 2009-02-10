@@ -155,10 +155,6 @@ PATCHES PROPOSED TO BACKPORT:
                  Haven't checked what the other ones will do
   -1: 
 
-* Make sure the 400 is returned to the browser. (like other connectors).
-  http://people.apache.org/~jfclere/patches/patch400.1.txt
-  +1: jfclere, fhanik, remm
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38570
   When checking docBase against appBase, make sure we check for an exact match
   against the appBase
