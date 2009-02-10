@@ -159,14 +159,14 @@ PATCHES PROPOSED TO BACKPORT:
   When checking docBase against appBase, make sure we check for an exact match
   against the appBase
   http://svn.apache.org/viewvc?rev=742677&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39013
   When testing for invalid docBase, test for an exact match with the appBase
   dir
   http://svn.apache.org/viewvc?rev=742697&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39396
@@ -174,4 +174,9 @@ PATCHES PROPOSED TO BACKPORT:
   disabled in the connector
   http://svn.apache.org/viewvc?rev=742714&view=rev
   +1: markt
+  -1: 
+
+* Fix HTTP/1.0 handling in the new AJP connectors
+  http://svn.apache.org/viewvc?rev=742962&view=rev
+  +1: remm
   -1: 
