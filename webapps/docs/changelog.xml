@@ -264,6 +264,10 @@
         <bug>46683</bug>: Fix typo in French localisation file name for the
         org.apache.catalina.loader package. (markt)
       </fix>
+      <fix>
+        <bug>46606</bug>: Make the max DEPTH for a WebDAV request configurable.
+        The default is still 3. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

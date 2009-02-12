@@ -133,12 +133,6 @@ public class WebdavServlet
 
 
     /**
-     * Default depth is infite.
-     */
-    private static final int INFINITY = 3; // To limit tree browsing a bit
-
-
-    /**
      * PROPFIND - Specify a property mask.
      */
     private static final int FIND_BY_PROPERTY = 0;
@@ -251,6 +245,13 @@ public class WebdavServlet
     private String secret = "catalina";
 
 
+    /**
+     * Default depth in spec is infinite. Limit depth to 3 by default as
+     * infinite depth makes operations very expensive.
+     */
+    private int maxDepth = 3;
+
+
     // --------------------------------------------------------- Public Methods
 
 
@@ -264,6 +265,10 @@ public class WebdavServlet
 
         if (getServletConfig().getInitParameter("secret") != null)
             secret = getServletConfig().getInitParameter("secret");
+
+        if (getServletConfig().getInitParameter("maxDepth") != null)
+            maxDepth = Integer.parseInt(
+                    getServletConfig().getInitParameter("maxDepth"));
 
         // Load the MD5 helper used to calculate signatures.
         try {
@@ -439,21 +444,21 @@ public class WebdavServlet
         // Properties which are to be displayed.
         Vector<String> properties = null;
         // Propfind depth
-        int depth = INFINITY;
+        int depth = maxDepth;
         // Propfind type
         int type = FIND_ALL_PROP;
 
         String depthStr = req.getHeader("Depth");
 
         if (depthStr == null) {
-            depth = INFINITY;
+            depth = maxDepth;
         } else {
             if (depthStr.equals("0")) {
                 depth = 0;
             } else if (depthStr.equals("1")) {
                 depth = 1;
             } else if (depthStr.equals("infinity")) {
-                depth = INFINITY;
+                depth = maxDepth;
             }
         }
 
@@ -880,12 +885,12 @@ public class WebdavServlet
         String depthStr = req.getHeader("Depth");
 
         if (depthStr == null) {
-            lock.depth = INFINITY;
+            lock.depth = maxDepth;
         } else {
             if (depthStr.equals("0")) {
                 lock.depth = 0;
             } else {
-                lock.depth = INFINITY;
+                lock.depth = maxDepth;
             }
         }
 
@@ -1092,7 +1097,7 @@ public class WebdavServlet
                 md5Encoder.encode(md5Helper.digest(lockTokenStr.getBytes()));
 
             if ( (exists) && (object instanceof DirContext) &&
-                 (lock.depth == INFINITY) ) {
+                 (lock.depth == maxDepth) ) {
 
                 // Locking a collection (and all its member resources)
 
@@ -2730,7 +2735,7 @@ public class WebdavServlet
             generatedXML.writeElement(null, "lockscope", XMLWriter.CLOSING);
 
             generatedXML.writeElement(null, "depth", XMLWriter.OPENING);
-            if (depth == INFINITY) {
+            if (depth == maxDepth) {
                 generatedXML.writeText("Infinity");
             } else {
                 generatedXML.writeText("0");
