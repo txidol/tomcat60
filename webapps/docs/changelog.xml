@@ -260,6 +260,10 @@
         Remove duplicate normalisation implementations and make normalise
         behaviour consistent throughout code base. (markt)
       </fix>
+      <fix>
+        <bug>46683</bug>: Fix typo in French localisation file name for the
+        org.apache.catalina.loader package. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
