@@ -124,11 +124,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Align installer licenses with main license file
-  http://svn.apache.org/viewvc?rev=734743&view=rev
-  +1: markt, fhanik, funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46564
   Make page encoding test case insensitive
   http://svn.apache.org/viewvc?view=rev&revision=739176
