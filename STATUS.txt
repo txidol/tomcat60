@@ -163,3 +163,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=742962&view=rev
   +1: remm, jfclere
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46666
+  keepAliveTimeout should be used regardless of setting of disableUploadTimeout
+  http://svn.apache.org/viewvc?rev=744160&view=rev
+  +1: markt
+  -1: 
