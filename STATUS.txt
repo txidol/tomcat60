@@ -161,7 +161,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix HTTP/1.0 handling in the new AJP connectors
   http://svn.apache.org/viewvc?rev=742962&view=rev
-  +1: remm, jfclere
+  +1: remm, jfclere, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46666
