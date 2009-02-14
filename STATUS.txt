@@ -169,3 +169,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=744160&view=rev
   +1: markt
   -1: 
+
+* Use ThreadLocal rather than syncs for DateFormat to prevent potential
+  bottleneck in cookie creation
+  http://svn.apache.org/viewvc?rev=744238&view=rev
+  +1: markt
+  -1: 
