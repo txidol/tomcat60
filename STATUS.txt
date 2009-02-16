@@ -159,11 +159,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix HTTP/1.0 handling in the new AJP connectors
-  http://svn.apache.org/viewvc?rev=742962&view=rev
-  +1: remm, jfclere, markt
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46666
   keepAliveTimeout should be used regardless of setting of disableUploadTimeout
   http://svn.apache.org/viewvc?rev=744160&view=rev

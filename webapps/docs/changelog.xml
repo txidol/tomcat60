@@ -329,6 +329,9 @@
       <add>
         Enable the thread pool limits to be modified via JMX. (markt)
       </add>
+      <fix>
+       Fix HTTP/1.0 redirects handling with APR AJP connector. (remm)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
