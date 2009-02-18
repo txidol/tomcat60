@@ -163,6 +163,11 @@ PATCHES PROPOSED TO BACKPORT:
   keepAliveTimeout should be used regardless of setting of disableUploadTimeout
   http://svn.apache.org/viewvc?rev=744160&view=rev
   +1: markt
+   0: billbarker The original was an optimization to not keep setting the timeout to the same value
+                 if we haven't changed it.  Of course it is broken, but a better patch would be to
+                 set the timeout correctly outside the loop, and retain the disableUploadTimeout check.
+                 The first request shouldn't care, since we should already have available() > 0 with the 
+                 JIO connector.
   -1: 
 
 * Use ThreadLocal rather than syncs for DateFormat to prevent potential
