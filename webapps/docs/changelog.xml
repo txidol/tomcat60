@@ -357,6 +357,10 @@
         Correct typo in JSP EL examples. (markt)
       </fix>
       <fix>
+        <bug>38197</bug>: Take account of jsp:attribute elements when pooling
+        tags. (markt)
+      </fix>
+      <fix>
         <bug>42077</bug>: Ensure the iterator returned by
         javax.el.CompositeELResolver#getFeatureDescriptor() skips any null
         FeatureDescriptors. Patch provided by Mathias Broekelmann. (markt)
