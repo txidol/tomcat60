@@ -124,14 +124,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38553
-  Return 401 rather than 400 if client presents no certs for CLIENT-CERT auth
-  http://svn.apache.org/viewvc?rev=740684&view=rev
-  +1: markt, remm, funkman, fhanik
-   0: billbarker With the JIO connector, this won't do anything since the connection is already dropped
-                 Haven't checked what the other ones will do
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38570
   When checking docBase against appBase, make sure we check for an exact match
   against the appBase

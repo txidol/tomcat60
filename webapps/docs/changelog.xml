@@ -46,6 +46,10 @@
         circumstances. Patch provided by Konstantin Kolinko. (markt)
       </fix>
       <fix>
+        <bug>38553</bug>: Return 401 rather than 400 if client does not present
+        a certificate CLIENT-CERT authentication. (markt)        
+      </fix>
+      <fix>
         <bug>42747</bug>: Ensure context.xml takes effect on first deployment
         for WAR and DIR deployments. context.xml is now copied to
         CATALINA_BASE/&lt;engine name&gt;/&lt;host name&gt; for DIR as well as
