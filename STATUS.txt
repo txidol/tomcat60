@@ -175,3 +175,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=744238&view=rev
   +1: markt
   -1: 
+
+* Fix spelling errors reported on users list
+  http://svn.apache.org/viewvc?rev=746321&view=rev
+  +1: markt
+  -1: 
+ 
