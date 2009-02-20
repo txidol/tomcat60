@@ -306,6 +306,11 @@
         configurable. (markt)
       </add>
       <fix>
+        <bug>45074</bug>: Add configuration parameters to enable the tuning
+        of sendfile and poller thread count in the APR HTTP connector. Patch
+        provided by Alex Barclay. (jfclere/markt)
+      </fix>
+      <fix>
         <bug>45528</bug>: Add detection for invalid SSL configuration to prevent
         infinite logging loop on start-up. (markt)
       </fix>

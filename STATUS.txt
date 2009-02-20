@@ -38,15 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem), fhanik - minor problem
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45074
-  http://svn.apache.org/viewvc?rev=689402&view=rev
-  +1: jfclere, funkman, fhanik
-   0: markt: The OP was using linux so I assume they saw some benefit.
-             If this is goign to be applied, the docs should be
-             updated as well.
-  -0: remm: configuring this is useless (esp on Windows, only the default behavior gives acceptable performance)
-  -1: 
-
 * Handle session suffix rewrite at JvmRouteBinderValve with parallel requests from same client
   http://svn.apache.org/viewvc?rev=693378&view=rev
   +1: pero, fhanik, markt, jim
