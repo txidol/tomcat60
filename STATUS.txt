@@ -90,11 +90,12 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Changes required to run with a security manager
-  http://svn.apache.org/viewvc?rev=721286&view=rev
-  http://svn.apache.org/viewvc?rev=721704&view=rev
-  http://svn.apache.org/viewvc?rev=721708&view=rev
-  http://svn.apache.org/viewvc?rev=721886&view=rev
-  +1: markt, fhanik
+  http://svn.apache.org/viewvc?rev=721286&view=rev (original)
+  http://svn.apache.org/viewvc?rev=721704&view=rev (original)
+  http://svn.apache.org/viewvc?rev=721708&view=rev (original)
+  http://svn.apache.org/viewvc?rev=721886&view=rev (original)
+  http://svn.apache.org/viewvc?rev=746425&view=rev (to address Bill's concerns)
+  +1: markt
    0: billbarker: Haven't tried to break it yet, but the 4th patch potentially
       offers access to static fields in ELContextImpl and ELResolverImpl that could 
       possibly be exploited by a malicious webapp.
