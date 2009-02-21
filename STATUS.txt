@@ -146,6 +146,15 @@ PATCHES PROPOSED TO BACKPORT:
                  set the timeout correctly outside the loop, and retain the disableUploadTimeout check.
                  The first request shouldn't care, since we should already have available() > 0 with the 
                  JIO connector.
+      markt      I took a look at this. I think you do have to set timeouts
+                 inside the loop otherwise the request line read doesn't timeout
+                 correctly. I wrote this patch that only sets timeouts when
+                 required:
+                 http://people.apache.org/~markt/patches/2009-02-12-soTimeout.patch
+                 but I'm not sure it is necessary. Is setSoTimeout really that
+                 expensive? It takes less than a microsecond on my box. The code
+                 would be cleaner if we just took out most of the tests and set
+                 the timeout, even if it was already set as required.
   -1: 
 
 * Use ThreadLocal rather than syncs for DateFormat to prevent potential
