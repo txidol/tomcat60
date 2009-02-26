@@ -171,4 +171,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=746384&view=rev
   +1: markt, mturk
   -1: 
- 
+  
+* Fix error in 2.5 web.xml XSD
+  http://svn.apache.org/viewvc?rev=747863&view=rev
+  +1: markt
+  -1: 
