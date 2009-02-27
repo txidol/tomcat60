@@ -48,11 +48,9 @@ PATCHES PROPOSED TO BACKPORT:
   caveat your vote with a preference for disabled by default.
   http://svn.apache.org/viewvc?rev=694992&view=rev
   +1: mark (prefer enabled, happy with disabled), rjung
+  +1: fhanik - if default value is to not set it for backwards compatibility
    0: remm (not so elegant, not sure about default value)
       markt It can be improved once the API is fixed in the 3.0 spec
-      fhanik why did we change it in trunk to begin with if we are gonna change it again when the spec comes out
-             lets just implement the spec in trunk, and discuss the simplest solution for 6.0.x
-             but I don't agree with changing the default value
       funkman: leave as gap until 3.0 spec
   -1: 
   rjung: slightly prefer enabled for 6.0.x because of increased security by default,
@@ -163,7 +161,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Use ThreadLocal rather than syncs for DateFormat to prevent potential
   bottleneck in cookie creation
   http://svn.apache.org/viewvc?rev=744238&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix spelling errors reported on users and dev list
