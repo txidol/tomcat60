@@ -272,6 +272,10 @@
         <bug>46606</bug>: Make the max DEPTH for a WebDAV request configurable.
         The default is still 3. (markt)
       </fix>
+      <add>
+        <bug>44382</bug>: Add support for using httpOnly for session cookies.
+        This is disabled by default. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

@@ -43,19 +43,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: pero, fhanik, markt, jim
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44382
-  Use HttpOnly for session cookies. This is enabled by default. Feel free to
-  caveat your vote with a preference for disabled by default.
-  http://svn.apache.org/viewvc?rev=694992&view=rev
-  +1: mark (prefer enabled, happy with disabled), rjung
-  +1: fhanik - if default value is to not set it for backwards compatibility
-   0: remm (not so elegant, not sure about default value)
-      markt It can be improved once the API is fixed in the 3.0 spec
-      funkman: leave as gap until 3.0 spec
-  -1: 
-  rjung: slightly prefer enabled for 6.0.x because of increased security by default,
-         but disabled for tc5.5.x because of the small risk of breaking existing apps.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
   Never use empty reason phrase.
   http://svn.apache.org/viewvc?rev=697183&view=rev
