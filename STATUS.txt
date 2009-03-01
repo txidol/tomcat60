@@ -102,6 +102,10 @@ PATCHES PROPOSED TO BACKPORT:
   -0: mturk: We cannot change API in the middle of the life cycle. I'm fine with
       deprecating that in trunk, but IMO there is no reason to deprecate
       something in maintenance branch.
+      markt: I'd like to delete a lot of stuff (that is already unused) in tc7.
+      Deprecating it in tc6 doesn't stop people using it, nor does it change the
+      functionality of the API. It just gives folks that may be using this old
+      code a warning that it won't be there in the next version.
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38570
