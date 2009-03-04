@@ -126,13 +126,13 @@ PATCHES PROPOSED TO BACKPORT:
   Don't include TRACEE in OPTIONS response unless we know it hasn't been
   disabled in the connector
   http://svn.apache.org/viewvc?rev=742714&view=rev
-  +1: markt, mturk
+  +1: markt, mturk, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46666
   keepAliveTimeout should be used regardless of setting of disableUploadTimeout
   http://svn.apache.org/viewvc?rev=744160&view=rev
-  +1: markt
+  +1: markt, fhanik
    0: billbarker The original was an optimization to not keep setting the timeout to the same value
                  if we haven't changed it.  Of course it is broken, but a better patch would be to
                  set the timeout correctly outside the loop, and retain the disableUploadTimeout check.
@@ -158,12 +158,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix spelling errors reported on users and dev list
   http://svn.apache.org/viewvc?rev=746321&view=rev
   http://svn.apache.org/viewvc?rev=746384&view=rev
-  +1: markt, mturk
+  +1: markt, mturk, fhanik
   -1: 
   
 * Fix error in 2.5 web.xml XSD
   http://svn.apache.org/viewvc?rev=747863&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * UseHttpOnly is a cookie attribute. Our Manager is cookie agnostic, hence the attribute might
