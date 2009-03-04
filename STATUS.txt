@@ -165,3 +165,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=747863&view=rev
   +1: markt
   -1: 
+
+* UseHttpOnly is a cookie attribute. Our Manager is cookie agnostic, hence the attribute might
+  serve a better purpose being implemented at the Context level
+  http://people.apache.org/~fhanik/tomcat/useHttpOnly.patch
+  This also allows people to configure it globally in conf/context.xml without automatically 
+  setting the default manager class
+  +1: fhanik
+  -1: 
