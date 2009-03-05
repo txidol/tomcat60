@@ -173,3 +173,11 @@ PATCHES PROPOSED TO BACKPORT:
   setting the default manager class
   +1: fhanik, markt
   -1: 
+
+* Make the LOGGING_CONFIG variable a variable that one can set outside or in setenv.sh to override the default tomcat logging mechanism
+  with a custom extension or a different location of the logging.properties file or both
+  http://svn.apache.org/viewvc?rev=750258&view=rev
+  +1: fhanik
+  -1: 
+
+
