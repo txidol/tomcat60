@@ -551,6 +551,9 @@
         <bug>46600</bug>: Document maxKeepAliveRequests for the NIO connector.
         (markt)
       </fix>
+      <fix>
+        Fix CVE-2009-0781. XSS in calendar example. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
