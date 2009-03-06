@@ -95,13 +95,6 @@ PATCHES PROPOSED TO BACKPORT:
       code a warning that it won't be there in the next version.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39396
-  Don't include TRACEE in OPTIONS response unless we know it hasn't been
-  disabled in the connector
-  http://svn.apache.org/viewvc?rev=742714&view=rev
-  +1: markt, mturk, fhanik, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46666
   keepAliveTimeout should be used regardless of setting of disableUploadTimeout
   http://svn.apache.org/viewvc?rev=744160&view=rev

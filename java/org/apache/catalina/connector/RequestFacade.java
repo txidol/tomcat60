@@ -932,4 +932,7 @@ public class RequestFacade implements HttpServletRequest {
         return request.getRemotePort();
     }
 
+    public boolean getAllowTrace() {
+        return request.getConnector().getAllowTrace();
+    }
 }

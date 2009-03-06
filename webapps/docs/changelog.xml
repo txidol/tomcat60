@@ -58,6 +58,10 @@
         match with the appBase dir. (markt)
       </fix>
       <fix>
+        <bug>39396</bug>: Don't include TRACEE in OPTIONS response unless we
+        know it hasn't been disabled in the connector. (markt)
+      </fix>
+      <fix>
         <bug>42747</bug>: Ensure context.xml takes effect on first deployment
         for WAR and DIR deployments. context.xml is now copied to
         CATALINA_BASE/&lt;engine name&gt;/&lt;host name&gt; for DIR as well as
