@@ -54,6 +54,10 @@
         check for an exact match against the appBase. (markt)
       </fix>
       <fix>
+        <bug>39013</bug>: When testing for invalid docBase, test for an exact
+        match with the appBase dir. (markt)
+      </fix>
+      <fix>
         <bug>42747</bug>: Ensure context.xml takes effect on first deployment
         for WAR and DIR deployments. context.xml is now copied to
         CATALINA_BASE/&lt;engine name&gt;/&lt;host name&gt; for DIR as well as
