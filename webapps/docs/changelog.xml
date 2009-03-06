@@ -276,6 +276,9 @@
         <bug>44382</bug>: Add support for using httpOnly for session cookies.
         This is disabled by default. (markt)
       </add>
+      <fix>
+        Fix possible NCDFE when using FORM authentication. (jfclere)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
