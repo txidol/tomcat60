@@ -95,26 +95,6 @@ PATCHES PROPOSED TO BACKPORT:
       code a warning that it won't be there in the next version.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46666
-  keepAliveTimeout should be used regardless of setting of disableUploadTimeout
-  http://svn.apache.org/viewvc?rev=744160&view=rev
-  +1: markt, fhanik, jim
-   0: billbarker The original was an optimization to not keep setting the timeout to the same value
-                 if we haven't changed it.  Of course it is broken, but a better patch would be to
-                 set the timeout correctly outside the loop, and retain the disableUploadTimeout check.
-                 The first request shouldn't care, since we should already have available() > 0 with the 
-                 JIO connector.
-      markt      I took a look at this. I think you do have to set timeouts
-                 inside the loop otherwise the request line read doesn't timeout
-                 correctly. I wrote this patch that only sets timeouts when
-                 required:
-                 http://people.apache.org/~markt/patches/2009-02-12-soTimeout.patch
-                 but I'm not sure it is necessary. Is setSoTimeout really that
-                 expensive? It takes less than a microsecond on my box. The code
-                 would be cleaner if we just took out most of the tests and set
-                 the timeout, even if it was already set as required.
-  -1: 
-
 * Use ThreadLocal rather than syncs for DateFormat to prevent potential
   bottleneck in cookie creation
   http://svn.apache.org/viewvc?rev=744238&view=rev

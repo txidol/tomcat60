@@ -360,6 +360,10 @@
       <fix>
        Fix HTTP/1.0 redirects handling with APR AJP connector. (remm)
       </fix>
+      <fix>
+        <bug>46666</bug>: keepAliveTimeout should be used regardless of setting
+        of disableUploadTimeout. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
