@@ -512,7 +512,7 @@ final class SetLoginConfig extends Rule {
         throws Exception {
         if (isLoginConfigSet){
             throw new IllegalArgumentException(
-            "<login-config> element is limited to 1 occurance");
+            "<login-config> element is limited to 1 occurrence");
         }
         isLoginConfigSet = true;
     }
@@ -533,7 +533,7 @@ final class SetJspConfig extends Rule {
         throws Exception {
         if (isJspConfigSet){
             throw new IllegalArgumentException(
-            "<jsp-config> element is limited to 1 occurance");
+            "<jsp-config> element is limited to 1 occurrence");
         }
         isJspConfigSet = true;
     }
@@ -554,7 +554,7 @@ final class SetSessionConfig extends Rule {
         throws Exception {
         if (isSessionConfigSet){
             throw new IllegalArgumentException(
-            "<session-config> element is limited to 1 occurance");
+            "<session-config> element is limited to 1 occurrence");
         }
         isSessionConfigSet = true;
     }

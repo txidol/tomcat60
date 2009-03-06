@@ -294,6 +294,9 @@
       <fix>
         Fix possible synchronisation bottleneck in cookie creation. (markt)
       </fix>
+      <fix>
+        Fix various spelling errors reported on the mailing lists. (markt) 
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
