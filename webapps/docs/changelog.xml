@@ -297,6 +297,10 @@
       <fix>
         Fix various spelling errors reported on the mailing lists. (markt) 
       </fix>
+      <add>
+        Make the logging manager and properties file configurable via
+        environment variables. (fhanik)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
