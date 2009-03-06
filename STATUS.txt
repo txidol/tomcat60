@@ -95,14 +95,6 @@ PATCHES PROPOSED TO BACKPORT:
       code a warning that it won't be there in the next version.
   -1: 
 
-* UseHttpOnly is a cookie attribute. Our Manager is cookie agnostic, hence the attribute might
-  serve a better purpose being implemented at the Context level
-  http://people.apache.org/~fhanik/tomcat/useHttpOnly.patch
-  This also allows people to configure it globally in conf/context.xml without automatically 
-  setting the default manager class
-  +1: fhanik, markt, jim
-  -1: 
-
 * Make the LOGGING_CONFIG variable a variable that one can set outside or in setenv.sh to override the default tomcat logging mechanism
   with a custom extension or a different location of the logging.properties file or both
   http://svn.apache.org/viewvc?rev=750258&view=rev
