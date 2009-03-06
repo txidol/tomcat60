@@ -95,13 +95,6 @@ PATCHES PROPOSED TO BACKPORT:
       code a warning that it won't be there in the next version.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38570
-  When checking docBase against appBase, make sure we check for an exact match
-  against the appBase
-  http://svn.apache.org/viewvc?rev=742677&view=rev
-  +1: markt, remm, mturk, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39013
   When testing for invalid docBase, test for an exact match with the appBase
   dir

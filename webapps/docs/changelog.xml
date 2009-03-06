@@ -50,6 +50,10 @@
         a certificate CLIENT-CERT authentication. (markt)        
       </fix>
       <fix>
+        <bug>38570</bug>: When checking docBase against appBase, make sure we
+        check for an exact match against the appBase. (markt)
+      </fix>
+      <fix>
         <bug>42747</bug>: Ensure context.xml takes effect on first deployment
         for WAR and DIR deployments. context.xml is now copied to
         CATALINA_BASE/&lt;engine name&gt;/&lt;host name&gt; for DIR as well as
