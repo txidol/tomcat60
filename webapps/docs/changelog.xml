@@ -291,6 +291,9 @@
       <fix>
         Fix possible NCDFE when using FORM authentication. (jfclere)
       </fix>
+      <fix>
+        Fix possible synchronisation bottleneck in cookie creation. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

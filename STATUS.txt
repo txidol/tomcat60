@@ -95,12 +95,6 @@ PATCHES PROPOSED TO BACKPORT:
       code a warning that it won't be there in the next version.
   -1: 
 
-* Use ThreadLocal rather than syncs for DateFormat to prevent potential
-  bottleneck in cookie creation
-  http://svn.apache.org/viewvc?rev=744238&view=rev
-  +1: markt, fhanik, jim
-  -1: 
-
 * Fix spelling errors reported on users and dev list
   http://svn.apache.org/viewvc?rev=746321&view=rev
   http://svn.apache.org/viewvc?rev=746384&view=rev
