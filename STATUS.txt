@@ -38,11 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem), fhanik - minor problem
   -1: 
 
-* Handle session suffix rewrite at JvmRouteBinderValve with parallel requests from same client
-  http://svn.apache.org/viewvc?rev=693378&view=rev
-  +1: pero, fhanik, markt, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
   Never use empty reason phrase.
   http://svn.apache.org/viewvc?rev=697183&view=rev

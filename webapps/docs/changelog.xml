@@ -469,6 +469,10 @@
         <bug>46357</bug>: Corrected test for host's parent must be an engine.
         (markt)
       </fix>
+      <fix>
+        Fix so that JvmrouteBinderValve can rewrite session suffix with parallel
+        requests from same client. (pero)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
