@@ -579,6 +579,9 @@
       <fix>
         Use more useful JPDA defaults in catalina.bat. (markt)
       </fix>
+      <fix>
+        Correct error in 25. web-app XSD.
+      </fix>
     </changelog>
   </subsection>
 </section>
