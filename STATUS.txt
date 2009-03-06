@@ -69,7 +69,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Backport NCDFE fix from trunk (TCK failures without it)
   http://svn.apache.org/viewvc?rev=640888&view=rev 
   +1: markt
-  +1: fhanik - trivial change
+  +1: fhanik, jim - trivial change
    0: remm (no clue how it can cause a NCDF, and the TCK actually works for me; besides that code is 
             really old to me, so where would this come from ?)
   -1: 
@@ -112,27 +112,27 @@ PATCHES PROPOSED TO BACKPORT:
   When checking docBase against appBase, make sure we check for an exact match
   against the appBase
   http://svn.apache.org/viewvc?rev=742677&view=rev
-  +1: markt, remm, mturk
+  +1: markt, remm, mturk, jim
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39013
   When testing for invalid docBase, test for an exact match with the appBase
   dir
   http://svn.apache.org/viewvc?rev=742697&view=rev
-  +1: markt, remm, mturk
+  +1: markt, remm, mturk, jim
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39396
   Don't include TRACEE in OPTIONS response unless we know it hasn't been
   disabled in the connector
   http://svn.apache.org/viewvc?rev=742714&view=rev
-  +1: markt, mturk, fhanik
+  +1: markt, mturk, fhanik, jim
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46666
   keepAliveTimeout should be used regardless of setting of disableUploadTimeout
   http://svn.apache.org/viewvc?rev=744160&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
    0: billbarker The original was an optimization to not keep setting the timeout to the same value
                  if we haven't changed it.  Of course it is broken, but a better patch would be to
                  set the timeout correctly outside the loop, and retain the disableUploadTimeout check.
@@ -152,18 +152,18 @@ PATCHES PROPOSED TO BACKPORT:
 * Use ThreadLocal rather than syncs for DateFormat to prevent potential
   bottleneck in cookie creation
   http://svn.apache.org/viewvc?rev=744238&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
   -1: 
 
 * Fix spelling errors reported on users and dev list
   http://svn.apache.org/viewvc?rev=746321&view=rev
   http://svn.apache.org/viewvc?rev=746384&view=rev
-  +1: markt, mturk, fhanik
+  +1: markt, mturk, fhanik, jim
   -1: 
   
 * Fix error in 2.5 web.xml XSD
   http://svn.apache.org/viewvc?rev=747863&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, jim
   -1: 
 
 * UseHttpOnly is a cookie attribute. Our Manager is cookie agnostic, hence the attribute might
@@ -171,14 +171,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~fhanik/tomcat/useHttpOnly.patch
   This also allows people to configure it globally in conf/context.xml without automatically 
   setting the default manager class
-  +1: fhanik, markt
+  +1: fhanik, markt, jim
   -1: 
 
 * Make the LOGGING_CONFIG variable a variable that one can set outside or in setenv.sh to override the default tomcat logging mechanism
   with a custom extension or a different location of the logging.properties file or both
   http://svn.apache.org/viewvc?rev=750258&view=rev
   http://svn.apache.org/viewvc?rev=750291&view=rev
-  +1: fhanik
+  +1: fhanik, jim
   -1: 
 
 
