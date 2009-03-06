@@ -99,7 +99,7 @@ PATCHES PROPOSED TO BACKPORT:
   with a custom extension or a different location of the logging.properties file or both
   http://svn.apache.org/viewvc?rev=750258&view=rev
   http://svn.apache.org/viewvc?rev=750291&view=rev
-  +1: fhanik, jim
+  +1: fhanik, jim, markt
   -1: 
 
 
