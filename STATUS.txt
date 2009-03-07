@@ -100,3 +100,9 @@ PATCHES PROPOSED TO BACKPORT:
   Make MemoryUserDatabase read-only by default
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46816
+  http://svn.apache.org/viewvc?rev=751295&view=rev
+  Align mbean with implementation
+  +1: markt
+  -1:
