@@ -94,3 +94,9 @@ PATCHES PROPOSED TO BACKPORT:
       functionality of the API. It just gives folks that may be using this old
       code a warning that it won't be there in the next version.
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46815
+  http://svn.apache.org/viewvc?rev=751289&view=rev
+  Make MemoryUserDatabase read-only by default
+  +1: markt
+  -1: 
