@@ -126,7 +126,9 @@ dumped to a file? <code>true</code> or <code>false</code>, default
 <code>false</code>. <code>false</code> if suppressSmap is true.</li>
 
 <li><strong>enablePooling</strong> - Determines whether tag handler pooling is
-enabled. <code>true</code> or <code>false</code>, default <code>true</code>.
+enabled. This is a compilation option. It will not alter the behaviour of JSPs
+that have already been compiled. <code>true</code> or <code>false</code>,
+default <code>true</code>.
 </li>
 
 <li><strong>engineOptionsClass</strong> - Allows specifying the Options class
@@ -337,7 +339,7 @@ and the compile jsp servlet classes at
 <ul>
 <li> When you switch to another Tomcat release, then regenerate and recompile
 your jsp's with the new Tomcat version.</li>
-<li>Use java system property at server runtime to disable tag pooling
+<li>Use java system property at server runtime to disable PageContext pooling
 <code>org.apache.jasper.runtime.JspFactoryImpl.USE_POOL=false</code>.
 and limit the buffering with
 <code>org.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true</code>. Note

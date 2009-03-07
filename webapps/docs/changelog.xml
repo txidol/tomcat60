@@ -32,6 +32,15 @@
   </properties>
 
 <body>
+<section name="Tomcat 6.0.20 (remm)">
+  <subsection name="Webapps">
+    <changelog>
+      <fix>
+        <bug>46807</bug>: Correct docs for configuration of tag pooling. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
     <changelog>
