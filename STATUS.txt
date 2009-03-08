@@ -106,13 +106,3 @@ PATCHES PROPOSED TO BACKPORT:
   Align mbean with implementation
   +1: markt
   -1:
-
-* Add an AddDefaultCharsetValve
-  http://svn.apache.org/viewvc?rev=751304&view=rev
-  +1: markt
-  -1: 
-
-* Make AddDefaultCharsetValve effective when a writer is used
-  http://svn.apache.org/viewvc?rev=751313&view=rev
-  +1: markt
-  -1: 
