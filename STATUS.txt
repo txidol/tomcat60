@@ -112,3 +112,12 @@ PATCHES PROPOSED TO BACKPORT:
   Backport of http://svn.apache.org/viewvc?rev=755302&view=rev
   +1: rjung, fhanik
   -1:
+
+* Allow AJP connectors to provide correct getRemotePort().
+  The remote port is not part of the AJP13 protocol.
+  Since the protocol is not extensible enough for standard
+  attributes, we use generic attributes mechanism to forward
+  the remote port.
+  Backport of http://svn.apache.org/viewvc?rev=756926&view=rev
+  +1: rjung
+  -1:
