@@ -119,10 +119,14 @@ PATCHES PROPOSED TO BACKPORT:
   attributes, we use generic attributes mechanism to forward
   the remote port.
   Backport of http://svn.apache.org/viewvc?rev=756926&view=rev
+  and http://svn.apache.org/viewvc?rev=757223&view=rev
   +1: rjung, pero, mturk
+  -1:
   mturk: Perhaps we should consider prefixing all those private
   variables with AJP_ so that is clear this is AJP protocol
   extension environment variable.
   pero: But REMOTE_PORT is a existing apache httpd env var! +1 for prefixing.
         What we can do at mod_jk/IIS?
-  -1:
+  rjung: I changed the name and we will *only* use the forwarded data
+  for setting the port and not set it as a request attribute.
+  IIS: will be handled similarly.
