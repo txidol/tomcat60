@@ -119,5 +119,5 @@ PATCHES PROPOSED TO BACKPORT:
   attributes, we use generic attributes mechanism to forward
   the remote port.
   Backport of http://svn.apache.org/viewvc?rev=756926&view=rev
-  +1: rjung, pero
+  +1: rjung, pero, mturk
   -1:
