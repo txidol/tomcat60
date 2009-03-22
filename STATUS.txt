@@ -120,4 +120,7 @@ PATCHES PROPOSED TO BACKPORT:
   the remote port.
   Backport of http://svn.apache.org/viewvc?rev=756926&view=rev
   +1: rjung, pero, mturk
+  mturk: Perhaps we should consider prefixing all those private
+  variables with AJP_ so that is clear this is AJP protocol
+  extension environment variable.
   -1:
