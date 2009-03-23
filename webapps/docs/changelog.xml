@@ -33,6 +33,14 @@
 
 <body>
 <section name="Tomcat 6.0.20 (remm)">
+  <subsection name="Coyote">
+    <changelog>
+      <update>
+        Set remote port for AJP connectors from the optional request
+        attribute AJP_REMOTE_PORT. (rjung)
+      </update>
+    </changelog>
+  </subsection>
   <subsection name="Webapps">
     <changelog>
       <fix>
