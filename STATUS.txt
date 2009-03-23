@@ -67,6 +67,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=721708&view=rev (original)
   http://svn.apache.org/viewvc?rev=721886&view=rev (original)
   http://svn.apache.org/viewvc?rev=746425&view=rev (to address Bill's concerns)
+  http://svn.apache.org/viewvc?rev=757335&view=rev (to remove the Catalina dep)
   +1: markt
    0: billbarker: Haven't tried to break it yet, but the 4th patch potentially
       offers access to static fields in ELContextImpl and ELResolverImpl that could 
