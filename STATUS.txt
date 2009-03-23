@@ -71,7 +71,10 @@ PATCHES PROPOSED TO BACKPORT:
    0: billbarker: Haven't tried to break it yet, but the 4th patch potentially
       offers access to static fields in ELContextImpl and ELResolverImpl that could 
       possibly be exploited by a malicious webapp.
-  -1: 
+  -1: billbarker: The 5th patch makes Jasper depend on Catalina, rendering Jasper useless
+      to any 3rd party that just wants a JSP compiler.  Removing the Catalina dependancy
+      can change my vote to +1 (although, it means trusting modern JVMs to clean up after
+      themselves efficiently).
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46351
   Build script re-factoring
@@ -105,7 +108,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46816
   http://svn.apache.org/viewvc?rev=751295&view=rev
   Align mbean with implementation
-  +1: markt
+  +1: markt, billbarker
   -1:
 
 * Fix use of setLoopbackMode() for tribes multicast.
@@ -120,7 +123,7 @@ PATCHES PROPOSED TO BACKPORT:
   the remote port.
   Backport of http://svn.apache.org/viewvc?rev=756926&view=rev
   and http://svn.apache.org/viewvc?rev=757223&view=rev
-  +1: rjung, pero, mturk
+  +1: rjung, pero, mturk, billbarker
   -1:
   mturk: Perhaps we should consider prefixing all those private
   variables with AJP_ so that is clear this is AJP protocol
