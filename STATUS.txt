@@ -113,8 +113,3 @@ PATCHES PROPOSED TO BACKPORT:
   Align mbean with implementation
   +1: markt, billbarker, rjung
   -1:
-
-* Fix use of setLoopbackMode() for tribes multicast.
-  Backport of http://svn.apache.org/viewvc?rev=755302&view=rev
-  +1: rjung, fhanik, pero
-  -1:
