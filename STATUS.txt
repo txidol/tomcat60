@@ -86,21 +86,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: funkman - ditto
   -1:
 
-* Deprecate unused code (with a view to deleting it in TC7
-  http://svn.apache.org/viewvc?view=rev&revision=719119
-  http://svn.apache.org/viewvc?view=rev&revision=719124
-  +1: markt, fhanik, rjung
-  -0: mturk: We cannot change API in the middle of the life cycle. I'm fine with
-      deprecating that in trunk, but IMO there is no reason to deprecate
-      something in maintenance branch.
-      markt: I'd like to delete a lot of stuff (that is already unused) in tc7.
-      Deprecating it in tc6 doesn't stop people using it, nor does it change the
-      functionality of the API. It just gives folks that may be using this old
-      code a warning that it won't be there in the next version.
-  -1: 
-  rjung: deprecating the unused collection classes is fine.
-  Not sure about the purpose of the apr.properties handling class.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46815
   http://svn.apache.org/viewvc?rev=751289&view=rev
   http://svn.apache.org/viewvc?rev=753039&view=rev
