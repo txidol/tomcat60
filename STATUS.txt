@@ -113,3 +113,16 @@ PATCHES PROPOSED TO BACKPORT:
   Align mbean with implementation
   +1: markt, billbarker, rjung
   -1:
+
+* Use some already existing constants instead of explicit
+  numbers in the AJP conectors. Backport of
+  http://svn.apache.org/viewvc?rev=757706&view=rev
+  +1: rjung
+  -1:
+
+* Allow huge request body packets for AJP13.
+  Part 2 of the backport proposed and approved above
+  (r697192), now also for the other AJP connectors.
+  http://svn.apache.org/viewvc?rev=757708&view=rev
+  +1: rjung
+  -1:
