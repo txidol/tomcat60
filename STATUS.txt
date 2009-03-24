@@ -166,3 +166,8 @@ PATCHES PROPOSED TO BACKPORT:
     idle times and making persistance decisions.
   +1: rjung
   -1:
+
+* Fix typo in OPTIONS response
+  http://svn.apache.org/viewvc?rev=757774&view=rev
+  +1: markt
+  -1: 
