@@ -126,3 +126,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=757708&view=rev
   +1: rjung
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
+  Never use empty reason phrase.
+  Part 2 of the backport proposed and approved above
+  (r697183), now also for the other AJP connectors.
+  http://svn.apache.org/viewvc?rev=757721&view=rev
+  +1: rjung
+  -1:
