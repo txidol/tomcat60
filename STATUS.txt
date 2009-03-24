@@ -110,6 +110,7 @@ PATCHES PROPOSED TO BACKPORT:
   (r697192), now also for the other AJP connectors.
   http://svn.apache.org/viewvc?rev=757708&view=rev
   +1: rjung
+   0: remm: see below
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
@@ -118,6 +119,13 @@ PATCHES PROPOSED TO BACKPORT:
   (r697183), now also for the other AJP connectors.
   http://svn.apache.org/viewvc?rev=757721&view=rev
   +1: rjung
+   0: remm
+      These two fixes remind me of JBoss Web (r795 in the JBW svn), and it would be
+      nice to ack that (I ack porting of all Tomcat patches, with clear attribution).
+      I also think a (c) notice in the NOTICE file if porting becomes a habit (these two
+      are probably not significant enough). 
+      From what I know, nobody uses these two connectors in Tomcat, so it did not seem
+      "port worthy" to me.
   -1:
 
 * Backport cleanup of semantics of thisAccessedTime and
