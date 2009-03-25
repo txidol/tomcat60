@@ -33,6 +33,14 @@
 
 <body>
 <section name="Tomcat 6.0.20 (remm)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        <bug>46816</bug>: Align session manager mbean descriptor with
+        implementation. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Coyote">
     <changelog>
       <update>

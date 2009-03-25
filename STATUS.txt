@@ -93,12 +93,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46816
-  http://svn.apache.org/viewvc?rev=751295&view=rev
-  Align mbean with implementation
-  +1: markt, billbarker, rjung
-  -1:
-
 * Use some already existing constants instead of explicit
   numbers in the AJP conectors. Backport of
   http://svn.apache.org/viewvc?rev=757706&view=rev
