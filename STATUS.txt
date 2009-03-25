@@ -158,3 +158,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=757774&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46908
+  http://svn.apache.org/viewvc?rev=758365&view=rev
+  Try and support java encoding names when using an xml parser provided via the
+  endorsed mechanism
+  +1: markt
+  -1: 
