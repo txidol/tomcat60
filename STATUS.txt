@@ -183,3 +183,10 @@ PATCHES PROPOSED TO BACKPORT:
   Remove unnecessary object creation in StandardContext
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46915
+  When resolving ResourceBundle properties, don't claim to have resolved the
+  property unless we really have resolved it.
+  http://svn.apache.org/viewvc?rev=758664&view=rev
+  +1: markt
+  -1: 
