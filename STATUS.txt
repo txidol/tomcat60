@@ -181,3 +181,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46822
   http://svn.apache.org/viewvc?rev=758616&view=rev
   Remove unnecessary object creation in StandardContext
+  +1: markt
+  -1: 
