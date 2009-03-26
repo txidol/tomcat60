@@ -171,3 +171,9 @@ PATCHES PROPOSED TO BACKPORT:
   Catch possible ISE as a result of session expiration in comet valve
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46866
+  http://svn.apache.org/viewvc?rev=758596&view=rev
+  Better init of Random objects
+  +1: markt
+  -1: 
