@@ -94,16 +94,16 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Use some already existing constants instead of explicit
-  numbers in the AJP conectors. Backport of
+  numbers in the AJP connectors. Backport of
   http://svn.apache.org/viewvc?rev=757706&view=rev
-  +1: rjung
+  +1: rjung, markt
   -1:
 
 * Allow huge request body packets for AJP13.
   Part 2 of the backport proposed and approved above
   (r697192), now also for the other AJP connectors.
   http://svn.apache.org/viewvc?rev=757708&view=rev
-  +1: rjung
+  +1: rjung, markt
    0: remm: see below
   -1:
 
@@ -112,7 +112,7 @@ PATCHES PROPOSED TO BACKPORT:
   Part 2 of the backport proposed and approved above
   (r697183), now also for the other AJP connectors.
   http://svn.apache.org/viewvc?rev=757721&view=rev
-  +1: rjung
+  +1: rjung, markt
    0: remm
       These two fixes remind me of JBoss Web (r795 in the JBW svn), and it would be
       nice to ack that (I ack porting of all Tomcat patches, with clear attribution).
@@ -151,7 +151,7 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc?rev=711720&view=rev
     This is not for invalidation, only for displaying
     idle times and making persistance decisions.
-  +1: rjung
+  +1: rjung, markt
   -1:
 
 * Fix typo in OPTIONS response
