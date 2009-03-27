@@ -103,8 +103,7 @@ PATCHES PROPOSED TO BACKPORT:
   Part 2 of the backport proposed and approved above
   (r697192), now also for the other AJP connectors.
   http://svn.apache.org/viewvc?rev=757708&view=rev
-  +1: rjung, markt
-   0: remm: see below
+  +1: rjung, markt, remm
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
@@ -112,14 +111,7 @@ PATCHES PROPOSED TO BACKPORT:
   Part 2 of the backport proposed and approved above
   (r697183), now also for the other AJP connectors.
   http://svn.apache.org/viewvc?rev=757721&view=rev
-  +1: rjung, markt
-   0: remm
-      These two fixes remind me of JBoss Web (r795 in the JBW svn), and it would be
-      nice to ack that (I ack porting of all Tomcat patches, with clear attribution).
-      I also think a (c) notice in the NOTICE file if porting becomes a habit (these two
-      are probably not significant enough). 
-      From what I know, nobody uses these two connectors in Tomcat, so it did not seem
-      "port worthy" to me.
+  +1: rjung, markt, remm
   -1:
 
 * Backport cleanup of semantics of thisAccessedTime and
@@ -152,7 +144,7 @@ PATCHES PROPOSED TO BACKPORT:
     This is not for invalidation, only for displaying
     idle times and making persistance decisions.
   +1: rjung, markt
-  -1:
+  -1: remm: no for TC 6.0
 
 * Fix typo in OPTIONS response
   http://svn.apache.org/viewvc?rev=757774&view=rev
@@ -196,3 +188,16 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Chris Halstead
   +1: markt
   -1: 
+
+  * Fix encoding when filtering French properties files, by using in build.xml:
+@@ -128,7 +128,7 @@
+     <filter token="VERSION" value="${version}"/>
+     <filter token="VERSION_NUMBER" value="${version.number}"/>
+     <filter token="VERSION_BUILT" value="${TODAY} ${TSTAMP}"/>
+-    <copy todir="${tomcat.classes}" filtering="true">
++    <copy todir="${tomcat.classes}" filtering="true" encoding="ISO-8859-1">
+       <fileset dir="java">
+         <include name="**/*.properties"/>
+         <include name="**/*.dtd"/>
+  +1: remm
+  -1:
