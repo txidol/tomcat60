@@ -190,3 +190,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=758664&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41606
+  Prevent double init() of JSP
+  Patch provided by Chris Halstead
+  +1: markt
+  -1: 
