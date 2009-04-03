@@ -68,14 +68,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=721886&view=rev (original)
   http://svn.apache.org/viewvc?rev=746425&view=rev (to address Bill's concerns)
   http://svn.apache.org/viewvc?rev=757335&view=rev (to remove the Catalina dep)
-  +1: markt
-   0: billbarker: Haven't tried to break it yet, but the 4th patch potentially
-      offers access to static fields in ELContextImpl and ELResolverImpl that could 
-      possibly be exploited by a malicious webapp.
-  -1: billbarker: The 5th patch makes Jasper depend on Catalina, rendering Jasper useless
-      to any 3rd party that just wants a JSP compiler.  Removing the Catalina dependancy
-      can change my vote to +1 (although, it means trusting modern JVMs to clean up after
-      themselves efficiently).
+  +1: markt, billbarker
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46351
   Build script re-factoring
@@ -96,7 +89,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Use some already existing constants instead of explicit
   numbers in the AJP connectors. Backport of
   http://svn.apache.org/viewvc?rev=757706&view=rev
-  +1: rjung, markt
+  +1: rjung, markt, billbarker
   -1:
 
 * Allow huge request body packets for AJP13.
@@ -144,11 +137,13 @@ PATCHES PROPOSED TO BACKPORT:
     This is not for invalidation, only for displaying
     idle times and making persistance decisions.
   +1: rjung, markt
+   0: billbarker: generally agree with remm that this is too big of a change for the stable branch
+                 but could agree to some of it if it was split into parts
   -1: remm: no for TC 6.0
 
 * Fix typo in OPTIONS response
   http://svn.apache.org/viewvc?rev=757774&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, billbarker
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46908
@@ -167,7 +162,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46866
   http://svn.apache.org/viewvc?rev=758596&view=rev
   Better init of Random objects
-  +1: markt, rjung
+  +1: markt, rjung, billbarker
+      billbarker:  This is more like a +0.5, since Random isn't that secure in the first place.
+                   But the patch seems harmless, so I'll support itch-scraching.
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46822
