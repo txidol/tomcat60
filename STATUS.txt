@@ -209,3 +209,8 @@ PATCHES PROPOSED TO BACKPORT:
          <include name="**/*.dtd"/>
   +1: remm, rjung
   -1:
+
+* Fix some failures when testing WebDAV with litmus test suite
+  http://svn.apache.org/viewvc?view=rev&revision=761601
+  +1: markt
+  -1: 
