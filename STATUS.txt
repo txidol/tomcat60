@@ -38,12 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem), fhanik - minor problem
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
-  Never use empty reason phrase.
-  http://svn.apache.org/viewvc?rev=697183&view=rev
-  +1: rjung, mturk, markt, jim
-   0: remm (also affects to the two other AJP connectors)
-
 * Allow huge request body packets for AJP13.
   This was already applied to connectors, but never
   carried forward to trunk and tc6.0.x.
@@ -96,14 +90,6 @@ PATCHES PROPOSED TO BACKPORT:
   Part 2 of the backport proposed and approved above
   (r697192), now also for the other AJP connectors.
   http://svn.apache.org/viewvc?rev=757708&view=rev
-  +1: rjung, markt, remm
-  -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45026
-  Never use empty reason phrase.
-  Part 2 of the backport proposed and approved above
-  (r697183), now also for the other AJP connectors.
-  http://svn.apache.org/viewvc?rev=757721&view=rev
   +1: rjung, markt, remm
   -1:
 
