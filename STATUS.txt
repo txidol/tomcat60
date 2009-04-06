@@ -38,14 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem), fhanik - minor problem
   -1: 
 
-* Allow huge request body packets for AJP13.
-  This was already applied to connectors, but never
-  carried forward to trunk and tc6.0.x.
-  http://svn.apache.org/viewvc?rev=697192&view=rev
-  Original change: http://svn.apache.org/viewvc?rev=486217&view=rev
-  +1: rjung, mturk, markt, pero, jim
-   0: remm (also affects to the two other AJP connectors)
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
   See commit message for details of negligable performance impact
   http://svn.apache.org/viewvc?rev=701358&view=rev
@@ -79,13 +71,6 @@ PATCHES PROPOSED TO BACKPORT:
   Make MemoryUserDatabase read-only by default
   +1: markt, rjung
   -1: 
-
-* Allow huge request body packets for AJP13.
-  Part 2 of the backport proposed and approved above
-  (r697192), now also for the other AJP connectors.
-  http://svn.apache.org/viewvc?rev=757708&view=rev
-  +1: rjung, markt, remm
-  -1:
 
 * Backport cleanup of semantics of thisAccessedTime and
   lastAccessedTime for sessions:
