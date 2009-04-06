@@ -104,10 +104,10 @@ public interface ServletContext {
     /**
      * Returns the minor version of the Servlet API that this
      * servlet container supports. All implementations that comply
-     * with Version 2.4 must have this method
-     * return the integer 4.
+     * with Version 2.5 must have this method
+     * return the integer 5.
      *
-     * @return 		4
+     * @return 		5
      *
      */
 
