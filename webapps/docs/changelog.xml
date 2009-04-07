@@ -39,6 +39,9 @@
         <bug>46816</bug>: Align session manager mbean descriptor with
         implementation. (markt)
       </fix>
+      <fix>
+        Fix a typo in the OPTIONS response from the default servlet. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

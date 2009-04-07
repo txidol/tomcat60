@@ -97,11 +97,6 @@ PATCHES PROPOSED TO BACKPORT:
                  but could agree to some of it if it was split into parts
   -1: remm: no for TC 6.0
 
-* Fix typo in OPTIONS response
-  http://svn.apache.org/viewvc?rev=757774&view=rev
-  +1: markt, rjung, billbarker
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46908
   http://svn.apache.org/viewvc?rev=758365&view=rev
   Try and support java encoding names when using an xml parser provided via the
