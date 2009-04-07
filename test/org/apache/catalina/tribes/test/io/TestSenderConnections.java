@@ -94,7 +94,7 @@ public class TestSenderConnections extends TestCase {
     }
     
     public static class TestMsg implements Serializable {
-        static Random r = new Random(System.currentTimeMillis());
+        static Random r = new Random();
         HashMap map = new HashMap();
         public TestMsg() {
             int size = Math.abs(r.nextInt() % 200);

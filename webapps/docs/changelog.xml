@@ -42,6 +42,9 @@
       <fix>
         Fix a typo in the OPTIONS response from the default servlet. (markt)
       </fix>
+      <fix>
+        <bug>46866</bug>: Better initialisation of Random objects. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

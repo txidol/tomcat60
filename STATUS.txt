@@ -110,14 +110,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46866
-  http://svn.apache.org/viewvc?rev=758596&view=rev
-  Better init of Random objects
-  +1: markt, rjung, billbarker
-      billbarker:  This is more like a +0.5, since Random isn't that secure in the first place.
-                   But the patch seems harmless, so I'll support itch-scraching.
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46822
   http://svn.apache.org/viewvc?rev=758616&view=rev
   Remove unnecessary object creation in StandardContext
