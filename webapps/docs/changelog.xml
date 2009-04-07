@@ -85,6 +85,9 @@
         <bug>46351</bug>: Refactor the build script. Patch provided by Marc
         Guillemot. (markt)
       </fix>
+      <fix>
+        <bug>46910</bug>: Properties files corrupted by build process. (remm)
+      </fix>
     </changelog>
   </subsection>
 </section>
