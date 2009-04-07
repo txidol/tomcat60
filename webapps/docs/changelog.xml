@@ -72,6 +72,9 @@
   <subsection name="Webapps">
     <changelog>
       <fix>
+        <bug>46599</bug>: Document known DAEMON issue. (markt)
+      </fix>
+      <fix>
         <bug>46807</bug>: Correct docs for configuration of tag pooling. (markt)
       </fix>
     </changelog>
