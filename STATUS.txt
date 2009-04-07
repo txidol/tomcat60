@@ -150,7 +150,7 @@ PATCHES PROPOSED TO BACKPORT:
        <fileset dir="java">
          <include name="**/*.properties"/>
          <include name="**/*.dtd"/>
-  +1: remm, rjung
+  +1: remm, rjung, markt
   -1:
 
 * Fix some failures when testing WebDAV with litmus test suite
