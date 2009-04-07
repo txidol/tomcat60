@@ -56,15 +56,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=757335&view=rev (to remove the Catalina dep)
   +1: markt, billbarker
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46351
-  Build script re-factoring
-  Patch provided by Marc Guillemot
-  http://svn.apache.org/viewvc?rev=729681&view=rev
-  +1: markt, jim, pero
-   0: fhanik - not sure its needed in 6.0 branch if all is working with the old script
-   0: funkman - ditto
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46815
   http://svn.apache.org/viewvc?rev=751289&view=rev
   http://svn.apache.org/viewvc?rev=753039&view=rev

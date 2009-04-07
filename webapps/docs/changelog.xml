@@ -70,6 +70,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Other">
+    <changelog>
+      <fix>
+        <bug>46351</bug>: Refactor the build script. Patch provided by Marc
+        Guillemot. (markt)
+      </fix>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.19 (remm)">
   <subsection name="Catalina">
