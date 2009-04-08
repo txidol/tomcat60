@@ -199,3 +199,16 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=763298&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46991
+  Update counters before request is re-cycled
+  http://svn.apache.org/viewvc?rev=763302&view=rev
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46509
+  Use correct link on error page in JSP security example
+  Patch provided by Michael Moody
+  http://svn.apache.org/viewvc?rev=763325&view=rev
+  +1: markt
+  -1: 
