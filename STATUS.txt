@@ -165,3 +165,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=763166&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46933
+  Simplify StringManager using Java 5. Includes test case. Based on a patch by
+  Jens Kapitza
+  http://svn.apache.org/viewvc?rev=763183&view=rev
+  +1: markt
+  -1: 
