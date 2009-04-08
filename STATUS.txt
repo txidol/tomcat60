@@ -159,3 +159,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=762929
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46982
+  Correct report DST offset in access logs
+  http://svn.apache.org/viewvc?rev=763166&view=rev
+  +1: markt
+  -1: 
