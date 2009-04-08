@@ -192,4 +192,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=763262&view=rev
   +1: markt
   -1: 
-  
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46990
+  Correct various sync issues reported by FindBugs
+  Patch provided by sebb@a.o
+  http://svn.apache.org/viewvc?rev=763298&view=rev
+  +1: markt
+  -1: 
