@@ -178,3 +178,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=763193&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46967
+  Better handling of errors when trying to use Manager.randomFile
+  Based on a pacth by Kirk Wolf
+  Also make behaviour consistent when using a security manager
+  http://svn.apache.org/viewvc?rev=763228&view=rev
+  +1: markt
+  -1: 
