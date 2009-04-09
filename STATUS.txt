@@ -244,3 +244,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=763706&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42390
+  Correct JSP compilation error with nested tagfile tags with variables with
+  "AT_BEGIN" scope
+  Patch provided by Konstantin Kolinko
+  http://svn.apache.org/viewvc?rev=763717&view=rev
+  +1: markt
+  -1: 
