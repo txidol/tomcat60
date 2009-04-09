@@ -237,3 +237,10 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Konstantin Kolinko
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42579
+  Handle both relative and absolute search results
+  Patch provided by Brandon DuRette
+  http://svn.apache.org/viewvc?rev=763706&view=rev
+  +1: markt
+  -1: 
