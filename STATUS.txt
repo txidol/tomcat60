@@ -230,3 +230,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=763654&view=rev
   +1: markt
   -1: 
+
+* Fix http://svn.apache.org/viewvc?rev=763681&view=rev
+  ArrayIndexOutOfBoundsException when using
+  org.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true
+  Patch provided by Konstantin Kolinko
+  +1: markt
+  -1: 
