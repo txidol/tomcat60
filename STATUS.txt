@@ -224,3 +224,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=763611&view=rev
   +1: markt
   -1: 
+
+* https://issues.apache.org/bugzilla/show_bug.cgi?id=46984
+  Invalid characters in HTTP request method should result in a 400
+  http://svn.apache.org/viewvc?rev=763654&view=rev
+  +1: markt
+  -1: 
