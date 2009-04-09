@@ -218,3 +218,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=763599&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46909
+  Only include ';' in type attribute if there is a parameter
+  http://svn.apache.org/viewvc?rev=763611&view=rev
+  +1: markt
+  -1: 
