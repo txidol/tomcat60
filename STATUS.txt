@@ -256,5 +256,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47013
   Use system property rather than hard code default
   http://svn.apache.org/viewvc?rev=764985&view=rev
+  http://svn.apache.org/viewvc?rev=764997&view=rev
   +1: markt
   -1: 
