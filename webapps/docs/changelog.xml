@@ -77,6 +77,10 @@
       <fix>
         <bug>46807</bug>: Correct docs for configuration of tag pooling. (markt)
       </fix>
+      <fix>
+        <bug>46924</bug>: Clarify behaviour when auto deployment is enabled and
+        a WAR, directory or context file is deleted or updated. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
