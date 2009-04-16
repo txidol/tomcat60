@@ -101,19 +101,19 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=758365&view=rev
   Try and support java encoding names when using an xml parser provided via the
   endorsed mechanism
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46875
   http://svn.apache.org/viewvc?rev=758407&view=rev
   Catch possible ISE as a result of session expiration in comet valve
-  +1: markt, rjung
+  +1: markt, rjung, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46822
   http://svn.apache.org/viewvc?rev=758616&view=rev
   Remove unnecessary object creation in StandardContext
-  +1: markt, rjung
+  +1: markt, rjung, remm
   -1: 
   rjung: firePropertyChange() creates a PropertyChangeEvent, which only has
          object type arguments in the constructor. Brief inspection of the Sun JDK
@@ -122,12 +122,13 @@ PATCHES PROPOSED TO BACKPORT:
          So in general there will be no object creation safed, although in some
          cases we use e.g. "new Boolean" instead of Boolean.valueOf(), so there might be
          some savings.
+  remm: yes, it's not going to do anything useful ;)
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46915
   When resolving ResourceBundle properties, don't claim to have resolved the
   property unless we really have resolved it.
   http://svn.apache.org/viewvc?rev=758664&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, remm
   -1: 
   rjung: r758664 (above URL) contains strange whitespace.
          Seems tabs are mixed with spaces.
@@ -136,7 +137,7 @@ PATCHES PROPOSED TO BACKPORT:
   Prevent double init() of JSP
   Patch provided by Chris Halstead
   http://svn.apache.org/viewvc?view=rev&revision=759074
-  +1: markt, rjung
+  +1: markt, rjung, remm
   -1: 
 
 * Fix some failures when testing WebDAV with litmus test suite
