@@ -260,8 +260,15 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-  * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37929
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37929
   Invalidated session causes pageContext methods to fail
   http://svn.apache.org/viewvc?rev=765662&view=rev
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46538
+  ETag must vary between compressed and uncompressed versions.
+  Based on a patch by Oliver Schoett
+  http://svn.apache.org/viewvc?rev=765727&view=rev
   +1: markt
   -1: 
