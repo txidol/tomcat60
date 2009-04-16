@@ -259,3 +259,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=764997&view=rev
   +1: markt
   -1: 
+
+  * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37929
+  Invalidated session causes pageContext methods to fail
+  http://svn.apache.org/viewvc?rev=765662&view=rev
+  +1: markt
+  -1: 
