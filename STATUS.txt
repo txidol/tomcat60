@@ -141,42 +141,42 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix some failures when testing WebDAV with litmus test suite
   http://svn.apache.org/viewvc?view=rev&revision=761601
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Update native to 1.1.16
   http://svn.apache.org/viewvc?view=rev&revision=762868
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix .exe and .pdf corruption in -src.tar.gz bundle
   http://svn.apache.org/viewvc?view=rev&revision=762936
-  +1: markt
+  +1: markt, remm
   -1:
 
 * Enable running of Tomcat directly from build directory on linux
   http://svn.apache.org/viewvc?view=rev&revision=762937
   http://svn.apache.org/viewvc?view=rev&revision=762929
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46982
   Correct report DST offset in access logs
   http://svn.apache.org/viewvc?rev=763166&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46933
   Simplify StringManager using Java 5. Includes test case. Based on a patch by
   Jens Kapitza
   http://svn.apache.org/viewvc?rev=763183&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46958
   Allow xml manager status to work irrespective of context path
   http://svn.apache.org/viewvc?rev=763193&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46967
@@ -198,12 +198,13 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by sebb@a.o
   http://svn.apache.org/viewvc?rev=763298&view=rev
   +1: markt
+   0: remm (zzz)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46991
   Update counters before request is re-cycled
   http://svn.apache.org/viewvc?rev=763302&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46509
@@ -216,13 +217,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46562
   Close the reader in the SSI servlet when we are done
   http://svn.apache.org/viewvc?rev=763599&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46909
   Only include ';' in type attribute if there is a parameter
   http://svn.apache.org/viewvc?rev=763611&view=rev
   +1: markt
+   0: remm (zzz)
   -1: 
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=46984
@@ -235,14 +237,14 @@ PATCHES PROPOSED TO BACKPORT:
   ArrayIndexOutOfBoundsException when using
   org.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true
   Patch provided by Konstantin Kolinko
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42579
   Handle both relative and absolute search results
   Patch provided by Brandon DuRette
   http://svn.apache.org/viewvc?rev=763706&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42390
@@ -250,7 +252,7 @@ PATCHES PROPOSED TO BACKPORT:
   "AT_BEGIN" scope
   Patch provided by Konstantin Kolinko
   http://svn.apache.org/viewvc?rev=763717&view=rev
-  +1: markt
+  +1: markt, remm (risky ...)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47013
@@ -258,12 +260,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=764985&view=rev
   http://svn.apache.org/viewvc?rev=764997&view=rev
   +1: markt
+  -0: remm: Why should this be backported ?
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37929
   Invalidated session causes pageContext methods to fail
   http://svn.apache.org/viewvc?rev=765662&view=rev
-  +1: markt
+  +1: markt, remm
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46538
@@ -271,4 +274,10 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by Oliver Schoett
   http://svn.apache.org/viewvc?rev=765727&view=rev
   +1: markt
-  -1: 
+  -1: remm: A hack (from what I read in 39727, the proxy folks say they are right that two representations of
+      one resource should have different ETag; I disagree with that since it makes )
+       - how would the DefaultServlet match the ETag header sent in If conditions with this hack ?
+       - Tomcat does not do random compression, so unless the Connector configuration changes, there should be no issue,
+         so the issue is very rare, but will remove caching, so it has real consequences (bad)
+      I would be +0 for Connector configuration to strip the ETag (since it would be useless, that's the easiest solution), 
+      -1 for all other options since it has an impact and fixes an edge case
