@@ -269,16 +269,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=765662&view=rev
   +1: markt, remm
   -1: 
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46538
-  ETag must vary between compressed and uncompressed versions.
-  Based on a patch by Oliver Schoett
-  http://svn.apache.org/viewvc?rev=765727&view=rev
-  +1: markt
-  -1: remm: A hack (from what I read in 39727, the proxy folks say they are right that two representations of
-      one resource should have different ETag; I disagree with that since it makes )
-       - how would the DefaultServlet match the ETag header sent in If conditions with this hack ?
-       - Tomcat does not do random compression, so unless the Connector configuration changes, there should be no issue,
-         so the issue is very rare, but will remove caching, so it has real consequences (bad)
-      I would be +0 for Connector configuration to strip the ETag (since it would be useless, that's the easiest solution), 
-      -1 for all other options since it has an impact and fixes an edge case
