@@ -269,3 +269,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=765662&view=rev
   +1: markt, remm
   -1: 
+
+* Fix use of non-ASCII characters in property files
+  http://people.apache.org/~markt/patches/2009-04-20-native2ascii-de.patch (German)
+  http://people.apache.org/~markt/patches/2009-04-20-native2ascii-en.patch (English)
+  http://people.apache.org/~markt/patches/2009-04-20-native2ascii-es.patch (Spanish)
+  http://people.apache.org/~markt/patches/2009-04-20-native2ascii-fr.patch (French)
+  +1: markt
+  -1: 
