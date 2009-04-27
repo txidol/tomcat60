@@ -142,50 +142,52 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix some failures when testing WebDAV with litmus test suite
   http://svn.apache.org/viewvc?view=rev&revision=761601
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Update native to 1.1.16
   http://svn.apache.org/viewvc?view=rev&revision=762868
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix .exe and .pdf corruption in -src.tar.gz bundle
   http://svn.apache.org/viewvc?view=rev&revision=762936
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1:
 
 * Enable running of Tomcat directly from build directory on linux
   http://svn.apache.org/viewvc?view=rev&revision=762937
   http://svn.apache.org/viewvc?view=rev&revision=762929
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46982
   Correct report DST offset in access logs
   http://svn.apache.org/viewvc?rev=763166&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46933
   Simplify StringManager using Java 5. Includes test case. Based on a patch by
   Jens Kapitza
   http://svn.apache.org/viewvc?rev=763183&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
+  rjung: J. Kapitza added later another patch to StringManager as
+  https://issues.apache.org/bugzilla/attachment.cgi?id=23550
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46958
   Allow xml manager status to work irrespective of context path
   http://svn.apache.org/viewvc?rev=763193&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46967
   Better handling of errors when trying to use Manager.randomFile
-  Based on a pacth by Kirk Wolf
+  Based on a patch by Kirk Wolf
   Also make behaviour consistent when using a security manager
   http://svn.apache.org/viewvc?rev=763228&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46985
@@ -198,54 +200,54 @@ PATCHES PROPOSED TO BACKPORT:
   Correct various sync issues reported by FindBugs
   Patch provided by sebb@a.o
   http://svn.apache.org/viewvc?rev=763298&view=rev
-  +1: markt
+  +1: markt, rjung
    0: remm (zzz)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46991
   Update counters before request is re-cycled
   http://svn.apache.org/viewvc?rev=763302&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46509
   Use correct link on error page in JSP security example
   Patch provided by Michael Moody
   http://svn.apache.org/viewvc?rev=763325&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46562
   Close the reader in the SSI servlet when we are done
   http://svn.apache.org/viewvc?rev=763599&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46909
   Only include ';' in type attribute if there is a parameter
   http://svn.apache.org/viewvc?rev=763611&view=rev
-  +1: markt
+  +1: markt, rjung
    0: remm (zzz)
   -1: 
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=46984
   Invalid characters in HTTP request method should result in a 400
   http://svn.apache.org/viewvc?rev=763654&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix http://svn.apache.org/viewvc?rev=763681&view=rev
   ArrayIndexOutOfBoundsException when using
   org.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true
   Patch provided by Konstantin Kolinko
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42579
   Handle both relative and absolute search results
   Patch provided by Brandon DuRette
   http://svn.apache.org/viewvc?rev=763706&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42390
@@ -260,14 +262,14 @@ PATCHES PROPOSED TO BACKPORT:
   Use system property rather than hard code default
   http://svn.apache.org/viewvc?rev=764985&view=rev
   http://svn.apache.org/viewvc?rev=764997&view=rev
-  +1: markt
+  +1: markt, rjung
   -0: remm: Why should this be backported ?
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37929
   Invalidated session causes pageContext methods to fail
   http://svn.apache.org/viewvc?rev=765662&view=rev
-  +1: markt, remm
+  +1: markt, remm, rjung
   -1: 
 
 * Fix use of non-ASCII characters in property files
