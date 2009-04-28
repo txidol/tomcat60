@@ -75,6 +75,10 @@
       <update>
         Update tc-native to 1.1.16 (markt)
       </update>
+      <fix>
+        <bug>46982</bug>: Correct reporting of DST offset in access logs.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

@@ -104,12 +104,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46982
-  Correct report DST offset in access logs
-  http://svn.apache.org/viewvc?rev=763166&view=rev
-  +1: markt, remm, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46933
   Simplify StringManager using Java 5. Includes test case. Based on a patch by
   Jens Kapitza
