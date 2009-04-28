@@ -100,6 +100,10 @@
       <fix>
         <bug>46910</bug>: Properties files corrupted by build process. (remm)
       </fix>
+      <fix>
+        <bug>46915</bug>: When resolving ResourceBundle properties, don't claim
+        to have resolved the property unless we really have resolved it. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
@@ -658,7 +662,7 @@
         Use more useful JPDA defaults in catalina.bat. (markt)
       </fix>
       <fix>
-        Correct error in 25. web-app XSD.
+        Correct error in 2.5 web-app XSD.
       </fix>
     </changelog>
   </subsection>
