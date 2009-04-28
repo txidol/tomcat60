@@ -162,12 +162,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: remm: Why should this be backported ?
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37929
-  Invalidated session causes pageContext methods to fail
-  http://svn.apache.org/viewvc?rev=765662&view=rev
-  +1: markt, remm, rjung
-  -1: 
-
 * Fix use of non-ASCII characters in property files
   http://people.apache.org/~markt/patches/2009-04-20-native2ascii-de.patch (German)
   http://people.apache.org/~markt/patches/2009-04-20-native2ascii-en.patch (English)

@@ -100,6 +100,10 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
+        <bug>37929</bug>: Fix invalidated session causing pageContext methods to
+        fail. (markt)
+      </fix>
+      <fix>
         <bug>41606</bug>: Prevent double initialisation of JSPs. Patch provided
         by Chris Halstead. (markt)
       </fix>
