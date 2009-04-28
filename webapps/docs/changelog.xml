@@ -72,6 +72,9 @@
         Set remote port for AJP connectors from the optional request
         attribute AJP_REMOTE_PORT. (rjung)
       </update>
+      <update>
+        Update tc-native to 1.1.16 (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Jasper">
