@@ -43,6 +43,10 @@
         Fix a typo in the OPTIONS response from the default servlet. (markt)
       </fix>
       <fix>
+        <bug>46822</bug>: Remove unnecessary object creation from
+        StandardContext. Patch provided by Anthony Whitford. (markt)
+      </fix>
+      <fix>
         <bug>46866</bug>: Better initialisation of Random objects. (markt)
       </fix>
       <fix>

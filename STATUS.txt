@@ -104,20 +104,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46822
-  http://svn.apache.org/viewvc?rev=758616&view=rev
-  Remove unnecessary object creation in StandardContext
-  +1: markt, rjung, remm
-  -1: 
-  rjung: firePropertyChange() creates a PropertyChangeEvent, which only has
-         object type arguments in the constructor. Brief inspection of the Sun JDK
-         shows, that the firePropertyChange() method with primitive type arguments
-         first converts them to objects and then creates the PropertyChangeEvent().
-         So in general there will be no object creation safed, although in some
-         cases we use e.g. "new Boolean" instead of Boolean.valueOf(), so there might be
-         some savings.
-  remm: yes, it's not going to do anything useful ;)
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46915
   When resolving ResourceBundle properties, don't claim to have resolved the
   property unless we really have resolved it.
