@@ -36,6 +36,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>42579</bug>: Handle both relative and absolute search results in
+        the JNDIRealm. Patch provided by Brandon DuRette. (markt)
+      </fix>
+      <fix>
         <bug>46816</bug>: Align session manager mbean descriptor with
         implementation. (markt)
       </fix>
