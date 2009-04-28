@@ -83,6 +83,10 @@
         <bug>46982</bug>: Correct reporting of DST offset in access logs.
         (markt)
       </fix>
+      <fix>
+        <bug>46991</bug>: Fix AJP connector always reporting bytes received as
+        zero. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
