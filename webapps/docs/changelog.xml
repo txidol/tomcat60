@@ -57,6 +57,10 @@
         Correct some errors reported when testing the WebDAV servlet with the
         Litmus test suite. (markt)
       </fix>
+      <update>
+        <bug>46933</bug>: Update StringManager to use Java 5 features. Patch
+        provided by Jens Kapitza. (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">
