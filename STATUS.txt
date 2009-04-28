@@ -104,12 +104,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46958
-  Allow xml manager status to work irrespective of context path
-  http://svn.apache.org/viewvc?rev=763193&view=rev
-  +1: markt, remm, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46967
   Better handling of errors when trying to use Manager.randomFile
   Based on a patch by Kirk Wolf

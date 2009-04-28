@@ -112,6 +112,10 @@
         <bug>46924</bug>: Clarify behaviour when auto deployment is enabled and
         a WAR, directory or context file is deleted or updated. (markt)
       </fix>
+      <fix>
+        <bug>46958</bug>: All xml manager status output to work regardless of
+        context path. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
