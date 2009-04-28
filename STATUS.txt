@@ -104,12 +104,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46875
-  http://svn.apache.org/viewvc?rev=758407&view=rev
-  Catch possible ISE as a result of session expiration in comet valve
-  +1: markt, rjung, remm
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46822
   http://svn.apache.org/viewvc?rev=758616&view=rev
   Remove unnecessary object creation in StandardContext

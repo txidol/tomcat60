@@ -45,6 +45,10 @@
       <fix>
         <bug>46866</bug>: Better initialisation of Random objects. (markt)
       </fix>
+      <fix>
+        <bug>46875</bug>: Catch and handle possible IllegalStateExceptions
+        in CometConnectionManagerValve related to session expiration. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
