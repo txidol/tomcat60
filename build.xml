@@ -91,7 +91,7 @@
   <target name="build-prepare">
 
     <available classname="junit.framework.TestCase" property="junit.present" />
-
+  	
     <mkdir dir="${tomcat.classes}"/>
 
     <delete dir="${tomcat.build}/temp" />
@@ -101,6 +101,7 @@
     <mkdir dir="${tomcat.build}/bin"/>
     <mkdir dir="${tomcat.build}/conf"/>
     <mkdir dir="${tomcat.build}/lib"/>
+    <mkdir dir="${tomcat.build}/logs"/>
     <mkdir dir="${tomcat.build}/temp"/>
     <mkdir dir="${tomcat.build}/webapps"/>
 
@@ -450,6 +451,8 @@
          <exclude name="**/*.launch"/>
       </fileset>
     </copy>
+  	<!-- Copy doesn't retain permissions -->
+    <chmod dir="${tomcat.build}/bin" includes="*.sh" perm="+x"/>
 
     <!-- Copy static resource files -->
     <copy todir="${tomcat.build}/conf">

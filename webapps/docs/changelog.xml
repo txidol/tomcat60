@@ -122,6 +122,10 @@
       <fix>
         Fix .pdf and .exe corruption in -src.tar.gz distribution. (markt)
       </fix>
+      <add>
+        Enable running Tomcat directly from the build directory on linux
+        systems. (markt)
+      </add>
     </changelog>
   </subsection>
 </section>
