@@ -146,13 +146,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Fix http://svn.apache.org/viewvc?rev=763681&view=rev
-  ArrayIndexOutOfBoundsException when using
-  org.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true
-  Patch provided by Konstantin Kolinko
-  +1: markt, remm, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42579
   Handle both relative and absolute search results
   Patch provided by Brandon DuRette
