@@ -133,12 +133,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46562
-  Close the reader in the SSI servlet when we are done
-  http://svn.apache.org/viewvc?rev=763599&view=rev
-  +1: markt, remm, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46909
   Only include ';' in type attribute if there is a parameter
   http://svn.apache.org/viewvc?rev=763611&view=rev

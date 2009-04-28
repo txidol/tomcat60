@@ -61,6 +61,10 @@
         <bug>46933</bug>: Update StringManager to use Java 5 features. Patch
         provided by Jens Kapitza. (markt)
       </update>
+      <fix>
+        <bug>46562</bug>: Close shtml files after processing to allow other
+        processes to modify the files. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
