@@ -70,6 +70,14 @@
       </update>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>41606</bug>: Prevent double initialisation of JSPs. Patch provided
+        by Chris Halstead. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Cluster">
     <changelog>
       <fix>
