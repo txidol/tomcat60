@@ -104,11 +104,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, remm
   -1: 
 
-* Fix some failures when testing WebDAV with litmus test suite
-  http://svn.apache.org/viewvc?view=rev&revision=761601
-  +1: markt, remm, rjung
-  -1: 
-
 * Update native to 1.1.16
   http://svn.apache.org/viewvc?view=rev&revision=762868
   +1: markt, remm, rjung

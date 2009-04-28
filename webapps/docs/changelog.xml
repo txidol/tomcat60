@@ -53,6 +53,10 @@
         <bug>46875</bug>: Catch and handle possible IllegalStateExceptions
         in CometConnectionManagerValve related to session expiration. (markt)
       </fix>
+      <fix>
+        Correct some errors reported when testing the WebDAV servlet with the
+        Litmus test suite. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
