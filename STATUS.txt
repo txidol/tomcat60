@@ -60,7 +60,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=751289&view=rev
   http://svn.apache.org/viewvc?rev=753039&view=rev
   Make MemoryUserDatabase read-only by default
-  +1: markt, rjung
+  +1: markt, rjung, pero
   -1: 
 
 * Backport cleanup of semantics of thisAccessedTime and
@@ -115,14 +115,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46985
   Clean up timeout handling
   http://svn.apache.org/viewvc?rev=763262&view=rev
-  +1: markt
+  +1: markt, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46990
   Correct various sync issues reported by FindBugs
   Patch provided by sebb@a.o
   http://svn.apache.org/viewvc?rev=763298&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, pero
    0: remm (zzz)
   -1: 
 
@@ -130,20 +130,20 @@ PATCHES PROPOSED TO BACKPORT:
   Use correct link on error page in JSP security example
   Patch provided by Michael Moody
   http://svn.apache.org/viewvc?rev=763325&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46909
   Only include ';' in type attribute if there is a parameter
   http://svn.apache.org/viewvc?rev=763611&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, pero
    0: remm (zzz)
   -1: 
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=46984
   Invalid characters in HTTP request method should result in a 400
   http://svn.apache.org/viewvc?rev=763654&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42390
@@ -158,7 +158,7 @@ PATCHES PROPOSED TO BACKPORT:
   Use system property rather than hard code default
   http://svn.apache.org/viewvc?rev=764985&view=rev
   http://svn.apache.org/viewvc?rev=764997&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, pero
   -0: remm: Why should this be backported ?
   -1: 
 
@@ -173,5 +173,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47046
   Deregister all MBeans when the server is stopped
   http://svn.apache.org/viewvc?rev=769979&view=rev
-  +1: markt
+  +1: markt, pero
   -1: 
