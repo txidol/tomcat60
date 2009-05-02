@@ -179,12 +179,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47080
   Prevent NPE when mapper makes no matches
   http://svn.apache.org/viewvc?rev=770809&view=rev
-  +1: markt
+  +1: markt, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47086
   Include 64-bit windows binaries in distributions
   Update Windows installer to work automatically on 64-bit machines
   http://svn.apache.org/viewvc?view=rev&revision=770876
-  +1: markt
+  +1: markt, pero
   -1: 
