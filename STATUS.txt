@@ -111,12 +111,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, pero
   -1: 
 
-* https://issues.apache.org/bugzilla/show_bug.cgi?id=46984
-  Invalid characters in HTTP request method should result in a 400
-  http://svn.apache.org/viewvc?rev=763654&view=rev
-  +1: markt, rjung, pero
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42390
   Correct JSP compilation error with nested tagfile tags with variables with
   "AT_BEGIN" scope
