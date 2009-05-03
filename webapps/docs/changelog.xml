@@ -132,6 +132,10 @@
   <subsection name="Webapps">
     <changelog>
       <fix>
+        <bug>46509</bug>: Use correct link on error page in JSP security
+        example. Patch provided by Michael Moody. (markt)
+      </fix>
+      <fix>
         <bug>46599</bug>: Document known DAEMON issue. (markt)
       </fix>
       <fix>
