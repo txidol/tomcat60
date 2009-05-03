@@ -111,14 +111,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, pero
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46990
-  Correct various sync issues reported by FindBugs
-  Patch provided by sebb@a.o
-  http://svn.apache.org/viewvc?rev=763298&view=rev
-  +1: markt, rjung, pero
-   0: remm (zzz)
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46509
   Use correct link on error page in JSP security example
   Patch provided by Michael Moody

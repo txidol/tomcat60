@@ -202,6 +202,8 @@ public class StandardContext
      * application, in the order they were encountered in the web.xml file.
      */
     private String applicationListeners[] = new String[0];
+    
+    private final Object applicationListenersLock = new Object();
 
 
     /**
@@ -224,6 +226,8 @@ public class StandardContext
     private ApplicationParameter applicationParameters[] =
         new ApplicationParameter[0];
 
+    private final Object applicationParametersLock = new Object();
+    
 
     /**
      * The application available flag for this Context.
@@ -264,6 +268,8 @@ public class StandardContext
      * The security constraints for this web application.
      */
     private SecurityConstraint constraints[] = new SecurityConstraint[0];
+    
+    private final Object constraintsLock = new Object();
 
 
     /**
@@ -360,6 +366,8 @@ public class StandardContext
      * they were defined in the deployment descriptor.
      */
     private FilterMap filterMaps[] = new FilterMap[0];
+    
+    private final Object filterMapsLock = new Object();
 
 
     /**
@@ -373,6 +381,8 @@ public class StandardContext
      * to each newly created Wrapper by <code>createWrapper()</code>.
      */
     private String instanceListeners[] = new String[0];
+
+    private final Object instanceListenersLock = new Object();
 
 
     /**
@@ -491,12 +501,16 @@ public class StandardContext
      */
     private String securityRoles[] = new String[0];
 
+    private final Object securityRolesLock = new Object();
+
 
     /**
      * The servlet mappings for this web application, keyed by
      * matching pattern.
      */
     private HashMap servletMappings = new HashMap();
+    
+    private final Object servletMappingsLock = new Object();
 
 
     /**
@@ -540,11 +554,15 @@ public class StandardContext
      */
     private String watchedResources[] = new String[0];
 
+    private final Object watchedResourcesLock = new Object();
+
 
     /**
      * The welcome files for this application.
      */
     private String welcomeFiles[] = new String[0];
+
+    private final Object welcomeFilesLock = new Object();
 
 
     /**
@@ -553,12 +571,16 @@ public class StandardContext
      */
     private String wrapperLifecycles[] = new String[0];
 
+    private final Object wrapperLifecyclesLock = new Object();
+
 
     /**
      * The set of classnames of ContainerListeners that will be added
      * to each newly created Wrapper by <code>createWrapper()</code>.
      */
     private String wrapperListeners[] = new String[0];
+
+    private final Object wrapperListenersLock = new Object();
 
 
     /**
@@ -2000,7 +2022,7 @@ public class StandardContext
      */
     public void addApplicationListener(String listener) {
 
-        synchronized (applicationListeners) {
+        synchronized (applicationListenersLock) {
             String results[] =new String[applicationListeners.length + 1];
             for (int i = 0; i < applicationListeners.length; i++) {
                 if (listener.equals(applicationListeners[i])) {
@@ -2027,7 +2049,7 @@ public class StandardContext
      */
     public void addApplicationParameter(ApplicationParameter parameter) {
 
-        synchronized (applicationParameters) {
+        synchronized (applicationParametersLock) {
             String newName = parameter.getName();
             for (int i = 0; i < applicationParameters.length; i++) {
                 if (newName.equals(applicationParameters[i].getName()) &&
@@ -2124,7 +2146,7 @@ public class StandardContext
         }
 
         // Add this constraint to the set for our web application
-        synchronized (constraints) {
+        synchronized (constraintsLock) {
             SecurityConstraint results[] =
                 new SecurityConstraint[constraints.length + 1];
             for (int i = 0; i < constraints.length; i++)
@@ -2259,7 +2281,7 @@ public class StandardContext
      */
     public void addInstanceListener(String listener) {
 
-        synchronized (instanceListeners) {
+        synchronized (instanceListenersLock) {
             String results[] =new String[instanceListeners.length + 1];
             for (int i = 0; i < instanceListeners.length; i++)
                 results[i] = instanceListeners[i];
@@ -2402,7 +2424,7 @@ public class StandardContext
      */
     public void addSecurityRole(String role) {
 
-        synchronized (securityRoles) {
+        synchronized (securityRolesLock) {
             String results[] =new String[securityRoles.length + 1];
             for (int i = 0; i < securityRoles.length; i++)
                 results[i] = securityRoles[i];
@@ -2453,7 +2475,7 @@ public class StandardContext
                 (sm.getString("standardContext.servletMap.pattern", pattern));
 
         // Add this mapping to our registered set
-        synchronized (servletMappings) {
+        synchronized (servletMappingsLock) {
             String name2 = (String) servletMappings.get(pattern);
             if (name2 != null) {
                 // Don't allow more than one servlet on the same pattern
@@ -2497,7 +2519,7 @@ public class StandardContext
      */
     public void addWatchedResource(String name) {
 
-        synchronized (watchedResources) {
+        synchronized (watchedResourcesLock) {
             String results[] = new String[watchedResources.length + 1];
             for (int i = 0; i < watchedResources.length; i++)
                 results[i] = watchedResources[i];
@@ -2516,7 +2538,7 @@ public class StandardContext
      */
     public void addWelcomeFile(String name) {
 
-        synchronized (welcomeFiles) {
+        synchronized (welcomeFilesLock) {
             // Welcome files from the application deployment descriptor
             // completely replace those from the default conf/web.xml file
             if (replaceWelcomeFiles) {
@@ -2543,7 +2565,7 @@ public class StandardContext
      */
     public void addWrapperLifecycle(String listener) {
 
-        synchronized (wrapperLifecycles) {
+        synchronized (wrapperLifecyclesLock) {
             String results[] =new String[wrapperLifecycles.length + 1];
             for (int i = 0; i < wrapperLifecycles.length; i++)
                 results[i] = wrapperLifecycles[i];
@@ -2563,7 +2585,7 @@ public class StandardContext
      */
     public void addWrapperListener(String listener) {
 
-        synchronized (wrapperListeners) {
+        synchronized (wrapperListenersLock) {
             String results[] =new String[wrapperListeners.length + 1];
             for (int i = 0; i < wrapperListeners.length; i++)
                 results[i] = wrapperListeners[i];
@@ -2595,7 +2617,7 @@ public class StandardContext
             wrapper = new StandardWrapper();
         }
 
-        synchronized (instanceListeners) {
+        synchronized (instanceListenersLock) {
             for (int i = 0; i < instanceListeners.length; i++) {
                 try {
                     Class clazz = Class.forName(instanceListeners[i]);
@@ -2609,7 +2631,7 @@ public class StandardContext
             }
         }
 
-        synchronized (wrapperLifecycles) {
+        synchronized (wrapperLifecyclesLock) {
             for (int i = 0; i < wrapperLifecycles.length; i++) {
                 try {
                     Class clazz = Class.forName(wrapperLifecycles[i]);
@@ -2624,7 +2646,7 @@ public class StandardContext
             }
         }
 
-        synchronized (wrapperListeners) {
+        synchronized (wrapperListenersLock) {
             for (int i = 0; i < wrapperListeners.length; i++) {
                 try {
                     Class clazz = Class.forName(wrapperListeners[i]);
@@ -2659,7 +2681,9 @@ public class StandardContext
      */
     public ApplicationParameter[] findApplicationParameters() {
 
-        return (applicationParameters);
+        synchronized (applicationParametersLock) {
+            return (applicationParameters);
+        }
 
     }
 
@@ -2777,7 +2801,9 @@ public class StandardContext
      */
     public String[] findInstanceListeners() {
 
-        return (instanceListeners);
+        synchronized (instanceListenersLock) {
+            return (instanceListeners);
+        }
 
     }
 
@@ -2936,7 +2962,7 @@ public class StandardContext
      */
     public boolean findSecurityRole(String role) {
 
-        synchronized (securityRoles) {
+        synchronized (securityRolesLock) {
             for (int i = 0; i < securityRoles.length; i++) {
                 if (role.equals(securityRoles[i]))
                     return (true);
@@ -2953,7 +2979,9 @@ public class StandardContext
      */
     public String[] findSecurityRoles() {
 
-        return (securityRoles);
+        synchronized (securityRolesLock) {
+            return (securityRoles);
+        }
 
     }
 
@@ -2966,7 +2994,7 @@ public class StandardContext
      */
     public String findServletMapping(String pattern) {
 
-        synchronized (servletMappings) {
+        synchronized (servletMappingsLock) {
             return ((String) servletMappings.get(pattern));
         }
 
@@ -2979,7 +3007,7 @@ public class StandardContext
      */
     public String[] findServletMappings() {
 
-        synchronized (servletMappings) {
+        synchronized (servletMappingsLock) {
             String results[] = new String[servletMappings.size()];
             return
                ((String[]) servletMappings.keySet().toArray(results));
@@ -3062,7 +3090,7 @@ public class StandardContext
      */
     public boolean findWelcomeFile(String name) {
 
-        synchronized (welcomeFiles) {
+        synchronized (welcomeFilesLock) {
             for (int i = 0; i < welcomeFiles.length; i++) {
                 if (name.equals(welcomeFiles[i]))
                     return (true);
@@ -3078,7 +3106,9 @@ public class StandardContext
      * defined, a zero length array will be returned.
      */
     public String[] findWatchedResources() {
-        return watchedResources;
+        synchronized (watchedResourcesLock) {
+            return watchedResources;
+        }
     }
     
     
@@ -3088,7 +3118,9 @@ public class StandardContext
      */
     public String[] findWelcomeFiles() {
 
-        return (welcomeFiles);
+        synchronized (welcomeFilesLock) {
+            return (welcomeFiles);
+        }
 
     }
 
@@ -3099,7 +3131,9 @@ public class StandardContext
      */
     public String[] findWrapperLifecycles() {
 
-        return (wrapperLifecycles);
+        synchronized (wrapperLifecyclesLock) {
+            return (wrapperLifecycles);
+        }
 
     }
 
@@ -3110,7 +3144,9 @@ public class StandardContext
      */
     public String[] findWrapperListeners() {
 
-        return (wrapperListeners);
+        synchronized (wrapperListenersLock) {
+            return (wrapperListeners);
+        }
 
     }
 
@@ -3169,7 +3205,7 @@ public class StandardContext
      */
     public void removeApplicationListener(String listener) {
 
-        synchronized (applicationListeners) {
+        synchronized (applicationListenersLock) {
 
             // Make sure this welcome file is currently present
             int n = -1;
@@ -3209,7 +3245,7 @@ public class StandardContext
      */
     public void removeApplicationParameter(String name) {
 
-        synchronized (applicationParameters) {
+        synchronized (applicationParametersLock) {
 
             // Make sure this parameter is currently present
             int n = -1;
@@ -3268,7 +3304,7 @@ public class StandardContext
      */
     public void removeConstraint(SecurityConstraint constraint) {
 
-        synchronized (constraints) {
+        synchronized (constraintsLock) {
 
             // Make sure this constraint is currently present
             int n = -1;
@@ -3348,7 +3384,7 @@ public class StandardContext
      */
     public void removeFilterMap(FilterMap filterMap) {
 
-        synchronized (filterMaps) {
+        synchronized (filterMapsLock) {
 
             // Make sure this filter mapping is currently present
             int n = -1;
@@ -3384,7 +3420,7 @@ public class StandardContext
      */
     public void removeInstanceListener(String listener) {
 
-        synchronized (instanceListeners) {
+        synchronized (instanceListenersLock) {
 
             // Make sure this welcome file is currently present
             int n = -1;
@@ -3496,7 +3532,7 @@ public class StandardContext
      */
     public void removeSecurityRole(String role) {
 
-        synchronized (securityRoles) {
+        synchronized (securityRolesLock) {
 
             // Make sure this security role is currently present
             int n = -1;
@@ -3535,7 +3571,7 @@ public class StandardContext
     public void removeServletMapping(String pattern) {
 
         String name = null;
-        synchronized (servletMappings) {
+        synchronized (servletMappingsLock) {
             name = (String) servletMappings.remove(pattern);
         }
         Wrapper wrapper = (Wrapper) findChild(name);
@@ -3570,7 +3606,7 @@ public class StandardContext
      */
     public void removeWatchedResource(String name) {
         
-        synchronized (watchedResources) {
+        synchronized (watchedResourcesLock) {
 
             // Make sure this watched resource is currently present
             int n = -1;
@@ -3607,7 +3643,7 @@ public class StandardContext
      */
     public void removeWelcomeFile(String name) {
 
-        synchronized (welcomeFiles) {
+        synchronized (welcomeFilesLock) {
 
             // Make sure this welcome file is currently present
             int n = -1;
@@ -3647,7 +3683,7 @@ public class StandardContext
     public void removeWrapperLifecycle(String listener) {
 
 
-        synchronized (wrapperLifecycles) {
+        synchronized (wrapperLifecyclesLock) {
 
             // Make sure this welcome file is currently present
             int n = -1;
@@ -3686,7 +3722,7 @@ public class StandardContext
     public void removeWrapperListener(String listener) {
 
 
-        synchronized (wrapperListeners) {
+        synchronized (wrapperListenersLock) {
 
             // Make sure this welcome file is currently present
             int n = -1;
@@ -4633,7 +4669,9 @@ public class StandardContext
         // Notify our interested LifecycleListeners
         lifecycle.fireLifecycleEvent(DESTROY_EVENT, null);
 
-        instanceListeners = new String[0];
+        synchronized (instanceListenersLock) {
+            instanceListeners = new String[0];
+        }
 
     }
     

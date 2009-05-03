@@ -40,6 +40,10 @@
         the JNDIRealm. Patch provided by Brandon DuRette. (markt)
       </fix>
       <fix>
+        <bug>46562</bug>: Close shtml files after processing to allow other
+        processes to modify the files. (markt)
+      </fix>
+      <fix>
         <bug>46815</bug>: Make the MemoryUserDatabase read-only by default.
         (markt)
       </fix>
@@ -70,8 +74,8 @@
         provided by Jens Kapitza. (markt)
       </update>
       <fix>
-        <bug>46562</bug>: Close shtml files after processing to allow other
-        processes to modify the files. (markt)
+        <bug>46990</bug>: Fix synchronization issues reported by FindBugs. Patch
+        provided by Sebb. (markt)
       </fix>
     </changelog>
   </subsection>
