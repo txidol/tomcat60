@@ -56,13 +56,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=757335&view=rev (to remove the Catalina dep)
   +1: markt, billbarker
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46815
-  http://svn.apache.org/viewvc?rev=751289&view=rev
-  http://svn.apache.org/viewvc?rev=753039&view=rev
-  Make MemoryUserDatabase read-only by default
-  +1: markt, rjung, pero
-  -1: 
-
 * Backport cleanup of semantics of thisAccessedTime and
   lastAccessedTime for sessions:
   - preparational whitespace changes

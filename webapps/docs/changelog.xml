@@ -40,6 +40,10 @@
         the JNDIRealm. Patch provided by Brandon DuRette. (markt)
       </fix>
       <fix>
+        <bug>46815</bug>: Make the MemoryUserDatabase read-only by default.
+        (markt)
+      </fix>
+      <fix>
         <bug>46816</bug>: Align session manager mbean descriptor with
         implementation. (markt)
       </fix>
