@@ -1591,8 +1591,7 @@ class Generator {
             s0 = "<param name=\"type\""
                     + makeAttr("value", "application/x-java-"
                             + type
-                            + ";"
-                            + ((jreversion == null) ? "" : "version="
+                            + ((jreversion == null) ? "" : ";version="
                                     + jreversion)) + '>';
             out.printil("out.write(" + quote(s0) + ");");
             out.printil("out.write(\"\\n\");");
@@ -1611,8 +1610,7 @@ class Generator {
             s0 = "<EMBED"
                     + makeAttr("type", "application/x-java-"
                             + type
-                            + ";"
-                            + ((jreversion == null) ? "" : "version="
+                            + ((jreversion == null) ? "" : ";version="
                                     + jreversion)) + makeAttr("name", name);
 
             // s1 and s2 are the same as before.

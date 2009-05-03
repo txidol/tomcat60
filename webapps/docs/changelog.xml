@@ -120,6 +120,10 @@
         org.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true
         Patch provided by Konstantin Kolinko. (markt)
       </fix>
+      <fix>
+        <bug>46909</bug>: Only include semi-colon in type attribute for
+        &lt;jsp:plugin&gt; when it is required. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
