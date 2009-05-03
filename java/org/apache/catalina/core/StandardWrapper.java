@@ -1178,7 +1178,7 @@ public class StandardWrapper
                     // Invoking jspInit
                     DummyRequest req = new DummyRequest();
                     req.setServletPath(jspFile);
-                    req.setQueryString("jsp_precompile=true");
+                    req.setQueryString(Constants.PRECOMPILE + "=true");
                     DummyResponse res = new DummyResponse();
 
                     if( Globals.IS_SECURITY_ENABLED) {

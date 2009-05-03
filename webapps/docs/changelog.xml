@@ -128,6 +128,10 @@
         <bug>46909</bug>: Only include semi-colon in type attribute for
         &lt;jsp:plugin&gt; when it is required. (markt)
       </fix>
+      <fix>
+        <bug>47013</bug>: Use system property rather than hard-coded string for
+        pre-compilation flag. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
