@@ -119,7 +119,7 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by Kirk Wolf
   Also make behaviour consistent when using a security manager
   http://svn.apache.org/viewvc?rev=763228&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46985
