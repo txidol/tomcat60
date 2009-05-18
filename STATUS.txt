@@ -55,6 +55,23 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=746425&view=rev (to address Bill's concerns)
   http://svn.apache.org/viewvc?rev=757335&view=rev (to remove the Catalina dep)
   +1: markt, billbarker
+  +1: kkolinko (good, but I have some concerns:
+    r721286 : 
+     You have added an anonymous inner class to JspFactoryImpl. That class is
+     preloaded by o.a.jasper.security.SecurityClassLoad. I wonder, whether the
+     new inner class should also be preloaded. Do not have experience to prove
+     it, though.
+     Plus, see issue #47214 in Bugzilla for my concerns on naming.
+    r721704 :
+     o.k.
+     (I have concerns about DefaultInstanceManager (see issue #47214), but
+     that class does not exist in TC 6.0)
+    r746425:
+     Implementation of ELResolverImpl.getDefaultResolver():
+       All those "(CompositeELResolver)" casts can be removed if you change
+       type of the local variable.
+    r721708, r721886, r757335: o.k.
+  )
 
 * Backport cleanup of semantics of thisAccessedTime and
   lastAccessedTime for sessions:
@@ -94,7 +111,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=758365&view=rev
   Try and support java encoding names when using an xml parser provided via the
   endorsed mechanism
-  +1: markt, remm
+  +1: markt, remm, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46967
