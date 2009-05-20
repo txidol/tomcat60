@@ -153,7 +153,10 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Konstantin Kolinko
   http://svn.apache.org/viewvc?rev=763717&view=rev
   +1: markt, remm (risky ...)
-  -1: 
+  -1: kkolinko: sorry, but it looks like I have to revoke my own patch
+         At very least: it is, indeed, risky: it changes behavior both for
+         SimpleTags and Tags, but only SimpleTags were reported to be broken.
+         It will need more testing.
 
 * Fix use of non-ASCII characters in property files
   http://people.apache.org/~markt/patches/2009-04-20-native2ascii-de.patch (German)
