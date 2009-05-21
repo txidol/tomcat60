@@ -214,3 +214,29 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Build files: Calculate current year automatically by using <tstamp>.
+  http://svn.apache.org/viewvc?rev=776935&view=rev
+  +1: kkolinko
+  -1:
+
+* In dist-javadoc target of dist.xml:
+   1) use &#169; on the web page, instead of a symbol
+   2) use value of ${year}
+  Patch:
+Index: dist.xml
+===================================================================
+--- dist.xml	(revision 776003)
++++ dist.xml	(working copy)
+@@ -260,7 +260,7 @@
+       author="true" version="true"
+       windowtitle="Tomcat API Documentation"
+       doctitle="Tomcat API"
+-      bottom="Copyright &#169; 2000-2008 Apache Software Foundation.  All Rights Reserved."
++      bottom="Copyright &amp;#169; 2000-${year} Apache Software Foundation.  All Rights Reserved."
+       additionalparam="-breakiterator"
+       maxmemory="256m" >
+     </javadoc>
+
+  +1: kkolinko
+  -1:
+
