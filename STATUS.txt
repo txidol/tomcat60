@@ -204,3 +204,13 @@ PATCHES PROPOSED TO BACKPORT:
   -0: kkolinko: http://marc.info/?l=tomcat-dev&m=124192105131636&w=2
   -1:
 
+* Build files: Apply explicit encoding to all operations that perform filtering.
+  http://svn.apache.org/viewvc?rev=776921&view=rev
+  +1: kkolinko
+  -1:
+
+* Update to NSIS 2.44
+  http://svn.apache.org/viewvc?rev=776924&view=rev
+  +1: kkolinko
+  -1:
+
