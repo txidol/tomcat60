@@ -247,3 +247,7 @@ Index: dist.xml
   +1: kkolinko
   -1:
 
+* Add missing svn properties
+  http://people.apache.org/~rjung/patches/tc6-svnprops.patch
+  +1: rjung
+  -1: 
