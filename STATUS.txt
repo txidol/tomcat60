@@ -84,6 +84,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46985
   Clean up timeout handling
   http://svn.apache.org/viewvc?rev=763262&view=rev
+  http://svn.apache.org/viewvc?rev=777576&view=rev
   +1: markt, pero
   -1: kkolinko:
     It looks like it fixes not bug 46985, but some other issue.
