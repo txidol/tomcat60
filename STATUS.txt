@@ -81,13 +81,6 @@ PATCHES PROPOSED TO BACKPORT:
                  but could agree to some of it if it was split into parts
   -1: remm: no for TC 6.0
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46908
-  http://svn.apache.org/viewvc?rev=758365&view=rev
-  Try and support java encoding names when using an xml parser provided via the
-  endorsed mechanism
-  +1: markt, remm, kkolinko
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46967
   Better handling of errors when trying to use Manager.randomFile
   Based on a patch by Kirk Wolf

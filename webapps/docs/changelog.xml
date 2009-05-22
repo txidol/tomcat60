@@ -39,6 +39,10 @@
         Fix issues with expression language when running under a
         SecurityManager. (markt)
       </fix>
+      <fix>
+        <bug>46908</bug>: Try and support java encoding names when using an xml
+        parser provided via the endorsed mechanism. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
