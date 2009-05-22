@@ -36,6 +36,7 @@
   <property name="version.patch"         value="0" />
   <property name="version"               value="6.0.0-dev" />
   <property name="version.number"        value="${version.major}.${version.minor}.${version.build}.${version.patch}" />
+  <property name="version.major.minor"   value="${version.major}.${version.minor}" />
 
   <property name="project"               value="apache-tomcat" />
   <property name="final.name"            value="${project}-${version}" />
@@ -341,15 +342,29 @@
     <copy file="${nsis.installoptions.dll}" todir="${tomcat.dist}" />
     <copy file="${nsis.nsexec.dll}" todir="${tomcat.dist}" />
     <copy file="${nsis.nsisdl.dll}" todir="${tomcat.dist}" />
-    <copy file="res/procrun/tomcat6.exe"
-        tofile="${tomcat.dist}/bin/tomcat6.exe" />
-    <copy file="res/procrun/tomcat6w.exe"
-        tofile="${tomcat.dist}/bin/tomcat6w.exe" />
+  	<!-- 32 bit -->
+    <copy file="res/procrun/tomcat${version.major}.exe"
+        tofile="${tomcat.dist}/bin/tomcat${version.major}.exe" />
+    <copy file="res/procrun/tomcat${version.major}w.exe"
+        tofile="${tomcat.dist}/bin/tomcat${version.major}w.exe" />
+  	<!-- 64 bit amd -->
+    <copy file="res/procrun/amd64/tomcat${version.major}.exe"
+        tofile="${tomcat.dist}/bin/procrun/amd64/tomcat${version.major}.exe" />
+    <copy file="res/procrun/amd64/tomcat${version.major}w.exe"
+        tofile="${tomcat.dist}/bin/procrun/amd64/tomcat${version.major}w.exe" />
+  	<!-- 64 bit ia -->
+    <copy file="res/procrun/ia64/tomcat${version.major}.exe"
+        tofile="${tomcat.dist}/bin/procrun/ia64/tomcat${version.major}.exe" />
+    <copy file="res/procrun/ia64/tomcat${version.major}w.exe"
+        tofile="${tomcat.dist}/bin/procrun/ia64/tomcat${version.major}w.exe" />
+  	<!-- tc native -->
     <copy file="${tomcat-native.home}/tcnative-1.dll.x86"
         tofile="${tomcat.dist}/bin/tcnative-1.dll" />
 
     <filter token="VERSION" value="${version}"/>
     <filter token="VERSION_NUMBER" value="${version.number}"/>
+    <filter token="VERSION_MAJOR" value="${version.major}"/>
+    <filter token="VERSION_MAJOR_MINOR" value="${version.major.minor}"/>
 
     <copy file="res/tomcat.nsi" tofile="${tomcat.dist}/tomcat.nsi" filtering="true" overwrite="true"/>
     <exec dir="${tomcat.dist}" executable="${nsis.exe}" osfamily="windows">

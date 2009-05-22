@@ -53,6 +53,15 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Other">
+    <changelog>
+      <fix>
+        <bug>40786</bug>: Include 64-bit Windows service wrapper in
+        distributions. Update the Windows installer to automatically use the
+        correct binary on 64-bit machines. (markt)
+      </fix>
+    </changelog>
+  </subsection>
 </section>
 
 <section name="Tomcat 6.0.20 (remm)">
