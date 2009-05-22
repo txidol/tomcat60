@@ -100,6 +100,10 @@ public final class SecurityClassLoad {
         loader.loadClass
             (basePackage + "util.URL");
         loader.loadClass(basePackage + "util.Enumerator");
+        loader.loadClass(basePackage + "util.DefaultAnnotationProcessor$1");
+        loader.loadClass(basePackage + "util.DefaultAnnotationProcessor$2");
+        loader.loadClass(basePackage + "util.DefaultAnnotationProcessor$3");
+        loader.loadClass(basePackage + "util.DefaultAnnotationProcessor$4");
     }
     
     

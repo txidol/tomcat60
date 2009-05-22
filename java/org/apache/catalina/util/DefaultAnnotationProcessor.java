@@ -111,7 +111,20 @@ public class DefaultAnnotationProcessor implements AnnotationProcessor {
         Class<?> clazz = instance.getClass();
         
         while (clazz != null) {
-            Method[] methods = clazz.getDeclaredMethods();
+            Method[] methods;
+            // Hack so PrivilegedAction can access clazz object
+            final Class<?> clazz2 = clazz;
+            if (Globals.IS_SECURITY_ENABLED) {
+                methods = AccessController.doPrivileged(
+                        new PrivilegedAction<Method[]>(){
+                            public Method[] run(){
+                                return clazz2.getDeclaredMethods();
+                            }
+                        });
+            } else {
+                methods = clazz.getDeclaredMethods();
+            }
+
             Method preDestroy = null;
             for (int i = 0; i < methods.length; i++) {
                 if (methods[i].isAnnotationPresent(PreDestroy.class)) {

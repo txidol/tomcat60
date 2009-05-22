@@ -32,6 +32,17 @@
   </properties>
 
 <body>
+<section name="Tomcat 6.0.21 (remm)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        Fix issues with expression language when running under a
+        SecurityManager. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
+
 <section name="Tomcat 6.0.20 (remm)">
   <subsection name="Catalina">
     <changelog>

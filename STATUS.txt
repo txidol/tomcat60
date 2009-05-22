@@ -47,32 +47,6 @@ PATCHES PROPOSED TO BACKPORT:
       So to make this bug actually worth while fixing, and not impact performance, then it should only do this check on files that 
       are relevant to the reload of an application, in other words a watched resource
 
-* Changes required to run with a security manager
-  http://svn.apache.org/viewvc?rev=721286&view=rev (original)
-  http://svn.apache.org/viewvc?rev=721704&view=rev (original)
-  http://svn.apache.org/viewvc?rev=721708&view=rev (original)
-  http://svn.apache.org/viewvc?rev=721886&view=rev (original)
-  http://svn.apache.org/viewvc?rev=746425&view=rev (to address Bill's concerns)
-  http://svn.apache.org/viewvc?rev=757335&view=rev (to remove the Catalina dep)
-  +1: markt, billbarker
-  +1: kkolinko (good, but I have some concerns:
-    r721286 : 
-     You have added an anonymous inner class to JspFactoryImpl. That class is
-     preloaded by o.a.jasper.security.SecurityClassLoad. I wonder, whether the
-     new inner class should also be preloaded. Do not have experience to prove
-     it, though.
-     Plus, see issue #47214 in Bugzilla for my concerns on naming.
-    r721704 :
-     o.k.
-     (I have concerns about DefaultInstanceManager (see issue #47214), but
-     that class does not exist in TC 6.0)
-    r746425:
-     Implementation of ELResolverImpl.getDefaultResolver():
-       All those "(CompositeELResolver)" casts can be removed if you change
-       type of the local variable.
-    r721708, r721886, r757335: o.k.
-  )
-
 * Backport cleanup of semantics of thisAccessedTime and
   lastAccessedTime for sessions:
   - preparational whitespace changes
