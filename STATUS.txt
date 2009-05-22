@@ -251,3 +251,9 @@ Index: dist.xml
   http://people.apache.org/~rjung/patches/tc6-svnprops.patch
   +1: rjung, fhanik
   -1: 
+
+* Don't add extra blank lines to files in .tar.gz distro
+  http://svn.apache.org/viewvc?rev=777464&view=rev
+  http://svn.apache.org/viewvc?rev=777466&view=rev
+  +1: markt
+  -1: 
