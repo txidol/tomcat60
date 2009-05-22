@@ -43,6 +43,10 @@
         <bug>46908</bug>: Try and support java encoding names when using an xml
         parser provided via the endorsed mechanism. (markt)
       </fix>
+      <fix>
+        <bug>46967</bug>: Better handling of errors when trying to use
+        Manager.randomFile. Based on a patch by Kirk Wolf. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>

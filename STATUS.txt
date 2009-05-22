@@ -81,14 +81,6 @@ PATCHES PROPOSED TO BACKPORT:
                  but could agree to some of it if it was split into parts
   -1: remm: no for TC 6.0
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46967
-  Better handling of errors when trying to use Manager.randomFile
-  Based on a patch by Kirk Wolf
-  Also make behaviour consistent when using a security manager
-  http://svn.apache.org/viewvc?rev=763228&view=rev
-  +1: markt, rjung, kkolinko
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46985
   Clean up timeout handling
   http://svn.apache.org/viewvc?rev=763262&view=rev
