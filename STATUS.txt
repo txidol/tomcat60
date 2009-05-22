@@ -115,24 +115,6 @@ PATCHES PROPOSED TO BACKPORT:
   +0: kkolinko: should not be needed, as old and new are both correct.
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47046
-  Deregister all MBeans when the server is stopped
-  http://svn.apache.org/viewvc?rev=769979&view=rev
-  +1: markt, pero
-  +1: kkolinko (ok, but one question:
-        in MBeanUtils.java:
-
-        @@ -1401,12 +1417,7 @@
-         static void destroyMBean(Context context)
-         ..
-        +        String domain = context.getParent().getParent().getName();
-                 if (domain == null)
-                     domain = mserver.getDefaultDomain();
-
-         Can domain be null here, or one of those getParent().foo() calls result in an NPE ?
-      )
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47080
   Prevent NPE when mapper makes no matches
   http://svn.apache.org/viewvc?rev=770809&view=rev

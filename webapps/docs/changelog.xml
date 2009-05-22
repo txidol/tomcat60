@@ -47,6 +47,10 @@
         <bug>46967</bug>: Better handling of errors when trying to use
         Manager.randomFile. Based on a patch by Kirk Wolf. (markt)
       </fix>
+      <fix>
+        <bug>47046</bug>: Unregister all MBeans, including when non-default
+        engine names are used. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
