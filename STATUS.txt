@@ -144,6 +144,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * In dist-javadoc target of dist.xml:
    1) use &#169; on the web page, instead of a symbol
+      Fixes https://issues.apache.org/bugzilla/show_bug.cgi?id=47239
    2) use value of ${year}
   Patch:
 Index: dist.xml
@@ -178,14 +179,14 @@ Index: dist.xml
 * Don't add extra blank lines to files in .tar.gz distro
   http://svn.apache.org/viewvc?rev=777464&view=rev
   http://svn.apache.org/viewvc?rev=777466&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47228
   Correct French translation.
   Patch provided by sebb@a.o
   http://svn.apache.org/viewvc?view=rev&revision=778379
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47050
