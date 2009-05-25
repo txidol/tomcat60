@@ -187,3 +187,9 @@ Index: dist.xml
   http://svn.apache.org/viewvc?view=rev&revision=778379
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47050
+  Remove unnecessary filtering
+  http://svn.apache.org/viewvc?rev=770716&view=rev 
+  +1: markt
+  -1: 
