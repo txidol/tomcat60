@@ -176,3 +176,11 @@ Index: dist.xml
   http://svn.apache.org/viewvc?rev=770716&view=rev 
   +1: markt
   -1: 
+
+* Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43343
+  Additional fixes for case B. Don't swap out session if one or more requests
+  are currently using it.
+  http://svn.apache.org/viewvc?rev=778523&view=rev
+  http://svn.apache.org/viewvc?rev=778524&view=rev
+  +1: markt
+  -1: 
