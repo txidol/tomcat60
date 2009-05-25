@@ -84,26 +84,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46985
   Clean up timeout handling
   http://svn.apache.org/viewvc?rev=763262&view=rev
-  +1: markt, pero
-  -1: kkolinko:
-    It looks like it fixes not bug 46985, but some other issue.
-
-    I suppose that there is an issue in existing code that is
-    fixed by this patch
-    (socket.setSoTimeout( ) calls that change socket timeout,
-    but do not restore it to the default value),
-    but I would like it to be explicitly stated, analyzed and
-    acknowledged.
-    
-    Also, s/socket/theSocket/ is not needed.
-
-    I propose an alternative patch below.
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46985
-  Alternative fix for issue 46985:
-  Fix Javadoc and remove dead code in Http11Processor.process(..)
-  https://issues.apache.org/bugzilla/attachment.cgi?id=23684
-  +1: kkolinko
+  http://svn.apache.org/viewvc?rev=777576&view=rev
+  +1: markt, pero, kkolinko
   -1: 
 
 * Fix use of non-ASCII characters in property files
