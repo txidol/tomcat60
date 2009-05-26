@@ -742,15 +742,14 @@ public class Http11Processor implements ActionHook {
     }
 
     /**
-     * Process pipelined HTTP requests using the specified input and output
-     * streams.
+     * Process pipelined HTTP requests on the specified socket.
      *
-     * @param input stream from which the HTTP requests will be read
-     * @param output stream which will be used to output the HTTP
-     * responses
+     * @param socket Socket from which the HTTP requests will be read
+     *               and the HTTP responses will be written.
+     *  
      * @throws IOException error during an I/O operation
      */
-    public void process(Socket socket)
+    public void process(Socket theSocket)
         throws IOException {
         RequestInfo rp = request.getRequestProcessor();
         rp.setStage(org.apache.coyote.Constants.STAGE_PARSE);
@@ -764,7 +763,7 @@ public class Http11Processor implements ActionHook {
         localPort = -1;
 
         // Setting up the I/O
-        this.socket = socket;
+        this.socket = theSocket;
         inputBuffer.setInputStream(socket.getInputStream());
         outputBuffer.setOutputStream(socket.getOutputStream());
 
@@ -773,8 +772,7 @@ public class Http11Processor implements ActionHook {
         keepAlive = true;
 
         int keepAliveLeft = maxKeepAliveRequests;
-        int soTimeout = socket.getSoTimeout();
-        int oldSoTimeout = soTimeout;
+        int soTimeout = endpoint.getSoTimeout();
 
         int threadRatio = (endpoint.getCurrentThreadsBusy() * 100)
                 / endpoint.getMaxThreads();
@@ -782,13 +780,11 @@ public class Http11Processor implements ActionHook {
             keepAliveLeft = 1;
         }
         
-        if (soTimeout != oldSoTimeout) {
-            try {
-                socket.setSoTimeout(soTimeout);
-            } catch (Throwable t) {
-                log.debug(sm.getString("http11processor.socket.timeout"), t);
-                error = true;
-            }
+        try {
+            socket.setSoTimeout(soTimeout);
+        } catch (Throwable t) {
+            log.debug(sm.getString("http11processor.socket.timeout"), t);
+            error = true;
         }
 
         boolean keptAlive = false;
@@ -808,7 +804,9 @@ public class Http11Processor implements ActionHook {
                 inputBuffer.parseRequestLine();
                 request.setStartTime(System.currentTimeMillis());
                 keptAlive = true;
-                if (!disableUploadTimeout) {
+                if (disableUploadTimeout) {
+                    socket.setSoTimeout(soTimeout);
+                } else {
                     socket.setSoTimeout(timeout);
                 }
                 inputBuffer.parseHeaders();

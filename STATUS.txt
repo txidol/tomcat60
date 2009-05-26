@@ -81,13 +81,6 @@ PATCHES PROPOSED TO BACKPORT:
                  but could agree to some of it if it was split into parts
   -1: remm: no for TC 6.0
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46985
-  Clean up timeout handling
-  http://svn.apache.org/viewvc?rev=763262&view=rev
-  http://svn.apache.org/viewvc?rev=777576&view=rev
-  +1: markt, pero, kkolinko
-  -1: 
-
 * Fix use of non-ASCII characters in property files
   http://people.apache.org/~markt/patches/2009-04-20-native2ascii-de.patch (German)
   http://people.apache.org/~markt/patches/2009-04-20-native2ascii-en.patch (English)
