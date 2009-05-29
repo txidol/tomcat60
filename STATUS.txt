@@ -178,3 +178,13 @@ Index: dist.xml
   http://svn.apache.org/viewvc?rev=778524&view=rev
   +1: markt,funkman
   -1: 
+
+* Remove unneeded unescaping from JspUtil.getExprInXml
+  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/jasper/compiler/JspUtil.java?r1=696061&r2=696060&pathrev=696061
+  (It is a part of the following revision of trunk
+   http://svn.apache.org/viewvc?view=rev&revision=696061
+   that was forgotten when applying it to tc6.0 in
+   http://svn.apache.org/viewvc?view=rev&revision=708165
+  )
+  +1: kkolinko
+  -1:
