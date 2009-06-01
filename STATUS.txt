@@ -167,7 +167,7 @@ Index: dist.xml
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47050
   Remove unnecessary filtering
   http://svn.apache.org/viewvc?rev=770716&view=rev 
-  +1: markt,funkman
+  +1: markt, funkman, kkolinko
   -1: 
 
 * Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=43343
