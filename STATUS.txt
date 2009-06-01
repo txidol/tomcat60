@@ -87,8 +87,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2009-04-20-native2ascii-en.patch (English)
   http://people.apache.org/~markt/patches/2009-04-20-native2ascii-es.patch (Spanish)
   http://people.apache.org/~markt/patches/2009-04-20-native2ascii-fr.patch (French)
-  +1: markt, funkman
-  +0: kkolinko: should not be needed, as old and new are both correct.
+  +1: markt, funkman, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47080
