@@ -107,11 +107,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, funkman
   -1:
 
-* Update to NSIS 2.44
-  http://svn.apache.org/viewvc?rev=776924&view=rev
-  +1: kkolinko, markt, funkman
-  -1:
-
 * Build files: Calculate current year automatically by using <tstamp>.
   http://svn.apache.org/viewvc?rev=776935&view=rev
   +1: kkolinko, markt,funkman
