@@ -107,11 +107,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, funkman
   -1:
 
-* Build files: Calculate current year automatically by using <tstamp>.
-  http://svn.apache.org/viewvc?rev=776935&view=rev
-  +1: kkolinko, markt,funkman
-  -1:
-
 * In dist-javadoc target of dist.xml:
    1) use &#169; on the web page, instead of a symbol
       Fixes https://issues.apache.org/bugzilla/show_bug.cgi?id=47239

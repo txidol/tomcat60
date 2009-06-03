@@ -29,7 +29,9 @@
 
   <!-- Project Properties -->
   <property name="name"                  value="Apache Tomcat" />
-  <property name="year"                  value="2007" />
+  <tstamp>
+    <format property="year" pattern="yyyy" locale="en"/>
+  </tstamp>
   <property name="version.major"         value="6" />
   <property name="version.minor"         value="0" />
   <property name="version.build"         value="0" />
