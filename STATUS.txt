@@ -122,3 +122,8 @@ PATCHES PROPOSED TO BACKPORT:
   )
   +1: kkolinko
   -1:
+
+* Remove duplicate mime-mappings
+  http://svn.apache.org/viewvc?view=rev&revision=781528
+  +1: markt
+  -1: 
