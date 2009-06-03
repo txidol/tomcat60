@@ -105,12 +105,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, fhanik, markt,funkman
   -1: 
 
-* Don't add extra blank lines to files in .tar.gz distro
-  http://svn.apache.org/viewvc?rev=777464&view=rev
-  http://svn.apache.org/viewvc?rev=777466&view=rev
-  +1: markt, kkolinko,funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47228
   Correct French translation.
   Patch provided by sebb@a.o

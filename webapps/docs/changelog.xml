@@ -87,6 +87,10 @@
       <update>
         Update to NSIS 2.44 (kkolinko)
       </update>
+      <fix>
+        Don't add blank lines to end of files when fixing line-endings for
+        tar.gz distribution. (markt) 
+      </fix>
     </changelog>
   </subsection>
 </section>

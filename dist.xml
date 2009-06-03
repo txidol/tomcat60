@@ -249,9 +249,9 @@
     <touch file="${tomcat.dist}/temp/safeToDelete.tmp" />
 
     <!-- Correct permissions and line endings on "bin" scripts -->
-    <fixcrlf srcdir="${tomcat.dist}/bin"   includes="*.sh"  eol="lf"/>
-    <fixcrlf srcdir="${tomcat.dist}/bin"   includes="*.bat" eol="crlf"/>
-    <chmod      dir="${tomcat.dist}/bin"   includes="*.sh"  perm="+x"/>
+    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.sh"  eol="lf"   fixlast="false" />
+    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.bat" eol="crlf" fixlast="false" />
+    <chmod      dir="${tomcat.dist}/bin" includes="*.sh"  perm="+x"/>
 
   </target>
 
@@ -459,8 +459,8 @@
 
   <!-- Packages the core tar.gz distro -->
   <target name="package-tgz">
-    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf"/>
-    <fixcrlf srcdir="${tomcat.dist}/conf" eol="lf"/>
+    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" />
+    <fixcrlf srcdir="${tomcat.dist}/conf" eol="lf" fixlast="false" />
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}.tar.gz">
       <tarfileset dir="${tomcat.dist}" mode="755" prefix="${final.name}">
@@ -519,8 +519,8 @@
   <!-- Packages the deployer Tomcat distro in tar.gz format -->
   <target name="package-deployer-tgz">
     <fixcrlf srcdir="${tomcat.dist}"
-     includes="*.txt,LICENSE,NOTICE" eol="lf"/>
-    <fixcrlf srcdir="${tomcat.deployer}" includes="*.xml" eol="lf"/>
+     includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" />
+    <fixcrlf srcdir="${tomcat.deployer}" includes="*.xml" eol="lf" fixlast="false" />
 
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}-deployer.tar.gz">
@@ -545,7 +545,7 @@
   <target name="package-docs-tgz">
 
     <!-- Package gocs -->
-    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf"/>
+    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" />
 
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}-fulldocs.tar.gz">
@@ -582,7 +582,7 @@
   <target name="package-src-tgz">
   	<fixcrlf srcdir="${tomcat.dist}/src"
      excludes="**/*.jar,**/*.gif,**/*.bmp,**/*.jpg,**/*.ico,**/*.war,**/*.exe,**/*.pdf,**/*.bin,**/*.dia"
-          eol="lf"/>
+          eol="lf" fixlast="false" />
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/src/${final-src.name}.tar.gz">
       <tarfileset dir="${tomcat.dist}/src" prefix="${final-src.name}" />
