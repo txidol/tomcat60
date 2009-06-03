@@ -107,28 +107,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, funkman
   -1:
 
-* In dist-javadoc target of dist.xml:
-   1) use &#169; on the web page, instead of a symbol
-      Fixes https://issues.apache.org/bugzilla/show_bug.cgi?id=47239
-   2) use value of ${year}
-  Patch:
-Index: dist.xml
-===================================================================
---- dist.xml	(revision 776003)
-+++ dist.xml	(working copy)
-@@ -260,7 +260,7 @@
-       author="true" version="true"
-       windowtitle="Tomcat API Documentation"
-       doctitle="Tomcat API"
--      bottom="Copyright &#169; 2000-2008 Apache Software Foundation.  All Rights Reserved."
-+      bottom="Copyright &amp;#169; 2000-${year} Apache Software Foundation.  All Rights Reserved."
-       additionalparam="-breakiterator"
-       maxmemory="256m" >
-     </javadoc>
-
-  +1: kkolinko, markt, funkman
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44943
   For zip/tgz distributives it was already fixed in 6.0.17, 5.5.27.
   Now, apply the same fix to exe distributive.
