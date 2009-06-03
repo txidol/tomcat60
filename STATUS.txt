@@ -126,4 +126,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Remove duplicate mime-mappings
   http://svn.apache.org/viewvc?view=rev&revision=781528
   +1: markt
-  -1: 
+  -1: kkolinko: (
+    mime-type for .doc is application/msword
+    See mime.types file of Apache, e.g. here:
+    http://svn.apache.org/viewvc/httpd/httpd/trunk/docs/conf/
+    The rest of the change is OK.
+  )
