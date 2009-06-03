@@ -59,6 +59,10 @@
       <fix>
         <bug>47080</bug>: Fix NPE in RealmBase when uri is null. (markt)
       </fix>
+      <fix>
+        <bug>47228</bug>: Correct French translations. Patch provided by sebb.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

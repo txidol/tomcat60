@@ -105,13 +105,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, fhanik, markt,funkman
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47228
-  Correct French translation.
-  Patch provided by sebb@a.o
-  http://svn.apache.org/viewvc?view=rev&revision=778379
-  +1: markt, kkolinko,funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47050
   Remove unnecessary filtering
   http://svn.apache.org/viewvc?rev=770716&view=rev 
