@@ -57,6 +57,10 @@
         handled correctly in all circumstances. (markt)
       </fix>
       <fix>
+        <bug>47050</bug>: Remove unnecessary filtering of error messages.
+        (markt)
+      </fix>
+      <fix>
         <bug>47080</bug>: Fix NPE in RealmBase when uri is null. (markt)
       </fix>
       <fix>
