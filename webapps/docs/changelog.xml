@@ -56,6 +56,9 @@
         Use native2ascii to ensure non-ASCII characters in property files are
         handled correctly in all circumstances. (markt)
       </fix>
+      <fix>
+        <bug>47080</bug>: Fix NPE in RealmBase when uri is null. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

@@ -82,12 +82,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: no for TC 6.0
   -1: funkman : api change in Session.java for .x.x release
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47080
-  Prevent NPE when mapper makes no matches
-  http://svn.apache.org/viewvc?rev=770809&view=rev
-  +1: markt, pero, funkman
-  -1: 
-
 * Fix Close Stream at WebappClassLoader after read error
   http://svn.apache.org/viewvc?rev=772872&view=rev 
   +1: pero, funkman
