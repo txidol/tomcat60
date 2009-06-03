@@ -82,14 +82,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: no for TC 6.0
   -1: funkman : api change in Session.java for .x.x release
 
-* Fix use of non-ASCII characters in property files
-  http://people.apache.org/~markt/patches/2009-04-20-native2ascii-de.patch (German)
-  http://people.apache.org/~markt/patches/2009-04-20-native2ascii-en.patch (English)
-  http://people.apache.org/~markt/patches/2009-04-20-native2ascii-es.patch (Spanish)
-  http://people.apache.org/~markt/patches/2009-04-20-native2ascii-fr.patch (French)
-  +1: markt, funkman, kkolinko
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47080
   Prevent NPE when mapper makes no matches
   http://svn.apache.org/viewvc?rev=770809&view=rev

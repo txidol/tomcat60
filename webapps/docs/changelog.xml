@@ -52,6 +52,10 @@
         <bug>47046</bug>: Unregister all MBeans, including when non-default
         engine names are used. (markt)
       </fix>
+      <fix>
+        Use native2ascii to ensure non-ASCII characters in property files are
+        handled correctly in all circumstances. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
