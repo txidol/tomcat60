@@ -132,3 +132,9 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc/httpd/httpd/trunk/docs/conf/
     The rest of the change is OK.
   )
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
+  Thread safety issues in AccessLogValve
+  http://svn.apache.org/viewvc?rev=781770&view=rev
+  +1: markt
+  -1: 
