@@ -145,3 +145,9 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=23764
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47299
+  Simply code. Make it work with classes that extend StandardContext
+  http://svn.apache.org/viewvc?rev=782145&view=rev
+  +1: markt
+  -1: 
