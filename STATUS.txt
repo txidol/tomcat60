@@ -138,3 +138,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=781779&view=rev
   +1: markt
   -1: 
+
+* Only enable APR via the listener. Prevents unexpected enabling of APR when
+  Listener is disabled
+  http://svn.apache.org/viewvc?rev=782000&view=rev
+  +1: markt
+  -1: 
