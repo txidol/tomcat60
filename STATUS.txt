@@ -130,6 +130,8 @@ PATCHES PROPOSED TO BACKPORT:
     mime-type for .doc is application/msword
     See mime.types file of Apache, e.g. here:
     http://svn.apache.org/viewvc/httpd/httpd/trunk/docs/conf/
+    or IANA
+    http://www.iana.org/assignments/media-types/index.html
     The rest of the change is OK.
   )
 
@@ -150,10 +152,16 @@ PATCHES PROPOSED TO BACKPORT:
   Simply code. Make it work with classes that extend StandardContext
   http://svn.apache.org/viewvc?rev=782145&view=rev
   +1: markt
+  +1: kkolinko (
+       good.
+       I see no need to carry on the "Race condition is harmless" comment,
+       because IMO it applies to containerEventMethod field lazy initialization code,
+       that is removed from the source.
+     )
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47318
   Process include preludes and codas for directivesOnly as well as full pages
   http://svn.apache.org/viewvc?rev=782166&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
