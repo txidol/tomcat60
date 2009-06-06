@@ -145,7 +145,7 @@ PATCHES PROPOSED TO BACKPORT:
   Remove use of ServerFactory to enable MapperListener to start when service
   name != engine name
   https://issues.apache.org/bugzilla/attachment.cgi?id=23764
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47299
