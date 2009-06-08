@@ -287,7 +287,7 @@
         match with the appBase dir. (markt)
       </fix>
       <fix>
-        <bug>39396</bug>: Don't include TRACEE in OPTIONS response unless we
+        <bug>39396</bug>: Don't include TRACE in OPTIONS response unless we
         know it hasn't been disabled in the connector. (markt)
       </fix>
       <fix>
@@ -608,7 +608,7 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
-        <bug>36923</bug>: Treat EL expressions as template text is EL
+        <bug>36923</bug>: Treat EL expressions as template text if EL
         expressions are disabled. (markt)
       </fix>
       <fix>
