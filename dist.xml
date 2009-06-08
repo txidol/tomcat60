@@ -216,7 +216,7 @@
 
     <!-- Copy the top-level documentation files -->
     <filter token="VERSION" value="${version}"/>
-    <copy todir="${tomcat.dist}" filtering="true">
+    <copy todir="${tomcat.dist}" filtering="true" encoding="ISO-8859-1">
       <fileset dir=".">
         <include name="INSTALLING.txt"/>
         <include name="LICENSE"/>
@@ -249,8 +249,8 @@
     <touch file="${tomcat.dist}/temp/safeToDelete.tmp" />
 
     <!-- Correct permissions and line endings on "bin" scripts -->
-    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.sh"  eol="lf"   fixlast="false" />
-    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.bat" eol="crlf" fixlast="false" />
+    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.sh"  eol="lf"   fixlast="false" encoding="ISO-8859-1" />
+    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.bat" eol="crlf" fixlast="false" encoding="ISO-8859-1" />
     <chmod      dir="${tomcat.dist}/bin" includes="*.sh"  perm="+x"/>
 
   </target>
@@ -368,7 +368,7 @@
     <filter token="VERSION_MAJOR" value="${version.major}"/>
     <filter token="VERSION_MAJOR_MINOR" value="${version.major.minor}"/>
 
-    <copy file="res/tomcat.nsi" tofile="${tomcat.dist}/tomcat.nsi" filtering="true" overwrite="true"/>
+    <copy file="res/tomcat.nsi" tofile="${tomcat.dist}/tomcat.nsi" filtering="true" overwrite="true" encoding="ISO-8859-1" />
     <exec dir="${tomcat.dist}" executable="${nsis.exe}" osfamily="windows">
       <arg value="/DNSISDIR=${nsis.home}" />
       <arg value="tomcat.nsi" />
@@ -398,13 +398,16 @@
          todir="${tomcat.release}/v${version}"/>
     <copy file="RELEASE-NOTES"
          todir="${tomcat.release}/v${version}"
-     filtering="true"/>
+        filtering="true" 
+        encoding="ISO-8859-1" />
     <copy file="res/welcome.main.html"
         tofile="${tomcat.release}/v${version}/README.html"
-     filtering="true"/>
+        filtering="true"
+        encoding="ISO-8859-1" />
     <copy file="res/welcome.bin.html"
         tofile="${tomcat.release}/v${version}/bin/README.html"
-     filtering="true"/>
+        filtering="true"
+        encoding="ISO-8859-1" />
 
     <mkdir dir="${tomcat.release}/v${version}/bin/extras" />
     <copy todir="${tomcat.release}/v${version}/bin/extras">
@@ -459,8 +462,8 @@
 
   <!-- Packages the core tar.gz distro -->
   <target name="package-tgz">
-    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" />
-    <fixcrlf srcdir="${tomcat.dist}/conf" eol="lf" fixlast="false" />
+    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" encoding="ISO-8859-1" />
+    <fixcrlf srcdir="${tomcat.dist}/conf" eol="lf" fixlast="false" encoding="ISO-8859-1" />
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}.tar.gz">
       <tarfileset dir="${tomcat.dist}" mode="755" prefix="${final.name}">
@@ -519,8 +522,8 @@
   <!-- Packages the deployer Tomcat distro in tar.gz format -->
   <target name="package-deployer-tgz">
     <fixcrlf srcdir="${tomcat.dist}"
-     includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" />
-    <fixcrlf srcdir="${tomcat.deployer}" includes="*.xml" eol="lf" fixlast="false" />
+     includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" encoding="ISO-8859-1" />
+    <fixcrlf srcdir="${tomcat.deployer}" includes="*.xml" eol="lf" fixlast="false" encoding="ISO-8859-1" />
 
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}-deployer.tar.gz">
@@ -545,7 +548,7 @@
   <target name="package-docs-tgz">
 
     <!-- Package gocs -->
-    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" />
+    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" encoding="ISO-8859-1" />
 
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}-fulldocs.tar.gz">
@@ -582,7 +585,7 @@
   <target name="package-src-tgz">
   	<fixcrlf srcdir="${tomcat.dist}/src"
      excludes="**/*.jar,**/*.gif,**/*.bmp,**/*.jpg,**/*.ico,**/*.war,**/*.exe,**/*.pdf,**/*.bin,**/*.dia"
-          eol="lf" fixlast="false" />
+          eol="lf" fixlast="false" encoding="ISO-8859-1" />
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/src/${final-src.name}.tar.gz">
       <tarfileset dir="${tomcat.dist}/src" prefix="${final-src.name}" />

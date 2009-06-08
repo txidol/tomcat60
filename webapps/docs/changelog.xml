@@ -99,6 +99,10 @@
         Don't add blank lines to end of files when fixing line-endings for
         tar.gz distribution. (markt) 
       </fix>
+      <fix>
+        Use explicit encoding during filtering operations when building Tomcat
+        for distribution. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>
