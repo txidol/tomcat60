@@ -166,3 +166,10 @@ PATCHES PROPOSED TO BACKPORT:
   Patch by Ian Darwin
   +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47237
+  http://svn.apache.org/viewvc?rev=783155&view=rev
+  +1: fhanik
+  -1: 
+
+
