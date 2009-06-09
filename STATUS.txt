@@ -161,8 +161,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: new regression - see bug for new test case
 
-* Use a more senaible default for appBase
+* Use a more sensible default for appBase
   http://svn.apache.org/viewvc?rev=782791&view=rev
   Patch by Ian Darwin
-  +1: markt
+  +1: markt, kkolinko
   -1: 
