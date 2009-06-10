@@ -79,7 +79,7 @@ public class StandardHost
     /**
      * The application root for this Host.
      */
-    private String appBase = ".";
+    private String appBase = "webapps";
 
 
     /**

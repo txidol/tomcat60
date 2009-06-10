@@ -44,6 +44,10 @@
         Remove duplicate mime-mapping entries in web.xml. Re-order entries
         alphabetically to make it easier to identify duplicates. (markt) 
       </fix>
+      <update>
+        Use a more sensible default (webapps) for a Host's appBase.
+        (markt/idarwin)
+      </update>
       <fix>
         <bug>46908</bug>: Try and support java encoding names when using an xml
         parser provided via the endorsed mechanism. (markt)

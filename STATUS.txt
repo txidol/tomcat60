@@ -130,12 +130,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: new regression - see bug for new test case
 
-* Use a more sensible default for appBase
-  http://svn.apache.org/viewvc?rev=782791&view=rev
-  Patch by Ian Darwin
-  +1: markt, kkolinko, funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47237
   http://svn.apache.org/viewvc?rev=783155&view=rev
   +1: fhanik, funkman, markt
