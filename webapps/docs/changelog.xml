@@ -71,6 +71,11 @@
         <bug>47228</bug>: Correct French translations. Patch provided by sebb.
         (markt)
       </fix>
+      <fix>
+        <bug>47316</bug>: Allow different values for Service name and Engine
+        name. This corrects a regression introduced by the fix for
+        <bug>42707</bug>. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
