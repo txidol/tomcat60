@@ -115,7 +115,7 @@ PATCHES PROPOSED TO BACKPORT:
    that was forgotten when applying it to tc6.0 in
    http://svn.apache.org/viewvc?view=rev&revision=708165
   )
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
@@ -157,7 +157,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47237
   http://svn.apache.org/viewvc?rev=783155&view=rev
-  +1: fhanik, funkman
+  +1: fhanik, funkman, markt
   -1: 
 
 
