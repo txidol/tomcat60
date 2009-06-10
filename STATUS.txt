@@ -135,3 +135,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
+* Dont try to report thread counts when using an executor from outside
+  http://people.apache.org/~fhanik/connector-thread-report.patch
+  +1: fhanik
+  -1: 
+
