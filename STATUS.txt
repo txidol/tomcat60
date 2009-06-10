@@ -129,24 +129,25 @@ PATCHES PROPOSED TO BACKPORT:
     http://www.iana.org/assignments/media-types/index.html
     The rest of the change is OK.
   )
+  -1: funkman: agree with kkolinko
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
   Thread safety issues in AccessLogValve
   http://svn.apache.org/viewvc?rev=781779&view=rev
-  +1: markt
+  +1: markt, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47316
   Remove use of ServerFactory to enable MapperListener to start when service
   name != engine name
   https://issues.apache.org/bugzilla/attachment.cgi?id=23764
-  +1: markt, kkolinko
+  +1: markt, kkolinko, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47299
   Simply code. Make it work with classes that extend StandardContext
   http://svn.apache.org/viewvc?rev=782145&view=rev
-  +1: markt
+  +1: markt, funkman
   +1: kkolinko (
        good.
        I see no need to carry on the "Race condition is harmless" comment,
@@ -164,12 +165,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Use a more sensible default for appBase
   http://svn.apache.org/viewvc?rev=782791&view=rev
   Patch by Ian Darwin
-  +1: markt, kkolinko
+  +1: markt, kkolinko, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47237
   http://svn.apache.org/viewvc?rev=783155&view=rev
-  +1: fhanik
+  +1: fhanik, funkman
   -1: 
 
 
