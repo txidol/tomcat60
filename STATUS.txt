@@ -127,7 +127,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47318
   Process include preludes and codas for directivesOnly as well as full pages
   http://svn.apache.org/viewvc?rev=783313&view=rev
-  +1: markt
+  +1: markt, funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47237
