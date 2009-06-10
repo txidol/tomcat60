@@ -72,6 +72,9 @@
         (markt)
       </fix>
       <fix>
+        <bug>47299</bug>: Simplify code and make embedding easier. (markt)
+      </fix>
+      <fix>
         <bug>47316</bug>: Allow different values for Service name and Engine
         name. This corrects a regression introduced by the fix for
         <bug>42707</bug>. (markt)
