@@ -118,19 +118,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Remove duplicate mime-mappings
-  http://svn.apache.org/viewvc?view=rev&revision=781528
-  +1: markt
-  -1: kkolinko: (
-    mime-type for .doc is application/msword
-    See mime.types file of Apache, e.g. here:
-    http://svn.apache.org/viewvc/httpd/httpd/trunk/docs/conf/
-    or IANA
-    http://www.iana.org/assignments/media-types/index.html
-    The rest of the change is OK.
-  )
-  -1: funkman: agree with kkolinko
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
   Thread safety issues in AccessLogValve
   http://svn.apache.org/viewvc?rev=781779&view=rev
