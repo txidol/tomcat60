@@ -149,3 +149,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=783697&view=rev
   +1: markt
   -1: 
+
+* Make diagnosing broken requests a little easier
+  http://svn.apache.org/viewvc?rev=783724&view=rev
+  +1: markt
+  -1: 
