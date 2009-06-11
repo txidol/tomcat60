@@ -83,6 +83,10 @@
         name. This corrects a regression introduced by the fix for
         <bug>42707</bug>. (markt)
       </fix>
+      <fix>
+        <bug>44943</bug>: Use the same engine name in server.xml comments to
+        reduce copy and pastes issues. (markt, kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

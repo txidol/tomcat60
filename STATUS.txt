@@ -88,13 +88,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: kkolinko: http://marc.info/?l=tomcat-dev&m=124192105131636&w=2
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44943
-  For zip/tgz distributives it was already fixed in 6.0.17, 5.5.27.
-  Now, apply the same fix to exe distributive.
-  http://svn.apache.org/viewvc?rev=776945&view=rev
-  +1: kkolinko, markt,funkman
-  -1:
-
 * Add missing svn properties
   http://people.apache.org/~rjung/patches/tc6-svnprops.patch
   +1: rjung, fhanik, markt,funkman
