@@ -137,10 +137,21 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=783696&view=rev
   +1: markt
   -1:
+  kkolinko: A comment in build.xml mentions "${commons-collections.home}".
+  You may remove that one too.
 
 * Update commons-pool to 1.5.
   http://svn.apache.org/viewvc?rev=783697&view=rev
   +1: markt
+  -1: 
+  kkolinko: 'and download' won't download the file and will stop with a build
+  error, unless you manually delete the ${tomcat-dbcp.jar} file or otherwise
+  start with a clean environment. The rev.783762 proposed below fixes this
+  issue.
+
+* Fix download task dependency for commons-pool and commons-dbcp.
+  http://svn.apache.org/viewvc?rev=783762&view=rev
+  +1: kkolinko
   -1: 
 
 * Make diagnosing broken requests a little easier
