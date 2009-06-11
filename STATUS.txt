@@ -147,3 +147,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=783724&view=rev
   +1: markt
   -1: 
+
+* Log context deployment consistently for war/dir/xml
+  http://svn.apache.org/viewvc?rev=783756&view=rev
+  +1: markt
+  -1:
