@@ -170,3 +170,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2009-06-11_manager_SessionUtils_varargs.patch
   +1: kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
+  Regression in fix for
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
+  Editing context.xml should not delete resources
+  +1: markt
+  -1: 
