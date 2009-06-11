@@ -108,13 +108,14 @@ PATCHES PROPOSED TO BACKPORT:
    that was forgotten when applying it to tc6.0 in
    http://svn.apache.org/viewvc?view=rev&revision=708165
   )
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
   Thread safety issues in AccessLogValve
   http://svn.apache.org/viewvc?rev=781779&view=rev
   +1: markt, funkman
+  +1: fhanik - still has thread safety issues during rotation
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47318
@@ -135,14 +136,14 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove commons-collections from the build. It is unused.
   http://svn.apache.org/viewvc?rev=783696&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1:
   kkolinko: A comment in build.xml mentions "${commons-collections.home}".
   You may remove that one too.
 
 * Update commons-pool to 1.5.
   http://svn.apache.org/viewvc?rev=783697&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
   kkolinko: 'and download' won't download the file and will stop with a build
   error, unless you manually delete the ${tomcat-dbcp.jar} file or otherwise
@@ -157,25 +158,26 @@ PATCHES PROPOSED TO BACKPORT:
 * Make diagnosing broken requests a little easier
   http://svn.apache.org/viewvc?rev=783724&view=rev
   +1: markt
+  +1: fhanik - StringBuffer never hurts
   -1: 
 
 * Log context deployment consistently for war/dir/xml
   http://svn.apache.org/viewvc?rev=783756&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Add explicit cast, to remove two
   "non-varargs call of varargs method with inexact argument type for last parameter"
   warnings during the build.
   http://people.apache.org/~kkolinko/patches/2009-06-11_manager_SessionUtils_varargs.patch
-  +1: kkolinko
+  +1: kkolinko, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
   Regression in fix for
   https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
   Editing context.xml should not delete resources
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Document emptySessionPath behavior
