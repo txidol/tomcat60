@@ -163,3 +163,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=783756&view=rev
   +1: markt
   -1:
+
+* Add explicit cast, to remove two
+  "non-varargs call of varargs method with inexact argument type for last parameter"
+  warnings during the build.
+  http://people.apache.org/~kkolinko/patches/2009-06-11_manager_SessionUtils_varargs.patch
+  +1: kkolinko
+  -1: 
