@@ -140,3 +140,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
+* Remove commons-collections from the build. It is unused.
+  http://svn.apache.org/viewvc?rev=783696&view=rev
+  +1: markt
+  -1:
+
+* Update commons-pool to 1.5.
+  http://svn.apache.org/viewvc?rev=783697&view=rev
+  +1: markt
+  -1: 
