@@ -177,3 +177,10 @@ PATCHES PROPOSED TO BACKPORT:
   Editing context.xml should not delete resources
   +1: markt
   -1: 
+
+* Document emptySessionPath behavior
+  Behavior is too old to change the way bug specifier requested, and obsolete in TC 7
+  http://svn.apache.org/viewvc?rev=783837&view=rev
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=47298
+  +1: fhanik
+  -1: 
