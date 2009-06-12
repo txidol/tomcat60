@@ -111,13 +111,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, fhanik
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
-  Thread safety issues in AccessLogValve
-  http://svn.apache.org/viewvc?rev=781779&view=rev
-  +1: markt, funkman
-  +1: fhanik - still has thread safety issues during rotation
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47318
   Process include preludes and codas for directivesOnly as well as full pages
   http://svn.apache.org/viewvc?rev=783316&view=rev
