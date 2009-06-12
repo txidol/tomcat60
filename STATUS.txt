@@ -111,12 +111,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, fhanik
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47318
-  Process include preludes and codas for directivesOnly as well as full pages
-  http://svn.apache.org/viewvc?rev=783316&view=rev
-  +1: markt, funkman, kkolinko
-  -1:
-
 * Add Executor JMX stats
    http://svn.apache.org/viewvc?rev=783474&view=rev
   +1: fhanik

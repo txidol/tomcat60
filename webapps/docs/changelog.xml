@@ -101,6 +101,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>47318</bug>: Process directives found in include preludes and
+        codas. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Webapps">
     <changelog>
       <fix>
