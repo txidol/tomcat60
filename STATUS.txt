@@ -113,12 +113,12 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add Executor JMX stats
    http://svn.apache.org/viewvc?rev=783474&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Dont try to report thread counts when using an executor from outside
   http://people.apache.org/~fhanik/connector-thread-report.patch
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Update commons-pool to 1.5.
@@ -132,7 +132,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix download task dependency for commons-pool and commons-dbcp.
   http://svn.apache.org/viewvc?rev=783762&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1: 
 
 * Make diagnosing broken requests a little easier
@@ -150,7 +150,7 @@ PATCHES PROPOSED TO BACKPORT:
   "non-varargs call of varargs method with inexact argument type for last parameter"
   warnings during the build.
   http://people.apache.org/~kkolinko/patches/2009-06-11_manager_SessionUtils_varargs.patch
-  +1: kkolinko, fhanik
+  +1: kkolinko, fhanik, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
@@ -165,12 +165,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=783837&view=rev
   https://issues.apache.org/bugzilla/show_bug.cgi?id=47298
   +1: fhanik
+  +1: markt - MarkMail provides permalinks you can use
+            - Doc changes have been using CTR even on release branches 
   -1: 
 
 * Provide documentation for deployer.
   It is a fix for "cannot copy" warning observed during building a release.
   http://svn.apache.org/viewvc?rev=783863&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1: 
 
 * Update the build scripts, because there are no 64-bit GUI binaries.
@@ -179,5 +181,5 @@ PATCHES PROPOSED TO BACKPORT:
   )
   Discussion: http://markmail.org/message/nhkrskh6bwyirwru
   http://svn.apache.org/viewvc?rev=783934&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1: 
