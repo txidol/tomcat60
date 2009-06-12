@@ -135,6 +135,10 @@
         Use explicit encoding during filtering operations when building Tomcat
         for distribution. (kkolinko)
       </fix>
+      <update>
+        Remove references to unused commons-collections from the build scripts.
+        (markt)
+      </update>
     </changelog>
   </subsection>
 </section>

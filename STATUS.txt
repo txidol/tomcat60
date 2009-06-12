@@ -121,13 +121,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
-* Remove commons-collections from the build. It is unused.
-  http://svn.apache.org/viewvc?rev=783696&view=rev
-  +1: markt, fhanik, kkolinko
-  -1:
-  kkolinko: A comment in build.xml mentions "${commons-collections.home}".
-  You may remove that one too.
-
 * Update commons-pool to 1.5.
   http://svn.apache.org/viewvc?rev=783697&view=rev
   +1: markt, fhanik, kkolinko
