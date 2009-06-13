@@ -99,6 +99,43 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=778523&view=rev
   http://svn.apache.org/viewvc?rev=778524&view=rev
   +1: markt,funkman
+  +1: kkolinko: (
+     good, I tested it and it fixes the issue,
+     but I have the following comments:
+
+     1. It works only if StandardSession.ACTIVITY_CHECK is true.
+     And that occurs only if one of the following properties is "true":
+
+       org.apache.catalina.session.StandardSession.ACTIVITY_CHECK
+       org.apache.catalina.STRICT_SERVLET_COMPLIANCE
+
+     Both are "false" by default, and that results in NullPointerException
+     because StandardSession.accessCount is null in that case.
+
+     That is expected, and just needs to be documented.
+     Though some IllegalStateException might be better than NPE.
+
+     Also maybe direct access to session.accessCount (a protected field of
+     a class in the same package) is not a good style.
+
+     2. In PersistentManagerBase.processMaxIdleSwaps():
+     there is already the following line:
+       "StandardSession session = (StandardSession) sessions[i];"
+
+     Thus, there is no need for "if (sessions[i] instanceof StandardSession)" check
+     in your patch, and you can access "session" instead of "session[i]".
+
+     I think that "instanceof StandardSession" is a requirement, like
+     ACTIVITY_CHECK one above, and thus it is no need for "instanceof"
+     check. Just do a cast.
+
+     3. PersistentValve class has "session.access()" call that I do not see
+     how is balanced with "endAccess()". A reference to that session is just lost
+     and not stored in a Request (that would release it in its recycle() method),
+     so I think that additional "endAccess()" call is needed there. I have no
+     experience with that class, though.
+
+  )
   -1: 
 
 * Remove unneeded unescaping from JspUtil.getExprInXml
