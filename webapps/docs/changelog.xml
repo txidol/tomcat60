@@ -91,6 +91,11 @@
         <bug>44943</bug>: Use the same engine name in server.xml comments to
         reduce copy and pastes issues. (markt, kkolinko)
       </fix>
+      <update>
+        Deprecate the <code>caseSensitive</code> option on the
+        <code>StandardContext</code> which will be removed in Tomcat 7 onwards.
+        (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">

@@ -319,6 +319,8 @@
       </attribute>
 
       <attribute name="caseSensitive" required="false">
+        <p>Deprecated. This option will be removed in Tomcat 7 onwards where the
+        default of <code>true</code> will always be used.</p>
         <p>If the value of this flag is <code>false</code>, all case sensitivity
         checks will be disabled. If not 
         specified, the default value of the flag is <code>true</code>.</p>
