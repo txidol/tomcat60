@@ -118,10 +118,10 @@ public class SessionUtils {
 	                Object probableEngine = tapestryArray.get(0);
 	                if (null != probableEngine) {
 	                    try {
-	                        Method readMethod = probableEngine.getClass().getMethod("getLocale", null);//$NON-NLS-1$
+	                        Method readMethod = probableEngine.getClass().getMethod("getLocale", (Class[])null);//$NON-NLS-1$
 	                        if (null != readMethod) {
 	                            // Call the property getter and return the value
-	                            Object possibleLocale = readMethod.invoke(probableEngine, null);
+	                            Object possibleLocale = readMethod.invoke(probableEngine, (Object[])null);
 	                            if (null != possibleLocale && possibleLocale instanceof Locale) {
 	                                locale = (Locale) possibleLocale;
 	                            }

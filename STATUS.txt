@@ -183,13 +183,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1:
 
-* Add explicit cast, to remove two
-  "non-varargs call of varargs method with inexact argument type for last parameter"
-  warnings during the build.
-  http://people.apache.org/~kkolinko/patches/2009-06-11_manager_SessionUtils_varargs.patch
-  +1: kkolinko, fhanik, markt
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
   Regression in fix for
   https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
