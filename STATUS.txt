@@ -152,15 +152,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt
   -1: 
 
-* Update commons-pool to 1.5.
-  http://svn.apache.org/viewvc?rev=783697&view=rev
-  +1: markt, fhanik, kkolinko
-  -1: 
-  kkolinko: 'and download' won't download the file and will stop with a build
-  error, unless you manually delete the ${tomcat-dbcp.jar} file, or run
-  clean-depend target, or otherwise start with a clean environment. The
-  rev.783762 proposed below fixes this issue.
-
 * Fix download task dependency for commons-pool and commons-dbcp.
   http://svn.apache.org/viewvc?rev=783762&view=rev
   +1: kkolinko, markt
