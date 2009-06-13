@@ -141,6 +141,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Add Executor JMX stats
    http://svn.apache.org/viewvc?rev=783474&view=rev
   +1: fhanik, markt
+  +1: kkolinko (
+     in activeCount description:  s/current/currently/
+     in completedTaskCount desc.: s/Nr/Number/ or /Count/. Was there a reason for shortening?
+  )
   -1: 
 
 * Dont try to report thread counts when using an executor from outside
@@ -170,7 +174,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Log context deployment consistently for war/dir/xml
   http://svn.apache.org/viewvc?rev=783756&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
