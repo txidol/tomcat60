@@ -96,6 +96,10 @@
         <code>StandardContext</code> which will be removed in Tomcat 7 onwards.
         (markt)
       </update>
+      <fix>
+        Log deployments consistently for WAR, directotry and descriptor
+        deployments. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

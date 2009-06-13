@@ -169,11 +169,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik - StringBuffer never hurts
   -1: 
 
-* Log context deployment consistently for war/dir/xml
-  http://svn.apache.org/viewvc?rev=783756&view=rev
-  +1: markt, fhanik, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
   Regression in fix for
   https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
