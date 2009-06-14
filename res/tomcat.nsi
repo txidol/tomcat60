@@ -215,7 +215,7 @@ Section "Service" SecTomcatService
   Pop $2
 
   nsExec::ExecToLog '"$INSTDIR\bin\tomcat6.exe" //US//Tomcat6 --Startup auto'
-  ; Bahave like Apache Httpd (put the icon in try on login)
+  ; Behave like Apache Httpd (put the icon in tray on login)
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Run" "ApacheTomcatMonitor" '"$INSTDIR\bin\tomcat6w.exe" //MS//Tomcat6'
 
   ClearErrors

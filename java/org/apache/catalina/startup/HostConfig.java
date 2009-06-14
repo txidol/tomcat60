@@ -254,7 +254,7 @@ public class HostConfig
     }
 
     /**
-     * Get the server.xml <host> attribute's xmlValidation.
+     * Get the server.xml &lt;host&gt; attribute's xmlValidation.
      * @return true if validation is enabled.
      *
      */
@@ -263,7 +263,7 @@ public class HostConfig
     }
 
     /**
-     * Get the server.xml <host> attribute's xmlNamespaceAware.
+     * Get the server.xml &lt;host&gt; attribute's xmlNamespaceAware.
      * @return true if namespace awarenes is enabled.
      *
      */
