@@ -139,9 +139,15 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 * Additional patch based on review comments above:
   http://svn.apache.org/viewvc?rev=784453&view=rev
-  +1: mark
+  +1: markt
+  +1: kkolinko (ok, comments 1&2 addressed; for PersistentValve (3.) I
+  propose an additional patch below)
   -1:
-
+* Additional patch:
+  Do not increment access counter in PersistentValve
+  http://svn.apache.org/viewvc?rev=784602&view=rev
+  +1: kkolinko
+  -1:
 
 
 * Add Executor JMX stats
