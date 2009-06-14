@@ -190,6 +190,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   +1: markt - MarkMail provides permalinks you can use
             - Doc changes have been using CTR even on release branches 
+  +1: kkolinko
   -1: 
 
 * Provide documentation for deployer.
