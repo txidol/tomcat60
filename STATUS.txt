@@ -167,9 +167,11 @@ PATCHES PROPOSED TO BACKPORT:
      good, but
      1. Why such short implementation for JIoEndpoint, AprEndpoint and
         such elaborated one for NioEndpoint?
+fhanik: NioEndpoint only uses Executors, it's removed the 'synchronized' based thread pool.
 
         Is there a reason why JIoEndpoint, AprEndpoint are not
         implemented in the same way?
+fhanik: there was a notion that the Tomcat thread pool was faster, hence the old one is still there
 
      2. Http11Processor calls JIoEndpoint.getCurrentThreadsBusy():
 
@@ -178,6 +180,7 @@ PATCHES PROPOSED TO BACKPORT:
 
         The threadRatio value will be negative, if the patch is applied as
         is. Well, that makes no much difference from zero value w/o the patch.
+fhanik: That is a great point, This is an important observations that warrants another patch, independent of this one
   )
 
 * Fix download task dependency for commons-pool and commons-dbcp.
