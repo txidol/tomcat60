@@ -192,7 +192,37 @@ fhanik: That is a great point, This is an important observations that warrants a
   http://svn.apache.org/viewvc?rev=783724&view=rev
   +1: markt
   +1: fhanik - StringBuffer never hurts
-  -1: 
+  -1: kkolinko: (
+    Regarding the first part of the patch:
+     Try http://localhost:8080/examples/servlets/servlet/RequestParamExample?firstname=&lastname=&&&&
+     The "Invalid chunk" message prints garbage.
+
+     I wonder, whether I can trigger an NPE here.
+
+     There should be
+       msg.append(new String(bytes, nameStart, valEnd-nameStart));
+
+     But if I make that change, it prints just an empty string:
+     WARNING: Parameters: Invalid chunk '' ignored.
+     and that is not very informative.
+
+     Actually, I do not see how "Invalid chunk" can be triggered, unless
+     there is "&&" in the query string, and in that case the chunk is empty.
+
+     Also, I would prefer StringBuilder in code that runs on 1.5+ JVM.
+
+   Regarding the second part:
+     Try http://localhost:8080/examples/servlets/servlet/RequestParamExample?firstname=%EC%E0%F8%E&lastname=%F1%E0%F8%E0
+
+     The following is printed, and contains garbage:
+     WARNING: Parameters: Character decoding failed. Parameter 'firstname' with value '???%E0%F8%E' has been ignored.
+
+     Also, if there is encoding error, e.g. I have URIEncoding="UTF-8" on my connector,
+     but I try submitting in windows-1251, like
+     http://localhost:8080/examples/servlets/servlet/RequestParamExample?firstname=%EC%E0%F8%E0&lastname=%F1%E0%F8%E0
+     nothing is printed at all. I am not against this feature,
+     but we may want to adjust the text of the message.
+  )
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
   Regression in fix for
