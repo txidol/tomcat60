@@ -281,6 +281,7 @@ fhanik: That is a great point, This is an important observations that warrants a
 * Disable the code that detects the value for compilerSourceVM, compilerTargetVM options,
   because we know that this version of Tomcat cannot run on JDK 1.4.
   http://svn.apache.org/viewvc?rev=785768&view=rev
+  http://svn.apache.org/viewvc?rev=785859&view=rev
   +1: kkolinko
   -1:
 
