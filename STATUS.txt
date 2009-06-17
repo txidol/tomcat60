@@ -163,15 +163,25 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~fhanik/connector-thread-report.patch
   +1: fhanik, markt
   -1: 
-  +1: kkolinko: (
-     good, but
+  -1: kkolinko: (
      1. Why such short implementation for JIoEndpoint, AprEndpoint and
         such elaborated one for NioEndpoint?
 fhanik: NioEndpoint only uses Executors, it's removed the 'synchronized' based thread pool.
+kkolinko: Thanks for explaining, but for 6.0 code that is not true:
+        The NioEndpoint.getWorkerThread() method does exist in 6.0,
+        so your patch will break the thing, thus my -1.
+        I do not know whether it is actually used. Maybe you can remove
+        workers support from 6.0.
+
+        There could be "return curThreads[Busy];" instead of "return -2;" in your patch.
+
 
         Is there a reason why JIoEndpoint, AprEndpoint are not
         implemented in the same way?
 fhanik: there was a notion that the Tomcat thread pool was faster, hence the old one is still there
+kkolinko:  I mean: why not to ask ThreadPoolExecutor for the values,
+        like the NioEndpoint part of the patch does?
+
 
      2. Http11Processor calls JIoEndpoint.getCurrentThreadsBusy():
 
