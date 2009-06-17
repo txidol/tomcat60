@@ -218,3 +218,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=785381&view=rev
   +1: markt
   -1: 
+
+* Disable the code that detects the value for compilerSourceVM, compilerTargetVM options,
+  because we know that this version of Tomcat cannot run on JDK 1.4.
+  http://svn.apache.org/viewvc?rev=785768&view=rev
+  +1: kkolinko
+  -1:
+
