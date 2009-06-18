@@ -285,3 +285,8 @@ fhanik: That is a great point, This is an important observations that warrants a
   +1: kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47389
+  http://svn.apache.org/viewvc?rev=786124&view=rev
+  +1: fhanik
+  -1: 
+
