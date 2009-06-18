@@ -146,7 +146,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Additional patch:
   Do not increment access counter in PersistentValve
   http://svn.apache.org/viewvc?rev=784602&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 
