@@ -279,3 +279,9 @@ Index: java/org/apache/catalina/tribes/membership/McastServiceImpl.java
 
  +1: fhanik
  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38352
+  JSPs should have read/write access to the context's temp dir
+  http://svn.apache.org/viewvc?rev=786490&view=rev
+  +1: markt
+  -1: 
