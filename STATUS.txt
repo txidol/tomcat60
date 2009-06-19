@@ -285,3 +285,11 @@ Index: java/org/apache/catalina/tribes/membership/McastServiceImpl.java
   http://svn.apache.org/viewvc?rev=786490&view=rev
   +1: markt
   -1: 
+
+* Update to Apache Commons Pool 1.5.1
+  Various fixes to prevent deadlocks, reduce syncs and make object allocation
+  occur fair - ie objects are allocated to threads in the order that the threads
+  request them. Fixes a number of issues in DBCP.
+  http://svn.apache.org/viewvc?rev=786496&view=rev
+  +1: markt
+  -1:
