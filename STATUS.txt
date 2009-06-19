@@ -198,17 +198,14 @@ fhanik: That is a great point, This is an important observations that warrants a
   +1: kkolinko, markt
   -1: 
 
-* Make diagnosing broken requests a little easier
+* Make diagnosing broken requests a little easier. Having to copy the values is
+  a pain but I can't see an alternative. On balance I think it is worth it but I
+  appreciate others may disagree. 
   http://svn.apache.org/viewvc?rev=783724&view=rev
   http://svn.apache.org/viewvc?rev=786468&view=rev
-  +1: markt, fhanik
-  -1: kkolinko (
-     Regarding the second part of the patch:
-       queryMB is not always the "original data" for the call.
-       o.a.c.connector.Request#parseParameters() calls processParameters() as well,
-       to parse body of a POST request. Though it will be a rare case to trigger
-       this log message from that call.
-  )
+  http://svn.apache.org/viewvc?rev=786667&view=rev
+  +1: markt
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
   Regression in fix for
