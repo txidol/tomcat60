@@ -239,7 +239,7 @@ fhanik: That is a great point, This is an important observations that warrants a
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47369.
   http://svn.apache.org/viewvc?rev=784879&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37794
@@ -254,11 +254,13 @@ fhanik: That is a great point, This is an important observations that warrants a
   http://svn.apache.org/viewvc?rev=785768&view=rev
   http://svn.apache.org/viewvc?rev=785859&view=rev
   +1: kkolinko
+  +1: markt - I don't like commenting out code - if it isn't needed just delete it
+            - This is fine for 6.0.x, for trunk 1.6 is the minimum
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47389
   http://svn.apache.org/viewvc?rev=786124&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix bug (revert commit)
@@ -277,7 +279,7 @@ Index: java/org/apache/catalina/tribes/membership/McastServiceImpl.java
  			if(log.isInfoEnabled())
                  log.info("Setting multihome multicast interface to:" +mcastBindAddress);
 
- +1: fhanik
+ +1: fhanik, markt
  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38352
