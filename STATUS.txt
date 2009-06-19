@@ -202,7 +202,13 @@ fhanik: That is a great point, This is an important observations that warrants a
   http://svn.apache.org/viewvc?rev=783724&view=rev
   http://svn.apache.org/viewvc?rev=786468&view=rev
   +1: markt, fhanik
-  -1: 
+  -1: kkolinko (
+     Regarding the second part of the patch:
+       queryMB is not always the "original data" for the call.
+       o.a.c.connector.Request#parseParameters() calls processParameters() as well,
+       to parse body of a POST request. Though it will be a rare case to trigger
+       this log message from that call.
+  )
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
   Regression in fix for
@@ -279,7 +285,7 @@ Index: java/org/apache/catalina/tribes/membership/McastServiceImpl.java
  			if(log.isInfoEnabled())
                  log.info("Setting multihome multicast interface to:" +mcastBindAddress);
 
- +1: fhanik, markt
+ +1: fhanik, markt, kkolinko
  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38352
