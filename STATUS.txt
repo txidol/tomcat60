@@ -245,6 +245,7 @@ fhanik: That is a great point, This is an important observations that warrants a
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37794
   Handle chunked POSTs. If maxPostSize is exceeded, a 500 results
   http://svn.apache.org/viewvc?rev=785381&view=rev
+  http://svn.apache.org/viewvc?rev=786487&view=rev
   +1: markt
   -1: 
 
