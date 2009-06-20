@@ -341,7 +341,7 @@
         CATALINA_BASE/&lt;engine name&gt;/&lt;host name&gt; for DIR as well as
         WAR deployments. (markt)
       </fix>
-      <fix><bug>43071</bug>Start poller before acceptor (r719267)</fix>
+      <fix><bug>43071</bug>: Start poller before acceptor (r719267)</fix>
       <update>
         Fix read/write timeout of async comet operations
         (r719264)
@@ -367,7 +367,7 @@
         Correct wrong "No role found" debug message,
         logged in RealmBase even if a role was found. (rjung)
       </fix>
-      <fix><bug>44809</bug>Improve AprLifecycleListener Error Messages. (jfclere)</fix>
+      <fix><bug>44809</bug>: Improve AprLifecycleListener Error Messages. (jfclere)</fix>
       <fix>
         Log AccessControlException for context specific logging.properties
         during startup with security manager. (rjung)
@@ -579,7 +579,7 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
-      <fix><bug>45154</bug>
+      <fix><bug>45154</bug>:
         Implement SEND_FILE behavior for SSL connections using NIO (fhanik)
       </fix>
       <update>
@@ -983,7 +983,7 @@
         path that contains a # character. (markt)
       </fix>
       <add>
-        The fix for <bug>43285</bug> had the side-effct of coercing
+        The fix for <bug>43285</bug> had the side-effect of coercing
         <code>null</code> values to zero. This side-effect has been made
         configurable with a system property,
         <code>org.apache.el.parser.COERCE_TO_ZERO</code> which defaults to
@@ -1282,7 +1282,7 @@
         <bug>45212</bug>: AbstractReplicatedMap.entrySet() now returns entries
         rather than vaules. (markt)
       </fix>
-      <fix><bug>45279</bug>Properly close multicast socket.</fix>
+      <fix><bug>45279</bug>: Properly close multicast socket.</fix>
       <update>
         Fix session replication dead lock during non sticky load balancing.
         (fhanik)
@@ -1397,13 +1397,13 @@
         the specification. Patch provided by John Kew. (markt)
       </fix>
       <fix>
-        <bug>43530 </bug>: doc link fixes provided by  Paul Shemansky (funkman)
+        <bug>43530</bug>: doc link fixes provided by  Paul Shemansky (funkman)
       </fix>
       <fix>
         <bug>43675</bug>: Fix a possible logging related classloader leak.
         (markt)
       </fix>
-      <fix><bug>43687</bug> Remove conditional headers on Form Auth replay,
+      <fix><bug>43687</bug>: Remove conditional headers on Form Auth replay,
            since the UA (esp. FireFox) isn't expecting it.
       </fix>
       <fix>
@@ -1666,7 +1666,7 @@
         Call stopAwait in StandardServer.stop if port == -1. (pero)
       </fix>
       <fix>
-        <bug>43668</bug> Fix NPE when the outer most wrapper is a ServletRequest/ResponseWrapper, but not a HttpServletRequest/ResponseWrapper on a Forward. (billbarker)
+        <bug>43668</bug>: Fix NPE when the outer most wrapper is a ServletRequest/ResponseWrapper, but not a HttpServletRequest/ResponseWrapper on a Forward. (billbarker)
       </fix>
     </changelog>
   </subsection>
@@ -1695,7 +1695,7 @@
         Fix explicit flush before response commit in the org.apache.jk AJP connector. (pero)
       </fix>
       <fix>
-        <bug>43621</bug> Fix possible Dos condition when using the experimental NIO/AJP Connector (billbarker)
+        <bug>43621</bug>: Fix possible Dos condition when using the experimental NIO/AJP Connector (billbarker)
       </fix>
     </changelog>
   </subsection>
@@ -1761,7 +1761,7 @@
         which lead to errors in the manager webapp JMXProxy output. (rjung)
       </fix>
       <fix>
-        <bug>33774</bug> Retry JNDI authentiction on ServiceUnavailableException
+        <bug>33774</bug>: Retry JNDI authentiction on ServiceUnavailableException
         as at least one provider throws this after an idle connection has been
         closed. (markt)
       </fix>
@@ -1820,16 +1820,16 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
-        <bug>39425</bug> Add additional system property permission to
+        <bug>39425</bug>: Add additional system property permission to
         catalina.policy for pre-compiled JSPs. (markt)
       </fix>
       <fix>
-        <bug>42438</bug> Duplicate temporary variables were created when
+        <bug>42438</bug>: Duplicate temporary variables were created when
         jsp:attribute was used in conjunction with custom tags. Patch provided
         by Brian Lenz. (markt)
       </fix>
       <fix>
-        <bug>42643</bug> Prevent creation of duplicate JSP function mapper
+        <bug>42643</bug>: Prevent creation of duplicate JSP function mapper
         variables. (markt)
       </fix>
     </changelog>
@@ -1944,14 +1944,14 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
-        <bug>42039</bug> Log a stack trace if a servlet throws an
+        <bug>42039</bug>: Log a stack trace if a servlet throws an
          UnavailableException. Patch provided by Kawasima Kazuh. (markt)
       </fix>
       <fix>
-        <bug>41990</bug> Add some additional mime-type mappings. (markt)
+        <bug>41990</bug>: Add some additional mime-type mappings. (markt)
       </fix>
       <fix>
-        <bug>41655</bug> Fix message translations. Japanese translations
+        <bug>41655</bug>: Fix message translations. Japanese translations
         provided by Suzuki Yuichiro. (markt)
       </fix>
       <add>
@@ -1978,7 +1978,7 @@
   <subsection name="Coyote">
     <changelog>
       <fix>
-        <bug>42119</bug> Fix return value for request.getCharacterEncoding() when
+        <bug>42119</bug>: Fix return value for request.getCharacterEncoding() when
         Content-Type headers contain parameters other than charset. Patch by
         Leigh L Klotz Jr. (markt)
       </fix>
@@ -2012,12 +2012,12 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
-        <bug>41869</bug> TagData.getAttribute() should return
+        <bug>41869</bug>: TagData.getAttribute() should return
         TagData.REQUEST_TIME_VALUE when the attribute value is an EL expression.
         (markt)
       </fix>
       <fix>
-        <bug>42071</bug> Fix IllegalStateException on multiple requests to
+        <bug>42071</bug>: Fix IllegalStateException on multiple requests to
         an unavailable JSP. Patch provided by Kawasima Kazuh. (markt)
       </fix>
       <fix>
@@ -2052,19 +2052,19 @@
         Add some missing JMX attributes for new AccessLogValve (pero)
       </fix>
       <fix>
-        <bug>41786  </bug> Incorrect reference to catalina_home in catalina.sh/bat Patch provided by Mike Hanafey (fhanik)
+        <bug>41786</bug>: Incorrect reference to catalina_home in catalina.sh/bat Patch provided by Mike Hanafey (fhanik)
       </fix>
       <fix>
-        <bug>41703</bug> SingleSignOnMessage invalid setter, patch provided by Nils Hammar (fhanik)
+        <bug>41703</bug>: SingleSignOnMessage invalid setter, patch provided by Nils Hammar (fhanik)
       </fix>
       <fix>
-        <bug>41682</bug> ClassCastException when logging is turned on (fhanik)
+        <bug>41682</bug>: ClassCastException when logging is turned on (fhanik)
       </fix>
       <fix>
-        <bug>41530  </bug>Don't log error messages when connector is stopped (fhanik)
+        <bug>41530</bug>: Don't log error messages when connector is stopped (fhanik)
       </fix>
       <fix>
-        <bug>41166</bug> Invalid handling when using replicated context (fhanik)
+        <bug>41166</bug>: Invalid handling when using replicated context (fhanik)
       </fix>
       <add>
         Added SENDFILE support for the NIO connector. (fhanik) <br/>
@@ -2074,27 +2074,27 @@
         element as a nested element to the &lt;Service&gt; element. (fhanik)
       </add>
       <fix>
-        <bug>41666</bug> Correct handling of boundary conditions for
+        <bug>41666</bug>: Correct handling of boundary conditions for
         If-Unmodified-Since and If-Modified-Since headers. Patch provided by
         Suzuki Yuichiro. (markt)
       </fix>
       <fix>
-        <bug>41739</bug> Correct handling of servlets with a load-on-startup
+        <bug>41739</bug>: Correct handling of servlets with a load-on-startup
         value of zero. These are now the first servlets to be started. (markt)
       </fix>
       <fix>
-        <bug>41747</bug> Correct example ant script for deploy task. (markt)
+        <bug>41747</bug>: Correct example ant script for deploy task. (markt)
       </fix>
       <fix>
-        <bug>41752</bug> Correct error message on exception in MemoryRealm.
+        <bug>41752</bug>: Correct error message on exception in MemoryRealm.
         (markt)
       </fix>
       <update>
-        <bug>39883</bug> Add documentation warning about using antiResourceLocking
+        <bug>39883</bug>: Add documentation warning about using antiResourceLocking
         on a webapp outside the Host's appBase. (yoavs)
       </update>
       <fix>
-        <bug>40150</bug> Ensure user and roll classnames are validated on startup.  Patch by
+        <bug>40150</bug>: Ensure user and roll classnames are validated on startup.  Patch by
           Tom. (yoavs)
       </fix>
       <update>
@@ -2156,7 +2156,7 @@
         Requests with multiple content-length headers are now rejected. (markt)
       </fix>
       <add>
-        <bug>41675</bug> Add a couple of DEBUG-level logging statements to Http11Processors
+        <bug>41675</bug>: Add a couple of DEBUG-level logging statements to Http11Processors
           when sending error responses.  Patch by Ralf Hauser. (yoavs)
       </add>
       <fix>
@@ -2174,7 +2174,7 @@
         The poller now has good performance, so remove firstReadTimeout. (remm)
       </update>
       <fix>
-        <bug>42119</bug> Fix return value for request.getCharacterEncoding() when
+        <bug>42119</bug>: Fix return value for request.getCharacterEncoding() when
         Content-Type headers contain parameters other than charset. Patch by
         Leigh L Klotz Jr. (markt)
       </fix>
@@ -2191,14 +2191,14 @@
         in appBase. (markt)
       </update>
       <update>
-        <bug>39540</bug> Add link to httpd 2.2 mod_proxy_ajp docs in AJP connector doc. (yoavs)
+        <bug>39540</bug>: Add link to httpd 2.2 mod_proxy_ajp docs in AJP connector doc. (yoavs)
       </update>
     </changelog>
   </subsection>
   <subsection name="Jasper">
     <changelog>
       <fix>
-        <bug>41227</bug> Add a bit of DEBUG-level logging to JspC so users know
+        <bug>41227</bug>: Add a bit of DEBUG-level logging to JspC so users know
           which file is being compiled. (yoavs)
       </fix>
       <update>
@@ -2249,7 +2249,7 @@
         Fix bad comparison for FORM processing, submitted by Anil Saldhana. (remm)
       </fix>
       <fix>
-        <bug>41608</bug> Make log levels consistent when Servlet.service()
+        <bug>41608</bug>: Make log levels consistent when Servlet.service()
         throws an exception. (markt)
       </fix>
     </changelog>
@@ -2539,7 +2539,7 @@
         Context filename. (markt)
       </fix>
       <fix>
-        <bug>40844</bug> Missing syncs in JDBCRealm. (markt)
+        <bug>40844</bug>: Missing syncs in JDBCRealm. (markt)
       </fix>
        <fix>
         <bug>40901</bug>: Encode directory listing output. Based on a patch
