@@ -228,3 +228,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=786496&view=rev
   +1: markt, fhanik
   -1:
+
+* Update release process to include new windows package zip files
+  with .dll and .exe matching a target CPU. Patch also syncs
+  and fixes nsi installer script.
+  Patch for 6.0.x is available at:
+  http://people.apache.org/~mturk/tomcat/tomcat6-package-winzip.patch
+  +1: markt, fhanik
+  -1:
+
