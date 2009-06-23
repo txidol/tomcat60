@@ -139,14 +139,14 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 * Additional patch based on review comments above:
   http://svn.apache.org/viewvc?rev=784453&view=rev
-  +1: markt
+  +1: markt, fhanik
   +1: kkolinko (ok, comments 1&2 addressed; for PersistentValve (3.) I
   propose an additional patch below)
   -1:
 * Additional patch:
   Do not increment access counter in PersistentValve
   http://svn.apache.org/viewvc?rev=784602&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1:
 
 
@@ -166,12 +166,12 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix download task dependency for commons-pool and commons-dbcp.
   http://svn.apache.org/viewvc?rev=783762&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1: 
 
 * Make diagnosing broken requests a little easier.
   http://people.apache.org/~markt/patches/2009-06-23-parameters.patch
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
@@ -195,7 +195,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Provide documentation for deployer.
   It is a fix for "cannot copy" warning observed during building a release.
   http://svn.apache.org/viewvc?rev=783863&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1: 
 
 * Update the build scripts, because there are no 64-bit GUI binaries.
@@ -204,7 +204,7 @@ PATCHES PROPOSED TO BACKPORT:
   )
   Discussion: http://markmail.org/message/nhkrskh6bwyirwru
   http://svn.apache.org/viewvc?rev=783934&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47369.
@@ -216,7 +216,7 @@ PATCHES PROPOSED TO BACKPORT:
   Handle chunked POSTs. If maxPostSize is exceeded, a 500 results
   http://svn.apache.org/viewvc?rev=785381&view=rev
   http://svn.apache.org/viewvc?rev=786487&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Disable the code that detects the value for compilerSourceVM, compilerTargetVM options,
@@ -226,6 +226,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   +1: markt - I don't like commenting out code - if it isn't needed just delete it
             - This is fine for 6.0.x, for trunk 1.6 is the minimum
+  +1: fhanik - remove it is fine          
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47389
@@ -255,7 +256,7 @@ Index: java/org/apache/catalina/tribes/membership/McastServiceImpl.java
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38352
   JSPs should have read/write access to the context's temp dir
   http://svn.apache.org/viewvc?rev=786490&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Update to Apache Commons Pool 1.5.1
@@ -263,5 +264,5 @@ Index: java/org/apache/catalina/tribes/membership/McastServiceImpl.java
   occur fair - ie objects are allocated to threads in the order that the threads
   request them. Fixes a number of issues in DBCP.
   http://svn.apache.org/viewvc?rev=786496&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1:
