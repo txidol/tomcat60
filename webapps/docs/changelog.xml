@@ -49,6 +49,10 @@
         (markt/idarwin)
       </update>
       <fix>
+        <bug>43343</bug>: Fix additional concurrency issues identified with the
+        persistent session manager. (markt)
+      </fix>
+      <fix>
         <bug>46908</bug>: Try and support java encoding names when using an xml
         parser provided via the endorsed mechanism. (markt)
       </fix>

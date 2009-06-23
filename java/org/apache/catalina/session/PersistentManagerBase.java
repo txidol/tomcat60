@@ -814,6 +814,9 @@ public abstract class PersistentManagerBase
         ((StandardSession)session).tellNew();
         add(session);
         ((StandardSession)session).activate();
+        // endAccess() to ensure timeouts happen correctly.
+        // access() to keep access count correct or it will end up negative
+        session.access();
         session.endAccess();
 
         return (session);
@@ -1050,6 +1053,11 @@ public abstract class PersistentManagerBase
                     int timeIdle = // Truncate, do not round up
                         (int) ((timeNow - session.getLastAccessedTime()) / 1000L);
                     if (timeIdle > maxIdleSwap && timeIdle > minIdleSwap) {
+                        if (session.accessCount != null &&
+                                session.accessCount.get() > 0) {
+                                // Session is currently being accessed - skip it
+                                continue;
+                            }
                         if (log.isDebugEnabled())
                             log.debug(sm.getString
                                 ("persistentManager.swapMaxIdle",
@@ -1090,16 +1098,22 @@ public abstract class PersistentManagerBase
         long timeNow = System.currentTimeMillis();
 
         for (int i = 0; i < sessions.length && toswap > 0; i++) {
-            synchronized (sessions[i]) {
+            StandardSession session =  (StandardSession) sessions[i];
+            synchronized (session) {
                 int timeIdle = // Truncate, do not round up
-                    (int) ((timeNow - sessions[i].getLastAccessedTime()) / 1000L);
+                    (int) ((timeNow - session.getLastAccessedTime()) / 1000L);
                 if (timeIdle > minIdleSwap) {
+                    if (session.accessCount != null &&
+                            session.accessCount.get() > 0) {
+                            // Session is currently being accessed - skip it
+                            continue;
+                        }
                     if(log.isDebugEnabled())
                         log.debug(sm.getString
                             ("persistentManager.swapTooManyActive",
-                             sessions[i].getIdInternal(), new Integer(timeIdle)));
+                             session.getIdInternal(), new Integer(timeIdle)));
                     try {
-                        swapOut(sessions[i]);
+                        swapOut(session);
                     } catch (IOException e) {
                         ;   // This is logged in writeSession()
                     }
