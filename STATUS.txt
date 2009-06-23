@@ -234,6 +234,6 @@ PATCHES PROPOSED TO BACKPORT:
   and fixes nsi installer script.
   Patch for 6.0.x is available at:
   http://people.apache.org/~mturk/tomcat/tomcat6-package-winzip.patch
-  +1: markt, fhanik
+  +1: mturk
   -1:
 
