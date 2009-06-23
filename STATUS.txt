@@ -198,12 +198,8 @@ fhanik: That is a great point, This is an important observations that warrants a
   +1: kkolinko, markt
   -1: 
 
-* Make diagnosing broken requests a little easier. Having to copy the values is
-  a pain but I can't see an alternative. On balance I think it is worth it but I
-  appreciate others may disagree. 
-  http://svn.apache.org/viewvc?rev=783724&view=rev
-  http://svn.apache.org/viewvc?rev=786468&view=rev
-  http://svn.apache.org/viewvc?rev=786667&view=rev
+* Make diagnosing broken requests a little easier.
+  http://people.apache.org/~markt/patches/2009-06-23-parameters.patch
   +1: markt
   -1:
 
