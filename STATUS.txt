@@ -182,16 +182,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik
   -1: 
 
-* Document emptySessionPath behavior
-  Behavior is too old to change the way bug specifier requested, and obsolete in TC 7
-  http://svn.apache.org/viewvc?rev=783837&view=rev
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=47298
-  +1: fhanik
-  +1: markt - MarkMail provides permalinks you can use
-            - Doc changes have been using CTR even on release branches 
-  +1: kkolinko
-  -1: 
-
 * Provide documentation for deployer.
   It is a fix for "cannot copy" warning observed during building a release.
   http://svn.apache.org/viewvc?rev=783863&view=rev
