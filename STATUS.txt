@@ -234,25 +234,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt
   -1: 
 
-* Fix bug (revert commit)
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=47308
-Index: java/org/apache/catalina/tribes/membership/McastServiceImpl.java
-===================================================================
---- java/org/apache/catalina/tribes/membership/McastServiceImpl.java	(revision 785814)
-+++ java/org/apache/catalina/tribes/membership/McastServiceImpl.java	(working copy)
-@@ -199,7 +199,7 @@
-         } else {
-             socket = new MulticastSocket(port);
-         }
--        socket.setLoopbackMode(true); //hint that we don't need loop back messages
-+        socket.setLoopbackMode(false);
-         if (mcastBindAddress != null) {
- 			if(log.isInfoEnabled())
-                 log.info("Setting multihome multicast interface to:" +mcastBindAddress);
-
- +1: fhanik, markt, kkolinko
- -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38352
   JSPs should have read/write access to the context's temp dir
   http://svn.apache.org/viewvc?rev=786490&view=rev
