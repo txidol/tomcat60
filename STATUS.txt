@@ -182,3 +182,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mturk
   -1:
 
+* When throwing Non-serializable exception, mark which argument was
+  non-serializable to help tracing the cause when developing.
+  http://svn.apache.org/viewvc?rev=713953&view=rev
+  http://svn.apache.org/viewvc?rev=714002&view=rev
+  6.0.x version of the patch:
+  http://people.apache.org/~mturk/tomcat/setAttribute.iae.patch
+  +1: mturk
+  -1:
+
