@@ -140,7 +140,7 @@ PATCHES PROPOSED TO BACKPORT:
   Handle chunked POSTs. If maxPostSize is exceeded, a 500 results
   http://svn.apache.org/viewvc?rev=785381&view=rev
   http://svn.apache.org/viewvc?rev=786487&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, mturk
   -1: 
 
 * Disable the code that detects the value for compilerSourceVM, compilerTargetVM options,
