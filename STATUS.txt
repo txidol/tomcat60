@@ -113,7 +113,7 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=42747
   http://svn.apache.org/viewvc?view=rev&revision=783766
   Editing context.xml should not delete resources
-  +1: markt, fhanik
+  +1: markt, fhanik, mturk
   -1: 
 
 * Provide documentation for deployer.
@@ -133,7 +133,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47369.
   http://svn.apache.org/viewvc?rev=784879&view=rev
-  +1: fhanik, markt
+  +1: fhanik, markt, mturk
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37794
@@ -155,13 +155,15 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47389
   http://svn.apache.org/viewvc?rev=786124&view=rev
-  +1: fhanik, markt
+  +1: fhanik, markt, mturk
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38352
   JSPs should have read/write access to the context's temp dir
   http://svn.apache.org/viewvc?rev=786490&view=rev
   +1: markt, fhanik
+  +1: mturk - however I agree with Bill Barker this needs further research
+              because it can bloat the tmp dir.
   -1: 
 
 * Update to Apache Commons Pool 1.5.1
