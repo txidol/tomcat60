@@ -150,15 +150,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 
-* Add Executor JMX stats
-   http://svn.apache.org/viewvc?rev=783474&view=rev
-  +1: fhanik, markt
-  +1: kkolinko (
-     in activeCount description:  s/current/currently/
-     in completedTaskCount desc.: s/Nr/Number/ or /Count/. Was there a reason for shortening?
-  )
-  -1: 
-
 * Dont try to report thread counts when using an executor from outside
   http://people.apache.org/~fhanik/connector-thread-report.patch
   +1: fhanik
