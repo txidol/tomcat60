@@ -105,7 +105,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Make diagnosing broken requests a little easier.
   http://people.apache.org/~markt/patches/2009-06-23-parameters-v2.patch
-  +1: markt, fhanik
+  +1: markt, fhanik, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47343
