@@ -171,7 +171,7 @@ PATCHES PROPOSED TO BACKPORT:
   occur fair - ie objects are allocated to threads in the order that the threads
   request them. Fixes a number of issues in DBCP.
   http://svn.apache.org/viewvc?rev=786496&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, kkolinko
   -1:
 
 * Update release process to include new windows package zip files
@@ -191,3 +191,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mturk
   -1:
 
+* Change default value of compilerTargetVM, compilerSourceVM options in JspC,
+  to align with the values used by Jasper at runtime (EmbeddedServletOptions).
+  Tomcat 6 requires an 1.5 or later JRE to run.
+  http://people.apache.org/~kkolinko/patches/2009-06-24_JspC_targetVM.patch
+  +1: kkolinko
+  -1:
