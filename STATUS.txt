@@ -146,10 +146,10 @@ PATCHES PROPOSED TO BACKPORT:
   to align with the values used by Jasper at runtime (EmbeddedServletOptions).
   Tomcat 6 requires an 1.5 or later JRE to run.
   http://people.apache.org/~kkolinko/patches/2009-06-24_JspC_targetVM.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Trivial: Do not evaluate the same string twice
   http://svn.apache.org/viewvc?rev=787985&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
