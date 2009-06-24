@@ -385,17 +385,6 @@ public final class EmbeddedServletOptions implements Options {
     public EmbeddedServletOptions(ServletConfig config,
             ServletContext context) {
         
-        // JVM version numbers
-        try {
-            if (Float.parseFloat(System.getProperty("java.specification.version")) > 1.4) {
-                compilerSourceVM = compilerTargetVM = "1.5";
-            } else {
-                compilerSourceVM = compilerTargetVM = "1.4";
-            }
-        } catch (NumberFormatException e) {
-            // Ignore
-        }
-        
         Enumeration enumeration=config.getInitParameterNames();
         while( enumeration.hasMoreElements() ) {
             String k=(String)enumeration.nextElement();

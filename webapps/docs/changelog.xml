@@ -120,6 +120,11 @@
         <bug>47318</bug>: Process directives found in include preludes and
         codas. (markt)
       </fix>
+      <update>
+        Remove the code that auto-detects the value for compilerSourceVM,
+        compilerTargetVM options of Jasper, because we know that this version
+        of Tomcat cannot run on JDK 1.4 and thus the value is always "1.5". (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Webapps">

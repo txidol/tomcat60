@@ -143,16 +143,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, fhanik, mturk
   -1: 
 
-* Disable the code that detects the value for compilerSourceVM, compilerTargetVM options,
-  because we know that this version of Tomcat cannot run on JDK 1.4.
-  http://svn.apache.org/viewvc?rev=785768&view=rev
-  http://svn.apache.org/viewvc?rev=785859&view=rev
-  +1: kkolinko
-  +1: markt - I don't like commenting out code - if it isn't needed just delete it
-            - This is fine for 6.0.x, for trunk 1.6 is the minimum
-  +1: fhanik - remove it is fine          
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47389
   http://svn.apache.org/viewvc?rev=786124&view=rev
   +1: fhanik, markt, mturk
