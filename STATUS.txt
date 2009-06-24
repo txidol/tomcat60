@@ -118,14 +118,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt, mturk
   -1: 
 
-* Update to Apache Commons Pool 1.5.1
-  Various fixes to prevent deadlocks, reduce syncs and make object allocation
-  occur fair - ie objects are allocated to threads in the order that the threads
-  request them. Fixes a number of issues in DBCP.
-  http://svn.apache.org/viewvc?rev=786496&view=rev
-  +1: markt, fhanik, kkolinko
-  -1:
-
 * Update release process to include new windows package zip files
   with .dll and .exe matching a target CPU. Patch also syncs
   and fixes nsi installer script.
