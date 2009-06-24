@@ -49,6 +49,10 @@
         (markt/idarwin)
       </update>
       <fix>
+        <bug>37794</bug>: Support the parsing of parameters from chunked POSTs.
+        (markt)
+      </fix>
+      <fix>
         <bug>43343</bug>: Fix additional concurrency issues identified with the
         persistent session manager. (markt)
       </fix>

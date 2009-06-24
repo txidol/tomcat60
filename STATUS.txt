@@ -113,13 +113,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt, mturk
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37794
-  Handle chunked POSTs. If maxPostSize is exceeded, a 500 results
-  http://svn.apache.org/viewvc?rev=785381&view=rev
-  http://svn.apache.org/viewvc?rev=786487&view=rev
-  +1: markt, fhanik, mturk
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47389
   http://svn.apache.org/viewvc?rev=786124&view=rev
   +1: fhanik, markt, mturk
