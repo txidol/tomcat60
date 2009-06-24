@@ -123,7 +123,8 @@
       <update>
         Remove the code that auto-detects the value for compilerSourceVM,
         compilerTargetVM options of Jasper, because we know that this version
-        of Tomcat cannot run on JDK 1.4 and thus the value is always "1.5". (kkolinko)
+        of Tomcat cannot run on JDK 1.4 and thus the value is always "1.5".
+        (kkolinko)
       </update>
     </changelog>
   </subsection>
@@ -131,7 +132,7 @@
     <changelog>
       <fix>
         <bug>47235</bug>: Remove use of autoReconnect from MySQL examples.
-        (mark)
+        (markt)
       </fix>
     </changelog>
   </subsection>
@@ -161,6 +162,9 @@
         Fix download task check for commons-pool and commons-dbcp in the
         build scripts. (kkolinko)
       </fix>
+      <add>
+        Included deployer-howto.html into the deployer distributive. (kkolinko)
+      </add>
     </changelog>
   </subsection>
 </section>
