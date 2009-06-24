@@ -157,6 +157,10 @@
         Remove references to unused commons-collections from the build scripts.
         (markt)
       </update>
+      <fix>
+        Fix download task check for commons-pool and commons-dbcp in the
+        build scripts. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>

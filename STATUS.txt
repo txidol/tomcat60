@@ -98,11 +98,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
-* Fix download task dependency for commons-pool and commons-dbcp.
-  http://svn.apache.org/viewvc?rev=783762&view=rev
-  +1: kkolinko, markt, fhanik
-  -1: 
-
 * Make diagnosing broken requests a little easier.
   http://people.apache.org/~markt/patches/2009-06-23-parameters-v2.patch
   +1: markt, fhanik, kkolinko
