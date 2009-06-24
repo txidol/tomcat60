@@ -157,7 +157,7 @@ PATCHES PROPOSED TO BACKPORT:
   with .dll and .exe matching a target CPU. Patch also syncs
   and fixes nsi installer script.
   Patch for 6.0.x is available at:
-  http://people.apache.org/~mturk/tomcat/tomcat6-package-winzip-1.patch
+  http://people.apache.org/~mturk/tomcat/tomcat6-package-winzip-2.patch
   +1: mturk
   -1:
 
