@@ -105,7 +105,7 @@
         deployments. (markt)
       </fix>
       <add>
-        Better logging for parameter decoding issues to help idenitfy broken
+        Better logging for parameter decoding issues to help identify broken
         requests. (markt) 
       </add>
     </changelog>
