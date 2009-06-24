@@ -118,14 +118,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt, mturk
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38352
-  JSPs should have read/write access to the context's temp dir
-  http://svn.apache.org/viewvc?rev=786490&view=rev
-  +1: markt, fhanik
-  +1: mturk - however I agree with Bill Barker this needs further research
-              because it can bloat the tmp dir.
-  -1: 
-
 * Update to Apache Commons Pool 1.5.1
   Various fixes to prevent deadlocks, reduce syncs and make object allocation
   occur fair - ie objects are allocated to threads in the order that the threads
