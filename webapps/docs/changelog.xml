@@ -101,9 +101,13 @@
         (markt)
       </update>
       <fix>
-        Log deployments consistently for WAR, directotry and descriptor
+        Log deployments consistently for WAR, directory and descriptor
         deployments. (markt)
       </fix>
+      <add>
+        Better logging for parameter decoding issues to help idenitfy broken
+        requests. (markt) 
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

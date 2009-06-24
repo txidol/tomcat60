@@ -18,6 +18,7 @@
 package org.apache.tomcat.util.http;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
 import java.util.Hashtable;
 
@@ -339,8 +340,11 @@ public final class Parameters extends MultiMap {
     // if needed
     ByteChunk tmpName=new ByteChunk();
     ByteChunk tmpValue=new ByteChunk();
+    private ByteChunk origName=new ByteChunk();
+    private ByteChunk origValue=new ByteChunk();
     CharChunk tmpNameC=new CharChunk(1024);
     CharChunk tmpValueC=new CharChunk(1024);
+    private static final String DEFAULT_ENCODING = "ISO-8859-1";
     
     public void processParameters( byte bytes[], int start, int len ) {
         processParameters(bytes, start, len, encoding);
@@ -351,8 +355,15 @@ public final class Parameters extends MultiMap {
         int end=start+len;
         int pos=start;
         
-        if( debug>0 ) 
-            log( "Bytes: " + new String( bytes, start, len ));
+        if(log.isDebugEnabled()) {
+            try {
+                log.debug("Bytes: " +
+                        new String(bytes, start, len, DEFAULT_ENCODING));
+            } catch (UnsupportedEncodingException e) {
+                // Should never happen...
+                log.error("Unable to convert bytes", e);
+            }
+        }
 
         do {
             boolean noEq=false;
@@ -369,7 +380,16 @@ public final class Parameters extends MultiMap {
                 noEq=true;
                 valStart=nameEnd;
                 valEnd=nameEnd;
-                if( debug>0) log("no equal " + nameStart + " " + nameEnd + " " + new String(bytes, nameStart, nameEnd-nameStart) );
+                if(log.isDebugEnabled()) {
+                    try {
+                        log.debug("no equal " + nameStart + " " + nameEnd + " " +
+                                new String(bytes, nameStart, nameEnd-nameStart,
+                                        DEFAULT_ENCODING) );
+                    } catch (UnsupportedEncodingException e) {
+                        // Should never happen...
+                        log.error("Unable to convert bytes", e);
+                    }
+                }
             }
             if( nameEnd== -1 ) 
                 nameEnd=end;
@@ -383,24 +403,71 @@ public final class Parameters extends MultiMap {
             pos=valEnd+1;
             
             if( nameEnd<=nameStart ) {
-                log.warn("Parameters: Invalid chunk ignored.");
+                StringBuilder msg = new StringBuilder("Parameters: Invalid chunk ");
+                // No name eg ...&=xx&... will trigger this
+                if (valEnd >= nameStart) {
+                    msg.append('\'');
+                    try {
+                        msg.append(new String(bytes, nameStart,
+                                valEnd - nameStart, DEFAULT_ENCODING));
+                    } catch (UnsupportedEncodingException e) {
+                        // Should never happen...
+                        log.error("Unable to convert bytes", e);
+                    }
+                    msg.append("' ");
+                }
+                msg.append("ignored.");
+                log.warn(msg);
                 continue;
                 // invalid chunk - it's better to ignore
             }
             tmpName.setBytes( bytes, nameStart, nameEnd-nameStart );
             tmpValue.setBytes( bytes, valStart, valEnd-valStart );
-
+            
+            // Take copies as if anything goes wrong originals will be
+            // corrupted. This means original values can be logged.
+            // For performance - only done for debug
+            if (log.isDebugEnabled()) {
+                try {
+                    origName.append(bytes, nameStart, nameEnd-nameStart);
+                    origValue.append(bytes, valStart, valEnd-valStart);
+                } catch (IOException ioe) {
+                    // Should never happen...
+                    log.error("Error copying parameters", ioe);
+                }
+            }
+            
             try {
                 addParam( urlDecode(tmpName, enc), urlDecode(tmpValue, enc) );
             } catch (IOException e) {
-                // Exception during character decoding: skip parameter
-                log.warn("Parameters: Character decoding failed. " + 
-                         "Parameter skipped.", e);
+                StringBuilder msg =
+                    new StringBuilder("Parameters: Character decoding failed.");
+                msg.append(" Parameter '");
+                if (log.isDebugEnabled()) {
+                    msg.append(origName.toString());
+                    msg.append("' with value '");
+                    msg.append(origValue.toString());
+                    msg.append("' has been ignored.");
+                    log.debug(msg, e);
+                } else {
+                    msg.append(tmpName.toString());
+                    msg.append("' with value '");
+                    msg.append(tmpValue.toString());
+                    msg.append("' has been ignored. Note that the name and ");
+                    msg.append("value quoted here may corrupted due to the ");
+                    msg.append("failed decoding. Use debug level logging to ");
+                    msg.append("see the original, non-corrupted values.");
+                    log.warn(msg);
+                }
             }
 
             tmpName.recycle();
             tmpValue.recycle();
-
+            // Only recycle copies if we used them
+            if (log.isDebugEnabled()) {
+                origName.recycle();
+                origValue.recycle();
+            }
         } while( pos<end );
     }
 
