@@ -144,11 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung
   -1:
 
-* Trivial: Do not evaluate the same string twice
-  http://svn.apache.org/viewvc?rev=787985&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
   Update AccessLogValve with all the recent threading improvements
   http://people.apache.org/~markt/patches/2009-06-24-AccessLogValve-tc6.patch
