@@ -88,11 +88,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: kkolinko: http://marc.info/?l=tomcat-dev&m=124192105131636&w=2
   -1:
 
-* Add missing svn properties
-  http://people.apache.org/~rjung/patches/tc6-svnprops.patch
-  +1: rjung, fhanik, markt,funkman
-  -1: 
-
 * Dont try to report thread counts when using an executor from outside
   http://people.apache.org/~fhanik/connector-thread-report.patch
   +1: fhanik

@@ -43,7 +43,7 @@ import org.apache.catalina.util.StringManager;
  * </IfModule>
  *
  * @author Jean-Frederic Clere
- * @version $Revision: 420067 $, $Date: 2006-07-08 09:16:58 +0200 (sub, 08 srp 2006) $
+ * @version $Revision$, $Date$
  */
 
 public class SSLValve
