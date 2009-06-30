@@ -152,3 +152,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2009-06-24-AccessLogValve-tc6.patch
   +1: markt
   -1: 
+
+* Remove some obsolete (and partially broken) message strings.
+  http://svn.apache.org/viewvc?rev=789944&view=rev
+  +1: rjung
+  -1: 
