@@ -102,6 +102,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=783934&view=rev
   +1: kkolinko, markt, fhanik, rjung
   -1: 
+  kkolinko: We have +1 votes here, but I am not applying it, because
+  mturk's one (tomcat6-package-winzip-2.patch) also fixes this issue
+  and provides more value.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47369.
   http://svn.apache.org/viewvc?rev=784879&view=rev
