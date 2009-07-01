@@ -1388,7 +1388,7 @@
         (markt/jim)
       </fix>
       <fix>
-        <bug>43692</bug>: Clean up unused entires from build scripts. Patch
+        <bug>43692</bug>: Clean up unused entries from build scripts. Patch
         provided by Paul Shemansky. (markt)
       </fix>
       <fix>
