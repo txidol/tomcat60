@@ -152,3 +152,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=789944&view=rev
   +1: rjung, kkolinko, markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37984
+  Strip {MD5} as well as {SHA} from digested passwords
+  http://svn.apache.org/viewvc?rev=790405&view=rev
+  +1: markt
+  -1: 
