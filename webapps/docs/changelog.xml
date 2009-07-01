@@ -153,6 +153,15 @@
       </update>
     </changelog>
   </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <fix>
+        <bug>47389</bug>: DeltaManager doesn't do session replication if
+        notifySessionListenersOnReplication=false.
+        Patch by Keiichi Fujino. (fhanik)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Webapps">
     <changelog>
       <fix>
