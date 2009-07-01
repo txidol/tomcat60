@@ -155,5 +155,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove some obsolete (and partially broken) message strings.
   http://svn.apache.org/viewvc?rev=789944&view=rev
-  +1: rjung, kkolinko
+  +1: rjung, kkolinko, markt
   -1: 
