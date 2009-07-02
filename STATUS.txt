@@ -94,18 +94,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt - would 0 make more sense rather than -1? Happy with either
   -1: 
 
-* Update the build scripts, because there are no 64-bit GUI binaries.
-  (Fixes release build failure caused by 
-    http://svn.apache.org/viewvc?view=rev&revision=779930
-  )
-  Discussion: http://markmail.org/message/nhkrskh6bwyirwru
-  http://svn.apache.org/viewvc?rev=783934&view=rev
-  +1: kkolinko, markt, fhanik, rjung
-  -1: 
-  kkolinko: We have +1 votes here, but I am not applying it, because
-  mturk's one (tomcat6-package-winzip-2.patch) also fixes this issue
-  and provides more value.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47369.
   http://svn.apache.org/viewvc?rev=784879&view=rev
   +1: fhanik, markt, mturk, rjung
