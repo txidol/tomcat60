@@ -161,8 +161,8 @@ public class JspC implements Options {
 
     protected String compiler = null;
 
-    protected String compilerTargetVM = "1.4";
-    protected String compilerSourceVM = "1.4";
+    protected String compilerTargetVM = "1.5";
+    protected String compilerSourceVM = "1.5";
 
     protected boolean classDebugInfo = true;
 

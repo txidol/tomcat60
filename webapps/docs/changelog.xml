@@ -124,7 +124,7 @@
       </add>
       <update>
         Update Apache Commons Pool from 1.4 to 1.5.1. This update includes
-        various fixes to prevent deadlocks, reduces synchronisation and makes
+        various fixes to prevent deadlocks, reduces synchronization and makes
         object allocation occur fairly - i.e. objects are allocated to threads
         in the order that the threads request them. This update fixes a number
         of issues in Tomcat's built-in copy of DBCP. (markt)
@@ -149,6 +149,12 @@
         Remove the code that auto-detects the value for compilerSourceVM,
         compilerTargetVM options of Jasper, because we know that this version
         of Tomcat cannot run on JDK 1.4 and thus the value is always "1.5".
+        (kkolinko)
+      </update>
+      <update>
+        Change default values for JDK version compliance options of JspC
+        (-source and -target when running from command line)
+        to be "1.5", to be the same as the ones used by Jasper servlet.
         (kkolinko)
       </update>
     </changelog>

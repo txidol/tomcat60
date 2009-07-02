@@ -135,13 +135,6 @@ PATCHES PROPOSED TO BACKPORT:
      )
   -1:
 
-* Change default value of compilerTargetVM, compilerSourceVM options in JspC,
-  to align with the values used by Jasper at runtime (EmbeddedServletOptions).
-  Tomcat 6 requires an 1.5 or later JRE to run.
-  http://people.apache.org/~kkolinko/patches/2009-06-24_JspC_targetVM.patch
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
   Update AccessLogValve with all the recent threading improvements
   http://people.apache.org/~markt/patches/2009-06-24-AccessLogValve-tc6.patch
