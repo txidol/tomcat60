@@ -145,3 +145,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2009-07-04_tc6_encodings.patch
   +1: kkolinko
   -1:
+
+* Add *.rtf to the list of exclusions in fixcrlf task.
+  http://svn.apache.org/viewvc?rev=791184&view=rev
+  +1: kkolinko
+  -1:
