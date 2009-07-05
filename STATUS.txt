@@ -174,5 +174,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38897
   Add uri of broken TLD to error message to help debugging
   http://svn.apache.org/viewvc?rev=791243&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
