@@ -90,7 +90,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Dont try to report thread counts when using an executor from outside
   http://people.apache.org/~fhanik/connector-thread-report.patch
-  +1: fhanik
+  +1: fhanik, kkolinko
   +1: markt - would 0 make more sense rather than -1? Happy with either
   -1: 
 
@@ -137,7 +137,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37984
   Strip {MD5} as well as {SHA} from digested passwords
   http://svn.apache.org/viewvc?rev=790405&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47149
