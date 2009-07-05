@@ -157,3 +157,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2009-07-04_tc6_remove-webapps-precompile.patch
   +1: kkolinko
   -1:
+
+* Specify explicit encoding when performing replace task
+  http://svn.apache.org/viewvc?rev=791194&view=rev
+  +1: kkolinko
+  -1:
