@@ -176,3 +176,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=791243&view=rev
   +1: markt, kkolinko
   -1: 
+
+* Various script improvements (free free to vote for them individually)
+  http://svn.apache.org/viewvc?rev=791326&view=rev (remove JSSE)
+  http://svn.apache.org/viewvc?rev=791328&view=rev (display classpath)
+  http://svn.apache.org/viewvc?rev=791331&view=rev (align platforms / bug 39194)
+  +1: markt
+  -1: 
