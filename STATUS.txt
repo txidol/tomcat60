@@ -183,3 +183,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=791331&view=rev (align platforms / bug 39194)
   +1: markt
   -1: 
+  
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47478
+  https://svn.apache.org/viewcvs.cgi?view=rev&rev=791524
+  +1: fhanik
+  -1: 
+  
