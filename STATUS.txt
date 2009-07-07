@@ -137,30 +137,30 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37984
   Strip {MD5} as well as {SHA} from digested passwords
   http://svn.apache.org/viewvc?rev=790405&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47149
   Explicitly specify encoding for the source files
   http://people.apache.org/~kkolinko/patches/2009-07-04_tc6_encodings.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Add *.rtf to the list of exclusions in fixcrlf task.
   http://svn.apache.org/viewvc?rev=791184&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Remove build-webapps-precompile target from dist.xml
   Discussion: http://markmail.org/thread/ymgbgqm3lav6rnjh
   Patch:
   http://people.apache.org/~kkolinko/patches/2009-07-04_tc6_remove-webapps-precompile.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Specify explicit encoding when performing replace task
   http://svn.apache.org/viewvc?rev=791194&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38797
@@ -174,18 +174,18 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38897
   Add uri of broken TLD to error message to help debugging
   http://svn.apache.org/viewvc?rev=791243&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Various script improvements (free free to vote for them individually)
   http://svn.apache.org/viewvc?rev=791326&view=rev (remove JSSE)
   http://svn.apache.org/viewvc?rev=791328&view=rev (display classpath)
   http://svn.apache.org/viewvc?rev=791331&view=rev (align platforms / bug 39194)
-  +1: markt
+  +1: markt, rjung (all 3 patches)
   -1: 
-  
+
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47478
   https://svn.apache.org/viewcvs.cgi?view=rev&rev=791524
-  +1: fhanik
+  +1: fhanik, rjung
   -1: 
   
