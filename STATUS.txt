@@ -169,3 +169,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, rjung, markt
   -1: 
   
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39231
+  http://svn.apache.org/viewvc?rev=791900&view=rev
+  JAAS LoginContext expects a call to logout()
+  +1: markt
+  -1: 
+ 
