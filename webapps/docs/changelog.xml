@@ -178,6 +178,10 @@
   </subsection>
   <subsection name="Other">
     <changelog>
+      <update>
+        Update Tomcat Windows service application (procrun) to version 2.0.5.
+        It contains a fix for issue <bug>41538</bug> (mturk)
+      </update>
       <fix>
         <bug>40786</bug>: Include 64-bit Windows service wrapper in
         distributions. Update the Windows installer to automatically use the
