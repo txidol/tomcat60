@@ -124,12 +124,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=37984
-  Strip {MD5} as well as {SHA} from digested passwords
-  http://svn.apache.org/viewvc?rev=790405&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47149
   Explicitly specify encoding for the source files
   http://people.apache.org/~kkolinko/patches/2009-07-04_tc6_encodings.patch

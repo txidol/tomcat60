@@ -53,6 +53,10 @@
         (markt)
       </fix>
       <fix>
+        <bug>37984</bug>: Strip {MD5} as well as {SHA} if present in digest
+        passwords in LDAP directories. (markt)
+      </fix>
+      <fix>
         <bug>38352</bug>: Allow JSPs to write to the directory defined by
         <code>javax.servlet.context.tempdir</code> when running under a security
         manager. (markt)
