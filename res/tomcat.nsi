@@ -171,19 +171,17 @@ Section "Core" SecTomcatCore
   DetailPrint "Using Jvm: $2"
 
   SetOutPath $INSTDIR\bin
+  File bin\tomcat@VERSION_MAJOR@w.exe
+
   ; Get the current platform x86 / AMD64 / IA64
-  ExpandEnvStrings $0 "%PROCESSOR_ARCHITEW6432%"
-  StrCmp $0 "%PROCESSOR_ARCHITEW6432%" 0 +2
-  ExpandEnvStrings $0 "%PROCESSOR_ARCHITECTURE%"
-  StrCmp $0 "x86" 0 +3
+  Call FindCpuType
+  Pop $0
+  StrCmp $0 "x86" 0 +2
   File /oname=tomcat@VERSION_MAJOR@.exe bin\tomcat@VERSION_MAJOR@.exe
-  File /oname=tomcat@VERSION_MAJOR@w.exe bin\tomcat@VERSION_MAJOR@w.exe
-  StrCmp $0 "AMD64" 0 +3
-  File /oname=tomcat@VERSION_MAJOR@.exe bin\procrun\amd64\tomcat@VERSION_MAJOR@.exe
-  File /oname=tomcat@VERSION_MAJOR@w.exe bin\tomcat@VERSION_MAJOR@w.exe
-  StrCmp $0 "IA64" 0 +3
-  File /oname=tomcat@VERSION_MAJOR@.exe bin\procrun\ia64\tomcat@VERSION_MAJOR@.exe
-  File /oname=tomcat@VERSION_MAJOR@w.exe bin\tomcat@VERSION_MAJOR@w.exe
+  StrCmp $0 "x64" 0 +2
+  File /oname=tomcat@VERSION_MAJOR@.exe bin\x64\tomcat@VERSION_MAJOR@.exe
+  StrCmp $0 "i64" 0 +2
+  File /oname=tomcat@VERSION_MAJOR@.exe bin\i64\tomcat@VERSION_MAJOR@.exe
 
   InstallRetry:
   ClearErrors
@@ -227,7 +225,15 @@ Section "Native" SecTomcatNative
   SectionIn 3
 
   SetOutPath $INSTDIR\bin
+  Call FindCpuType
+  Pop $0
+
+  StrCmp $0 "x86" 0 +2
   File bin\tcnative-1.dll
+  StrCmp $0 "x64" 0 +2
+  File /oname=tcnative-1.dll bin\x64\tcnative-1.dll
+  StrCmp $0 "i64" 0 +2
+  File /oname=tcnative-1.dll bin\i64\tcnative-1.dll
 
   ClearErrors
 
@@ -403,6 +409,30 @@ FunctionEnd
 ;  !insertmacro MUI_DESCRIPTION_TEXT ${SecWebapps} $(DESC_SecWebapps)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
+; =====================
+; FindCpuType Function
+; =====================
+;
+; Find the CPU used on the system, and put the result on the top of the
+; stack
+;
+Function FindCpuType
+
+  ClearErrors
+  ; Default CPU is always x86
+  StrCpy $1 "x86"
+  ExpandEnvStrings $0 "%PROCESSOR_ARCHITEW6432%"
+  StrCmp $0 "%PROCESSOR_ARCHITEW6432%" +5 0
+  StrCmp $0 "IA64" 0 +3
+  StrCpy $1 "i64"
+  Goto FoundCpu
+  StrCpy $1 "x64"
+
+FoundCpu:
+  ; Put the result in the stack
+  Push $1
+
+FunctionEnd
 
 ; =====================
 ; CheckUserType Function

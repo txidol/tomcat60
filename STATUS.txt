@@ -99,14 +99,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, markt, mturk, rjung
   -1: 
 
-* Update release process to include new windows package zip files
-  with .dll and .exe matching a target CPU. Patch also syncs
-  and fixes nsi installer script.
-  Patch for 6.0.x is available at:
-  http://people.apache.org/~mturk/tomcat/tomcat6-package-winzip-2.patch
-  +1: mturk, kkolinko, rjung
-  -1:
-
 * When throwing Non-serializable exception, mark which argument was
   non-serializable to help tracing the cause when developing.
   http://svn.apache.org/viewvc?rev=713953&view=rev
