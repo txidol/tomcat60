@@ -105,14 +105,17 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=714002&view=rev
   6.0.x version of the patch:
   http://people.apache.org/~mturk/tomcat/setAttribute1.iae.patch
-  +1: mturk
-  -1: kkolinko: (
-      good in general, but
-      1) please use native2ascii for LocalStrings_fr.properties
-      s/ e / \u00nn /
-      2) o.a.c.session.ha.session.LocalString*.properties files also have this string.
-      Should it be removed from there, or updated there also?
+  +1: mturk, kkolinko
+  -1:
+  kkolinko: (
+      o.a.c.session.ha.session.LocalString*.properties files also have this string.
+      It should be removed from there, or updated there also.
+      I am proposing the removal patch below (rev.791789).
      )
+
+* Remove standardSession strings not used by DeltaSession
+  http://svn.apache.org/viewvc?rev=791789&view=rev
+  +1: kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
@@ -170,6 +173,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=791331&view=rev (align platforms / bug 39194)
   +1: markt, rjung (all 3 patches)
   -1: 
+  kkolinko: +1 for the first and second patches,
+            -1 for the third patch. See tc5.5 status file for discussion.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47478
   https://svn.apache.org/viewcvs.cgi?view=rev&rev=791524
