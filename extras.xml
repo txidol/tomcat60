@@ -104,7 +104,8 @@
     <untar src="${tomcat.extras}/logging/commons-logging-src.tar" 
     	dest="${tomcat.extras}/logging/"/>
   	
-    <replace dir="${tomcat.extras}/logging/commons-logging-${commons-logging-version}-src/src/java/org/apache/commons" >
+    <replace dir="${tomcat.extras}/logging/commons-logging-${commons-logging-version}-src/src/java/org/apache/commons"
+        encoding="ISO-8859-1">
       <replacefilter token="org.apache.commons"
             value="org.apache.juli" />
     </replace>
@@ -113,7 +114,8 @@
       <fileset dir="${tomcat.extras}/logging/commons-logging-${commons-logging-version}-src/src/java/org/apache/commons" />
     </move>
 
-    <replace dir="${tomcat.extras}/logging/commons-logging-${commons-logging-version}-src" >
+    <replace dir="${tomcat.extras}/logging/commons-logging-${commons-logging-version}-src"
+        encoding="ISO-8859-1">
       <replacefilter token="org.apache.commons"
             value="org.apache.juli" />
         <replacefilter token="org/apache/commons/"
