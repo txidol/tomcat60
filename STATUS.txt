@@ -124,13 +124,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Remove build-webapps-precompile target from dist.xml
-  Discussion: http://markmail.org/thread/ymgbgqm3lav6rnjh
-  Patch:
-  http://people.apache.org/~kkolinko/patches/2009-07-04_tc6_remove-webapps-precompile.patch
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38797
   Reverts previous fix for
   https://issues.apache.org/bugzilla/show_bug.cgi?id=37933 and implements an
