@@ -154,3 +154,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=791914
   +1: fhanik
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39637
+  AJP connectors do not handle certificate chains
+  Patch by Patrik Schnellmann
+  https://issues.apache.org/bugzilla/attachment.cgi?id=23951
+  +1: markt
+  -1: 
