@@ -155,14 +155,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Various script improvements (free free to vote for them individually)
-  http://svn.apache.org/viewvc?rev=791326&view=rev (remove JSSE)
-  http://svn.apache.org/viewvc?rev=791328&view=rev (display classpath)
+* Script improvement
   http://svn.apache.org/viewvc?rev=791331&view=rev (align platforms / bug 39194)
-  +1: markt, rjung (all 3 patches)
-  -1: 
-  kkolinko: +1 for the first and second patches,
-            -1 for the third patch. See tc5.5 status file for discussion.
+  +1: markt, rjung
+  -1: kkolinko: See tc5.5 status file for discussion.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47478
   https://svn.apache.org/viewcvs.cgi?view=rev&rev=791524
