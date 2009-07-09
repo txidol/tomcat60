@@ -53,7 +53,8 @@
          debug="${compile.debug}"
          deprecation="${compile.deprecation}"
          source="${compile.source}"
-         optimize="${compile.optimize}">
+         optimize="${compile.optimize}"
+         encoding="ISO-8859-1">
          <classpath refid="tomcat.test.classpath" />
          <include name="org/apache/catalina/tomcat/util/**" />
   </javac>
