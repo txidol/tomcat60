@@ -15,7 +15,7 @@
   limitations under the License.
 ================================================================================
 
-$Revision$ $Date$
+$Id$
 
                          =================================
                          Apache Tomcat 6.0 Patch Proposals
@@ -123,12 +123,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2009-06-24-AccessLogValve-tc6.patch
   +1: markt
   -1: 
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47149
-  Explicitly specify encoding for the source files
-  http://people.apache.org/~kkolinko/patches/2009-07-04_tc6_encodings.patch
-  +1: kkolinko, markt, rjung
-  -1:
 
 * Add *.rtf to the list of exclusions in fixcrlf task.
   http://svn.apache.org/viewvc?rev=791184&view=rev

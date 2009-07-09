@@ -118,7 +118,8 @@
            source="${compile.source}"
            target="${compile.target}"
            optimize="${compile.optimize}"
-           excludes="**/CVS/**,**/.svn/**">
+           excludes="**/CVS/**,**/.svn/**"
+           encoding="ISO-8859-1">
 <!-- Comment this in to show unchecked warnings:     <compilerarg value="-Xlint:unchecked"/> -->
       <classpath refid="tomcat.classpath" />
       <exclude name="org/apache/naming/factory/webservices/**" />
@@ -489,7 +490,8 @@
              target="${compile.target}"
              optimize="${compile.optimize}"
              classpath="${tomcat.classes}"
-             excludes="**/CVS/**,**/.svn/**">
+             excludes="**/CVS/**,**/.svn/**"
+             encoding="ISO-8859-1">
     </javac>
 
     <javac   srcdir="webapps/examples/jsp/plugin/applet"
@@ -499,7 +501,8 @@
              target="${compile.target}"
              optimize="${compile.optimize}"
              classpath="$tomcat.lcasses}"
-             excludes="**/CVS/**,**/.svn/**">
+             excludes="**/CVS/**,**/.svn/**"
+             encoding="ISO-8859-1">
     </javac>
 
     <!-- Add sources for examples -->
@@ -738,7 +741,8 @@
            source="${compile.source}"
            target="${compile.target}"
            sourcepath="${tomcat-dbcp.home}/src/java"
-           srcdir="${tomcat-dbcp.home}/src/java" >
+           srcdir="${tomcat-dbcp.home}/src/java"
+           encoding="ISO-8859-1">
       <include name="**" />
     </javac>
     <jar jarfile="${tomcat-dbcp.jar}"

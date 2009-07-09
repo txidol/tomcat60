@@ -215,8 +215,12 @@
         build scripts. (kkolinko)
       </fix>
       <add>
-        Included deployer-howto.html into the deployer distributive. (kkolinko)
+        Include deployer-howto.html into the deployer distributive. (kkolinko)
       </add>
+      <fix>
+        <bug>47149</bug>: Build scripts: Explicitly specify encoding when
+        compiling. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>
