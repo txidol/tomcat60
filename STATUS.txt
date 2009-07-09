@@ -124,11 +124,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Add *.rtf to the list of exclusions in fixcrlf task.
-  http://svn.apache.org/viewvc?rev=791184&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Remove build-webapps-precompile target from dist.xml
   Discussion: http://markmail.org/thread/ymgbgqm3lav6rnjh
   Patch:
