@@ -131,11 +131,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung
   -1:
 
-* Specify explicit encoding when performing replace task
-  http://svn.apache.org/viewvc?rev=791194&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38797
   Reverts previous fix for
   https://issues.apache.org/bugzilla/show_bug.cgi?id=37933 and implements an
