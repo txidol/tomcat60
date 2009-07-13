@@ -107,16 +107,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~mturk/tomcat/setAttribute1.iae.patch
   +1: mturk, kkolinko, markt
   -1:
-  kkolinko: (
-      o.a.c.session.ha.session.LocalString*.properties files also have this string.
-      It should be removed from there, or updated there also.
-      I am proposing the removal patch below (rev.791789).
-     )
-
-* Remove standardSession strings not used by DeltaSession
-  http://svn.apache.org/viewvc?rev=791789&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
   Update AccessLogValve with all the recent threading improvements
