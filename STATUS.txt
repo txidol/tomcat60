@@ -161,8 +161,6 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=23951
   +1: markt, rjung
   -1: 
-  rjung: It seems the line "int i = 0;" in the patch for
-         java/org/apache/jk/core/MsgContext.java is not used.
 
 * Correct errorlevel handling in setclasspath.bat
   http://svn.apache.org/viewvc?rev=793669&view=rev
