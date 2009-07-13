@@ -170,6 +170,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Update to Commons Pool 1.5.2
   http://svn.apache.org/viewvc?rev=793682&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
