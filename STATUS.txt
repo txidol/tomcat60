@@ -115,7 +115,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove standardSession strings not used by DeltaSession
   http://svn.apache.org/viewvc?rev=791789&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
@@ -134,7 +134,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Script improvement - alternative patch
   http://svn.apache.org/viewvc?rev=793372&view=rev (align platforms / bug 39194)
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47478
@@ -159,5 +159,7 @@ PATCHES PROPOSED TO BACKPORT:
   AJP connectors do not handle certificate chains
   Patch by Patrik Schnellmann
   https://issues.apache.org/bugzilla/attachment.cgi?id=23951
-  +1: markt
+  +1: markt, rjung
   -1: 
+  rjung: It seems the line "int i = 0;" in the patch for
+         java/org/apache/jk/core/MsgContext.java is not used.
