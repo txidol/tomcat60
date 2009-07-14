@@ -179,3 +179,8 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=40380
   +1: markt
   -1: 
+
+* Improve JNDI debug logging for lookups
+  http://svn.apache.org/viewvc?rev=794082&view=rev
+  +1: markt
+  -1: 
