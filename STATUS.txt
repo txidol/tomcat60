@@ -156,7 +156,7 @@ PATCHES PROPOSED TO BACKPORT:
   AJP connectors do not handle certificate chains
   Patch by Patrik Schnellmann
   https://issues.apache.org/bugzilla/attachment.cgi?id=23951
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1: 
 
 * Correct errorlevel handling in setclasspath.bat
@@ -182,5 +182,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Improve JNDI debug logging for lookups
   http://svn.apache.org/viewvc?rev=794082&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
