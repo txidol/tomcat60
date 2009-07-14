@@ -170,3 +170,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung, kkolinko
   -1: 
 
+* Allow encoding to be specified for JULI FileHandler
+  http://svn.apache.org/viewvc?rev=793882&view=rev
+  +1: kkolinko
+  -1:
