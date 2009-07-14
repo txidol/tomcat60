@@ -164,7 +164,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, kkolinko
   -1: 
 
-
 * Update to Commons Pool 1.5.2
   http://svn.apache.org/viewvc?rev=793682&view=rev
   +1: markt, rjung, kkolinko
@@ -174,3 +173,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=793882&view=rev
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=40380
+  Correct synchronisation of expire(). Method should only run once.
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=40380
+  +1: markt
+  -1: 
