@@ -135,7 +135,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Script improvement - additional patch
   http://svn.apache.org/viewvc?rev=793757&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47478
@@ -165,7 +165,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Correct errorlevel handling in setclasspath.bat
   http://svn.apache.org/viewvc?rev=793669&view=rev
-  +1: rjung, kkolinko
+  +1: rjung, kkolinko, markt
   -1: 
 
 * Update to Commons Pool 1.5.2
@@ -175,7 +175,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Allow encoding to be specified for JULI FileHandler
   http://svn.apache.org/viewvc?rev=793882&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=40380
@@ -202,7 +202,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47515
   https://issues.apache.org/bugzilla/attachment.cgi?id=23973
-  +1: fhanik, kkolinko
+  +1: fhanik, kkolinko, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=40551
