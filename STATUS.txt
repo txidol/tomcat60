@@ -156,11 +156,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
-* Correct errorlevel handling in setclasspath.bat
-  http://svn.apache.org/viewvc?rev=793669&view=rev
-  +1: rjung, kkolinko, markt
-  -1: 
-
 * Allow encoding to be specified for JULI FileHandler
   http://svn.apache.org/viewvc?rev=793882&view=rev
   +1: kkolinko, markt, rjung
