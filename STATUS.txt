@@ -204,3 +204,10 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=23973
   +1: fhanik, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=40551
+  Enable the JvmRouteBinderValve to work with PersistentManagers as well as
+  clusters
+  http://svn.apache.org/viewvc?rev=794822&view=rev
+  +1: markt
+  -1: 
