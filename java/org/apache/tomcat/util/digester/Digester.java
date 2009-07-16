@@ -441,9 +441,8 @@ public class Digester extends DefaultHandler {
     /**
      * Return the debugging detail level of our currently enabled logger.
      *
-     * @deprecated This method now always returns 0. Digester uses the apache
-     * jakarta commons-logging library; see the documentation for that library
-     * for more information.
+     * @deprecated This method now always returns 0. This copy of Digester uses
+     * JULI; see the documentation for that library for more information.
      */
     public int getDebug() {
 
@@ -458,9 +457,8 @@ public class Digester extends DefaultHandler {
      * @param debug New debugging detail level (0=off, increasing integers
      *  for more detail)
      *
-     * @deprecated This method now has no effect at all. Digester uses
-     * the apache jakarta comons-logging library; see the documentation
-     * for that library for more information.
+     * @deprecated This method now has no effect at all. This copy of Digester
+     * uses JULI; see the documentation for that library for more information.
      */
     public void setDebug(int debug) {
 
