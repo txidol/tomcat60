@@ -112,7 +112,11 @@ PATCHES PROPOSED TO BACKPORT:
   Update AccessLogValve with all the recent threading improvements
   http://people.apache.org/~markt/patches/2009-06-24-AccessLogValve-tc6.patch
   +1: markt
-  -1: 
+  -1: kkolinko: It cannot be applied without additional patches,
+    because this change breaks ExtendedAccessLogValve.DateElement and
+    TimeElement: Their "if (currentDate != date)" check is broken,
+    because now the Date instance is reused in the same thread, and is
+    different across threads.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=38797
   Reverts previous fix for
