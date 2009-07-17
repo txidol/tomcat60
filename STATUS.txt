@@ -198,4 +198,5 @@ PATCHES PROPOSED TO BACKPORT:
   clusters
   http://svn.apache.org/viewvc?rev=794822&view=rev
   +1: markt, rjung
+  +1: kkolinko (see my comment in STATUS file of TC 5.5)
   -1: 
