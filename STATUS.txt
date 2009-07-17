@@ -156,11 +156,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
-* Allow encoding to be specified for JULI FileHandler
-  http://svn.apache.org/viewvc?rev=793882&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=40380
   Correct synchronisation of expire(). Method should only run once.
   http://svn.apache.org/viewvc?rev=793981&view=rev

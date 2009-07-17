@@ -133,6 +133,9 @@
         in the order that the threads request them. This update fixes a number
         of issues in Tomcat's built-in copy of DBCP. (markt)
       </update>
+      <add>
+        Allow log file encoding to be configured for JULI FileHandler. (kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
