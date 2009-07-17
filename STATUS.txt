@@ -175,3 +175,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=795152&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41661
+  Thread safety issue in JspConfig.init() seen in production
+  http://svn.apache.org/viewvc?rev=795210&view=rev
+  +1: markt
+  -1: 
