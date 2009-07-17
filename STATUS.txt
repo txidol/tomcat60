@@ -169,3 +169,9 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=23973
   +1: fhanik, kkolinko, markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41059
+  Reduce errors if using ENABLE_CLEAR_REFERENCES=true
+  http://svn.apache.org/viewvc?rev=795152&view=rev
+  +1: markt
+  -1: 
