@@ -144,12 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=40380
-  Correct synchronisation of expire(). Method should only run once.
-  http://svn.apache.org/viewvc?rev=793981&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Improve JNDI debug logging for lookups
   http://svn.apache.org/viewvc?rev=794082&view=rev
   +1: markt, kkolinko, rjung

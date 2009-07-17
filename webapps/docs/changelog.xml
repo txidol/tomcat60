@@ -62,6 +62,10 @@
         manager. (markt)
       </fix>
       <fix>
+        <bug>40380</bug>: Fix potential synchronization issue in
+        StandardSession.expire(). (markt) 
+      </fix>
+      <fix>
         <bug>43343</bug>: Fix additional concurrency issues identified with the
         persistent session manager. (markt)
       </fix>
