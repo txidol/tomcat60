@@ -159,7 +159,6 @@ PATCHES PROPOSED TO BACKPORT:
   .../example-taglib and .../examples-taglib
   Though this inconsistency already existed before this patch.
 
-
 * Make constants constant
   http://svn.apache.org/viewvc?rev=794673&view=rev
   +1: markt, kkolinko, rjung
@@ -173,7 +172,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41059
   Reduce errors if using ENABLE_CLEAR_REFERENCES=true
   http://svn.apache.org/viewvc?rev=795152&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41661
