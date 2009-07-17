@@ -193,6 +193,10 @@
   </subsection>
   <subsection name="Other">
     <changelog>
+      <fix>
+        <bug>39194</bug>: Make classpath configuration consistent in the startup
+        scripts. (markt/kkolinko)
+      </fix>
       <update>
         Update Tomcat Windows service application (procrun) to version 2.0.5.
         It contains a fix for issue <bug>41538</bug> (mturk)

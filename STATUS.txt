@@ -126,18 +126,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Script improvement - alternative patch
-  http://svn.apache.org/viewvc?rev=793372&view=rev (align platforms / bug 39194)
-  +1: markt, rjung, kkolinko
-  -1: 
-  kkolinko: It needs rev.793757 that I am proposing below. Otherwise the
-    user isn't able to set CLASSPATH in setenv script.
-
-* Script improvement - additional patch
-  http://svn.apache.org/viewvc?rev=793757&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47478
   https://svn.apache.org/viewcvs.cgi?view=rev&rev=791524
   +1: fhanik, rjung, markt
