@@ -29,11 +29,6 @@
 
 <body>
  
-<section name="NOTICE">
-<p>
-    <b>This section of the documentation applies to procrun 1.0, and is now obsolete.</b>
-</p>
-</section>
 <section name="Tomcat6 service application">
 <p>
     <b>Tomcat6</b> is a service application for running Tomcat6 as NT service.
@@ -305,7 +300,15 @@
 </section>
 <section name="Installing services">
 <p>
-The safest way to manually install the service is to use the provided <b>service.bat</b> script.
+The safest way to manually install the service is to use the provided
+<b>service.bat</b> script. Administrator privileges are required to run this
+script.
+</p>
+<p>
+<strong>NOTE:</strong> On Windows Vista or any other operating system with User
+Account Control (UAC) you must either disable UAC or right-click on cmd.exe and
+select "Run as administrator" in order to run this script. If UAC is enabled
+being logged on with an Administrator account is not sufficient.  
 </p>
 <p>
 <source>

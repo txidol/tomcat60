@@ -195,6 +195,10 @@
   <subsection name="Webapps">
     <changelog>
       <fix>
+        <bug>41564</bug>: Add some information on installing Tomcat as a service
+        on operating systems with User Account Control, e.g. Vista. (markt)
+      </fix>
+      <fix>
         <bug>47235</bug>: Remove use of autoReconnect from MySQL examples.
         (markt)
       </fix>
