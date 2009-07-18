@@ -172,11 +172,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41059
   Reduce errors if using ENABLE_CLEAR_REFERENCES=true
   http://svn.apache.org/viewvc?rev=795152&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41661
   Thread safety issue in JspConfig.init() seen in production
   http://svn.apache.org/viewvc?rev=795210&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
