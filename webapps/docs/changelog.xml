@@ -212,6 +212,9 @@
         <bug>47235</bug>: Remove use of autoReconnect from MySQL examples.
         (markt)
       </fix>
+      <fix>
+        <bug>47444</bug>: Remove Jakarta references. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
