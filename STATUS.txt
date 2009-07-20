@@ -182,3 +182,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=795466&view=rev
   +1: kkolinko
   -1: 
+
+* Fix the JDBC driver clean-up
+  http://svn.apache.org/viewvc?view=rev&revision=789389
+  +1: markt
+  -1: 
