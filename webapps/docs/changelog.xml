@@ -66,6 +66,10 @@
         StandardSession.expire(). (markt) 
       </fix>
       <fix>
+        <bug>41059</bug>: Reduce chances or errors when ENABLE_CLEAR_REFERENCES
+        is used. Patch provided by Curt Arnold. (markt)
+      </fix>
+      <fix>
         <bug>43343</bug>: Fix additional concurrency issues identified with the
         persistent session manager. (markt)
       </fix>
