@@ -183,6 +183,9 @@
         to be "1.5", to be the same as the ones used by Jasper servlet.
         (kkolinko)
       </update>
+      <fix>
+        Make constants in the TagHandlerPool really constant. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
