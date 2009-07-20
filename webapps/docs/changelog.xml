@@ -144,6 +144,9 @@
       <add>
         Allow log file encoding to be configured for JULI FileHandler. (kkolinko)
       </add>
+      <add>
+        Provide debug logging for JNDI lookups. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
