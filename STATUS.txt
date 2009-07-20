@@ -141,7 +141,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve NIO connector shutdown time by doing shutdowns in parallel
   and with a timeout
   http://svn.apache.org/viewvc?view=rev&revision=791914
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47515
@@ -160,7 +160,7 @@ PATCHES PROPOSED TO BACKPORT:
   Without coercion, the concatenation of ((Object)null) + string results in
   "null" being printed.
   http://svn.apache.org/viewvc?rev=795466&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1: 
 
 * Fix the JDBC driver clean-up
