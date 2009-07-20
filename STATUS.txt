@@ -144,21 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47444
-  Remove Jakarta references
-  http://people.apache.org/~markt/patches/2009-07-16-jakarta-part1.patch
-  +1: markt, kkolinko, rjung
-  -1:
-  rjung: +1 to what kkolinko wrote:
-  Examples taglib URL is inconsistent. Both the following variants are used:
-  .../example-taglib and .../examples-taglib
-  Though this inconsistency already existed before this patch.
-
-* Make constants constant
-  http://svn.apache.org/viewvc?rev=794673&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47515
   https://issues.apache.org/bugzilla/attachment.cgi?id=23973
   +1: fhanik, kkolinko, markt
