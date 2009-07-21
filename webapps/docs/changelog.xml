@@ -74,6 +74,10 @@
         persistent session manager. (markt)
       </fix>
       <fix>
+        <bug>44943</bug>: Use the same engine name in server.xml comments to
+        reduce copy and pastes issues. (markt, kkolinko)
+      </fix>
+      <fix>
         <bug>46908</bug>: Try and support java encoding names when using an xml
         parser provided via the endorsed mechanism. (markt)
       </fix>
@@ -118,8 +122,8 @@
         <bug>42747</bug>. (markt)
       </fix>
       <fix>
-        <bug>44943</bug>: Use the same engine name in server.xml comments to
-        reduce copy and pastes issues. (markt, kkolinko)
+        <bug>47518</bug>: Correct reference in Valve Javadoc that referred to an
+        old method. Patch provided by Christopher Schultz. (markt)
       </fix>
       <update>
         Deprecate the <code>caseSensitive</code> option on the
@@ -214,10 +218,6 @@
       </fix>
       <fix>
         <bug>47444</bug>: Remove Jakarta references. (markt)
-      </fix>
-      <fix>
-        <bug>47518</bug>: Correct reference in Valve Javadoc that referred to an
-        old method. Patch provided by Christopher Schultz. (markt)
       </fix>
     </changelog>
   </subsection>
