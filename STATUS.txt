@@ -173,3 +173,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=797168
   +1: markt, kkolinko
   -1: 
+
+* https://issues.apache.org/bugzilla/show_bug.cgi?id=47566
+  Update to NSIS 2.45
+  http://svn.apache.org/viewvc?rev=797596&view=rev
+  +1: kkolinko
+  -1:
+  kkolinko: Now it also requires the following patch, but I hope that
+  sourceforge.net will fix their error:
+    http://svn.apache.org/viewvc?rev=797600&view=rev
