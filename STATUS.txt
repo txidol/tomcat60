@@ -198,5 +198,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve build.properties comment in ant build files.
   Backport from trunk.
   http://svn.apache.org/viewvc?rev=797425&view=rev
-  +1: markt
+  +1: rjung
   -1: 
