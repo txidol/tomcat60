@@ -212,7 +212,14 @@ PATCHES PROPOSED TO BACKPORT:
   coupled. Therefore, this proposal is a series of patches and the patches
   need to be applied in order. Even then the patches do not apply completely
   cleanly so a rolled up patch has been provided at each stage.
-  Note the JSP TCK passes with the full set of patches applied. 
+  Note: The JSP TCK passes with the full set of patches applied.
+  The benefit is twofold. First a number of edge case bugs I came across are
+  fixed. The short version is that the Catalina code and the Jasper code did
+  things differently. As well as the inherent inconsistencies (and hence bugs)
+  this created it also made it much harder to add the additional functionality
+  I was trying to add for embeddability. Which brings me to the second benefit.
+  With these fixes in place, the changes I was trying to make (patch to follow
+  when I have done more testing) for embeddability become possible.
   Step 1: Clean-up
   http://svn.apache.org/viewvc?view=rev&revision=647344
   +1: markt
