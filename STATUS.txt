@@ -76,10 +76,12 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc?rev=711720&view=rev
     This is not for invalidation, only for displaying
     idle times and making persistance decisions.
-  +1: rjung, markt
+  +1: rjung
    0: billbarker: generally agree with remm that this is too big of a change for the stable branch
                  but could agree to some of it if it was split into parts
   -1: remm: no for TC 6.0
+  -1: markt: lastAccessedTime impl is not spec compliant
+             Agree with Bill - smaller parts woudl be better
   -1: funkman : api change in Session.java for .x.x release
 
 * Fix Close Stream at WebappClassLoader after read error
