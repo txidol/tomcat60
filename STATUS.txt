@@ -253,3 +253,24 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2009-08-06-TLD-improvements-steps-1-4.patch (Steps 1-4)
   +1: markt
   -1: 
+
+* Expose filter configuration via JMX (read-only)
+  Based on a patch by Xie Xiaodong as part of GSOC2009.
+  http://svn.apache.org/viewvc?rev=802727&view=rev
+  +1: markt
+  -1: 
+
+* Use platform MBean server rather than creating a new one. Makes it possible to
+  connect JConsole and other JMX tools to locally running Tomcat instances
+  without any config changes to Tomcat
+  http://svn.apache.org/viewvc?rev=677910&view=rev 
+  +1: markt
+  -1: 
+
+* Add remote JMX listener. Enables JMX to be configured so that it can be used
+  with fixed ports. Useful when connecting through a firewall as normally JMX
+  uses one fixed and one random port.
+  Needs the platform MBean server fix above to be really useful
+  http://people.apache.org/~markt/patches/2009-08-12-jmx-remote.patch
+  +1: markt
+  -1: 
