@@ -168,12 +168,6 @@ PATCHES PROPOSED TO BACKPORT:
   I think it would be nice to improve in a second step by resizing the
   array according to the class size. AFAIK it's not a performance critical path.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46907
-  Debug logging should not cause input stream to be swallowed
-  http://svn.apache.org/viewvc?view=rev&revision=797168
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=47566
   Update to NSIS 2.45
   http://svn.apache.org/viewvc?rev=797596&view=rev
