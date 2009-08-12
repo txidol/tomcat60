@@ -48,7 +48,7 @@ public class JspConfig {
 
     private Vector jspProperties = null;
     private ServletContext ctxt;
-    private boolean initialized = false;
+    private volatile boolean initialized = false;
 
     private String defaultIsXml = null;		// unspecified
     private String defaultIsELIgnored = null;	// unspecified
@@ -217,13 +217,17 @@ public class JspConfig {
     private void init() throws JasperException {
 
         if (!initialized) {
-            processWebDotXml(ctxt);
-            defaultJspProperty = new JspProperty(defaultIsXml,
-                    defaultIsELIgnored,
-                    defaultIsScriptingInvalid,
-                    null, null, null, defaultDeferedSyntaxAllowedAsLiteral, 
-                    defaultTrimDirectiveWhitespaces);
-            initialized = true;
+            synchronized (this) {
+                if (!initialized) {
+                    processWebDotXml(ctxt);
+                    defaultJspProperty = new JspProperty(defaultIsXml,
+                            defaultIsELIgnored,
+                            defaultIsScriptingInvalid,
+                            null, null, null, defaultDeferedSyntaxAllowedAsLiteral, 
+                            defaultTrimDirectiveWhitespaces);
+                    initialized = true;
+                }
+            }
         }
     }
 

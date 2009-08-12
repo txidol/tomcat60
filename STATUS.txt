@@ -150,12 +150,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, kkolinko, markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41661
-  Thread safety issue in JspConfig.init() seen in production
-  http://svn.apache.org/viewvc?rev=795210&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47413
   First part of a composite EL expression "${a}${b}" was not coerced to String
   Without coercion, the concatenation of ((Object)null) + string results in
