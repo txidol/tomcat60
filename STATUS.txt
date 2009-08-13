@@ -297,3 +297,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2009-08-13_bug45403-tc6.patch
   +1: kkolinko
   -1:
+
+* Perform deserialization with the context class loader set.
+  This ensures that code that actually executes Class.forName(...,classloader) during this phase
+  works properly. 
+   http://svn.apache.org/viewvc?rev=804057&view=rev
+  +1: fhanik
+  -1: 
+
+
