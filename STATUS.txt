@@ -46,6 +46,17 @@ PATCHES PROPOSED TO BACKPORT:
   -0: fhanik - the bug talks about WEB-INF/lib and reload, that would be when reload="true" which should be considered development only
       So to make this bug actually worth while fixing, and not impact performance, then it should only do this check on files that 
       are relevant to the reload of an application, in other words a watched resource
+  -1: kkolinko: (
+      FileDirContext#file() contains a check that file.canRead() is true.
+      A side-effect of this patch will be that files that are not readable
+      will be excluded from the enumeration provided by FileDirContext#list()
+      or FileDirContext#listBindings().
+      I think that it is wrong. If file is not readable it should result in error 404
+      or something like that.
+
+      Thus, we have to revert this change in trunk.
+      I am proposing an alternative patch for bug 45403 below.
+  )
 
 * Backport cleanup of semantics of thisAccessedTime and
   lastAccessedTime for sessions:
@@ -187,8 +198,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve build.properties comment in ant build files.
   Backport from trunk.
   http://svn.apache.org/viewvc?rev=797425&view=rev
-  +1: rjung
+  +1: rjung, kkolinko
   -1: 
+  kkolinko: Comments are documentation, and thus RTC.
 
 * Port Active Directory improvements to JNDIREalm from trunk
   Patch testing successfully by willing volunteer on the users list
@@ -274,3 +286,14 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=24125
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
+  Add a check when enumerating jar files, and
+  do not suppress IO errors when starting a web application.
+  Note:
+    - I cannot test bug 45403 on Windows, as it is Un*x-specific
+    - tested in normal operation, with unpackWARs = "true" and "false"
+    - this has not yet been applied to trunk
+  http://people.apache.org/~kkolinko/patches/2009-08-13_bug45403-tc6.patch
+  +1: kkolinko
+  -1:
