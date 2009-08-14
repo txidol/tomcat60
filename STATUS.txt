@@ -228,8 +228,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Port Active Directory improvements to JNDIREalm from trunk
   Patch testing successfully by willing volunteer on the users list
   http://people.apache.org/~markt/patches/2009-08-06-ADforJNDIRealm.patch
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+  kkolinko: (
+     There are several (two) places with a loop printing containerLog.debug(
+     "Found role: " + it.next()); It would be better to prepare the whole string
+     of roles and print it at once.
+  )
 
 * Port TLD processing improvements from trunk
   There have been quite a few changes to TLD processing and they are tightly
@@ -300,7 +305,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Make context deployment error message more meaningful
   http://svn.apache.org/viewvc?rev=802940&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Additional patch required for 
