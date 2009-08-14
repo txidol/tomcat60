@@ -153,8 +153,31 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve NIO connector shutdown time by doing shutdowns in parallel
   and with a timeout
   http://svn.apache.org/viewvc?view=rev&revision=791914
-  +1: fhanik, markt
+  +1: fhanik, markt, kkolinko
   -1: 
+  kkolinko: (
+    Some nit-picking:
+    1. I think that it is better to create the stopLatch in the NioEndpoint#start()
+    method right before the array of Pollers is created, instead of NioEndpoint#init().
+    And to pass a reference to it to the Poller (as an argument in Poller
+    constructor).
+    That is because otherwise if you call stop() start() the stopLatch won't be in
+    its initial condition, and because the count of pollers can be changed between
+    init() and start(). Just a theory, though.
+    
+    2. In NioEndpoint.Poller#run():
+    - if the Poller was looping with paused=true, is there a need to call
+    events() before exiting the loop on if (close) ?
+    - there are several ways to exit the loop: two if(close), one while
+     (running), and may be exceptions. The first if(close) does not call
+     selector.close(). And if you exit because of running = false there is
+     no call to timeout(0, false); and selector.close().
+    - there is special processing code for OutOfMemoryError, but inside the
+     loop, and in events() method, you catch any Throwable.
+    - it would be better to put stopLatch.countDown() inside a finally{} block
+    3. In NioEndpoint.Poller#destroy() there is comment ("// Wait...").
+    Is it still relevant? I do not see any waiting there.
+  )
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47515
   https://issues.apache.org/bugzilla/attachment.cgi?id=23973
