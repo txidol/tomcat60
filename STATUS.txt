@@ -38,26 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: remm (looks risky, very minor problem), fhanik - minor problem
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
-  See commit message for details of negligable performance impact
-  http://svn.apache.org/viewvc?rev=701358&view=rev
-  +1: markt, funkman
-  -0: remm (I also do not think the patch is a good idea as a backport)
-  -0: fhanik - the bug talks about WEB-INF/lib and reload, that would be when reload="true" which should be considered development only
-      So to make this bug actually worth while fixing, and not impact performance, then it should only do this check on files that 
-      are relevant to the reload of an application, in other words a watched resource
-  -1: kkolinko: (
-      FileDirContext#file() contains a check that file.canRead() is true.
-      A side-effect of this patch will be that files that are not readable
-      will be excluded from the enumeration provided by FileDirContext#list()
-      or FileDirContext#listBindings().
-      I think that it is wrong. If file is not readable it should result in error 404
-      or something like that.
-
-      Thus, we have to revert this change in trunk.
-      I am proposing an alternative patch for bug 45403 below.
-  )
-
 * Backport cleanup of semantics of thisAccessedTime and
   lastAccessedTime for sessions:
   - preparational whitespace changes
@@ -319,11 +299,10 @@ PATCHES PROPOSED TO BACKPORT:
   Add a check when enumerating jar files, and
   do not suppress IO errors when starting a web application.
   Note:
-    - I cannot test bug 45403 on Windows, as it is Un*x-specific
-    - tested in normal operation, with unpackWARs = "true" and "false"
-    - this has not yet been applied to trunk
-  http://people.apache.org/~kkolinko/patches/2009-08-13_bug45403-tc6.patch
-  +1: kkolinko
+    - tested in normal operation on windows, with unpackWARs="true" and "false"
+    - test on linux in normal and failure modes
+  http://svn.apache.org/viewvc?rev=804462&view=rev
+  +1: kkolinko, markt
   -1:
 
 * Perform deserialization with the context class loader set.
