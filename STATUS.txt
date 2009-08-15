@@ -182,12 +182,6 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc?rev=797600&view=rev
   rjung: +1 for both as long as the problem lasts (SF-DL still seems to be broken).
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=41824
-  Need to use canonical rather than binary form when writing code
-  http://svn.apache.org/viewvc?rev=797607&view=rev
-  +1: markt, rjung, kkolinko
-  -1: 
-
 * Improve build.properties comment in ant build files.
   Backport from trunk.
   http://svn.apache.org/viewvc?rev=797425&view=rev
