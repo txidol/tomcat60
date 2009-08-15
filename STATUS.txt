@@ -175,19 +175,13 @@ PATCHES PROPOSED TO BACKPORT:
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=47566
   Update to NSIS 2.45
   http://svn.apache.org/viewvc?rev=797596&view=rev
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, markt
   -1:
   kkolinko: Now it also requires the following patch, but I hope that
   sourceforge.net will fix their error:
     http://svn.apache.org/viewvc?rev=797600&view=rev
   rjung: +1 for both as long as the problem lasts (SF-DL still seems to be broken).
-
-* Improve build.properties comment in ant build files.
-  Backport from trunk.
-  http://svn.apache.org/viewvc?rev=797425&view=rev
-  +1: rjung, kkolinko
-  -1: 
-  kkolinko: Comments are documentation, and thus RTC.
+  markt: ditto
 
 * Port Active Directory improvements to JNDIREalm from trunk
   Patch testing successfully by willing volunteer on the users list
@@ -293,7 +287,7 @@ PATCHES PROPOSED TO BACKPORT:
   This ensures that code that actually executes Class.forName(...,classloader) during this phase
   works properly. 
    http://svn.apache.org/viewvc?rev=804057&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
