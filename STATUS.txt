@@ -280,6 +280,7 @@ PATCHES PROPOSED TO BACKPORT:
     - tested in normal operation on windows, with unpackWARs="true" and "false"
     - test on linux in normal and failure modes
   http://svn.apache.org/viewvc?rev=804462&view=rev
+  http://svn.apache.org/viewvc?rev=804544&view=rev
   +1: kkolinko, markt
   -1:
 
