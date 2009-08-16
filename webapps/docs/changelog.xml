@@ -248,7 +248,8 @@
         correct binary on 64-bit machines. (markt)
       </fix>
       <update>
-        Update to NSIS 2.44 (kkolinko)
+        Update Windows Installer to use NSIS 2.45. They say that this version provides
+        support for the upcoming Microsoft Windows 7. (kkolinko)
       </update>
       <fix>
         Don't add blank lines to end of files when fixing line-endings for

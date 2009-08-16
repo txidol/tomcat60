@@ -172,17 +172,6 @@ PATCHES PROPOSED TO BACKPORT:
   I think it would be nice to improve in a second step by resizing the
   array according to the class size. AFAIK it's not a performance critical path.
 
-* https://issues.apache.org/bugzilla/show_bug.cgi?id=47566
-  Update to NSIS 2.45
-  http://svn.apache.org/viewvc?rev=797596&view=rev
-  +1: kkolinko, rjung, markt
-  -1:
-  kkolinko: Now it also requires the following patch, but I hope that
-  sourceforge.net will fix their error:
-    http://svn.apache.org/viewvc?rev=797600&view=rev
-  rjung: +1 for both as long as the problem lasts (SF-DL still seems to be broken).
-  markt: ditto
-
 * Port Active Directory improvements to JNDIREalm from trunk
   Patch testing successfully by willing volunteer on the users list
   http://people.apache.org/~markt/patches/2009-08-06-ADforJNDIRealm.patch
