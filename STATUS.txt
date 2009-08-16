@@ -288,7 +288,7 @@ PATCHES PROPOSED TO BACKPORT:
   This ensures that code that actually executes Class.forName(...,classloader) during this phase
   works properly. 
    http://svn.apache.org/viewvc?rev=804057&view=rev
-  +1: fhanik, markt
+  +1: fhanik, markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
