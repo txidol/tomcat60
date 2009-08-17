@@ -299,5 +299,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47699
   Better handling of PID files
   http://svn.apache.org/viewvc?rev=804963&view=rev
+  http://svn.apache.org/viewvc?rev=804982&view=rev
   +1: markt
   -1: 
