@@ -346,5 +346,6 @@ PATCHES PROPOSED TO BACKPORT:
              }
          }
 
-  +1: fhanik, rjung
+  +1: fhanik
   -1: 
+  rjung: Note discussion at http://marc.info/?t=125182574600001&r=1&w=2
