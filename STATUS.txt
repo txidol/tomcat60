@@ -80,11 +80,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: kkolinko: http://marc.info/?l=tomcat-dev&m=124192105131636&w=2
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47369.
-  http://svn.apache.org/viewvc?rev=784879&view=rev
-  +1: fhanik, markt, mturk, rjung
-  -1: 
-
 * When throwing Non-serializable exception, mark which argument was
   non-serializable to help tracing the cause when developing.
   http://svn.apache.org/viewvc?rev=713953&view=rev

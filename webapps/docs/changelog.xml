@@ -207,6 +207,9 @@
   <subsection name="Cluster">
     <changelog>
       <fix>
+        <bug>47369</bug>: Reset data diff after replication
+      </fix>
+      <fix>
         <bug>40551</bug>: Enable the JvmRouteBinderValve to work with
         PersistentManagers as well as clustering. Based on a patch by Chris
         Chandler. (markt)
