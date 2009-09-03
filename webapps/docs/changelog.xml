@@ -206,6 +206,7 @@
   </subsection>
   <subsection name="Cluster">
     <changelog>
+      <fix><bug>47515</bug>Correctly replicate timestamp during startup</fix>
       <fix><bug>47478</bug>Call replication listeners when using BackupManager</fix>
       <fix>
         <bug>47369</bug>: Reset data diff after replication
