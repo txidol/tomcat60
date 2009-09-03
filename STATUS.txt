@@ -97,11 +97,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko,funkman
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47478
-  https://svn.apache.org/viewcvs.cgi?view=rev&rev=791524
-  +1: fhanik, rjung, markt
-  -1: 
-  
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39231
   http://people.apache.org/~markt/patches/2009-08-16-bug39231.patch
   JAAS LoginContext expects a call to logout()
