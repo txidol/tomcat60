@@ -539,17 +539,24 @@ public class AprEndpoint {
      * @return the amount of threads that are managed by the pool
      */
     public int getCurrentThreadCount() {
-        return curThreads;
+        if (executor!=null) {
+            return -1;
+        } else {
+            return curThreads;
+        }
     }
 
-
     /**
-     * Return the amount of threads currently busy.
+     * Return the amount of threads that are in use 
      *
-     * @return the amount of threads currently busy
+     * @return the amount of threads that are in use
      */
     public int getCurrentThreadsBusy() {
-        return curThreadsBusy;
+        if (executor!=null) {
+            return -1;
+        } else {
+            return workers!=null?curThreads - workers.size():0;
+        }
     }
 
 

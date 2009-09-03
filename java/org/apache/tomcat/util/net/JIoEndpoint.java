@@ -263,12 +263,30 @@ public class JIoEndpoint {
         return paused;
     }
     
+    /**
+     * Return the amount of threads that are managed by the pool.
+     *
+     * @return the amount of threads that are managed by the pool
+     */
     public int getCurrentThreadCount() {
-        return curThreads;
+        if (executor!=null) {
+            return -1;
+        } else {
+            return curThreads;
+        }
     }
-    
+
+    /**
+     * Return the amount of threads that are in use 
+     *
+     * @return the amount of threads that are in use
+     */
     public int getCurrentThreadsBusy() {
-        return workers!=null?curThreads - workers.size():0;
+        if (executor!=null) {
+            return -1;
+        } else {
+            return workers!=null?curThreads - workers.size():0;
+        }
     }
     
 

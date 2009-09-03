@@ -80,12 +80,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: kkolinko: http://marc.info/?l=tomcat-dev&m=124192105131636&w=2
   -1:
 
-* Dont try to report thread counts when using an executor from outside
-  http://people.apache.org/~fhanik/connector-thread-report.patch
-  +1: fhanik, kkolinko,funkman
-  +1: markt - would 0 make more sense rather than -1? Happy with either
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47369.
   http://svn.apache.org/viewvc?rev=784879&view=rev
   +1: fhanik, markt, mturk, rjung

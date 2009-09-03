@@ -155,6 +155,7 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
+      <update>Dont report thread count from connector if an external executor is used.</update> 
       <fix>
         <bug>39637</bug>: Enable the AJP connectors to correctly handle client
         certificate chains. Patch by Patrik Schnellmann. (markt)
