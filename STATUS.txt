@@ -264,13 +264,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, funkman
   -1:
 
-* Perform deserialization with the context class loader set.
-  This ensures that code that actually executes Class.forName(...,classloader) during this phase
-  works properly. 
-   http://svn.apache.org/viewvc?rev=804057&view=rev
-  +1: fhanik, markt, kkolinko,funkman
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
   Update AccessLogValve and ExtendedAccessLogValve with all the recent threading
   improvements
