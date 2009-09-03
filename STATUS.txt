@@ -351,5 +351,12 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Allow per instance log4j.properties, JAR files (JDBC drivers) etc
   http://svn.apache.org/viewvc?rev=810916&view=rev
+  http://svn.apache.org/viewvc?rev=810977&view=rev
   +1: markt
   -1:
+
+* Allow per instance configuration of JULI or log4j for core Tomcat logging
+  This requires the classpath change above
+  http://svn.apache.org/viewvc?rev=810976&view=rev
+  +1: markt
+  -1: 
