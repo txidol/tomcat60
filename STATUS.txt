@@ -190,15 +190,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Expose filter configuration via JMX (read-only)
-  Based on a patch by Xie Xiaodong as part of GSOC2009.
-  http://svn.apache.org/viewvc?rev=802727&view=rev
-  +1: markt, funkman, rjung
-  -1: 
-  rjung: typo regsiter -> register should be corrected everywhere (method name,
-         log messages etc., string manager property, sometimes with capitalzation "Regsiter")
-         Another little style nitpick: "if(" -> "if (".
-
 * Use platform MBean server rather than creating a new one. Makes it possible to
   connect JConsole and other JMX tools to locally running Tomcat instances
   without any config changes to Tomcat

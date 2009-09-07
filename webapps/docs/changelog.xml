@@ -160,6 +160,10 @@
         ability to specify a default role, optional handling for nested roles
         and an option to ignore PartialResultExceptions (markt). 
       </update>
+      <add>
+        Expose Sevlet Filters via JMX. Based on a patch by Xie Xiaodong as part
+        of GSOC2009. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
