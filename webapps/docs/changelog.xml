@@ -152,7 +152,8 @@
         Provide debug logging for JNDI lookups. (markt)
       </add>
       <fix>
-        Correct JDBC driver de-registration on web application stop. (markt)
+        Correct JDBC driver de-registration on web application stop and fix NPE
+        that is exposed by the fix. (markt)
       </fix>
     </changelog>
   </subsection>

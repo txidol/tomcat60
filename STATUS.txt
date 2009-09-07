@@ -144,11 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung, funkman
   -1: 
 
-* Fix NPE observed when unpackWARs="false" with above fix
-  http://svn.apache.org/viewvc?view=rev&revision=805153
-  +1: markt, funkman, rjung
-  -1: 
-
 * Port Active Directory improvements to JNDIREalm from trunk
   Patch testing successfully by willing volunteer on the users list
   http://people.apache.org/~markt/patches/2009-08-06-ADforJNDIRealm.patch
