@@ -190,18 +190,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Add remote JMX listener. Enables JMX to be configured so that it can be used
-  with fixed ports. Useful when connecting through a firewall as normally JMX
-  uses one fixed and one random port.
-  Needs the platform MBean server fix above to be really useful
-  http://people.apache.org/~markt/patches/2009-08-12-jmx-remote.patch
-  +1: markt, funkman, rjung
-  -1: 
-  rjung: The docs page contains a typo: rmiRegsitryPortPlatform -> rmiRegistryPortPlatform
-         There are also some hidden defaults (password and access file) which might make
-         sense to be added to the docs. Directory for those default files is
-         CATALINA_BASE and not CATALINA_BASE/conf?
-
 * Make context deployment error message more meaningful
   http://svn.apache.org/viewvc?rev=802940&view=rev
   +1: markt, kkolinko, funkman

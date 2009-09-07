@@ -85,7 +85,9 @@
   <property name="tomcat-juli.jar" value="${tomcat.extras}/tomcat-juli.jar"/>
   <property name="tomcat-juli-adapters.jar" value="${tomcat.extras}/tomcat-juli-adapters.jar"/>
   <property name="catalina-ws.jar" value="${tomcat.extras}/catalina-ws.jar"/>
-	
+
+  <property name="catalina-jmx-remote.jar" value="${tomcat.extras}/catalina-jmx-remote.jar"/>
+
   <!-- Classpath -->
   <path id="tomcat.classpath">
     <pathelement location="${tomcat.classes}"/>
@@ -232,7 +234,20 @@
 	
   </target>
 
-  <target name="extras" depends="prepare,commons-logging,webservices">
+  <target name="jmx-remote" >
+    <!-- Create the JAR file -->
+    <jar jarfile="${catalina-jmx-remote.jar}">
+      <fileset dir="${tomcat.classes}">
+        <include name="org/apache/catalina/mbeans/JmxRemote*" />
+      </fileset>
+    </jar>
+    <checksum file="${catalina-jmx-remote.jar}"
+        forceOverwrite="yes"
+        fileext=".md5" />
+  </target>
+
+  <target name="extras"
+      depends="prepare,commons-logging,webservices,jmx-remote"> 
   </target>
 
   <!-- Download and dependency building -->

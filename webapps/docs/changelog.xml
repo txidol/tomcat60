@@ -169,6 +169,11 @@
         registered by Tomcat will be exposed via JMX (eg via JConsole) without
         requiring any additional configuration. (markt)
       </update>
+      <add>
+        The JMX Remote Lifecycle Listener allows the ports used by JMX to be
+        fixed, making it easier to configure firewalls to all JMX traffic to
+        pass through. Part of the extras package. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
