@@ -278,17 +278,59 @@ public class JkMain implements MBeanRegistration
     
     public void stop() 
     {
+        // Clean up the handlers
+        MBeanServer s = Registry.getRegistry(null,null).getMBeanServer();
         for( int i=0; i<wEnv.getHandlerCount(); i++ ) {
-            if( wEnv.getHandler(i) != null ) {
+            JkHandler handler = wEnv.getHandler(i);
+            if(handler != null) {
+                String handlerName = handler.getName();
                 try {
-                    wEnv.getHandler(i).destroy();
+                    handler.destroy();
                 } catch( IOException ex) {
-                    log.error("Error stopping " + wEnv.getHandler(i).getName(), ex);
+                    log.error("Error stopping " + handlerName, ex);
+                }
+                if(domain != null) {
+                    try {
+                        ObjectName handlerOname = new ObjectName(
+                                this.domain + ":" + "type=JkHandler,name=" +
+                                handlerName);
+                        if (s.isRegistered(handlerOname)) {
+                            s.unregisterMBean(handlerOname);
+                        }
+                    } catch (Exception e) {
+                        log.error( "Error unregistering " + handlerName, e );
+                    }
+
                 }
             }
         }
 
         started=false;
+        
+        // De-register JMX for Env
+        if (domain != null) {
+            try {
+                ObjectName wEnvName =
+                    new ObjectName(domain + ":type=JkWorkerEnv");
+                if (s.isRegistered(wEnvName)) {
+                    s.unregisterMBean(wEnvName);
+                }
+            } catch (Exception e) {
+                log.error( "Error unregistering JkWorkerEnv", e );
+            }
+        }
+
+        // De-register JMX for JkMain
+        if(oname != null) {
+            if (s.isRegistered(oname)) {
+                try {
+                    Registry.getRegistry(null, null)
+                        .unregisterComponent(oname);
+                } catch (Exception e) {
+                    log.error( "Error unregistering jkmain " + e );
+                }
+            }
+        }
     }
     
     public void start() throws IOException

@@ -190,13 +190,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Additional patch required for 
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=47046
-  Clean up Jk components that only exist in the 6.0.x and were hence missed
-  https://issues.apache.org/bugzilla/attachment.cgi?id=24125
-  +1: markt, funkman, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
   Add a check when enumerating jar files, and
   do not suppress IO errors when starting a web application.
