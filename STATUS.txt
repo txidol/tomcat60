@@ -144,17 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung, funkman
   -1: 
 
-* Fix the JDBC driver clean-up
-  http://svn.apache.org/viewvc?view=rev&revision=789389
-  See below for additional fix required
-  +1: markt, rjung, funkman
-  -1: 
-  rjung: I don't really like the implicit 4KB class size limit.
-  I understand your rationale, but we don't know enough about other JVMs
-  and the future in general.
-  I think it would be nice to improve in a second step by resizing the
-  array according to the class size. AFAIK it's not a performance critical path.
-
 * Fix NPE observed when unpackWARs="false" with above fix
   http://svn.apache.org/viewvc?view=rev&revision=805153
   +1: markt, funkman, rjung

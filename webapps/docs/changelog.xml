@@ -151,6 +151,9 @@
       <add>
         Provide debug logging for JNDI lookups. (markt)
       </add>
+      <fix>
+        Correct JDBC driver de-registration on web application stop. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
