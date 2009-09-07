@@ -40,7 +40,6 @@ import java.util.jar.JarFile;
 import javax.management.MBeanRegistration;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
-import javax.naming.Binding;
 import javax.naming.NameClassPair;
 import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
@@ -877,8 +876,9 @@ public class WebappLoader
     /**
      * Configure the repositories for our class loader, based on the
      * associated Context.
+     * @throws IOException 
      */
-    private void setRepositories() {
+    private void setRepositories() throws IOException {
 
         if (!(container instanceof Context))
             return;
@@ -932,7 +932,10 @@ public class WebappLoader
 
                 classRepository = new File(workDir, classesPath);
                 classRepository.mkdirs();
-                copyDir(classes, classRepository);
+                if (!copyDir(classes, classRepository)) {
+                    throw new IOException(
+                            sm.getString("webappLoader.copyFailure"));
+                }
 
             }
 
@@ -980,25 +983,43 @@ public class WebappLoader
             }
 
             // Looking up directory /WEB-INF/lib in the context
+            NamingEnumeration<NameClassPair> enumeration = null;
             try {
-                NamingEnumeration enumeration = resources.listBindings(libPath);
+                enumeration = libDir.list("");
+            } catch (NamingException e) {
+                IOException ioe = new IOException(sm.getString(
+                        "webappLoader.namingFailure", libPath));
+                ioe.initCause(e);
+                throw ioe;
+            }
                 while (enumeration.hasMoreElements()) {
-
-                    Binding binding = (Binding) enumeration.nextElement();
-                    String filename = libPath + "/" + binding.getName();
+                NameClassPair ncPair = enumeration.nextElement();
+                String filename = libPath + "/" + ncPair.getName();
                     if (!filename.endsWith(".jar"))
                         continue;
 
                     // Copy JAR in the work directory, always (the JAR file
                     // would get locked otherwise, which would make it
                     // impossible to update it or remove it at runtime)
-                    File destFile = new File(destDir, binding.getName());
+                File destFile = new File(destDir, ncPair.getName());
 
                     if( log.isDebugEnabled())
                     log.debug(sm.getString("webappLoader.jarDeploy", filename,
                                      destFile.getAbsolutePath()));
 
-                    Object obj = binding.getObject();
+                // Bug 45403 - Explicitly call lookup() on the name to check
+                // that the resource is readable. We cannot use resources
+                // returned by listBindings(), because that lists all of them,
+                // but does not perform the necessary checks on each.
+                Object obj = null;
+                try {
+                    obj = libDir.lookup(ncPair.getName());
+                } catch (NamingException e) {
+                    IOException ioe = new IOException(sm.getString(
+                            "webappLoader.namingFailure", filename));
+                    ioe.initCause(e);
+                    throw ioe;
+                }
                     
                     if (!(obj instanceof Resource))
                         continue;
@@ -1007,32 +1028,25 @@ public class WebappLoader
                     
                     if (copyJars) {
                         if (!copy(jarResource.streamContent(),
-                                  new FileOutputStream(destFile)))
-                            continue;
+                              new FileOutputStream(destFile))) {
+                        throw new IOException(
+                                sm.getString("webappLoader.copyFailure"));
                     }
+                }
 
                     try {
                         JarFile jarFile = new JarFile(destFile);
                         classLoader.addJar(filename, jarFile, destFile);
                     } catch (Exception ex) {
                         // Catch the exception if there is an empty jar file
-                        // Should ignore and continute loading other jar files 
+                    // Should ignore and continue loading other jar files 
                         // in the dir
                     }
                     
                     loaderRepositories.add( filename );
-
                 }
-            } catch (NamingException e) {
-                // Silent catch: it's valid that no /WEB-INF/lib directory
-                // exists
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-
         }
-
-    }
 
 
     /**
@@ -1157,7 +1171,8 @@ public class WebappLoader
                         return false;
                 } else if (object instanceof DirContext) {
                     currentFile.mkdir();
-                    copyDir((DirContext) object, currentFile);
+                    if (!copyDir((DirContext) object, currentFile))
+                        return false;
                 }
             }
 

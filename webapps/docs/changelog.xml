@@ -78,6 +78,9 @@
         reduce copy and pastes issues. (markt, kkolinko)
       </fix>
       <fix>
+        <bug>45403</bug>: 
+      </fix>
+      <fix>
         <bug>46908</bug>: Try and support java encoding names when using an xml
         parser provided via the endorsed mechanism. (markt)
       </fix>

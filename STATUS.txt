@@ -182,17 +182,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45403
-  Add a check when enumerating jar files, and
-  do not suppress IO errors when starting a web application.
-  Note:
-    - tested in normal operation on windows, with unpackWARs="true" and "false"
-    - test on linux in normal and failure modes
-  http://svn.apache.org/viewvc?rev=804462&view=rev
-  http://svn.apache.org/viewvc?rev=804544&view=rev
-  +1: kkolinko, markt, funkman
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47158
   Update AccessLogValve and ExtendedAccessLogValve with all the recent threading
   improvements
