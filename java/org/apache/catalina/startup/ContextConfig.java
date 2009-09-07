@@ -1011,7 +1011,8 @@ public class ContextConfig
         try {
             fixDocBase();
         } catch (IOException e) {
-            log.error(sm.getString("contextConfig.fixDocBase"), e);
+            log.error(sm.getString(
+                    "contextConfig.fixDocBase", context.getPath()), e);
         }
         
     }

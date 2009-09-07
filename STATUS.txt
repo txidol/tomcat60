@@ -190,11 +190,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Make context deployment error message more meaningful
-  http://svn.apache.org/viewvc?rev=802940&view=rev
-  +1: markt, kkolinko, funkman
-  -1: 
-
 * Additional patch required for 
   https://issues.apache.org/bugzilla/show_bug.cgi?id=47046
   Clean up Jk components that only exist in the 6.0.x and were hence missed

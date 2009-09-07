@@ -174,6 +174,10 @@
         fixed, making it easier to configure firewalls to all JMX traffic to
         pass through. Part of the extras package. (markt)
       </add>
+      <fix>
+        Make context deployment error message for fixDocBase() more meaningful.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
