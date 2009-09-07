@@ -136,14 +136,6 @@ PATCHES PROPOSED TO BACKPORT:
     Is it still relevant? I do not see any waiting there.
   )
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47413
-  First part of a composite EL expression "${a}${b}" was not coerced to String
-  Without coercion, the concatenation of ((Object)null) + string results in
-  "null" being printed.
-  http://svn.apache.org/viewvc?rev=795466&view=rev
-  +1: kkolinko, markt, rjung, funkman
-  -1: 
-
 * Port TLD processing improvements from trunk
   There have been quite a few changes to TLD processing and they are tightly
   coupled. Therefore, this proposal is a series of patches and the patches
