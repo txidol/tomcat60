@@ -271,6 +271,10 @@
       <fix>
         <bug>47444</bug>: Remove Jakarta references. (markt)
       </fix>
+      <fix>
+        <bug>47705</bug>: Fix division by zero error when trying to expire
+        sessions when the session timeout is set to infinite. (funkman)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">

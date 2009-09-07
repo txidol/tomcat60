@@ -1132,6 +1132,8 @@ public class ManagerServlet
             int histoInterval = maxInactiveInterval / maxCount;
             if ( histoInterval * maxCount < maxInactiveInterval ) 
                 histoInterval++;
+            if (0==histoInterval)
+                histoInterval=1;
             maxCount = maxInactiveInterval / histoInterval;
             if ( histoInterval * maxCount < maxInactiveInterval ) 
                 maxCount++;
