@@ -155,6 +155,11 @@
         Correct JDBC driver de-registration on web application stop and fix NPE
         that is exposed by the fix. (markt)
       </fix>
+      <update>
+        Various JNDI realm improvements for Active Directory. These include the
+        ability to specify a default role, optional handling for nested roles
+        and an option to ignore PartialResultExceptions (markt). 
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">

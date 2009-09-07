@@ -144,17 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung, funkman
   -1: 
 
-* Port Active Directory improvements to JNDIREalm from trunk
-  Patch testing successfully by willing volunteer on the users list
-  http://people.apache.org/~markt/patches/2009-08-06-ADforJNDIRealm.patch
-  +1: markt, kkolinko, funkman
-  -1: 
-  kkolinko: (
-     There are several (two) places with a loop printing containerLog.debug(
-     "Found role: " + it.next()); It would be better to prepare the whole string
-     of roles and print it at once.
-  )
-
 * Port TLD processing improvements from trunk
   There have been quite a few changes to TLD processing and they are tightly
   coupled. Therefore, this proposal is a series of patches and the patches
