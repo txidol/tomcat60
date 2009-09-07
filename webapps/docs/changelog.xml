@@ -161,9 +161,14 @@
         and an option to ignore PartialResultExceptions (markt). 
       </update>
       <add>
-        Expose Sevlet Filters via JMX. Based on a patch by Xie Xiaodong as part
+        Expose Servlet Filters via JMX. Based on a patch by Xie Xiaodong as part
         of GSOC2009. (markt)
       </add>
+      <update>
+        Tomcat now uses the Platform MBean server by default so all MBeans
+        registered by Tomcat will be exposed via JMX (eg via JConsole) without
+        requiring any additional configuration. (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">

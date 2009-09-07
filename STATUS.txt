@@ -190,13 +190,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Use platform MBean server rather than creating a new one. Makes it possible to
-  connect JConsole and other JMX tools to locally running Tomcat instances
-  without any config changes to Tomcat
-  http://svn.apache.org/viewvc?rev=677910&view=rev 
-  +1: markt, funkman, rjung
-  -1: 
-
 * Add remote JMX listener. Enables JMX to be configured so that it can be used
   with fixed ports. Useful when connecting through a firewall as normally JMX
   uses one fixed and one random port.
