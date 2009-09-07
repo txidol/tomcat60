@@ -214,7 +214,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47705
   ArithmeticException: / by zero when expiring sessions via manager 
   http://svn.apache.org/viewvc?rev=809603&view=rev
-  +1: funkman, rjung
+  +1: funkman, rjung, markt
   -1:
 
 
