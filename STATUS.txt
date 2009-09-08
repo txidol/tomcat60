@@ -243,3 +243,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=810976&view=rev
   +1: markt
   -1: 
+
+* Make the JDBC leak prevention code work with a security manager
+  http://svn.apache.org/viewvc?rev=812432&view=rev
+  +1: markt
+  -1: 
