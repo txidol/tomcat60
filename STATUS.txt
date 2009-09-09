@@ -248,3 +248,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=812432&view=rev
   +1: markt
   -1: 
+
+* Add additional permission required by JULI
+  http://svn.apache.org/viewvc?rev=813001&view=rev 
+  +1: markt
+  -1:
