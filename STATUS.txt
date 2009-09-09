@@ -253,3 +253,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=813001&view=rev 
   +1: markt
   -1:
+
+* Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45785
+  for extension validator
+  http://svn.apache.org/viewvc?rev=813013&view=rev
+  Based on a patch by Rolf Wojtech 
+  +1: markt
+  -1:
