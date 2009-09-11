@@ -235,39 +235,58 @@ PATCHES PROPOSED TO BACKPORT:
 * Allow per instance log4j.properties, JAR files (JDBC drivers) etc
   http://svn.apache.org/viewvc?rev=810916&view=rev
   http://svn.apache.org/viewvc?rev=810977&view=rev
-  +1: markt
+  +1: markt, rjung
   -1:
+
 
 * Allow per instance configuration of JULI or log4j for core Tomcat logging
   This requires the classpath change above
   http://svn.apache.org/viewvc?rev=810976&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
+  rjung: I think you have to switch HOME and BASE in the following changed
+  lines in logging.xml:
+    +      If you have multiple instances of Tomcat, each with a separate
+    +      <code>$CATALINA_HOME</code> but a shared <code>$CATALINA_BASE</code> then
 
 * Make the JDBC leak prevention code work with a security manager
   http://svn.apache.org/viewvc?rev=812432&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Add additional permission required by JULI
   http://svn.apache.org/viewvc?rev=813001&view=rev 
-  +1: markt
+  +1: markt, rjung
   -1:
+  rjung: Since the above patches now prepare for using juli optionally out of
+  CATALINA_BASE, shouldn't we also add that location as a codeBase?
 
 * Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45785
   for extension validator
   http://svn.apache.org/viewvc?rev=813013&view=rev
   Based on a patch by Rolf Wojtech 
-  +1: markt
+  +1: markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47824
   Correct Maven deps
   http://svn.apache.org/viewvc?rev=813866&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Update packaging to use per JAR LICENSE, NOTICE and manifest files
   http://svn.apache.org/viewvc?rev=813936&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
+
+* Spurious startup errors in the cluster observed for TC 5.5.
+  Although the secondary node is able to retrieve all sessions,
+  the main thread doesn't see the changed stateTransfered flag,
+  and thus waits until the transfer timeout occurs.
+  Observed on Solaris. Switching to volatile fixes it.
+  Performance implications are neglectable, because the
+  variable is only used during context startup.
+  Backport from trunk: http://svn.apache.org/viewvc?rev=814024&view=rev
+  +1: rjung
+  -1:
+
