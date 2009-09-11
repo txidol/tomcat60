@@ -266,3 +266,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=813866&view=rev
   +1: markt
   -1: 
+
+* Update packaging to use per JAR LICENSE, NOTICE and manifest files
+  http://svn.apache.org/viewvc?rev=813936&view=rev
+  +1: markt
+  -1: 
