@@ -260,3 +260,9 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by Rolf Wojtech 
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47824
+  Correct Maven deps
+  http://svn.apache.org/viewvc?rev=813866&view=rev
+  +1: markt
+  -1: 
