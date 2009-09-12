@@ -295,3 +295,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=814180&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47796
+  Fix OpenEJB integration. Reset annotation processor on context stop.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=24222
+  +1: markt
+  -1: 
