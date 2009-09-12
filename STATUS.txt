@@ -287,6 +287,11 @@ PATCHES PROPOSED TO BACKPORT:
   Performance implications are neglectable, because the
   variable is only used during context startup.
   Backport from trunk: http://svn.apache.org/viewvc?rev=814024&view=rev
-  +1: rjung
+  +1: rjung, markt
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47826
+  Broken debug message
+  http://svn.apache.org/viewvc?rev=814180&view=rev
+  +1: markt
+  -1: 
