@@ -302,6 +302,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
+* Make FileHandler.java extensible
+  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
+  +1: fhanik
+  -1: 
+
 * Allow configurable buffer size of loggers
   http://svn.apache.org/viewvc?rev=814708&view=rev
   +1: fhanik
