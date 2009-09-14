@@ -309,6 +309,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Allow configurable buffer size of loggers
   http://svn.apache.org/viewvc?rev=814708&view=rev
+  http://svn.apache.org/viewvc?rev=814876&view=rev
   +1: fhanik
   -1:
 
