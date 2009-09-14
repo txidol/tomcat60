@@ -301,3 +301,9 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=24222
   +1: markt
   -1: 
+
+* Allow configurable buffer size of loggers
+  http://svn.apache.org/viewvc?rev=814708&view=rev
+  +1: fhanik
+  -1:
+
