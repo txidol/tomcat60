@@ -261,19 +261,26 @@
   <subsection name="Webapps">
     <changelog>
       <fix>
-        <bug>41564</bug>: Add some information on installing Tomcat as a service
-        on operating systems with User Account Control, e.g. Vista. (markt)
+        <bug>41564</bug>: Add some documentation on installing Tomcat as a
+        service on operating systems with User Account Control, e.g. Vista.
+        (markt)
       </fix>
       <fix>
         <bug>47235</bug>: Remove use of autoReconnect from MySQL examples.
         (markt)
       </fix>
       <fix>
-        <bug>47444</bug>: Remove Jakarta references. (markt)
+        <bug>47425</bug>: Add crlFile attribute to the SSL configuration
+        documentation. (markt)
       </fix>
       <fix>
-        <bug>47705</bug>: Fix division by zero error when trying to expire
-        sessions when the session timeout is set to infinite. (funkman)
+        <bug>47444</bug>: Remove Jakarta references from the documentation.
+        (markt)
+      </fix>
+      <fix>
+        <bug>47705</bug>: Fix division by zero error in the manager when trying
+        to expire sessions when the session timeout is set to infinite.
+        (funkman)
       </fix>
     </changelog>
   </subsection>
