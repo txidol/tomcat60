@@ -321,3 +321,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=815418&view=rev
   +1: markt
   -1: 
+
+* Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=47161
+  Correctly report thread counts when using executors
+  https://issues.apache.org/bugzilla/attachment.cgi?id=24272
+  +1: markt
+  -1: 
