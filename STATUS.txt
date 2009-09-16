@@ -333,6 +333,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=815748&view=rev
   http://svn.apache.org/viewvc?rev=815768&view=rev
   http://svn.apache.org/viewvc?rev=706574&view=rev
+  Plus the last hunk for Socket.java in
+  https://issues.apache.org/bugzilla/attachment.cgi?id=24276
   +1: rjung
   -1: 
   rjung: Note that java/org/apache/tomcat/jni/Buffer.java
