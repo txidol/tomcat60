@@ -331,5 +331,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Align native and Java method names.
   Port/backport from trunk, TC5.5.x, tc4.1.x and tcnative (trunk and 1.1.x)
   http://svn.apache.org/viewvc?rev=815748&view=rev
+  http://svn.apache.org/viewvc?rev=815768&view=rev
   +1: rjung
   -1: 
+  rjung: Note that java/org/apache/tomcat/jni/Buffer.java
+  is missing in TC 6. Don't know, whether we should add it.
+  It is in 5.5, trunk and tcnative 1.1.
