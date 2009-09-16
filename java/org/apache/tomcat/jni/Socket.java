@@ -513,7 +513,7 @@ public class Socket {
      * Set internal send ByteBuffer.
      * This function will preset internal Java ByteBuffer for
      * consecutive sendbb calls.
-     * @param thesocket The socket to use
+     * @param sock The socket to use
      * @param buf The ByteBuffer
      */
     public static native void setsbb(long sock, ByteBuffer buf);
@@ -522,7 +522,7 @@ public class Socket {
      * Set internal receive ByteBuffer.
      * This function will preset internal Java ByteBuffer for
      * consecutive revcvbb/recvbbt calls.
-     * @param thesocket The socket to use
+     * @param sock The socket to use
      * @param buf The ByteBuffer
      */
     public static native void setrbb(long sock, ByteBuffer buf);
