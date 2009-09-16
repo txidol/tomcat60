@@ -293,13 +293,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47826
   Broken debug message
   http://svn.apache.org/viewvc?rev=814180&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47796
   Fix OpenEJB integration. Reset annotation processor on context stop.
   https://issues.apache.org/bugzilla/attachment.cgi?id=24222
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Make FileHandler.java extensible
@@ -326,4 +326,10 @@ PATCHES PROPOSED TO BACKPORT:
   Correctly report thread counts when using executors
   https://issues.apache.org/bugzilla/attachment.cgi?id=24272
   +1: markt
+  -1: 
+
+* Align native and Java method names.
+  Port/backport from trunk, TC5.5.x, tc4.1.x and tcnative (trunk and 1.1.x)
+  http://svn.apache.org/viewvc?rev=815748&view=rev
+  +1: rjung
   -1: 
