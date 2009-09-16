@@ -332,6 +332,7 @@ PATCHES PROPOSED TO BACKPORT:
   Port/backport from trunk, TC5.5.x, tc4.1.x and tcnative (trunk and 1.1.x)
   http://svn.apache.org/viewvc?rev=815748&view=rev
   http://svn.apache.org/viewvc?rev=815768&view=rev
+  http://svn.apache.org/viewvc?rev=706574&view=rev
   +1: rjung
   -1: 
   rjung: Note that java/org/apache/tomcat/jni/Buffer.java
