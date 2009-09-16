@@ -340,3 +340,9 @@ PATCHES PROPOSED TO BACKPORT:
   rjung: Note that java/org/apache/tomcat/jni/Buffer.java
   is missing in TC 6. Don't know, whether we should add it.
   It is in 5.5, trunk and tcnative 1.1.
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47225
+  Buffer length should be end-offset
+  http://svn.apache.org/viewvc?rev=815972&view=rev
+  +1: markt
+  -1: 
