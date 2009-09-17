@@ -319,7 +319,7 @@ PATCHES PROPOSED TO BACKPORT:
   Note: Patch cannot be applied until tc-native 1.1.17 has been released
         since it depends on a new native method
   http://svn.apache.org/viewvc?rev=815418&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1: 
 
 * Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=47161
