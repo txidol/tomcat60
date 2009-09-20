@@ -280,12 +280,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung, jim
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47826
-  Broken debug message
-  http://svn.apache.org/viewvc?rev=814180&view=rev
-  +1: markt, rjung, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47796
   Fix OpenEJB integration. Reset annotation processor on context stop.
   https://issues.apache.org/bugzilla/attachment.cgi?id=24222

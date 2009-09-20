@@ -128,6 +128,10 @@
         <bug>47518</bug>: Correct reference in Valve Javadoc that referred to an
         old method. Patch provided by Christopher Schultz. (markt)
       </fix>
+      <fix>
+        <bug>47826</bug>: Correct error in debug message in
+        org.apache.catalina.Bootstrap (markt)
+      </fix>
       <update>
         Deprecate the <code>caseSensitive</code> option on the
         <code>StandardContext</code> which will be removed in Tomcat 7 onwards.
