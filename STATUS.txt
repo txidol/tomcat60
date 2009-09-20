@@ -250,11 +250,6 @@ PATCHES PROPOSED TO BACKPORT:
     +      If you have multiple instances of Tomcat, each with a separate
     +      <code>$CATALINA_HOME</code> but a shared <code>$CATALINA_BASE</code> then
 
-* Make the JDBC leak prevention code work with a security manager
-  http://svn.apache.org/viewvc?rev=812432&view=rev
-  +1: markt, rjung, jim
-  -1: 
-
 * Add additional permission required by JULI
   http://svn.apache.org/viewvc?rev=813001&view=rev 
   +1: markt, rjung
