@@ -218,6 +218,10 @@
         writing code. (markt)
       </fix>
       <fix>
+        <bug>42390</bug>: Fix compilation issue with some nested tag files and
+        simple tags. (kkolinko/markt)
+      </fix>
+      <fix>
         <bug>46907</bug>: Don't swallow input stream when debug logging is
         enabled. (markt)
       </fix>
