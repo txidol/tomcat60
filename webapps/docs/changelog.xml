@@ -240,11 +240,21 @@
   </subsection>
   <subsection name="Cluster">
     <changelog>
-      <update>Perform deserializtion events with context class loader</update>
-      <fix><bug>47515</bug>Correctly replicate timestamp during startup</fix>
-      <fix><bug>47478</bug>Call replication listeners when using BackupManager</fix>
       <fix>
-        <bug>47369</bug>: Reset data diff after replication
+        Spurious startup errors during session transfer.
+        Sessions get transferred, but node still waits until timeout. (rjung)
+      </fix>
+      <update>
+        Perform deserializtion events with context class loader. (fhanik)
+      </update>
+      <fix>
+        <bug>47515</bug>Correctly replicate timestamp during startup. (fhanik)
+      </fix>
+      <fix>
+        <bug>47478</bug>Call replication listeners when using BackupManager. (fhanik)
+      </fix>
+      <fix>
+        <bug>47369</bug>: Reset data diff after replication. (fhanik)
       </fix>
       <fix>
         <bug>40551</bug>: Enable the JvmRouteBinderValve to work with

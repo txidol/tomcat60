@@ -280,17 +280,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung, jim
   -1: 
 
-* Spurious startup errors in the cluster observed for TC 5.5.
-  Although the secondary node is able to retrieve all sessions,
-  the main thread doesn't see the changed stateTransfered flag,
-  and thus waits until the transfer timeout occurs.
-  Observed on Solaris. Switching to volatile fixes it.
-  Performance implications are neglectable, because the
-  variable is only used during context startup.
-  Backport from trunk: http://svn.apache.org/viewvc?rev=814024&view=rev
-  +1: rjung, markt, jim
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47826
   Broken debug message
   http://svn.apache.org/viewvc?rev=814180&view=rev
