@@ -348,6 +348,11 @@
         <bug>47149</bug>: Build scripts: Explicitly specify encoding when
         compiling. (kkolinko)
       </fix>
+      <add>
+        Include NOTICE, LICENSE and manifest files in all Tomcat JARs and add a
+        mechanism to the build process to enable these files to be customised
+        per JAR as required. (markt)
+      </add>
     </changelog>
   </subsection>
 </section>
