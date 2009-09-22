@@ -246,6 +246,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
   rjung: Since the above patches now prepare for using juli optionally out of
   CATALINA_BASE, shouldn't we also add that location as a codeBase?
+  markt: Maybe add a comment but not an explicit permission?
 
 * Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45785
   for extension validator
@@ -268,13 +269,13 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Make FileHandler.java extensible
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
-  +1: fhanik, jim
+  +1: fhanik, jim, markt
   -1: 
 
 * Allow configurable buffer size of loggers
   http://svn.apache.org/viewvc?rev=814708&view=rev
   http://svn.apache.org/viewvc?rev=814876&view=rev
-  +1: fhanik, jim
+  +1: fhanik, jim, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46950
@@ -300,12 +301,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=706574&view=rev
   Plus the last hunk for Socket.java in
   https://issues.apache.org/bugzilla/attachment.cgi?id=24276
-  +1: rjung
+  +1: rjung, markt
   -1: 
   rjung: Note that java/org/apache/tomcat/jni/Buffer.java
   is missing in TC 6. Don't know, whether we should add it.
   It is in 5.5, trunk and tcnative 1.1.
-
+  markt: Happy either way with slight preference for adding it
+  
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47225
   Buffer length should be end-offset
   http://svn.apache.org/viewvc?rev=815972&view=rev
