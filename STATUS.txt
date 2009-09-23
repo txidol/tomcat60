@@ -291,8 +291,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=47161
   Correctly report thread counts when using executors
   https://issues.apache.org/bugzilla/attachment.cgi?id=24272
-  +1: markt
+  +1: markt, rjung
   -1: 
+  rjung: Maybe we should add a few getters to org.apache.catalina.Executor
+  for TC 7, so we can assume everyone providing an implementation
+  allows us to query? If they don't use threads, they can return -1 or whatever.
 
 * Align native and Java method names.
   Port/backport from trunk, TC5.5.x, tc4.1.x and tcnative (trunk and 1.1.x)
@@ -311,21 +314,28 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47225
   Buffer length should be end-offset
   http://svn.apache.org/viewvc?rev=815972&view=rev
-  +1: markt, jim
+  +1: markt, jim, rjung
   -1: 
 
 * Fix copyright year on manager app
   http://svn.apache.org/viewvc?rev=817442&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47267
   http://svn.apache.org/viewvc?rev=817822&view=rev
   +1: markt
   -1:
+  rjung: Our dreaded multi platform build system is a bit fragile
+  w.r.t. fixcrlf. If you change the file to crlf in the installer
+  target, then all unix packages (which are build after installer)
+  will also contain it in crlf format. Not to bad for especially
+  that file (because part of a webapp), but maybe it would
+  be cleaner to do this for the installer target only, e.g.
+  saving the file, fixcrlf, run nsi, restoring file.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47499
   Don't swallow BindException
   https://issues.apache.org/bugzilla/attachment.cgi?id=24302
-  +1: markt
+  +1: markt, rjung
   -1: 
