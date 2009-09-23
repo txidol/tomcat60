@@ -247,6 +247,7 @@ PATCHES PROPOSED TO BACKPORT:
   rjung: Since the above patches now prepare for using juli optionally out of
   CATALINA_BASE, shouldn't we also add that location as a codeBase?
   markt: Maybe add a comment but not an explicit permission?
+  rjung: Comment sounds good.
 
 * Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45785
   for extension validator
