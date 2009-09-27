@@ -350,3 +350,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=819339&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47324
+  Correct submit URL so it works behind a reverse proxy for session list page
+  Patch by Maik Jablonski
+  http://svn.apache.org/viewvc?rev=819361&view=rev
+  +1: markt
+  -1: 
