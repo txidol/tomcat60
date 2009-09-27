@@ -312,12 +312,6 @@ PATCHES PROPOSED TO BACKPORT:
   It is in 5.5, trunk and tcnative 1.1.
   markt: Happy either way with slight preference for adding it
   
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47225
-  Buffer length should be end-offset
-  http://svn.apache.org/viewvc?rev=815972&view=rev
-  +1: markt, jim, rjung
-  -1: 
-
 * Fix copyright year on manager app
   http://svn.apache.org/viewvc?rev=817442&view=rev
   +1: markt, rjung

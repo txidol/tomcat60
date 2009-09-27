@@ -199,6 +199,10 @@
         certificate chains. Patch by Patrik Schnellmann. (markt)
       </fix>
       <fix>
+        <bug>47225</bug>: Fix error in calculation of a buffer length in the
+        mapper. (markt)
+      </fix>
+      <fix>
         <bug>46985</bug>: Clean up code and remove impossible condition.
         (markt/kkolinko)
       </fix>
