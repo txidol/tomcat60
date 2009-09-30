@@ -355,5 +355,15 @@ PATCHES PROPOSED TO BACKPORT:
   Correct submit URL so it works behind a reverse proxy for session list page
   Patch by Maik Jablonski
   http://svn.apache.org/viewvc?rev=819361&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+
+* Fix display of sessionList and sessionDetail pages in Internet Explorer
+  http://svn.apache.org/viewvc?rev=820110&view=rev
+  +1: kkolinko
+  -1:
+
+* Do not reuse sessionsList window to show sessionsDetail
+  http://svn.apache.org/viewvc?rev=820132&view=rev
+  +1: kkolinko
+  -1:
