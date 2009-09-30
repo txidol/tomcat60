@@ -239,21 +239,39 @@ PATCHES PROPOSED TO BACKPORT:
   lines in logging.xml:
     +      If you have multiple instances of Tomcat, each with a separate
     +      <code>$CATALINA_HOME</code> but a shared <code>$CATALINA_BASE</code> then
+  kkolinko: in logging.xml:
+    +   Note that you may need to create a
+    +      <code>$CATALINA_BASE/lib</code> directory. 
+    I think that $CATALINA_BASE/bin is also to be mentioned as one you may
+    need to create. Though it is mentioned in RUNNING.txt, it is a recent
+    addition and I do not think that all configurations have it.
+    I have not reviewed the main part of this patch yet, so no vote.
+
 
 * Add additional permission required by JULI
   http://svn.apache.org/viewvc?rev=813001&view=rev 
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1:
   rjung: Since the above patches now prepare for using juli optionally out of
   CATALINA_BASE, shouldn't we also add that location as a codeBase?
   markt: Maybe add a comment but not an explicit permission?
   rjung: Comment sounds good.
+  kkolinko: (
+     Regarding the setContextClassLoader permission,
+     for reference - the piece of 6u14 code that causes it:
+     http://markmail.org/message/nxnyxk2fnsl6uxe6
+
+     Regarding CATALINA_BASE juli:
+     Comment is good
+     E.g., there are permissions for ${catalina.home}/lib/
+     but I do not remember anyone asking for ones for ${catalina.base}/lib/
+  )
 
 * Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45785
   for extension validator
   http://svn.apache.org/viewvc?rev=813013&view=rev
   Based on a patch by Rolf Wojtech 
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47824
@@ -265,18 +283,18 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47796
   Fix OpenEJB integration. Reset annotation processor on context stop.
   https://issues.apache.org/bugzilla/attachment.cgi?id=24222
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1: 
 
 * Make FileHandler.java extensible
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
-  +1: fhanik, jim, markt
+  +1: fhanik, jim, markt, kkolinko
   -1: 
 
 * Allow configurable buffer size of loggers
   http://svn.apache.org/viewvc?rev=814708&view=rev
   http://svn.apache.org/viewvc?rev=814876&view=rev
-  +1: fhanik, jim, markt
+  +1: fhanik, jim, markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46950
@@ -314,7 +332,7 @@ PATCHES PROPOSED TO BACKPORT:
   
 * Fix copyright year on manager app
   http://svn.apache.org/viewvc?rev=817442&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47267
@@ -332,7 +350,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47499
   Don't swallow BindException
   https://issues.apache.org/bugzilla/attachment.cgi?id=24302
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1: 
 
 * Fix cluster replication problem: session expiration uses a replication
@@ -348,7 +366,7 @@ PATCHES PROPOSED TO BACKPORT:
   Don't rely on the platform default encoding being suitable to parse the
   session ID
   http://svn.apache.org/viewvc?rev=819339&view=rev
-  +1: markt, pero
+  +1: markt, pero, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47324
