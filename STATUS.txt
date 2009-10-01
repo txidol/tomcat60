@@ -222,18 +222,19 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
   rjung: Note discussion at http://marc.info/?t=125182574600001&r=1&w=2
+  fhanik @rjung: The scheme for file:// has two slashes, that's the definition.
 
 * Allow per instance log4j.properties, JAR files (JDBC drivers) etc
   http://svn.apache.org/viewvc?rev=810916&view=rev
   http://svn.apache.org/viewvc?rev=810977&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, fhanik
   -1:
 
 
 * Allow per instance configuration of JULI or log4j for core Tomcat logging
   This requires the classpath change above
   http://svn.apache.org/viewvc?rev=810976&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, fhanik
   -1: 
   rjung: I think you have to switch HOME and BASE in the following changed
   lines in logging.xml:
