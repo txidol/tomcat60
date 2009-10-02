@@ -151,7 +151,7 @@ PATCHES PROPOSED TO BACKPORT:
   when I have done more testing) for embeddability become possible.
   Step 1: Clean-up
   http://svn.apache.org/viewvc?view=rev&revision=647344
-  +1: markt
+  +1: markt, kkolinko
   -1: 
   Step 2: Make validation configuration per-context
   http://svn.apache.org/viewvc?view=rev&revision=751502
@@ -202,7 +202,7 @@ PATCHES PROPOSED TO BACKPORT:
    0: jim
   -1: 
 
-* Fix VirtualWebappClassLoader file directives
+* Fix VirtualWebappLoader file directives
   Index: java/org/apache/catalina/loader/VirtualWebappLoader.java
 ===================================================================
 --- java/org/apache/catalina/loader/VirtualWebappLoader.java	(revision 810099)
@@ -220,7 +220,7 @@ PATCHES PROPOSED TO BACKPORT:
          }
 
   +1: fhanik
-  -1: 
+  -1: kkolinko: either way does not properly escape symbols, such as '%'. file.toURI().toString() has to be used here. See discussion.
   rjung: Note discussion at http://marc.info/?t=125182574600001&r=1&w=2
   fhanik @rjung: The scheme for file:// has two slashes, that's the definition.
 
@@ -347,6 +347,10 @@ PATCHES PROPOSED TO BACKPORT:
   that file (because part of a webapp), but maybe it would
   be cleaner to do this for the installer target only, e.g.
   saving the file, fixcrlf, run nsi, restoring file.
+  kkolinko: Another way to fix it would be to place a copy of that file
+  into %CATALINA_HOME% (with proper CRLF endings) and display that one in
+  the installer, leaving the one in the ROOT webapp as is. Note, that we
+  already have these two copies of the file in our zip/tgz distributions.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47499
   Don't swallow BindException
