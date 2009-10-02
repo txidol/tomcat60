@@ -227,15 +227,24 @@ PATCHES PROPOSED TO BACKPORT:
 * Allow per instance log4j.properties, JAR files (JDBC drivers) etc
   http://svn.apache.org/viewvc?rev=810916&view=rev
   http://svn.apache.org/viewvc?rev=810977&view=rev
-  +1: markt, rjung, fhanik
+  +1: markt, rjung, fhanik, kkolinko
   -1:
+  kkolinko: A side effect of this change will be that when catalina.home
+  and catalina.base are the same, all the jar files will be listed twice.
+  I doubt that it will cause any issues (reading the same jar file twice
+  should be possible, and should not cause any additional locking or
+  whatever, though wasting resources).
+  An alternative would be to document this option and to instruct people to
+  modify catalina.properties,  or we can guard against duplicate URLs in
+  o.a.c.startup.ClassLoaderFactory
 
 
 * Allow per instance configuration of JULI or log4j for core Tomcat logging
   This requires the classpath change above
   http://svn.apache.org/viewvc?rev=810976&view=rev
   +1: markt, rjung, fhanik
-  -1: 
+  -1: kkolinko: we should not remove tomcat-juli.jar from bootstrap.jar.manifest
+
   rjung: I think you have to switch HOME and BASE in the following changed
   lines in logging.xml:
     +      If you have multiple instances of Tomcat, each with a separate
@@ -246,7 +255,23 @@ PATCHES PROPOSED TO BACKPORT:
     I think that $CATALINA_BASE/bin is also to be mentioned as one you may
     need to create. Though it is mentioned in RUNNING.txt, it is a recent
     addition and I do not think that all configurations have it.
-    I have not reviewed the main part of this patch yet, so no vote.
+  kkolinko: Regarding /res/bootstrap.jar.manifest change:
+    It will cause problems e.g. in Eclipse IDE.
+    If I configure a Tomcat server instance there, it is created with a
+    classpath that consists only of bootstrap.jar and JDK's tools.jar. That
+    has to be changed to include tomcat-juli.jar as well.
+    While that is configurable, it is not so obvious (you have to click
+    some underlined text on some wordy page) and there can be a lot of
+    confusion when the product ceases functioning out-of-the box.
+
+    I also like that I can run Tomcat easily by typing "java -jar bootstrap.jar start"
+    That option will also be lost.
+
+    I think that we can implement the same feature by adding
+    ${CATALINA_BASE}/bin/tomcat-juli.jar to the classpath before
+    bootstrap.jar   We can propose people to manually remove
+    tomcat-juli.jar from ${CATALINA_HOME}/bin if they want, though I doubt
+    that that will be necessary.
 
 
 * Add additional permission required by JULI
@@ -388,5 +413,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Do not reuse sessionsList window to show sessionsDetail
   http://svn.apache.org/viewvc?rev=820132&view=rev
+  +1: kkolinko
+  -1:
+
+* Remove tomcat-coyote.jar reference from bootstrap.jar manifest file
+  http://svn.apache.org/viewvc?rev=820874&view=rev
   +1: kkolinko
   -1:
