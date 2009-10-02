@@ -220,7 +220,9 @@ PATCHES PROPOSED TO BACKPORT:
          }
 
   +1: fhanik
-  -1: kkolinko: either way does not properly escape symbols, such as '%'. file.toURI().toString() has to be used here. See discussion.
+  -1: kkolinko: (either way does not properly escape symbols, such as '%'.
+  file.toURI().toString() has to be used here. See discussion. - Patch is
+  proposed below (?rev=820954). )
   rjung: Note discussion at http://marc.info/?t=125182574600001&r=1&w=2
   fhanik @rjung: The scheme for file:// has two slashes, that's the definition.
 
@@ -418,5 +420,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove tomcat-coyote.jar reference from bootstrap.jar manifest file
   http://svn.apache.org/viewvc?rev=820874&view=rev
+  +1: kkolinko
+  -1:
+
+* Use file.toURI().toString() to create URLs in VirtualWebappLoader
+  http://svn.apache.org/viewvc?rev=820954&view=rev
   +1: kkolinko
   -1:
