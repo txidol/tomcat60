@@ -214,17 +214,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=810976&view=rev
   +1: markt, rjung, fhanik
   -1: kkolinko: we should not remove tomcat-juli.jar from bootstrap.jar.manifest
-
-  rjung: I think you have to switch HOME and BASE in the following changed
-  lines in logging.xml:
-    +      If you have multiple instances of Tomcat, each with a separate
-    +      <code>$CATALINA_HOME</code> but a shared <code>$CATALINA_BASE</code> then
-  kkolinko: in logging.xml:
-    +   Note that you may need to create a
-    +      <code>$CATALINA_BASE/lib</code> directory. 
-    I think that $CATALINA_BASE/bin is also to be mentioned as one you may
-    need to create. Though it is mentioned in RUNNING.txt, it is a recent
-    addition and I do not think that all configurations have it.
   kkolinko: Regarding /res/bootstrap.jar.manifest change:
     It will cause problems e.g. in Eclipse IDE.
     If I configure a Tomcat server instance there, it is created with a
