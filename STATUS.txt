@@ -318,3 +318,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=820954&view=rev
   +1: kkolinko, rjung
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47161
+  Make maxThreads return consistent. Will still return -1 in many cases but that
+  is better than previously.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=24341&action=edit
+  +1: markt
+  -1: 
