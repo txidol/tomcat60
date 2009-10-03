@@ -68,8 +68,10 @@
       <xsl:variable name="email">
         <xsl:value-of select="@email"/>
       </xsl:variable>
-      <meta name="author" value="{$name}"/>
-      <meta name="email" value="{$email}"/>
+      <meta name="author" content="{$name}"/>
+      <!-- Don't publish e-mail addresses
+      <meta name="email" content="{$email}"/>
+       -->
     </xsl:for-each>
 		<style type="text/css" media="print">
 			.noPrint {display: none;}
@@ -154,7 +156,7 @@
       <xsl:comment>PAGE FOOTER</xsl:comment>
       <tr><td colspan="2">
         <div align="center"><font color="{$body-link}" size="-1"><em>
-        Copyright &#169; 1999-2008, Apache Software Foundation
+        Copyright &#169; 1999-2009, Apache Software Foundation
         </em></font></div>
       </td></tr>
 
@@ -194,9 +196,21 @@
           <font color="{$banner-fg}" face="arial,helvetica.sanserif">
           <a name="{$name}">
           <strong><xsl:value-of select="@name"/></strong></a></font>
-      </td></tr>
+        </td>
+      <xsl:if test="@rtext">
+        <!-- Additional right-aligned text cell in section heading. It is used by changelog.xml -->
+        <td align="right" bgcolor="{$banner-bg}">
+          <font color="{$banner-fg}" face="arial,helvetica.sanserif">
+          <strong><xsl:value-of select="@rtext"/></strong></font>
+        </td>
+      </xsl:if>
+      </tr>
       <!-- Section body -->
-      <tr><td><blockquote>
+      <tr><td>
+      <xsl:if test="@rtext">
+          <xsl:attribute name="colspan">2</xsl:attribute>
+      </xsl:if>
+      <blockquote>
         <xsl:apply-templates/>
       </blockquote></td></tr>
     </table>
