@@ -205,17 +205,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Allow per instance log4j.properties, JAR files (JDBC drivers) etc
   http://svn.apache.org/viewvc?rev=810916&view=rev
   http://svn.apache.org/viewvc?rev=810977&view=rev
-  +1: markt, rjung, fhanik, kkolinko
+  http://svn.apache.org/viewvc?rev=821397&view=rev
+  +1: markt
   -1:
-  kkolinko: A side effect of this change will be that when catalina.home
-  and catalina.base are the same, all the jar files will be listed twice.
-  I doubt that it will cause any issues (reading the same jar file twice
-  should be possible, and should not cause any additional locking or
-  whatever, though wasting resources).
-  An alternative would be to document this option and to instruct people to
-  modify catalina.properties,  or we can guard against duplicate URLs in
-  o.a.c.startup.ClassLoaderFactory
-
 
 * Allow per instance configuration of JULI or log4j for core Tomcat logging
   This requires the classpath change above
