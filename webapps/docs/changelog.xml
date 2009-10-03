@@ -78,7 +78,8 @@
         reduce copy and pastes issues. (markt, kkolinko)
       </fix>
       <fix>
-        <bug>45403</bug>: 
+        <bug>45403</bug>: Add additional checks on web application deployment
+        and do not swallow IO errors. (kkolinko) 
       </fix>
       <fix>
         <bug>46908</bug>: Try and support java encoding names when using an xml
