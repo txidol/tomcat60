@@ -189,6 +189,10 @@
         Make context deployment error message for fixDocBase() more meaningful.
         (markt)
       </fix>
+      <fix>
+        Add an additional permission required by JULI when running under newer
+        JDKs and a security manager. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

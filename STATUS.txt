@@ -252,25 +252,6 @@ PATCHES PROPOSED TO BACKPORT:
     that that will be necessary.
 
 
-* Add additional permission required by JULI
-  http://svn.apache.org/viewvc?rev=813001&view=rev 
-  +1: markt, rjung, kkolinko
-  -1:
-  rjung: Since the above patches now prepare for using juli optionally out of
-  CATALINA_BASE, shouldn't we also add that location as a codeBase?
-  markt: Maybe add a comment but not an explicit permission?
-  rjung: Comment sounds good.
-  kkolinko: (
-     Regarding the setContextClassLoader permission,
-     for reference - the piece of 6u14 code that causes it:
-     http://markmail.org/message/nxnyxk2fnsl6uxe6
-
-     Regarding CATALINA_BASE juli:
-     Comment is good
-     E.g., there are permissions for ${catalina.home}/lib/
-     but I do not remember anyone asking for ones for ${catalina.base}/lib/
-  )
-
 * Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45785
   for extension validator
   http://svn.apache.org/viewvc?rev=813013&view=rev
