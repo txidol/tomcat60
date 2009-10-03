@@ -324,25 +324,25 @@ PATCHES PROPOSED TO BACKPORT:
   Correct submit URL so it works behind a reverse proxy for session list page
   Patch by Maik Jablonski
   http://svn.apache.org/viewvc?rev=819361&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix display of sessionList and sessionDetail pages in Internet Explorer
   http://svn.apache.org/viewvc?rev=820110&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Do not reuse sessionsList window to show sessionsDetail
   http://svn.apache.org/viewvc?rev=820132&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Remove tomcat-coyote.jar reference from bootstrap.jar manifest file
   http://svn.apache.org/viewvc?rev=820874&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Use file.toURI().toString() to create URLs in VirtualWebappLoader
   http://svn.apache.org/viewvc?rev=820954&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
