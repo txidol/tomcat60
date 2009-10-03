@@ -220,6 +220,10 @@
         mapper. (markt)
       </fix>
       <fix>
+        <bug>47320</bug>: Don't rely on the platform default encoding being
+        suitable to parse the session ID. (markt)
+      </fix>
+      <fix>
         <bug>47499</bug>: Don't swallow bind exceptions. (markt)
       </fix>
     </changelog>

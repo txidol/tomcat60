@@ -320,13 +320,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, pero
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47320
-  Don't rely on the platform default encoding being suitable to parse the
-  session ID
-  http://svn.apache.org/viewvc?rev=819339&view=rev
-  +1: markt, pero, kkolinko
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47324
   Correct submit URL so it works behind a reverse proxy for session list page
   Patch by Maik Jablonski
