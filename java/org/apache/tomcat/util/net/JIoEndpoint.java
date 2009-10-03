@@ -522,12 +522,16 @@ public class JIoEndpoint {
                 } else {
                     serverSocket = serverSocketFactory.createSocket(port, backlog, address);
                 }
-            } catch (BindException be) {
+            } catch (BindException orig) {
+                String msg;
                 if (address == null)
-                    throw new BindException(be.getMessage() + "<null>:" + port);
+                    msg = orig.getMessage() + " <null>:" + port;
                 else
-                    throw new BindException(be.getMessage() + " " +
-                            address.toString() + ":" + port);
+                    msg = orig.getMessage() + " " +
+                            address.toString() + ":" + port;
+                BindException be = new BindException(msg);
+                be.initCause(orig);
+                throw be;
             }
         }
         //if( serverTimeout >= 0 )

@@ -294,8 +294,16 @@ public class PoolTcpEndpoint implements Runnable { // implements Endpoint {
                     } else {
                         serverSocket = factory.createSocket(port, backlog, inet);
                     }
-                } catch ( BindException be ) {
-                    throw new BindException(be.getMessage() + ":" + port);
+                } catch (BindException orig) {
+                    String msg;
+                    if (inet == null)
+                        msg = orig.getMessage() + "<null>:" + port;
+                    else
+                        msg = orig.getMessage() + " " +
+                                inet.toString() + ":" + port;
+                    BindException be = new BindException(msg);
+                    be.initCause(orig);
+                    throw be;
                 }
             }
             if( serverTimeout >= 0 )

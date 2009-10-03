@@ -311,12 +311,6 @@ PATCHES PROPOSED TO BACKPORT:
   the installer, leaving the one in the ROOT webapp as is. Note, that we
   already have these two copies of the file in our zip/tgz distributions.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47499
-  Don't swallow BindException
-  https://issues.apache.org/bugzilla/attachment.cgi?id=24302
-  +1: markt, rjung, kkolinko
-  -1: 
-
 * Fix cluster replication problem: session expiration uses a replication
   shortcut, so that attributes changed immediately before invalidation do
   not get replicated before the expiration replication message.
