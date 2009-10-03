@@ -251,14 +251,6 @@ PATCHES PROPOSED TO BACKPORT:
     tomcat-juli.jar from ${CATALINA_HOME}/bin if they want, though I doubt
     that that will be necessary.
 
-
-* Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=45785
-  for extension validator
-  http://svn.apache.org/viewvc?rev=813013&view=rev
-  Based on a patch by Rolf Wojtech 
-  +1: markt, rjung, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47824
   Correct Maven deps
   http://svn.apache.org/viewvc?rev=813866&view=rev

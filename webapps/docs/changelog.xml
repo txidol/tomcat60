@@ -82,6 +82,10 @@
         and do not swallow IO errors. (kkolinko) 
       </fix>
       <fix>
+        <bug>45785</bug>: Additional fix required for the extension validator.
+        Based on a patch by Rolf Wojtech. (markt)
+      </fix>
+      <fix>
         <bug>46908</bug>: Try and support java encoding names when using an xml
         parser provided via the endorsed mechanism. (markt)
       </fix>
