@@ -326,3 +326,8 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=24341&action=edit
   +1: markt
   -1: 
+
+* Upgrade to Commons-Pool 1.5.3. 1.5.2 had a leak
+  http://svn.apache.org/viewvc?rev=821412&view=rev
+  +1: markt
+  -1: 
