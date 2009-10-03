@@ -361,7 +361,7 @@
   </subsection>
 </section>
 
-<section name="Tomcat 6.0.20 (remm)">
+<section name="Tomcat 6.0.20 (remm)" rtext="released 2009-06-03">
   <subsection name="Catalina">
     <changelog>
       <fix>
@@ -515,7 +515,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.19 (remm)">
+<section name="Tomcat 6.0.19 (remm)" rtext="not released">
   <subsection name="Catalina">
     <changelog>
       <update>
@@ -1075,7 +1075,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.18 (remm)">
+<section name="Tomcat 6.0.18 (remm)" rtext="released 2008-07-31">
   <subsection name="Catalina">
     <changelog>
       <fix>
@@ -1130,7 +1130,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.17 (remm)">
+<section name="Tomcat 6.0.17 (remm)" rtext="not released">
   <subsection name="General">
     <changelog>
       <update>
@@ -1513,7 +1513,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.16 (remm)">
+<section name="Tomcat 6.0.16 (remm)" rtext="released 2008-02-08">
   <subsection name="General">
     <changelog>
       <update>
@@ -1772,7 +1772,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.15 (remm)">
+<section name="Tomcat 6.0.15 (remm)" rtext="not released">
   <subsection name="General">
     <changelog>
       <update>Fix the MD5 file contents in distribution</update>
@@ -1950,7 +1950,7 @@
   </subsection>
 
 </section>
-<section name="Tomcat 6.0.14 (remm)">
+<section name="Tomcat 6.0.14 (remm)" rtext="released 2007-08-13">
   <subsection name="General">
     <changelog>
       <docs>
@@ -2073,7 +2073,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.13 (remm)">
+<section name="Tomcat 6.0.13 (remm)" rtext="released 2007-05-15">
   <subsection name="Catalina">
     <changelog>
       <fix>
@@ -2142,7 +2142,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.12 (remm)">
+<section name="Tomcat 6.0.12 (remm)" rtext="not released">
   <subsection name="General">
     <changelog>
       <fix>
@@ -2243,7 +2243,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.11 (remm)">
+<section name="Tomcat 6.0.11 (remm)" rtext="not released">
   <subsection name="General">
     <changelog>
       <update>
@@ -2435,7 +2435,7 @@
     </changelog>
   </subsection>
  </section>
-<section name="Tomcat 6.0.10 (remm)">
+<section name="Tomcat 6.0.10 (remm)" rtext="released 2007-02-28">
   <subsection name="Catalina">
     <changelog>
       <update>
@@ -2481,7 +2481,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.9 (remm)">
+<section name="Tomcat 6.0.9 (remm)" rtext="beta, 2007-02-08">
   <subsection name="General">
     <changelog>
       <fix>
@@ -2554,7 +2554,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.8 (remm)">
+<section name="Tomcat 6.0.8 (remm)" rtext="alpha">
   <subsection name="Catalina">
     <changelog>
       <fix>
@@ -2643,7 +2643,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.7 (remm)">
+<section name="Tomcat 6.0.7 (remm)" rtext="beta, 2007-01-10">
   <subsection name="General">
     <changelog>
       <fix>
@@ -2667,7 +2667,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.6 (remm)">
+<section name="Tomcat 6.0.6 (remm)" rtext="alpha">
   <subsection name="General">
     <changelog>
       <fix>
@@ -2676,7 +2676,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.5 (remm)">
+<section name="Tomcat 6.0.5 (remm)" rtext="not released">
   <subsection name="Catalina">
     <changelog>
       <fix>
@@ -2719,7 +2719,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.4 (remm)">
+<section name="Tomcat 6.0.4 (remm)" rtext="alpha">
   <subsection name="General">
     <changelog>
       <update>
@@ -2731,7 +2731,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.3 (remm)">
+<section name="Tomcat 6.0.3 (remm)" rtext="not released">
   <subsection name="General">
     <changelog>
     </changelog>
@@ -2831,7 +2831,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.2 (remm)">
+<section name="Tomcat 6.0.2 (remm)" rtext="beta, 2006-11-23">
   <subsection name="General">
     <changelog>
       <fix>
@@ -2860,7 +2860,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.1 (remm)">
+<section name="Tomcat 6.0.1 (remm)" rtext="alpha">
   <subsection name="General">
     <changelog>
       <fix>
@@ -2913,7 +2913,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.0 (remm)">
+<section name="Tomcat 6.0.0 (remm)" rtext="alpha">
   <subsection name="Catalina">
     <changelog>
       <add>
@@ -2956,10 +2956,6 @@
       <add>
         New cluster configuration and new documentation (fhanik)
       </add>
-    </changelog>
-  </subsection>
-  <subsection name="Webapps">
-    <changelog>
     </changelog>
   </subsection>
 </section>
