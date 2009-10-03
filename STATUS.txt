@@ -251,12 +251,6 @@ PATCHES PROPOSED TO BACKPORT:
     tomcat-juli.jar from ${CATALINA_HOME}/bin if they want, though I doubt
     that that will be necessary.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47796
-  Fix OpenEJB integration. Reset annotation processor on context stop.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=24222
-  +1: markt, rjung, kkolinko
-  -1: 
-
 * Make FileHandler.java extensible
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
   +1: fhanik, jim, markt, kkolinko

@@ -4690,6 +4690,8 @@ public class StandardContext
         applicationEventListenersObjects = new Object[0];
         applicationLifecycleListenersObjects = new Object[0];
         
+        annotationProcessor = null;
+
         if(log.isDebugEnabled())
             log.debug("resetContext " + oname);
     }

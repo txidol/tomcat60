@@ -134,6 +134,10 @@
         old method. Patch provided by Christopher Schultz. (markt)
       </fix>
       <fix>
+        <bug>47796</bug>: Fix OpenEJB integration. Reset annotation processor on
+        context stop. (markt)
+      </fix>
+      <fix>
         <bug>47826</bug>: Correct error in debug message in
         org.apache.catalina.Bootstrap (markt)
       </fix>
