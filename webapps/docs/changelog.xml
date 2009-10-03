@@ -366,6 +366,10 @@
         mechanism to the build process to enable these files to be customised
         per JAR as required. (markt)
       </add>
+      <fix>
+        <bug>47824</bug>: Make Servlet API an optional dependency for JULI when
+        using Maven. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
