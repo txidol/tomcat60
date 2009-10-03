@@ -253,15 +253,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: jim
   -1: 
 
-* Fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=47161
-  Correctly report thread counts when using executors
-  https://issues.apache.org/bugzilla/attachment.cgi?id=24272
-  +1: markt, rjung
-  -1: fhanik - this creates a package dependency we've been avoiding so far. Its not the connectors job to report thread count if an executor is used.
-  rjung: Maybe we should add a few getters to org.apache.catalina.Executor
-  for TC 7, so we can assume everyone providing an implementation
-  allows us to query? If they don't use threads, they can return -1 or whatever.
-
 * Align native and Java method names.
   Port/backport from trunk, TC5.5.x, tc4.1.x and tcnative (trunk and 1.1.x)
   http://svn.apache.org/viewvc?rev=815748&view=rev
