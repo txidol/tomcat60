@@ -292,13 +292,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, pero
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47324
-  Correct submit URL so it works behind a reverse proxy for session list page
-  Patch by Maik Jablonski
-  http://svn.apache.org/viewvc?rev=819361&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix display of sessionList and sessionDetail pages in Internet Explorer
   http://svn.apache.org/viewvc?rev=820110&view=rev
   +1: kkolinko, rjung, markt

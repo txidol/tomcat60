@@ -316,6 +316,10 @@
         (markt)
       </fix>
       <fix>
+        <bug>47324</bug>: Fix submit URL for session list page so it works
+        behind a reverse proxy. Patch provided by Maik Jablonski. (markt)
+      </fix>
+      <fix>
         <bug>47425</bug>: Add crlFile attribute to the SSL configuration
         documentation. (markt)
       </fix>
