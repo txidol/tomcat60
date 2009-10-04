@@ -317,7 +317,7 @@ PATCHES PROPOSED TO BACKPORT:
   Make maxThreads return consistent. Will still return -1 in many cases but that
   is better than previously.
   https://issues.apache.org/bugzilla/attachment.cgi?id=24341&action=edit
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1:
   kkolinko: (We need to make some decision regarding the following lines in Http11Processor#process():
         int threadRatio = (endpoint.getCurrentThreadsBusy() * 100)
@@ -327,9 +327,10 @@ PATCHES PROPOSED TO BACKPORT:
     cannot be reliably calculated.
 
     Besides that, I see no problems with this patch.
+  rjung: me to (threadRatio <= 75 branch).
   )
 
 * Upgrade to Commons-Pool 1.5.3. 1.5.2 had a leak
   http://svn.apache.org/viewvc?rev=821412&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
