@@ -332,6 +332,10 @@
         to expire sessions when the session timeout is set to infinite.
         (funkman)
       </fix>
+      <fix>
+        Fix display of session information pages of Manager application
+        in Internet Explorer. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
