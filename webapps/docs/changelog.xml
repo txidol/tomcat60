@@ -206,6 +206,9 @@
         Remove unnecessary reference to tomcat-coyote.jar from the bootstrap JAR
         manifest. (kkolinko)
       </fix>
+      <fix>
+        Use correct method to create URLs in VirtualWebappLoader. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
