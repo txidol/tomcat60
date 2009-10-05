@@ -293,11 +293,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, pero
   -1: 
 
-* Do not reuse sessionsList window to show sessionsDetail
-  http://svn.apache.org/viewvc?rev=820132&view=rev
-  +1: kkolinko, rjung, markt
-  -1:
-
 * Remove tomcat-coyote.jar reference from bootstrap.jar manifest file
   http://svn.apache.org/viewvc?rev=820874&view=rev
   +1: kkolinko, rjung, markt

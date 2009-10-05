@@ -336,6 +336,10 @@
         Fix display of session information pages of Manager application
         in Internet Explorer. (kkolinko)
       </fix>
+      <update>
+        Do not reuse windows (tabs) for session detail pages in Manager
+        application. (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Other">
