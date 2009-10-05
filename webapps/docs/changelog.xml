@@ -202,6 +202,10 @@
         Add an additional permission required by JULI when running under newer
         JDKs and a security manager. (markt)
       </fix>
+      <fix>
+        Remove unnecessary reference to tomcat-coyote.jar from the bootstrap JAR
+        manifest. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
