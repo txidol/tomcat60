@@ -310,11 +310,6 @@ PATCHES PROPOSED TO BACKPORT:
   rjung: me to (threadRatio <= 75 branch).
   )
 
-* Upgrade to Commons-Pool 1.5.3. 1.5.2 had a leak
-  http://svn.apache.org/viewvc?rev=821412&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix memory leak causes by a JRE implementation change in 1.6.0_15 onwards
   http://svn.apache.org/viewvc?view=revision&revision=828196
   +1: markt

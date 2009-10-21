@@ -155,7 +155,7 @@
         requests. (markt) 
       </add>
       <update>
-        Update Apache Commons Pool from 1.4 to 1.5.2. This update includes
+        Update Apache Commons Pool from 1.4 to 1.5.3. This update includes
         various fixes to prevent deadlocks, reduces synchronization and makes
         object allocation occur fairly - i.e. objects are allocated to threads
         in the order that the threads request them. This update fixes a number
