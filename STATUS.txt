@@ -325,3 +325,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=828201
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48009
+  Protect against a context file breifly disappearing due to text editor
+  http://svn.apache.org/viewvc?view=revision&revision=828210
+  +1: markt
+  -1: 
