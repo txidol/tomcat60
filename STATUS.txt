@@ -314,3 +314,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=821412&view=rev
   +1: markt, kkolinko, rjung
   -1: 
+
+* Fix memory leak causes by a JRE implementation change in 1.6.0_15 onwards
+  http://svn.eu.apache.org/viewvc?view=revision&revision=828196
+  +1: markt
+  -1: 
