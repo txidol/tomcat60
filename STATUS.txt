@@ -329,7 +329,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47987
   Limit size of not found resources cache
-  http://svn.apache.org/viewvc?view=revision&revision=828212
+  http://svn.apache.org/viewvc?rev=828759&view=rev
   +1: markt
   -1: 
 
