@@ -314,27 +314,30 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=828196
   +1: markt
   -1: 
+  kkolinko: +1, but only if the same lines are added to /res/confinstall/server_1.xml as well
+    Also, once this patch is approved, a description of JreMemoryLeakPreventionListener
+    has to be added to http://tomcat.apache.org/tomcat-6.0-doc/config/listeners.html
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48019
   Be more careful about skipping over sections we aren't interested in
   http://svn.apache.org/viewvc?view=revision&revision=828201
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48009
-  Protect against a context file breifly disappearing due to text editor
+  Protect against a context file briefly disappearing due to text editor
   http://svn.apache.org/viewvc?view=revision&revision=828210
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47987
   Limit size of not found resources cache
   http://svn.apache.org/viewvc?rev=828759&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Refix https://issues.apache.org/bugzilla/show_bug.cgi?id=37848
   Don't output info messages when there is no terminal
   http://svn.apache.org/viewvc?rev=828225&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
