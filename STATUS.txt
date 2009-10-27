@@ -312,11 +312,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix memory leak causes by a JRE implementation change in 1.6.0_15 onwards
   http://svn.apache.org/viewvc?view=revision&revision=828196
-  +1: markt
+  http://svn.apache.org/viewvc?view=revision&revision=830378
+  http://svn.apache.org/viewvc?view=revision&revision=830379
+  +1: markt, kkolinko
   -1: 
-  kkolinko: +1, but only if the same lines are added to /res/confinstall/server_1.xml as well
-    Also, once this patch is approved, a description of JreMemoryLeakPreventionListener
-    has to be added to http://tomcat.apache.org/tomcat-6.0-doc/config/listeners.html
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48019
   Be more careful about skipping over sections we aren't interested in
