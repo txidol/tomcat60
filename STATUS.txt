@@ -125,7 +125,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
   This also requires a second patch
   http://svn.apache.org/viewvc?rev=809131&view=rev
-  +1: markt, jim
+  +1: markt, jim, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39231
