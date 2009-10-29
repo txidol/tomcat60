@@ -34,9 +34,36 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix issue where the first request for a deleted JSPs returns as if the JSP
   still exists.
   http://svn.apache.org/viewvc?view=rev&revision=683969
-  +1: markt, funkman
+  +1: markt, funkman, kkolinko
    0: remm (looks risky, very minor problem), fhanik - minor problem, jim
   -1: 
+  kkolinko: (Notes:
+    1. This does not affect configurations where Jasper is run with
+    development=false. In those configurations JSP removal is not detected
+    at all.
+
+
+    2. I think that, strictly speaking, JspCompilationContext#removed field
+    has to be either volatile or AtomicInteger, or there must be
+    synch(JspServletWrapper) when accessing it:
+
+    JspCompilationContext#incrementRemoved() is always called from inside a
+    synchronized(JspServletWrapper) block, but
+    JspCompilationContext#isRemoved() is e.g. called in
+    JspServletWrapper#service() which is not synchoronized.
+
+    Of course, that happens only when development=true. Otherwise that
+    field is always 0. Thus I am hesitant to adding volatile to it to not
+    affect productive configurations. Maybe double-lock pattern is better
+    (like one in JspServletWrapper#getServlet()).
+
+    This issue with JspCompilationContext#removed field is not a blocker
+    for this patch, because it exists independently of it. And I think it
+    would be hardly noticeable, as it won't be observed if there were any
+    (unrelated) synchs earlier in the same Thread, and e.g. with
+    development=true mode there is a syncronized(this) block below in
+    JspServletWrapper#service().
+  )
 
 * Backport cleanup of semantics of thisAccessedTime and
   lastAccessedTime for sessions:
