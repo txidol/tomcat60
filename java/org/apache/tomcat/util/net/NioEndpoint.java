@@ -57,7 +57,6 @@ import javax.net.ssl.X509KeyManager;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.IntrospectionUtils;
-import org.apache.tomcat.util.net.JIoEndpoint.Worker;
 import org.apache.tomcat.util.net.SecureNioChannel.ApplicationBufferHandler;
 import org.apache.tomcat.util.net.jsse.NioX509KeyManager;
 import org.apache.tomcat.util.res.StringManager;
@@ -371,7 +370,17 @@ public class NioEndpoint {
             }
         }
     }
-    public int getMaxThreads() { return maxThreads; }
+    public int getMaxThreads() {
+        if (running && getUseExecutor() && executor!=null) {
+            if (executor instanceof ThreadPoolExecutor) {
+                return ((ThreadPoolExecutor)executor).getMaximumPoolSize();
+            } else {
+                return -1;
+            }
+        } else {
+            return maxThreads;
+        }
+    }
 
 
     /**

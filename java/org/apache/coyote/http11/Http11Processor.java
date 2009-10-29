@@ -774,10 +774,15 @@ public class Http11Processor implements ActionHook {
         int keepAliveLeft = maxKeepAliveRequests;
         int soTimeout = endpoint.getSoTimeout();
 
-        int threadRatio = (endpoint.getCurrentThreadsBusy() * 100)
-                / endpoint.getMaxThreads();
-        if (threadRatio > 75) {
-            keepAliveLeft = 1;
+        // When using an executor, these values may return non-positive values
+        int curThreads = endpoint.getCurrentThreadsBusy();
+        int maxThreads = endpoint.getMaxThreads();
+        if (curThreads > 0 && maxThreads >0) {
+            // Only auto-disable keep-alive if the current thread usage % can be
+            // calculated correctly
+            if (curThreads*100/maxThreads > 75) {
+                keepAliveLeft = 1;
+            }
         }
         
         try {

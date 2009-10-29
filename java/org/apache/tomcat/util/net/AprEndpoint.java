@@ -36,7 +36,6 @@ import org.apache.tomcat.jni.SSLContext;
 import org.apache.tomcat.jni.SSLSocket;
 import org.apache.tomcat.jni.Socket;
 import org.apache.tomcat.jni.Status;
-import org.apache.tomcat.util.net.JIoEndpoint.Worker;
 import org.apache.tomcat.util.res.StringManager;
 
 /**
@@ -188,7 +187,13 @@ public class AprEndpoint {
             }
         }
     }
-    public int getMaxThreads() { return maxThreads; }
+    public int getMaxThreads() {
+        if (executor != null) {
+            return -1;
+        } else {
+            return maxThreads;
+        }
+    }
 
 
     /**
@@ -539,7 +544,7 @@ public class AprEndpoint {
      * @return the amount of threads that are managed by the pool
      */
     public int getCurrentThreadCount() {
-        if (executor!=null) {
+        if (executor != null) {
             return -1;
         } else {
             return curThreads;

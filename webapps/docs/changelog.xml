@@ -319,6 +319,10 @@
         (markt)
       </fix>
       <fix>
+        <bug>47161</bug>: Report thread count correctly in Manager when exectors
+        are used and return -1 when it can not easily be determined. (markt)
+      </fix>
+      <fix>
         <bug>47235</bug>: Remove use of autoReconnect from MySQL examples.
         (markt)
       </fix>

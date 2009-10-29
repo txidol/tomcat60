@@ -160,7 +160,13 @@ public class JIoEndpoint {
             }
         }
     }
-    public int getMaxThreads() { return maxThreads; }
+    public int getMaxThreads() {
+        if (executor != null) {
+            return -1;
+        } else {
+            return maxThreads;
+        }
+    }
 
 
     /**
