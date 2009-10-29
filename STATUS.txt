@@ -353,3 +353,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=828225&view=rev
   +1: markt, kkolinko
   -1: 
+
+* Use correct flag for SSL
+  http://svn.apache.org/viewvc?rev=831106&view=rev
+  +1: fhanik
+  -1:
