@@ -213,8 +213,11 @@ PATCHES PROPOSED TO BACKPORT:
   Update AccessLogValve and ExtendedAccessLogValve with all the recent threading
   improvements
   http://people.apache.org/~markt/patches/2009-08-15-AccessLogValve-tc6.patch
-  +1: markt
-  -1: 
+  +1: markt, kkolinko
+  -1:
+  kkolinko: Also +1 to use StringBuilder everywhere in those classes, with
+    exception of those places where it is passed as the argument to
+    AccessLogValve.AccessLogElement#addElement().
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47699
   Better handling of PID files
