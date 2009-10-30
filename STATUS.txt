@@ -131,7 +131,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39231
   http://people.apache.org/~markt/patches/2009-08-16-bug39231.patch
   JAAS LoginContext expects a call to logout()
-  +1: markt, jim
+  +1: markt, jim, fhanik
   -1: 
  
 * Improve NIO connector shutdown time by doing shutdowns in parallel
@@ -213,7 +213,7 @@ PATCHES PROPOSED TO BACKPORT:
   Update AccessLogValve and ExtendedAccessLogValve with all the recent threading
   improvements
   http://people.apache.org/~markt/patches/2009-08-15-AccessLogValve-tc6.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1:
 
   kkolinko: Also +1 to use StringBuilder everywhere in those classes, with
@@ -224,20 +224,28 @@ PATCHES PROPOSED TO BACKPORT:
   Better handling of PID files
   https://issues.apache.org/bugzilla/attachment.cgi?id=24202
   +1: markt
+  +1: fhanik (although, on .sh, I think we could get rid of 'Bootstrap stop' by now, shutdown hooks have been available for quite some time)
   -1: 
+   
+  
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44041
   Threading issue in classloading. Adds a sync so please check performance
   http://svn.apache.org/viewvc?rev=805182&view=rev 
   +1: markt
    0: jim
-  -1: 
+  -1: fhanik, I would say a thread safe, yet concurrent implementation would do
+      synchronized (className.intern()) {
+        //perform class loading
+      }
+      instead of synchronizing the entire method and hence only allowing class loading one class at a time
+      
 
 * Allow per instance log4j.properties, JAR files (JDBC drivers) etc
   http://svn.apache.org/viewvc?rev=810916&view=rev
   http://svn.apache.org/viewvc?rev=810977&view=rev
   http://svn.apache.org/viewvc?rev=821397&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1:
   kkolinko: re RUNNING.txt update: it'd be better to replace "eg" with "e.g."
 
@@ -292,7 +300,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=706574&view=rev
   Plus the last hunk for Socket.java in
   https://issues.apache.org/bugzilla/attachment.cgi?id=24276
-  +1: rjung, markt
+  +1: rjung, markt, fhanik
   -1: 
   +1: kkolinko:(
     Should be applied when tc-native 1.1.17 is released,
@@ -337,20 +345,20 @@ PATCHES PROPOSED TO BACKPORT:
   That's a problem in case a session listener needs the changed attribute.
   Has already been fixed in trunk, OACC and tc5.5.x.
   http://svn.apache.org/viewvc?rev=818062&view=rev (trunk)
-  +1: rjung, pero
+  +1: rjung, pero, fhanik
   -1: 
 
 * Fix memory leak causes by a JRE implementation change in 1.6.0_15 onwards
   http://svn.apache.org/viewvc?view=revision&revision=828196
   http://svn.apache.org/viewvc?view=revision&revision=830378
   http://svn.apache.org/viewvc?view=revision&revision=830379
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48019
   Be more careful about skipping over sections we aren't interested in
   http://svn.apache.org/viewvc?view=revision&revision=828201
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48009
