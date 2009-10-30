@@ -215,6 +215,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2009-08-15-AccessLogValve-tc6.patch
   +1: markt, kkolinko
   -1:
+
   kkolinko: Also +1 to use StringBuilder everywhere in those classes, with
     exception of those places where it is passed as the argument to
     AccessLogValve.AccessLogElement#addElement().
@@ -309,6 +310,7 @@ PATCHES PROPOSED TO BACKPORT:
   that file (because part of a webapp), but maybe it would
   be cleaner to do this for the installer target only, e.g.
   saving the file, fixcrlf, run nsi, restoring file.
+
   kkolinko: Another way to fix it would be to place a copy of that file
   into %CATALINA_HOME% (with proper CRLF endings) and display that one in
   the installer, leaving the one in the ROOT webapp as is. Note, that we
@@ -356,5 +358,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Use correct flag for SSL
   http://svn.apache.org/viewvc?rev=831106&view=rev
-  +1: fhanik
+  +1: fhanik, kkolinko
   -1:
