@@ -383,3 +383,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=831106&view=rev
   +1: fhanik, kkolinko
   -1:
+
+* Fix ReplicationValve CrossContext support
+  http://svn.apache.org/viewvc?rev=831718&view=rev
+  +1: pero
+  -1:
+
