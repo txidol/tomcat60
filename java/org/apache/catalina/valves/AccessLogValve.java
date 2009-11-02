@@ -223,34 +223,6 @@ public class AccessLogValve
 
 
     /**
-     * A date formatter to format Dates into a day string in the format
-     * "dd".
-     */
-    private SimpleDateFormat dayFormatter = null;
-
-
-    /**
-     * A date formatter to format a Date into a month string in the format
-     * "MM".
-     */
-    private SimpleDateFormat monthFormatter = null;
-
-
-    /**
-     * A date formatter to format a Date into a year string in the format
-     * "yyyy".
-     */
-    private SimpleDateFormat yearFormatter = null;
-
-
-    /**
-     * A date formatter to format a Date into a time in the format
-     * "kk:mm:ss" (kk is a 24-hour representation of the hour).
-     */
-    private SimpleDateFormat timeFormatter = null;
-
-
-    /**
      * The system timezone.
      */
     private TimeZone timezone = null;
@@ -275,16 +247,32 @@ public class AccessLogValve
      * is true.
      */
     protected File currentLogFile = null;
+    private static class AccessDateStruct {
+        private Date currentDate = new Date();
+        private String currentDateString = null;
+        private SimpleDateFormat dayFormatter = new SimpleDateFormat("dd");
+        private SimpleDateFormat monthFormatter = new SimpleDateFormat("MM");
+        private SimpleDateFormat yearFormatter = new SimpleDateFormat("yyyy");
+        private SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm:ss");
+        public AccessDateStruct() {
+            TimeZone tz = TimeZone.getDefault();
+            dayFormatter.setTimeZone(tz);
+            monthFormatter.setTimeZone(tz);
+            yearFormatter.setTimeZone(tz);
+            timeFormatter.setTimeZone(tz);
+        }
+    }
     
     /**
      * The system time when we last updated the Date that this valve
      * uses for log lines.
      */
-    private Date currentDate = null;
-    
-    private volatile long currentMillis = 0;
-
-
+    private static final ThreadLocal<AccessDateStruct> currentDateStruct =
+            new ThreadLocal<AccessDateStruct>() {
+        protected AccessDateStruct initialValue() {
+            return new AccessDateStruct();
+        }
+    };
     /**
      * Resolve hosts.
      */
@@ -294,7 +282,7 @@ public class AccessLogValve
     /**
      * Instant when the log daily rotation was last checked.
      */
-    private long rotationLastChecked = 0L;
+    private volatile long rotationLastChecked = 0L;
 
     /**
      * Do we check for log file existence? Helpful if an external
@@ -575,7 +563,7 @@ public class AccessLogValve
             }
     
             Date date = getDate();
-            StringBuffer result = new StringBuffer();
+            StringBuffer result = new StringBuffer(128);
     
             for (int i = 0; i < logElements.length; i++) {
                 logElements[i].addElement(result, date, request, response, time);
@@ -648,15 +636,15 @@ public class AccessLogValve
             // Only do a logfile switch check once a second, max.
             long systime = System.currentTimeMillis();
             if ((systime - rotationLastChecked) > 1000) {
-
-                rotationLastChecked = systime;
-
-                // Check for a change of date
-                String tsDate = fileDateFormatter.format(new Date(systime));
-
-                // If the date has changed, switch log files
-                if (!dateStamp.equals(tsDate)) {
-                    synchronized (this) {
+                synchronized(this) {
+                    if ((systime - rotationLastChecked) > 1000) {
+                        rotationLastChecked = systime;
+    
+                        String tsDate;
+                        // Check for a change of date
+                        tsDate = fileDateFormatter.format(new Date(systime));
+    
+                        // If the date has changed, switch log files
                         if (!dateStamp.equals(tsDate)) {
                             close();
                             dateStamp = tsDate;
@@ -687,10 +675,12 @@ public class AccessLogValve
         }
 
         // Log this message
-        if (writer != null) {
-            writer.println(message);
-            if (!buffered) {
-                writer.flush();
+        synchronized(this) {
+            if (writer != null) {
+                writer.println(message);
+                if (!buffered) {
+                    writer.flush();
+                }
             }
         }
 
@@ -757,15 +747,12 @@ public class AccessLogValve
     private Date getDate() {
         // Only create a new Date once per second, max.
         long systime = System.currentTimeMillis();
-        if ((systime - currentMillis) > 1000) {
-            synchronized (this) {
-                if ((systime - currentMillis) > 1000) {
-                    currentDate = new Date(systime);
-                    currentMillis = systime;
-                }
-            }
+        AccessDateStruct struct = currentDateStruct.get(); 
+        if ((systime - struct.currentDate.getTime()) > 1000) {
+            struct.currentDate.setTime(systime);
+            struct.currentDateString = null;
         }
-        return currentDate;
+        return struct.currentDate;
     }
 
 
@@ -861,16 +848,7 @@ public class AccessLogValve
             fileDateFormat = "yyyy-MM-dd";
         fileDateFormatter = new SimpleDateFormat(fileDateFormat);
         fileDateFormatter.setTimeZone(timezone);
-        dayFormatter = new SimpleDateFormat("dd");
-        dayFormatter.setTimeZone(timezone);
-        monthFormatter = new SimpleDateFormat("MM");
-        monthFormatter.setTimeZone(timezone);
-        yearFormatter = new SimpleDateFormat("yyyy");
-        yearFormatter.setTimeZone(timezone);
-        timeFormatter = new SimpleDateFormat("HH:mm:ss");
-        timeFormatter.setTimeZone(timezone);
-        currentDate = new Date();
-        dateStamp = fileDateFormatter.format(currentDate);
+        dateStamp = fileDateFormatter.format(currentDateStruct.get().currentDate);
         open();
     }
 
@@ -922,22 +900,23 @@ public class AccessLogValve
     /**
      * write local IP address - %A
      */
-    protected class LocalAddrElement implements AccessLogElement {
+    protected static class LocalAddrElement implements AccessLogElement {
         
-        private String value = null;
+        private static final String LOCAL_ADDR_VALUE;
+
+        static {
+            String init;
+            try {
+                init = InetAddress.getLocalHost().getHostAddress();
+            } catch (Throwable e) {
+                init = "127.0.0.1";
+            }
+            LOCAL_ADDR_VALUE = init;
+        }
         
         public void addElement(StringBuffer buf, Date date, Request request,
                 Response response, long time) {
-            if (value == null) {
-                synchronized (this) {
-                    try {
-                        value = InetAddress.getLocalHost().getHostAddress();
-                    } catch (Throwable e) {
-                        value = "127.0.0.1";
-                    }
-                }
-            }
-            buf.append(value);
+            buf.append(LOCAL_ADDR_VALUE);
         }
     }
     
@@ -1004,33 +983,29 @@ public class AccessLogValve
      * write date and time, in Common Log Format - %t
      */
     protected class DateAndTimeElement implements AccessLogElement {
-        private Date currentDate = new Date(0);
-
-        private String currentDateString = null;
         
+        
+
+
         public void addElement(StringBuffer buf, Date date, Request request,
                 Response response, long time) {
-            if (currentDate != date) {
-                synchronized (this) {
-                    if (currentDate != date) {
-                        StringBuffer current = new StringBuffer(32);
-                        current.append('[');
-                        current.append(dayFormatter.format(date)); // Day
-                        current.append('/');
-                        current.append(lookup(monthFormatter.format(date))); // Month
-                        current.append('/');
-                        current.append(yearFormatter.format(date)); // Year
-                        current.append(':');
-                        current.append(timeFormatter.format(date)); // Time
-                        current.append(' ');
-                        current.append(getTimeZone(date)); // Timezone
-                        current.append(']');
-                        currentDateString = current.toString();
-                        currentDate = date;
-                    }
-                }
+            AccessDateStruct struct = currentDateStruct.get();
+            if (struct.currentDateString == null) {
+                StringBuffer current = new StringBuffer(32);
+                current.append('[');
+                current.append(struct.dayFormatter.format(date));
+                current.append('/');
+                current.append(lookup(struct.monthFormatter.format(date)));
+                current.append('/');
+                current.append(struct.yearFormatter.format(date));
+                current.append(':');
+                current.append(struct.timeFormatter.format(date));
+                current.append(' ');
+                current.append(getTimeZone(date));
+                current.append(']');
+                struct.currentDateString = current.toString();
             }
-            buf.append(currentDateString);
+            buf.append(struct.currentDateString);
         }
     }
 
@@ -1408,7 +1383,7 @@ public class AccessLogValve
         if (buf.length() > 0) {
             list.add(new StringElement(buf.toString()));
         }
-        return (AccessLogElement[]) list.toArray(new AccessLogElement[0]);
+        return list.toArray(new AccessLogElement[0]);
     }
 
     /**
