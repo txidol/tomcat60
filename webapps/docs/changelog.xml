@@ -395,6 +395,10 @@
   <subsection name="Other">
     <changelog>
       <fix>
+        <bug>37848</bug>: Re-fix not outputting info messages when there is no
+        terminal. (markt)
+      </fix>
+      <fix>
         <bug>39194</bug>: Make classpath configuration consistent in the startup
         scripts. (markt/kkolinko)
       </fix>
