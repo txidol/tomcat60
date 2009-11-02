@@ -246,6 +246,11 @@
       <fix>
         <bug>47499</bug>: Don't swallow bind exceptions. (markt)
       </fix>
+      <fix>
+        <bug>48009</bug>: Protect against the situation where editing a
+        context.xml file may result in the file disappearing for a very short
+        time. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

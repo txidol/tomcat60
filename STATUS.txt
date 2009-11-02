@@ -246,12 +246,6 @@ PATCHES PROPOSED TO BACKPORT:
   the installer, leaving the one in the ROOT webapp as is. Note, that we
   already have these two copies of the file in our zip/tgz distributions.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48009
-  Protect against a context file briefly disappearing due to text editor
-  http://svn.apache.org/viewvc?view=revision&revision=828210
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47987
   Limit size of not found resources cache
   http://svn.apache.org/viewvc?rev=828759&view=rev
