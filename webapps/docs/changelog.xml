@@ -215,6 +215,10 @@
       <fix>
         Use correct method to create URLs in VirtualWebappLoader. (kkolinko)
       </fix>
+      <fix>
+        Provide a new listener to protect against a memory leak caused by a
+        change in the Sun JRE from version 1.6.0_15 onwards. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

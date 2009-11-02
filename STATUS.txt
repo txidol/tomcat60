@@ -275,13 +275,6 @@ PATCHES PROPOSED TO BACKPORT:
   the installer, leaving the one in the ROOT webapp as is. Note, that we
   already have these two copies of the file in our zip/tgz distributions.
 
-* Fix memory leak causes by a JRE implementation change in 1.6.0_15 onwards
-  http://svn.apache.org/viewvc?view=revision&revision=828196
-  http://svn.apache.org/viewvc?view=revision&revision=830378
-  http://svn.apache.org/viewvc?view=revision&revision=830379
-  +1: markt, kkolinko, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48019
   Be more careful about skipping over sections we aren't interested in
   http://svn.apache.org/viewvc?view=revision&revision=828201
