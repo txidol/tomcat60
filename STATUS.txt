@@ -394,5 +394,5 @@ PATCHES PROPOSED TO BACKPORT:
   null header name, zero length header name or null value. Silently ignore the
   calls the same way we do if the response has already been committed
   http://svn.apache.org/viewvc?rev=831774&view=rev
-  +1: mark
+  +1: markt, kkolinko
   -1: 
