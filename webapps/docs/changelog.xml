@@ -247,6 +247,9 @@
         <bug>47499</bug>: Don't swallow bind exceptions. (markt)
       </fix>
       <fix>
+        <bug>47987</bug>: Limit size of not found resoucres cache. (markt)
+      </fix>
+      <fix>
         <bug>48009</bug>: Protect against the situation where editing a
         context.xml file may result in the file disappearing for a very short
         time. (markt)
