@@ -419,7 +419,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Mark JspCompilationContext#removed as volatile
   http://svn.apache.org/viewvc?rev=831850&view=rev
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47881
