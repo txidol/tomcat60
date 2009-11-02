@@ -229,35 +229,6 @@ PATCHES PROPOSED TO BACKPORT:
    0: jim
   -1: 
 
-* Align native and Java method names.
-  Port/backport from trunk, TC5.5.x, tc4.1.x and tcnative (trunk and 1.1.x)
-  http://svn.apache.org/viewvc?rev=815748&view=rev
-  http://svn.apache.org/viewvc?rev=815768&view=rev
-  http://svn.apache.org/viewvc?rev=706574&view=rev
-  Plus the last hunk for Socket.java in
-  https://issues.apache.org/bugzilla/attachment.cgi?id=24276
-  +1: rjung, markt, fhanik
-  -1: 
-  +1: kkolinko:(
-    Should be applied when tc-native 1.1.17 is released,
-    because of native method names and argument types changes.
-
-    We will need to update minimum required version
-    (in o.a.c.core.AprLifecycleListener, o.a.c.connector.Connector).
-
-    Also, attachment.cgi?id=24276 looks like a wrong patch to vote.
-    It is a documentation patch. There is no need to vote for it. And it is
-    not for Socket.java.
-  )
-  rjung: Note that java/org/apache/tomcat/jni/Buffer.java
-  is missing in TC 6. Don't know, whether we should add it.
-  It is in 5.5, trunk and tcnative 1.1.
-  markt: Happy either way with slight preference for adding it
-  kkolinko: Either way is OK, but, as I cannot find any usages of Buffer
-  methods neither in TC 5.5 nor in trunk, I would prefer to remove this
-  class at least from trunk, but better from both, and even from native
-  side.
-  
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47267
   http://svn.apache.org/viewvc?rev=817822&view=rev
   +1: markt

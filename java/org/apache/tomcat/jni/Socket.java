@@ -170,6 +170,16 @@ public class Socket {
      *          made the connection request.  This is the socket which should
      *          be used for all future communication.
      */
+    public static native long acceptx(long sock, long pool)
+        throws Exception;
+
+    /**
+     * Accept a new connection request
+     * @param sock The socket we are listening on.
+     * @return  A copy of the socket that is connected to the socket that
+     *          made the connection request.  This is the socket which should
+     *          be used for all future communication.
+     */
     public static native long accept(long sock)
         throws Exception;
 
@@ -387,7 +397,7 @@ public class Socket {
      * @param nbytes The number of bytes to read (-1) for full array.
      * @return the number of bytes received.
      */
-    public static native int recvFrom(long from, long sock, int flags,
+    public static native int recvfrom(long from, long sock, int flags,
                                       byte[] buf, int offset, int nbytes);
 
     /**
