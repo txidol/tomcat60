@@ -285,6 +285,11 @@
       <fix>
         Make constants in the TagHandlerPool really constant. (markt)
       </fix>
+      <fix>
+        When development mode is enabled and a JSP is deleted, ensure next
+        request for that JSP is consistent with the JSP having been removed.
+        (markt/kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">

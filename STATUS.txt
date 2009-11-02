@@ -31,21 +31,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* Fix issue where the first request for a deleted JSPs returns as if the JSP
-  still exists.
-  http://svn.apache.org/viewvc?view=rev&revision=683969
-  +1: markt, funkman, kkolinko
-   0: remm (looks risky, very minor problem), fhanik - minor problem, jim
-  -1: 
-
-  kkolinko: (
-    - This issue does occur only when development = true.
-    When development is false JSP removal is not detected at all.
-
-    - I think that, strictly speaking, JspCompilationContext#removed field
-    has to be volatile. I am proposing the change below (backport of r.831850)
-  )
-
 * Backport cleanup of semantics of thisAccessedTime and
   lastAccessedTime for sessions:
   - preparational whitespace changes
@@ -415,11 +400,6 @@ PATCHES PROPOSED TO BACKPORT:
   private and unused one, and is already absent in trunk, is being removed.
   http://people.apache.org/~kkolinko/patches/2009-11-02_ApplicationContextFacade.patch
   +1: kkolinko, rjung
-  -1:
-
-* Mark JspCompilationContext#removed as volatile
-  http://svn.apache.org/viewvc?rev=831850&view=rev
-  +1: kkolinko, rjung, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47881
