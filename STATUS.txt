@@ -418,3 +418,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=831850&view=rev
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47881
+  Fix processing of "startd" and "stopd" arguments, when they are not alone.
+  http://svn.apache.org/viewvc?rev=831860&view=rev
+  +1: kkolinko
+  -1:
+
