@@ -256,17 +256,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: pero, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47451
-  Don't throw NPEs if the various response.setHeader() methods are called with
-  null header name, zero length header name or null value. Silently ignore the
-  calls the same way we do if the response has already been committed
-  http://svn.apache.org/viewvc?rev=831774&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-  rjung: Calling a common check method with params name, value, and
-         isNullValueAllowed or something like that seems nicer than
-         copying all the checks around.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47331
   Treat uninterpretted tags as template text for JSP.2.2
   http://svn.apache.org/viewvc?rev=831785&view=rev

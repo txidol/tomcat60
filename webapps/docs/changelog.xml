@@ -136,6 +136,12 @@
         (markt)
       </fix>
       <fix>
+        <bug>47451</bug>: Don't throw an NPE if the various response.setHeader()
+        methods are called with null header name, zero length header name or
+        null value. Silently ignore the calls in the same way they are ignored
+        if the response has already been committed. (markt)
+      </fix>
+      <fix>
         <bug>47518</bug>: Correct reference in Valve Javadoc that referred to an
         old method. Patch provided by Christopher Schultz. (markt)
       </fix>
