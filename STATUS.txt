@@ -303,15 +303,6 @@ PATCHES PROPOSED TO BACKPORT:
   the installer, leaving the one in the ROOT webapp as is. Note, that we
   already have these two copies of the file in our zip/tgz distributions.
 
-* Fix cluster replication problem: session expiration uses a replication
-  shortcut, so that attributes changed immediately before invalidation do
-  not get replicated before the expiration replication message.
-  That's a problem in case a session listener needs the changed attribute.
-  Has already been fixed in trunk, OACC and tc5.5.x.
-  http://svn.apache.org/viewvc?rev=818062&view=rev (trunk)
-  +1: rjung, pero, fhanik
-  -1: 
-
 * Fix memory leak causes by a JRE implementation change in 1.6.0_15 onwards
   http://svn.apache.org/viewvc?view=revision&revision=828196
   http://svn.apache.org/viewvc?view=revision&revision=830378
