@@ -244,6 +244,10 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
+        <bug>38797</bug>: Fix a regression in the previous patch for
+        <bug>37933</bug>. (markt)
+      </fix>
+      <fix>
         <bug>38897</bug>: Add uri of broken TLD to error message to aid
         debugging. (markt)
       </fix>
