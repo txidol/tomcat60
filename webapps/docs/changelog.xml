@@ -424,6 +424,12 @@
         <bug>47824</bug>: Make Servlet API an optional dependency for JULI when
         using Maven. (markt)
       </fix>
+      <add>
+        Add support for per instance (using $CATALINA_BASE) log4j.properties
+        files, JDBC drivers etc by adding ${catalina.base}/lib and
+        ${catalina.base}/lib/*.jar to the start of the common loader class
+        path. (markt)
+      </add>
     </changelog>
   </subsection>
 </section>

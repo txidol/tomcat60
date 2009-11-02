@@ -185,15 +185,6 @@ PATCHES PROPOSED TO BACKPORT:
       }
       instead of synchronizing the entire method and hence only allowing class loading one class at a time
       
-
-* Allow per instance log4j.properties, JAR files (JDBC drivers) etc
-  http://svn.apache.org/viewvc?rev=810916&view=rev
-  http://svn.apache.org/viewvc?rev=810977&view=rev
-  http://svn.apache.org/viewvc?rev=821397&view=rev
-  +1: markt, kkolinko, fhanik
-  -1:
-  kkolinko: re RUNNING.txt update: it'd be better to replace "eg" with "e.g."
-
 * Allow per instance configuration of JULI or log4j for core Tomcat logging
   This requires the classpath change above
   http://svn.apache.org/viewvc?rev=810976&view=rev
