@@ -298,6 +298,10 @@
         request for that JSP is consistent with the JSP having been removed.
         (markt/kkolinko)
       </fix>
+      <fix>
+        <bug>48019</bug>: Be more careful about skipping content that does not
+        need to be parsed. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">

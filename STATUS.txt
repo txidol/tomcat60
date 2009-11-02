@@ -275,12 +275,6 @@ PATCHES PROPOSED TO BACKPORT:
   the installer, leaving the one in the ROOT webapp as is. Note, that we
   already have these two copies of the file in our zip/tgz distributions.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48019
-  Be more careful about skipping over sections we aren't interested in
-  http://svn.apache.org/viewvc?view=revision&revision=828201
-  +1: markt, kkolinko, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48009
   Protect against a context file briefly disappearing due to text editor
   http://svn.apache.org/viewvc?view=revision&revision=828210
