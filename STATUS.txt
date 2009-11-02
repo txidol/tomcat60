@@ -340,24 +340,27 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48009
   Protect against a context file briefly disappearing due to text editor
   http://svn.apache.org/viewvc?view=revision&revision=828210
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47987
   Limit size of not found resources cache
   http://svn.apache.org/viewvc?rev=828759&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Refix https://issues.apache.org/bugzilla/show_bug.cgi?id=37848
   Don't output info messages when there is no terminal
   http://svn.apache.org/viewvc?rev=828225&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
+  rjung: the scripts tend to get more and more complex.
+  So maybe it's time e.g. to use a shell function
+  doing the tty check instead of repeated "if ... echo ..."
 
 * Use correct flag for SSL
   http://svn.apache.org/viewvc?rev=831106&view=rev
-  +1: fhanik, kkolinko
+  +1: fhanik, kkolinko, rjung
   -1:
 
 * Fix ReplicationValve CrossContext support
