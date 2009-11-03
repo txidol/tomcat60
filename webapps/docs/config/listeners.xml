@@ -238,7 +238,7 @@ service:jmx:rmi://&lt;hostname&gt;:10002/jndi/rmi://&lt;hostname&gt;:10001/jmxrm
     <p>This listener must only be nested within <a href="server.html">Server</a>
     elements.</p>
 
-    <p>No additional attributes are support by the <strong>JRE Memory Leak
+    <p>No additional attributes are supported by the <strong>JRE Memory Leak
     Prevention Listener</strong>.</p>
 
   </subsection>
