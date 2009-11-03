@@ -448,3 +448,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2009-11-02_StringBuilder_o_a_t_util_threads.patch
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47918
+  Correct copy and paste in mbeans descriptions
+  http://svn.apache.org/viewvc?rev=832218&view=rev
+  +1: markt
+  -1: 
