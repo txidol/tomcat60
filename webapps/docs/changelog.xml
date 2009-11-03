@@ -161,8 +161,8 @@
         provided by Qingyang Xu. (kkolinko)
       </fix>
       <fix>
-        <bug>47918</bug>: Correct mbean descriptors for the host deployer.
-        (markt)
+        <bug>47918</bug>: Correct mbean descriptors for the host deployer. Patch
+        provided by Uwe Günther. (markt)
       </fix>
       <update>
         <bug>48097</bug>: Make WebappClassLoader to do not swallow
