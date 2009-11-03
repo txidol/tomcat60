@@ -363,31 +363,9 @@ public final class ApplicationContextFacade
         }
     }
 
-       
     /**
      * Use reflection to invoke the requested method. Cache the method object 
      * to speed up the process
-     * @param appContext The AppliationContext object on which the method
-     *                   will be invoked
-     * @param methodName The method to call.
-     * @param params The arguments passed to the called method.
-     */
-    private Object doPrivileged(ApplicationContext appContext,
-                                final String methodName, 
-                                final Object[] params) {
-        try{
-            return invokeMethod(appContext, methodName, params );
-        } catch (Throwable t){
-            throw new RuntimeException(t.getMessage());
-        }
-
-    }
-
-
-    /**
-     * Use reflection to invoke the requested method. Cache the method object 
-     * to speed up the process
-     *                   will be invoked
      * @param methodName The method to call.
      * @param params The arguments passed to the called method.
      */
@@ -395,7 +373,7 @@ public final class ApplicationContextFacade
         try{
             return invokeMethod(context, methodName, params);
         }catch(Throwable t){
-            throw new RuntimeException(t.getMessage());
+            throw new RuntimeException(t.getMessage(), t);
         }
     }
 

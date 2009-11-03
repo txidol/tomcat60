@@ -232,6 +232,10 @@
         Provide a new listener to protect against a memory leak caused by a
         change in the Sun JRE from version 1.6.0_15 onwards. (markt)
       </fix>
+      <fix>
+        Don't swallow exceptions in ApplicationContextFacade.doPrivileged()
+        (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
