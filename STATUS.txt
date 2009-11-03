@@ -67,11 +67,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: no for TC 6.0
   -1: funkman : api change in Session.java for .x.x release
 
-* Fix Close Stream at WebappClassLoader after read error
-  http://svn.apache.org/viewvc?rev=772872&view=rev 
-  +1: pero, funkman, kkolinko
-  -1:
-
 * When throwing Non-serializable exception, mark which argument was
   non-serializable to help tracing the cause when developing.
   http://svn.apache.org/viewvc?rev=713953&view=rev
