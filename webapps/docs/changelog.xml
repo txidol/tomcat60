@@ -36,6 +36,9 @@
 <section name="Tomcat 6.0.21 (remm)">
   <subsection name="Catalina">
     <changelog>
+      <update>
+        Update required version for native to 1.1.17. (rjung)
+      </update>
       <fix>
         Fix issues with expression language when running under a
         SecurityManager. (markt)
@@ -229,6 +232,10 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
+      <fix>
+        <bug>46950</bug>: Fix doing SSL renegotiation when a resource with CLIENT-CERT
+        auth is requested. (markt)
+      </fix>
       <fix>
         Align tcnative native and Java method names. (rjung)
       </fix>
