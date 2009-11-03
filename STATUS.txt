@@ -69,8 +69,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix Close Stream at WebappClassLoader after read error
   http://svn.apache.org/viewvc?rev=772872&view=rev 
-  +1: pero, funkman
-  -0: kkolinko: http://marc.info/?l=tomcat-dev&m=124192105131636&w=2
+  +1: pero, funkman, kkolinko
   -1:
 
 * When throwing Non-serializable exception, mark which argument was
