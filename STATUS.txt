@@ -238,13 +238,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48097
-  There are two patches to be applied:
-  1) Make WebappClassLoader to do not swallow AccessControlException
-  http://svn.apache.org/viewvc?rev=831828&view=rev
-  +1: kkolinko, rjung, billbarker
-  -1:
-
-  2) Patch for SecurityClassLoad to preload o.a.c.loader.ResourceEntry class
+  Patch for SecurityClassLoad to preload o.a.c.loader.ResourceEntry class
   http://svn.apache.org/viewvc?rev=831830&view=rev
   +1: kkolinko
   -0: billbarker Exposing ResourceEntry is harmless enough, but WebappClassLoader should 
