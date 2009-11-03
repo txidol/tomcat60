@@ -72,7 +72,7 @@ PATCHES PROPOSED TO BACKPORT:
   It is updated version of Mark's (since withdrawn) patch,
   where the new method in JAASRealm calls the old one.
   http://people.apache.org/~kkolinko/patches/2009-11-02_bug39231.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt,funkman
   -1: 
  
 * Improve NIO connector shutdown time by doing shutdowns in parallel
@@ -153,7 +153,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47699
   Better handling of PID files
   https://issues.apache.org/bugzilla/attachment.cgi?id=24202
-  +1: markt
+  +1: markt, funkman
   +1: fhanik (although, on .sh, I think we could get rid of 'Bootstrap stop' by now, shutdown hooks have been available for quite some time)
   -1: 
    
@@ -162,7 +162,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44041
   Threading issue in classloading. Adds a sync so please check performance
   http://svn.apache.org/viewvc?rev=805182&view=rev 
-  +1: markt
+  +1: markt, funkman
    0: jim
   -1: fhanik, I would say a thread safe, yet concurrent implementation would do
       synchronized (className.intern()) {
@@ -206,7 +206,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47267
   http://svn.apache.org/viewvc?rev=817822&view=rev
-  +1: markt
+  +1: markt, funkman
   -1:
   rjung: Our dreaded multi platform build system is a bit fragile
   w.r.t. fixcrlf. If you change the file to crlf in the installer
@@ -228,7 +228,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix ReplicationValve CrossContext support
   http://svn.apache.org/viewvc?rev=831718&view=rev
-  +1: pero, rjung
+  +1: pero, rjung, funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47331
@@ -410,5 +410,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47918
   Correct copy and paste in mbeans descriptions
   http://svn.apache.org/viewvc?rev=832218&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, funkman
   -1: 
