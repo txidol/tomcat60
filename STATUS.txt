@@ -219,16 +219,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, jim, markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46950
-  Adds support for SSL renegotiation when CLIENT-CERT auth is required due to a
-  security constraint
-  Note: Patch cannot be applied until tc-native 1.1.17 has been released
-        since it depends on a new native method
-  http://svn.apache.org/viewvc?rev=815418&view=rev
-  +1: markt, jfclere, fhanik
-   0: jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47267
   http://svn.apache.org/viewvc?rev=817822&view=rev
   +1: markt
