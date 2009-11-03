@@ -279,7 +279,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   The patches, as well as patches for individual files inside them, are
   independent of each other. Vote for as many as you want.
-  There are 50 of them.
+  There are 51 of them.
   http://people.apache.org/~kkolinko/patches/2009-11-02_StringBuilder_o_a_c.patch
   +1: kkolinko
   -1:
@@ -428,6 +428,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
   http://people.apache.org/~kkolinko/patches/2009-11-02_StringBuilder_o_a_t_util_threads.patch
+  +1: kkolinko
+  -1:
+  http://people.apache.org/~kkolinko/patches/2009-11-03_StringBuilder_o_a_c_valves_AccessLogValve.patch
   +1: kkolinko
   -1:
 
