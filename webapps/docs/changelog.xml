@@ -160,6 +160,10 @@
         <bug>47881</bug>: Fix processing of startd and stopd arguments. Patch
         provided by Qingyang Xu. (kkolinko)
       </fix>
+      <fix>
+        <bug>47918</bug>: Correct mbean descriptors for the host deployer.
+        (markt)
+      </fix>
       <update>
         <bug>48097</bug>: Make WebappClassLoader to do not swallow
         AccessControlException. (kkolinko)
