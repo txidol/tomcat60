@@ -239,6 +239,11 @@
       <fix>
         Close resource stream in WebappClassLoader after read error. (pero)
       </fix>
+      <update>
+        Include attribute name into the text of Non-serializable exception
+        that might be thrown by Session.setAttribute() in distributable
+        applications. (mturk)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">

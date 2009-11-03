@@ -67,15 +67,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: no for TC 6.0
   -1: funkman : api change in Session.java for .x.x release
 
-* When throwing Non-serializable exception, mark which argument was
-  non-serializable to help tracing the cause when developing.
-  http://svn.apache.org/viewvc?rev=713953&view=rev
-  http://svn.apache.org/viewvc?rev=714002&view=rev
-  6.0.x version of the patch:
-  http://people.apache.org/~mturk/tomcat/setAttribute1.iae.patch
-  +1: mturk, kkolinko, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39231
   JAAS LoginContext expects a call to logout()
   It is updated version of Mark's (since withdrawn) patch,
