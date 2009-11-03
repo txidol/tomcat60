@@ -609,7 +609,7 @@ public class Connector
 
     private static final int TCN_REQUIRED_MAJOR = 1;
     private static final int TCN_REQUIRED_MINOR = 1;
-    private static final int TCN_REQUIRED_PATCH = 3;
+    private static final int TCN_REQUIRED_PATCH = 17;
     private static boolean aprInitialized = false;
 
     // APR init support
