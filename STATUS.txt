@@ -231,12 +231,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: pero, rjung, funkman
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47331
-  Treat uninterpretted tags as template text for JSP.2.2
-  http://svn.apache.org/viewvc?rev=831785&view=rev
-  +1: markt, rjung, kkolinko
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48097
   Patch for SecurityClassLoad to preload o.a.c.loader.ResourceEntry class
   http://svn.apache.org/viewvc?rev=831830&view=rev

@@ -319,6 +319,10 @@
         codas. (markt)
       </fix>
       <fix>
+        <bug>47331</bug>: Treat uninterpreted tags as template text for JSP.2.2.
+        (markt)
+      </fix>
+      <fix>
         <bug>47413</bug>: Ensure expressions of the form &quot;${a}${b}&quot;
         are correctly coerced to String. (kkolinko)
       </fix>
