@@ -279,7 +279,7 @@ PATCHES PROPOSED TO BACKPORT:
   The difference from rev.831819 is that second "doPrivileged" that is
   private and unused one, and is already absent in trunk, is being removed.
   http://people.apache.org/~kkolinko/patches/2009-11-02_ApplicationContextFacade.patch
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, markt
   -1:
 
 
