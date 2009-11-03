@@ -264,15 +264,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Include root cause exception into the one produced by ApplicationContextFacade#doPrivileged()
-  It is backport of rev.831819
-  The difference from rev.831819 is that second "doPrivileged" that is
-  private and unused one, and is already absent in trunk, is being removed.
-  http://people.apache.org/~kkolinko/patches/2009-11-02_ApplicationContextFacade.patch
-  +1: kkolinko, rjung, markt
-  -1:
-
-
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47893
   Use StringBuilder instead of StringBuffer
