@@ -226,6 +226,8 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47893
   Use StringBuilder instead of StringBuffer
+  -0: markt for all SBuilder->SBuffer patches. Code cleanup is fine in trunk but
+            no need to backport it
 
   The patches, as well as patches for individual files inside them, are
   independent of each other. Vote for as many as you want.
