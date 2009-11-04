@@ -489,6 +489,9 @@
         per JAR as required. (markt)
       </add>
       <fix>
+        <bug>47699</bug>: Provide better handling of PID files. (markt)
+      </fix>
+      <fix>
         <bug>47824</bug>: Make Servlet API an optional dependency for JULI when
         using Maven. (markt)
       </fix>

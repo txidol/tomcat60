@@ -142,15 +142,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47699
-  Better handling of PID files
-  https://issues.apache.org/bugzilla/attachment.cgi?id=24202
-  +1: markt, funkman
-  +1: fhanik (although, on .sh, I think we could get rid of 'Bootstrap stop' by now, shutdown hooks have been available for quite some time)
-  -1: 
-   
-  
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44041
   Threading issue in classloading. Adds a sync so please check performance
   http://svn.apache.org/viewvc?rev=805182&view=rev 
