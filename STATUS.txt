@@ -67,14 +67,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: no for TC 6.0
   -1: funkman : api change in Session.java for .x.x release
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=39231
-  JAAS LoginContext expects a call to logout()
-  It is updated version of Mark's (since withdrawn) patch,
-  where the new method in JAASRealm calls the old one.
-  http://people.apache.org/~kkolinko/patches/2009-11-02_bug39231.patch
-  +1: kkolinko, markt,funkman
-  -1: 
- 
 * Improve NIO connector shutdown time by doing shutdowns in parallel
   and with a timeout
   http://svn.apache.org/viewvc?view=rev&revision=791914

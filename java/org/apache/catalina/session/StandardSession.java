@@ -57,6 +57,7 @@ import org.apache.catalina.util.Enumerator;
 import org.apache.catalina.util.StringManager;
 
 import org.apache.catalina.core.StandardContext;
+import org.apache.catalina.realm.GenericPrincipal;
 import org.apache.catalina.security.SecurityUtil;
 
 /**
@@ -732,6 +733,18 @@ public class StandardSession
             // Notify interested session event listeners
             if (notify) {
                 fireSessionEvent(Session.SESSION_DESTROYED_EVENT, null);
+            }
+
+            // Call the logout method
+            if (principal instanceof GenericPrincipal) {
+                GenericPrincipal gp = (GenericPrincipal) principal;
+                try {
+                    gp.logout();
+                } catch (Exception e) {
+                    manager.getContainer().getLogger().error(
+                            sm.getString("standardSession.logoutfail"),
+                            e);
+                }
             }
 
             // We have completed expire of this session

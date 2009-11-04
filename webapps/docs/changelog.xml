@@ -65,6 +65,10 @@
         manager. (markt)
       </fix>
       <fix>
+        <bug>39231</bug>: Call LoginContext.logout() when using JAAS realm and
+        session expires. (markt/kkolinko)
+      </fix>
+      <fix>
         <bug>40380</bug>: Fix potential synchronization issue in
         StandardSession.expire(). (markt) 
       </fix>
