@@ -389,5 +389,6 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=47512
   http://svn.apache.org/viewvc?rev=832638&view=rev
   +1: funkman
-  -1:
+  -1: kkolinko: 
+        https://issues.apache.org/bugzilla/show_bug.cgi?id=47512#c4
 
