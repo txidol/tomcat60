@@ -385,10 +385,4 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 
-* Binding java.lang.reflect.Proxy to JNDI directory raises java.lang.ClassCastException
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=47512
-  http://svn.apache.org/viewvc?rev=832638&view=rev
-  +1: funkman
-  -1: kkolinko: 
-        https://issues.apache.org/bugzilla/show_bug.cgi?id=47512#c4
 
