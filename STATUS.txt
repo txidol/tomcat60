@@ -171,6 +171,12 @@ PATCHES PROPOSED TO BACKPORT:
     bootstrap.jar   We can propose people to manually remove
     tomcat-juli.jar from ${CATALINA_HOME}/bin if they want, though I doubt
     that that will be necessary.
+  rjung (discussion at ApacheCon): http://java.sun.com/javase/6/docs/technotes/guides/extensions/spec.html
+    tells us, that everything coming from the Class-Path in a jar manifest will be added to the search
+    path immediately behind that jar. So putting juli in front of bootstrap in CLASSPATH (environment)
+    and also keeping it in the manifest will make it work out of the box for everyone,
+    but will also allow others to overwrite by simply deploying a juli to the directories added to
+    the CLASSPATH.
 
 * Make FileHandler.java extensible
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
