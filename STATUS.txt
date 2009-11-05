@@ -387,4 +387,10 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 
+* If server.xml not readable - be more explicit in letting the user know
+  http://svn.apache.org/viewvc?rev=833121&view=rev
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=47495  
+  +1: funkman
+  -1:
+
 
