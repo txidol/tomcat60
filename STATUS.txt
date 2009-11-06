@@ -150,34 +150,11 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Allow per instance configuration of JULI or log4j for core Tomcat logging
-  This requires the classpath change above
-  http://svn.apache.org/viewvc?rev=810976&view=rev
-  +1: markt, rjung, fhanik
-  -1: kkolinko: we should not remove tomcat-juli.jar from bootstrap.jar.manifest
-  kkolinko: Regarding /res/bootstrap.jar.manifest change:
-    It will cause problems e.g. in Eclipse IDE.
-    If I configure a Tomcat server instance there, it is created with a
-    classpath that consists only of bootstrap.jar and JDK's tools.jar. That
-    has to be changed to include tomcat-juli.jar as well.
-    While that is configurable, it is not so obvious (you have to click
-    some underlined text on some wordy page) and there can be a lot of
-    confusion when the product ceases functioning out-of-the box.
-
-    I also like that I can run Tomcat easily by typing "java -jar bootstrap.jar start"
-    That option will also be lost.
-
-    I think that we can implement the same feature by adding
-    ${CATALINA_BASE}/bin/tomcat-juli.jar to the classpath before
-    bootstrap.jar   We can propose people to manually remove
-    tomcat-juli.jar from ${CATALINA_HOME}/bin if they want, though I doubt
-    that that will be necessary.
-  rjung (discussion at ApacheCon): http://java.sun.com/javase/6/docs/technotes/guides/extensions/spec.html
-    tells us, that everything coming from the Class-Path in a jar manifest will be added to the search
-    path immediately behind that jar. So putting juli in front of bootstrap in CLASSPATH (environment)
-    and also keeping it in the manifest will make it work out of the box for everyone,
-    but will also allow others to overwrite by simply deploying a juli to the directories added to
-    the CLASSPATH.
-
+  Updated patch with the suggested tweak for 6.0.x so we don't break Eclipse
+  integration
+  http://people.apache.org/~markt/patches/2009-11-06-log-config-per-instance.patch
+  +1: markt
+  
 * Make FileHandler.java extensible
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
   +1: fhanik, jim, markt, kkolinko
