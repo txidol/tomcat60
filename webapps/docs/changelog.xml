@@ -256,6 +256,10 @@
         that might be thrown by Session.setAttribute() in distributable
         applications. (mturk)
       </update>
+      <add>
+        Add RemoteIpValve, a port of mod_remoteip. Patch provided by Cyrille Le
+        Clerc. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
