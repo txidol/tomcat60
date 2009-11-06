@@ -168,6 +168,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47267
   http://svn.apache.org/viewvc?rev=817822&view=rev
+  http://svn.apache.org/viewvc?rev=833545&view=rev (to address rjung's comment)
   +1: markt, funkman
   -1:
   rjung: Our dreaded multi platform build system is a bit fragile
@@ -177,6 +178,7 @@ PATCHES PROPOSED TO BACKPORT:
   that file (because part of a webapp), but maybe it would
   be cleaner to do this for the installer target only, e.g.
   saving the file, fixcrlf, run nsi, restoring file.
+  markt: see second patch
 
   kkolinko: Another way to fix it would be to place a copy of that file
   into %CATALINA_HOME% (with proper CRLF endings) and display that one in
