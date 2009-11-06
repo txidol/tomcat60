@@ -230,6 +230,7 @@ PATCHES PROPOSED TO BACKPORT:
   Use StringBuilder instead of StringBuffer
   -0: markt for all SBuilder->SBuffer patches. Code cleanup is fine in trunk but
             no need to backport it
+  -0: funkman 
 
   The patches, as well as patches for individual files inside them, are
   independent of each other. Vote for as many as you want.
@@ -400,5 +401,5 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2009-11-05-bug47330-tc6.patch
   http://people.apache.org/~markt/patches/RemoteIpValve.java
   http://people.apache.org/~markt/patches/RemoteIpValveTest.java
-  +1: markt
+  +1: markt, funkman
   -1:
