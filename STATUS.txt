@@ -153,7 +153,7 @@ PATCHES PROPOSED TO BACKPORT:
   Updated patch with the suggested tweak for 6.0.x so we don't break Eclipse
   integration
   http://people.apache.org/~markt/patches/2009-11-06-log-config-per-instance.patch
-  +1: markt
+  +1: markt, funkman
   
 * Make FileHandler.java extensible
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
@@ -206,7 +206,7 @@ PATCHES PROPOSED TO BACKPORT:
   Alternative patch that adds a new PrivilegedAction. The test case provided
   passes with this patch
   http://people.apache.org/~markt/patches/2009-11-06-bug48097-alt.patch
-  +1: markt
+  +1: markt, funkman
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47893
