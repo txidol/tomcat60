@@ -401,5 +401,5 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2009-11-05-bug47330-tc6.patch
   http://people.apache.org/~markt/patches/RemoteIpValve.java
   http://people.apache.org/~markt/patches/RemoteIpValveTest.java
-  +1: markt, funkman
+  +1: markt, funkman, jfclere
   -1:
