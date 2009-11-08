@@ -206,7 +206,7 @@ PATCHES PROPOSED TO BACKPORT:
   Alternative patch that adds a new PrivilegedAction. The test case provided
   passes with this patch
   http://people.apache.org/~markt/patches/2009-11-06-bug48097-alt.patch
-  +1: markt, funkman
+  +1: markt, funkman, billbarker
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47893
