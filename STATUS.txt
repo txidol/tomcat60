@@ -196,18 +196,13 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48097
-  Patch for SecurityClassLoad to preload o.a.c.loader.ResourceEntry class
-  http://svn.apache.org/viewvc?rev=831830&view=rev
-  +1: kkolinko
-  -0: billbarker Exposing ResourceEntry is harmless enough, but WebappClassLoader should 
-      really be using it's PrivilegedFindResource class in this case instead. 
-      After all, that is what it is there for.
-  -1:
   Alternative patch that adds a new PrivilegedAction. The test case provided
   passes with this patch
   http://people.apache.org/~markt/patches/2009-11-06-bug48097-alt.patch
-  +1: markt, funkman, billbarker
+  +1: markt, funkman, billbarker, kkolinko
   -1: 
+  kkolinko: Confirming that testcase passes. Applied to trunk as
+    http://svn.apache.org/viewvc?rev=834080&view=rev
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47893
   Use StringBuilder instead of StringBuffer
