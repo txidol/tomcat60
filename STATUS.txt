@@ -378,3 +378,8 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=47495  
   +1: funkman, markt, jfclere
   -1:
+
+* Fix CVE-2009-3548 - Windows installer uses insecure default password
+  http://svn.apache.org/viewvc?rev=834047&view=rev
+  +1: markt
+  -1: 
