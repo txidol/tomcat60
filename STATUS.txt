@@ -396,3 +396,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2009-11-10-cve-2009-3555-tc6.patch
   +1: markt
   -1: 
+
+* Improvements to memory leak prevention
+  http://people.apache.org/~markt/patches/2009-11-10-leak-prevention.patch
+  +1: markt
+  -1: 
