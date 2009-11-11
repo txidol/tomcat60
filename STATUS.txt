@@ -190,11 +190,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, kkolinko, rjung
   -1:
 
-* Fix ReplicationValve CrossContext support
-  http://svn.apache.org/viewvc?rev=831718&view=rev
-  +1: pero, rjung, funkman
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48097
   Alternative patch that adds a new PrivilegedAction. The test case provided
   passes with this patch
