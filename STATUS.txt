@@ -394,5 +394,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Improvements to memory leak prevention
   http://people.apache.org/~markt/patches/2009-11-10-leak-prevention.patch
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+
+  kkolinko: a pair of doc typos:
+   a) in JavaDoc:  s/Locked usually files occur/Locked files usually occur/
+   b) in listeners.xml: s/case by case basis is required/.. as required/ or /.. if required/ ? 
