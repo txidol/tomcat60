@@ -391,3 +391,10 @@ PATCHES PROPOSED TO BACKPORT:
   kkolinko: a pair of doc typos:
    a) in JavaDoc:  s/Locked usually files occur/Locked files usually occur/
    b) in listeners.xml: s/case by case basis is required/.. as required/ or /.. if required/ ? 
+
+* Make location and filename of catalina.out configurable in catalina.sh
+  http://svn.apache.org/viewvc?rev=835036&view=rev
+  +1: fhanik
+  -1: 
+
+  
