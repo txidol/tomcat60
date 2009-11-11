@@ -190,15 +190,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, kkolinko, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48097
-  Alternative patch that adds a new PrivilegedAction. The test case provided
-  passes with this patch
-  http://people.apache.org/~markt/patches/2009-11-06-bug48097-alt.patch
-  +1: markt, funkman, billbarker, kkolinko
-  -1: 
-  kkolinko: Confirming that testcase passes. Applied to trunk as
-    http://svn.apache.org/viewvc?rev=834080&view=rev
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47893
   Use StringBuilder instead of StringBuffer
   -0: markt for all SBuilder->SBuffer patches. Code cleanup is fine in trunk but
