@@ -170,7 +170,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=817822&view=rev
   http://svn.apache.org/viewvc?rev=833545&view=rev (to address rjung's comment)
   +1: markt, funkman
+  +1: kkolinko: only if applied together with r.835336
   -1:
+
+  Additional patch:
+  http://svn.apache.org/viewvc?rev=835336&view=rev
+  +1: kkolinko
+  -1:
+
   rjung: Our dreaded multi platform build system is a bit fragile
   w.r.t. fixcrlf. If you change the file to crlf in the installer
   target, then all unix packages (which are build after installer)
@@ -382,7 +389,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Make location and filename of catalina.out configurable in catalina.sh
   http://svn.apache.org/viewvc?rev=835036&view=rev
-  +1: fhanik, mturk
+  +1: fhanik, mturk, kkolinko
   -1:
 
 
