@@ -47,7 +47,7 @@ PATCHES PROPOSED TO BACKPORT:
       disregarding any request still being processed on.
       So this is good to use even from within a request
       to detect when its own session has been used last before.
-    - thisAccessedTime already gets updated when a new request 
+    - thisAccessedTime already gets updated when a new request
       disregarding any request still being processed on.
       So this is better for any idleness check or information.
     - thisAccessedTime >= lastAccessedTime always
@@ -71,7 +71,7 @@ PATCHES PROPOSED TO BACKPORT:
   and with a timeout
   http://svn.apache.org/viewvc?view=rev&revision=791914
   +1: fhanik, markt, kkolinko, jim
-  -1: 
+  -1:
   kkolinko: (
     Some nit-picking:
     1. I think that it is better to create the stopLatch in the NioEndpoint#start()
@@ -81,7 +81,7 @@ PATCHES PROPOSED TO BACKPORT:
     That is because otherwise if you call stop() start() the stopLatch won't be in
     its initial condition, and because the count of pollers can be changed between
     init() and start(). Just a theory, though.
-    
+
     2. In NioEndpoint.Poller#run():
     - if the Poller was looping with paused=true, is there a need to call
     events() before exiting the loop on if (close) ?
@@ -112,17 +112,17 @@ PATCHES PROPOSED TO BACKPORT:
   Step 1: Clean-up
   http://svn.apache.org/viewvc?view=rev&revision=647344
   +1: markt, kkolinko
-  -1: 
+  -1:
   Step 2: Make validation configuration per-context
   http://svn.apache.org/viewvc?view=rev&revision=751502
   http://people.apache.org/~markt/patches/2009-08-06-TLD-improvements-steps-1-2.patch (Steps 1-2)
   +1: markt
-  -1: 
+  -1:
   Step 3: Track and don't process duplicate TLDs
   http://svn.apache.org/viewvc?view=rev&revision=793621
   http://people.apache.org/~markt/patches/2009-08-06-TLD-improvements-steps-1-3.patch (Steps 1-3)
   +1: markt
-  -1: 
+  -1:
   Step 4: Sync Catalina and Jasper code so a) they have the same behaviour and
   b) use the same code so they are easier to keep in sync.
   http://svn.apache.org/viewvc?view=rev&revision=795143
@@ -140,25 +140,25 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&revision=801637
   http://people.apache.org/~markt/patches/2009-08-06-TLD-improvements-steps-1-4.patch (Steps 1-4)
   +1: markt
-  -1: 
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=44041
   Threading issue in classloading. Adds a sync so please check performance
   Updated to use Filip's suggestion
-  http://people.apache.org/~markt/patches/2009-11-05-bug44041.patch 
+  http://people.apache.org/~markt/patches/2009-11-05-bug44041.patch
   +1: markt, fhanik
-  -1: 
+  -1:
 
 * Allow per instance configuration of JULI or log4j for core Tomcat logging
   Updated patch with the suggested tweak for 6.0.x so we don't break Eclipse
   integration
   http://people.apache.org/~markt/patches/2009-11-06-log-config-per-instance.patch
   +1: markt, funkman
-  
+
 * Make FileHandler.java extensible
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
   +1: fhanik, jim, markt, kkolinko
-  -1: 
+  -1:
 
 * Allow configurable buffer size of loggers
   http://svn.apache.org/viewvc?rev=814708&view=rev
@@ -194,7 +194,7 @@ PATCHES PROPOSED TO BACKPORT:
   Use StringBuilder instead of StringBuffer
   -0: markt for all SBuilder->SBuffer patches. Code cleanup is fine in trunk but
             no need to backport it
-  -0: funkman 
+  -0: funkman
 
   The patches, as well as patches for individual files inside them, are
   independent of each other. Vote for as many as you want.
@@ -356,33 +356,33 @@ PATCHES PROPOSED TO BACKPORT:
 
 * If server.xml not readable - be more explicit in letting the user know
   http://svn.apache.org/viewvc?rev=833121&view=rev
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=47495  
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=47495
   +1: funkman, markt, jfclere
   -1:
 
 * Fix CVE-2009-3548 - Windows installer uses insecure default password
   http://svn.apache.org/viewvc?rev=834047&view=rev
-  +1: markt
-  -1: 
+  +1: markt, mturk
+  -1:
 
 * Disable TLS renegotiation be default with an option to re-enable it
   Based on Costin's patch for trunk with Mark's modifications
   http://people.apache.org/~markt/patches/2009-11-10-cve-2009-3555-tc6.patch
-  +1: markt, billbarker
-  -1: 
+  +1: markt, billbarker, mturk
+  -1:
 
 * Improvements to memory leak prevention
   http://people.apache.org/~markt/patches/2009-11-10-leak-prevention.patch
   +1: markt, kkolinko
-  -1: 
+  -1:
 
   kkolinko: a pair of doc typos:
    a) in JavaDoc:  s/Locked usually files occur/Locked files usually occur/
-   b) in listeners.xml: s/case by case basis is required/.. as required/ or /.. if required/ ? 
+   b) in listeners.xml: s/case by case basis is required/.. as required/ or /.. if required/ ?
 
 * Make location and filename of catalina.out configurable in catalina.sh
   http://svn.apache.org/viewvc?rev=835036&view=rev
-  +1: fhanik
-  -1: 
+  +1: fhanik, mturk
+  -1:
 
-  
+
