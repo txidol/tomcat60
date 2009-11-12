@@ -154,6 +154,23 @@ PATCHES PROPOSED TO BACKPORT:
   integration
   http://people.apache.org/~markt/patches/2009-11-06-log-config-per-instance.patch
   +1: markt, funkman
+  +1: kkolinko (good, though I propose a slightly corrected version of it below)
+  -1:
+
+  kkolinko:
+   I updated the above Mark's patch with the following changes
+   (in catalina.bat/sh):
+    - Added an explicit check that CATALINA_BASE != CATALINA_HOME.
+      Otherwise the [ -r "$CATALINA_BASE/bin/tomcat-juli.jar" ] check will succeed
+      when those are equal.
+    - Moved the code that adds ";" or ":" to non-empty CLASSPATH. That is to avoid
+      the gap between this preparationary step and the one that actually adds jars
+      to the CLASSPATH.
+   Warning: I have not tried to run the patched catalina.sh yet. I hope it works.
+  http://people.apache.org/~kkolinko/patches/2009-11-12_log-config-per-instance.patch
+  +1: kkolinko
+  -1:
+
 
 * Make FileHandler.java extensible
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
