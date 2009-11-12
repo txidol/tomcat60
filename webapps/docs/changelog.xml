@@ -372,7 +372,7 @@
   <subsection name="Cluster">
     <changelog>
       <fix>
-        DeltaSession needs endAccess that CrossContext replication work. (pero)
+        DeltaSession needs endAccess so that CrossContext replication works. (pero)
       </fix>
       <fix>
         DeltaManager needs to replicate changed attributes even if session
