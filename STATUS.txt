@@ -172,6 +172,12 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 
+* Prevent NPE in JULI FileHandler during shutdown where the logger has been
+  shutdown and delayed resources still trying to log
+  http://svn.apache.org/viewvc?rev=666232&view=rev
+  +1: kkolinko
+  -1:
+
 * Make FileHandler.java extensible
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/juli/FileHandler.java?r1=666232&r2=709018&pathrev=793882&view=patch
   +1: fhanik, jim, markt, kkolinko
@@ -182,6 +188,15 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=814876&view=rev
   +1: fhanik, jim, markt, kkolinko
   -1:
+
+* Allow to disable buffering in JULI FileHandler
+  This allows to configure immediate publishing of log 
+  records, like it was before rev.814876.
+  It depends on the above FileHandler patches.
+  http://svn.apache.org/viewvc?rev=816252&view=rev
+  +1: kkolinko
+  -1:
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47267
   http://svn.apache.org/viewvc?rev=817822&view=rev
