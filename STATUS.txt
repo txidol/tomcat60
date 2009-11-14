@@ -405,8 +405,14 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
   Additional patches:
-  http://svn.apache.org/viewvc?rev=836036&view=rev
-  http://svn.apache.org/viewvc?rev=836045&view=rev
+  (
+    http://svn.apache.org/viewvc?rev=836036&view=rev
+    http://svn.apache.org/viewvc?rev=836045&view=rev
+    http://svn.apache.org/viewvc?rev=836209&view=rev
+  )
+  The following patch file is a combination of rev. 834047, 836036, 836045,
+  836209:
+  http://people.apache.org/~kkolinko/patches/2009-11-14_Installer_password_tc6.patch
   +1: kkolinko
   -1:
 
