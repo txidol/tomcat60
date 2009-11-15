@@ -399,6 +399,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: funkman, markt, jfclere
   -1:
 
+  Additional patch:
+  http://svn.apache.org/viewvc?rev=836405&view=rev
+  +1: kkolinko
+  -1:
+
+
 * Fix CVE-2009-3548 - Windows installer uses insecure default password
   http://svn.apache.org/viewvc?rev=834047&view=rev
   +1: markt, mturk, kkolinko
