@@ -140,7 +140,7 @@ final class ApplicationDispatcher
         boolean including = false;
 
         /**
-         * Outer most HttpServletRequest in the chain
+         * Outermost HttpServletRequest in the chain
          */
         HttpServletRequest hrequest = null;
 
