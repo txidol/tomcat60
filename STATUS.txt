@@ -166,8 +166,7 @@ PATCHES PROPOSED TO BACKPORT:
     - Moved the code that adds ";" or ":" to non-empty CLASSPATH. That is to avoid
       the gap between this preparationary step and the one that actually adds jars
       to the CLASSPATH.
-   Warning: I have not tried to run the patched catalina.sh yet. I hope it works.
-  http://people.apache.org/~kkolinko/patches/2009-11-12_log-config-per-instance.patch
+  http://people.apache.org/~kkolinko/patches/2009-11-16_log-config-per-instance.patch
   +1: kkolinko
   -1:
 
