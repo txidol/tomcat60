@@ -451,6 +451,10 @@
   </subsection>
   <subsection name="Other">
     <changelog>
+      <add>
+        <bug>37847</bug>: Make location and filename of catalina.out configurable
+        in catalina.sh. (fhanik)
+      </add>
       <fix>
         <bug>37848</bug>: Re-fix not outputting info messages when there is no
         terminal. (markt)
