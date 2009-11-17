@@ -458,8 +458,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=830999&view=rev
   +1: markt, kkolinko
   -1: 
-
-* Provide an option to allow = in cookie values
-  http://people.apache.org/~markt/patches/2009-11-15-cookie-allow-equals.patch
-  +1: markt
-  -1: kkolinko: the same as with tc5.5
