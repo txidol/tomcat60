@@ -189,33 +189,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47267
-  http://svn.apache.org/viewvc?rev=817822&view=rev
-  http://svn.apache.org/viewvc?rev=833545&view=rev (to address rjung's comment)
-  +1: markt, funkman
-  +1: kkolinko: only if applied together with r.835336
-  -1:
-
-  Additional patch:
-  http://svn.apache.org/viewvc?rev=835336&view=rev
-  +1: kkolinko
-  -1:
-
-  rjung: Our dreaded multi platform build system is a bit fragile
-  w.r.t. fixcrlf. If you change the file to crlf in the installer
-  target, then all unix packages (which are build after installer)
-  will also contain it in crlf format. Not to bad for especially
-  that file (because part of a webapp), but maybe it would
-  be cleaner to do this for the installer target only, e.g.
-  saving the file, fixcrlf, run nsi, restoring file.
-  markt: see second patch
-
-  kkolinko: Another way to fix it would be to place a copy of that file
-  into %CATALINA_HOME% (with proper CRLF endings) and display that one in
-  the installer, leaving the one in the ROOT webapp as is. Note, that we
-  already have these two copies of the file in our zip/tgz distributions.
-
 * Use correct flag for SSL
   http://svn.apache.org/viewvc?rev=831106&view=rev
   +1: fhanik, kkolinko, rjung

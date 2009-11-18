@@ -503,6 +503,11 @@
         <bug>47149</bug>: Build scripts: Explicitly specify encoding when
         compiling. (kkolinko)
       </fix>
+      <fix>
+        <bug>47267</bug>: Ensure release notes displayed by Windows installer
+        have CRLF line-endings regardless of which OS the install package is
+        built on. (markt/kkolinko)
+      </fix>
       <add>
         Include NOTICE, LICENSE and manifest files in all Tomcat JARs and add a
         mechanism to the build process to enable these files to be customised
