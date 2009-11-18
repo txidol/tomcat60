@@ -145,13 +145,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Allow per instance configuration of JULI or log4j for core Tomcat logging
   Updated patch with the suggested tweak for 6.0.x so we don't break Eclipse
   integration
-  http://people.apache.org/~markt/patches/2009-11-06-log-config-per-instance.patch
-  +1: markt, funkman
-  +1: kkolinko (good, though I propose a slightly corrected version of it below)
-  -1:
-
-  kkolinko:
-   I updated the above Mark's patch with the following changes
+  Konstantin's update of Mark's patch with the following changes
    (in catalina.bat/sh):
     - Added an explicit check that CATALINA_BASE != CATALINA_HOME.
       Otherwise the [ -r "$CATALINA_BASE/bin/tomcat-juli.jar" ] check will succeed
@@ -161,13 +155,16 @@ PATCHES PROPOSED TO BACKPORT:
       to the CLASSPATH.
   http://people.apache.org/~kkolinko/patches/2009-11-16_log-config-per-instance.patch
   +1: kkolinko
+  +1: markt - You should also give yourself credit in the changelog
+  +1: funkman - was +1 for the original patch, assume he is OK with Konstantin's
+                improvements but give him a change to change hos vote if not  
   -1:
 
 
 * Prevent NPE in JULI FileHandler during shutdown where the logger has been
   shutdown and delayed resources still trying to log
   http://svn.apache.org/viewvc?rev=666232&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Make FileHandler.java extensible
@@ -186,7 +183,7 @@ PATCHES PROPOSED TO BACKPORT:
   records, like it was before rev.814876.
   It depends on the above FileHandler patches.
   http://svn.apache.org/viewvc?rev=816252&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47893
@@ -382,7 +379,7 @@ PATCHES PROPOSED TO BACKPORT:
   2) Add preloading of WebappClassLoader$PrivilegedFindResourceByName,
   to fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48097#c13
   http://people.apache.org/~kkolinko/patches/2009-11-12_PrivilegedFindResource_tc6.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Single quote should be not be treated as a separator
