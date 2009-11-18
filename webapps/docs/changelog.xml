@@ -308,6 +308,10 @@
         context.xml file may result in the file disappearing for a very short
         time. (markt)
       </fix>
+      <fix>
+        Use correct connector attribute (SSLEnabled) rather than secure to
+        determine if SSL should be used. (fhanik)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

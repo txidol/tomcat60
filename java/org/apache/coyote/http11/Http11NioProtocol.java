@@ -708,8 +708,7 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
                     ((ActionHook) processor).action(ActionCode.ACTION_START, null);
                 }
                 
-                
-                if (proto.ep.getSecure() && (proto.sslImplementation != null)) {
+                if (proto.ep.isSSLEnabled() && (proto.sslImplementation != null)) {
                     if (socket instanceof SecureNioChannel) {
                         SecureNioChannel ch = (SecureNioChannel)socket;
                         processor.setSslSupport(proto.sslImplementation.getSSLSupport(ch.getSslEngine().getSession()));
