@@ -374,10 +374,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-  kkolinko: a pair of doc typos:
-   a) in JavaDoc:  s/Locked usually files occur/Locked files usually occur/
-   b) in listeners.xml: s/case by case basis is required/.. as required/ or /.. if required/ ?
-
 * Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=48097
   1) Code cleanup: Remove use of WebappClassLoader$PrivilegedFindResource,
   because all findResourceInternal(String,String) calls are now already
