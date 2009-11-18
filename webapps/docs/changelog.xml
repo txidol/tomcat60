@@ -534,6 +534,13 @@
         ${catalina.base}/lib/*.jar to the start of the common loader class
         path. (markt)
       </add>
+      <fix>
+        Correct CVE-2009-3548. When installed via the Windows installer and
+        using defaults, don't create an administrative user with a blank
+        password. Additionally, the administrative user is only created of the
+        manager or host-manager web applications are selected for installation.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>

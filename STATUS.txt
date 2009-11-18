@@ -358,23 +358,16 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
-* Fix CVE-2009-3548 - Windows installer uses insecure default password
-  http://svn.apache.org/viewvc?rev=834047&view=rev
-  +1: markt, mturk, kkolinko
-  -1:
-
-  Additional patches:
-  (
+* Further improvements to Windows installer password handling
     http://svn.apache.org/viewvc?rev=836036&view=rev
     http://svn.apache.org/viewvc?rev=836045&view=rev
     http://svn.apache.org/viewvc?rev=836209&view=rev
-  )
   The following patch file is a combination of rev. 834047, 836036, 836045,
   836209:
   http://people.apache.org/~kkolinko/patches/2009-11-14_Installer_password_tc6.patch
   +1: kkolinko
   -1:
-
+  +0: markt Combined patch needs to have 834047 removed and 881765 added
 
 * Disable TLS renegotiation be default with an option to re-enable it
   Based on Costin's patch for trunk with Mark's modifications
