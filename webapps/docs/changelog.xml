@@ -316,6 +316,10 @@
         Use correct connector attribute (SSLEnabled) rather than secure to
         determine if SSL should be used. (fhanik)
       </fix>
+      <fix>
+        Provide a workaround for CVE-2009-3555, the TLS renegotiation issue for
+        the default Blocking IO Java connector.
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
