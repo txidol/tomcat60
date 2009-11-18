@@ -81,6 +81,10 @@
         persistent session manager. (markt)
       </fix>
       <fix>
+        <bug>44041</bug>: Fix threading issue in WebappClassLoader that can lead
+        to duplicate class definition under high load. (markt/fhanik)
+      </fix>
+      <fix>
         <bug>44943</bug>: Use the same engine name in server.xml comments to
         reduce copy and pastes issues. (markt, kkolinko)
       </fix>
