@@ -445,3 +445,10 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=47554
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47799
+  Unable to configure domain in Membership and DomainFilterInterceptor
+  Patch provided by Keiichi Fujino
+  http://svn.apache.org/viewvc?rev=883165&view=rev
+  +1: markt
+  -1: 
