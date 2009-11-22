@@ -459,3 +459,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=883177&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48113
+  Display IP addresses using 0-255 rather than -128 to +127
+  Port Filip's patch from trunk
+  http://svn.eu.apache.org/viewvc?view=revision&revision=758249
