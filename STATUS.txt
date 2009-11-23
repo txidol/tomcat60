@@ -462,5 +462,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48113
   Display IP addresses using 0-255 rather than -128 to +127
-  Port Filip's patch from trunk
-  http://svn.eu.apache.org/viewvc?view=revision&revision=758249
+  Port Filip's patch from trunk plus additional changes based on a patch by
+  Quintin Beukes
+  http://svn.apache.org/viewvc?view=revision&revision=758249 (Filip)
+  http://svn.apache.org/viewvc?rev=883362&view=rev (Qunitin)
+  +1: markt
+  -1: 
