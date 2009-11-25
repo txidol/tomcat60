@@ -468,3 +468,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=883362&view=rev (Qunitin)
   +1: markt
   -1: 
+
+* Further improvement to memory leak protection - XML parsing
+  http://svn.apache.org/viewvc?rev=884341&view=rev
+  +1: markt
+  -1: 
