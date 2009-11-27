@@ -142,12 +142,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-* Prevent NPE in JULI FileHandler during shutdown where the logger has been
-  shutdown and delayed resources still trying to log
-  http://svn.apache.org/viewvc?rev=666232&view=rev
-  +1: kkolinko, markt, fhanik
-  -1:
-
 * Make JULI FileHandler thread safe
   http://svn.apache.org/viewvc?rev=881396&view=rev
   +1: fhanik

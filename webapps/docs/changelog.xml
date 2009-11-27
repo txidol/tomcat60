@@ -281,6 +281,10 @@
         Allow per instance configuration of JULI or log4j for core Tomcat
         logging when using CATALINA_BASE. (markt/kkolinko)
       </update>
+      <fix>
+        Prevent NPE in JULI during shutdown when resources try to log messages
+        after JULI has been shutdown. (fhanik/kkolinko) 
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
