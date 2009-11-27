@@ -288,6 +288,9 @@
       <add>
         Make the JULI FileHandler easier to extend. (fhanik)
       </add>
+      <add>
+        Make buffer size for FileHandler configurable. (fhanik)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

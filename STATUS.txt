@@ -147,12 +147,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
 
-* Allow configurable buffer size of loggers
-  http://svn.apache.org/viewvc?rev=814708&view=rev
-  http://svn.apache.org/viewvc?rev=814876&view=rev
-  +1: fhanik, jim, markt, kkolinko
-  -1:
-
 * Allow to disable buffering in JULI FileHandler
   This allows to configure immediate publishing of log 
   records, like it was before rev.814876.
