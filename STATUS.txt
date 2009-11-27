@@ -142,25 +142,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-* Allow per instance configuration of JULI or log4j for core Tomcat logging
-  Updated patch with the suggested tweak for 6.0.x so we don't break Eclipse
-  integration
-  Konstantin's update of Mark's patch with the following changes
-   (in catalina.bat/sh):
-    - Added an explicit check that CATALINA_BASE != CATALINA_HOME.
-      Otherwise the [ -r "$CATALINA_BASE/bin/tomcat-juli.jar" ] check will succeed
-      when those are equal.
-    - Moved the code that adds ";" or ":" to non-empty CLASSPATH. That is to avoid
-      the gap between this preparationary step and the one that actually adds jars
-      to the CLASSPATH.
-  http://people.apache.org/~kkolinko/patches/2009-11-16_log-config-per-instance.patch
-  +1: kkolinko
-  +1: markt - You should also give yourself credit in the changelog
-  +1: funkman - was +1 for the original patch, assume he is OK with Konstantin's
-                improvements but give him a change to change hos vote if not  
-  -1:
-
-
 * Prevent NPE in JULI FileHandler during shutdown where the logger has been
   shutdown and delayed resources still trying to log
   http://svn.apache.org/viewvc?rev=666232&view=rev
