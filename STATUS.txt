@@ -144,7 +144,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Make JULI FileHandler thread safe
   http://svn.apache.org/viewvc?rev=881396&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Allow to disable buffering in JULI FileHandler
@@ -378,7 +378,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48252
   Patch attached to BZ
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
