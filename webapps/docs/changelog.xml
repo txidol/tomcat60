@@ -277,6 +277,10 @@
         Add RemoteIpValve, a port of mod_remoteip. Patch provided by Cyrille Le
         Clerc. (markt)
       </add>
+      <update>
+        Allow per instance configuration of JULI or log4j for core Tomcat
+        logging when using CATALINA_BASE. (markt/kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">

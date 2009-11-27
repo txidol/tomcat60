@@ -92,7 +92,7 @@ rem Each command line option is prefixed with PR_
 set PR_DESCRIPTION=Apache Tomcat Server - http://tomcat.apache.org/
 set PR_INSTALL=%EXECUTABLE%
 set PR_LOGPATH=%CATALINA_BASE%\logs
-set PR_CLASSPATH=%CATALINA_HOME%\bin\bootstrap.jar
+set PR_CLASSPATH=%CATALINA_BASE%\bin\tomcat-juli.jar;%CATALINA_HOME%\bin\tomcat-juli.jar;%CATALINA_HOME%\bin\bootstrap.jar
 rem Set the server jvm from JAVA_HOME
 set PR_JVM=%JAVA_HOME%\jre\bin\server\jvm.dll
 if exist "%PR_JVM%" goto foundJvm

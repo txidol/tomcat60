@@ -157,14 +157,19 @@ else
   fi
 fi
 
-# Add on extra jar files to CLASSPATH
+if [ -z "$CATALINA_BASE" ] ; then
+  CATALINA_BASE="$CATALINA_HOME"
+fi
+
+# Add tomcat-juli.jar and bootstrap.jar to classpath
+# tomcat-juli.jar can be over-ridden per instance
 if [ ! -z "$CLASSPATH" ] ; then
   CLASSPATH="$CLASSPATH":
 fi
-CLASSPATH="$CLASSPATH""$CATALINA_HOME"/bin/bootstrap.jar
-
-if [ -z "$CATALINA_BASE" ] ; then
-  CATALINA_BASE="$CATALINA_HOME"
+if [ "$CATALINA_BASE" != "$CATALINA_HOME" ] && [ -r "$CATALINA_BASE/bin/tomcat-juli.jar" ] ; then
+  CLASSPATH="$CLASSPATH""$CATALINA_BASE"/bin/tomcat-juli.jar:"$CATALINA_HOME"/bin/bootstrap.jar
+else
+  CLASSPATH="$CLASSPATH""$CATALINA_HOME"/bin/bootstrap.jar
 fi
 
 if [ -z "$CATALINA_OUT" ] ; then
