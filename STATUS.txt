@@ -474,10 +474,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48295
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48295 &
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=48296
   Correct French translations
-  http://svn.apache.org/viewvc?rev=884905&view=rev
-  Patch provided by Marc Paquette
+  http://people.apache.org/~markt/patches/2009-11-27-bug48295-6.patch
+  Patches provided by Marc Paquette
   +1: markt
   -1: 
 
