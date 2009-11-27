@@ -285,6 +285,9 @@
         Prevent NPE in JULI during shutdown when resources try to log messages
         after JULI has been shutdown. (fhanik/kkolinko) 
       </fix>
+      <add>
+        Make the JULI FileHandler easier to extend. (fhanik)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

@@ -60,7 +60,7 @@ public class FileHandler
         this.prefix = prefix;
         this.suffix = suffix;
         configure();
-        open();
+        openWriter();
     }
     
 
@@ -121,9 +121,9 @@ public class FileHandler
         if (!date.equals(tsDate)) {
             synchronized (this) {
                 if (!date.equals(tsDate)) {
-                    close();
+                    closeWriter();
                     date = tsDate;
-                    open();
+                    openWriter();
                 }
             }
         }
@@ -158,6 +158,10 @@ public class FileHandler
      * Close the currently open log file (if any).
      */
     public void close() {
+        closeWriter();
+    }
+
+    protected void closeWriter() {
         
         try {
             if (writer == null)
@@ -197,7 +201,7 @@ public class FileHandler
         String tsString = ts.toString().substring(0, 19);
         date = tsString.substring(0, 10);
 
-        String className = FileHandler.class.getName();
+        String className = this.getClass().getName(); //allow classes to override
         
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
         
@@ -264,7 +268,11 @@ public class FileHandler
     /**
      * Open the new log file for the date specified by <code>date</code>.
      */
-    private void open() {
+    protected void open() {
+        openWriter();
+    }
+    
+    protected void openWriter() {
 
         // Create the directory if necessary
         File dir = new File(directory);
