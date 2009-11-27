@@ -171,7 +171,7 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt for all SBuilder->SBuffer patches. Code cleanup is fine in trunk but
             no need to backport it
   -0: funkman
-  -1: Is there a real benefit, other than clouding the revision history? ;)
+  -1: fhanik Is there a real benefit, other than clouding the revision history? ;)
       I'd consider 6.0.x to be in maintenance mode not clean up/refactor mode.
 
   The patches, as well as patches for individual files inside them, are
