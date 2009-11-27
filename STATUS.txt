@@ -473,3 +473,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=884341&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48295
+  Correct French translations
+  http://svn.apache.org/viewvc?rev=884905&view=rev
+  Patch provided by Marc Paquette
+  +1: markt
+  -1: 
+
