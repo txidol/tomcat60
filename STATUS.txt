@@ -462,3 +462,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47453
+  Handle void return types
+  This is Tim's patch
+  http://svn.apache.org/viewvc?rev=885991&view=rev
+  +1: markt
+  -1: 
