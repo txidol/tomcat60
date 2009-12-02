@@ -468,3 +468,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=885991&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47502
+  Don't try and replicate attributes we know to be non-serializable
+  Patch by Tim Funk
+  http://svn.apache.org/viewvc?rev=886019&view=rev
+  +1: markt
+  -1: 
