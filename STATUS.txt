@@ -475,3 +475,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=886019&view=rev
   +1: markt
   -1: 
+
+* Prevent lost log messages on shutdown
+  http://svn.apache.org/viewvc?rev=888072&view=rev
+  +1: markt
+  -1: 
