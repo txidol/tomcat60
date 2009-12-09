@@ -459,7 +459,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47342
   Fix NPE on replicated context start
   Patch provided by Keiichi Fujino
-  +1: markt
+  +1: markt, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47453
@@ -473,7 +473,7 @@ PATCHES PROPOSED TO BACKPORT:
   Don't try and replicate attributes we know to be non-serializable
   Patch by Tim Funk
   http://svn.apache.org/viewvc?rev=886019&view=rev
-  +1: markt
+  +1: markt, pero
   -1: 
 
 * Prevent lost log messages on shutdown
