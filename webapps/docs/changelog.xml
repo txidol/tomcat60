@@ -469,6 +469,10 @@
         (markt)
       </fix>
       <fix>
+        <bug>47656</bug>: Add information to documentation on system property
+        replacement in configuration files. (markt)
+      </fix>
+      <fix>
         <bug>47705</bug>: Fix division by zero error in the manager when trying
         to expire sessions when the session timeout is set to infinite.
         (funkman)
