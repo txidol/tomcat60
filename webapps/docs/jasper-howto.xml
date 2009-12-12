@@ -145,7 +145,7 @@ valid bean class? <code>true</code> or <code>false</code>, default
 performed in a separate JVM from Tomcat? <code>true</code> or
 <code>false</code>, default <code>true</code>.</li>
 
-<li><strong>genStringAsCharArray</strong> - Should text strings be generated as char
+<li><strong>genStrAsCharArray</strong> - Should text strings be generated as char
 arrays, to improve performance in some cases? Default <code>false</code>.</li>
 
 <li><strong>ieClassId</strong> - The class-id value to be sent to Internet
