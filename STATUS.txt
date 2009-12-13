@@ -497,3 +497,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=889716&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
+  Coerce null to zero when target type in Number
+  http://svn.apache.org/viewvc?rev=890139&view=rev
+  +1: markt
+  -1: 
