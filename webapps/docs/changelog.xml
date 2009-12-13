@@ -485,6 +485,10 @@
         Do not reuse windows (tabs) for session detail pages in Manager
         application. (kkolinko)
       </update>
+      <fix>
+        <bug>48381</bug>: Add information on how Tomcat treats host names to the
+        host configuration documentation. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
