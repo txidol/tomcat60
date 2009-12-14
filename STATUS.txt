@@ -96,52 +96,6 @@ PATCHES PROPOSED TO BACKPORT:
     Is it still relevant? I do not see any waiting there.
   )
 
-* Port TLD processing improvements from trunk
-  There have been quite a few changes to TLD processing and they are tightly
-  coupled. Therefore, this proposal is a series of patches and the patches
-  need to be applied in order. Even then the patches do not apply completely
-  cleanly so a rolled up patch has been provided at each stage.
-  Note: The JSP TCK passes with the full set of patches applied.
-  The benefit is twofold. First a number of edge case bugs I came across are
-  fixed. The short version is that the Catalina code and the Jasper code did
-  things differently. As well as the inherent inconsistencies (and hence bugs)
-  this created it also made it much harder to add the additional functionality
-  I was trying to add for embeddability. Which brings me to the second benefit.
-  With these fixes in place, the changes I was trying to make (patch to follow
-  when I have done more testing) for embeddability become possible.
-  Step 1: Clean-up
-  http://svn.apache.org/viewvc?view=rev&revision=647344
-  +1: markt, kkolinko
-  -1:
-  Step 2: Make validation configuration per-context
-  http://svn.apache.org/viewvc?view=rev&revision=751502
-  http://people.apache.org/~markt/patches/2009-08-06-TLD-improvements-steps-1-2.patch (Steps 1-2)
-  +1: markt
-  -1:
-  Step 3: Track and don't process duplicate TLDs
-  http://svn.apache.org/viewvc?view=rev&revision=793621
-  http://people.apache.org/~markt/patches/2009-08-06-TLD-improvements-steps-1-3.patch (Steps 1-3)
-  +1: markt
-  -1:
-  Step 4: Sync Catalina and Jasper code so a) they have the same behaviour and
-  b) use the same code so they are easier to keep in sync.
-  http://svn.apache.org/viewvc?view=rev&revision=795143
-  http://svn.apache.org/viewvc?view=rev&revision=795767
-  http://svn.apache.org/viewvc?view=rev&revision=795819
-  http://svn.apache.org/viewvc?view=rev&revision=795822
-  http://svn.apache.org/viewvc?view=rev&revision=795824
-  http://svn.apache.org/viewvc?view=rev&revision=795838
-  http://svn.apache.org/viewvc?view=rev&revision=795860
-  http://svn.apache.org/viewvc?view=rev&revision=795902
-  http://svn.apache.org/viewvc?view=rev&revision=796016
-  http://svn.apache.org/viewvc?view=rev&revision=796017
-  http://svn.apache.org/viewvc?view=rev&revision=796030
-  http://svn.apache.org/viewvc?view=rev&revision=801601
-  http://svn.apache.org/viewvc?view=rev&revision=801637
-  http://people.apache.org/~markt/patches/2009-08-06-TLD-improvements-steps-1-4.patch (Steps 1-4)
-  +1: markt
-  -1:
-
 * Make JULI FileHandler thread safe
   http://svn.apache.org/viewvc?rev=881396&view=rev
   +1: fhanik, markt, jfclere
