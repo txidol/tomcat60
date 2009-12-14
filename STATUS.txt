@@ -503,3 +503,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=890139&view=rev
   +1: markt
   -1: 
+
+* Test for null rather than just waiting for the NPE to happen
+  http://svn.apache.org/viewvc?rev=890265&view=rev
+  +1: markt
+  -1: 
