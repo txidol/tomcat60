@@ -481,3 +481,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=890530&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47836
+  Don't keep TLD/listener info between reloads
+  http://svn.apache.org/viewvc?view=revision&revision=883565
+  +1: markt
+  -1: 
