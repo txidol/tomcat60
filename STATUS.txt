@@ -291,11 +291,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
   +0: markt Combined patch needs to have 834047 removed and 881765 added
 
-* Improvements to memory leak prevention
-  http://people.apache.org/~markt/patches/2009-11-10-leak-prevention.patch
-  +1: markt, kkolinko, jim
-  -1:
-
 * Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=48097
   1) Code cleanup: Remove use of WebappClassLoader$PrivilegedFindResource,
   because all findResourceInternal(String,String) calls are now already
