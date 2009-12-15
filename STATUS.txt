@@ -394,12 +394,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48300
-  Only the APR lifecycle listener should try and initialise APR
-  http://people.apache.org/~markt/patches/2009-11-27-bug48300-tc6.patch
-  +1: markt, jfclere, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47342
   Fix NPE on replicated context start
   Patch provided by Keiichi Fujino
