@@ -444,6 +444,10 @@
         Chandler. (markt)
       </fix>
       <fix>
+        <bug>47342</bug>: Fix potential NPE on replicated context start. Patch
+        provided by Keiichi Fujino. (markt)
+      </fix>
+      <fix>
         <bug>47389</bug>: DeltaManager doesn't do session replication if
         notifySessionListenersOnReplication=false.
         Patch by Keiichi Fujino. (fhanik)

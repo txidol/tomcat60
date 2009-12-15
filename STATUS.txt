@@ -394,12 +394,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47342
-  Fix NPE on replicated context start
-  Patch provided by Keiichi Fujino
-  +1: markt, pero, jfclere, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47453
   Handle void return types
   This is Tim's patch
