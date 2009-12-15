@@ -302,11 +302,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, jim
   -1:
 
-* Single quote should be not be treated as a separator
-  http://svn.apache.org/viewvc?rev=830999&view=rev
-  +1: markt, kkolinko, jfclere, jim
-  -1: 
-
 * Update to commons-pool 1.5.4
   http://svn.apache.org/viewvc?rev=881412&view=rev
   +1: markt, jim
