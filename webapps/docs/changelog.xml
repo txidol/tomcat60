@@ -344,7 +344,7 @@
         the default Blocking IO Java connector.
       </fix>
       <fix>
-        <bug>48300</bug>: Only the APR lifecycle listener should try and
+        <bug>48311</bug>: Only the APR lifecycle listener should try and
         initialise APR. (markt)
       </fix>
     </changelog>
