@@ -95,7 +95,7 @@ public class FileHandler
     /**
      * The PrintWriter to which we are currently logging, if any.
      */
-    private PrintWriter writer = null;
+    private volatile PrintWriter writer = null;
     
     /**
      * Log buffer size
@@ -142,6 +142,7 @@ public class FileHandler
         }
         
         try {
+            PrintWriter writer = this.writer;
             if (writer!=null) {
                 writer.write(result);
             } else {
@@ -168,6 +169,8 @@ public class FileHandler
     protected void closeWriter() {
         
         try {
+            PrintWriter writer = this.writer;
+            this.writer = null;
             if (writer == null)
                 return;
             writer.write(getFormatter().getTail(this));
@@ -188,6 +191,9 @@ public class FileHandler
     public void flush() {
 
         try {
+            PrintWriter writer = this.writer;
+            if (writer==null)
+                return;
             writer.flush();
         } catch (Exception e) {
             reportError(null, e, ErrorManager.FLUSH_FAILURE);

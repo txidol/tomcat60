@@ -96,11 +96,6 @@ PATCHES PROPOSED TO BACKPORT:
     Is it still relevant? I do not see any waiting there.
   )
 
-* Make JULI FileHandler thread safe
-  http://svn.apache.org/viewvc?rev=881396&view=rev
-  +1: fhanik, markt, jfclere, jim
-  -1: 
-
 * Allow to disable buffering in JULI FileHandler
   This allows to configure immediate publishing of log 
   records, like it was before rev.814876.

@@ -306,6 +306,9 @@
       <add>
         Make buffer size for FileHandler configurable. (fhanik)
       </add>
+      <fix>
+        Make JULI FileHandler thread safe. (fhanik)
+      </fix>
       <add>
         Provide an option to allow the equals character in unquoted cookie
         values. (markt)
