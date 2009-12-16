@@ -290,11 +290,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, jim
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48252
-  Patch attached to BZ
-  +1: fhanik, markt, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
   Implment fail-safe EOL conversion for source disributions
   Based on a patch provided by sebb

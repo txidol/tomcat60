@@ -259,6 +259,9 @@ public final class IntrospectionUtils {
      * you can have setDebug(1).
      */
     public static boolean setProperty(Object o, String name, String value) {
+    	return setProperty(o,name,value,true);
+    }
+    public static boolean setProperty(Object o, String name, String value,boolean invokeSetProperty) {
         if (dbg > 1)
             d("setProperty(" + o.getClass() + " " + name + "=" + value + ")");
 
@@ -345,7 +348,7 @@ public final class IntrospectionUtils {
             }
 
             // Ok, no setXXX found, try a setProperty("name", "value")
-            if (setPropertyMethodBool != null || setPropertyMethodVoid != null) {
+            if (invokeSetProperty && (setPropertyMethodBool != null || setPropertyMethodVoid != null)) {
                 Object params[] = new Object[2];
                 params[0] = name;
                 params[1] = value;

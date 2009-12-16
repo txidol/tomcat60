@@ -358,6 +358,10 @@
         the default Blocking IO Java connector.
       </fix>
       <fix>
+        <bug>48252</bug>: Fix stack overflow exception when setting jkHome on
+        NIO connector. (fhanik)
+      </fix>
+      <fix>
         <bug>48311</bug>: Only the APR lifecycle listener should try and
         initialise APR. (markt)
       </fix>
