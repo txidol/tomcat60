@@ -365,13 +365,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48049
-  Fix copy and paste error and call correct function
-  Patch provided by gingyang.xu
-  http://svn.apache.org/viewvc?rev=883177&view=rev
-  +1: markt, jim, jfclere
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48113
   Display IP addresses using 0-255 rather than -128 to +127
   Port Filip's patch from trunk plus additional changes based on a patch by

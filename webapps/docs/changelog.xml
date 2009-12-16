@@ -176,6 +176,11 @@
         <bug>47918</bug>: Correct mbean descriptors for the host deployer. Patch
         provided by Uwe Günther. (markt)
       </fix>
+      <fix>
+        <bug>48049</bug>: Fix copy and paste error so
+        <code>NamingContext.destroySubContext()</code> works correctly.
+        Patch provided by gingyang.xu (markt)
+      </fix>
       <update>
         <bug>48097</bug>: Make WebappClassLoader to do not swallow
         AccessControlException. (kkolinko)
