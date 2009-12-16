@@ -469,6 +469,10 @@
         <bug>47502</bug>: Don't replicate session attributes known not to be
         serializable. (funkman)
       </fix>
+      <fix>
+        <bug>47554</bug>: Include httpOnly attribute when re-writing session
+        cookie after fail over. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">

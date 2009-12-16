@@ -332,12 +332,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47554
-  httpOnly flag not applied to migrated session cookie
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=47554
-  +1: markt, jim, jfclere
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47799
   Unable to configure domain in Membership and DomainFilterInterceptor
   Patch provided by Keiichi Fujino
