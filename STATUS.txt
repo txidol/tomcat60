@@ -274,7 +274,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Update to commons-pool 1.5.4
   http://svn.apache.org/viewvc?rev=881412&view=rev
-  +1: markt, jim
+  +1: markt, jim, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
