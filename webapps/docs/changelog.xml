@@ -301,6 +301,10 @@
       <add>
         Make buffer size for FileHandler configurable. (fhanik)
       </add>
+      <add>
+        Provide an option to allow the equals character in unquoted cookie
+        values. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
