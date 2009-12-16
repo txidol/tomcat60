@@ -111,7 +111,10 @@ public class WebappClassLoader
 
     public static final boolean ENABLE_CLEAR_REFERENCES = 
         Boolean.valueOf(System.getProperty("org.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES", "true")).booleanValue();
-    
+
+    /**
+     * @deprecated Not used
+     */
     protected class PrivilegedFindResource
         implements PrivilegedAction {
 
@@ -1977,8 +1980,7 @@ public class WebappClassLoader
     }
 
     /**
-     * Find specified resource in local repositories. This block
-     * will execute under an AccessControl.doPrivilege block.
+     * Find specified resource in local repositories.
      *
      * @return the loaded resource, or null if the resource isn't found
      */
@@ -2037,13 +2039,7 @@ public class WebappClassLoader
 
                 // Note : Not getting an exception here means the resource was
                 // found
-                 if (securityManager != null) {
-                    PrivilegedAction dp =
-                        new PrivilegedFindResource(files[i], path);
-                    entry = (ResourceEntry)AccessController.doPrivileged(dp);
-                 } else {
-                    entry = findResourceInternal(files[i], path);
-                 }
+                entry = findResourceInternal(files[i], path);
 
                 ResourceAttributes attributes =
                     (ResourceAttributes) resources.getAttributes(fullPath);
