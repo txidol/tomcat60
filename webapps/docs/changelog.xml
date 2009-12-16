@@ -310,6 +310,10 @@
         Make JULI FileHandler thread safe. (fhanik)
       </fix>
       <add>
+        Provide an option to disable buffering in the JULI FileHandler.
+        (kkolinko)
+      </add>
+      <add>
         Provide an option to allow the equals character in unquoted cookie
         values. (markt)
       </add>

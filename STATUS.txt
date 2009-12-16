@@ -96,14 +96,6 @@ PATCHES PROPOSED TO BACKPORT:
     Is it still relevant? I do not see any waiting there.
   )
 
-* Allow to disable buffering in JULI FileHandler
-  This allows to configure immediate publishing of log 
-  records, like it was before rev.814876.
-  It depends on the above FileHandler patches.
-  http://svn.apache.org/viewvc?rev=816252&view=rev
-  +1: kkolinko, markt, jfclere, jim
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47893
   Use StringBuilder instead of StringBuffer
   -0: markt for all SBuilder->SBuffer patches. Code cleanup is fine in trunk but
