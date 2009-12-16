@@ -148,6 +148,15 @@ class JSSESupport implements SSLSupport {
             ssl.setNeedClientAuth(true);
         }
 
+        if (ssl.getEnabledCipherSuites().length == 0) {
+            // Handshake is never going to be successful.
+            // Assume this is because handshakes are disabled
+            log.warn("SSL server initiated renegotiation is disabled, closing connection");
+            session.invalidate();
+            ssl.close();
+            return;
+        }
+
         InputStream in = ssl.getInputStream();
         int oldTimeout = ssl.getSoTimeout();
         ssl.setSoTimeout(1000);
@@ -170,10 +179,7 @@ class JSSESupport implements SSLSupport {
                 break;
             }
         }
-        // If legacy re-negotiation is disabled, socked could be closed here 
-        if (!ssl.isClosed()) {
-            ssl.setSoTimeout(oldTimeout);
-        }
+        ssl.setSoTimeout(oldTimeout);
         if (listener.completed == false) {
             throw new SocketException("SSL Cert handshake timeout");
         }
