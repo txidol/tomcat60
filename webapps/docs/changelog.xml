@@ -161,6 +161,10 @@
         old method. Patch provided by Christopher Schultz. (markt)
       </fix>
       <fix>
+        <bug>47718</bug>: Fix file descriptor leak on context stop/reload. Patch
+        provided by George Sexton. (markt)
+      </fix>
+      <fix>
         <bug>47796</bug>: Fix OpenEJB integration. Reset annotation processor on
         context stop. (markt)
       </fix>
