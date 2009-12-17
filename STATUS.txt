@@ -330,28 +330,38 @@ PATCHES PROPOSED TO BACKPORT:
   Port Filip's patch from trunk plus additional changes based on a patch by
   Quintin Beukes
   http://svn.apache.org/viewvc?view=revision&revision=758249 (Filip)
-  http://svn.apache.org/viewvc?rev=883362&view=rev (Qunitin)
-  +1: markt
+  http://svn.apache.org/viewvc?rev=883362&view=rev (Quintin)
+  +1: markt, kkolinko
   -1: 
+  http://svn.apache.org/viewvc?rev=891583&view=rev (Quintin)
+  +1: kkolinko
+  -1:
 
 * Further improvement to memory leak protection - XML parsing
   http://svn.apache.org/viewvc?rev=884341&view=rev
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48295 &
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=48296
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48306 &
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=48307
   Correct French translations
   http://people.apache.org/~markt/patches/2009-11-27-bug48295-6.patch
   Patches provided by Marc Paquette
   +1: markt
+  +1: kkolinko: Technically correct (cannot say anything about the
+   language), except the following two glitches in manager/LocalStrings_fr.properties:
+    1) 'managerServlet.deployed' is defined twice (and in the English
+    file as well). The first one looks to be more correctly translated.
+    2) 'managerServlet.undeployd' and 'managerServlet.undeployed' are
+   both defined (and in the English file as well), but only the second one is
+   used by Java code.
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47453
   Handle void return types
   This is Tim's patch
   http://svn.apache.org/viewvc?rev=885991&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Prevent lost log messages on shutdown
