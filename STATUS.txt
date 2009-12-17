@@ -278,7 +278,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
-  Implment fail-safe EOL conversion for source disributions
+  Implement fail-safe EOL conversion for source disributions
   Based on a patch provided by sebb
   http://svn.apache.org/viewvc?rev=883125&view=rev
   +1: markt, jim
@@ -316,6 +316,10 @@ PATCHES PROPOSED TO BACKPORT:
    me than changing it. I think that applying the patch will be against the
    spec, because it changes the meaning of omitting the metadata-complete
    attribute.
+      markt: conf/web.xml exists to set defaults for all application web.xml
+             files. This includes meta-data complete. The spec does not define
+             how global defaults should be set so whatever implementation is
+             selected can't be a breach of the spec.
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47799
