@@ -312,6 +312,10 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Keiichi Fujino
   http://svn.apache.org/viewvc?rev=883146&view=rev
   +1: markt
+  -1: kkolinko: See Comment 2 in BZ. Current behavior makes more sense for
+   me than changing it. I think that applying the patch will be against the
+   spec, because it changes the meaning of omitting the metadata-complete
+   attribute.
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47799
