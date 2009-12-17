@@ -284,9 +284,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, jim
   -1: 
   -0: kkolinko:
-    1) The following additional patch is needed, because the list did not
+    1) The following additional patches are needed, because the list did not
     include the files without extension
        http://svn.apache.org/viewvc?rev=891529&view=rev
+       http://svn.apache.org/viewvc?rev=891533&view=rev
 
     I see that sebb's attachment in Comment 1 of the issue mentions
     a lot more of extensionless files in TC 5.5. Need to check that.
