@@ -311,15 +311,7 @@ PATCHES PROPOSED TO BACKPORT:
   Need to be able to override metadata complete if set in the global web.xml
   Patch provided by Keiichi Fujino
   http://svn.apache.org/viewvc?rev=883146&view=rev
-  +1: markt
-  -1: kkolinko: See Comment 2 in BZ. Current behavior makes more sense for
-   me than changing it. I think that applying the patch will be against the
-   spec, because it changes the meaning of omitting the metadata-complete
-   attribute.
-      markt: conf/web.xml exists to set defaults for all application web.xml
-             files. This includes meta-data complete. The spec does not define
-             how global defaults should be set so whatever implementation is
-             selected can't be a breach of the spec.
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47799
