@@ -283,6 +283,22 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=883125&view=rev
   +1: markt, jim
   -1: 
+  -0: kkolinko:
+    1) The following additional patch is needed, because the list did not
+    include the files without extension
+       http://svn.apache.org/viewvc?rev=891529&view=rev
+
+    I see that sebb's attachment in Comment 1 of the issue mentions
+    a lot more of extensionless files in TC 5.5. Need to check that.
+
+    2) I do not like such patterns as *.amd64, *.ia64. There is no
+    guarantee that those are not binary, as those extensions do not
+    specify file types. We would better use full names
+    of those files, e.g. **/Makefile.amd64.  Actually those *.amd64
+    files are in connectors/jk/native of TC 5.5.28. Do we still ship
+    them after repository reorganization?  Also, native sources included
+    in TC 6.0.20 release to not have any *.amd64 files.
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47997
   Process changes for all naming contexts, not just the global one
