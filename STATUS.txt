@@ -385,7 +385,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
   Coerce null to zero when target type in Number
   http://svn.apache.org/viewvc?rev=890139&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Test for null rather than just waiting for the NPE to happen
@@ -425,13 +425,17 @@ PATCHES PROPOSED TO BACKPORT:
   Don't keep TLD/listener info between reloads
   http://svn.apache.org/viewvc?view=revision&revision=883565
   +1: markt
+  +1: kkolinko (without the following line of TldConfig.java patch:
+       +            taglibUris.clear();
+       as we do not have "taglibUris" in TC 6.
+     )
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47841
   Failed sub-realm start prevents combined realm from starting
   http://svn.apache.org/viewvc?rev=891187&view=rev (fix)
   http://svn.apache.org/viewvc?rev=891185&view=rev (better log messages)
-  +1: markt
+  +1: markt, kkolinko
   -1: 
   
 * Add support for a connectionTimeout attribute to the JNDIRealm
