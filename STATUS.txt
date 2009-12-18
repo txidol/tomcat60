@@ -403,6 +403,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
   Ensure web application class loader is used when calling session listeners
   http://svn.apache.org/viewvc?rev=890530&view=rev
+  http://svn.apache.org/viewvc?rev=892193&view=rev
   +1: markt
   -1: 
    0: kkolinko:
@@ -416,10 +417,6 @@ PATCHES PROPOSED TO BACKPORT:
          parseSessionCookiesId(), but may be earlier in the call chain.
 
          I won't oppose the patch. I have to think a bit more about it.
-
-       Re implementation:
-         if (session == null) return false; // return early and do not bother with thread class loader
-
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47836
   Don't keep TLD/listener info between reloads
