@@ -439,3 +439,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=892293&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47930
+  Prevent paralell requests for the same session causing the PersistentManager
+  to create multiple session objects for a single session
+  http://svn.apache.org/viewvc?rev=892341&view=rev
+  +1: markt
+  -1: 
