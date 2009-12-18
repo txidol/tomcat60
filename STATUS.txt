@@ -272,11 +272,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
   +0: markt Combined patch needs to have 834047 removed and 881765 added
 
-* Update to commons-pool 1.5.4
-  http://svn.apache.org/viewvc?rev=881412&view=rev
-  +1: markt, jim, kkolinko
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
   Implement fail-safe EOL conversion for source disributions
   Based on a patch provided by sebb
