@@ -313,6 +313,9 @@
         Provide an option to disable buffering in the JULI FileHandler.
         (kkolinko)
       </add>
+      <fix>
+        Ensure log messages are not lost on shutdown. (markt)
+      </fix>
       <add>
         Provide an option to allow the equals character in unquoted cookie
         values. (markt)

@@ -356,11 +356,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-* Prevent lost log messages on shutdown
-  http://svn.apache.org/viewvc?rev=888072&view=rev
-  +1: markt, jim, kkolinko
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47537
   Return an error page rather than a zero length 200 response if the forward to
   the login or error page fails during FORM authentication
