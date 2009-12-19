@@ -153,6 +153,11 @@
         if the response has already been committed. (markt)
       </fix>
       <fix>
+        <bug>47462</bug>: Allow individual web applications to override metadata
+        complete if set in the global web.xml. Patch provided by Keiichi Fujino.
+        (markt)
+      </fix>
+      <fix>
         <bug>47495</bug>: Provide a more meaningful error message is server.xml
         is not readable and exit immediately if a server cannot be created.
         (funkman/kkolinko)

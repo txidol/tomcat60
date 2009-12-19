@@ -812,6 +812,8 @@ final class IgnoreAnnotationsRule extends Rule {
         String value = attributes.getValue("metadata-complete");
         if ("true".equals(value)) {
             context.setIgnoreAnnotations(true);
+        } else if ("false".equals(value)) {
+            context.setIgnoreAnnotations(false);
         }
         if (digester.getLogger().isDebugEnabled()) {
             digester.getLogger().debug
