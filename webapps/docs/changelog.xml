@@ -205,6 +205,10 @@
         by Guillermo Gutiérrez. (markt)
       </fix>
       <fix>
+        <bug>48306</bug>, <bug>48307</bug>: Correct French translations. Patches
+        provided by Marc Paquette. (markt)
+      </fix>
+      <fix>
         <bug>48322</bug>: Single quote characters are not HTTP separators and
         should not be treated as such in the cookie handling. (markt)
       </fix>
