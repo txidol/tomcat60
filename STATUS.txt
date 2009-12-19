@@ -371,7 +371,14 @@ PATCHES PROPOSED TO BACKPORT:
   not change the session ID
   http://svn.apache.org/viewvc?rev=889716&view=rev
   +1: markt, jfclere, jim
-  -1: 
+  -1: kkolinko: -1 if alone, +1 if committed together with rev.892415
+    proposed below.
+
+  Provide setter for the new AuthenticatorBase property
+  http://svn.apache.org/viewvc?rev=892415&view=rev
+  +1: kkolinko
+  -1:
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
   Coerce null to zero when target type in Number
