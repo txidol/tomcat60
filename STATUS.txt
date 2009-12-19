@@ -273,7 +273,7 @@ PATCHES PROPOSED TO BACKPORT:
   +0: markt Combined patch needs to have 834047 removed and 881765 added
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
-  Implement fail-safe EOL conversion for source disributions
+  Implement fail-safe EOL conversion for source distributions
   Based on a patch provided by sebb
   http://svn.apache.org/viewvc?rev=883125&view=rev
   +1: markt, jim
@@ -299,21 +299,21 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47997
   Process changes for all naming contexts, not just the global one
   http://svn.apache.org/viewvc?rev=883134&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47462
   Need to be able to override metadata complete if set in the global web.xml
   Patch provided by Keiichi Fujino
   http://svn.apache.org/viewvc?rev=883146&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47799
   Unable to configure domain in Membership and DomainFilterInterceptor
   Patch provided by Keiichi Fujino
   http://svn.apache.org/viewvc?rev=883165&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48113
@@ -322,16 +322,17 @@ PATCHES PROPOSED TO BACKPORT:
   Quintin Beukes
   http://svn.apache.org/viewvc?view=revision&revision=758249 (Filip)
   http://svn.apache.org/viewvc?rev=883362&view=rev (Quintin)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
   http://svn.apache.org/viewvc?rev=891583&view=rev (Quintin)
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Further improvement to memory leak protection - XML parsing
   http://svn.apache.org/viewvc?rev=884341&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
+  rjung: "memopry" -> "memory" in docs patch, "idenitfy" -> "identify" in comment
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48306 &
   https://issues.apache.org/bugzilla/show_bug.cgi?id=48307
@@ -339,7 +340,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2009-11-27-bug48295-6.patch
   http://svn.apache.org/viewvc?rev=892198&view=rev (Konstantin's comments)
   Patches provided by Marc Paquette
-  +1: markt
+  +1: markt, rjung
   +1: kkolinko: Technically correct (cannot say anything about the
    language), except the following two glitches in manager/LocalStrings_fr.properties:
     1) 'managerServlet.deployed' is defined twice (and in the English
@@ -353,14 +354,14 @@ PATCHES PROPOSED TO BACKPORT:
   Handle void return types
   This is Tim's patch
   http://svn.apache.org/viewvc?rev=885991&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47537
   Return an error page rather than a zero length 200 response if the forward to
   the login or error page fails during FORM authentication
   http://svn.apache.org/viewvc?rev=889606&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Address https://issues.apache.org/bugzilla/show_bug.cgi?id=45255
@@ -376,26 +377,26 @@ PATCHES PROPOSED TO BACKPORT:
 
   Provide setter for the new AuthenticatorBase property
   http://svn.apache.org/viewvc?rev=892415&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
-
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43656
   Coerce null to zero when target type in Number
   http://svn.apache.org/viewvc?rev=890139&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Test for null rather than just waiting for the NPE to happen
   http://svn.apache.org/viewvc?rev=890265&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
+  rjung: Indentation?
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47744
   Prevent medium term memory leak if using SSL under a security manager
   Based on a patch by Greg Vanore
   http://svn.apache.org/viewvc?rev=890350&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
@@ -420,7 +421,7 @@ PATCHES PROPOSED TO BACKPORT:
   Don't keep TLD/listener info between reloads
   http://svn.apache.org/viewvc?view=revision&revision=883565
   +1: markt
-  +1: kkolinko (without the following line of TldConfig.java patch:
+  +1: kkolinko, rjung (without the following line of TldConfig.java patch:
        +            taglibUris.clear();
        as we do not have "taglibUris" in TC 6.
      )
@@ -430,12 +431,13 @@ PATCHES PROPOSED TO BACKPORT:
   Failed sub-realm start prevents combined realm from starting
   http://svn.apache.org/viewvc?rev=891187&view=rev (fix)
   http://svn.apache.org/viewvc?rev=891185&view=rev (better log messages)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
-  
+  rjung: indentation is broken.
+
 * Add support for a connectionTimeout attribute to the JNDIRealm
   http://svn.apache.org/viewvc?rev=891186&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
    kkolinko: I wonder, whether "com.sun.jndi.ldap.connect.timeout" property
    is specific to the Sun implementation. At least it is documented in
@@ -444,12 +446,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47963
   Ensure HTTP header values meet the requirements of RFC2616
   http://svn.apache.org/viewvc?rev=892293&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47930
-  Prevent paralell requests for the same session causing the PersistentManager
+  Prevent parallel requests for the same session causing the PersistentManager
   to create multiple session objects for a single session
   http://svn.apache.org/viewvc?rev=892341&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
