@@ -315,13 +315,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
   rjung: "memopry" -> "memory" in docs patch, "idenitfy" -> "identify" in comment
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47453
-  Handle void return types
-  This is Tim's patch
-  http://svn.apache.org/viewvc?rev=885991&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47537
   Return an error page rather than a zero length 200 response if the forward to
   the login or error page fails during FORM authentication

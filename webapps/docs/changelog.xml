@@ -423,6 +423,10 @@
         <bug>47413</bug>: Ensure expressions of the form &quot;${a}${b}&quot;
         are correctly coerced to String. (kkolinko)
       </fix>
+      <fix>
+        <bug>47453</bug>: Handle void return types for deferred methods.
+        (funkman)
+      </fix>
       <update>
         Remove the code that auto-detects the value for compilerSourceVM,
         compilerTargetVM options of Jasper, because we know that this version
