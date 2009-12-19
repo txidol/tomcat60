@@ -493,6 +493,10 @@
         <bug>47554</bug>: Include httpOnly attribute when re-writing session
         cookie after fail over. (markt)
       </fix>
+      <fix>
+        <bug>48113</bug>: Display IP addresses using 0 to 255 rather than -128
+        to +127. Based on a patch by Quintin Beukes. (fhanik/kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">

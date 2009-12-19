@@ -309,18 +309,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48113
-  Display IP addresses using 0-255 rather than -128 to +127
-  Port Filip's patch from trunk plus additional changes based on a patch by
-  Quintin Beukes
-  http://svn.apache.org/viewvc?view=revision&revision=758249 (Filip)
-  http://svn.apache.org/viewvc?rev=883362&view=rev (Quintin)
-  +1: markt, kkolinko, rjung
-  -1: 
-  http://svn.apache.org/viewvc?rev=891583&view=rev (Quintin)
-  +1: kkolinko, rjung
-  -1:
-
 * Further improvement to memory leak protection - XML parsing
   http://svn.apache.org/viewvc?rev=884341&view=rev
   +1: markt, rjung
