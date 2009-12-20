@@ -311,9 +311,16 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Further improvement to memory leak protection - XML parsing
   http://svn.apache.org/viewvc?rev=884341&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1: 
   rjung: "memopry" -> "memory" in docs patch, "idenitfy" -> "identify" in comment
+  kkolinko: I thought that maybe DocumentBuilderFactory.newInstance()
+    should be inside try/catch as well. It can throw FactoryConfigurationError.
+    I do not really care, as it is only a question of providing a message.
+    If anybody encounters this, they can turn off the xmlParsingProtection
+    flag and go on.
+    In this sense, it could be catch(Throwable) here, and in other places
+    in that class as well.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47537
   Return an error page rather than a zero length 200 response if the forward to
@@ -351,7 +358,7 @@ PATCHES PROPOSED TO BACKPORT:
   Ensure HTTP header values meet the requirements of RFC2616
   http://svn.apache.org/viewvc?rev=892293&view=rev
   +1: markt, rjung
-  -1: 
+  -1: kkolinko: see my reply to r892293 on dev@
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47930
   Prevent parallel requests for the same session causing the PersistentManager
@@ -363,12 +370,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48413
   Correct French translations
   http://svn.apache.org/viewvc?rev=892555&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47976
   Align usage message and javadoc with implementation
   http://svn.apache.org/viewvc?view=revision&revision=832214
   http://svn.apache.org/viewvc?view=revision&revision=892464
-  +1: markt
+  +1: markt, kkolinko
   -1: 
