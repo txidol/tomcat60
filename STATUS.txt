@@ -347,14 +347,6 @@ PATCHES PROPOSED TO BACKPORT:
 
          I won't oppose the patch. I have to think a bit more about it.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47841
-  Failed sub-realm start prevents combined realm from starting
-  http://svn.apache.org/viewvc?rev=891187&view=rev (fix)
-  http://svn.apache.org/viewvc?rev=891185&view=rev (better log messages)
-  +1: markt, kkolinko, rjung
-  -1: 
-  rjung: indentation is broken.
-
 * Add support for a connectionTimeout attribute to the JNDIRealm
   http://svn.apache.org/viewvc?rev=891186&view=rev
   +1: markt, kkolinko, rjung

@@ -187,6 +187,11 @@
         (markt)
       </fix>
       <fix>
+        <bug>47841</bug>: When using the CombinedRealm, if one of the nested
+        Realms fails to start, skip that Realm rather than preventing the
+        CombinedRealm from starting. (markt)
+      </fix>
+      <fix>
         <bug>47881</bug>: Fix processing of startd and stopd arguments. Patch
         provided by Qingyang Xu. (kkolinko)
       </fix>
