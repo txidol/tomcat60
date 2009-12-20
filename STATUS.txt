@@ -347,14 +347,6 @@ PATCHES PROPOSED TO BACKPORT:
 
          I won't oppose the patch. I have to think a bit more about it.
 
-* Add support for a connectionTimeout attribute to the JNDIRealm
-  http://svn.apache.org/viewvc?rev=891186&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-   kkolinko: I wonder, whether "com.sun.jndi.ldap.connect.timeout" property
-   is specific to the Sun implementation. At least it is documented in
-    http://java.sun.com/j2se/1.5.0/docs/guide/jndi/jndi-ldap.html
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47963
   Ensure HTTP header values meet the requirements of RFC2616
   http://svn.apache.org/viewvc?rev=892293&view=rev

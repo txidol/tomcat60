@@ -342,6 +342,9 @@
         Provide an option to allow the equals character in unquoted cookie
         values. (markt)
       </add>
+      <add>
+        Add support for a connectionTimeout parameter to the JNDIRealm. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
