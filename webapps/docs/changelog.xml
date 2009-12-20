@@ -296,7 +296,8 @@
       <fix>
         Provide a new listener to protect against a memory leak caused by a
         change in the Sun JRE from version 1.6.0_15 onwards. Also include
-        protection against locked JAR files. (markt)
+        protection against locked JAR files and memory leaks triggered by
+        XML parsing. (markt)
       </fix>
       <fix>
         Don't swallow exceptions in ApplicationContextFacade.doPrivileged()

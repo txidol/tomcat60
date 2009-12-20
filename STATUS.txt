@@ -309,19 +309,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Further improvement to memory leak protection - XML parsing
-  http://svn.apache.org/viewvc?rev=884341&view=rev
-  +1: markt, rjung, kkolinko
-  -1: 
-  rjung: "memopry" -> "memory" in docs patch, "idenitfy" -> "identify" in comment
-  kkolinko: I thought that maybe DocumentBuilderFactory.newInstance()
-    should be inside try/catch as well. It can throw FactoryConfigurationError.
-    I do not really care, as it is only a question of providing a message.
-    If anybody encounters this, they can turn off the xmlParsingProtection
-    flag and go on.
-    In this sense, it could be catch(Throwable) here, and in other places
-    in that class as well.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47537
   Return an error page rather than a zero length 200 response if the forward to
   the login or error page fails during FORM authentication
