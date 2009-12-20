@@ -322,12 +322,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Test for null rather than just waiting for the NPE to happen
-  http://svn.apache.org/viewvc?rev=890265&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-  rjung: Indentation?
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47744
   Prevent medium term memory leak if using SSL under a security manager
   Based on a patch by Greg Vanore

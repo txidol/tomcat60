@@ -459,6 +459,10 @@
         <bug>48019</bug>: Be more careful about skipping content that does not
         need to be parsed. (markt)
       </fix>
+      <fix>
+        Better handling of exception in JSP if parsed JSP source is not
+        available. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
