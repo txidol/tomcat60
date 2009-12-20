@@ -86,7 +86,11 @@
       </fix>
       <fix>
         <bug>44943</bug>: Use the same engine name in server.xml comments to
-        reduce copy and pastes issues. (markt, kkolinko)
+        reduce copy and pastes issues. (markt/kkolinko)
+      </fix>
+      <fix>
+        <bug>45255</bug>: Provide protection against session fixation by
+        changing session ID automatically on authentication. (markt/kkolinko)
       </fix>
       <fix>
         <bug>45403</bug>: Add additional checks on web application deployment
