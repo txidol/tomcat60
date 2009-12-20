@@ -354,12 +354,6 @@ PATCHES PROPOSED TO BACKPORT:
 
          I won't oppose the patch. I have to think a bit more about it.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47963
-  Ensure HTTP header values meet the requirements of RFC2616
-  http://svn.apache.org/viewvc?rev=892293&view=rev
-  +1: markt, rjung
-  -1: kkolinko: see my reply to r892293 on dev@
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47930
   Prevent parallel requests for the same session causing the PersistentManager
   to create multiple session objects for a single session
