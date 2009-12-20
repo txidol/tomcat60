@@ -412,6 +412,10 @@
         simple tags. (kkolinko/markt)
       </fix>
       <fix>
+        <bug>43656</bug>: Correctly coerce <code>null</code> to zero when the
+        target type is <code>Number</code>. (markt)
+      </fix>
+      <fix>
         <bug>46907</bug>: Don't swallow input stream when debug logging is
         enabled. (markt)
       </fix>
