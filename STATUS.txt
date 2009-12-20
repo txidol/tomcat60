@@ -365,3 +365,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=892555&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47976
+  Align usage message and javadoc with implementation
+  http://svn.apache.org/viewvc?view=revision&revision=832214
+  http://svn.apache.org/viewvc?view=revision&revision=892464
+  +1: markt
+  -1: 
