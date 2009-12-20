@@ -4689,6 +4689,7 @@ public class StandardContext
         applicationListeners = new String[0];
         applicationEventListenersObjects = new Object[0];
         applicationLifecycleListenersObjects = new Object[0];
+        taglibs = new HashMap<String, String>();
         
         annotationProcessor = null;
 

@@ -741,7 +741,9 @@ public final class TldConfig  implements LifecycleListener {
                 log.error(sm.getString(
                         "tldConfig.execute", context.getPath()), e);
             }
-        } // Ignore the other event types - nothing to do 
+        } else if (event.getType().equals(Lifecycle.STOP_EVENT)) {
+            listeners.clear();
+        }
     }
     
     private void init() {

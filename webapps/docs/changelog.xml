@@ -183,6 +183,10 @@
         org.apache.catalina.Bootstrap (markt)
       </fix>
       <fix>
+        <bug>47836</bug>: Clear cached TLD information on context reload.
+        (markt)
+      </fix>
+      <fix>
         <bug>47881</bug>: Fix processing of startd and stopd arguments. Patch
         provided by Qingyang Xu. (kkolinko)
       </fix>
