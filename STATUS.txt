@@ -334,3 +334,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=892812&view=rev
   +1: kkolinko, markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48214
+  Add logging when a context fails to unregister a JDBC driver. Don't unregister
+  the jdbc-obdc bridge driver that is loaded by the system classloader.
+  http://svn.apache.org/viewvc?view=revision&revision=885231
+  +1: markt
+  -1: 
