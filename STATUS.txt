@@ -353,3 +353,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=885901
   +1: markt
   -1: 
+
+* Sync JreLeakPreventionListener with trunk
+  http://people.apache.org/~markt/patches/2009-12-21-JreLeakPreventionListener.patch
+  +1: markt
+  -1: 
