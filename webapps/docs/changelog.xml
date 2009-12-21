@@ -205,6 +205,10 @@
         provided by Uwe Günther. (markt)
       </fix>
       <fix>
+        <bug>47930</bug>: Fix thread safety issues on session swap-in in the
+        persistent session manager. (markt/kkolinko)
+      </fix>
+      <fix>
         <bug>47976</bug>: Correct usage message and Javadoc for
         <code>org.apache.catalina.startup.Catalina</code>. (markt)
       </fix>

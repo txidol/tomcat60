@@ -302,20 +302,6 @@ PATCHES PROPOSED TO BACKPORT:
 
          I won't oppose the patch. I have to think a bit more about it.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47930
-  Prevent parallel requests for the same session causing the PersistentManager
-  to create multiple session objects for a single session
-  http://svn.apache.org/viewvc?rev=892341&view=rev
-  +1: markt, rjung, jim
-  +1: kkolinko: I am OK to commit r892341 as is, though r892817 proposed
-    below adds slight improvements
-  -1: 
-  Additional patches:
-  http://svn.apache.org/viewvc?rev=892814&view=rev (tabs replaced by spaces, no functional change)
-  http://svn.apache.org/viewvc?rev=892817&view=rev (sebb's/kkolinko's comments)
-  +1: kkolinko, markt, rjung, jim
-  -1:
-
 * Remove unneeded line from the method that normalizes decodedURI.
   http://svn.apache.org/viewvc?rev=892812&view=rev
   +1: kkolinko, markt, rjung, jim
