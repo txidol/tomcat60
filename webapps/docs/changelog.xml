@@ -378,6 +378,11 @@
         <bug>47499</bug>: Don't swallow bind exceptions. (markt)
       </fix>
       <fix>
+        <bug>47744</bug>: Prevent a medium term memory leak if using SSl with
+        the JSSE provider and also using a security manager. Based on a patch by
+        Greg Vanore. (markt)
+      </fix>
+      <fix>
         <bug>47987</bug>: Limit size of not found resources cache. (markt)
       </fix>
       <fix>

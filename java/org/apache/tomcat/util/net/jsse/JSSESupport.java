@@ -23,6 +23,8 @@ import java.io.InputStream;
 import java.net.SocketException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 import javax.net.ssl.HandshakeCompletedEvent;
 import javax.net.ssl.HandshakeCompletedListener;
@@ -52,6 +54,9 @@ class JSSESupport implements SSLSupport {
     
     private static org.apache.juli.logging.Log log =
         org.apache.juli.logging.LogFactory.getLog(JSSESupport.class);
+    
+    private static final Map<SSLSession,Integer> keySizeCache =
+        new WeakHashMap<SSLSession, Integer>();
 
     protected SSLSocket ssl;
     protected SSLSession session;
@@ -195,7 +200,12 @@ class JSSESupport implements SSLSupport {
         SSLSupport.CipherData c_aux[]=ciphers;
         if (session == null)
             return null;
-        Integer keySize = (Integer) session.getValue(KEY_SIZE_KEY);
+        
+        Integer keySize = null;
+        synchronized(keySizeCache) {
+            keySize = keySizeCache.get(session);
+        }
+        
         if (keySize == null) {
             int size = 0;
             String cipherSuite = session.getCipherSuite();
@@ -206,7 +216,9 @@ class JSSESupport implements SSLSupport {
                 }
             }
             keySize = new Integer(size);
-            session.putValue(KEY_SIZE_KEY, keySize);
+            synchronized(keySizeCache) {
+                keySizeCache.put(session, keySize);
+            }
         }
         return keySize;
     }
