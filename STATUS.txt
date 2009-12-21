@@ -323,14 +323,6 @@ PATCHES PROPOSED TO BACKPORT:
          a comment typo change only. Will need more time to vote on
          the whole proposal though.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48214
-  The JDBC driver de-registration is too zealous
-  http://svn.apache.org/viewvc?rev=892887&view=rev
-  +1: markt, rjung, kkolinko
-  -1: 
-   kkolinko:  this.getClass().getClassLoader()) call could be moved out of
-    the loop, because it incurs SecurityManager.checkPermission() check.
-
 * Update to Tomcat-Native 1.1.18
   http://people.apache.org/~kkolinko/patches/2009-12-21_tomcat-native_1.1.18.patch
   Note: as of now, the windows binaries at 

@@ -281,6 +281,10 @@
         Ensure JDBC driver de-registration works with a security manager.
         (markt)
       </fix>
+      <fix>
+        <bug>48214</bug>: Ensure JDBC driver de-registration is not too zealous.
+        (markt)
+      </fix>
       <update>
         Various JNDI realm improvements for Active Directory. These include the
         ability to specify a default role, optional handling for nested roles
