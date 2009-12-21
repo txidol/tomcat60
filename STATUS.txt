@@ -298,13 +298,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47537
-  Return an error page rather than a zero length 200 response if the forward to
-  the login or error page fails during FORM authentication
-  http://svn.apache.org/viewvc?rev=889606&view=rev
-  +1: markt, rjung, jfclere
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
   Ensure web application class loader is used when calling session listeners
   http://svn.apache.org/viewvc?rev=890530&view=rev
