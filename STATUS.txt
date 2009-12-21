@@ -263,7 +263,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Further improvements to Windows installer password handling
   http://people.apache.org/~markt/patches/2009-12-21-windows-installer.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
@@ -345,14 +345,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48413
   Correct French translations
   http://svn.apache.org/viewvc?rev=892555&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47976
   Align usage message and javadoc with implementation
   http://svn.apache.org/viewvc?view=revision&revision=832214
   http://svn.apache.org/viewvc?view=revision&revision=892464
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47963
