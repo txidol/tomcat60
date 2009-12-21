@@ -22,6 +22,7 @@ import java.util.Properties;
 import org.apache.catalina.tribes.Member;
 import org.apache.catalina.tribes.MembershipListener;
 import org.apache.catalina.tribes.MembershipService;
+import org.apache.catalina.tribes.util.Arrays;
 import org.apache.catalina.tribes.util.StringManager;
 import org.apache.catalina.tribes.util.UUIDGenerator;
 import java.io.IOException;
@@ -547,6 +548,12 @@ public class McastService implements MembershipService,MembershipListener {
                 log.error("Unable to send domain update.",x);
             }
         }
+    }
+
+    public void setDomain(String domain) {
+        if ( domain == null ) return;
+        if ( domain.startsWith("{") ) setDomain(Arrays.fromString(domain));
+        else setDomain(Arrays.convert(domain));
     }
 
     /**

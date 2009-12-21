@@ -560,6 +560,10 @@
         cookie after fail over. (markt)
       </fix>
       <fix>
+        <bug>47799</bug>: Enable the domain to be configured for Membership and
+        DomainFilterInterceptor. Patch provided by Keiichi Fujino. (markt)
+      </fix>
+      <fix>
         <bug>48113</bug>: Display IP addresses using 0 to 255 rather than -128
         to +127. Based on a patch by Quintin Beukes. (fhanik/kkolinko)
       </fix>

@@ -284,14 +284,6 @@ PATCHES PROPOSED TO BACKPORT:
     them after repository reorganization?  Also, native sources included
     in TC 6.0.20 release to not have any *.amd64 files.
 
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47799
-  Unable to configure domain in Membership and DomainFilterInterceptor
-  Patch provided by Keiichi Fujino
-  http://svn.apache.org/viewvc?rev=883165&view=rev
-  +1: markt, rjung, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
   Ensure web application class loader is used when calling session listeners
   http://svn.apache.org/viewvc?rev=890530&view=rev
