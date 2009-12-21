@@ -33,11 +33,11 @@
   </properties>
 
 <body>
-<section name="Tomcat 6.0.21 (remm)">
+<section name="Tomcat 6.0.21 (jfclere)">
   <subsection name="Catalina">
     <changelog>
       <update>
-        Update required version for native to 1.1.17. (rjung)
+        Update required version for native to 1.1.18. (rjung, kkolinko)
       </update>
       <fix>
         Fix issues with expression language when running under a

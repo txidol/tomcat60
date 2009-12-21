@@ -294,14 +294,3 @@ PATCHES PROPOSED TO BACKPORT:
   rjung: I added the second commit after Mark proposed and votes. It is
          a comment typo change only. Will need more time to vote on
          the whole proposal though.
-
-* Update to Tomcat-Native 1.1.18
-  http://people.apache.org/~kkolinko/patches/2009-12-21_tomcat-native_1.1.18.patch
-  Note: as of now, the windows binaries at 
-       http://archive.apache.org/dist/tomcat/tomcat-connectors/native/1.1.18/binaries/
-  are not yet available, so this patch is untested and it has not been
-  applied to trunk yet.
-  +1: kkolinko, rjung, jfclere
-  -1:
-  rjung: it seems binaries are there now. You only want to update the build file,
-         not the minimum tcnative version required in the source, right?
