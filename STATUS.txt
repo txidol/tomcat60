@@ -294,3 +294,10 @@ PATCHES PROPOSED TO BACKPORT:
   rjung: I added the second commit after Mark proposed and votes. It is
          a comment typo change only. Will need more time to vote on
          the whole proposal though.
+
+* Fix second part of https://issues.apache.org/bugzilla/show_bug.cgi?id=47413#c8
+  Coerce result of composite EL expression (${a}${b}) from String to the expected type.
+  The example demonstrating it was added in r892968.
+  http://svn.apache.org/viewvc?rev=893001&view=rev
+  +1: kkolinko
+  -1:
