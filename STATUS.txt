@@ -322,3 +322,9 @@ PATCHES PROPOSED TO BACKPORT:
   rjung: I added the second commit after Mark proposed and votes. It is
          a comment typo change only. Will need more time to vote on
          the whole proposal though.
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48214
+  The JDBC driver de-registration is too zealous
+  http://svn.apache.org/viewvc?rev=892887&view=rev
+  +1: markt
+  -1: 
