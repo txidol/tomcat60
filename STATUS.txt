@@ -301,7 +301,7 @@ PATCHES PROPOSED TO BACKPORT:
        http://archive.apache.org/dist/tomcat/tomcat-connectors/native/1.1.18/binaries/
   are not yet available, so this patch is untested and it has not been
   applied to trunk yet.
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, jfclere
   -1:
   rjung: it seems binaries are there now. You only want to update the build file,
          not the minimum tcnative version required in the source, right?
