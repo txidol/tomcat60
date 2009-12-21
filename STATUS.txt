@@ -262,15 +262,9 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Further improvements to Windows installer password handling
-    http://svn.apache.org/viewvc?rev=836036&view=rev
-    http://svn.apache.org/viewvc?rev=836045&view=rev
-    http://svn.apache.org/viewvc?rev=836209&view=rev
-  The following patch file is a combination of rev. 834047, 836036, 836045,
-  836209:
-  http://people.apache.org/~kkolinko/patches/2009-11-14_Installer_password_tc6.patch
-  +1: kkolinko
-  -1:
-  +0: markt Combined patch needs to have 834047 removed and 881765 added
+  http://people.apache.org/~markt/patches/2009-12-21-windows-installer.patch
+  +1: kkolinko, markt
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
   Implement fail-safe EOL conversion for source distributions
