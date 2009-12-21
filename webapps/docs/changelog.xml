@@ -209,6 +209,11 @@
         <code>org.apache.catalina.startup.Catalina</code>. (markt)
       </fix>
       <fix>
+        <bug>47997</bug>: Ensure the NamingContextListener applies to all naming
+        contexts, not just the global one. Patch provided by Michael Allman.
+        (markt)
+      </fix>
+      <fix>
         <bug>48049</bug>: Fix copy and paste error so
         <code>NamingContext.destroySubContext()</code> works correctly.
         Patch provided by gingyang.xu (markt)
