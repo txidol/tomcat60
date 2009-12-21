@@ -329,3 +329,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=892341&view=rev
   +1: markt, rjung
   -1: 
+
+* Various (un)deployment improvements
+  http://people.apache.org/~markt/patches/2009-12-21-deployment-improvements.patch
+  +1: markt
+  -1: 
