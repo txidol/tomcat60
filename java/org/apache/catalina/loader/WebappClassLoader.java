@@ -41,6 +41,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import java.util.jar.Attributes;
@@ -1692,8 +1693,13 @@ public class WebappClassLoader
                 defineClass("org.apache.catalina.loader.JdbcLeakPrevention",
                     classBytes, 0, offset);
             Object obj = lpClass.newInstance();
-            obj.getClass().getMethod(
+            @SuppressWarnings("unchecked")
+            List<String> driverNames = (List<String>) obj.getClass().getMethod(
                     "clearJdbcDriverRegistrations").invoke(obj);
+            for (String name : driverNames) {
+                log.error(sm.getString(
+                        "webappClassLoader.unclearedReferenceJbdc", name));
+            }
         } catch (Exception e) {
             // So many things to go wrong above...
             log.warn(sm.getString("webappClassLoader.jdbcRemoveFailed"), e);

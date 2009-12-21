@@ -307,14 +307,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung, jim
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48214
-  Add logging when a context fails to unregister a JDBC driver. Don't unregister
-  the jdbc-obdc bridge driver that is loaded by the system classloader.
-  http://svn.apache.org/viewvc?view=revision&revision=885231
-  +1: markt, rjung, jim
-  -1: 
-  rjung: "uncleareredReferenceJbdc" -> "unclearedReferenceJbdc" in two places
-
 * Log threads that are started but not stopped by web applications
   http://svn.apache.org/viewvc?view=revision&revision=885241
   http://svn.apache.org/viewvc?view=revision&revision=885260
