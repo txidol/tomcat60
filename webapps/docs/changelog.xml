@@ -200,6 +200,10 @@
         provided by Uwe Günther. (markt)
       </fix>
       <fix>
+        <bug>47976</bug>: Correct usage message and Javadoc for
+        <code>org.apache.catalina.startup.Catalina</code>. (markt)
+      </fix>
+      <fix>
         <bug>48049</bug>: Fix copy and paste error so
         <code>NamingContext.destroySubContext()</code> works correctly.
         Patch provided by gingyang.xu (markt)
