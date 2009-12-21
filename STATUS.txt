@@ -288,14 +288,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47997
   Process changes for all naming contexts, not just the global one
   http://svn.apache.org/viewvc?rev=883134&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, jim
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47799
   Unable to configure domain in Membership and DomainFilterInterceptor
   Patch provided by Keiichi Fujino
   http://svn.apache.org/viewvc?rev=883165&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, jim
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
@@ -320,40 +320,40 @@ PATCHES PROPOSED TO BACKPORT:
   Prevent parallel requests for the same session causing the PersistentManager
   to create multiple session objects for a single session
   http://svn.apache.org/viewvc?rev=892341&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, jim
   +1: kkolinko: I am OK to commit r892341 as is, though r892817 proposed
     below adds slight improvements
   -1: 
   Additional patches:
   http://svn.apache.org/viewvc?rev=892814&view=rev (tabs replaced by spaces, no functional change)
   http://svn.apache.org/viewvc?rev=892817&view=rev (sebb's/kkolinko's comments)
-  +1: kkolinko, markt, rjung
+  +1: kkolinko, markt, rjung, jim
   -1:
 
 * Remove unneeded line from the method that normalizes decodedURI.
   http://svn.apache.org/viewvc?rev=892812&view=rev
-  +1: kkolinko, markt, rjung
+  +1: kkolinko, markt, rjung, jim
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48214
   Add logging when a context fails to unregister a JDBC driver. Don't unregister
   the jdbc-obdc bridge driver that is loaded by the system classloader.
   http://svn.apache.org/viewvc?view=revision&revision=885231
-  +1: markt, rjung
+  +1: markt, rjung, jim
   -1: 
   rjung: "uncleareredReferenceJbdc" -> "unclearedReferenceJbdc" in two places
 
 * Log threads that are started but not stopped by web applications
   http://svn.apache.org/viewvc?view=revision&revision=885241
   http://svn.apache.org/viewvc?view=revision&revision=885260
-  +1: markt
+  +1: markt, jim
   -1: 
 
 * More memory leak protection: ThreadLocals, RMI references, optionally stopping
   threads.
   http://svn.apache.org/viewvc?view=revision&revision=885901
   http://svn.apache.org/viewvc?view=revision&revision=892843
-  +1: markt
+  +1: markt, jim
   -1: 
   rjung: I added the second commit after Mark proposed and votes. It is
          a comment typo change only. Will need more time to vote on
@@ -361,5 +361,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Sync JreLeakPreventionListener with trunk
   http://people.apache.org/~markt/patches/2009-12-21-JreLeakPreventionListener.patch
-  +1: markt, rjung
+  +1: markt, rjung, jim
   -1: 
