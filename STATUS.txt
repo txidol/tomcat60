@@ -326,7 +326,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48214
   The JDBC driver de-registration is too zealous
   http://svn.apache.org/viewvc?rev=892887&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Update to Tomcat-Native 1.1.18
@@ -335,5 +335,7 @@ PATCHES PROPOSED TO BACKPORT:
        http://archive.apache.org/dist/tomcat/tomcat-connectors/native/1.1.18/binaries/
   are not yet available, so this patch is untested and it has not been
   applied to trunk yet.
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
+  rjung: it seems binaries are there now. You only want to update the build file,
+         not the minimum tcnative version required in the source, right?
