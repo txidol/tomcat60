@@ -364,5 +364,30 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47963
   Prevent use of non-RFC2616 compliant custom status messages
   http://svn.apache.org/viewvc?rev=892612&view=rev
+  http://svn.apache.org/viewvc?rev=892707&view=rev
   +1: markt
+  +1: kkolinko: (
+       1. only together with rev.892707
+       2. this change, provided by rev.892612,
+
+-        if (org.apache.coyote.Constants.USE_CUSTOM_STATUS_MSG_IN_HEADER) {
++        if (org.apache.coyote.Constants.USE_CUSTOM_STATUS_MSG_IN_HEADER &&
++                HttpMessages.isSafeInHttpHeader(response.getMessage())) {
+             message = response.getMessage();
+         }
+         if (message == null){
+             message = HttpMessages.getMessage(response.getStatus());
+-        } else {
+-            message = message.replace('\n', ' ').replace('\r', ' ');
+         }
+
+        has to be applied to the following 6 classes in TC 6:
+         in o.a.coyote.ajp: AjpAprProcessor and AjpProcessor,
+         in o.a.coyote.http11: InternalAprOutputBuffer, InternalNioOutputBuffer, InternalOutputBuffer
+         in o.a.jk.common: JkInputStream
+        (3 of them do not exist in TC 7).
+
+       3. I think that mention of extra overhead in systemprops.xml is not
+       necessary.
+     )
   -1: 
