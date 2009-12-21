@@ -611,8 +611,8 @@
         correct binary on 64-bit machines. (markt)
       </fix>
       <update>
-        Update Windows Installer to use NSIS 2.45. They say that this version provides
-        support for the upcoming Microsoft Windows 7. (kkolinko)
+        Update Windows Installer to use NSIS 2.45. They say that this version
+        provides support for the upcoming Microsoft Windows 7. (kkolinko)
       </update>
       <fix>
         Don't add blank lines to end of files when fixing line-endings for
@@ -667,6 +667,10 @@
         manager or host-manager web applications are selected for installation.
         (markt)
       </fix>
+      <update>
+        Further improvements to the administrative user name and password
+        handling in the Windows installer. (kkolinko)
+      </update>
     </changelog>
   </subsection>
 </section>
