@@ -359,6 +359,12 @@
       <add>
         Add support for a connectionTimeout parameter to the JNDIRealm. (markt)
       </add>
+      <fix>
+        Various (un)deployment related improvements including better handling of
+        failed (un)deployment, additional checking for valid zip entries that
+        don't make sense in a WAR and improved validation of WAR file names.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
