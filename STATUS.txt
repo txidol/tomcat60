@@ -329,9 +329,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=892341&view=rev
   +1: markt, rjung
   -1: 
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47963
-  Prevent use of non-RFC2616 compliant custom status messages
-  http://people.apache.org/~markt/patches/2009-12-21-bug47963.patch
-  +1: markt, kkolinko, rjung
-  -1: 
