@@ -327,10 +327,10 @@ PATCHES PROPOSED TO BACKPORT:
   Additional patches:
   http://svn.apache.org/viewvc?rev=892814&view=rev (tabs replaced by spaces, no functional change)
   http://svn.apache.org/viewvc?rev=892817&view=rev (sebb's/kkolinko's comments)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Remove unneeded line from the method that normalizes decodedURI.
   http://svn.apache.org/viewvc?rev=892812&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
