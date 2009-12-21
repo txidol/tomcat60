@@ -382,6 +382,7 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
+      <update>Implement <code>socket.unlockTimeout</code> attribute for NIO connector.</update>
       <fix>
         <bug>46950</bug>: Fix doing SSL renegotiation when a resource with CLIENT-CERT
         auth is requested. (markt)

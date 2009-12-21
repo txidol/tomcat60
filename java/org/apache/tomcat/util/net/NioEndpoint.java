@@ -23,6 +23,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 import java.nio.channels.CancelledKeyException;
 import java.nio.channels.FileChannel;
@@ -195,7 +197,10 @@ public class NioEndpoint {
      */
     protected AtomicInteger activeSocketProcessors = new AtomicInteger(0);
     
-    
+    /**
+     * 
+     */
+    protected volatile CountDownLatch stopLatch = null;
     
     /**
      * Cache for SocketProcessor objects
@@ -804,6 +809,7 @@ public class NioEndpoint {
         InetSocketAddress addr = (address!=null?new InetSocketAddress(address,port):new InetSocketAddress(port));
         serverSock.socket().bind(addr,backlog); 
         serverSock.configureBlocking(true); //mimic APR behavior
+        serverSock.socket().setSoTimeout(getSocketProperties().getSoTimeout());
 
         // Initialize thread count defaults for acceptor, poller
         if (acceptorThreadCount == 0) {
@@ -814,6 +820,7 @@ public class NioEndpoint {
             //minimum one poller thread
             pollerThreadCount = 1;
         }
+        stopLatch = new CountDownLatch(pollerThreadCount);
 
         // Initialize SSL if needed
         if (isSSLEnabled()) {
@@ -949,6 +956,7 @@ public class NioEndpoint {
                 pollers[i].destroy();
                 pollers[i] = null;
             }
+            try { stopLatch.await(selectorTimeout+100,TimeUnit.MILLISECONDS); } catch (InterruptedException ignore ) {}
         }
         eventCache.clear();
         keyCache.clear();
@@ -958,7 +966,7 @@ public class NioEndpoint {
             if ( executor instanceof ThreadPoolExecutor ) {
                 //this is our internal one, so we need to shut it down
                 ThreadPoolExecutor tpe = (ThreadPoolExecutor) executor;
-                tpe.shutdown();
+                tpe.shutdownNow();
                 TaskQueue queue = (TaskQueue) tpe.getQueue();
                 queue.setParent(null,null);
             }
@@ -972,6 +980,9 @@ public class NioEndpoint {
      * Deallocate NIO memory pools, and close server socket.
      */
     public void destroy() throws Exception {
+        if (log.isDebugEnabled()) {
+            log.debug("Destroy initiated for "+new InetSocketAddress(address,port));
+        }
         if (running) {
             stop();
         }
@@ -983,6 +994,9 @@ public class NioEndpoint {
         initialized = false;
         releaseCaches();
         selectorPool.close();
+        if (log.isDebugEnabled()) {
+            log.debug("Destroy completed for "+new InetSocketAddress(address,port));
+        }
     }
 
 
@@ -1030,16 +1044,24 @@ public class NioEndpoint {
      */
     protected void unlockAccept() {
         java.net.Socket s = null;
+        InetSocketAddress saddr = null;
         try {
             // Need to create a connection to unlock the accept();
             if (address == null) {
-                s = new java.net.Socket(InetAddress.getByName("localhost").getHostAddress(), port);
+                 saddr = new InetSocketAddress("127.0.0.1", port);
             } else {
-                s = new java.net.Socket(address, port);
-                // setting soLinger to a small value will help shutdown the
-                // connection quicker
-                s.setSoLinger(true, 0);
+                 saddr = new InetSocketAddress(address,port);
             }
+            s = new java.net.Socket();
+            s.setSoTimeout(getSocketProperties().getSoTimeout());
+            s.setSoLinger(getSocketProperties().getSoLingerOn(),getSocketProperties().getSoLingerTime());
+            if (log.isDebugEnabled()) {
+                log.debug("About to unlock socket for:"+saddr);
+            }
+            s.connect(saddr,getSocketProperties().getUnlockTimeout());
+            if (log.isDebugEnabled()) {
+                log.debug("Socket unlock completed for:"+saddr);
+            } 
         } catch(Exception e) {
             if (log.isDebugEnabled()) {
                 log.debug(sm.getString("endpoint.debug.unlock", "" + port), e);
@@ -1302,6 +1324,8 @@ public class NioEndpoint {
                             }
                         } 
                     }
+                }catch (SocketTimeoutException sx) {
+                    //normal condition
                 }catch ( IOException x ) {
                     if ( running ) log.error(sm.getString("endpoint.accept.fail"), x);
                 } catch (OutOfMemoryError oom) {
@@ -1405,7 +1429,7 @@ public class NioEndpoint {
         protected Selector selector;
         protected ConcurrentLinkedQueue<Runnable> events = new ConcurrentLinkedQueue<Runnable>();
         
-        protected boolean close = false;
+        protected volatile boolean close = false;
         protected long nextExpiration = 0;//optimize expiration handling
         
         protected AtomicLong wakeupCounter = new AtomicLong(0l);
@@ -1425,12 +1449,11 @@ public class NioEndpoint {
          */
         protected void destroy() {
             // Wait for polltime before doing anything, so that the poller threads
-            // exit, otherwise parallel descturction of sockets which are still
+            // exit, otherwise parallel closure of sockets which are still
             // in the poller can cause problems
             close = true;
             events.clear();
             selector.wakeup();
-            try { stopLatch.await(5,TimeUnit.SECONDS); } catch (InterruptedException ignore ) {}
         }
         
         public void addEvent(Runnable event) {
@@ -1542,7 +1565,7 @@ public class NioEndpoint {
                     // Loop if endpoint is paused
                     while (paused && (!close) ) {
                         try {
-                            Thread.sleep(500);
+                            Thread.sleep(100);
                         } catch (InterruptedException e) {
                             // Ignore
                         }
@@ -1553,8 +1576,7 @@ public class NioEndpoint {
                     // Time to terminate?
                     if (close) {
                         timeout(0, false);
-                        stopLatch.countDown();
-                        return;
+                        break;
                     }
                     int keyCount = 0;
                     try {
@@ -1571,9 +1593,8 @@ public class NioEndpoint {
                         }
                         if (close) {
                             timeout(0, false);
-                            stopLatch.countDown();
                             selector.close(); 
-                            return; 
+                            break; 
                         }
                     } catch ( NullPointerException x ) {
                         //sun bug 5076772 on windows JDK 1.5
