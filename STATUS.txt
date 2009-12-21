@@ -321,4 +321,16 @@ PATCHES PROPOSED TO BACKPORT:
   to create multiple session objects for a single session
   http://svn.apache.org/viewvc?rev=892341&view=rev
   +1: markt, rjung
+  +1: kkolinko: I am OK to commit r892341 as is, though r892817 proposed
+    below adds slight improvements
   -1: 
+  Additional patches:
+  http://svn.apache.org/viewvc?rev=892814&view=rev (tabs replaced by spaces, no functional change)
+  http://svn.apache.org/viewvc?rev=892817&view=rev (sebb's/kkolinko's comments)
+  +1: kkolinko
+  -1:
+
+* Remove unneeded line from the method that normalizes decodedURI.
+  http://svn.apache.org/viewvc?rev=892812&view=rev
+  +1: kkolinko
+  -1:
