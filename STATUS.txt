@@ -290,3 +290,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=893273&view=rev
   +1: markt
   -1: 
+
+* Fix regression (TCK failure) in fix for bug 47453
+  http://svn.apache.org/viewvc?rev=893321&view=rev
+  +1: markt
+  -1: 
