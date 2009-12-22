@@ -36,9 +36,6 @@
 <section name="Tomcat 6.0.21 (jfclere)">
   <subsection name="Catalina">
     <changelog>
-      <update>
-        Update required version for native to 1.1.18. (rjung, kkolinko)
-      </update>
       <fix>
         Fix issues with expression language when running under a
         SecurityManager. (markt)
@@ -383,6 +380,13 @@
   <subsection name="Coyote">
     <changelog>
       <update>Implement <code>socket.unlockTimeout</code> attribute for NIO connector.</update>
+      <update>
+        Update version of native bundled in Windows installer
+        to 1.1.18. (kkolinko)
+      </update>
+      <update>
+        Update minimum required version for native to 1.1.17. (rjung)
+      </update>
       <fix>
         <bug>46950</bug>: Fix doing SSL renegotiation when a resource with CLIENT-CERT
         auth is requested. (markt)
