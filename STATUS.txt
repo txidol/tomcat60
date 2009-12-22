@@ -285,3 +285,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=893001&view=rev
   +1: kkolinko
   -1:
+
+* Correctly generate MD5s for Windows zips
+  http://svn.apache.org/viewvc?rev=893273&view=rev
+  +1: markt
+  -1: 
