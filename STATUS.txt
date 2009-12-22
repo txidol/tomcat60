@@ -235,26 +235,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
   Implement fail-safe EOL conversion for source distributions
-  Based on a patch provided by sebb
-  http://svn.apache.org/viewvc?rev=883125&view=rev
-  +1: markt, jim
+  Based on patches provided by sebb / kkolinko
+  http://people.apache.org/~markt/patches/2009-12-22-bug47609.patch
+  +1: markt
   -1: 
-  -0: kkolinko:
-    1) The following additional patches are needed, because the list did not
-    include the files without extension
-       http://svn.apache.org/viewvc?rev=891529&view=rev
-       http://svn.apache.org/viewvc?rev=891533&view=rev
-
-    I see that sebb's attachment in Comment 1 of the issue mentions
-    a lot more of extensionless files in TC 5.5. Need to check that.
-
-    2) I do not like such patterns as *.amd64, *.ia64. There is no
-    guarantee that those are not binary, as those extensions do not
-    specify file types. We would better use full names
-    of those files, e.g. **/Makefile.amd64.  Actually those *.amd64
-    files are in connectors/jk/native of TC 5.5.28. Do we still ship
-    them after repository reorganization?  Also, native sources included
-    in TC 6.0.20 release to not have any *.amd64 files.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
   Ensure web application class loader is used when calling session listeners
