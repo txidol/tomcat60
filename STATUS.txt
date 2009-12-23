@@ -300,7 +300,7 @@ PATCHES PROPOSED TO BACKPORT:
   Below my proposal:
 * Fixes for MD5 files generation
   http://people.apache.org/~jfclere/patches/patch.20091223
-  +1: jfclere
+  +1: jfclere, kkolinko
   -1:
 
 * Fix regression (TCK failure) in fix for bug 47453
