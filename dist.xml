@@ -86,6 +86,23 @@
   <property name="tomcat-dbcp.jar" value="${tomcat-dbcp.home}/tomcat-dbcp.jar"/>
   <property name="jasper-jdt.jar" value="${jasper-jdt.home}/jasper-jdt.jar"/>
 
+  <!-- Files that need to have their line endings changed for src distros -->
+  <patternset id="src.files" >
+    <include name="**/INSTALLLICENSE,**/KEYS,**/LICENSE,**/NOTICE"/>
+    <include name="**/RELEASE-NOTES"/>
+    <include name="**/*.bat,**/*.dtd"/>
+    <include name="**/*.htm,**/*.html"/>
+    <include name="**/*.ini,**/*.java,**/*.jjt"/>
+    <include name="**/*.jsp,**/*.jspf,**/*.jspx"/>
+    <include name="**/*.license,**/*.manifest,**/*.mdl,**/*.nsi"/>
+    <include name="**/*.policy,**/*.pom,**/*.properties"/>
+    <include name="**/*.properties.default"/>
+    <include name="**/*.rtf,**/*.sh,**/*.svg"/>
+    <include name="**/*.tag,**/*.tagx"/>
+    <include name="**/*.tasks,**/*.tld,**/*.txt"/>
+    <include name="**/*.xml,**/*.xsd,**/*.xsl"/>
+  </patternset>
+
   <!-- ====================== COMBO: Clean All Directories ================ -->
   <target name="clean"
    description="Clean all components">
@@ -587,6 +604,10 @@
 
   <!-- Packages the source code distribution in zip format -->
   <target name="package-src-zip">
+    <fixcrlf srcdir="${tomcat.dist}/src" eol="crlf"
+        encoding="ISO-8859-1" fixlast="false" >
+      <patternset id="src.files"/>
+    </fixcrlf>
     <zip zipfile="${tomcat.release}/v${version}/src/${final-src.name}.zip">
       <zipfileset dir="${tomcat.dist}/src" prefix="${final-src.name}" />
     </zip>
@@ -598,9 +619,10 @@
 
   <!-- Packages the source code distribution in tar.gz format -->
   <target name="package-src-tgz">
-  	<fixcrlf srcdir="${tomcat.dist}/src"
-        excludes="**/*.bin,**/*.bmp,**/*.dia,**/*.exe,**/*.gif,**/*.ico,**/*.jar,**/*.jpg,**/*.pdf,**/*.rtf,**/*.war"
-          eol="lf" fixlast="false" encoding="ISO-8859-1" />
+    <fixcrlf srcdir="${tomcat.dist}/src" eol="lf"
+        encoding="ISO-8859-1" fixlast="false" >
+      <patternset id="src.files"/>
+    </fixcrlf>
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/src/${final-src.name}.tar.gz">
       <tarfileset dir="${tomcat.dist}/src" prefix="${final-src.name}" />

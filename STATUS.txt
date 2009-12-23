@@ -68,13 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: funkman : api change in Session.java for .x.x release
 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
-  Implement fail-safe EOL conversion for source distributions
-  Based on patches provided by sebb / kkolinko
-  http://people.apache.org/~markt/patches/2009-12-23-bug47609.patch
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
   Ensure web application class loader is used when calling session listeners
   http://svn.apache.org/viewvc?rev=890530&view=rev

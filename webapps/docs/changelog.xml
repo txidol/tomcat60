@@ -74,6 +74,10 @@
       <fix>
         Correct MD5 generation in the build process. (jfclere/kkolinko)
       </fix>
+      <fix>
+        <bug>47609</bug>: Provide fail-safe EOL conversion for build process.
+        Based on patches by sebb/kkolinko. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
