@@ -276,3 +276,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=893001&view=rev
   +1: kkolinko
   -1:
+
+* Enforce presence of charset in content-type header of textual mime-types in the Examples webapp
+  step 1) copy AddDefaultCharsetFilter from trunk
+   mkdir "java/org/apache/catalina/filters"
+   svn add "java/org/apache/catalina/filters"
+   svn copy https://svn.apache.org/repos/asf/tomcat/trunk/java/org/apache/catalina/filters/AddDefaultCharsetFilter.java java/org/apache/catalina/filters/
+  step 2) merge r893496 from trunk
+   http://svn.apache.org/viewvc?rev=893496&view=rev
+  +1: kkolinko
+  -1:
