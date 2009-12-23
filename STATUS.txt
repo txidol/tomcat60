@@ -263,12 +263,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung, jim
   -1:
 
-* Log threads that are started but not stopped by web applications
-  http://svn.apache.org/viewvc?view=revision&revision=885241
-  http://svn.apache.org/viewvc?view=revision&revision=885260
-  +1: markt, jim, rjung
-  -1: 
-
 * More memory leak protection: ThreadLocals, RMI references, optionally stopping
   threads.
   http://svn.apache.org/viewvc?view=revision&revision=885901

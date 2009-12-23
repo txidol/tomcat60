@@ -278,6 +278,11 @@
         Ensure JDBC driver de-registration works with a security manager.
         (markt)
       </fix>
+      <add>
+        Log errors if a web application starts a thread but fails to stop the
+        thread when the web application stops or is reloaded. Failure to stop a
+        thread is very likely to result in a memory leak. (markt)
+      </add>
       <fix>
         <bug>48214</bug>: Ensure JDBC driver de-registration is not too zealous.
         (markt)

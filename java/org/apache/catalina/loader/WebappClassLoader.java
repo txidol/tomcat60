@@ -37,6 +37,7 @@ import java.security.PermissionCollection;
 import java.security.Policy;
 import java.security.PrivilegedAction;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -110,6 +111,13 @@ public class WebappClassLoader
     protected static org.apache.juli.logging.Log log=
         org.apache.juli.logging.LogFactory.getLog( WebappClassLoader.class );
 
+    /**
+     * List of ThreadGroup names to ignore when scanning for web application
+     * started threads that need to be shut down.
+     */
+    private static final List<String> JVM_THREAD_GROUP_NAMES =
+        new ArrayList<String>();
+
     public static final boolean ENABLE_CLEAR_REFERENCES = 
         Boolean.valueOf(System.getProperty("org.apache.catalina.loader.WebappClassLoader.ENABLE_CLEAR_REFERENCES", "true")).booleanValue();
 
@@ -131,6 +139,11 @@ public class WebappClassLoader
             return findResourceInternal(file, path);
         }
 
+    }
+
+    static {
+        JVM_THREAD_GROUP_NAMES.add("system");
+        JVM_THREAD_GROUP_NAMES.add("RMI Runtime");
     }
 
     protected class PrivilegedFindResourceByName
@@ -1575,7 +1588,7 @@ public class WebappClassLoader
         clearReferences();
 
         started = false;
-
+        
         int length = files.length;
         for (int i = 0; i < length; i++) {
             files[i] = null;
@@ -1653,24 +1666,49 @@ public class WebappClassLoader
      */
     protected void clearReferences() {
 
-        /*
-         * Deregister any JDBC drivers registered by the webapp that the webapp
-         * forgot. This is made unnecessary complex because a) DriverManager
-         * checks the class loader of the calling class (it would be much easier
-         * if it checked the context class loader) b) using reflection would
-         * create a dependency on the DriverManager implementation which can,
-         * and has, changed.
-         * 
-         * We can't just create an instance of JdbcLeakPrevention as it will be
-         * loaded by the common class loader (since it's .class file is in the
-         * $CATALINA_HOME/lib directory). This would fail DriverManager's check
-         * on the class loader of the calling class. So, we load the bytes via
-         * our parent class loader but define the class with this class loader
-         * so the JdbcLeakPrevention looks like a webapp class to the
-         * DriverManager.
-         * 
-         * If only apps cleaned up after themselves...
-         */
+        // De-register any remaining JDBC drivers
+        clearReferencesJdbc();
+
+        // Stop any threads the web application started
+        clearReferencesThreads();
+        
+        // Null out any static or final fields from loaded classes,
+        // as a workaround for apparent garbage collection bugs
+        if (ENABLE_CLEAR_REFERENCES) {
+            clearReferencesStaticFinal();
+        }
+        
+         // Clear the IntrospectionUtils cache.
+        IntrospectionUtils.clear();
+        
+        // Clear the classloader reference in common-logging
+        org.apache.juli.logging.LogFactory.release(this);
+        
+        // Clear the classloader reference in the VM's bean introspector
+        java.beans.Introspector.flushCaches();
+
+    }
+
+
+    /**
+     * Deregister any JDBC drivers registered by the webapp that the webapp
+     * forgot. This is made unnecessary complex because a) DriverManager
+     * checks the class loader of the calling class (it would be much easier
+     * if it checked the context class loader) b) using reflection would
+     * create a dependency on the DriverManager implementation which can,
+     * and has, changed.
+     * 
+     * We can't just create an instance of JdbcLeakPrevention as it will be
+     * loaded by the common class loader (since it's .class file is in the
+     * $CATALINA_HOME/lib directory). This would fail DriverManager's check
+     * on the class loader of the calling class. So, we load the bytes via
+     * our parent class loader but define the class with this class loader
+     * so the JdbcLeakPrevention looks like a webapp class to the
+     * DriverManager.
+     * 
+     * If only apps cleaned up after themselves...
+     */
+    private final void clearReferencesJdbc() {
         InputStream is = getResourceAsStream(
                 "org/apache/catalina/loader/JdbcLeakPrevention.class");
         // We know roughly how big the class will be (~ 1K) so allow 2k as a
@@ -1697,8 +1735,7 @@ public class WebappClassLoader
             List<String> driverNames = (List<String>) obj.getClass().getMethod(
                     "clearJdbcDriverRegistrations").invoke(obj);
             for (String name : driverNames) {
-                log.error(sm.getString(
-                        "webappClassLoader.unclearedReferenceJbdc", name));
+                log.error(sm.getString("webappClassLoader.clearJbdc", name));
             }
         } catch (Exception e) {
             // So many things to go wrong above...
@@ -1710,96 +1747,88 @@ public class WebappClassLoader
                 } catch (IOException ioe) {
                     log.warn(sm.getString(
                             "webappClassLoader.jdbcRemoveStreamError"), ioe);
-            }
-        }
-        }
-        
-        // Null out any static or final fields from loaded classes,
-        // as a workaround for apparent garbage collection bugs
-        if (ENABLE_CLEAR_REFERENCES) {
-            java.util.Collection<ResourceEntry> values =
-                ((HashMap<String,ResourceEntry>) resourceEntries.clone()).values();
-            Iterator<ResourceEntry> loadedClasses = values.iterator();
-            //
-            // walk through all loaded class to trigger initialization for
-            //    any uninitialized classes, otherwise initialization of
-            //    one class may call a previously cleared class.
-            while (loadedClasses.hasNext()) {
-                ResourceEntry entry = loadedClasses.next();
-                if (entry.loadedClass != null) {
-                    Class<?> clazz = entry.loadedClass;
-                    try {
-                        Field[] fields = clazz.getDeclaredFields();
-                        for (int i = 0; i < fields.length; i++) {
-                            if(Modifier.isStatic(fields[i].getModifiers())) {
-                                fields[i].get(null);
-                                break;
-                            }
-                        }
-                    } catch(Throwable t) {
-                        // Ignore
-                    }
-                }
-            }
-            loadedClasses = values.iterator();
-            while (loadedClasses.hasNext()) {
-                ResourceEntry entry = loadedClasses.next();
-                if (entry.loadedClass != null) {
-                    Class<?> clazz = entry.loadedClass;
-                    try {
-                        Field[] fields = clazz.getDeclaredFields();
-                        for (int i = 0; i < fields.length; i++) {
-                            Field field = fields[i];
-                            int mods = field.getModifiers();
-                            if (field.getType().isPrimitive() 
-                                    || (field.getName().indexOf("$") != -1)) {
-                                continue;
-                            }
-                            if (Modifier.isStatic(mods)) {
-                                try {
-                                    field.setAccessible(true);
-                                    if (Modifier.isFinal(mods)) {
-                                        if (!((field.getType().getName().startsWith("java."))
-                                                || (field.getType().getName().startsWith("javax.")))) {
-                                            nullInstance(field.get(null));
-                                        }
-                                    } else {
-                                        field.set(null, null);
-                                        if (log.isDebugEnabled()) {
-                                            log.debug("Set field " + field.getName() 
-                                                    + " to null in class " + clazz.getName());
-                                        }
-                                    }
-                                } catch (Throwable t) {
-                                    if (log.isDebugEnabled()) {
-                                        log.debug("Could not set field " + field.getName() 
-                                                + " to null in class " + clazz.getName(), t);
-                                    }
-                                }
-                            }
-                        }
-                    } catch (Throwable t) {
-                        if (log.isDebugEnabled()) {
-                            log.debug("Could not clean fields for class " + clazz.getName(), t);
-                        }
-                    }
                 }
             }
         }
-        
-         // Clear the IntrospectionUtils cache.
-        IntrospectionUtils.clear();
-        
-        // Clear the classloader reference in common-logging
-        org.apache.juli.logging.LogFactory.release(this);
-        
-        // Clear the classloader reference in the VM's bean introspector
-        java.beans.Introspector.flushCaches();
-
     }
 
 
-    protected void nullInstance(Object instance) {
+    private final void clearReferencesStaticFinal() {
+        
+        @SuppressWarnings("unchecked")
+        Collection<ResourceEntry> values =
+            ((HashMap<String,ResourceEntry>) resourceEntries.clone()).values();
+        Iterator<ResourceEntry> loadedClasses = values.iterator();
+        //
+        // walk through all loaded class to trigger initialization for
+        //    any uninitialized classes, otherwise initialization of
+        //    one class may call a previously cleared class.
+        while(loadedClasses.hasNext()) {
+            ResourceEntry entry = loadedClasses.next();
+            if (entry.loadedClass != null) {
+                Class<?> clazz = entry.loadedClass;
+                try {
+                    Field[] fields = clazz.getDeclaredFields();
+                    for (int i = 0; i < fields.length; i++) {
+                        if(Modifier.isStatic(fields[i].getModifiers())) {
+                            fields[i].get(null);
+                            break;
+                        }
+                    }
+                } catch(Throwable t) {
+                    // Ignore
+                }
+            }
+        }
+        loadedClasses = values.iterator();
+        while (loadedClasses.hasNext()) {
+            ResourceEntry entry = loadedClasses.next();
+            if (entry.loadedClass != null) {
+                Class<?> clazz = entry.loadedClass;
+                try {
+                    Field[] fields = clazz.getDeclaredFields();
+                    for (int i = 0; i < fields.length; i++) {
+                        Field field = fields[i];
+                        int mods = field.getModifiers();
+                        if (field.getType().isPrimitive() 
+                                || (field.getName().indexOf("$") != -1)) {
+                            continue;
+                        }
+                        if (Modifier.isStatic(mods)) {
+                            try {
+                                field.setAccessible(true);
+                                if (Modifier.isFinal(mods)) {
+                                    if (!((field.getType().getName().startsWith("java."))
+                                            || (field.getType().getName().startsWith("javax.")))) {
+                                        nullInstance(field.get(null));
+                                    }
+                                } else {
+                                    field.set(null, null);
+                                    if (log.isDebugEnabled()) {
+                                        log.debug("Set field " + field.getName() 
+                                                + " to null in class " + clazz.getName());
+                                    }
+                                }
+                            } catch (Throwable t) {
+                                if (log.isDebugEnabled()) {
+                                    log.debug("Could not set field " + field.getName() 
+                                            + " to null in class " + clazz.getName(), t);
+                                }
+                            }
+                        }
+                    }
+                } catch (Throwable t) {
+                    if (log.isDebugEnabled()) {
+                        log.debug("Could not clean fields for class " + clazz.getName(), t);
+                    }
+                }
+            }
+        }
+        
+    }
+
+
+    private void nullInstance(Object instance) {
         if (instance == null) {
             return;
         }
@@ -1816,25 +1845,24 @@ public class WebappClassLoader
                 if (Modifier.isStatic(mods) && Modifier.isFinal(mods)) {
                     // Doing something recursively is too risky
                     continue;
-                } else {
-                    Object value = field.get(instance);
-                    if (null != value) {
-                        Class valueClass = value.getClass();
-                        if (!loadedByThisOrChild(valueClass)) {
-                            if (log.isDebugEnabled()) {
-                                log.debug("Not setting field " + field.getName() +
-                                        " to null in object of class " + 
-                                        instance.getClass().getName() +
-                                        " because the referenced object was of type " +
-                                        valueClass.getName() + 
-                                        " which was not loaded by this WebappClassLoader.");
-                            }
-                        } else {
-                            field.set(instance, null);
-                            if (log.isDebugEnabled()) {
-                                log.debug("Set field " + field.getName() 
-                                        + " to null in class " + instance.getClass().getName());
-                            }
+                }
+                Object value = field.get(instance);
+                if (null != value) {
+                    Class<? extends Object> valueClass = value.getClass();
+                    if (!loadedByThisOrChild(valueClass)) {
+                        if (log.isDebugEnabled()) {
+                            log.debug("Not setting field " + field.getName() +
+                                    " to null in object of class " + 
+                                    instance.getClass().getName() +
+                                    " because the referenced object was of type " +
+                                    valueClass.getName() + 
+                                    " which was not loaded by this WebappClassLoader.");
+                        }
+                    } else {
+                        field.set(instance, null);
+                        if (log.isDebugEnabled()) {
+                            log.debug("Set field " + field.getName() 
+                                    + " to null in class " + instance.getClass().getName());
                         }
                     }
                 }
@@ -1843,6 +1871,56 @@ public class WebappClassLoader
                     log.debug("Could not set field " + field.getName() 
                             + " to null in object instance of class " 
                             + instance.getClass().getName(), t);
+                }
+            }
+        }
+    }
+
+
+    private void clearReferencesThreads() {
+        // Get the current thread group 
+        ThreadGroup tg = Thread.currentThread( ).getThreadGroup( );
+        // Find the root thread group
+        while (tg.getParent() != null) {
+            tg = tg.getParent();
+        }
+        
+        int threadCountGuess = tg.activeCount() + 50;
+        Thread[] threads = new Thread[threadCountGuess];
+        int threadCountActual = tg.enumerate(threads);
+        // Make sure we don't miss any threads
+        while (threadCountActual == threadCountGuess) {
+            threadCountGuess *=2;
+            threads = new Thread[threadCountGuess];
+            // Note tg.enumerate(Thread[]) silently ignores any threads that
+            // can't fit into the array 
+            threadCountActual = tg.enumerate(threads);
+        }
+        
+        // Iterate over the set of threads
+        for (Thread thread : threads) {
+            if (thread != null) {
+                if (thread.getContextClassLoader() == this) {
+                    // Don't warn about this thread
+                    if (thread == Thread.currentThread()) {
+                        continue;
+                    }
+                    
+                    // Skip threads that have already died
+                    if (!thread.isAlive()) {
+                        continue;
+                    }
+
+                    // Don't warn about JVM controlled threads
+                    if (thread.getThreadGroup() != null &&
+                            JVM_THREAD_GROUP_NAMES.contains(
+                                    thread.getThreadGroup().getName())) {
+                        continue;
+                    }
+                   
+                    log.error(sm.getString("webappClassLoader.warnThread",
+                            thread.getName()));
+
                 }
             }
         }
