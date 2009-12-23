@@ -286,12 +286,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Correctly generate MD5s for Windows zips
-  http://svn.apache.org/viewvc?rev=893273&view=rev
-  +1: markt, kkolinko
-  -1: 
-   kkolinko: r893375 proposed below fixes this issue as well
-
 * Fixes for MD5 files generation
   http://svn.apache.org/viewvc?rev=893375&view=rev
   http://svn.apache.org/viewvc?rev=893378&view=rev
@@ -300,5 +294,5 @@ PATCHES PROPOSED TO BACKPORT:
   Below my proposal:
 * Fixes for MD5 files generation
   http://people.apache.org/~jfclere/patches/patch.20091223
-  +1: jfclere, kkolinko
+  +1: jfclere, kkolinko, markt
   -1:
