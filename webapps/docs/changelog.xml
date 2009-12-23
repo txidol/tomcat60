@@ -33,6 +33,24 @@
   </properties>
 
 <body>
+<section name="Tomcat 6.0.22 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <add>
+        Log errors if a web application starts a thread but fails to stop the
+        thread when the web application stops or is reloaded. Failure to stop a
+        thread is very likely to result in a memory leak. (markt)
+      </add>
+    </changelog>
+  </subsection>  
+  <subsection name="Other">
+    <changelog>
+      <fix>
+        Correct MD5 generation in the build process. (jfclere/kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.21 (jfclere)">
   <subsection name="Catalina">
     <changelog>
@@ -278,11 +296,6 @@
         Ensure JDBC driver de-registration works with a security manager.
         (markt)
       </fix>
-      <add>
-        Log errors if a web application starts a thread but fails to stop the
-        thread when the web application stops or is reloaded. Failure to stop a
-        thread is very likely to result in a memory leak. (markt)
-      </add>
       <fix>
         <bug>48214</bug>: Ensure JDBC driver de-registration is not too zealous.
         (markt)
@@ -726,9 +739,6 @@
         Further improvements to the administrative user name and password
         handling in the Windows installer. (kkolinko)
       </update>
-      <fix>
-        Correct MD5 generation in the build process. (jfclere/kkolinko)
-      </fix>
     </changelog>
   </subsection>
 </section>
