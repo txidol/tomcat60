@@ -302,8 +302,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~jfclere/patches/patch.20091223
   +1: jfclere, kkolinko
   -1:
-
-* Fix regression (TCK failure) in fix for bug 47453
-  http://svn.apache.org/viewvc?rev=893321&view=rev
-  +1: markt, kkolinko, jfclere
-  -1: 
