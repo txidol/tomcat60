@@ -97,7 +97,7 @@ PATCHES PROPOSED TO BACKPORT:
   threads.
   http://svn.apache.org/viewvc?view=revision&revision=885901
   http://svn.apache.org/viewvc?view=revision&revision=892843
-  +1: markt, jim
+  +1: markt, jim, kkolinko
   -1: 
 
 * Fix second part of https://issues.apache.org/bugzilla/show_bug.cgi?id=47413#c8
