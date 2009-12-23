@@ -297,7 +297,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=893378&view=rev
   +1: kkolinko
   -1: jfclere
-  missing append="true" and doesn't apply I am working on a better proposal.
+  Below my proposal:
+* Fixes for MD5 files generation
+  http://people.apache.org/~jfclere/patches/patch.20091223
+  +1: jfclere
+  -1:
 
 * Fix regression (TCK failure) in fix for bug 47453
   http://svn.apache.org/viewvc?rev=893321&view=rev
