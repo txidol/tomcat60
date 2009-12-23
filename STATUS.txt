@@ -285,12 +285,5 @@ PATCHES PROPOSED TO BACKPORT:
   Below my proposal:
 * Fixes for MD5 files generation
   http://people.apache.org/~jfclere/patches/patch.20091223
-  +1: jfclere, kkolinko, markt
+  +1: jfclere, kkolinko, markt, rjung
   -1:
-  rjung: I'm confused now, which of the three proposals are still relevant.
-         I'm +0 for jfc's proposal.
-         One question before going +1: where does '*' as a filename prefix
-         come from? If we generate the format output by "md5sum", then
-         everyone can easily check with "md5sum -c". For this we would need
-         to use '  ' (two spaces) instead of ' *' as a separator between md5
-         and file name.
