@@ -93,11 +93,6 @@ PATCHES PROPOSED TO BACKPORT:
 
          I won't oppose the patch. I have to think a bit more about it.
 
-* Remove unneeded line from the method that normalizes decodedURI.
-  http://svn.apache.org/viewvc?rev=892812&view=rev
-  +1: kkolinko, markt, rjung, jim
-  -1:
-
 * More memory leak protection: ThreadLocals, RMI references, optionally stopping
   threads.
   http://svn.apache.org/viewvc?view=revision&revision=885901

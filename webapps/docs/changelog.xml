@@ -42,7 +42,15 @@
         thread is very likely to result in a memory leak. (markt)
       </add>
     </changelog>
-  </subsection>  
+  </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <fix>
+        Remove unneeded line from the method that normalizes decodedURI.
+        (kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <fix>
