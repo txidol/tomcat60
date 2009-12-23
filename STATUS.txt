@@ -236,12 +236,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47609
   Implement fail-safe EOL conversion for source distributions
   Based on patches provided by sebb / kkolinko
-  http://people.apache.org/~markt/patches/2009-12-22-bug47609.patch
-  +1: markt, kkolinko (good as is, though better together with r893362)
+  http://people.apache.org/~markt/patches/2009-12-23-bug47609.patch
+  +1: markt, kkolinko
   -1: 
-  http://svn.apache.org/viewvc?rev=893362&view=rev
-  +1: kkolinko
-  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
   Ensure web application class loader is used when calling session listeners
