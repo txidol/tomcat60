@@ -266,7 +266,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Log threads that are started but not stopped by web applications
   http://svn.apache.org/viewvc?view=revision&revision=885241
   http://svn.apache.org/viewvc?view=revision&revision=885260
-  +1: markt, jim
+  +1: markt, jim, rjung
   -1: 
 
 * More memory leak protection: ThreadLocals, RMI references, optionally stopping
@@ -275,9 +275,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=892843
   +1: markt, jim
   -1: 
-  rjung: I added the second commit after Mark proposed and votes. It is
-         a comment typo change only. Will need more time to vote on
-         the whole proposal though.
 
 * Fix second part of https://issues.apache.org/bugzilla/show_bug.cgi?id=47413#c8
   Coerce result of composite EL expression (${a}${b}) from String to the expected type.
@@ -296,3 +293,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~jfclere/patches/patch.20091223
   +1: jfclere, kkolinko, markt
   -1:
+  rjung: I'm confused now, which of the three proposals are still relevant.
+         I'm +0 for jfc's proposal.
+         One question before going +1: where does '*' as a filename prefix
+         come from? If we generate the format output by "md5sum", then
+         everyone can easily check with "md5sum -c". For this we would need
+         to use '  ' (two spaces) instead of ' *' as a separator between md5
+         and file name.
