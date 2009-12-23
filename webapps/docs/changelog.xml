@@ -41,6 +41,24 @@
         thread when the web application stops or is reloaded. Failure to stop a
         thread is very likely to result in a memory leak. (markt)
       </add>
+      <add>
+        Provide an option to stop any threads a web application starts but fails
+        to stop when the web application stops or is reloaded. Using this option
+        is very likely to result in instability and should be viewed as a last
+        resort in development and is not recommended at all in production.
+        (markt)
+      </add>
+      <add>
+        Log errors if a web application creates a ThreadLocal but fails to clear
+        it when the web application stops or is reloaded. Failure to clear a
+        ThreadLocal is very likely to result in a memory leak. (markt)
+      </add>
+      <add>
+        Clear any unintentional references remaining in
+        <code>sun.rmi.transport.Target</code> when the web application stops or
+        is reloaded. Failure to clear these is very likely to result in a memory
+        leak. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

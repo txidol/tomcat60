@@ -708,6 +708,17 @@ public class StandardContext
      */
     private boolean useHttpOnly = false;
 
+    /**
+     * Should Tomcat attempt to terminate threads that have been started by the
+     * web application? Stopping threads is performed via the deprecated (for
+     * good reason) <code>Thread.stop()</code> method and is likely to result in
+     * instability. As such, enabling this should be viewed as an option of last
+     * resort in a development environment and is not recommended in a
+     * production environment. If not specified, the default value of
+     * <code>false</code> will be used. 
+     */
+    private boolean clearReferencesStopThreads = false;
+
     // ----------------------------------------------------- Context Properties
 
 
@@ -2008,6 +2019,33 @@ public class StandardContext
      */
     public void setSaveConfig(boolean saveConfig) {
         this.saveConfig = saveConfig;
+    }
+
+
+    /**
+     * Return the clearReferencesStopThreads flag for this Context.
+     */
+    public boolean getClearReferencesStopThreads() {
+
+        return (this.clearReferencesStopThreads);
+
+    }
+
+
+    /**
+     * Set the clearReferencesStopThreads feature for this Context.
+     *
+     * @param clearReferencesStopThreads The new flag value
+     */
+    public void setClearReferencesStopThreads(
+            boolean clearReferencesStopThreads) {
+
+        boolean oldClearReferencesStopThreads = this.clearReferencesStopThreads;
+        this.clearReferencesStopThreads = clearReferencesStopThreads;
+        support.firePropertyChange("clearReferencesStopThreads",
+                                   oldClearReferencesStopThreads,
+                                   this.clearReferencesStopThreads);
+
     }
 
 

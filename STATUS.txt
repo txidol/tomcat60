@@ -93,13 +93,6 @@ PATCHES PROPOSED TO BACKPORT:
 
          I won't oppose the patch. I have to think a bit more about it.
 
-* More memory leak protection: ThreadLocals, RMI references, optionally stopping
-  threads.
-  http://svn.apache.org/viewvc?view=revision&revision=885901
-  http://svn.apache.org/viewvc?view=revision&revision=892843
-  +1: markt, jim, kkolinko
-  -1: 
-
 * Fix second part of https://issues.apache.org/bugzilla/show_bug.cgi?id=47413#c8
   Coerce result of composite EL expression (${a}${b}) from String to the expected type.
   The example demonstrating it was added in r892968.
