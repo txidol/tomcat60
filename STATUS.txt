@@ -276,14 +276,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=893001&view=rev
   +1: kkolinko
   -1:
-
-* Fixes for MD5 files generation
-  http://svn.apache.org/viewvc?rev=893375&view=rev
-  http://svn.apache.org/viewvc?rev=893378&view=rev
-  +1: kkolinko
-  -1: jfclere
-  Below my proposal:
-* Fixes for MD5 files generation
-  http://people.apache.org/~jfclere/patches/patch.20091223
-  +1: jfclere, kkolinko, markt, rjung
-  -1:

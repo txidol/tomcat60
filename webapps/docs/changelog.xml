@@ -726,6 +726,9 @@
         Further improvements to the administrative user name and password
         handling in the Windows installer. (kkolinko)
       </update>
+      <fix>
+        Correct MD5 generation in the build process. (jfclere/kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>
