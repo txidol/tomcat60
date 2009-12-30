@@ -102,3 +102,11 @@ PATCHES PROPOSED TO BACKPORT:
    http://svn.apache.org/viewvc?rev=893496&view=rev
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48454
+  Give the stderr reader a chance to finish before terminating the CGI process.
+  This avoids "Bad file descriptor" errors. The period to wait is configurable.
+  Based on a patch by Markus Grieder
+  http://svn.apache.org/viewvc?rev=894580&view=rev
+  +1: markt
+  -1: 
