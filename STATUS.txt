@@ -125,3 +125,10 @@ PATCHES PROPOSED TO BACKPORT:
   Patches provided by sebb
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48345
+  Sessions timed out too early when using PersistentManager
+  Port of patch by Keiichi Fujino
+  http://people.apache.org/~markt/patches/2009-12-30-bug48345.patch
+  +1: markt
+  -1: 
