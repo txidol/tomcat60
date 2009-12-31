@@ -112,7 +112,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48417
-  Correct French trabslations
+  Correct French translations
   Patches provided by André Warnier
   http://svn.apache.org/viewvc?rev=894586&view=rev
   +1: markt
@@ -130,5 +130,13 @@ PATCHES PROPOSED TO BACKPORT:
   Sessions timed out too early when using PersistentManager
   Port of patch by Keiichi Fujino
   http://people.apache.org/~markt/patches/2009-12-30-bug48345.patch
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=4800
+  Update X-Powered-By header to include information sugegsted by the Servlet
+  spec
+  http://svn.apache.org/viewvc?rev=894805&view=rev
+  (Modify spec versions to align with Tomcat 6)
   +1: markt
   -1: 
