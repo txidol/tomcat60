@@ -140,3 +140,8 @@ PATCHES PROPOSED TO BACKPORT:
   (Modify spec versions to align with Tomcat 6)
   +1: markt
   -1: 
+
+* Fix line-endings in src build
+  http://svn.apache.org/viewvc?rev=894831&view=rev
+  +1: markt
+  -1: 
