@@ -115,8 +115,12 @@ PATCHES PROPOSED TO BACKPORT:
   Correct French translations
   Patches provided by André Warnier
   http://svn.apache.org/viewvc?rev=894586&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+  Additional patch:
+  http://svn.apache.org/viewvc?rev=895013&view=rev
+  +1: kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48398
   Objects used as locks should be final
