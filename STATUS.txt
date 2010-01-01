@@ -143,5 +143,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix line-endings in src build
   http://svn.apache.org/viewvc?rev=894831&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1: 
