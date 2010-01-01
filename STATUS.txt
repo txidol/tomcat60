@@ -108,7 +108,7 @@ PATCHES PROPOSED TO BACKPORT:
   This avoids "Bad file descriptor" errors. The period to wait is configurable.
   Based on a patch by Markus Grieder
   http://svn.apache.org/viewvc?rev=894580&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48417
@@ -127,7 +127,7 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=24714
   https://issues.apache.org/bugzilla/attachment.cgi?id=24717
   Patches provided by sebb
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48345
@@ -137,7 +137,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=4800
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48006
   Update X-Powered-By header to include information sugegsted by the Servlet
   spec
   http://svn.apache.org/viewvc?rev=894805&view=rev
