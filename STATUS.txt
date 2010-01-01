@@ -152,5 +152,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add some missing deprecation markers
   http://svn.apache.org/viewvc?rev=895045&view=rev
-  +1: markt
+  +1: markt, kkolinko (with r895057)
   -1: 
+  Additional patch: (documentation, does not require voting)
+  http://svn.apache.org/viewvc?rev=895057&view=rev
+  +1: kkolinko
+  -1:
