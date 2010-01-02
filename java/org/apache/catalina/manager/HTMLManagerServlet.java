@@ -636,7 +636,7 @@ public final class HTMLManagerServlet extends ManagerServlet {
      * @see javax.servlet.Servlet#getServletInfo()
      */
     public String getServletInfo() {
-        return "HTMLManagerServlet, Copyright (c) The Apache Software Foundation";
+        return "HTMLManagerServlet, Copyright (c) 1999-2010, The Apache Software Foundation";
     }   
     
     /**
