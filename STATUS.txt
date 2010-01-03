@@ -171,3 +171,20 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=895206&view=rev
   +1: rjung, kkolinko
   -1: 
+
+* Allow special characters recognized by the Windows command-line shell to
+  be present in the names of CATALINA_HOME/_BASE and the current directory
+  used to call the Tomcat scripts.
+  Fixes the problem reported for the '&' character:
+    https://issues.apache.org/bugzilla/show_bug.cgi?id=48464#c4
+  "help cmd" lists the following characters as special:
+   <space> and &()[]{}^=;!'+,`~
+  Note that:
+   - cd, set, echo commands have to use quotes when a name contains '&'
+   - names containing the space character are already working without this patch
+  Patch:
+  http://people.apache.org/~kkolinko/patches/2010-01-03_bug48464-c4_ampersand_tc6.patch
+  (a backport of revs. 895191, 895392)
+  Tested on Windows XP.
+  +1: kkolinko
+  -1:
