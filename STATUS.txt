@@ -143,7 +143,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=894805&view=rev
   (Modify spec versions to align with Tomcat 6)
   +1: markt
-  -1: 
+  -1: kkolinko: -1 for "java.runtime.version", as that property is not documented on
+      http://java.sun.com/javase/6/docs/api/java/lang/System.html#getProperties%28%29
+   I would propose to use "java.vendor" and "java.version" instead.
+   Here is the patch:
+  http://people.apache.org/~kkolinko/patches/2010-01-03_bug48006_poweredBy_tc6.patch
+  +1: kkolinko
+  -1:
 
 * Fix line-endings in src build
   http://svn.apache.org/viewvc?rev=894831&view=rev
@@ -163,5 +169,5 @@ PATCHES PROPOSED TO BACKPORT:
   current year applied by ant version filter.
   http://svn.apache.org/viewvc?rev=895203&view=rev
   http://svn.apache.org/viewvc?rev=895206&view=rev
-  +1: rjung
+  +1: rjung, kkolinko
   -1: 
