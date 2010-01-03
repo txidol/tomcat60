@@ -138,15 +138,23 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48006
-  Update X-Powered-By header to include information sugegsted by the Servlet
+  Update X-Powered-By header to include information suggested by the Servlet
   spec
   http://svn.apache.org/viewvc?rev=894805&view=rev
   (Modify spec versions to align with Tomcat 6)
   +1: markt
-  -1: kkolinko: -1 for "java.runtime.version", as that property is not documented on
+  -1:
+  +1: kkolinko:
+    With s/3.0/2.5/, s/2.2/2.1/, and move declaration below the '-- Constants' comment.
+    I have doubts regarding "java.runtime.version", as that property is not listed in
       http://java.sun.com/javase/6/docs/api/java/lang/System.html#getProperties%28%29
-   I would propose to use "java.vendor" and "java.version" instead.
-   Here is the patch:
+    though
+      - I see it mentioned in http://java.sun.com/j2se/versioning_naming.html
+      - We already use it in o.a.c.util.ServerInfo and in the manager webapp
+    An alternative patch using "java.vendor" and "java.version" is proposed below,
+    though both are fine with me.
+
+  Alternative patch:
   http://people.apache.org/~kkolinko/patches/2010-01-03_bug48006_poweredBy_tc6.patch
   +1: kkolinko
   -1:
