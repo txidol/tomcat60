@@ -191,3 +191,9 @@ PATCHES PROPOSED TO BACKPORT:
   Tested on Windows XP.
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48464
+  Provide an option to specify the command window title
+  Patch provided by LiuYan
+  +1: markt
+  -1: 
