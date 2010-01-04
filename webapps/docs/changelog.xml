@@ -33,7 +33,16 @@
   </properties>
 
 <body>
-<section name="Tomcat 6.0.22 (jfclere)">
+<section name="Tomcat 6.0.23 (jfclere)">
+  <subsection name="Other">
+    <changelog>
+      <fix>
+        <bug>47609</bug>: Correct regression in previous fix. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 6.0.22 (jfclere)" rtext="not released">
   <subsection name="Catalina">
     <changelog>
       <add>
