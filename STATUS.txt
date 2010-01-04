@@ -159,11 +159,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix line-endings in src build
-  http://svn.apache.org/viewvc?rev=894831&view=rev
-  +1: markt, jfclere, kkolinko
-  -1: 
-
 * Add some missing deprecation markers
   http://svn.apache.org/viewvc?rev=895045&view=rev
   +1: markt, kkolinko (with r895057)
