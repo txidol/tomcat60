@@ -195,5 +195,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48464
   Provide an option to specify the command window title
   Patch provided by LiuYan
-  +1: markt
+  http://svn.apache.org/viewvc?rev=895600&view=rev
+  +1: markt, kkolinko
   -1: 
