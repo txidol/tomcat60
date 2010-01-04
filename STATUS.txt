@@ -108,18 +108,23 @@ PATCHES PROPOSED TO BACKPORT:
   This avoids "Bad file descriptor" errors. The period to wait is configurable.
   Based on a patch by Markus Grieder
   http://svn.apache.org/viewvc?rev=894580&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
+  rjung: "process?" -> "process." in the howto.
+         In web.xml, the howto and the comments, there is sometimes
+         "stderr" and sometimes "stdErr". In order to avoid confusion
+         w.r.t. the correct name of the parameter "stderrTimeout" we
+         might use "stderr" instead of "stdErr" consistently?
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48417
   Correct French translations
   Patches provided by André Warnier
   http://svn.apache.org/viewvc?rev=894586&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
   Additional patch:
   http://svn.apache.org/viewvc?rev=895013&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48398
@@ -127,14 +132,14 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=24714
   https://issues.apache.org/bugzilla/attachment.cgi?id=24717
   Patches provided by sebb
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48345
   Sessions timed out too early when using PersistentManager
   Port of patch by Keiichi Fujino
   http://people.apache.org/~markt/patches/2009-12-30-bug48345.patch
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48006
@@ -144,7 +149,7 @@ PATCHES PROPOSED TO BACKPORT:
   (Modify spec versions to align with Tomcat 6)
   +1: markt
   -1:
-  +1: kkolinko:
+  +1: kkolinko, rjung:
     With s/3.0/2.5/, s/2.2/2.1/, and move declaration below the '-- Constants' comment.
     I have doubts regarding "java.runtime.version", as that property is not listed in
       http://java.sun.com/javase/6/docs/api/java/lang/System.html#getProperties%28%29
@@ -156,16 +161,17 @@ PATCHES PROPOSED TO BACKPORT:
 
   Alternative patch:
   http://people.apache.org/~kkolinko/patches/2010-01-03_bug48006_poweredBy_tc6.patch
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
+  rjung: I'm fine with either version of the patch.
 
 * Add some missing deprecation markers
   http://svn.apache.org/viewvc?rev=895045&view=rev
-  +1: markt, kkolinko (with r895057)
+  +1: markt, kkolinko (with r895057), rjung
   -1: 
   Additional patch: (documentation, does not require voting)
   http://svn.apache.org/viewvc?rev=895057&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Replace a few hard-coded copyright years with
@@ -189,12 +195,24 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2010-01-03_bug48464-c4_ampersand_tc6.patch
   (a backport of revs. 895191, 895392)
   Tested on Windows XP.
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
+  rjung: I would slightly prefer to apply after we finally managed to produce a working
+         release for 6.0.x, since changes in the Windows bat files are hard to test
+         for all possible cases, paths etc.
+         The 'set "a=%b%"' trick is nice, because if you only use the quotation
+         marks around the rhs, Windows actually adds them to the value of 'a'.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48464
   Provide an option to specify the command window title
   Patch provided by LiuYan
   http://svn.apache.org/viewvc?rev=895600&view=rev
   +1: markt, kkolinko
+  -1: 
+
+* Update recommended tcnative version to the forthcoming 1.1.19.
+  No update on the required version (17)
+  http://svn.apache.org/viewvc?rev=895703&view=rev
+  We should not vote before 1.1.19 is officially released.
+  +1: 
   -1: 
