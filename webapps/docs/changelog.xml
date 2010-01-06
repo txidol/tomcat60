@@ -60,6 +60,10 @@
       <fix>
         <bug>47609</bug>: Correct regression in previous fix. (markt)
       </fix>
+      <fix>
+        Add some missing deprecation markers for
+        <code>javax.servlet.jsp.JspContext</code>. (markt/kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>

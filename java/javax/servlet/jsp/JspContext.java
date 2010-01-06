@@ -222,7 +222,10 @@ public abstract class JspContext {
      *
      * @return A valid instance of an ExpressionEvaluator.
      * @since 2.0
+     * @deprecated As of JSP 2.1, replaced by
+     *             JspApplicationContext.getExpressionFactory()
      */
+    @Deprecated
     public abstract ExpressionEvaluator getExpressionEvaluator();
     
     
@@ -235,7 +238,12 @@ public abstract class JspContext {
      *
      * @return A valid instance of a VariableResolver.
      * @since 2.0
+     * @deprecated As of JSP 2.1,
+     *             replaced by javax.el.ELContext.getELResolver()
+     *             which can be obtained by
+     *             jspContext.getELContext().getELResolver()
      */
+    @Deprecated
     public abstract VariableResolver getVariableResolver();
     
     /**
