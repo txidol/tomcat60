@@ -34,6 +34,14 @@
 
 <body>
 <section name="Tomcat 6.0.23 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        <bug>48454</bug>: Ensure stderr is completely read before terminating
+        the CGI process. Patch provided by Markus Grieder. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <fix>

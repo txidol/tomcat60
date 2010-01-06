@@ -103,19 +103,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48454
-  Give the stderr reader a chance to finish before terminating the CGI process.
-  This avoids "Bad file descriptor" errors. The period to wait is configurable.
-  Based on a patch by Markus Grieder
-  http://svn.apache.org/viewvc?rev=894580&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-  rjung: "process?" -> "process." in the howto.
-         In web.xml, the howto and the comments, there is sometimes
-         "stderr" and sometimes "stdErr". In order to avoid confusion
-         w.r.t. the correct name of the parameter "stderrTimeout" we
-         might use "stderr" instead of "stdErr" consistently?
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48417
   Correct French translations
   Patches provided by André Warnier
