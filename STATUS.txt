@@ -145,3 +145,14 @@ PATCHES PROPOSED TO BACKPORT:
   We should not vote before 1.1.19 is officially released.
   +1: 
   -1: 
+
+* Remove hard coded version numbers and instead apply version filter
+  already defined in ant scripts.
+  Backport from trunk of
+  http://svn.apache.org/viewvc?rev=r711934&view=rev
+  http://svn.apache.org/viewvc?rev=r712053&view=rev
+  Complete patch applicable to TC6:
+  http://people.apache.org/~rjung/patches/tc6-version_filter.patch
+  +1: rjung
+  -1: 
+
