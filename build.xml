@@ -51,13 +51,13 @@
   <property name="final-src.name"        value="${project}-${version}-src" />
 
   <!-- Build Defaults -->
-  <property name="tomcat.home"       value="${basedir}"/>
-  <property name="tomcat.build"      value="${basedir}/output/build"/>
-  <property name="tomcat.classes"    value="${basedir}/output/classes"/>
-  <property name="tomcat.dist"       value="${basedir}/output/dist"/>
-  <property name="tomcat.tmp"        value="${basedir}/output/tmp"/>
-  <property name="test.failonerror"  value="true"/>
-  <property name="test.runner"       value="junit.textui.TestRunner"/>
+  <property name="tomcat.home"           value="${basedir}"/>
+  <property name="tomcat.build"          value="${basedir}/output/build"/>
+  <property name="tomcat.classes"        value="${basedir}/output/classes"/>
+  <property name="tomcat.dist"           value="${basedir}/output/dist"/>
+  <property name="tomcat.tmp"            value="${basedir}/output/tmp"/>
+  <property name="test.failonerror"      value="true"/>
+  <property name="test.runner"           value="junit.textui.TestRunner"/>
 
   <!-- Can't be lower - jsp uses templates -->
   <property name="compile.source" value="1.5"/>
@@ -115,7 +115,7 @@
   <target name="build-prepare">
 
     <available classname="junit.framework.TestCase" property="junit.present" />
-  	
+
     <mkdir dir="${tomcat.classes}"/>
 
     <delete dir="${tomcat.build}/temp" />
@@ -142,7 +142,9 @@
            optimize="${compile.optimize}"
            excludes="**/CVS/**,**/.svn/**"
            encoding="ISO-8859-1">
-<!-- Comment this in to show unchecked warnings:     <compilerarg value="-Xlint:unchecked"/> -->
+<!-- Comment this in to show unchecked warnings:
+      <compilerarg value="-Xlint:unchecked"/>
+ -->
       <classpath refid="tomcat.classpath" />
       <exclude name="org/apache/naming/factory/webservices/**" />
     </javac>
@@ -182,7 +184,7 @@
     <include name="javax/servlet/http/*" />
     <include name="javax/servlet/resources/*" />
   </patternset>
-  
+
   <patternset id="files.jsp-api">
     <include name="javax/servlet/jsp/**" />
   </patternset>
@@ -217,7 +219,7 @@
     <exclude name="org/apache/catalina/ant/**" />
     <exclude name="org/apache/catalina/cluster/**" />
     <exclude name="org/apache/catalina/ha/**" />
-    <exclude name="org/apache/catalina/mbeans/JmxRemote*" /> 
+    <exclude name="org/apache/catalina/mbeans/JmxRemote*" />
     <exclude name="org/apache/catalina/tribes/**" />
     <exclude name="org/apache/catalina/launcher/**" />
     <exclude name="org/apache/catalina/storeconfig/**" />
@@ -249,7 +251,7 @@
     <include name="org/apache/*" />
     <include name="org/apache/jasper/**" />
   </patternset>
-  
+
   <patternset id="files.jasper-el">
     <include name="org/apache/el/**" />
   </patternset>
@@ -276,14 +278,14 @@
   </macrodef>
 
   <target name="build-manifests" >
-  	<!-- Filtering tokens for JAR manifests-->
+    <!-- Filtering tokens for JAR manifests-->
     <filter token="source.jdk" value="${compile.source}"/>
     <filter token="target.jdk" value="${compile.target}"/>
     <filter token="servlet.revision" value="${servlet.revision}"/>
     <filter token="jsp.revision" value="${jsp.revision}"/>
 
     <mkdir dir="${tomcat.tmp}" />
-    <copy toDir="${tomcat.tmp}" overwrite="yes" filtering="yes"
+    <copy todir="${tomcat.tmp}" overwrite="yes" filtering="yes"
       encoding="ISO-8859-1">
       <filterset refid="version.filters"/>
       <fileset dir="res/META-INF" includes="*.manifest" />
@@ -486,13 +488,13 @@
           <param name="relative-path" expression=".."/>
     </xslt>
   </target>
- 
+
   <target name="warn.dbcp" unless="tomcat-dbcp.present">
     <echo>WARNING: tomcat-dbcp.jar not included, this build can't be used
     in a release. Please run 'ant download' with JDK1.5 if you are 
     building a tomcat release.</echo>
   </target>
-  
+
   <target name="deploy" depends="build-only,build-docs,warn.dbcp">
 
     <copy tofile="${tomcat.build}/bin/tomcat-native.tar.gz"
@@ -507,7 +509,7 @@
          <exclude name="**/*.launch"/>
       </fileset>
     </copy>
-  	<!-- Copy doesn't retain permissions -->
+    <!-- Copy doesn't retain permissions -->
     <chmod dir="${tomcat.build}/bin" includes="*.sh" perm="+x"/>
 
     <!-- Copy static resource files -->
@@ -634,14 +636,14 @@
       </fileset>
     </txt2html>
 
-    <copy file="${tomcat-dbcp.jar}" todir="${tomcat.build}/lib" 
+    <copy file="${tomcat-dbcp.jar}" todir="${tomcat.build}/lib"
       failonerror="false"/>
     <copy file="${jasper-jdt.jar}" todir="${tomcat.build}/lib" />
 
   </target>
 
   <target name="clean-depend"
-         description="Clean depend src components">
+          description="Clean depend src components">
      <delete dir="${tomcat-dbcp.home}"/>
      <delete dir="${jasper-jdt.home}"/>
   </target>
@@ -698,7 +700,7 @@
 
   <target name="download"
           description="Download (and build as necessary) dependent components"
-         depends="build-manifests">
+          depends="build-manifests">
 
     <antcall target="downloadfile">
       <param name="sourcefile" value="${tomcat-native.loc}"/>

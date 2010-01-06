@@ -89,7 +89,7 @@
   <!-- Files that need to have their line endings changed for src distros -->
   <patternset id="src.files" >
     <include name="**/INSTALLLICENSE"/>
-  	<include name="**/KEYS"/>
+    <include name="**/KEYS"/>
     <include name="**/LICENSE"/>
     <include name="**/NOTICE"/>
     <include name="**/RELEASE-NOTES"/>
@@ -131,7 +131,7 @@
     <delete dir="${tomcat.deployer}"/>
     <delete dir="${tomcat.dist}" failonerror="false"/>
 
-    <!-- This is why releasing must be done on a Windows box: 
+    <!-- This is why releasing must be done on a Windows box:
          otherwise this check fails and the .exe distro is not generated -->
     <condition property="execute.installer">
       <and>
@@ -156,8 +156,8 @@
     <mkdir dir="${tomcat.dist}/temp"/>
     <mkdir dir="${tomcat.dist}/webapps"/>
     <mkdir dir="${tomcat.dist}/work"/>
-  	<mkdir dir="${tomcat.release}/v${version}/bin" />
-  	<mkdir dir="${tomcat.release}/v${version}/src" />
+    <mkdir dir="${tomcat.release}/v${version}/bin" />
+    <mkdir dir="${tomcat.release}/v${version}/src" />
   </target>
 
 
@@ -189,7 +189,7 @@
       </fileset>
     </copy>
 
-  	<copy todir="${tomcat.dist}/webapps">
+    <copy todir="${tomcat.dist}/webapps">
       <fileset dir="${tomcat.build}/webapps">
         <exclude name="**/ROOT/WEB-INF/classes/**" />
         <exclude name="**/WEB-INF/src/**" />
@@ -199,8 +199,8 @@
     <touch file="${tomcat.dist}/temp/safeToDelete.tmp" />
 
     <!-- Correct permissions and line endings on "bin" scripts -->
-    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.sh"  eol="lf"   fixlast="false" encoding="ISO-8859-1" />
-    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.bat" eol="crlf" fixlast="false" encoding="ISO-8859-1" />
+    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.sh"  eol="lf"   encoding="ISO-8859-1" fixlast="false" />
+    <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.bat" eol="crlf" encoding="ISO-8859-1" fixlast="false" />
     <chmod      dir="${tomcat.dist}/bin" includes="*.sh"  perm="+x"/>
 
   </target>
@@ -213,7 +213,7 @@
       author="true" version="true"
       windowtitle="Tomcat API Documentation"
       doctitle="Tomcat API"
-      bottom="Copyright &amp;#169; 2000-${year} Apache Software Foundation.  All Rights Reserved."
+      bottom="Copyright &amp;#169; 2000-${year} Apache Software Foundation. All Rights Reserved."
       additionalparam="-breakiterator"
       maxmemory="256m" >
     </javadoc>
@@ -282,7 +282,6 @@
 
   </target>
 
-
   <!-- ================= DIST: Create Windows Installer =================== -->
   <target name="installer"
    description="Create Windows installer" unless="skip.installer">
@@ -293,24 +292,24 @@
     <copy file="${nsis.installoptions.dll}" todir="${tomcat.dist}" />
     <copy file="${nsis.nsexec.dll}" todir="${tomcat.dist}" />
     <copy file="${nsis.nsisdl.dll}" todir="${tomcat.dist}" />
-  	<!-- 32 bit -->
+    <!-- 32 bit -->
     <copy file="res/procrun/tomcat${version.major}.exe"
         tofile="${tomcat.dist}/bin/tomcat${version.major}.exe" />
     <copy file="res/procrun/tomcat${version.major}w.exe"
         tofile="${tomcat.dist}/bin/tomcat${version.major}w.exe" />
-  	<!-- 64 bit amd -->
+    <!-- 64 bit amd -->
     <copy file="res/procrun/amd64/tomcat${version.major}.exe"
         tofile="${tomcat.dist}/bin/x64/tomcat${version.major}.exe" />
-  	<!-- 64 bit ia -->
+    <!-- 64 bit ia -->
     <copy file="res/procrun/ia64/tomcat${version.major}.exe"
         tofile="${tomcat.dist}/bin/i64/tomcat${version.major}.exe" />
-  	<!-- tc native -->
+    <!-- tc native -->
     <copy file="${tomcat-native.home}/tcnative-1.dll.x86"
         tofile="${tomcat.dist}/bin/tcnative-1.dll" />
-  	<!-- tc native 64 bit for amd/emt -->
+    <!-- tc native 64 bit for amd/emt -->
     <copy file="${tomcat-native.home}/tcnative-1.dll.x64"
         tofile="${tomcat.dist}/bin/x64/tcnative-1.dll" />
-  	<!-- tc native 64 bit for ia -->
+    <!-- tc native 64 bit for ia -->
     <copy file="${tomcat-native.home}/tcnative-1.dll.i64"
         tofile="${tomcat.dist}/bin/i64/tcnative-1.dll" />
 
@@ -334,7 +333,7 @@
       <arg value="tomcat.nsi" />
     </exec>
 
-   <!-- Restore original line ending-->
+    <!-- Restore original line ending-->
     <fixcrlf srcdir="${tomcat.dist}/webapps/ROOT"
         includes="RELEASE-NOTES.txt" encoding="ISO-8859-1" fixlast="false" />
 
@@ -355,7 +354,7 @@
          todir="${tomcat.release}/v${version}"/>
     <copy file="RELEASE-NOTES"
          todir="${tomcat.release}/v${version}"
-        filtering="true" 
+        filtering="true"
         encoding="ISO-8859-1" />
     <copy file="res/welcome.main.html"
         tofile="${tomcat.release}/v${version}/README.html"
@@ -372,7 +371,7 @@
         <include name="*.*"/>
       </fileset>
     </copy>
-  	
+
   </target>
 
   <!-- Packages the core zip distro -->
@@ -426,9 +425,8 @@
         <exclude name="bin/x64/"/>
         <exclude name="bin/i64/"/>
       </zipfileset>
-      
-    </zip>
 
+    </zip>
     <antcall target="md5sum">
       <param name="file" value="${tomcat.release}/v${version}/bin/${final.name}-windows-x86.zip" />
     </antcall>
@@ -451,7 +449,7 @@
         <include name="BENCHMARKS.txt"/>
         <exclude name="bin/x64/"/>
         <exclude name="bin/i64/"/>
-        <exclude name="bin/*.dll"/>        
+        <exclude name="bin/*.dll"/>
         <exclude name="bin/tomcat${version.major}.exe"/>
       </zipfileset>
       <zipfileset dir="${tomcat.dist}/bin/x64" prefix="${final.name}/bin">
@@ -459,7 +457,6 @@
         <include name="*.exe"/>
       </zipfileset>
     </zip>
-
     <antcall target="md5sum">
       <param name="file" value="${tomcat.release}/v${version}/bin/${final.name}-windows-x64.zip" />
     </antcall>
@@ -514,8 +511,8 @@
 
   <!-- Packages the core tar.gz distro -->
   <target name="package-tgz">
-    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" encoding="ISO-8859-1" />
-    <fixcrlf srcdir="${tomcat.dist}/conf" eol="lf" fixlast="false" encoding="ISO-8859-1" />
+    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" encoding="ISO-8859-1" fixlast="false" />
+    <fixcrlf srcdir="${tomcat.dist}/conf" eol="lf" encoding="ISO-8859-1" fixlast="false" />
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}.tar.gz">
       <tarfileset dir="${tomcat.dist}" mode="755" prefix="${final.name}">
@@ -552,6 +549,7 @@
         <exclude name="bin/digest.sh" />
         <exclude name="bin/jasper.sh" />
         <exclude name="bin/jspc.sh" />
+        <exclude name="bin/service.bat"/>
         <exclude name="bin/setclasspath.sh" />
         <exclude name="bin/startup.sh" />
         <exclude name="bin/shutdown.sh" />
@@ -560,7 +558,6 @@
         <exclude name="bin/shutdown-using-launcher.sh" />
         <exclude name="bin/startup-using-launcher.sh" />
         <exclude name="bin/version.sh" />
-        <exclude name="bin/service.bat"/>
         <exclude name="conf/**" />
         <exclude name="src/**" />
         <exclude name="bin/x64/"/>
@@ -578,8 +575,8 @@
   <!-- Packages the deployer Tomcat distro in tar.gz format -->
   <target name="package-deployer-tgz">
     <fixcrlf srcdir="${tomcat.dist}"
-     includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" encoding="ISO-8859-1" />
-    <fixcrlf srcdir="${tomcat.deployer}" includes="*.xml" eol="lf" fixlast="false" encoding="ISO-8859-1" />
+     includes="*.txt,LICENSE,NOTICE" eol="lf" encoding="ISO-8859-1" fixlast="false" />
+    <fixcrlf srcdir="${tomcat.deployer}" includes="*.xml" eol="lf" encoding="ISO-8859-1" fixlast="false" />
 
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}-deployer.tar.gz">
@@ -603,7 +600,7 @@
   <target name="package-docs-tgz">
 
     <!-- Package gocs -->
-    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" fixlast="false" encoding="ISO-8859-1" />
+    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="lf" encoding="ISO-8859-1" fixlast="false" />
 
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}-fulldocs.tar.gz">
