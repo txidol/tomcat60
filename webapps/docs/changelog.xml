@@ -37,6 +37,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>48417</bug>: Update French translations. Patch provided by André
+        Warnier. (markt/kkolinko)
+      </fix>
+      <fix>
         <bug>48454</bug>: Ensure stderr is completely read before terminating
         the CGI process. Patch provided by Markus Grieder. (markt)
       </fix>

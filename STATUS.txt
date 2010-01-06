@@ -103,17 +103,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48417
-  Correct French translations
-  Patches provided by André Warnier
-  http://svn.apache.org/viewvc?rev=894586&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-  Additional patch:
-  http://svn.apache.org/viewvc?rev=895013&view=rev
-  +1: kkolinko, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48398
   Objects used as locks should be final
   https://issues.apache.org/bugzilla/attachment.cgi?id=24714
