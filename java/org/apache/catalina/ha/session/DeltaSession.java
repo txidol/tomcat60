@@ -91,7 +91,7 @@ public class DeltaSession extends StandardSession implements Externalizable,Clus
     private transient long lastTimeReplicated = System.currentTimeMillis();
 
 
-    protected Lock diffLock = new ReentrantReadWriteLock().writeLock();
+    protected final Lock diffLock = new ReentrantReadWriteLock().writeLock();
 
     private long version;
 

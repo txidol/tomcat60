@@ -44,7 +44,7 @@ import org.apache.tools.ant.types.PatternSet;
  */
 public class AntCompiler extends Compiler {
 
-    protected static Object javacLock = new Object();
+    protected static final Object javacLock = new Object();
 
     static {
         System.setErr(new SystemLogHandler(System.err));

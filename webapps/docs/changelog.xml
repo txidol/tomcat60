@@ -37,6 +37,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>48398</bug>: Make objects used as locks final to ensure correct
+        operation. Patch provided by sebb. (markt)
+      </fix>
+      <fix>
         <bug>48417</bug>: Update French translations. Patch provided by André
         Warnier. (markt/kkolinko)
       </fix>
