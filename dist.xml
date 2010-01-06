@@ -35,6 +35,7 @@
   <property file="build.properties.default"/>
 
   <!-- Project Properties -->
+  <property name="project"               value="apache-tomcat" />
   <property name="name"                  value="Apache Tomcat" />
   <tstamp>
     <format property="year" pattern="yyyy" locale="en"/>
@@ -47,7 +48,6 @@
   <property name="version.number"        value="${version.major}.${version.minor}.${version.build}.${version.patch}" />
   <property name="version.major.minor"   value="${version.major}.${version.minor}" />
 
-  <property name="project"               value="apache-tomcat" />
   <property name="final.name"            value="${project}-${version}" />
   <property name="final-src.name"        value="${project}-${version}-src" />
 
