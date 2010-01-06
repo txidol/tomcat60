@@ -104,6 +104,7 @@
     <format property="TSTAMP" pattern="hh:mm:ss"/>
   </tstamp>
   <filterset id="version.filters">
+    <filter token="YEAR" value="${year}"/>
     <filter token="VERSION" value="${version}"/>
     <filter token="VERSION_NUMBER" value="${version.number}"/>
     <filter token="VERSION_MAJOR" value="${version.major}"/>
@@ -148,15 +149,9 @@
       <classpath refid="tomcat.classpath" />
       <exclude name="org/apache/naming/factory/webservices/**" />
     </javac>
-    <tstamp>
-      <format property="TODAY" pattern="MMM d yyyy" locale="en"/>
-      <format property="TSTAMP" pattern="hh:mm:ss"/>
-    </tstamp>
     <!-- Copy static resource files -->
-    <filter token="VERSION" value="${version}"/>
-    <filter token="VERSION_NUMBER" value="${version.number}"/>
-    <filter token="VERSION_BUILT" value="${TODAY} ${TSTAMP}"/>
-    <copy todir="${tomcat.classes}" filtering="true" encoding="ISO-8859-1">
+    <copy todir="${tomcat.classes}" encoding="ISO-8859-1">
+      <filterset refid="version.filters"/>
       <fileset dir="java">
         <include name="**/*.properties"/>
         <include name="**/*.dtd"/>
@@ -422,15 +417,16 @@
           <exclude name="docs/architecture/*.xml"/>
         </fileset>
     </copy>
-    <copy todir="${tomcat.build}/webapps/docs">
+    <copy todir="${tomcat.build}/webapps/docs" encoding="ISO-8859-1">
+      <filterset refid="version.filters"/>
       <fileset dir=".">
         <include name="BUILDING.txt"/>
         <include name="RUNNING.txt"/>
       </fileset>
     </copy>
-    <filter token="VERSION" value="${version}"/>
-    <copy tofile="${tomcat.build}/webapps/docs/RELEASE-NOTES.txt" file="RELEASE-NOTES"
-          filtering="true" encoding="ISO-8859-1" />
+    <copy tofile="${tomcat.build}/webapps/docs/RELEASE-NOTES.txt" file="RELEASE-NOTES" encoding="ISO-8859-1">
+      <filterset refid="version.filters"/>
+    </copy>
 
     <copy   tofile="${tomcat.build}/webapps/docs/appdev/sample/build.xml"
               file="webapps/docs/appdev/build.xml.txt"/>
@@ -507,13 +503,23 @@
     <copy todir="${tomcat.build}/bin">
       <fileset dir="bin">
          <exclude name="**/*.launch"/>
+         <exclude name="**/*.sh"/>
+         <exclude name="**/*.bat"/>
+      </fileset>
+    </copy>
+    <copy todir="${tomcat.build}/bin" encoding="ISO-8859-1">
+      <filterset refid="version.filters"/>
+      <fileset dir="bin">
+         <include name="**/*.sh"/>
+         <include name="**/*.bat"/>
       </fileset>
     </copy>
     <!-- Copy doesn't retain permissions -->
     <chmod dir="${tomcat.build}/bin" includes="*.sh" perm="+x"/>
 
     <!-- Copy static resource files -->
-    <copy todir="${tomcat.build}/conf">
+    <copy todir="${tomcat.build}/conf" encoding="ISO-8859-1">
+      <filterset refid="version.filters"/>
       <fileset dir="conf">
         <include name="**/*.policy"/>
         <include name="**/*.xml"/>
@@ -525,15 +531,22 @@
     <copy todir="${tomcat.build}/webapps">
       <fileset dir="webapps">
         <include name="ROOT/**"/>
+        <exclude name="ROOT/index.html"/>
         <include name="examples/**"/>
         <include name="manager/**"/>
         <include name="host-manager/**"/>
       </fileset>
     </copy>
+    <copy todir="${tomcat.build}/webapps" encoding="ISO-8859-1">
+      <filterset refid="version.filters" />
+      <fileset dir="webapps">
+        <include name="ROOT/index.html"/>
+      </fileset>
+    </copy>
 
-    <filter token="VERSION" value="${version}"/>
-    <copy tofile="${tomcat.build}/webapps/ROOT/RELEASE-NOTES.txt" file="RELEASE-NOTES"
-          filtering="true" encoding="ISO-8859-1" />
+    <copy tofile="${tomcat.build}/webapps/ROOT/RELEASE-NOTES.txt" file="RELEASE-NOTES" encoding="ISO-8859-1">
+      <filterset refid="version.filters"/>
+    </copy>
 
     <!-- Build classes for examples webapp -->
     <javac   srcdir="webapps/examples/WEB-INF/classes"
