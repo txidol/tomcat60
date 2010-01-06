@@ -110,13 +110,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Replace a few hard-coded copyright years with
-  current year applied by ant version filter.
-  http://svn.apache.org/viewvc?rev=895203&view=rev
-  http://svn.apache.org/viewvc?rev=895206&view=rev
-  +1: rjung, kkolinko, markt
-  -1: 
-
 * Allow special characters recognized by the Windows command-line shell to
   be present in the names of CATALINA_HOME/_BASE and the current directory
   used to call the Tomcat scripts.

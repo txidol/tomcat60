@@ -532,6 +532,7 @@
       <fileset dir="webapps">
         <include name="ROOT/**"/>
         <exclude name="ROOT/index.html"/>
+        <exclude name="ROOT/index.jsp"/>
         <include name="examples/**"/>
         <include name="manager/**"/>
         <include name="host-manager/**"/>
@@ -541,6 +542,7 @@
       <filterset refid="version.filters" />
       <fileset dir="webapps">
         <include name="ROOT/index.html"/>
+        <include name="ROOT/index.jsp"/>
       </fileset>
     </copy>
 
