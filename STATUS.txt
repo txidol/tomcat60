@@ -92,6 +92,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=893001&view=rev
   +1: kkolinko
   -1:
+    kkolinko: The current Mark's work on fixing EL issues is expected to
+    provide a better fix for this issue.
+
 
 * Enforce presence of charset in content-type header of textual mime-types in the Examples webapp
   step 1) copy AddDefaultCharsetFilter from trunk
@@ -102,6 +105,9 @@ PATCHES PROPOSED TO BACKPORT:
    http://svn.apache.org/viewvc?rev=893496&view=rev
   +1: kkolinko
   -1:
+    kkolinko: setting org.apache.catalina.STRICT_SERVLET_COMPLIANCE=true
+    also provides this feature, and better than this patch does.
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48345
   Sessions timed out too early when using PersistentManager
@@ -168,3 +174,11 @@ PATCHES PROPOSED TO BACKPORT:
 
      +1 for all the other changes
    )
+
+* Allow to disable buffering in JULI FileHandler
+  It is followup to r891328,
+  which failed to implement this fix properly.
+  http://svn.apache.org/viewvc?rev=897380&view=rev  (fix)
+  http://svn.apache.org/viewvc?rev=897381&view=rev  (Documentation)
+  +1: kkolinko
+  -1:
