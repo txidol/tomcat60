@@ -182,3 +182,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=897381&view=rev  (Documentation)
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48470
+  Ensure shutdown does not lock up when Tomcat is shut down under load
+  https://issues.apache.org/bugzilla/attachment.cgi?id=24827
+  +1: markt
+  -1: 
