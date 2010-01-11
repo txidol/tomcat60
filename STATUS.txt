@@ -148,8 +148,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Update recommended tcnative version to the forthcoming 1.1.19.
   No update on the required version (17)
   http://svn.apache.org/viewvc?rev=895703&view=rev
-  We should not vote before 1.1.19 is officially released.
-  +1: 
+  Also use 1.1.19 when bundling the source in the Tomcat build:
+  http://svn.apache.org/viewvc?rev=897776&view=rev
+  +1: rjung
   -1: 
 
 * Remove hard coded version numbers and instead apply version filter
