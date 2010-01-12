@@ -150,7 +150,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=895703&view=rev
   Also use 1.1.19 when bundling the source in the Tomcat build:
   http://svn.apache.org/viewvc?rev=897776&view=rev
-  +1: rjung, kkolinko
+  +1: rjung, kkolinko, jfclere
   -1: 
 
 * Remove hard coded version numbers and instead apply version filter
