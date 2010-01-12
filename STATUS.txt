@@ -150,7 +150,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=895703&view=rev
   Also use 1.1.19 when bundling the source in the Tomcat build:
   http://svn.apache.org/viewvc?rev=897776&view=rev
-  +1: rjung
+  +1: rjung, kkolinko
   -1: 
 
 * Remove hard coded version numbers and instead apply version filter
@@ -167,6 +167,7 @@ PATCHES PROPOSED TO BACKPORT:
         - RELEASE-NOTES
         - RUNNING.txt
         - BUILDING.txt
+
        1) I see no point. These are specific for the major.minor branch.
        Turning them into a template looks wrong.
        I do not expect doing merges to these files.
