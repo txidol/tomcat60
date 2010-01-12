@@ -192,3 +192,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=898256&view=rev (case insensitivity)
   +1: markt, jim
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48421
+  Prevent file descriptor leak. Allow a web application's logs to be deleted
+  once the application has been stopped.
+  http://svn.apache.org/viewvc?rev=898468&view=rev
+  +1: markt
+  -1: 
+  
