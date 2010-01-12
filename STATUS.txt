@@ -70,21 +70,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
   Ensure web application class loader is used when calling session listeners
-  http://svn.apache.org/viewvc?rev=890530&view=rev
-  http://svn.apache.org/viewvc?rev=892193&view=rev
+  http://svn.apache.org/viewvc?rev=898555&view=rev
   +1: markt
   -1: 
-   0: kkolinko:
-       Re approach:
-         Request.isRequestedSessionIdValid() serves as implementation for
-         HttpServletRequest.isRequestedSessionIdValid().
-         I think that ClassLoader should already be set when calling this
-         method.
-
-         I mean, the problem is elsewhere. Supposedly in CoyoteAdapter.
-         parseSessionCookiesId(), but may be earlier in the call chain.
-
-         I won't oppose the patch. I have to think a bit more about it.
 
 * Fix second part of https://issues.apache.org/bugzilla/show_bug.cgi?id=47413#c8
   Coerce result of composite EL expression (${a}${b}) from String to the expected type.
