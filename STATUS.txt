@@ -190,8 +190,15 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
   
- Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48004
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48004
   Allow applications to set the Server header
   http://svn.apache.org/viewvc?rev=898527&view=rev
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48516
+  Prevent possible NPE in JNDIRealm when user does not exist
+  Patch provided by Kevin Conaway
+  http://svn.apache.org/viewvc?rev=898558&view=rev
   +1: markt
   -1: 
