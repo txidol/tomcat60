@@ -69,6 +69,15 @@
       </update>
     </changelog>
   </subsection>
+  <subsection name="Webapps">
+    <changelog>
+      <add>
+        <bug>48530</bug>: Add information on the Manager Server Status page to
+        the Manager How-To in the documentation webapp. Based on a patch by
+        Arnaud Espy. (markt)
+      </add>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <fix>
