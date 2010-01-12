@@ -28,13 +28,6 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48345
-  Sessions timed out too early when using PersistentManager
-  Port of patch by Keiichi Fujino
-  http://people.apache.org/~markt/patches/2009-12-30-bug48345.patch
-  +1: markt, rjung, jim
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48464
   Provide an option to specify the command window title
   Patch provided by LiuYan
