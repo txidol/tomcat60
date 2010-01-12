@@ -222,7 +222,8 @@ goto execCmd
 :doStart
 shift
 if not "%OS%" == "Windows_NT" goto noTitle
-set _EXECJAVA=start "Tomcat" %_RUNJAVA%
+if "%TITLE%" == "" set TITLE=Tomcat
+set _EXECJAVA=start "%TITLE%" %_RUNJAVA%
 goto gotTitle
 :noTitle
 set _EXECJAVA=start %_RUNJAVA%

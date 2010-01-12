@@ -28,13 +28,6 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48464
-  Provide an option to specify the command window title
-  Patch provided by LiuYan
-  http://svn.apache.org/viewvc?rev=895600&view=rev
-  +1: markt, kkolinko, jim
-  -1: 
-
 * Update recommended tcnative version to the forthcoming 1.1.19.
   No update on the required version (17)
   http://svn.apache.org/viewvc?rev=895703&view=rev
