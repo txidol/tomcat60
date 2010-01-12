@@ -55,6 +55,16 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Coyote">
+    <changelog>
+        <update>
+        Update version of native bundled in Windows installer to 1.1.19. (mturk)
+      </update>
+      <update>
+        Update recommended version for native to 1.1.19. (rjung)
+      </update>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <fix>

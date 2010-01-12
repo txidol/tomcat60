@@ -28,14 +28,6 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
-* Update recommended tcnative version to the forthcoming 1.1.19.
-  No update on the required version (17)
-  http://svn.apache.org/viewvc?rev=895703&view=rev
-  Also use 1.1.19 when bundling the source in the Tomcat build:
-  http://svn.apache.org/viewvc?rev=897776&view=rev
-  +1: rjung, kkolinko, jfclere, jim
-  -1: 
-
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
