@@ -113,7 +113,7 @@ PATCHES PROPOSED TO BACKPORT:
   Sessions timed out too early when using PersistentManager
   Port of patch by Keiichi Fujino
   http://people.apache.org/~markt/patches/2009-12-30-bug48345.patch
-  +1: markt, rjung
+  +1: markt, rjung, jim
   -1: 
 
 * Allow special characters recognized by the Windows command-line shell to
@@ -142,7 +142,7 @@ PATCHES PROPOSED TO BACKPORT:
   Provide an option to specify the command window title
   Patch provided by LiuYan
   http://svn.apache.org/viewvc?rev=895600&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jim
   -1: 
 
 * Update recommended tcnative version to the forthcoming 1.1.19.
@@ -150,7 +150,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=895703&view=rev
   Also use 1.1.19 when bundling the source in the Tomcat build:
   http://svn.apache.org/viewvc?rev=897776&view=rev
-  +1: rjung, kkolinko, jfclere
+  +1: rjung, kkolinko, jfclere, jim
   -1: 
 
 * Remove hard coded version numbers and instead apply version filter
@@ -188,7 +188,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48470
   Ensure shutdown does not lock up when Tomcat is shut down under load
   https://issues.apache.org/bugzilla/attachment.cgi?id=24827
-  +1: markt
+  +1: markt, jim
   -1: 
 
 * Fix various EL issues (with test cases) including BZ47413#c8 & BZ48112
@@ -205,12 +205,12 @@ PATCHES PROPOSED TO BACKPORT:
              https://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/test/org/apache/el/TestELEvaluation.java
     svn copy https://svn.apache.org/repos/asf/tomcat/trunk/test/org/apache/el/TesterFunctions.java
              https://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/test/org/apache/el/TesterFunctions.java
-  +1: markt
+  +1: markt, jim
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47977
   Using a body with a tag that has an empty body should cause an error
   http://svn.apache.org/viewvc?rev=898126&view=rev
   http://svn.apache.org/viewvc?rev=898256&view=rev (case insensitivity)
-  +1: markt
+  +1: markt, jim
   -1: 
