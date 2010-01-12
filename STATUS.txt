@@ -211,5 +211,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47977
   Using a body with a tag that has an empty body should cause an error
   http://svn.apache.org/viewvc?rev=898126&view=rev
+  http://svn.apache.org/viewvc?rev=898256&view=rev (case insensitivity)
   +1: markt
   -1: 
