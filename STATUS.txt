@@ -206,4 +206,9 @@ PATCHES PROPOSED TO BACKPORT:
              https://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/test/org/apache/el/TesterFunctions.java
   +1: markt
   -1: 
-               
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47977
+  Using a body with a tag that has an empty body should cause an error
+  http://svn.apache.org/viewvc?rev=898126&view=rev
+  +1: markt
+  -1: 
