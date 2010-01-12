@@ -196,6 +196,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48421
   Prevent file descriptor leak. Allow a web application's logs to be deleted
   once the application has been stopped.
+  I haven't figured out why, but this also prevents buffered log messages being
+  lost on stop when running as a service. 
   http://svn.apache.org/viewvc?rev=898468&view=rev
   +1: markt
   -1: 
