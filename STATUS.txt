@@ -148,7 +148,7 @@ PATCHES PROPOSED TO BACKPORT:
   which failed to implement this fix properly.
   http://svn.apache.org/viewvc?rev=897380&view=rev  (fix)
   http://svn.apache.org/viewvc?rev=897381&view=rev  (Documentation)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48470
@@ -195,12 +195,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48004
   Allow applications to set the Server header
   http://svn.apache.org/viewvc?rev=898527&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48516
   Prevent possible NPE in JNDIRealm when user does not exist
   Patch provided by Kevin Conaway
   http://svn.apache.org/viewvc?rev=898558&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
