@@ -71,7 +71,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
   Ensure web application class loader is used when calling session listeners
   http://svn.apache.org/viewvc?rev=898555&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix second part of https://issues.apache.org/bugzilla/show_bug.cgi?id=47413#c8
@@ -154,8 +154,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48470
   Ensure shutdown does not lock up when Tomcat is shut down under load
   https://issues.apache.org/bugzilla/attachment.cgi?id=24827
-  +1: markt, jim
+  +1: markt, jim, kkolinko
   -1: 
+   kkolinko: I have several comments in BZ 48470#c6, but those can be
+   proposed separately
 
 * Fix various EL issues (with test cases) including BZ47413#c8 & BZ48112
   The actual fixes
@@ -193,12 +195,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48004
   Allow applications to set the Server header
   http://svn.apache.org/viewvc?rev=898527&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48516
   Prevent possible NPE in JNDIRealm when user does not exist
   Patch provided by Kevin Conaway
   http://svn.apache.org/viewvc?rev=898558&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
