@@ -72,7 +72,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
   Ensure web application class loader is used when calling session listeners
   http://svn.apache.org/viewvc?rev=898555&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, yoavs
   -1: 
 
 * Fix second part of https://issues.apache.org/bugzilla/show_bug.cgi?id=47413#c8
@@ -127,7 +127,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=712053&view=rev
   Complete patch applicable to TC6:
   http://people.apache.org/~rjung/patches/tc6-version_filter.patch
-  +1: rjung
+  +1: rjung, yoavs
   -1: 
    kkolinko: (
      -0 for changes of the *.txt files:
@@ -158,14 +158,14 @@ PATCHES PROPOSED TO BACKPORT:
              https://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/test/org/apache/el/TestELEvaluation.java
     svn copy https://svn.apache.org/repos/asf/tomcat/trunk/test/org/apache/el/TesterFunctions.java
              https://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/test/org/apache/el/TesterFunctions.java
-  +1: markt, jim
+  +1: markt, jim, yoavs
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47977
   Using a body with a tag that has an empty body should cause an error
   http://svn.apache.org/viewvc?rev=898126&view=rev
   http://svn.apache.org/viewvc?rev=898256&view=rev (case insensitivity)
-  +1: markt, jim
+  +1: markt, jim, yoavs
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48421
@@ -174,5 +174,5 @@ PATCHES PROPOSED TO BACKPORT:
   I haven't figured out why, but this also prevents buffered log messages being
   lost on stop when running as a service. 
   http://svn.apache.org/viewvc?rev=898468&view=rev
-  +1: markt
+  +1: markt, yoavs
   -1: 
