@@ -28,6 +28,14 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
+* Allow to disable buffering in JULI FileHandler
+  It is followup to r891328,
+  which failed to implement this fix properly.
+  http://svn.apache.org/viewvc?rev=897380&view=rev  (fix)
+  http://svn.apache.org/viewvc?rev=897381&view=rev  (Documentation)
+  +1: kkolinko, markt, rjung, jim
+  -1:
+
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
@@ -142,14 +150,6 @@ PATCHES PROPOSED TO BACKPORT:
 
      +1 for all the other changes
    )
-
-* Allow to disable buffering in JULI FileHandler
-  It is followup to r891328,
-  which failed to implement this fix properly.
-  http://svn.apache.org/viewvc?rev=897380&view=rev  (fix)
-  http://svn.apache.org/viewvc?rev=897381&view=rev  (Documentation)
-  +1: kkolinko, markt, rjung, jim
-  -1:
 
 * Fix various EL issues (with test cases) including BZ47413#c8 & BZ48112
   The actual fixes
