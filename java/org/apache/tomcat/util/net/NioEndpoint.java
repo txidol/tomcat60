@@ -1048,7 +1048,7 @@ public class NioEndpoint {
         try {
             // Need to create a connection to unlock the accept();
             if (address == null) {
-                 saddr = new InetSocketAddress("127.0.0.1", port);
+                 saddr = new InetSocketAddress("localhost", port);
             } else {
                  saddr = new InetSocketAddress(address,port);
             }

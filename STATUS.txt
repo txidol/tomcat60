@@ -151,14 +151,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48470
-  Ensure shutdown does not lock up when Tomcat is shut down under load
-  https://issues.apache.org/bugzilla/attachment.cgi?id=24827
-  +1: markt, jim, kkolinko
-  -1: 
-   kkolinko: I have several comments in BZ 48470#c6, but those can be
-   proposed separately
-
 * Fix various EL issues (with test cases) including BZ47413#c8 & BZ48112
   The actual fixes
     svn copy https://svn.apache.org/repos/asf/tomcat/trunk/java/org/apache/jasper/compiler/AttributeParser.java

@@ -426,6 +426,11 @@ public class Http11Protocol
     public int getSoTimeout() { return endpoint.getSoTimeout(); }
     public void setSoTimeout(int soTimeout) { endpoint.setSoTimeout(soTimeout); }
 
+    public int getUnlockTimeout() { return endpoint.getUnlockTimeout(); }
+    public void setUnlockTimeout(int unlockTimeout) {
+        endpoint.setUnlockTimeout(unlockTimeout);
+    }
+
     // HTTP
     /**
      * Return the Keep-Alive policy for the connection.

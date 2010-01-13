@@ -20,6 +20,7 @@ package org.apache.tomcat.util.net;
 import java.io.IOException;
 import java.net.BindException;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Executor;
@@ -261,6 +262,16 @@ public class JIoEndpoint {
     public ServerSocketFactory getServerSocketFactory() { return serverSocketFactory; }
 
 
+    /**
+     * Unlock timeout.
+     */
+    protected int unlockTimeout = 250;
+    public int getUnlockTimeout() { return unlockTimeout; }
+    public void setUnlockTimeout(int unlockTimeout) {
+        this.unlockTimeout = unlockTimeout;
+    }
+
+    
     public boolean isRunning() {
         return running;
     }
@@ -617,16 +628,24 @@ public class JIoEndpoint {
      */
     protected void unlockAccept() {
         Socket s = null;
+        InetSocketAddress saddr = null;
         try {
             // Need to create a connection to unlock the accept();
             if (address == null) {
-                s = new Socket(InetAddress.getByName("localhost").getHostAddress(), port);
+                saddr = new InetSocketAddress("localhost", port);
             } else {
-                s = new Socket(address, port);
-                    // setting soLinger to a small value will help shutdown the
-                    // connection quicker
-                s.setSoLinger(true, 0);
+                saddr = new InetSocketAddress(address,port);
             }
+            s = new java.net.Socket();
+            s.setSoTimeout(soTimeout);
+            s.setSoLinger(true ,0);
+            if (log.isDebugEnabled()) {
+                log.debug("About to unlock socket for: " + saddr);
+            }
+            s.connect(saddr, unlockTimeout);
+            if (log.isDebugEnabled()) {
+                log.debug("Socket unlock completed for:"+saddr);
+            } 
         } catch (Exception e) {
             if (log.isDebugEnabled()) {
                 log.debug(sm.getString("endpoint.debug.unlock", "" + port), e);

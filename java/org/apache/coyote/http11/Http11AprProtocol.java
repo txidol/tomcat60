@@ -226,6 +226,11 @@ public class Http11AprProtocol implements ProtocolHandler, MBeanRegistration {
     public int getSoTimeout() { return endpoint.getSoTimeout(); }
     public void setSoTimeout(int soTimeout) { endpoint.setSoTimeout(soTimeout); }
 
+    public int getUnlockTimeout() { return endpoint.getUnlockTimeout(); }
+    public void setUnlockTimeout(int unlockTimeout) {
+        endpoint.setUnlockTimeout(unlockTimeout);
+    }
+
     /**
      * The number of seconds Tomcat will wait for a subsequent request
      * before closing the connection.

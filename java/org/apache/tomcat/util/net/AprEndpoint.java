@@ -18,6 +18,7 @@
 package org.apache.tomcat.util.net;
 
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.Executor;
@@ -398,6 +399,16 @@ public class AprEndpoint {
     public int getMinSpareThreads() { return 0; }
 
 
+    /**
+     * Unlock timeout.
+     */
+    protected int unlockTimeout = 250;
+    public int getUnlockTimeout() { return unlockTimeout; }
+    public void setUnlockTimeout(int unlockTimeout) {
+        this.unlockTimeout = unlockTimeout;
+    }
+
+    
     /**
      * SSL engine.
      */
@@ -880,16 +891,21 @@ public class AprEndpoint {
      */
     protected void unlockAccept() {
         java.net.Socket s = null;
+        InetSocketAddress saddr = null;
         try {
             // Need to create a connection to unlock the accept();
             if (address == null) {
-                s = new java.net.Socket(InetAddress.getByName("localhost").getHostAddress(), port);
+                saddr = new InetSocketAddress("localhost", port);
             } else {
-                s = new java.net.Socket(address, port);
-                // setting soLinger to a small value will help shutdown the
-                // connection quicker
-                s.setSoLinger(true, 0);
+                saddr = new InetSocketAddress(address,port);
             }
+            s = new java.net.Socket();
+            s.setSoTimeout(soTimeout);
+            s.setSoLinger(true ,0);
+            if (log.isDebugEnabled()) {
+                log.debug("About to unlock socket for: " + saddr);
+            }
+            s.connect(saddr, unlockTimeout);
         } catch(Exception e) {
             if (log.isDebugEnabled()) {
                 log.debug(sm.getString("endpoint.debug.unlock", "" + port), e);

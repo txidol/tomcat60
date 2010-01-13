@@ -61,12 +61,16 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
-        <update>
+      <update>
         Update version of native bundled in Windows installer to 1.1.19. (mturk)
       </update>
       <update>
         Update recommended version for native to 1.1.19. (rjung)
       </update>
+      <fix>
+        <bug>48470</bug>: Ensure Tomcat does not lock up if shut down under
+        load. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
