@@ -148,7 +148,7 @@ PATCHES PROPOSED TO BACKPORT:
   which failed to implement this fix properly.
   http://svn.apache.org/viewvc?rev=897380&view=rev  (fix)
   http://svn.apache.org/viewvc?rev=897381&view=rev  (Documentation)
-  +1: kkolinko, markt, rjung
+  +1: kkolinko, markt, rjung, jim
   -1:
 
 * Fix various EL issues (with test cases) including BZ47413#c8 & BZ48112
