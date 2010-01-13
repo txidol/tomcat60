@@ -72,6 +72,10 @@
         Update recommended version for native to 1.1.19. (rjung)
       </update>
       <fix>
+        <bug>48004</bug>: All web applications to set the http
+        <code>Server</code> header. (markt)
+      </fix>
+      <fix>
         <bug>48470</bug>: Ensure Tomcat does not lock up if shut down under
         load. (markt)
       </fix>
