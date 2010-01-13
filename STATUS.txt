@@ -176,3 +176,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=898468&view=rev
   +1: markt, yoavs
   -1: 
+  
+* Cleanup and well define log buffering behavior
+  http://svn.apache.org/viewvc?rev=898836&view=rev
+  +1: fhanik
+  -1: 
