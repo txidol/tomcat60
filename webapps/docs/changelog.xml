@@ -58,6 +58,12 @@
         Warnier. (markt/kkolinko)
       </fix>
       <fix>
+        <bug>48421</bug>: Fix file descriptor and potential memory leak when a
+        web application uses a local logging.properties file. Allow a web
+        applciation's log files to be deleted once the web application has been
+        stopped. (markt) 
+      </fix>
+      <fix>
         <bug>48454</bug>: Ensure stderr is completely read before terminating
         the CGI process. Patch provided by Markus Grieder. (markt)
       </fix>
