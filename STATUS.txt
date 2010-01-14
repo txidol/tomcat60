@@ -127,3 +127,10 @@ Index: res/welcome.main.html
   http://svn.apache.org/viewvc?rev=899284&view=rev
   +1: markt
   -1: 
+
+* -windows-???.zip distributions should have windows line endings
+  .zip should have unix line endings
+  http://svn.apache.org/viewvc?rev=899348&view=rev
+  http://svn.apache.org/viewvc?rev=899395&view=rev
+  +1: markt
+  -1: 
