@@ -91,6 +91,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+  <changelog>
+    <fix>
+      <bug>48112</bug>: Correct handling of } character in literals when parsing
+      expressions. This also improves the fix for <bug>47413</bug>. (markt)
+    </fix>
+  </changelog>
+  </subsection>
   <subsection name="Webapps">
     <changelog>
       <add>

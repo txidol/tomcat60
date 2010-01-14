@@ -100,23 +100,6 @@ PATCHES PROPOSED TO BACKPORT:
          The 'set "a=%b%"' trick is nice, because if you only use the quotation
          marks around the rhs, Windows actually adds them to the value of 'a'.
 
-* Fix various EL issues (with test cases) including BZ47413#c8 & BZ48112
-  The actual fixes
-    svn copy https://svn.apache.org/repos/asf/tomcat/trunk/java/org/apache/jasper/compiler/AttributeParser.java
-             https://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/java/org/apache/jasper/compiler/AttributeParser.java
-    http://people.apache.org/~markt/patches/2010-01-11-el-part1.patch
-  Updates required to generated files after fixes above
-    http://people.apache.org/~markt/patches/2010-01-11-el-part2.patch
-  The new test cases
-    svn copy https://svn.apache.org/repos/asf/tomcat/trunk/test/org/apache/jasper/compiler/TestAttributeParser.java
-             https://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/test/org/apache/jasper/compiler/TestAttributeParser.java
-    svn copy https://svn.apache.org/repos/asf/tomcat/trunk/test/org/apache/el/TestELEvaluation.java
-             https://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/test/org/apache/el/TestELEvaluation.java
-    svn copy https://svn.apache.org/repos/asf/tomcat/trunk/test/org/apache/el/TesterFunctions.java
-             https://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/test/org/apache/el/TesterFunctions.java
-  +1: markt, jim, yoavs
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47977
   Using a body with a tag that has an empty body should cause an error
   http://svn.apache.org/viewvc?rev=898126&view=rev
