@@ -106,30 +106,6 @@ PATCHES PROPOSED TO BACKPORT:
          The 'set "a=%b%"' trick is nice, because if you only use the quotation
          marks around the rhs, Windows actually adds them to the value of 'a'.
 
-* Remove hard coded version numbers and instead apply version filter
-  already defined in ant scripts.
-  Backport from trunk of
-  http://svn.apache.org/viewvc?rev=711934&view=rev
-  http://svn.apache.org/viewvc?rev=712053&view=rev
-  Complete patch applicable to TC6:
-  http://people.apache.org/~rjung/patches/tc6-version_filter.patch
-  +1: rjung, yoavs, kkolinko (with exception of text files)
-  -1: 
-   kkolinko: (
-     -0 for changes of the *.txt files:
-        - RELEASE-NOTES
-        - RUNNING.txt
-        - BUILDING.txt
-
-       1) I see no point. These are specific for the major.minor branch.
-       Turning them into a template looks wrong.
-       I do not expect doing merges to these files.
-       2) It results in an unfiltered BUILDING.txt in our src bundles. That
-       is not pretty. This also affects our TC 7 builds.
-
-     +1 for all the other changes
-   )
-
 * Fix various EL issues (with test cases) including BZ47413#c8 & BZ48112
   The actual fixes
     svn copy https://svn.apache.org/repos/asf/tomcat/trunk/java/org/apache/jasper/compiler/AttributeParser.java

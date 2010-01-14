@@ -98,6 +98,10 @@
   <subsection name="Other">
     <changelog>
       <fix>
+        Remove hard coded version numbers and instead apply version filter
+        already defined in ant scripts. (rjung)
+      </fix>
+      <fix>
         <bug>47609</bug>: Correct regression in previous fix. (markt)
       </fix>
       <add>

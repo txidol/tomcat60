@@ -44,7 +44,9 @@
   <property name="version.minor"         value="0" />
   <property name="version.build"         value="0" />
   <property name="version.patch"         value="0" />
-  <property name="version"               value="6.0.0-dev" />
+  <property name="version.suffix"        value="-dev" />
+
+  <property name="version"               value="${version.major}.${version.minor}.${version.build}${version.suffix}" />
   <property name="version.number"        value="${version.major}.${version.minor}.${version.build}.${version.patch}" />
   <property name="version.major.minor"   value="${version.major}.${version.minor}" />
 
@@ -81,8 +83,8 @@
   <property name="jasper.jar" value="${tomcat.build}/lib/jasper.jar"/>
   <property name="jasper-el.jar" value="${tomcat.build}/lib/jasper-el.jar"/>
 
-  <property name="tomcat-dbcp.home" value="${base.path}/tomcat6-deps/dbcp" />
-  <property name="jasper-jdt.home" value="${base.path}/tomcat6-deps/jdt" />
+  <property name="tomcat-dbcp.home" value="${base.path}/tomcat${version.major}-deps/dbcp" />
+  <property name="jasper-jdt.home" value="${base.path}/tomcat${version.major}-deps/jdt" />
   <property name="tomcat-dbcp.jar" value="${tomcat-dbcp.home}/tomcat-dbcp.jar"/>
   <property name="jasper-jdt.jar" value="${jasper-jdt.home}/jasper-jdt.jar"/>
 
@@ -220,8 +222,9 @@
       sourcepath="${tomcat.dist}/src/java"
       destdir="${tomcat.dist}/webapps/docs/api"
       author="true" version="true"
-      windowtitle="Tomcat API Documentation"
-      doctitle="Tomcat API"
+      windowtitle="Apache Tomcat ${version} API Documentation"
+      doctitle="Apache Tomcat ${version} API"
+      header="&lt;b&gt;Apache Tomcat ${version}&lt;/b&gt;"
       bottom="Copyright &amp;#169; 2000-${year} Apache Software Foundation. All Rights Reserved."
       additionalparam="-breakiterator"
       maxmemory="256m" >
@@ -612,13 +615,13 @@
 
     <tar longfile="gnu" compression="gzip"
          tarfile="${tomcat.release}/v${version}/bin/${final.name}-fulldocs.tar.gz">
-      <tarfileset dir="${tomcat.dist}" prefix="tomcat-6.0-doc">
+      <tarfileset dir="${tomcat.dist}" prefix="tomcat-${version.major.minor}-doc">
         <include name="LICENSE" />
         <include name="NOTICE" />
         <include name="README.txt" />
         <include name="RUNNING.txt" />
       </tarfileset>
-      <tarfileset dir="${tomcat.dist}/webapps/docs" prefix="tomcat-6.0-doc">
+      <tarfileset dir="${tomcat.dist}/webapps/docs" prefix="tomcat-${version.major.minor}-doc">
         <include name="**" />
       </tarfileset>
     </tar>
