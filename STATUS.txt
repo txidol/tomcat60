@@ -92,7 +92,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Cleanup and well define log buffering behavior
   http://svn.apache.org/viewvc?rev=898836&view=rev
-  +1: fhanik, kkolinko
+  +1: fhanik, kkolinko, markt
   -1: 
 
 * Force disconnect upon transmission failure
