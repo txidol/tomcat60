@@ -127,7 +127,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=712053&view=rev
   Complete patch applicable to TC6:
   http://people.apache.org/~rjung/patches/tc6-version_filter.patch
-  +1: rjung, yoavs
+  +1: rjung, yoavs, kkolinko (with exception of text files)
   -1: 
    kkolinko: (
      -0 for changes of the *.txt files:
@@ -174,8 +174,13 @@ PATCHES PROPOSED TO BACKPORT:
   I haven't figured out why, but this also prevents buffered log messages being
   lost on stop when running as a service. 
   http://svn.apache.org/viewvc?rev=898468&view=rev
-  +1: markt, yoavs
+  +1: markt, yoavs, kkolinko
   -1: 
+   kkolinko: OK, understood. This patch is needed because you cannot
+   overwrite LogManager.reset() to clean all loggers, because in most cases
+   reset() is called without intention to clean everything: either
+   called explicitly, or from ClassLoaderLogManager.readConfiguration().
+
   
 * Cleanup and well define log buffering behavior
   http://svn.apache.org/viewvc?rev=898836&view=rev
