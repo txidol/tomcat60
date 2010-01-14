@@ -178,3 +178,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: 
   
+* Allow compliance with SRV.15.2.22.1 to be controlled separately
+  from STRICT_SERVLET_COMPLIANCE, and turn it on by default.
+  If anyone has a better proposal for the property name, you are welcome.
+  http://svn.apache.org/viewvc?rev=899124&view=rev
+  +1: kkolinko
+  -1:
+
