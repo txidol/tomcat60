@@ -84,20 +84,6 @@ PATCHES PROPOSED TO BACKPORT:
     kkolinko: The current Mark's work on fixing EL issues is expected to
     provide a better fix for this issue.
 
-
-* Enforce presence of charset in content-type header of textual mime-types in the Examples webapp
-  step 1) copy AddDefaultCharsetFilter from trunk
-   mkdir "java/org/apache/catalina/filters"
-   svn add "java/org/apache/catalina/filters"
-   svn copy https://svn.apache.org/repos/asf/tomcat/trunk/java/org/apache/catalina/filters/AddDefaultCharsetFilter.java java/org/apache/catalina/filters/
-  step 2) merge r893496 from trunk
-   http://svn.apache.org/viewvc?rev=893496&view=rev
-  +1: kkolinko
-  -1:
-    kkolinko: setting org.apache.catalina.STRICT_SERVLET_COMPLIANCE=true
-    also provides this feature, and better than this patch does.
-
-
 * Allow special characters recognized by the Windows command-line shell to
   be present in the names of CATALINA_HOME/_BASE and the current directory
   used to call the Tomcat scripts.
