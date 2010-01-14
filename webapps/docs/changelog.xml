@@ -71,6 +71,10 @@
         <bug>48516</bug>: Prevent NPE in JNDIRealm if requested user does not
         exist. Patch provided by Kevin Conaway. (markt)
       </fix>
+      <fix>
+        Fix implementation of log buffer size and provide a cleaner interface.
+        (fhanik/kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

@@ -90,11 +90,6 @@ PATCHES PROPOSED TO BACKPORT:
          The 'set "a=%b%"' trick is nice, because if you only use the quotation
          marks around the rhs, Windows actually adds them to the value of 'a'.
 
-* Cleanup and well define log buffering behavior
-  http://svn.apache.org/viewvc?rev=898836&view=rev
-  +1: fhanik, kkolinko, markt
-  -1: 
-
 * Force disconnect upon transmission failure
   http://svn.apache.org/viewvc?rev=898906&view=rev
   +1: fhanik
