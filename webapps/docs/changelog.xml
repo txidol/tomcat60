@@ -36,6 +36,10 @@
 <section name="Tomcat 6.0.23 (jfclere)">
   <subsection name="Catalina">
     <changelog>
+      <fix>
+        <bug>47774</bug>: Ensure web application class loader is used when
+        calling session listeners. (markt)
+      </fix>
       <add>
         <bug>48006</bug>: Add additional information to the optional
         X-Powered-By header to align with the content suggested in the Servlet

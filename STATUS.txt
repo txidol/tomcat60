@@ -69,12 +69,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: funkman : api change in Session.java for .x.x release
 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47774
-  Ensure web application class loader is used when calling session listeners
-  http://svn.apache.org/viewvc?rev=898555&view=rev
-  +1: markt, kkolinko, yoavs
-  -1: 
-
 * Fix second part of https://issues.apache.org/bugzilla/show_bug.cgi?id=47413#c8
   Coerce result of composite EL expression (${a}${b}) from String to the expected type.
   The example demonstrating it was added in r892968.
