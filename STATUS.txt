@@ -181,6 +181,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Allow compliance with SRV.15.2.22.1 to be controlled separately
   from STRICT_SERVLET_COMPLIANCE, and turn it on by default.
   If anyone has a better proposal for the property name, you are welcome.
+  Tomcat 5.5 implementation of o.a.c.connector.Response applies this
+  unconditionally, so this patch will also provide better compliance with
+  TC 5.5.
   http://svn.apache.org/viewvc?rev=899124&view=rev
   +1: kkolinko
   -1:
