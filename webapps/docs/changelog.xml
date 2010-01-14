@@ -94,6 +94,10 @@
   <subsection name="Jasper">
   <changelog>
     <fix>
+      <bug>47977</bug>: Using a body with a tag that has an empty body should
+      cause an error. (markt)
+    </fix>
+    <fix>
       <bug>48112</bug>: Correct handling of } character in literals when parsing
       expressions. This also improves the fix for <bug>47413</bug>. (markt)
     </fix>
