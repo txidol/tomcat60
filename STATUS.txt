@@ -120,5 +120,10 @@ Index: res/welcome.main.html
  </ul>
  </p>
 +++ 
- +1: jfclere
+ +1: jfclere, markt
  -1:
+
+* Add missing file extension to line-ending conversions for src distros
+  http://svn.apache.org/viewvc?rev=899284&view=rev
+  +1: markt
+  -1: 
