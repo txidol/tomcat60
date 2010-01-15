@@ -137,5 +137,5 @@ Index: res/welcome.main.html
 
 * Fix TCK failures with security manager due to fix for 47774
   http://svn.apache.org/viewvc?rev=899420&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1: 
