@@ -128,12 +128,9 @@ Index: res/welcome.main.html
   +1: markt,jfclere
   -1: 
 
-* -windows-???.zip distributions should have windows line endings
-  .zip should have unix line endings
-  http://svn.apache.org/viewvc?rev=899348&view=rev (-windows-???.zip)
-  http://svn.apache.org/viewvc?rev=899395&view=rev (.zip)
-  +1: markt (with or without r899395)
-  +1: jfclere
+* distributions should have windows line endings
+  http://svn.apache.org/viewvc?rev=899348&view=rev
+  +1: markt, jfclere
   -1: 
 
 * Fix TCK failures with security manager due to fix for 47774
