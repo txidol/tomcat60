@@ -144,3 +144,9 @@ Index: res/welcome.main.html
   http://svn.apache.org/viewvc?rev=899420&view=rev
   +1: markt, jfclere, kkolinko
   -1: 
+
+* Remove @Deprecated annotations from javax.servlet.jsp.JspContext
+  Part of http://svn.apache.org/viewvc?rev=899635&view=rev
+  http://svn.apache.org/viewvc/tomcat/trunk/java/javax/servlet/jsp/JspContext.java?view=diff&r1=899634&r2=899635&pathrev=899635
+  +1: kkolinko
+  -1:
