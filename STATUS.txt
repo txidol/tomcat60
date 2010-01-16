@@ -120,18 +120,25 @@ Index: res/welcome.main.html
  </ul>
  </p>
 +++ 
- +1: jfclere, markt
+ +1: jfclere, markt, kkolinko
  -1:
 
 * Add missing file extension to line-ending conversions for src distros
   http://svn.apache.org/viewvc?rev=899284&view=rev
-  +1: markt,jfclere
+  +1: markt,jfclere,kkolinko
   -1: 
 
 * distributions should have windows line endings
   http://svn.apache.org/viewvc?rev=899348&view=rev
-  +1: markt, jfclere
+  +1: markt, jfclere, kkolinko
   -1: 
+   kkolinko:
+     1. "installer" target has to be fixed as well to use windows EOLs. 
+       e.g. conf/ files installed by apache-tomcat-6.0.23.exe all have LF EOLs.
+       Maybe create a patternset, e.g. "dist.files".
+     2. "package-deployer-zip" target would better have EOLs conversion,
+       like "package-deployer-tgz" has.
+     Neither of those is a show-stopper.
 
 * Fix TCK failures with security manager due to fix for 47774
   http://svn.apache.org/viewvc?rev=899420&view=rev
