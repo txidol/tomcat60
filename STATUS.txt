@@ -105,24 +105,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Remove a broken link in README.html (res/welcome.main.html is copied there)
-  Note we have the wiki http://wiki.apache.org/tomcat/TomcatVersions.
-+++
-Index: res/welcome.main.html
-===================================================================
---- res/welcome.main.html	(revision 899166)
-+++ res/welcome.main.html	(working copy)
-@@ -27,7 +27,6 @@
- <li><a href="RELEASE-NOTES">Release notes</a>, with important information 
- about known issues</li>
- <li><a href="http://tomcat.apache.org/tomcat-@VERSION_MAJOR_MINOR@-doc/changelog.html">Changelog</a></li>
--<li><a href="http://tomcat.apache.org/tomcat-@VERSION_MAJOR_MINOR@-doc/status.html">Status</a></li>
- </ul>
- </p>
-+++ 
- +1: jfclere, markt, kkolinko
- -1:
-
 * Add missing file extension to line-ending conversions for src distros
   http://svn.apache.org/viewvc?rev=899284&view=rev
   +1: markt,jfclere,kkolinko

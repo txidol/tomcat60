@@ -75,6 +75,9 @@
         Fix implementation of log buffer size and provide a cleaner interface.
         (fhanik/kkolinko)
       </fix>
+      <fix>
+        Remove broken link in README.html. (jfclere)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
