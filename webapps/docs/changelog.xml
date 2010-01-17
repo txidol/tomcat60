@@ -39,6 +39,10 @@
       <fix>
         Remove broken link in README.html. (jfclere)
       </fix>
+      <fix>
+        Add <code>.notice</code> files to the set of files that have their line
+        endings changed. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>

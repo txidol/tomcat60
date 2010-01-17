@@ -105,11 +105,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Add missing file extension to line-ending conversions for src distros
-  http://svn.apache.org/viewvc?rev=899284&view=rev
-  +1: markt,jfclere,kkolinko
-  -1: 
-
 * distributions should have windows line endings
   http://svn.apache.org/viewvc?rev=899348&view=rev
   +1: markt, jfclere, kkolinko
