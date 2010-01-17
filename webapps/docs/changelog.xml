@@ -43,6 +43,10 @@
         Add <code>.notice</code> files to the set of files that have their line
         endings changed. (markt)
       </fix>
+      <fix>
+        <code>.zip</code> distributions should have windows line endings.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
