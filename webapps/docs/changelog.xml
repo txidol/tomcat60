@@ -34,6 +34,14 @@
 
 <body>
 <section name="Tomcat 6.0.24 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        Correct TCK failures with security manager caused by the original fix
+        for <bug>47774</bug>. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="other">
     <changelog>
       <fix>

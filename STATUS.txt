@@ -105,11 +105,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1: markt only because it changes the default in 6.0.x
 
-* Fix TCK failures with security manager due to fix for 47774
-  http://svn.apache.org/viewvc?rev=899420&view=rev
-  +1: markt, jfclere, kkolinko
-  -1: 
-
 * Remove @Deprecated annotations from javax.servlet.jsp.JspContext
   Part of http://svn.apache.org/viewvc?rev=899635&view=rev
   http://svn.apache.org/viewvc/tomcat/trunk/java/javax/servlet/jsp/JspContext.java?view=diff&r1=899634&r2=899635&pathrev=899635
