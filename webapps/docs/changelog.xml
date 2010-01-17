@@ -33,6 +33,15 @@
   </properties>
 
 <body>
+<section name="Tomcat 6.0.24 (jfclere)">
+  <subsection name="other">
+    <changelog>
+      <fix>
+        Remove broken link in README.html. (jfclere)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.23 (jfclere)">
   <subsection name="Catalina">
     <changelog>
@@ -74,9 +83,6 @@
       <fix>
         Fix implementation of log buffer size and provide a cleaner interface.
         (fhanik/kkolinko)
-      </fix>
-      <fix>
-        Remove broken link in README.html. (jfclere)
       </fix>
     </changelog>
   </subsection>
