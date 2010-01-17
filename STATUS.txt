@@ -103,7 +103,7 @@ PATCHES PROPOSED TO BACKPORT:
   TC 5.5.
   http://svn.apache.org/viewvc?rev=899124&view=rev
   +1: kkolinko
-  -1:
+  -1: markt only because it changes the default in 6.0.x
 
 * Fix TCK failures with security manager due to fix for 47774
   http://svn.apache.org/viewvc?rev=899420&view=rev
