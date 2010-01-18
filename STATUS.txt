@@ -92,7 +92,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Force disconnect upon transmission failure
   http://svn.apache.org/viewvc?rev=898906&view=rev
-  +1: fhanik
+  +1: fhanik, jim
   -1: 
 
 * Remove @Deprecated annotations from javax.servlet.jsp.JspContext
