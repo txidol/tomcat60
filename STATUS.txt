@@ -103,6 +103,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Use CRLF line ends in conf/* files installed by the Windows exe installer
   http://people.apache.org/~kkolinko/patches/2010-01-18_tc6_installer-crlf.patch
-  +1: kkolinko
+  +1: kkolinko, jfclere
   -1:
 
