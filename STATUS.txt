@@ -94,19 +94,15 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=898906&view=rev
   +1: fhanik
   -1: 
-  
-* Allow compliance with SRV.15.2.22.1 to be controlled separately
-  from STRICT_SERVLET_COMPLIANCE, and turn it on by default.
-  If anyone has a better proposal for the property name, you are welcome.
-  Tomcat 5.5 implementation of o.a.c.connector.Response applies this
-  unconditionally, so this patch will also provide better compliance with
-  TC 5.5.
-  http://svn.apache.org/viewvc?rev=899124&view=rev
-  +1: kkolinko
-  -1: markt, jfclere only because it changes the default in 6.0.x
 
 * Remove @Deprecated annotations from javax.servlet.jsp.JspContext
   Part of http://svn.apache.org/viewvc?rev=899635&view=rev
   http://svn.apache.org/viewvc/tomcat/trunk/java/javax/servlet/jsp/JspContext.java?view=diff&r1=899634&r2=899635&pathrev=899635
   +1: kkolinko
   -1:
+
+* Use CRLF line ends in conf/* files installed by the Windows exe installer
+  http://people.apache.org/~kkolinko/patches/2010-01-18_tc6_installer-crlf.patch
+  +1: kkolinko
+  -1:
+
