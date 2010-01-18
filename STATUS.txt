@@ -103,7 +103,7 @@ PATCHES PROPOSED TO BACKPORT:
   TC 5.5.
   http://svn.apache.org/viewvc?rev=899124&view=rev
   +1: kkolinko
-  -1: markt only because it changes the default in 6.0.x
+  -1: markt, jfclere only because it changes the default in 6.0.x
 
 * Remove @Deprecated annotations from javax.servlet.jsp.JspContext
   Part of http://svn.apache.org/viewvc?rev=899635&view=rev
