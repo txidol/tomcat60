@@ -42,7 +42,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="other">
+  <subsection name="Other">
     <changelog>
       <fix>
         Remove broken link in README.html. (jfclere)
