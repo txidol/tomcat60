@@ -29,11 +29,12 @@
     <author email="rjung@apache.org">Rainer Jung</author>
     <author email="pero@apache.org">Peter Rossbach</author>
     <author email="kkolinko@apache.org">Konstantin Kolinko</author>
+    <author email="jfclere@apache.org">Jean-Frederic Clere</author>
     <title>Changelog</title>
   </properties>
 
 <body>
-<section name="Tomcat 6.0.24 (jfclere)">
+<section name="Tomcat 6.0.24 (jfclere)" rtext="released 2010-01-21">
   <subsection name="Catalina">
     <changelog>
       <fix>
@@ -58,7 +59,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.23 (jfclere)">
+<section name="Tomcat 6.0.23 (jfclere)" rtext="not released">
   <subsection name="Catalina">
     <changelog>
       <fix>
