@@ -116,18 +116,21 @@ PATCHES PROPOSED TO BACKPORT:
     configurable properties for JULI and JDK JUL classes somewhere on the
     logging.xml page, or in the JavaDoc of the FileHandler class. - see issue 39661.
     I see that I haven't documented the "encoding" property of JULI
-    FileHandler yet. )
+    FileHandler yet. ) 
   -1:
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48613
   Only attempt APR initialization if the <Listener> has been specified
-  http://svn.apache.org/viewvc?rev=903928&view=rev
+  http://svn.apache.org/viewvc?rev=904224&view=rev
   +1: fhanik
-  -1: kkolinko: See comment #3 in the issue for explanation why it does not
-   work. I reverted r903928 in trunk in r903948.
+  -1: 
 
 * Fix the maven stuff for the maven repo.
   Before it does't find tomcat-juli.jar and the remoteRepository seems broken .
   http://people.apache.org/~jfclere/patches/maven.patch
   +1: jfclere
-  -1
+  -1  fhanik - I'm unsure what you are attempting here
+-        <remoteRepository url="${maven.repo.url}" layout="default">
+-          <authentication username="${maven.scp.username}" privateKey="${maven.scp.privateKey}" passphrase="${maven.scp.passphrase}"/>
+-        </remoteRepository>
+  
