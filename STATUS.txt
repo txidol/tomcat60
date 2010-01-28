@@ -129,8 +129,6 @@ PATCHES PROPOSED TO BACKPORT:
   Before it does't find tomcat-juli.jar and the remoteRepository seems broken .
   http://people.apache.org/~jfclere/patches/maven.patch
   +1: jfclere
-  -1  fhanik - I'm unsure what you are attempting here
--        <remoteRepository url="${maven.repo.url}" layout="default">
--          <authentication username="${maven.scp.username}" privateKey="${maven.scp.privateKey}" passphrase="${maven.scp.passphrase}"/>
--        </remoteRepository>
-  
+  -1: fhanik - easier to pass in the root path (lib/bin) to the macro instead of hacking around it
+               if we remove the SCP auto feature, then there should be something to replace it with
+               (http://ant.apache.org/manual/OptionalTasks/scp.html)  
