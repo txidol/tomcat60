@@ -106,3 +106,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, jfclere
   -1:
 
+* Stream encoder uses an internal buffer and the wrong default was being used in the code
+  http://svn.apache.org/viewvc?rev=903916&view=rev
+  +1: fhanik
+  -1:
+  
+
