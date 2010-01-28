@@ -125,3 +125,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1: kkolinko: See comment #3 in the issue for explanation why it does not
    work. I reverted r903928 in trunk in r903948.
+
+* Fix the maven stuff for the maven repo.
+  Before it does't find tomcat-juli.jar and the remoteRepository seems broken .
+  http://people.apache.org/~jfclere/patches/maven.patch
+  +1: jfclere
+  -1
