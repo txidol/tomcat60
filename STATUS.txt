@@ -111,4 +111,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1:
   
+* Only attempt APR initialization if the <Listener> has been specified
+  http://svn.apache.org/viewvc?rev=903928&view=rev
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=48613
+  +1: fhanik
+  -1:
+  
+  
 
