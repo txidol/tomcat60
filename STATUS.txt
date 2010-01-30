@@ -82,7 +82,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2010-01-03_bug48464-c4_ampersand_tc6.patch
   (a backport of revs. 895191, 895392)
   Tested on Windows XP.
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, markt
   -1:
   rjung: I would slightly prefer to apply after we finally managed to produce a working
          release for 6.0.x, since changes in the Windows bat files are hard to test
@@ -98,18 +98,18 @@ PATCHES PROPOSED TO BACKPORT:
 * Remove @Deprecated annotations from javax.servlet.jsp.JspContext
   Part of http://svn.apache.org/viewvc?rev=899635&view=rev
   http://svn.apache.org/viewvc/tomcat/trunk/java/javax/servlet/jsp/JspContext.java?view=diff&r1=899634&r2=899635&pathrev=899635
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Use CRLF line ends in conf/* files installed by the Windows exe installer
   http://people.apache.org/~kkolinko/patches/2010-01-18_tc6_installer-crlf.patch
-  +1: kkolinko, jfclere
+  +1: kkolinko, jfclere, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48614
   Stream encoder uses an internal buffer and the wrong default was being used in the code
   http://svn.apache.org/viewvc?rev=903916&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   +1: kkolinko: only if documentation on bufferSize property in logging.xml
     is updated as well
     ( Re documentation: maybe it would be easier to make a table of
@@ -122,7 +122,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48613
   Only attempt APR initialization if the <Listener> has been specified
   http://svn.apache.org/viewvc?rev=904224&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix the maven stuff for the maven repo.
