@@ -132,3 +132,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1: fhanik - easier to pass in the root path (lib/bin) to the macro instead of hacking around it
                if we remove the SCP auto feature, then there should be something to replace it with
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
+
+* Add some debug logging where exceptions where previously swallowed
+  http://svn.apache.org/viewvc?rev=904834&view=rev
+  +1: mark
