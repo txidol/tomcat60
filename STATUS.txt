@@ -136,3 +136,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Add some debug logging where exceptions where previously swallowed
   http://svn.apache.org/viewvc?rev=904834&view=rev
   +1: mark
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48629
+  Get nested role search working when {1} is used in roleSearch
+  Patch provided by Gabriel
+  http://svn.apache.org/viewvc?rev=904914&view=rev
+  +1: markt
+  -1: 
