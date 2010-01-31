@@ -158,3 +158,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&rev=899949 (ignore whitespace on comp)
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48627
+  Regression in re-working of EL parsing
+  Keep literals as literals
+  Also handle deferredSyntaxAllowedAsLiteral
+  JUnit test cases and TCK passes with this patch
+  http://svn.apache.org/viewvc?rev=904949&view=rev
+  +1: markt
+  -1: 
