@@ -135,14 +135,20 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add some debug logging where exceptions where previously swallowed
   http://svn.apache.org/viewvc?rev=904834&view=rev
-  +1: mark
+  +1: markt, kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48629
   Get nested role search working when {1} is used in roleSearch
   Patch provided by Gabriel
   http://svn.apache.org/viewvc?rev=904914&view=rev
   +1: markt
-  -1: 
+  -1:
+  -0: kkolinko: I think using groupDN for {1} does not match the
+    documentation, and I am not sure that it will work even for the OP of that issue,
+    though I would like to know more about his configuration to be sure.
+    See my comment #2 for that issue.
+
 
 * Fix various EL TCK failures
   http://svn.apache.org/viewvc?view=rev&rev=899653 (signatures)
@@ -157,6 +163,47 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&rev=899935 (ELException expected)
   http://svn.apache.org/viewvc?view=rev&rev=899949 (ignore whitespace on comp)
   +1: markt
+  +1: kkolinko:
+     899653: OK.  We do not have @Deprecated annotations in those classes,
+                  so the patch is about adding @SuppressWarnings("dep-ann")
+     899769: With 899770 that backports the message string used here. 
+     899770: OK
+         (Maybe better name for that message, because it says about arrays,
+         yet name is rather generic).
+     899783: OK
+     899788: OK
+         (Likewise, o.a.jasper.el.ELResolverImpl#getType(ELContext,Object,Object)
+         should probably throw a PropertyNotFoundException, instead of returning null.
+         I have no proof, though.)
+     899792: OK
+     899916: OK
+
+     899918, 899919: OK, but there is probably an omission in the EL spec:
+         I do not see why we do conversion Enum->Enum via toString() call.
+
+         The EL spec chapter 1.18.6 'Coerce A to an Enum Type T' says
+            "If A is a String call Enum.valueOf(T.getClass(), A) and return the result."
+         It does not say what to do if A is not a String. (There is no
+         explicit "Otherwise, error" statement below).
+
+         In 1.18.7 (aka ELSupport#coerceToType(Object, Class)) we throw
+         an error if A is not a String. Even if T has a PropertyEditor,
+         we do not do  editor.setAsText(obj.toString()),  as the spec does
+         not say to do so, but throw an exception.
+
+         (In 1.18.7 the spec says "Otherwise, apply T's PropertyEditor",
+         but PropertyEditor can be applied only is A is a String. Am I right?)
+
+         Without 899919 patch we will throw a ClassCaseException when object type
+         is a different type of enum, but other values are still converted
+         via toString() call.  The patch makes that behaviour consistent, even
+         if I do not understand why it is allowed.
+
+     899935: OK
+     899949: OK,
+         but why ValueExpressionImpl.equals() is implemented as comparing
+         the hash codes? What will happen with false positives?
+
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48627
