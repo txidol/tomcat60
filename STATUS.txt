@@ -143,3 +143,18 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=904914&view=rev
   +1: markt
   -1: 
+
+* Fix various EL TCK failures
+  http://svn.apache.org/viewvc?view=rev&rev=899653 (signatures)
+  http://svn.apache.org/viewvc?view=rev&rev=899769 (CCE expected)
+  http://svn.apache.org/viewvc?view=rev&rev=899770 (CCE expected)
+  http://svn.apache.org/viewvc?view=rev&rev=899783 (ELException expected)
+  http://svn.apache.org/viewvc?view=rev&rev=899788 (PNFE expected)
+  http://svn.apache.org/viewvc?view=rev&rev=899792 (ELException rather than IAE)
+  http://svn.apache.org/viewvc?view=rev&rev=899916 (ELException rather than IAE)
+  http://svn.apache.org/viewvc?view=rev&rev=899918 (Enum coercion test cases)
+  http://svn.apache.org/viewvc?view=rev&rev=899919 (Enum coercion bug) 
+  http://svn.apache.org/viewvc?view=rev&rev=899935 (ELException expected)
+  http://svn.apache.org/viewvc?view=rev&rev=899949 (ignore whitespace on comp)
+  +1: markt
+  -1: 
