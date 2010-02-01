@@ -227,3 +227,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=905020&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48616
+  This is a regression caused by the fix for
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=42390
+  The requirement for variable declaration also depends on whether or not a
+  fragment helper has been used for the parent tag (if any). Where such a helper
+  has been used, the variables must be redefined.
+  Test cases for both bugs and the JSP TCK pass with this patch applied.
+  http://svn.apache.org/viewvc?rev=905145&view=rev
+  +1: markt
+  -1: 
