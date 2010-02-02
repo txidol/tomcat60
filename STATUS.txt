@@ -226,7 +226,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48645
   Use specified encoding rather than null
   http://svn.apache.org/viewvc?rev=905020&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48616
@@ -244,13 +244,16 @@ PATCHES PROPOSED TO BACKPORT:
   Prevent exception on shutdown
   Port of r896193 and r905343
   http://people.apache.org/~markt/patches/2010-02-01-bug48612.patch
-  +1: markt
+  +1: markt, kkolinko
   -1: 
   
 * Make manifests more useful
   http://svn.apache.org/viewvc?rev=905360&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+    kkolinko: Good, but more fixes will be required:
+    1) el-api.jar, annotations-api.jar containing javax.* classes should not use this manifest,
+    2) jsp-api.jar, servlet-api.jar contain unfiltered "@implementation.revision@" in theirs
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48653
   RemoteIpValve : request.secure and request.scheme are not forced to "false"
