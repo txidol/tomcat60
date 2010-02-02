@@ -267,3 +267,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=905717&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48050
+  NamingContext.createSubcontext method returns Context with wrong name
+  Based on a suggestion by gingyang.xu
+  http://svn.apache.org/viewvc?rev=905722&view=rev
+  +1: markt
+  -1: 
