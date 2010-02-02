@@ -236,7 +236,7 @@ PATCHES PROPOSED TO BACKPORT:
   fragment helper has been used for the parent tag (if any). Where such a helper
   has been used, the variables must be redefined.
   Test cases for both bugs and the JSP TCK pass with this patch applied.
-  http://svn.apache.org/viewvc?rev=905145&view=rev
+  http://people.apache.org/~markt/patches/2010-02-02-bug42390.patch
   +1: markt
   -1: 
 
