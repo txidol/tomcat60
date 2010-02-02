@@ -211,6 +211,7 @@ PATCHES PROPOSED TO BACKPORT:
   Keep literals as literals
   Also handle deferredSyntaxAllowedAsLiteral
   JUnit test cases and TCK passes with this patch
+  OP confirms patch fixes issue
   http://svn.apache.org/viewvc?rev=904949&view=rev
   +1: markt
   -1: 
