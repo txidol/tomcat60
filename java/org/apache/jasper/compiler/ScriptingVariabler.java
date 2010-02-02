@@ -68,7 +68,7 @@ class ScriptingVariabler {
         public void visit(Node.CustomTag n) throws JasperException {
             setScriptingVars(n, VariableInfo.AT_BEGIN);
             setScriptingVars(n, VariableInfo.NESTED);
-            new ScriptingVariableVisitor(err).visitBody(n);
+            visitBody(n);
             setScriptingVars(n, VariableInfo.AT_END);
         }
 
@@ -84,9 +84,9 @@ class ScriptingVariabler {
             Vector vec = new Vector();
 
             Integer ownRange = null;
+            Node.CustomTag parent = n.getCustomTagParent();
             if (scope == VariableInfo.AT_BEGIN
                     || scope == VariableInfo.AT_END) {
-                Node.CustomTag parent = n.getCustomTagParent();
                 if (parent == null)
                     ownRange = MAX_SCOPE;
                 else
@@ -105,8 +105,11 @@ class ScriptingVariabler {
                     String varName = varInfos[i].getVarName();
                     
                     Integer currentRange = (Integer) scriptVars.get(varName);
-                    if (currentRange == null
-                            || ownRange.compareTo(currentRange) > 0) {
+                    // If a fragment helper has been used for the parent tag
+                    // the scripting variables always need to be declared
+                    if (currentRange == null ||
+                            ownRange.compareTo(currentRange) > 0 ||
+                            parent != null && isImplemetedAsFragment(parent)) {
                         scriptVars.put(varName, ownRange);
                         vec.add(varInfos[i]);
                     }
@@ -128,10 +131,13 @@ class ScriptingVariabler {
                     }
 
                     Integer currentRange = (Integer) scriptVars.get(varName);
-                    if (currentRange == null
-                            || ownRange.compareTo(currentRange) > 0) {
+                    // If a fragment helper has been used for the parent tag
+                    // the scripting variables always need to be declared
+                    if (currentRange == null ||
+                            ownRange.compareTo(currentRange) > 0 ||
+                            parent != null && isImplemetedAsFragment(parent)) {
                         scriptVars.put(varName, ownRange);
-                        vec.add(tagVarInfos[i]);
+                        vec.add(varInfos[i]);
                     }
                 }
             }
@@ -139,6 +145,22 @@ class ScriptingVariabler {
             n.setScriptingVars(vec, scope);
         }
     }
+
+    private static boolean isImplemetedAsFragment(Node.CustomTag n) {
+        // Replicates logic from Generator to determine if a fragment
+        // helper will be used
+        if (n.implementsSimpleTag()) {
+            if (Generator.findJspBody(n) == null) {
+                if (!n.hasEmptyBody()) {
+                    return true;
+                }
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
 
     public static void set(Node.Nodes page, ErrorDispatcher err)
             throws JasperException {
