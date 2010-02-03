@@ -280,3 +280,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=905735&view=rev
   +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48179
+  Cleanup uncalled code that was used to read tldCache file
+  https://issues.apache.org/bugzilla/attachment.cgi?id=24919
+  +1: kkolinko
+  -1:
