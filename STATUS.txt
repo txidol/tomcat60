@@ -215,6 +215,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=904949&view=rev
   +1: markt
   -1: 
+    kkolinko: Mostly good, but there is a bug in parseEL(). See updated
+    patch below.
+
+  Combined patch file, from revs.904949, 905226, 906465:
+  https://issues.apache.org/bugzilla/attachment.cgi?id=24925
+  +1: kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48625
   Provide option to stop server if there is an error during init
