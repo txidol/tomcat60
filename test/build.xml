@@ -56,14 +56,14 @@
          optimize="${compile.optimize}"
          encoding="ISO-8859-1">
          <classpath refid="tomcat.test.classpath" />
-         <include name="org/apache/catalina/tomcat/util/**" />
+         <include name="org/apache/tomcat/util/**" />
   </javac>
 
   </target>
 
   <target name="all" depends="compile">
      <java dir="${test.classes}" classname="${test.runner}" fork="yes" failonerror="${test.failonerror}">
-            <arg value="org.apache.catalina.tomcat.util.http.TestCookies"/>
+            <arg value="org.apache.tomcat.util.http.TestCookies"/>
             <classpath refid="tomcat.test.classpath"/>
         </java>
 
