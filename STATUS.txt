@@ -293,3 +293,10 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=24919
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48678
+  Having two server fields in the type hierarchy was causing unexpected
+  behaviour
+  http://svn.apache.org/viewvc?rev=907311&view=rev
+  +1: markt
+  -1: 
