@@ -300,3 +300,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=907311&view=rev
   +1: markt
   -1: 
+
+* Mark the host-manager docs as todo
+  http://svn.apache.org/viewvc?rev=907513&view=rev
+  +1: markt
+  -1: 
