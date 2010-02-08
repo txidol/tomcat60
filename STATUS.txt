@@ -324,3 +324,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=907652&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48109
+  Extend try/finally to ensure InputStream is closed
+  http://svn.apache.org/viewvc?rev=907819&view=rev
+  +1: markt
+  -1: 
