@@ -318,3 +318,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=907544&view=rev
   +1: markt
   -1: 
+
+* More memory leak protection
+  We can do something about threads started via java.util.Timer
+  http://svn.apache.org/viewvc?rev=907652&view=rev
+  +1: markt
+  -1: 
