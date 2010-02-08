@@ -330,3 +330,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=907819&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48170
+  Remove unnecessary syncs that cause issues under load
+  http://svn.apache.org/viewvc?rev=907825&view=rev
+  +1: markt
+  -1: 
