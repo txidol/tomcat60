@@ -149,7 +149,7 @@ import org.apache.juli.logging.LogFactory;
  * </p>
  * <code><pre>
  * &lt;Valve 
- *   className="org.apache.catalina.connector.RemoteIpValve"
+ *   className="org.apache.catalina.valves.RemoteIpValve"
  *   internalProxies="192\.168\.0\.10, 192\.168\.0\.11"
  *   remoteIPHeader="x-forwarded-for"
  *   remoteIPProxiesHeader="x-forwarded-by"
@@ -211,7 +211,7 @@ import org.apache.juli.logging.LogFactory;
  * </p>
  * <code><pre>
  * &lt;Valve 
- *   className="org.apache.catalina.connector.RemoteIpValve"
+ *   className="org.apache.catalina.valves.RemoteIpValve"
  *   internalProxies="192\.168\.0\.10, 192\.168\.0\.11"
  *   remoteIPHeader="x-forwarded-for"
  *   remoteIPProxiesHeader="x-forwarded-by"
@@ -253,7 +253,7 @@ import org.apache.juli.logging.LogFactory;
  * </p>
  * <code><pre>
  * &lt;Valve 
- *   className="org.apache.catalina.connector.RemoteIpValve"
+ *   className="org.apache.catalina.valves.RemoteIpValve"
  *   internalProxies="192\.168\.0\.10, 192\.168\.0\.11"
  *   remoteIPHeader="x-forwarded-for"
  *   remoteIPProxiesHeader="x-forwarded-by"
@@ -296,7 +296,7 @@ import org.apache.juli.logging.LogFactory;
  * </p>
  * <code><pre>
  * &lt;Valve 
- *   className="org.apache.catalina.connector.RemoteIpValve"
+ *   className="org.apache.catalina.valves.RemoteIpValve"
  *   internalProxies="192\.168\.0\.10, 192\.168\.0\.11"
  *   remoteIPHeader="x-forwarded-for"
  *   remoteIPProxiesHeader="x-forwarded-by"
@@ -342,7 +342,7 @@ public class RemoteIpValve extends ValveBase {
     /**
      * The descriptive information related to this implementation.
      */
-    private static final String info = "org.apache.catalina.connector.RemoteIpValve/1.0";
+    private static final String info = "org.apache.catalina.valves.RemoteIpValve/1.0";
     
     /**
      * Logger
