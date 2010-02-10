@@ -106,19 +106,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, jfclere, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48614
-  Stream encoder uses an internal buffer and the wrong default was being used in the code
-  http://svn.apache.org/viewvc?rev=903916&view=rev
-  +1: fhanik, markt
-  +1: kkolinko: only if documentation on bufferSize property in logging.xml
-    is updated as well
-    ( Re documentation: maybe it would be easier to make a table of
-    configurable properties for JULI and JDK JUL classes somewhere on the
-    logging.xml page, or in the JavaDoc of the FileHandler class. - see issue 39661.
-    I see that I haven't documented the "encoding" property of JULI
-    FileHandler yet. ) 
-  -1:
-  
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48613
   Only attempt APR initialization if the <Listener> has been specified
   http://svn.apache.org/viewvc?rev=904224&view=rev

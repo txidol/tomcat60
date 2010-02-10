@@ -34,6 +34,16 @@
   </properties>
 
 <body>
+<section name="Tomcat 6.0.25 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        <bug>48614</bug>: Correct JULI log file buffering so default behaviour
+        is no buffering. (fhanik)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.24 (jfclere)" rtext="released 2010-01-21">
   <subsection name="Catalina">
     <changelog>
