@@ -326,6 +326,8 @@
     <copy file="${tomcat-native.home}/tcnative-1.dll.i64"
         tofile="${tomcat.dist}/bin/i64/tcnative-1.dll" />
 
+    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="crlf" encoding="ISO-8859-1" fixlast="false" />
+    <fixcrlf srcdir="${tomcat.dist}/conf" eol="crlf" encoding="ISO-8859-1" fixlast="false" />
     <!-- Make sure the RELEASE-NOTES has Windows line endings as they may be
          displayed post-install -->
     <fixcrlf srcdir="${tomcat.dist}/webapps/ROOT"
