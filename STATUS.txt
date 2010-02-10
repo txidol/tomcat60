@@ -341,3 +341,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=907825&view=rev
   +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48694
+  Avoid potential deadlock in WebappClassLoader
+  OP confirms patch fixes the deadlock
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=48694#c1
+  +1: markt
+  -1: 
