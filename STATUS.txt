@@ -212,15 +212,9 @@ PATCHES PROPOSED TO BACKPORT:
   Also handle deferredSyntaxAllowedAsLiteral
   JUnit test cases and TCK passes with this patch
   OP confirms patch fixes issue
-  http://svn.apache.org/viewvc?rev=904949&view=rev
-  +1: markt
-  -1: 
-    kkolinko: Mostly good, but there is a bug in parseEL(). See updated
-    patch below.
-
   Combined patch file, from revs.904949, 905226, 906465:
   https://issues.apache.org/bugzilla/attachment.cgi?id=24925
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48625
@@ -291,7 +285,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48179
   Cleanup uncalled code that was used to read tldCache file
   https://issues.apache.org/bugzilla/attachment.cgi?id=24919
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48678
@@ -315,7 +309,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=907864&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48660
