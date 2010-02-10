@@ -43,6 +43,12 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <fix>Force a disconnect if an error occurs during replication such as
+      a firewall dropping the connection. (fhanik)</fix>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <fix>Ensure files in conf directory have CRLF line endings when using the
