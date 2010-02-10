@@ -304,3 +304,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=908754&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48726
+  Prevent OOME when uploading large WAR files with the deployer
+  Patch provided by 'adam'
+  http://svn.apache.org/viewvc?rev=908759&view=rev
+  +1: markt
+  -1: 
