@@ -68,28 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: no for TC 6.0
   -1: funkman : api change in Session.java for .x.x release
 
-* Allow special characters recognized by the Windows command-line shell to
-  be present in the names of CATALINA_HOME/_BASE and the current directory
-  used to call the Tomcat scripts.
-  Fixes the problem reported for the '&' character:
-    https://issues.apache.org/bugzilla/show_bug.cgi?id=48464#c4
-  "help cmd" lists the following characters as special:
-   <space> and &()[]{}^=;!'+,`~
-  Note that:
-   - cd, set, echo commands have to use quotes when a name contains '&'
-   - names containing the space character are already working without this patch
-  Patch:
-  http://people.apache.org/~kkolinko/patches/2010-01-03_bug48464-c4_ampersand_tc6.patch
-  (a backport of revs. 895191, 895392)
-  Tested on Windows XP.
-  +1: kkolinko, rjung, markt
-  -1:
-  rjung: I would slightly prefer to apply after we finally managed to produce a working
-         release for 6.0.x, since changes in the Windows bat files are hard to test
-         for all possible cases, paths etc.
-         The 'set "a=%b%"' trick is nice, because if you only use the quotation
-         marks around the rhs, Windows actually adds them to the value of 'a'.
-
 * Remove @Deprecated annotations from javax.servlet.jsp.JspContext
   Part of http://svn.apache.org/viewvc?rev=899635&view=rev
   http://svn.apache.org/viewvc/tomcat/trunk/java/javax/servlet/jsp/JspContext.java?view=diff&r1=899634&r2=899635&pathrev=899635

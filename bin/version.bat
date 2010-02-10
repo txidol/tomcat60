@@ -22,13 +22,13 @@ rem $Id$
 rem ---------------------------------------------------------------------------
 
 rem Guess CATALINA_HOME if not defined
-set CURRENT_DIR=%cd%
+set "CURRENT_DIR=%cd%"
 if not "%CATALINA_HOME%" == "" goto gotHome
-set CATALINA_HOME=%CURRENT_DIR%
+set "CATALINA_HOME=%CURRENT_DIR%"
 if exist "%CATALINA_HOME%\bin\catalina.bat" goto okHome
 cd ..
-set CATALINA_HOME=%cd%
-cd %CURRENT_DIR%
+set "CATALINA_HOME=%cd%"
+cd "%CURRENT_DIR%"
 :gotHome
 if exist "%CATALINA_HOME%\bin\catalina.bat" goto okHome
 echo The CATALINA_HOME environment variable is not defined correctly
@@ -36,11 +36,11 @@ echo This environment variable is needed to run this program
 goto end
 :okHome
 
-set EXECUTABLE=%CATALINA_HOME%\bin\catalina.bat
+set "EXECUTABLE=%CATALINA_HOME%\bin\catalina.bat"
 
 rem Check that target executable exists
 if exist "%EXECUTABLE%" goto okExec
-echo Cannot find %EXECUTABLE%
+echo Cannot find "%EXECUTABLE%"
 echo This file is needed to run this program
 goto end
 :okExec

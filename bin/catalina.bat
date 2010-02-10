@@ -79,13 +79,13 @@ rem $Id$
 rem ---------------------------------------------------------------------------
 
 rem Guess CATALINA_HOME if not defined
-set CURRENT_DIR=%cd%
+set "CURRENT_DIR=%cd%"
 if not "%CATALINA_HOME%" == "" goto gotHome
-set CATALINA_HOME=%CURRENT_DIR%
+set "CATALINA_HOME=%CURRENT_DIR%"
 if exist "%CATALINA_HOME%\bin\catalina.bat" goto okHome
 cd ..
-set CATALINA_HOME=%cd%
-cd %CURRENT_DIR%
+set "CATALINA_HOME=%cd%"
+cd "%CURRENT_DIR%"
 :gotHome
 if exist "%CATALINA_HOME%\bin\catalina.bat" goto okHome
 echo The CATALINA_HOME environment variable is not defined correctly
@@ -107,20 +107,20 @@ if exist "%CATALINA_HOME%\bin\setenv.bat" call "%CATALINA_HOME%\bin\setenv.bat"
 
 rem Get standard Java environment variables
 if exist "%CATALINA_HOME%\bin\setclasspath.bat" goto okSetclasspath
-echo Cannot find %CATALINA_HOME%\bin\setclasspath.bat
+echo Cannot find "%CATALINA_HOME%\bin\setclasspath.bat"
 echo This file is needed to run this program
 goto end
 :okSetclasspath
-set BASEDIR=%CATALINA_HOME%
+set "BASEDIR=%CATALINA_HOME%"
 call "%CATALINA_HOME%\bin\setclasspath.bat" %1
 if errorlevel 1 goto end
 
 if not "%CATALINA_BASE%" == "" goto gotBase
-set CATALINA_BASE=%CATALINA_HOME%
+set "CATALINA_BASE=%CATALINA_HOME%"
 :gotBase
 
 if not "%CATALINA_TMPDIR%" == "" goto gotTmpdir
-set CATALINA_TMPDIR=%CATALINA_BASE%\temp
+set "CATALINA_TMPDIR=%CATALINA_BASE%\temp"
 :gotTmpdir
 
 rem Add tomcat-juli.jar and bootstrap.jar to classpath
@@ -128,14 +128,14 @@ rem tomcat-juli.jar can be over-ridden per instance
 rem Note that there are no quotes as we do not want to introduce random
 rem quotes into the CLASSPATH
 if "%CLASSPATH%" == "" goto emptyClasspath
-set CLASSPATH=%CLASSPATH%;
+set "CLASSPATH=%CLASSPATH%;"
 :emptyClasspath
 if "%CATALINA_BASE%" == "%CATALINA_HOME%" goto juliClasspathHome
 if not exist "%CATALINA_BASE%\bin\tomcat-juli.jar" goto juliClasspathHome
-set CLASSPATH=%CLASSPATH%%CATALINA_BASE%\bin\tomcat-juli.jar;%CATALINA_HOME%\bin\bootstrap.jar
+set "CLASSPATH=%CLASSPATH%%CATALINA_BASE%\bin\tomcat-juli.jar;%CATALINA_HOME%\bin\bootstrap.jar"
 goto juliClasspathDone
 :juliClasspathHome
-set CLASSPATH=%CLASSPATH%%CATALINA_HOME%\bin\bootstrap.jar
+set "CLASSPATH=%CLASSPATH%%CATALINA_HOME%\bin\bootstrap.jar"
 :juliClasspathDone
 
 if not "%LOGGING_CONFIG%" == "" goto noJuliConfig
@@ -152,16 +152,16 @@ set JAVA_OPTS=%JAVA_OPTS% %LOGGING_MANAGER%
 
 rem ----- Execute The Requested Command ---------------------------------------
 
-echo Using CATALINA_BASE:   %CATALINA_BASE%
-echo Using CATALINA_HOME:   %CATALINA_HOME%
-echo Using CATALINA_TMPDIR: %CATALINA_TMPDIR%
+echo Using CATALINA_BASE:   "%CATALINA_BASE%"
+echo Using CATALINA_HOME:   "%CATALINA_HOME%"
+echo Using CATALINA_TMPDIR: "%CATALINA_TMPDIR%"
 if ""%1"" == ""debug"" goto use_jdk
-echo Using JRE_HOME:        %JRE_HOME%
+echo Using JRE_HOME:        "%JRE_HOME%"
 goto java_dir_displayed
 :use_jdk
-echo Using JAVA_HOME:       %JAVA_HOME%
+echo Using JAVA_HOME:       "%JAVA_HOME%"
 :java_dir_displayed
-echo Using CLASSPATH:       %CLASSPATH%
+echo Using CLASSPATH:       "%CLASSPATH%"
 
 set _EXECJAVA=%_RUNJAVA%
 set MAINCLASS=org.apache.catalina.startup.Bootstrap
@@ -213,7 +213,7 @@ set DEBUG_OPTS=-sourcepath "%CATALINA_HOME%\..\..\java"
 if not ""%1"" == ""-security"" goto execCmd
 shift
 echo Using Security Manager
-set SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy
+set "SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy"
 goto execCmd
 
 :doRun
@@ -221,7 +221,7 @@ shift
 if not ""%1"" == ""-security"" goto execCmd
 shift
 echo Using Security Manager
-set SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy
+set "SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy"
 goto execCmd
 
 :doStart
@@ -236,7 +236,7 @@ set _EXECJAVA=start %_RUNJAVA%
 if not ""%1"" == ""-security"" goto execCmd
 shift
 echo Using Security Manager
-set SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy
+set "SECURITY_POLICY_FILE=%CATALINA_BASE%\conf\catalina.policy"
 goto execCmd
 
 :doStop
