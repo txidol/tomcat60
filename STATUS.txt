@@ -309,5 +309,5 @@ PATCHES PROPOSED TO BACKPORT:
   Prevent OOME when uploading large WAR files with the deployer
   Patch provided by 'adam'
   http://svn.apache.org/viewvc?rev=908759&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
