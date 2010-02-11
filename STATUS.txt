@@ -311,3 +311,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=908759&view=rev
   +1: markt, kkolinko
   -1: 
+
+* More memory leak prevention - clear the resource bundle cache
+  http://svn.apache.org/viewvc?rev=909017&view=rev
+  +1: markt
+  -1: 
