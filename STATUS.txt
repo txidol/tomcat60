@@ -316,3 +316,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=909097&view=rev
   +1: markt
   -1: 
+
+* Improvements for WebappClassLoader#clearThreadLocalMap:
+  http://svn.apache.org/viewvc?rev=908002&view=rev
+  http://svn.apache.org/viewvc?rev=909206&view=rev
+  http://svn.apache.org/viewvc?rev=909212&view=rev
+  +1: kkolinko
+  -1:
