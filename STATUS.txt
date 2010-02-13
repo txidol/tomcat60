@@ -139,23 +139,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=rev&rev=899918 (Enum coercion test cases)
   http://svn.apache.org/viewvc?view=rev&rev=899919 (Enum coercion bug)
   http://svn.apache.org/viewvc?rev=909875&view=rev (kkolinko's review - toString())
-   +1: markt
-   -1: kkolinko:
-     As far as I am reading, there is no provision in the EL
-     spec, that enum -> enum conversion can be performed by using its
-     string value.
-
-     The current TC 6.0 behaviour here will be a ClassCastException, trying
-     to assign the value, and that should be an ELException instead.
-
-     In EL 2.1 and 2.2 specifications chapter 1.18.6 'Coerce A to an Enum Type T' says:
-       "If A is a String call Enum.valueOf(T.getClass(), A) and return the result."
-     Thus, our
-      result = Enum.valueOf(type, obj.toString());
-     should only be applicable if obj is a String.
-
-     In ELSupport#coerceToType(Object, Class), that implements 1.18.7, we
-     already throw an ELException if A is not a String.
+   +1: markt, kkolinko
+   -1:
 
   http://svn.apache.org/viewvc?view=rev&rev=899935 (ELException expected)
   +1: markt, kkolinko
@@ -201,6 +186,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-02-02-bug42390.patch
   +1: markt
   -1: 
+
+  Additional patches (trivial):
+  http://svn.apache.org/viewvc?rev=905643&view=rev (misprint)
+  http://svn.apache.org/viewvc?rev=909865&view=rev (javadoc)
+  +1: kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48612
   Prevent exception on shutdown
