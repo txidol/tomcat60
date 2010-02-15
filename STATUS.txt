@@ -368,3 +368,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=909887&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
+  Truststores don't have to have passwords
+  Based on a patch by 'smmwpf54'
+  http://svn.apache.org/viewvc?view=revision&revision=910266
+  +1: markt
+  -1: 
