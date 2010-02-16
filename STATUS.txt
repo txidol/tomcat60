@@ -375,3 +375,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=910266
   +1: markt
   -1: 
+
+* Workaround https://issues.apache.org/bugzilla/show_bug.cgi?id=48498
+  Avoid ArrayIndexOutOfBoundsException triggered by Java 6/7 XML parser bug
+  +1: markt
+  -1: 
