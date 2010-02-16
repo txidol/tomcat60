@@ -195,25 +195,19 @@ PATCHES PROPOSED TO BACKPORT:
        2) It should navigate up the parents chain. The SimpleTag can be one
          of our parents, not necessary the immediate one.
 
-    2. I think that BZ 48616 cannot/should not be fixed - see Comment 15 to
-      the issue.
-
-    3. Should we fix BZ 42390 in TC 5.5, and bring on BZ 48616 there, if it
-    was historically working? I have doubts.
-
-    Reviewing this as a whole, I have questions regarding the following field:
-      ScriptingVariabler#ScriptingVariableVisitor#scriptVars
-    It is used to introduce behaviour like requested in BZ 48616, but ...
-    The BZ 42390 fix (r804734) effectively eliminates it. It looks like
-    it'd be better to remove it and care about redeclarations somewhere
-    else.
-    - to discuss on dev@
 
   Additional patches (trivial):
   http://svn.apache.org/viewvc?rev=905643&view=rev (misprint)
   http://svn.apache.org/viewvc?rev=909865&view=rev (javadoc)
   +1: kkolinko, markt
   -1:
+
+  Alternative proposal:
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=48616#c21
+  (https://issues.apache.org/bugzilla/attachment.cgi?id=24992)
+  +1: kkolinko
+  -1:
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48612
   Prevent exception on shutdown
