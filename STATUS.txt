@@ -381,3 +381,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=910442&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48582
+  Avoid NPE on background compile
+  http://svn.apache.org/viewvc?rev=910471&view=rev
+  +1: markt
+  -1: 
