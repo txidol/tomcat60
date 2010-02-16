@@ -387,3 +387,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=910471&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48589
+  Make JNDIRealm easier to extend
+  Based on a patch by Candid Dauth
+  http://svn.apache.org/viewvc?rev=910485&view=rev
+  +1: markt
+  -1: 
