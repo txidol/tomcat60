@@ -374,3 +374,10 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid ArrayIndexOutOfBoundsException triggered by Java 6/7 XML parser bug
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48580
+  Prevent AccessControlException if first access is to a JSP that uses a
+  FunctionMapper
+  http://svn.apache.org/viewvc?rev=910442&view=rev
+  +1: markt
+  -1: 
