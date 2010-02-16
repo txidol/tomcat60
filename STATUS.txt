@@ -93,18 +93,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48629
-  Get nested role search working when {1} is used in roleSearch
-  Patch provided by Gabriel
-  http://svn.apache.org/viewvc?rev=904914&view=rev
-  +1: markt
-  -1:
-  -0: kkolinko: I think using groupDN for {1} does not match the
-    documentation, and I am not sure that it will work even for the OP of that issue,
-    though I would like to know more about his configuration to be sure.
-    See my comment #2 for that issue.
-
-
 * Fix various EL TCK failures
   http://svn.apache.org/viewvc?view=rev&rev=899653 (signatures)
    +1: markt, kkolinko
