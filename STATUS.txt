@@ -212,7 +212,7 @@ PATCHES PROPOSED TO BACKPORT:
   Additional patches (trivial):
   http://svn.apache.org/viewvc?rev=905643&view=rev (misprint)
   http://svn.apache.org/viewvc?rev=909865&view=rev (javadoc)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48612
@@ -341,7 +341,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=908002&view=rev
   http://svn.apache.org/viewvc?rev=909206&view=rev
   http://svn.apache.org/viewvc?rev=909212&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Memory leak detection for JMX and manager
