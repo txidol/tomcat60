@@ -151,6 +151,9 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
      kkolinko: Why ValueExpressionImpl.equals() is implemented as comparing
      the hash codes? What will happen with false positives?
+     markt: Not sure why hashCode() was used. It was part of the original
+            implementation. I'm not concerned. False positives should be very,
+            very rare.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48627
   Regression in re-working of EL parsing
