@@ -68,12 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: no for TC 6.0
   -1: funkman : api change in Session.java for .x.x release
 
-* Remove @Deprecated annotations from javax.servlet.jsp.JspContext
-  Part of http://svn.apache.org/viewvc?rev=899635&view=rev
-  http://svn.apache.org/viewvc/tomcat/trunk/java/javax/servlet/jsp/JspContext.java?view=diff&r1=899634&r2=899635&pathrev=899635
-  +1: kkolinko, markt, mturk
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48613
   Only attempt APR initialization if the <Listener> has been specified
   http://svn.apache.org/viewvc?rev=904224&view=rev
