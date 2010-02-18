@@ -58,17 +58,17 @@ class ScriptingVariabler {
     static class ScriptingVariableVisitor extends Node.Visitor {
 
 	private ErrorDispatcher err;
-	private Hashtable scriptVars;
+	private Map<String, Integer> scriptVars;
 	
 	public ScriptingVariableVisitor(ErrorDispatcher err) {
 	    this.err = err;
-	    scriptVars = new Hashtable();
+	    scriptVars = new HashMap<String, Integer>();
 	}
 
 	public void visit(Node.CustomTag n) throws JasperException {
 	    setScriptingVars(n, VariableInfo.AT_BEGIN);
 	    setScriptingVars(n, VariableInfo.NESTED);
-	    new ScriptingVariableVisitor(err).visitBody(n);
+	    visitBody(n);
 	    setScriptingVars(n, VariableInfo.AT_END);
 	}
 
@@ -104,7 +104,7 @@ class ScriptingVariabler {
 		    }
 		    String varName = varInfos[i].getVarName();
 		    
-		    Integer currentRange = (Integer) scriptVars.get(varName);
+		    Integer currentRange = scriptVars.get(varName);
 		    if (currentRange == null
 			    || ownRange.compareTo(currentRange) > 0) {
 			scriptVars.put(varName, ownRange);
@@ -127,7 +127,7 @@ class ScriptingVariabler {
 			}
 		    }
 
-		    Integer currentRange = (Integer) scriptVars.get(varName);
+		    Integer currentRange = scriptVars.get(varName);
 		    if (currentRange == null
 			    || ownRange.compareTo(currentRange) > 0) {
 			scriptVars.put(varName, ownRange);

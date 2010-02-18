@@ -143,18 +143,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48616
-  This is a regression caused by the fix for
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=42390
-  JspFragments are scriptless, so no need to declare or sync scripting
-  variables for fragments. Since errors in syncing the scripting variables for
-  JSP Fragments caused 48616 & 42390, this fixes both these bugs too.
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=48616#c21
-  (https://issues.apache.org/bugzilla/attachment.cgi?id=24992)
-  +1: kkolinko, markt, mturk
-  -1:
-
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48612
   Prevent exception on shutdown
   Port of r896193 and r905343

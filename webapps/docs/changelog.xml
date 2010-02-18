@@ -57,6 +57,12 @@
         Add some debug logging to the compiler where exceptions were previously
         swallowed. (markt)
       </add>
+      <fix>
+        <bug>48616</bug>: Don't declare or syncrhonize scripting variables for
+        JSP fragments since they are scriptless. This is an alternative fix for
+        <bug>42390</bug> that avoids both the original problem and the
+        regression in the first fix. (kkolinko) 
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
