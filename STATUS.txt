@@ -211,12 +211,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48170
-  Remove unnecessary syncs that cause issues under load
-  http://svn.apache.org/viewvc?rev=907825&view=rev
-  +1: markt, kkolinko, mturk
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48694
   Avoid potential deadlock in WebappClassLoader
   OP confirms patch fixes the deadlock
