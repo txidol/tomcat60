@@ -290,8 +290,10 @@ PATCHES PROPOSED TO BACKPORT:
 * More memory leak prevent - ResourceBundle
   http://svn.apache.org/viewvc?rev=909097&view=rev (original)
   http://svn.apache.org/viewvc?rev=909525&view=rev (improvements)
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+    kkolinko: Calling ResourceBundle.clearCache(CL) would work on any Java
+    6+ JVM, not only Sun's
 
 * Improvements for WebappClassLoader#clearThreadLocalMap:
   http://svn.apache.org/viewvc?rev=908002&view=rev
@@ -341,11 +343,11 @@ PATCHES PROPOSED TO BACKPORT:
   Handle case where WebDAV resource is in directory listing but is not
   accessible
   http://svn.apache.org/viewvc?rev=909636&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48371
-  Take acocunt of comments when working out where to insert generated web.xml 
+  Take account of comments when working out where to insert generated web.xml 
   http://people.apache.org/~markt/patches/2010-02-13-bug48371.patch
   +1: markt
   -1: 
@@ -374,7 +376,7 @@ PATCHES PROPOSED TO BACKPORT:
   Prevent AccessControlException if first access is to a JSP that uses a
   FunctionMapper
   http://svn.apache.org/viewvc?rev=910442&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48582
@@ -389,6 +391,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=910485&view=rev
   +1: markt
   -1: 
+   kkolinko: mark User constructor as protected, replace ArrayList argument
+    with a List, and maybe address sebb's comments to r910485 on dev@
 
 * Various manifest improvements
   http://people.apache.org/~markt/patches/2010-02-16-manifest-improvements.patch
