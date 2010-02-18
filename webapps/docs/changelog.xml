@@ -70,6 +70,9 @@
         issues under load. (markt) 
       </fix>
       <fix>
+        <bug>48582</bug>: Avoid NPE on background compilation failure. (markt)
+      </fix>
+      <fix>
         <bug>48616</bug>: Don't declare or syncrhonize scripting variables for
         JSP fragments since they are scriptless. This is an alternative fix for
         <bug>42390</bug> that avoids both the original problem and the
