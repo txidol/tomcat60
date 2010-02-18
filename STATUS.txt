@@ -68,12 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: remm: no for TC 6.0
   -1: funkman : api change in Session.java for .x.x release
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48613
-  Only attempt APR initialization if the <Listener> has been specified
-  http://svn.apache.org/viewvc?rev=904224&view=rev
-  +1: fhanik, markt, kkolinko, mturk
-  -1: 
-
 * Fix the maven stuff for the maven repo.
   Before it does't find tomcat-juli.jar and the remoteRepository seems broken .
   http://people.apache.org/~jfclere/patches/maven.patch

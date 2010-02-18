@@ -38,6 +38,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>48613</bug>: Further fixes to ensure APRLifecycleListener is only
+        used if defined in server.xml. (fhanik)
+      </fix>
+      <fix>
         <bug>48614</bug>: Correct JULI log file buffering so default behaviour
         is no buffering. (fhanik)
       </fix>
