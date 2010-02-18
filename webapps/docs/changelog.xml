@@ -47,6 +47,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <add>
+        Add some debug logging to the compiler where exceptions were previously
+        swallowed. (markt)
+      </add>
+    </changelog>
+  </subsection>
   <subsection name="Cluster">
     <changelog>
       <fix>

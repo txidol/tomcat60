@@ -419,6 +419,7 @@ public abstract class Compiler {
             }
             uc.getInputStream().close();
         } catch (Exception e) {
+            log.debug("Problem accessing resource. Treat as outdated.", e);
             return true;
         }
 
@@ -481,6 +482,7 @@ public abstract class Compiler {
                     return true;
                 }
             } catch (Exception e) {
+                log.debug("Problem accessing resource. Treat as outdated.", e);
                 return true;
             }
         }

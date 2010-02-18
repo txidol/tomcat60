@@ -76,11 +76,6 @@ PATCHES PROPOSED TO BACKPORT:
                if we remove the SCP auto feature, then there should be something to replace it with
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
 
-* Add some debug logging where exceptions where previously swallowed
-  http://svn.apache.org/viewvc?rev=904834&view=rev
-  +1: markt, kkolinko, mturk
-  -1:
-
 * Fix various EL TCK failures
   http://svn.apache.org/viewvc?view=rev&rev=899653 (signatures)
    +1: markt, kkolinko
