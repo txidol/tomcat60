@@ -77,7 +77,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48613
   Only attempt APR initialization if the <Listener> has been specified
   http://svn.apache.org/viewvc?rev=904224&view=rev
-  +1: fhanik, markt
+  +1: fhanik, markt, kkolinko
   -1: 
 
 * Fix the maven stuff for the maven repo.
@@ -170,9 +170,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48616
   This is a regression caused by the fix for
   https://issues.apache.org/bugzilla/show_bug.cgi?id=42390
-  JspFragments are scriptless, so do need to declare or sync scripting
+  JspFragments are scriptless, so no need to declare or sync scripting
   variables for fragments. Since errors in syncing the scripting variables for
-  JSP FRagments caused 48616 & 42390, this fixes both these bugs too.
+  JSP Fragments caused 48616 & 42390, this fixes both these bugs too.
   https://issues.apache.org/bugzilla/show_bug.cgi?id=48616#c21
   (https://issues.apache.org/bugzilla/attachment.cgi?id=24992)
   +1: kkolinko, markt
