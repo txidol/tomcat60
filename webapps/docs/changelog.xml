@@ -38,6 +38,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>48039</bug>: Return immediately if start() is called on an already
+        started StandardService. (markt)
+      </fix>
+      <fix>
         <bug>48612</bug>: Prevent exception on shutdown if the address attribute
         is specified for a connector. (markt)
       </fix>

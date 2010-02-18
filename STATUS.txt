@@ -150,12 +150,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, mturk
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48039
-  Return from StandardService.start() immediately if service is already started
-  http://svn.apache.org/viewvc?rev=905728&view=rev
-  +1: markt, kkolinko, mturk
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48050
   NamingContext.createSubcontext method returns Context with wrong name
   Based on a suggestion by gingyang.xu
