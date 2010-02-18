@@ -742,21 +742,30 @@ public class MBeanUtils {
 
         ObjectName name = null;
         try {
-            String address = (String)
+            Object addressObj =
                 IntrospectionUtils.getProperty(connector, "address");
             Integer port = (Integer)
                 IntrospectionUtils.getProperty(connector, "port");
+
             StringBuffer sb = new StringBuffer(domain);
             sb.append(":type=Connector");
-            sb.append(",port=" + port);
-            if ((address != null) && (address.length()>0)) {
-                sb.append(",address=" + address);
+            sb.append(",port=");
+            sb.append(port);
+            if (addressObj != null) {
+                String address = addressObj.toString();
+                if (address.length() > 0) {
+                    sb.append(",address=");
+                    sb.append(ObjectName.quote(address));
+                }
             }
             name = new ObjectName(sb.toString());
             return (name);
         } catch (Exception e) {
-            throw new MalformedObjectNameException
-                ("Cannot create object name for " + connector+e);
+            MalformedObjectNameException mone =
+                new MalformedObjectNameException
+                ("Cannot create object name for " + connector);
+            mone.initCause(e);
+            throw mone;
         }
     }
 

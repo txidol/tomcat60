@@ -38,6 +38,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>48612</bug>: Prevent exception on shutdown if the address attribute
+        is specified for a connector. (markt)
+      </fix>
+      <fix>
         <bug>48613</bug>: Further fixes to ensure APRLifecycleListener is only
         used if defined in server.xml. (fhanik)
       </fix>
