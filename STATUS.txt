@@ -71,13 +71,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Remove @Deprecated annotations from javax.servlet.jsp.JspContext
   Part of http://svn.apache.org/viewvc?rev=899635&view=rev
   http://svn.apache.org/viewvc/tomcat/trunk/java/javax/servlet/jsp/JspContext.java?view=diff&r1=899634&r2=899635&pathrev=899635
-  +1: kkolinko, markt
+  +1: kkolinko, markt, mturk
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48613
   Only attempt APR initialization if the <Listener> has been specified
   http://svn.apache.org/viewvc?rev=904224&view=rev
-  +1: fhanik, markt, kkolinko
+  +1: fhanik, markt, kkolinko, mturk
   -1: 
 
 * Fix the maven stuff for the maven repo.
@@ -90,7 +90,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add some debug logging where exceptions where previously swallowed
   http://svn.apache.org/viewvc?rev=904834&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, mturk
   -1:
 
 * Fix various EL TCK failures
@@ -158,7 +158,7 @@ PATCHES PROPOSED TO BACKPORT:
   Provide option to stop server if there is an error during init
   Port of Filip's patch from trunk
   http://svn.apache.org/viewvc?view=revision&revision=752323
-  +1: markt, kkolinko
+  +1: markt, kkolinko, mturk
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48645
@@ -175,7 +175,7 @@ PATCHES PROPOSED TO BACKPORT:
   JSP Fragments caused 48616 & 42390, this fixes both these bugs too.
   https://issues.apache.org/bugzilla/show_bug.cgi?id=48616#c21
   (https://issues.apache.org/bugzilla/attachment.cgi?id=24992)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, mturk
   -1:
 
 
@@ -183,20 +183,20 @@ PATCHES PROPOSED TO BACKPORT:
   Prevent exception on shutdown
   Port of r896193 and r905343
   http://people.apache.org/~markt/patches/2010-02-01-bug48612.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, mturk
   -1: 
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48653
   RemoteIpValve : request.secure and request.scheme are not forced to "false"
   and "http" if X-Forwarded-Proto=http
   Patch provided by Cyrille Le Clerc
-  +1: markt
+  +1: markt, mturk
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48039
   Return from StandardService.start() immediately if service is already started
   http://svn.apache.org/viewvc?rev=905728&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, mturk
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48050
@@ -263,7 +263,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48170
   Remove unnecessary syncs that cause issues under load
   http://svn.apache.org/viewvc?rev=907825&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, mturk
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48694
@@ -382,7 +382,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48582
   Avoid NPE on background compile
   http://svn.apache.org/viewvc?rev=910471&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, mturk
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48589
