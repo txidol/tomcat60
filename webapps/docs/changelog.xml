@@ -45,6 +45,10 @@
         <bug>48614</bug>: Correct JULI log file buffering so default behaviour
         is no buffering. (fhanik)
       </fix>
+      <fix>
+        <bug>48625</bug>: Provide an option to exit if an error occurs during
+        the initialization phase. (fhanik)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

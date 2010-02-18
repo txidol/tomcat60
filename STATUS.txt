@@ -137,13 +137,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48625
-  Provide option to stop server if there is an error during init
-  Port of Filip's patch from trunk
-  http://svn.apache.org/viewvc?view=revision&revision=752323
-  +1: markt, kkolinko, mturk
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48645
   Use specified encoding rather than null
   http://svn.apache.org/viewvc?rev=905020&view=rev
