@@ -95,6 +95,10 @@
         issues under load. (markt) 
       </fix>
       <fix>
+        <bug>48580</bug>: Prevent AccessControlException if first access is to a
+        JSP that uses a FunctionMapper. (markt)
+      </fix>
+      <fix>
         <bug>48582</bug>: Avoid NPE on background compilation failure. (markt)
       </fix>
       <fix>
