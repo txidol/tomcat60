@@ -78,47 +78,47 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix various EL TCK failures
   http://svn.apache.org/viewvc?view=rev&rev=899653 (signatures)
-   +1: markt, kkolinko
+   +1: markt, kkolinko, fhanik
    -1:
 
   http://svn.apache.org/viewvc?view=rev&rev=899769 (CCE expected)
   http://svn.apache.org/viewvc?view=rev&rev=899770 (CCE expected)
-   +1: markt, kkolinko
+   +1: markt, kkolinko, fhanik
    -1:
      kkolinko: Maybe better name for that message, because it says about
      arrays, yet name is rather generic
 
   http://svn.apache.org/viewvc?view=rev&rev=899783 (ELException expected)
-   +1: markt, kkolinko
+   +1: markt, kkolinko, fhanik
    -1:
 
   http://svn.apache.org/viewvc?view=rev&rev=899788 (PNFE expected)
-   +1: markt, kkolinko
+   +1: markt, kkolinko, fhanik
    -1:
      kkolinko: I think o.a.jasper.el.ELResolverImpl#getType(ELContext,Object,Object)
      should likewise throw a PropertyNotFoundException instead of returning null.
      I have no test, though.
 
   http://svn.apache.org/viewvc?view=rev&rev=899792 (ELException rather than IAE)
-   +1: markt, kkolinko
+   +1: markt, kkolinko, fhanik
    -1:
 
   http://svn.apache.org/viewvc?view=rev&rev=899916 (ELException rather than IAE)
-   +1: markt, kkolinko
+   +1: markt, kkolinko, fhanik
    -1:
 
   http://svn.apache.org/viewvc?view=rev&rev=899918 (Enum coercion test cases)
   http://svn.apache.org/viewvc?view=rev&rev=899919 (Enum coercion bug)
   http://svn.apache.org/viewvc?rev=909875&view=rev (kkolinko's review - toString())
-   +1: markt, kkolinko
+   +1: markt, kkolinko, fhanik
    -1:
 
   http://svn.apache.org/viewvc?view=rev&rev=899935 (ELException expected)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1:
 
   http://svn.apache.org/viewvc?view=rev&rev=899949 (ignore whitespace on comp)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1:
      kkolinko: Why ValueExpressionImpl.equals() is implemented as comparing
      the hash codes? What will happen with false positives?
@@ -141,49 +141,49 @@ PATCHES PROPOSED TO BACKPORT:
   NamingContext.createSubcontext method returns Context with wrong name
   Based on a suggestion by gingyang.xu
   http://svn.apache.org/viewvc?rev=905722&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48678
   Having two server fields in the type hierarchy was causing unexpected
   behaviour
   http://svn.apache.org/viewvc?rev=907311&view=rev
-  +1: markt, jfclere
+  +1: markt, jfclere, fhanik
   -1: 
 
 * Mark the host-manager docs as todo
   http://svn.apache.org/viewvc?rev=907513&view=rev
-  +1: markt, jfclere
+  +1: markt, jfclere, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48668
   Don't look for EL matches (which swallow the EL match string) if EL is not
   enabled
   http://svn.apache.org/viewvc?rev=907538&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1: 
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=907864&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48660
   Vary should add to Vary header rather than over-write it
   http://svn.apache.org/viewvc?rev=907544&view=rev
-  +1: markt, jfclere
+  +1: markt, jfclere, fhanik
   -1: 
 
 * More memory leak protection
   We can do something about threads started via java.util.Timer
   http://svn.apache.org/viewvc?rev=907652&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48109
   Extend try/finally to ensure InputStream is closed
   http://svn.apache.org/viewvc?rev=907819&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48694
@@ -197,13 +197,13 @@ PATCHES PROPOSED TO BACKPORT:
   Provide an undocumented 'shoot yourself in the foot' option to disable the
   JULI logging reset on context stop
   http://svn.apache.org/viewvc?rev=908754&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * More memory leak prevent - ResourceBundle
   http://svn.apache.org/viewvc?rev=909097&view=rev (original)
   http://svn.apache.org/viewvc?rev=909525&view=rev (improvements)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1: 
     kkolinko: Calling ResourceBundle.clearCache(CL) would work on any Java
     6+ JVM, not only Sun's
@@ -212,7 +212,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=908002&view=rev
   http://svn.apache.org/viewvc?rev=909206&view=rev
   http://svn.apache.org/viewvc?rev=909212&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1:
 
 * Memory leak detection for JMX and manager
@@ -229,7 +229,7 @@ PATCHES PROPOSED TO BACKPORT:
   (Added revs.909204,910584,910612
    TC 6 specifics: /findleaks should be explicitly mapped in web.xml,
    where TC 7 uses /text/findleaks, and that URL is mentioned in manager-howto.xml)
-  +1: kkolinko
+  +1: kkolinko, fhanik
   -1:
 
   kkolinko: Some further thoughts on naming/messages/documentation
@@ -255,14 +255,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48371
   Take account of comments when working out where to insert generated web.xml 
   http://people.apache.org/~markt/patches/2010-02-13-bug48371.patch
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48384
   Add a per context xslt option for directory listings
   Make the fallback options work as described in the docs
   http://svn.apache.org/viewvc?rev=909887&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
@@ -290,5 +290,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Various manifest improvements
   http://people.apache.org/~markt/patches/2010-02-16-manifest-improvements.patch
-  +1: markt
+  +1: markt, fhanik
   -1: 
