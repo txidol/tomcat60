@@ -137,13 +137,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48653
-  RemoteIpValve : request.secure and request.scheme are not forced to "false"
-  and "http" if X-Forwarded-Proto=http
-  Patch provided by Cyrille Le Clerc
-  +1: markt, mturk, jfclere (It is RemoteIpValveTest.java in fact).
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48050
   NamingContext.createSubcontext method returns Context with wrong name
   Based on a suggestion by gingyang.xu

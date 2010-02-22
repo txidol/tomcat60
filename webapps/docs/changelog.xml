@@ -61,6 +61,11 @@
         <bug>48645</bug>: Use specified encoding rather than null in calls to
         <code>RequestUtil.URLDecode(byte[] bytes, String enc)</code> (markt)
       </fix>
+      <fix>
+        <bug>48653</bug>: Force request.secure and request.scheme to
+        <code>false</code> and <code>http</code> if the X-Forwarded-Proto header
+        has the value http. Patch provided by Cyrille Le Clerc. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
