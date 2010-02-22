@@ -140,14 +140,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48645
   Use specified encoding rather than null
   http://svn.apache.org/viewvc?rev=905020&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48653
   RemoteIpValve : request.secure and request.scheme are not forced to "false"
   and "http" if X-Forwarded-Proto=http
   Patch provided by Cyrille Le Clerc
-  +1: markt, mturk
+  +1: markt, mturk, jfclere (It is RemoteIpValveTest.java in fact).
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48050
@@ -160,25 +160,25 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48577
   Filter URL when displaying missing included page
   http://svn.apache.org/viewvc?rev=905735&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48179
   Cleanup uncalled code that was used to read tldCache file
   https://issues.apache.org/bugzilla/attachment.cgi?id=24919
-  +1: kkolinko, markt
+  +1: kkolinko, markt, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48678
   Having two server fields in the type hierarchy was causing unexpected
   behaviour
   http://svn.apache.org/viewvc?rev=907311&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1: 
 
 * Mark the host-manager docs as todo
   http://svn.apache.org/viewvc?rev=907513&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48668
@@ -196,7 +196,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48660
   Vary should add to Vary header rather than over-write it
   http://svn.apache.org/viewvc?rev=907544&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1: 
 
 * More memory leak protection
@@ -215,7 +215,7 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid potential deadlock in WebappClassLoader
   OP confirms patch fixes the deadlock
   https://issues.apache.org/bugzilla/show_bug.cgi?id=48694#c1
-  +1: markt
+  +1: markt, jfclere
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48716
@@ -229,7 +229,7 @@ PATCHES PROPOSED TO BACKPORT:
   Prevent OOME when uploading large WAR files with the deployer
   Patch provided by 'adam'
   http://svn.apache.org/viewvc?rev=908759&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1: 
 
 * More memory leak prevent - ResourceBundle
@@ -288,7 +288,7 @@ PATCHES PROPOSED TO BACKPORT:
   Handle case where WebDAV resource is in directory listing but is not
   accessible
   http://svn.apache.org/viewvc?rev=909636&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48371
@@ -309,7 +309,8 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by 'smmwpf54'
   http://svn.apache.org/viewvc?view=revision&revision=910266
   +1: markt
-  -1: 
+  -1: jfclere: Doc says it should use keystorePass (http://tomcat.apache.org/tomcat-6.0-doc/config/http.html).
+               so that would break existing configurations.
 
 * Workaround https://issues.apache.org/bugzilla/show_bug.cgi?id=48498
   Avoid ArrayIndexOutOfBoundsException triggered by Java 6/7 XML parser bug
@@ -321,7 +322,7 @@ PATCHES PROPOSED TO BACKPORT:
   Prevent AccessControlException if first access is to a JSP that uses a
   FunctionMapper
   http://svn.apache.org/viewvc?rev=910442&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48589
