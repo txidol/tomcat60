@@ -144,12 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48179
-  Cleanup uncalled code that was used to read tldCache file
-  https://issues.apache.org/bugzilla/attachment.cgi?id=24919
-  +1: kkolinko, markt, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48678
   Having two server fields in the type hierarchy was causing unexpected
   behaviour

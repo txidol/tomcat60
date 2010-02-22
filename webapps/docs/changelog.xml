@@ -42,6 +42,10 @@
         started StandardService. (markt)
       </fix>
       <fix>
+        <bug>48179</bug>: Clean up dead code that was used to read tldCache
+        file. (kkolinko)
+      </fix>
+      <fix>
         <bug>48577</bug>: Filter URL when displaying missing included page.
         (markt)
       </fix>

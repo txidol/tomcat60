@@ -20,12 +20,8 @@ package org.apache.catalina.startup;
 
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -47,7 +43,6 @@ import javax.naming.directory.DirContext;
 import javax.servlet.ServletException;
 
 import org.apache.catalina.Context;
-import org.apache.catalina.Globals;
 import org.apache.catalina.Lifecycle;
 import org.apache.catalina.LifecycleEvent;
 import org.apache.catalina.LifecycleListener;
@@ -255,39 +250,12 @@ public final class TldConfig  implements LifecycleListener {
     public void execute() throws Exception {
         long t1=System.currentTimeMillis();
 
-        File tldCache=null;
-
-        if (context instanceof StandardContext) {
-            File workDir= (File)
-                ((StandardContext)context).getServletContext().getAttribute(Globals.WORK_DIR_ATTR);
-            //tldCache=new File( workDir, "tldCache.ser");
-        }
-
-        // Option to not rescan
-        if( ! rescan ) {
-            // find the cache
-            if( tldCache!= null && tldCache.exists()) {
-                // just read it...
-                processCache(tldCache);
-                return;
-            }
-        }
-
         /*
          * Acquire the list of TLD resource paths, possibly embedded in JAR
          * files, to be processed
          */
         Set resourcePaths = tldScanResourcePaths();
         Map jarPaths = getJarPaths();
-
-        // Check to see if we can use cached listeners
-        if (tldCache != null && tldCache.exists()) {
-            long lastModified = getLastModified(resourcePaths, jarPaths);
-            if (lastModified < tldCache.lastModified()) {
-                processCache(tldCache);
-                return;
-            }
-        }
 
         // Scan each accumulated resource path for TLDs to be processed
         Iterator paths = resourcePaths.iterator();
@@ -308,18 +276,6 @@ public final class TldConfig  implements LifecycleListener {
 
         String list[] = getTldListeners();
 
-        if( tldCache!= null ) {
-            log.debug( "Saving tld cache: " + tldCache + " " + list.length);
-            try {
-                FileOutputStream out=new FileOutputStream(tldCache);
-                ObjectOutputStream oos=new ObjectOutputStream( out );
-                oos.writeObject( list );
-                oos.close();
-            } catch( IOException ex ) {
-                ex.printStackTrace();
-            }
-        }
-
         if( log.isDebugEnabled() )
             log.debug( "Adding tld listeners:" + list.length);
         for( int i=0; list!=null && i<list.length; i++ ) {
@@ -334,67 +290,6 @@ public final class TldConfig  implements LifecycleListener {
     }
 
     // -------------------------------------------------------- Private Methods
-
-    /*
-     * Returns the last modification date of the given sets of resources.
-     *
-     * @param resourcePaths
-     * @param jarPaths
-     *
-     * @return Last modification date
-     */
-    private long getLastModified(Set resourcePaths, Map jarPaths)
-            throws Exception {
-
-        long lastModified = 0;
-
-        Iterator paths = resourcePaths.iterator();
-        while (paths.hasNext()) {
-            String path = (String) paths.next();
-            URL url = context.getServletContext().getResource(path);
-            if (url == null) {
-                log.debug( "Null url "+ path );
-                break;
-            }
-            long lastM = url.openConnection().getLastModified();
-            if (lastM > lastModified) lastModified = lastM;
-            if (log.isDebugEnabled()) {
-                log.debug( "Last modified " + path + " " + lastM);
-            }
-        }
-
-        if (jarPaths != null) {
-            paths = jarPaths.values().iterator();
-            while (paths.hasNext()) {
-                File jarFile = (File) paths.next();
-                long lastM = jarFile.lastModified();
-                if (lastM > lastModified) lastModified = lastM;
-                if (log.isDebugEnabled()) {
-                    log.debug("Last modified " + jarFile.getAbsolutePath()
-                              + " " + lastM);
-                }
-            }
-        }
-
-        return lastModified;
-    }
-
-    private void processCache(File tldCache ) throws IOException {
-        // read the cache and return;
-        try {
-            FileInputStream in=new FileInputStream(tldCache);
-            ObjectInputStream ois=new ObjectInputStream( in );
-            String list[]=(String [])ois.readObject();
-            if( log.isDebugEnabled() )
-                log.debug("Reusing tldCache " + tldCache + " " + list.length);
-            for( int i=0; list!=null && i<list.length; i++ ) {
-                context.addApplicationListener(list[i]);
-            }
-            ois.close();
-        } catch( ClassNotFoundException ex ) {
-            ex.printStackTrace();
-        }
-    }
 
     /**
      * Scan the JAR file at the specified resource path for TLDs in the
