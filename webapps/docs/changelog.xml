@@ -57,6 +57,10 @@
         <bug>48625</bug>: Provide an option to exit if an error occurs during
         the initialization phase. (fhanik)
       </fix>
+      <fix>
+        <bug>48645</bug>: Use specified encoding rather than null in calls to
+        <code>RequestUtil.URLDecode(byte[] bytes, String enc)</code> (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

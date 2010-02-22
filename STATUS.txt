@@ -137,12 +137,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48645
-  Use specified encoding rather than null
-  http://svn.apache.org/viewvc?rev=905020&view=rev
-  +1: markt, kkolinko, jfclere
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48653
   RemoteIpValve : request.secure and request.scheme are not forced to "false"
   and "http" if X-Forwarded-Proto=http
