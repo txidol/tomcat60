@@ -42,6 +42,10 @@
         started StandardService. (markt)
       </fix>
       <fix>
+        <bug>48577</bug>: Filter URL when displaying missing included page.
+        (markt)
+      </fix>
+      <fix>
         <bug>48612</bug>: Prevent exception on shutdown if the address attribute
         is specified for a connector. (markt)
       </fix>
