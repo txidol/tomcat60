@@ -200,13 +200,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48726
-  Prevent OOME when uploading large WAR files with the deployer
-  Patch provided by 'adam'
-  http://svn.apache.org/viewvc?rev=908759&view=rev
-  +1: markt, kkolinko, jfclere
-  -1: 
-
 * More memory leak prevent - ResourceBundle
   http://svn.apache.org/viewvc?rev=909097&view=rev (original)
   http://svn.apache.org/viewvc?rev=909525&view=rev (improvements)

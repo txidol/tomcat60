@@ -74,6 +74,10 @@
         <code>false</code> and <code>http</code> if the X-Forwarded-Proto header
         has the value http. Patch provided by Cyrille Le Clerc. (markt)
       </fix>
+      <fix>
+        <bug>48726</bug>: Prevent OOME when uploading large WAR files with the
+        deployer. Patch provided by adam. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
