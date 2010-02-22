@@ -252,13 +252,6 @@ PATCHES PROPOSED TO BACKPORT:
    instead of an empty string.
 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48318
-  Handle case where WebDAV resource is in directory listing but is not
-  accessible
-  http://svn.apache.org/viewvc?rev=909636&view=rev
-  +1: markt, kkolinko, jfclere
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48371
   Take account of comments when working out where to insert generated web.xml 
   http://people.apache.org/~markt/patches/2010-02-13-bug48371.patch

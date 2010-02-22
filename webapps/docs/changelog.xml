@@ -46,6 +46,10 @@
         file. (kkolinko)
       </fix>
       <fix>
+        <bug>48318</bug>: Handle case where WebDAV resource is in directory
+        listing but is not accessible. (markt)
+      </fix>
+      <fix>
         <bug>48577</bug>: Filter URL when displaying missing included page.
         (markt)
       </fix>
