@@ -33,7 +33,6 @@ import java.util.List;
 import org.apache.catalina.Container;
 import org.apache.catalina.Lifecycle;
 import org.apache.catalina.LifecycleException;
-import org.apache.catalina.Server;
 import org.apache.catalina.core.StandardServer;
 import org.apache.tomcat.util.digester.Digester;
 import org.apache.tomcat.util.digester.Rule;
@@ -79,12 +78,6 @@ public class Catalina extends Embedded {
      */
     protected ClassLoader parentClassLoader =
         Catalina.class.getClassLoader();
-
-
-    /**
-     * The server component we are starting or stopping
-     */
-    protected Server server = null;
 
 
     /**
@@ -150,17 +143,6 @@ public class Catalina extends Embedded {
 
     }
 
-
-    /**
-     * Set the server instance we are configuring.
-     *
-     * @param server The new server
-     */
-    public void setServer(Server server) {
-
-        this.server = server;
-
-    }
 
     // ----------------------------------------------------------- Main Program
 
@@ -398,7 +380,7 @@ public class Catalina extends Embedded {
             arguments(arguments);
         }
 
-        if( server == null ) {
+        if( getServer() == null ) {
             // Create and execute our Digester
             Digester digester = createStopDigester();
             digester.setClassLoader(Thread.currentThread().getContextClassLoader());
@@ -419,16 +401,16 @@ public class Catalina extends Embedded {
 
         // Stop the existing server
         try {
-            if (server.getPort()>0) {
-            	String hostAddress = InetAddress.getByName("localhost").getHostAddress();
-            	Socket socket = new Socket(hostAddress, server.getPort());
-            	OutputStream stream = socket.getOutputStream();
-            	String shutdown = server.getShutdown();
-            	for (int i = 0; i < shutdown.length(); i++)
-            		stream.write(shutdown.charAt(i));
-            	stream.flush();
-            	stream.close();
-            	socket.close();
+            if (getServer().getPort()>0) { 
+                String hostAddress = InetAddress.getByName("localhost").getHostAddress();
+                Socket socket = new Socket(hostAddress, getServer().getPort());
+                OutputStream stream = socket.getOutputStream();
+                String shutdown = getServer().getShutdown();
+                for (int i = 0; i < shutdown.length(); i++)
+                    stream.write(shutdown.charAt(i));
+                stream.flush();
+                stream.close();
+                socket.close();
             } else {
                 log.error(sm.getString("catalina.stopServer"));
                 System.exit(1);
@@ -535,9 +517,9 @@ public class Catalina extends Embedded {
         initStreams();
 
         // Start the new server
-        if (server instanceof Lifecycle) {
+        if (getServer() instanceof Lifecycle) {
             try {
-                server.initialize();
+                getServer().initialize();
             } catch (LifecycleException e) {
                 if (Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE"))
                     throw new java.lang.Error(e);
@@ -580,11 +562,11 @@ public class Catalina extends Embedded {
      */
     public void start() {
 
-        if (server == null) {
+        if (getServer() == null) {
             load();
         }
 
-        if (server == null) {
+        if (getServer() == null) {
             log.fatal("Cannot start server. Server instance is not configured.");
             return;
         }
@@ -592,9 +574,9 @@ public class Catalina extends Embedded {
         long t1 = System.nanoTime();
         
         // Start the new server
-        if (server instanceof Lifecycle) {
+        if (getServer() instanceof Lifecycle) {
             try {
-                ((Lifecycle) server).start();
+                ((Lifecycle) getServer()).start();
             } catch (LifecycleException e) {
                 log.error("Catalina.start: ", e);
             }
@@ -642,9 +624,9 @@ public class Catalina extends Embedded {
         }
 
         // Shut down the server
-        if (server instanceof Lifecycle) {
+        if (getServer() instanceof Lifecycle) {
             try {
-                ((Lifecycle) server).stop();
+                ((Lifecycle) getServer()).stop();
             } catch (LifecycleException e) {
                 log.error("Catalina.stop", e);
             }
@@ -658,7 +640,7 @@ public class Catalina extends Embedded {
      */
     public void await() {
 
-        server.await();
+        getServer().await();
 
     }
 
@@ -687,7 +669,7 @@ public class Catalina extends Embedded {
 
         public void run() {
 
-            if (server != null) {
+            if (getServer() != null) {
                 Catalina.this.stop();
             }
             
