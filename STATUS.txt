@@ -77,14 +77,6 @@ PATCHES PROPOSED TO BACKPORT:
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
 
 * Fix various EL TCK failures
-  http://svn.apache.org/viewvc?view=rev&rev=899792 (ELException rather than IAE)
-   +1: markt, kkolinko, fhanik
-   -1:
-
-  http://svn.apache.org/viewvc?view=rev&rev=899916 (ELException rather than IAE)
-   +1: markt, kkolinko, fhanik
-   -1:
-
   http://svn.apache.org/viewvc?view=rev&rev=899918 (Enum coercion test cases)
   http://svn.apache.org/viewvc?view=rev&rev=899919 (Enum coercion bug)
   http://svn.apache.org/viewvc?rev=909875&view=rev (kkolinko's review - toString())

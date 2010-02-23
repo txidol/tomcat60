@@ -172,6 +172,8 @@ public final class AstValue extends SimpleNode {
             result = m.invoke(t.base, (Object[]) paramValues);
         } catch (IllegalAccessException iae) {
             throw new ELException(iae);
+        } catch (IllegalArgumentException iae) {
+            throw new ELException(iae);
         } catch (InvocationTargetException ite) {
             throw new ELException(ite.getCause());
         }
