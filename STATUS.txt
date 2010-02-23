@@ -77,10 +77,6 @@ PATCHES PROPOSED TO BACKPORT:
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
 
 * Fix various EL TCK failures
-  http://svn.apache.org/viewvc?view=rev&rev=899653 (signatures)
-   +1: markt, kkolinko, fhanik
-   -1:
-
   http://svn.apache.org/viewvc?view=rev&rev=899769 (CCE expected)
   http://svn.apache.org/viewvc?view=rev&rev=899770 (CCE expected)
    +1: markt, kkolinko, fhanik
