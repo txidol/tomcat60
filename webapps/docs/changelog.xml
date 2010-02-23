@@ -86,6 +86,11 @@
         <bug>48726</bug>: Prevent OOME when uploading large WAR files with the
         deployer. Patch provided by adam. (markt)
       </fix>
+      <add>
+        Improve memory leak protection by safely stopping threads started via
+        <code>java.util.Timer</code> that an application starts but fails to
+        stop. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Jasper">
