@@ -119,13 +119,6 @@ PATCHES PROPOSED TO BACKPORT:
     http://tools.ietf.org/html/rfc2616
 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48716
-  Provide an undocumented 'shoot yourself in the foot' option to disable the
-  JULI logging reset on context stop
-  http://svn.apache.org/viewvc?rev=908754&view=rev
-  +1: markt, fhanik, kkolinko
-  -1: 
-
 * More memory leak prevent - ResourceBundle
   http://svn.apache.org/viewvc?rev=909097&view=rev (original)
   http://svn.apache.org/viewvc?rev=909525&view=rev (improvements)

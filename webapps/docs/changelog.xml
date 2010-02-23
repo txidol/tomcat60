@@ -90,6 +90,10 @@
         <bug>48694</bug>: Remove potential deadlock in web application class
         loader. (markt)
       </fix>
+      <add>
+        <bug>48716</bug>: Provide additional configuration options for JULI.
+        (markt)
+      </add>
       <fix>
         <bug>48726</bug>: Prevent OOME when uploading large WAR files with the
         deployer. Patch provided by adam. (markt)
