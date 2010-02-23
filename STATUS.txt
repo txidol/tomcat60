@@ -142,7 +142,9 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a suggestion by gingyang.xu
   http://svn.apache.org/viewvc?rev=905722&view=rev
   +1: markt, fhanik
-  -1: 
+  -1: kkolinko:
+    The name should be the full name, not just the last component of it.
+    NamingContext.isWritable() will be broken otherwise.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48678
   Having two server fields in the type hierarchy was causing unexpected
