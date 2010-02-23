@@ -77,13 +77,6 @@ PATCHES PROPOSED TO BACKPORT:
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
 
 * Fix various EL TCK failures
-  http://svn.apache.org/viewvc?view=rev&rev=899788 (PNFE expected)
-   +1: markt, kkolinko, fhanik
-   -1:
-     kkolinko: I think o.a.jasper.el.ELResolverImpl#getType(ELContext,Object,Object)
-     should likewise throw a PropertyNotFoundException instead of returning null.
-     I have no test, though.
-
   http://svn.apache.org/viewvc?view=rev&rev=899792 (ELException rather than IAE)
    +1: markt, kkolinko, fhanik
    -1:
