@@ -55,7 +55,12 @@ public final class AstValue extends SimpleNode {
     public Class getType(EvaluationContext ctx) throws ELException {
         Target t = getTarget(ctx);
         ctx.setPropertyResolved(false);
-        return ctx.getELResolver().getType(ctx, t.base, t.property);
+        Class<?> result = ctx.getELResolver().getType(ctx, t.base, t.property);
+        if (!ctx.isPropertyResolved()) {
+            throw new PropertyNotFoundException(MessageFactory.get(
+                    "error.resolver.unhandled", t.base, t.property));            
+        }
+        return result;
     }
 
     private final Target getTarget(EvaluationContext ctx) throws ELException {
@@ -119,13 +124,23 @@ public final class AstValue extends SimpleNode {
             }
             i++;
         }
+        if (!ctx.isPropertyResolved()) {
+            throw new PropertyNotFoundException(MessageFactory.get(
+                    "error.resolver.unhandled", base, property));            
+        }
         return base;
     }
 
     public boolean isReadOnly(EvaluationContext ctx) throws ELException {
         Target t = getTarget(ctx);
         ctx.setPropertyResolved(false);
-        return ctx.getELResolver().isReadOnly(ctx, t.base, t.property);
+        boolean result =
+            ctx.getELResolver().isReadOnly(ctx, t.base, t.property);
+        if (!ctx.isPropertyResolved()) {
+            throw new PropertyNotFoundException(MessageFactory.get(
+                    "error.resolver.unhandled", t.base, t.property));            
+        }
+        return result;
     }
 
     public void setValue(EvaluationContext ctx, Object value)
@@ -141,6 +156,10 @@ public final class AstValue extends SimpleNode {
             value = ELSupport.coerceToType(value, targetClass);
         }
         resolver.setValue(ctx, t.base, t.property, value);
+        if (!ctx.isPropertyResolved()) {
+            throw new PropertyNotFoundException(MessageFactory.get(
+                    "error.resolver.unhandled", t.base, t.property));            
+        }
     }
 
     private boolean isAssignable(Object value, Class<?> targetClass) {
