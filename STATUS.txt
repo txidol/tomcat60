@@ -96,11 +96,6 @@ PATCHES PROPOSED TO BACKPORT:
     The name should be the full name, not just the last component of it.
     NamingContext.isWritable() will be broken otherwise.
 
-* Mark the host-manager docs as todo
-  http://svn.apache.org/viewvc?rev=907513&view=rev
-  +1: markt, jfclere, fhanik
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48668
   Don't look for EL matches (which swallow the EL match string) if EL is not
   enabled
