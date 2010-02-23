@@ -104,6 +104,10 @@
         stop and by clearing references retained due to the use of
         <code>java.util.ResourceBundle</code>. (markt)
       </add>
+      <update>
+        Modify ThreadLocal memory leak detection to not report false positives
+        and to simplify implementation. (markt/kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Jasper">

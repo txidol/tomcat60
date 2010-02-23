@@ -119,13 +119,6 @@ PATCHES PROPOSED TO BACKPORT:
     http://tools.ietf.org/html/rfc2616
 
 
-* Improvements for WebappClassLoader#clearThreadLocalMap:
-  http://svn.apache.org/viewvc?rev=908002&view=rev
-  http://svn.apache.org/viewvc?rev=909206&view=rev
-  http://svn.apache.org/viewvc?rev=909212&view=rev
-  +1: kkolinko, markt, fhanik
-  -1:
-
 * Memory leak detection for JMX and manager
   http://people.apache.org/~markt/patches/2010-02-12-memory-leak-detection.patch
   +1: markt
