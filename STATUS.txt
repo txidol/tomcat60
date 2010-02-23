@@ -317,3 +317,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-02-16-manifest-improvements.patch
   +1: markt, fhanik, kkolinko
   -1: 
+
+* Update bundled TC-Native to 1.1.20
+  I think there is no need to update "recommended" version number here.
+  http://svn.apache.org/viewvc?rev=915226&view=rev
+  +1: kkolinko
+  -1:
