@@ -321,5 +321,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Update bundled TC-Native to 1.1.20
   I think there is no need to update "recommended" version number here.
   http://svn.apache.org/viewvc?rev=915226&view=rev
-  +1: kkolinko
+  +1: kkolinko, mturk
   -1:
