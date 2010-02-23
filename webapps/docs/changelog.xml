@@ -101,7 +101,8 @@
       <add>
         Improve memory leak protection by safely stopping threads started via
         <code>java.util.Timer</code> that an application starts but fails to
-        stop. (markt)
+        stop and by clearing references retained due to the use of
+        <code>java.util.ResourceBundle</code>. (markt)
       </add>
     </changelog>
   </subsection>

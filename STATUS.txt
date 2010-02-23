@@ -119,14 +119,6 @@ PATCHES PROPOSED TO BACKPORT:
     http://tools.ietf.org/html/rfc2616
 
 
-* More memory leak prevent - ResourceBundle
-  http://svn.apache.org/viewvc?rev=909097&view=rev (original)
-  http://svn.apache.org/viewvc?rev=909525&view=rev (improvements)
-  +1: markt, kkolinko, fhanik
-  -1: 
-    kkolinko: Calling ResourceBundle.clearCache(CL) would work on any Java
-    6+ JVM, not only Sun's
-
 * Improvements for WebappClassLoader#clearThreadLocalMap:
   http://svn.apache.org/viewvc?rev=908002&view=rev
   http://svn.apache.org/viewvc?rev=909206&view=rev
