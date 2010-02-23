@@ -77,13 +77,6 @@ PATCHES PROPOSED TO BACKPORT:
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
 
 * Fix various EL TCK failures
-  http://svn.apache.org/viewvc?view=rev&rev=899769 (CCE expected)
-  http://svn.apache.org/viewvc?view=rev&rev=899770 (CCE expected)
-   +1: markt, kkolinko, fhanik
-   -1:
-     kkolinko: Maybe better name for that message, because it says about
-     arrays, yet name is rather generic
-
   http://svn.apache.org/viewvc?view=rev&rev=899783 (ELException expected)
    +1: markt, kkolinko, fhanik
    -1:
