@@ -287,7 +287,7 @@ PATCHES PROPOSED TO BACKPORT:
   Add a per context xslt option for directory listings
   Make the fallback options work as described in the docs
   http://svn.apache.org/viewvc?rev=909887&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
@@ -301,7 +301,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Workaround https://issues.apache.org/bugzilla/show_bug.cgi?id=48498
   Avoid ArrayIndexOutOfBoundsException triggered by Java 6/7 XML parser bug
   http://svn.apache.org/viewvc?rev=910370&view=rev
-  +1: markt
+  +1: markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48589
@@ -321,5 +321,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Update bundled TC-Native to 1.1.20
   I think there is no need to update "recommended" version number here.
   http://svn.apache.org/viewvc?rev=915226&view=rev
-  +1: kkolinko, mturk
+  +1: kkolinko, mturk, rjung
   -1:
