@@ -42,6 +42,10 @@
         started StandardService. (markt)
       </fix>
       <fix>
+        <bug>48109</bug>: Ensure InputStream is closed on error condition in web
+        application class loader. (markt)
+      </fix>
+      <fix>
         <bug>48179</bug>: Clean up dead code that was used to read tldCache
         file. (kkolinko)
       </fix>
