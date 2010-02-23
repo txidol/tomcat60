@@ -112,6 +112,10 @@
         regression in the first fix. (kkolinko) 
       </fix>
       <fix>
+        <bug>48668</bug>: When parsing JSPs only parse EL as EL if EL is enabled
+        else strings such as ${ will be silently dropped. (markt)
+      </fix>
+      <fix>
         Various EL TCK failures. (markt)
       </fix>
     </changelog>

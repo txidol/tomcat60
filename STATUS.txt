@@ -96,18 +96,6 @@ PATCHES PROPOSED TO BACKPORT:
     The name should be the full name, not just the last component of it.
     NamingContext.isWritable() will be broken otherwise.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48668
-  Don't look for EL matches (which swallow the EL match string) if EL is not
-  enabled
-  http://svn.apache.org/viewvc?rev=907538&view=rev
-  +1: markt, kkolinko, fhanik
-  -1: 
-
-  Additional patch:
-  http://svn.apache.org/viewvc?rev=907864&view=rev
-  +1: kkolinko, markt, fhanik
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48660
   Vary should add to Vary header rather than over-write it
   http://svn.apache.org/viewvc?rev=907544&view=rev
