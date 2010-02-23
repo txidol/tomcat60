@@ -143,16 +143,22 @@ public class ELSupport {
      * @param type
      * @return
      */
-    public final static Enum coerceToEnum(final Object obj, Class type) {
+    public final static Enum<?> coerceToEnum(final Object obj, Class type) {
         if (obj == null || "".equals(obj)) {
             return null;
         }
-        if (obj.getClass().isEnum()) {
+        if (type.isAssignableFrom(obj.getClass())) {
             return (Enum) obj;
         }
+        
+        if (!(obj instanceof String)) {
+            throw new ELException(MessageFactory.get("error.convert",
+                    obj, obj.getClass(), type));
+        }
+
         Enum<?> result;
         try {
-             result = Enum.valueOf(type, obj.toString());
+             result = Enum.valueOf(type, (String) obj);
         } catch (IllegalArgumentException iae) {
             throw new ELException(MessageFactory.get("error.convert",
                     obj, obj.getClass(), type));
