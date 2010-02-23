@@ -209,14 +209,20 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid potential deadlock in WebappClassLoader
   OP confirms patch fixes the deadlock
   https://issues.apache.org/bugzilla/show_bug.cgi?id=48694#c1
-  +1: markt, jfclere
+  +1: markt, jfclere, kkolinko
   -1: 
+   kkolinko: Looking at how URLClassLoader.findClass() is implemented, I
+   think that concurrent access to WebappClassLoader.findClass() should not
+   be allowed.  URLClassLoader.findClass() is a protected method, but it is
+   public in URLClassLoader.  I think we should change its access qualifier
+   to be 'protected' in TC7.
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48716
   Provide an undocumented 'shoot yourself in the foot' option to disable the
   JULI logging reset on context stop
   http://svn.apache.org/viewvc?rev=908754&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, kkolinko
   -1: 
 
 * More memory leak prevent - ResourceBundle
@@ -309,5 +315,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Various manifest improvements
   http://people.apache.org/~markt/patches/2010-02-16-manifest-improvements.patch
-  +1: markt, fhanik
+  +1: markt, fhanik, kkolinko
   -1: 
