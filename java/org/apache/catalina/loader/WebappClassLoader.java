@@ -992,9 +992,7 @@ public class WebappClassLoader
             }
             if ((clazz == null) && hasExternalRepositories) {
                 try {
-                    synchronized (this) {
-                        clazz = super.findClass(name);
-                    }
+                    clazz = super.findClass(name);
                 } catch(AccessControlException ace) {
                     log.warn("WebappClassLoader.findClassInternal(" + name
                             + ") security exception: " + ace.getMessage(), ace);
@@ -2330,7 +2328,7 @@ public class WebappClassLoader
         if (clazz != null)
             return clazz;
 
-        synchronized (this) {
+        synchronized (name.intern()) {
             clazz = entry.loadedClass;
             if (clazz != null)
                 return clazz;

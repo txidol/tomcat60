@@ -87,6 +87,10 @@
         <code>org.apache.catalina.startup.Catalina</code>. (markt)
       </fix>
       <fix>
+        <bug>48694</bug>: Remove potential deadlock in web application class
+        loader. (markt)
+      </fix>
+      <fix>
         <bug>48726</bug>: Prevent OOME when uploading large WAR files with the
         deployer. Patch provided by adam. (markt)
       </fix>
