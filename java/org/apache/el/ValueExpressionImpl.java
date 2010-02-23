@@ -196,7 +196,7 @@ public final class ValueExpressionImpl extends ValueExpression implements
      * @see java.lang.Object#hashCode()
      */
     public int hashCode() {
-        return this.expr.hashCode();
+        return this.getNode().hashCode();
     }
 
     /*

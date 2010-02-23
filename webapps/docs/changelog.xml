@@ -107,6 +107,9 @@
         <bug>42390</bug> that avoids both the original problem and the
         regression in the first fix. (kkolinko) 
       </fix>
+      <fix>
+        Various EL TCK failures. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">

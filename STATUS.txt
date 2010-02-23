@@ -76,16 +76,6 @@ PATCHES PROPOSED TO BACKPORT:
                if we remove the SCP auto feature, then there should be something to replace it with
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
 
-* Fix various EL TCK failures
-  http://svn.apache.org/viewvc?view=rev&rev=899949 (ignore whitespace on comp)
-  +1: markt, kkolinko, fhanik
-  -1:
-     kkolinko: Why ValueExpressionImpl.equals() is implemented as comparing
-     the hash codes? What will happen with false positives?
-     markt: Not sure why hashCode() was used. It was part of the original
-            implementation. I'm not concerned. False positives should be very,
-            very rare.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48627
   Regression in re-working of EL parsing
   Keep literals as literals
