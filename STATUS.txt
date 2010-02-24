@@ -146,9 +146,3 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
    kkolinko: mark User constructor as protected, replace ArrayList argument
     with a List, and maybe address sebb's comments to r910485 on dev@
-
-* Update bundled TC-Native to 1.1.20
-  I think there is no need to update "recommended" version number here.
-  http://svn.apache.org/viewvc?rev=915226&view=rev
-  +1: kkolinko, mturk, rjung, markt
-  -1:
