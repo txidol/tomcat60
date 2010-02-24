@@ -76,17 +76,6 @@ PATCHES PROPOSED TO BACKPORT:
                if we remove the SCP auto feature, then there should be something to replace it with
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48627
-  Regression in re-working of EL parsing
-  Keep literals as literals
-  Also handle deferredSyntaxAllowedAsLiteral
-  JUnit test cases and TCK passes with this patch
-  OP confirms patch fixes issue
-  Combined patch file, from revs.904949, 905226, 906465:
-  https://issues.apache.org/bugzilla/attachment.cgi?id=24925
-  +1: kkolinko, markt, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48050
   NamingContext.createSubcontext method returns Context with wrong name
   Based on a suggestion by gingyang.xu

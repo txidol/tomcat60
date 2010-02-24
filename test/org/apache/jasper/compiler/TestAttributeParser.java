@@ -134,9 +134,24 @@ public class TestAttributeParser extends TestCase {
         // Quoting <% and %>
         assertEquals("hello <% world", evalAttr("hello <\\% world", '\"'));
         assertEquals("hello %> world", evalAttr("hello %> world", '\"'));
+
+        // Test that the end of literal in EL expression is recognized in
+        // parseEL(), be it quoted with single or double quotes. That is, that
+        // AttributeParser correctly switches between parseLiteral and parseEL
+        // methods.
+        //
+        // The test is based on the difference in how the '\' character is printed:
+        // when in parseLiteral \\${ will be printed as ${'\'}${, but if we are still
+        // inside of parseEL it will be printed as \${, thus preventing the EL
+        // expression that follows from being evaluated.
+        //
+        assertEquals("foo\\bar\\baz", evalAttr("${\'foo\'}\\\\${\'bar\'}\\\\${\'baz\'}", '\"'));
+        assertEquals("foo\\bar\\baz", evalAttr("${\'foo\'}\\\\${\\\"bar\\\"}\\\\${\'baz\'}", '\"'));
+        assertEquals("foo\\bar\\baz", evalAttr("${\\\"foo\\\"}\\\\${\'bar\'}\\\\${\\\"baz\\\"}", '\"'));
+        assertEquals("foo\\bar\\baz", evalAttr("${\"foo\"}\\\\${\\\'bar\\\'}\\\\${\"baz\"}", '\''));
     }
 
-    public void testScriptExpressiinLiterals() {
+    public void testScriptExpressionLiterals() {
         assertEquals(" \"hello world\" ", parseScriptExpression(
                 " \"hello world\" ", (char) 0));
         assertEquals(" \"hello \\\"world\" ", parseScriptExpression(
@@ -149,13 +164,15 @@ public class TestAttributeParser extends TestCase {
         ctx.setFunctionMapper(new FMapper());
         ExpressionFactoryImpl exprFactory = new ExpressionFactoryImpl();
         ValueExpression ve = exprFactory.createValueExpression(ctx,
-                AttributeParser.getUnquoted(expression, quote, false, false),
+                AttributeParser.getUnquoted(expression, quote, false, false,
+                        false),
                 String.class);
         return (String) ve.getValue(ctx);
     }
     
     private String parseScriptExpression(String expression, char quote) {
-        return AttributeParser.getUnquoted(expression, quote, false, false);
+        return AttributeParser.getUnquoted(expression, quote, false, false,
+                false);
     }
 
     public static class FMapper extends FunctionMapper {

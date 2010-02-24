@@ -152,6 +152,11 @@
         regression in the first fix. (kkolinko) 
       </fix>
       <fix>
+        <bug>48627</bug>: Fix regression in re-factored EL parsing. Keep
+        literals as literals and handle deferredSyntaxAllowedAsLiteral.
+        (kkolinko)
+      </fix>
+      <fix>
         <bug>48668</bug>: When parsing JSPs only parse EL as EL if EL is enabled
         else strings such as ${ will be silently dropped. (markt)
       </fix>
