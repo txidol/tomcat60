@@ -5,7 +5,7 @@ Specification-Title: Java API for Servlets
 Specification-Version: 2.5
 Specification-Vendor: Sun Microsystems, Inc.
 Implementation-Title: javax.servlet
-Implementation-Version: 2.5.@implementation.revision@
+Implementation-Version: 2.5.@servlet.revision@
 Implementation-Vendor: Apache Software Foundation
 X-Compile-Source-JDK: @source.jdk@
 X-Compile-Target-JDK: @target.jdk@

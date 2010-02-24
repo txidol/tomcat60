@@ -58,7 +58,7 @@
   <property name="tomcat.classes"    value="${basedir}/output/classes"/>
   <property name="tomcat.dist"       value="${basedir}/output/dist"/>
   <property name="tomcat.extras"     value="${basedir}/output/extras"/>
-  <property name="tomcat.tmp"        value="${basedir}/output/tmp"/>
+  <property name="tomcat.manifests"  value="${basedir}/output/manifests"/>
   <property name="tomcat.deployer"   value="${basedir}/output/deployer"/>
   <property name="tomcat.release"    value="${basedir}/output/release"/>
   <property name="test.failonerror"  value="true"/>
@@ -151,7 +151,7 @@
          target="compile" />
 
     <jar jarfile="${tomcat-juli.jar}"
-         manifest="${tomcat.tmp}/default.manifest" >
+         manifest="${tomcat.manifests}/default.manifest" >
       <fileset dir="${tomcat.extras}/logging/commons-logging-${commons-logging-version}-src/target/classes">
         <include name="org/apache/juli/logging/*.class" />
         <include name="org/apache/juli/logging/impl/LogFactoryImpl*.class" />
@@ -169,9 +169,9 @@
         <exclude name="**/package.html" />
         <exclude name="**/LocalStrings_*" />
       </fileset>
-      <zipfileset file="res/META-INF/default.notice"
+      <zipfileset file="${tomcat.manifests}/default.notice"
         fullpath="META-INF/NOTICE" />
-      <zipfileset file="res/META-INF/default.license"
+      <zipfileset file="${tomcat.manifests}/default.license"
         fullpath="META-INF/LICENSE" />
     </jar>
     <antcall target="md5sum">
@@ -179,7 +179,7 @@
     </antcall>
 
     <jar jarfile="${tomcat-juli-adapters.jar}"
-      manifest="${tomcat.tmp}/default.manifest" >
+      manifest="${tomcat.manifests}/default.manifest" >
       <fileset dir="${tomcat.extras}/logging/commons-logging-${commons-logging-version}-src/target/classes">
         <include name="org/apache/juli/logging/impl/**.class" />
         <exclude name="org/apache/juli/logging/impl/WeakHashtable*.class" />
@@ -188,9 +188,9 @@
         <exclude name="**/package.html" />
         <exclude name="**/LocalStrings_*" />
       </fileset>
-      <zipfileset file="res/META-INF/default.notice"
+      <zipfileset file="${tomcat.manifests}/default.notice"
         fullpath="META-INF/NOTICE" />
-      <zipfileset file="res/META-INF/default.license"
+      <zipfileset file="${tomcat.manifests}/default.license"
         fullpath="META-INF/LICENSE" />
     </jar>
     <antcall target="md5sum">
@@ -236,16 +236,16 @@
 
     <!-- Catalina Main JAR File -->
     <jar jarfile="${catalina-ws.jar}"
-         manifest="${tomcat.tmp}/default.manifest">
+         manifest="${tomcat.manifests}/default.manifest">
       <fileset dir="${tomcat.classes}">
         <include name="org/apache/naming/factory/webservices/**" />
         <!-- Javadoc and i18n exclusions -->
         <exclude name="**/package.html" />
         <exclude name="**/LocalStrings_*" />
       </fileset>
-      <zipfileset file="res/META-INF/default.notice"
+      <zipfileset file="${tomcat.manifests}/default.notice"
         fullpath="META-INF/NOTICE" />
-      <zipfileset file="res/META-INF/default.license"
+      <zipfileset file="${tomcat.manifests}/default.license"
         fullpath="META-INF/LICENSE" />
     </jar>
     <antcall target="md5sum">
@@ -256,13 +256,13 @@
   <target name="jmx-remote" >
     <!-- Create the JAR file -->
     <jar jarfile="${catalina-jmx-remote.jar}"
-      manifest="${tomcat.tmp}/default.manifest" >
+      manifest="${tomcat.manifests}/default.manifest" >
       <fileset dir="${tomcat.classes}">
         <include name="org/apache/catalina/mbeans/JmxRemote*" />
       </fileset>
-      <zipfileset file="res/META-INF/default.notice"
+      <zipfileset file="${tomcat.manifests}/default.notice"
         fullpath="META-INF/NOTICE" />
-      <zipfileset file="res/META-INF/default.license"
+      <zipfileset file="${tomcat.manifests}/default.license"
         fullpath="META-INF/LICENSE" />
     </jar>
     <antcall target="md5sum">

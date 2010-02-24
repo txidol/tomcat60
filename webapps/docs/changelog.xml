@@ -184,6 +184,9 @@
         <code>javax.servlet.jsp.JspContext</code> since the specification does
         not include them in the API definition. (markt)
       </fix>
+      <add>
+        Improve the information in the JAR manifest files. (markt)
+      </add>
     </changelog>
   </subsection>
 </section>
