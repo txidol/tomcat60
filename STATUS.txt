@@ -135,3 +135,11 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
    kkolinko: mark User constructor as protected, replace ArrayList argument
     with a List, and maybe address sebb's comments to r910485 on dev@
+
+* Do not throw exception on shutdown
+  Based on the https://svn.apache.org/viewvc?view=revision&revision=915861
+  6.0.x patch is at
+  http://people.apache.org/~mturk/tomcat/patches/915861.patch
+  +1: mturk
+  -1: 
+
