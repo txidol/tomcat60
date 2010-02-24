@@ -118,36 +118,6 @@ PATCHES PROPOSED TO BACKPORT:
 
     http://tools.ietf.org/html/rfc2616
 
-
-* Memory leak detection for JMX and manager
-  http://people.apache.org/~kkolinko/patches/2010-02-16_tc6_memory-leak-detection.patch
-  It is corrected markt's patch
-  (Added revs.909204,910584,910612
-   TC 6 specifics: /findleaks should be explicitly mapped in web.xml,
-   where TC 7 uses /text/findleaks, and that URL is mentioned in manager-howto.xml)
-  +1: kkolinko, fhanik, markt
-  -1:
-
-  kkolinko: Some further thoughts on naming/messages/documentation
-   - It might be not so clear to a newcomer, that to use this functionality you have
-     a) Use you application
-     b) Reload it
-     c) Press the "Find leaks" button
-     It does not work without a) and b).
-
-   - Saying that application "triggered" a memory leak sounds too harsh for
-   me. I think "has" or "suffered" would be better here.
-
-   - It is safe to press the "Find leaks" button several times. Besides the
-   gc call it just "lists" the contexts that are still present in memory.
-   It does not clear its own list.
-
-  kkolinko: The display fix for ROOT context (r910612) might be applied to
-   StandardHost.findReloadedContextMemoryLeaks() as well. Any comments? If
-   results of a JMX call are displayed to humans, I'd be better to have "/"
-   instead of an empty string.
-
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48371
   Take account of comments when working out where to insert generated web.xml 
   http://people.apache.org/~markt/patches/2010-02-13-bug48371.patch

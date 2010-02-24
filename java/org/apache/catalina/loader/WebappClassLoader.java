@@ -1642,6 +1642,10 @@ public class WebappClassLoader
     }
 
 
+    public boolean isStarted() {
+        return started;
+    }
+
     /**
      * Stop the class loader.
      *

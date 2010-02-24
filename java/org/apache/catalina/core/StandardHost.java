@@ -19,14 +19,23 @@
 package org.apache.catalina.core;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
 
 import org.apache.catalina.Container;
 import org.apache.catalina.Context;
 import org.apache.catalina.Host;
+import org.apache.catalina.Lifecycle;
+import org.apache.catalina.LifecycleEvent;
 import org.apache.catalina.LifecycleException;
+import org.apache.catalina.LifecycleListener;
 import org.apache.catalina.Valve;
+import org.apache.catalina.loader.WebappClassLoader;
 import org.apache.catalina.startup.HostConfig;
 import org.apache.catalina.valves.ValveBase;
 import org.apache.tomcat.util.modeler.Registry;
@@ -164,6 +173,12 @@ public class StandardHost
      */
      private boolean xmlNamespaceAware = false;
 
+     /**
+      * Track the class loaders for the child web applications so memory leaks
+      * can be detected.
+      */
+     private Map<ClassLoader, String> childClassLoaders =
+         new WeakHashMap<ClassLoader, String>();
 
     // ------------------------------------------------------------- Properties
 
@@ -520,6 +535,11 @@ public class StandardHost
      */
     public void addChild(Container child) {
 
+        if (child instanceof Lifecycle) {
+            ((Lifecycle) child).addLifecycleListener(
+                    new MemoryLeakTrackingListener());
+        }
+
         if (!(child instanceof Context))
             throw new IllegalArgumentException
                 (sm.getString("standardHost.notContext"));
@@ -527,6 +547,49 @@ public class StandardHost
 
     }
 
+
+    /**
+     * Used to ensure the regardless of {@link Context} implementation, a record
+     * is kept of the class loader used every time a context starts.
+     */
+    private class MemoryLeakTrackingListener implements LifecycleListener {
+
+        public void lifecycleEvent(LifecycleEvent event) {
+            if (event.getType().equals(Lifecycle.AFTER_START_EVENT)) {
+                if (event.getSource() instanceof Context) {
+                    Context context = ((Context) event.getSource());
+                    childClassLoaders.put(context.getLoader().getClassLoader(),
+                            context.getServletContext().getContextPath());
+                }
+            }
+        }
+    }
+    
+    
+    /**
+     * Attempt to identify the contexts that have a class loader memory leak.
+     * This is usually triggered on context reload. Note: This method attempts
+     * to force a full garbage collection. This should be used with extreme
+     * caution on a production system.
+     */
+    public String[] findReloadedContextMemoryLeaks() {
+        
+        System.gc();
+        
+        List<String> result = new ArrayList<String>();
+        
+        for (Map.Entry<ClassLoader, String> entry :
+                childClassLoaders.entrySet()) {
+            ClassLoader cl = entry.getKey();
+            if (cl instanceof WebappClassLoader) {
+                if (!((WebappClassLoader) cl).isStarted()) {
+                    result.add(entry.getValue());
+                }
+            }
+        }
+        
+        return result.toArray(new String[result.size()]);
+    }
 
     /**
      * Return the set of alias names for this Host.  If none are defined,

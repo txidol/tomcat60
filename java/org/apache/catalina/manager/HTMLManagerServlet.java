@@ -136,6 +136,8 @@ public final class HTMLManagerServlet extends ManagerServlet {
             message = start(path);
         } else if (command.equals("/stop")) {
             message = stop(path);
+        } else if (command.equals("/findleaks")) {
+            message = findleaks();
         } else {
             message =
                 sm.getString("managerServlet.unknownCommand", command);
@@ -498,6 +500,16 @@ public final class HTMLManagerServlet extends ManagerServlet {
         args[3] = sm.getString("htmlManagerServlet.deployButton");
         writer.print(MessageFormat.format(UPLOAD_SECTION, args));
 
+        // Diagnostics section
+        args = new Object[5];
+        args[0] = sm.getString("htmlManagerServlet.diagnosticsTitle");
+        args[1] = sm.getString("htmlManagerServlet.diagnosticsLeak");
+        args[2] = response.encodeURL(request.getContextPath() +
+                "/html/findleaks");
+        args[3] = sm.getString("htmlManagerServlet.diagnosticsLeakWarning");
+        args[4] = sm.getString("htmlManagerServlet.diagnosticsLeakButton");
+        writer.print(MessageFormat.format(DIAGNOSTICS_SECTION, args));
+
         // Server Header Section
         args = new Object[7];
         args[0] = sm.getString("htmlManagerServlet.serverTitle");
@@ -631,6 +643,33 @@ public final class HTMLManagerServlet extends ManagerServlet {
 
         return stringWriter.toString();
     }
+    
+    /**
+     * Find potential memory leaks caused by web application reload.
+     *
+     * @see ManagerServlet#findleaks(PrintWriter) 
+     *
+     * @return message String
+     */
+    protected String findleaks() {
+
+        StringBuilder msg = new StringBuilder();
+
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter printWriter = new PrintWriter(stringWriter);
+
+        super.findleaks(printWriter);
+
+        if (stringWriter.getBuffer().length() > 0) {
+            msg.append(sm.getString("htmlManagerServlet.findleaksList"));
+            msg.append(stringWriter.toString());
+        } else {
+            msg.append(sm.getString("htmlManagerServlet.findleaksNone"));
+        }
+
+        return msg.toString();
+    }
+
 
     /**
      * @see javax.servlet.Servlet#getServletInfo()
@@ -1135,5 +1174,32 @@ public final class HTMLManagerServlet extends ManagerServlet {
         "</table>\n" +
         "<br>\n" +
         "\n";
+
+    private static final String DIAGNOSTICS_SECTION =
+        "<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\">\n" +
+        "<tr>\n" +
+        " <td colspan=\"2\" class=\"title\">{0}</td>\n" +
+        "</tr>\n" +
+        "<tr>\n" +
+        " <td colspan=\"2\" class=\"header-left\"><small>{1}</small></td>\n" +
+        "</tr>\n" +
+        "<tr>\n" +
+        " <td colspan=\"2\">\n" +
+        "<form method=\"post\" action=\"{2}\">\n" +
+        "<table cellspacing=\"0\" cellpadding=\"3\">\n" +
+        "<tr>\n" +
+        " <td class=\"row-left\">\n" +
+        "  <input type=\"submit\" value=\"{4}\">\n" +
+        " </td>\n" +
+        " <td class=\"row-left\">\n" +
+        "  <small>{3}</small>\n" +
+        " </td>\n" +
+        "</tr>\n" +
+        "</table>\n" +
+        "</form>\n" +
+        "</td>\n" +
+        "</tr>\n" +
+        "</table>\n" +
+        "<br>";
 
 }

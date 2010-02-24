@@ -108,6 +108,11 @@
         Modify ThreadLocal memory leak detection to not report false positives
         and to simplify implementation. (markt/kkolinko)
       </update>
+      <add>
+        Basic memory leak detection was added to the standard Host
+        implementation and exposed via JMX to detect memory leaks on web
+        application reload. (markt/kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Jasper">
@@ -148,6 +153,14 @@
         Force a disconnect if an error occurs during replication such as
         a firewall dropping the connection. (fhanik)
       </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Webapps">
+    <changelog>
+      <add>
+        Make the new web application reload memory leak detection available
+        through the Manager application. (markt/kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Other">
