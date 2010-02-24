@@ -53,6 +53,11 @@
         <bug>48318</bug>: Handle case where WebDAV resource is in directory
         listing but is not accessible. (markt)
       </fix>
+      <add>
+        <bug>48384</bug>: Add a per context xslt option for directory listings.
+        Make the fallback options work as described in the documentation.
+        (markt)
+      </add>
       <fix>
         <bug>48577</bug>: Filter URL when displaying missing included page.
         (markt)
