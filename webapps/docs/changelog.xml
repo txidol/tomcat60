@@ -120,6 +120,14 @@
       </add>
     </changelog>
   </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <update>
+        Update the native/APR library version bundled with Tomcat to 1.1.20.
+        (kkolinko)
+      </update>
+    </changelog>
+  </subsection>
   <subsection name="Jasper">
     <changelog>
       <add>
