@@ -120,20 +120,12 @@ PATCHES PROPOSED TO BACKPORT:
 
 
 * Memory leak detection for JMX and manager
-  http://people.apache.org/~markt/patches/2010-02-12-memory-leak-detection.patch
-  +1: markt
-  -1: kkolinko:
-    - It does not compile, because WebappClassLoader.isStarted() was absent.
-    - /findleaks was not mapped to ManagerServlet
-    Updated patch proposed below.
-
-  Alternative proposal:
   http://people.apache.org/~kkolinko/patches/2010-02-16_tc6_memory-leak-detection.patch
   It is corrected markt's patch
   (Added revs.909204,910584,910612
    TC 6 specifics: /findleaks should be explicitly mapped in web.xml,
    where TC 7 uses /text/findleaks, and that URL is mentioned in manager-howto.xml)
-  +1: kkolinko, fhanik
+  +1: kkolinko, fhanik, markt
   -1:
 
   kkolinko: Some further thoughts on naming/messages/documentation
