@@ -135,7 +135,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Workaround https://issues.apache.org/bugzilla/show_bug.cgi?id=48498
   Avoid ArrayIndexOutOfBoundsException triggered by Java 6/7 XML parser bug
   http://svn.apache.org/viewvc?rev=910370&view=rev
-  +1: markt, rjung
+  http://svn.apache.org/viewvc?rev=916170&view=rev
+  +1: markt, rjung, kkolinko(with r916170)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48589
@@ -151,6 +152,6 @@ PATCHES PROPOSED TO BACKPORT:
   Based on the https://svn.apache.org/viewvc?view=revision&revision=915861
   6.0.x patch is at
   http://people.apache.org/~mturk/tomcat/patches/915861.patch
-  +1: mturk
+  +1: mturk, kkolinko
   -1: 
 
