@@ -155,3 +155,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mturk, kkolinko
   -1: 
 
+* Improve logging behaviour when shutdown occurs via a shutdownhook. If present,
+  use Catalina's shutdown hook to shutdown Tomcat and JULI. This enables them to
+  be shutdown in the correct order. 
+  http://svn.apache.org/viewvc?rev=910974&view=rev 
+  +1: markt
+  -1: 
