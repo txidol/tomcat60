@@ -178,3 +178,8 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/manager/HTMLManagerServlet.java?rev=917598&r1=917597&r2=917598&view=diff
   +1: kkolinko
   -1:
+
+* Amend the messages displayed by Find Leaks diagnostics in the Manager application.
+  http://svn.apache.org/viewvc?rev=917633&view=rev
+  +1: kkolinko
+  -1:
