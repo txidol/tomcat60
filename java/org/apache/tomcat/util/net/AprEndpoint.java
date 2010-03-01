@@ -1160,7 +1160,7 @@ public class AprEndpoint {
                         Socket.destroy(socket);
                     }
                 } catch (Throwable t) {
-                    if (running) log.error(sm.getString("endpoint.accept.fail"), t);
+                    log.error(sm.getString("endpoint.accept.fail"), t);
                 }
 
                 // The processor will recycle itself when it finishes
