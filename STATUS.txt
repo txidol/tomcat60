@@ -160,4 +160,10 @@ PATCHES PROPOSED TO BACKPORT:
   be shutdown in the correct order. 
   http://svn.apache.org/viewvc?rev=910974&view=rev 
   +1: markt
-  -1: 
+  -1: kkolinko: Catalina.stop() calls Runtime.removeShutdownHook(shutdownHook)
+  and thus ClassLoaderLogManager.shutdown() will not be called. See BZ 48831.
+
+* Add constraint for findleaks manager command
+  http://people.apache.org/~kkolinko/patches/2010-02-28_tc6_findLeaks.patch
+  +1: kkolinko
+  -1:
