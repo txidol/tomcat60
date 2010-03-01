@@ -78,12 +78,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48050
   NamingContext.createSubcontext method returns Context with wrong name
-  Based on a suggestion by gingyang.xu
-  http://svn.apache.org/viewvc?rev=905722&view=rev
-  +1: markt, fhanik
-  -1: kkolinko:
-    The name should be the full name, not just the last component of it.
-    NamingContext.isWritable() will be broken otherwise.
+  http://people.apache.org/~markt/patches/2010-03-01-bug48050.patch
+  +1: markt
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48660
   Vary should add to Vary header rather than over-write it
