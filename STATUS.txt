@@ -165,5 +165,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add constraint for findleaks manager command
   http://people.apache.org/~kkolinko/patches/2010-02-28_tc6_findLeaks.patch
-  +1: kkolinko
+  +1: kkolinko, mturk
   -1:
