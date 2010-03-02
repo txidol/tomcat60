@@ -152,7 +152,7 @@ build is performed.</p>
   "standard" build properties stored in the developer's home directory.</p>
 
   <p>In many cases, your development system administrator will have already
-  installed the required JAR files into Tomcat 6's <code>lib</code> directory.
+  installed the required JAR files into the <code>lib</code> directory of Tomcat.
   If this has been done, you need
   to take no actions at all - the example <code>build.xml</code> file
   automatically constructs a compile classpath that includes these files.</p>
