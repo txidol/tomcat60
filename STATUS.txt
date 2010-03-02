@@ -84,25 +84,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48660
   Vary should add to Vary header rather than over-write it
-  http://svn.apache.org/viewvc?rev=907544&view=rev
-  +1: markt, jfclere, fhanik
-  -1: kkolinko:
-    Note, that having multiple Vary headers is not compliant with RFC 2616
-
-    4.2 Message Headers says:
-
-    > Multiple message-header fields with the same field-name MAY be present
-    > in a message if and only if the entire field-value for that header
-    > field is defined as a comma-separated list [i.e., #(values)].
-
-    14.44 Vary says:
-
-    > Vary  = "Vary" ":" ( "*" | 1#field-name )
-
-    thus the condition described in 4.2 is not met. Also if we are going to
-    concatenate values here, "*" value will require special processing.
-
-    http://tools.ietf.org/html/rfc2616
+  http://svn.apache.org/viewvc?rev=918093&view=rev
+  +1: markt
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48371
   Take account of comments when working out where to insert generated web.xml 
