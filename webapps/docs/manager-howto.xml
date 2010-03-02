@@ -909,7 +909,8 @@ http://localhost:8080/manager/findleaks
 should be used with extreme caution on production systems.</strong></p>
 
 <p>The find leaks diagnostic attempts to identify web applications that have
-caused memory leaks when they were reloaded. Results should always be confirmed
+caused memory leaks when they were stopped, reloaded or undeployed. Results
+should always be confirmed
 with a profiler. The diagnostic uses additional functionality provided by the
 StandardHost implementation. It will not work if a custom host is used that
 does not extend StandardHost.</p>
@@ -925,8 +926,9 @@ you will need to check using tools like GC logging, JConsole or similar.</p>
 /leaking-webapp
 </source>
 
-<p>Each context path for a web application that is believed to have triggered a
-memory leak when it was reloaded will be listed on a new line. If an application
+<p>Each context path for a web application that was stopped, reloaded or
+undeployed, but which classes from the previous runs are still loaded in memory,
+thus causing a memory leak, will be listed on a new line. If an application
 has been reloaded several times, it may be listed several times.</p>
 
 <p>If the command does not succeed, the response will start with
