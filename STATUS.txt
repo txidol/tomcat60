@@ -133,7 +133,7 @@ PATCHES PROPOSED TO BACKPORT:
   Based on the https://svn.apache.org/viewvc?view=revision&revision=915861
   6.0.x patch is at
   http://people.apache.org/~mturk/tomcat/patches/915861.patch
-  +1: mturk, kkolinko
+  +1: mturk, kkolinko, jfclere
   -1: 
 
 * Improve logging behaviour when shutdown occurs via a shutdownhook. If present,
