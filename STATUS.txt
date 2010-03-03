@@ -88,17 +88,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48371
-  Take account of comments when working out where to insert generated
-  web.xml (backport of r909869 by markt, 915737, 916097)
-  Also
-  - Deprecate methods, removed in TC7 (r916143)
-  - Allow the encoding used for web.xml files to be configured,
-    and allow the addWebXmlMappings option to be specified on the command line (r916157)
-  http://people.apache.org/~kkolinko/patches/2010-02-25_tc6_bug48371.patch
-  +1: kkolinko, markt,funkman
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
   Truststores don't have to have passwords
   Based on a patch by 'smmwpf54'

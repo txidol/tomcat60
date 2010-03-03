@@ -50,6 +50,13 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
+        <bug>48371</bug>: Ensure generated servlet mappings are inserted at the
+        correct location when using JspC and allow the option that controls this
+        to be configured on the command line. Also allow the encoding of web.xml
+        to be configured when using JspC and deprecate some unused JspC methods.
+        (markt/kkolinko) 
+      </fix>
+      <fix>
         <bug>48498</bug>: Avoid ArrayIndexOutOfBoundsException triggered by a
         Java 6/7 XML parser bug. (markt/kkolinko)
       </fix>
