@@ -79,7 +79,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48050
   NamingContext.createSubcontext method returns Context with wrong name
   http://people.apache.org/~markt/patches/2010-03-01-bug48050.patch
-  +1: markt
+  +1: markt,funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48660
@@ -96,7 +96,7 @@ PATCHES PROPOSED TO BACKPORT:
   - Allow the encoding used for web.xml files to be configured,
     and allow the addWebXmlMappings option to be specified on the command line (r916157)
   http://people.apache.org/~kkolinko/patches/2010-02-25_tc6_bug48371.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt,funkman
   -1:
 
 
@@ -128,7 +128,7 @@ PATCHES PROPOSED TO BACKPORT:
   Based on the https://svn.apache.org/viewvc?view=revision&revision=915861
   6.0.x patch is at
   http://people.apache.org/~mturk/tomcat/patches/915861.patch
-  +1: mturk, kkolinko, jfclere
+  +1: mturk, kkolinko, jfclere,funkman
   -1: 
 
 * Improve logging behaviour when shutdown occurs via a shutdownhook. If present,
@@ -141,7 +141,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add constraint for findleaks manager command
   http://people.apache.org/~kkolinko/patches/2010-02-28_tc6_findLeaks.patch
-  +1: kkolinko, mturk, markt, jfclere
+  +1: kkolinko, mturk, markt, jfclere,funkman
   -1:
 
 * Move sessionDetail.jsp sessionsList.jsp of Manager webapp into WEB-INF
@@ -152,10 +152,10 @@ PATCHES PROPOSED TO BACKPORT:
     svn move sessionDetail.jsp sessionsList.jsp WEB-INF/jsp/
   2)
     http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/manager/HTMLManagerServlet.java?rev=917598&r1=917597&r2=917598&view=diff
-  +1: kkolinko, markt
+  +1: kkolinko, markt,funkman
   -1:
 
 * Amend the messages displayed by Find Leaks diagnostics in the Manager application.
   http://svn.apache.org/viewvc?rev=917633&view=rev
-  +1: kkolinko, markt, jfclere
+  +1: kkolinko, markt, jfclere,funkman
   -1:
