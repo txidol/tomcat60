@@ -28,7 +28,11 @@
     </properties>
 
 <body>
- 
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
 <section name="Tomcat6 service application">
 <p>
     <b>Tomcat6</b> is a service application for running Tomcat6 as NT service.
