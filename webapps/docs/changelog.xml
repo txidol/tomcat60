@@ -35,7 +35,24 @@
   </properties>
 
 <body>
-<section name="Tomcat 6.0.25 (jfclere)">
+<!-- Section names:
+ Catalina, Coyote, Jasper, Cluster, Webapps, Other
+-->
+<section name="Tomcat 6.0.26 (jfclere)">
+  <subsection name="Webapps">
+    <changelog>
+      <add>
+        Make changelog.xml be directly rendered as HTML by certain browsers.
+        (kkolinko)
+      </add>
+      <add>
+        Add support for automated generation of TOC tables and for links to svn
+        revisions to tomcat-docs.xsl in documentation. (kkolinko/fhanik)
+      </add>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 6.0.25 (jfclere)" rtext="not released">
   <subsection name="Catalina">
     <changelog>
       <fix>
@@ -177,8 +194,9 @@
   <subsection name="Webapps">
     <changelog>
       <add>
-        Make the new web application reload memory leak detection available
-        through the Manager application. (markt/kkolinko)
+        Add new "Find leaks" command to the Manager application. It allows to
+        detect web applications that have caused memory leaks on stop,
+        reload or undeploy. (markt/kkolinko)
       </add>
     </changelog>
   </subsection>
