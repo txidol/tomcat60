@@ -117,13 +117,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Do not throw exception on shutdown
-  Based on the https://svn.apache.org/viewvc?view=revision&revision=915861
-  6.0.x patch is at
-  http://people.apache.org/~mturk/tomcat/patches/915861.patch
-  +1: mturk, kkolinko, jfclere,funkman
-  -1: 
-
 * Improve logging behaviour when shutdown occurs via a shutdownhook. If present,
   use Catalina's shutdown hook to shutdown Tomcat and JULI. This enables them to
   be shutdown in the correct order. 

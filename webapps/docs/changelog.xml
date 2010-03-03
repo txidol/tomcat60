@@ -39,6 +39,14 @@
  Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
 <section name="Tomcat 6.0.26 (jfclere)">
+  <subsection name="Coyote">
+    <changelog>
+      <fix>
+        Prevent the APR connector logging an error if the acceptor fails during
+        shutdown since this is expected. (mturk) 
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Jasper">
     <changelog>
       <fix>
