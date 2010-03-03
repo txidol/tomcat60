@@ -113,8 +113,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=918594&view=rev (review feedback BZ48831)
   +1: markt
   -1: 
-
-* Amend the messages displayed by Find Leaks diagnostics in the Manager application.
-  http://svn.apache.org/viewvc?rev=917633&view=rev
-  +1: kkolinko, markt, jfclere,funkman
-  -1:
