@@ -113,3 +113,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=918594&view=rev (review feedback BZ48831)
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48827 a regression in
+  the original fix for
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=47977
+  Using a body with tags specified to have empty body content should cause an
+  error 
+  http://svn.apache.org/viewvc?rev=918684&view=rev
+  +1: markt
+  -1: 
