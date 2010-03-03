@@ -114,11 +114,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Add constraint for findleaks manager command
-  http://people.apache.org/~kkolinko/patches/2010-02-28_tc6_findLeaks.patch
-  +1: kkolinko, mturk, markt, jfclere,funkman
-  -1:
-
 * Move sessionDetail.jsp sessionsList.jsp of Manager webapp into WEB-INF
   That is rev.917598
   1)
