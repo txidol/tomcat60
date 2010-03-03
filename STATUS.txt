@@ -109,13 +109,6 @@ PATCHES PROPOSED TO BACKPORT:
       markt: It shouldn't break existing configs. JSSE allows trust stores to be
              read without providing the password
 
-* Workaround https://issues.apache.org/bugzilla/show_bug.cgi?id=48498
-  Avoid ArrayIndexOutOfBoundsException triggered by Java 6/7 XML parser bug
-  http://svn.apache.org/viewvc?rev=910370&view=rev
-  http://svn.apache.org/viewvc?rev=916170&view=rev
-  +1: markt, rjung, kkolinko(with r916170)
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48589
   Make JNDIRealm easier to extend
   Based on a patch by Candid Dauth
