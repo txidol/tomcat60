@@ -120,10 +120,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve logging behaviour when shutdown occurs via a shutdownhook. If present,
   use Catalina's shutdown hook to shutdown Tomcat and JULI. This enables them to
   be shutdown in the correct order. 
-  http://svn.apache.org/viewvc?rev=910974&view=rev 
+  http://svn.apache.org/viewvc?rev=910974&view=rev
+  http://svn.apache.org/viewvc?rev=918594&view=rev (review feedback BZ48831)
   +1: markt
-  -1: kkolinko: Catalina.stop() calls Runtime.removeShutdownHook(shutdownHook)
-  and thus ClassLoaderLogManager.shutdown() will not be called. See BZ 48831.
+  -1: 
 
 * Add constraint for findleaks manager command
   http://people.apache.org/~kkolinko/patches/2010-02-28_tc6_findLeaks.patch
