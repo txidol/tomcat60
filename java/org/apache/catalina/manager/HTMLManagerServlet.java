@@ -77,8 +77,8 @@ public final class HTMLManagerServlet extends ManagerServlet {
     protected static final URLEncoder URL_ENCODER; 
     protected static final String APPLICATION_MESSAGE = "message";
     protected static final String APPLICATION_ERROR = "error";
-    protected String sessionsListJspPath  = "/sessionsList.jsp";
-    protected String sessionDetailJspPath = "/sessionDetail.jsp";
+    protected String sessionsListJspPath  = "/WEB-INF/jsp/sessionsList.jsp";
+    protected String sessionDetailJspPath = "/WEB-INF/jsp/sessionDetail.jsp";
 
     static {
         URL_ENCODER = new URLEncoder();

@@ -80,6 +80,10 @@
         Add support for automated generation of TOC tables and for links to svn
         revisions to tomcat-docs.xsl in documentation. (kkolinko/fhanik)
       </add>
+      <add>
+        Move Manager application JSPs that are not intended to be accessed
+        directly under the WEB-INF directory. (kkolinko)
+      </add>
     </changelog>
   </subsection>
 </section>

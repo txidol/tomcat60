@@ -114,17 +114,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Move sessionDetail.jsp sessionsList.jsp of Manager webapp into WEB-INF
-  That is rev.917598
-  1)
-    cd webapps/manager
-    svn mkdir WEB-INF/jsp
-    svn move sessionDetail.jsp sessionsList.jsp WEB-INF/jsp/
-  2)
-    http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/manager/HTMLManagerServlet.java?rev=917598&r1=917597&r2=917598&view=diff
-  +1: kkolinko, markt,funkman
-  -1:
-
 * Amend the messages displayed by Find Leaks diagnostics in the Manager application.
   http://svn.apache.org/viewvc?rev=917633&view=rev
   +1: kkolinko, markt, jfclere,funkman
