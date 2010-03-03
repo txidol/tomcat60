@@ -113,10 +113,9 @@ PATCHES PROPOSED TO BACKPORT:
   Make JNDIRealm easier to extend
   Based on a patch by Candid Dauth
   http://svn.apache.org/viewvc?rev=910485&view=rev
+  http://svn.apache.org/viewvc?rev=918489&view=rev (review feedback)
   +1: markt
   -1: 
-   kkolinko: mark User constructor as protected, replace ArrayList argument
-    with a List, and maybe address sebb's comments to r910485 on dev@
 
 * Do not throw exception on shutdown
   Based on the https://svn.apache.org/viewvc?view=revision&revision=915861
