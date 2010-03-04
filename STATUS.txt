@@ -124,6 +124,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=918792&view=rev (FileHandler: whitespace)
   http://svn.apache.org/viewvc?rev=918799&view=rev (FileHandler: try/finally)
   http://svn.apache.org/viewvc?rev=918787&view=rev (ClassLoaderLogManager: fix BZ48831)
+  http://svn.apache.org/viewvc?rev=918885&view=rev (ignore reset call from j.u.l.LogManager.Cleaner)
+
+  here is the combined patch file
+  (revisions 910974,918594,918792,918799,918787,918885):
+  http://people.apache.org/~kkolinko/patches/2010-03-04_tc6_bug48831.patch
   +1: kkolinko
   -1:
 
