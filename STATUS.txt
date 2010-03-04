@@ -76,12 +76,6 @@ PATCHES PROPOSED TO BACKPORT:
                if we remove the SCP auto feature, then there should be something to replace it with
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48050
-  NamingContext.createSubcontext method returns Context with wrong name
-  http://people.apache.org/~markt/patches/2010-03-01-bug48050.patch
-  +1: markt,funkman
-  -1: kkolinko: https://issues.apache.org/bugzilla/show_bug.cgi?id=48050#c3
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48660
   Vary should add to Vary header rather than over-write it
   http://svn.apache.org/viewvc?rev=918093&view=rev
