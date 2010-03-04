@@ -112,7 +112,15 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=910974&view=rev
   http://svn.apache.org/viewvc?rev=918594&view=rev (review feedback BZ48831)
   +1: markt
+  +1: kkolinko: with the additional patches proposed below
   -1: 
+
+  Additional patches:
+  http://svn.apache.org/viewvc?rev=918792&view=rev (FileHandler: whitespace)
+  http://svn.apache.org/viewvc?rev=918799&view=rev (FileHandler: try/finally)
+  http://svn.apache.org/viewvc?rev=918787&view=rev (ClassLoaderLogManager: fix BZ48831)
+  +1: kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48827 a regression in
   the original fix for
