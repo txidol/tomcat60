@@ -140,3 +140,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=918684&view=rev
   +1: markt, kkolinko
   -1: 
+
+* Move source/target JDK versions to the main section of the manifest,
+  because these values belong to the JAR file as the whole, not to some subset of it.
+  http://svn.apache.org/viewvc?rev=918923&view=rev
+  +1: kkolinko
+  -1:
