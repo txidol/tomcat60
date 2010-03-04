@@ -138,5 +138,5 @@ PATCHES PROPOSED TO BACKPORT:
   Using a body with tags specified to have empty body content should cause an
   error 
   http://svn.apache.org/viewvc?rev=918684&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
