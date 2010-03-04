@@ -79,7 +79,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48660
   Vary should add to Vary header rather than over-write it
   http://svn.apache.org/viewvc?rev=918093&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
@@ -132,11 +132,11 @@ PATCHES PROPOSED TO BACKPORT:
   Using a body with tags specified to have empty body content should cause an
   error 
   http://svn.apache.org/viewvc?rev=918684&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Move source/target JDK versions to the main section of the manifest,
   because these values belong to the JAR file as the whole, not to some subset of it.
   http://svn.apache.org/viewvc?rev=918923&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
