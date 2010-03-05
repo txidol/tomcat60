@@ -96,7 +96,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=918803&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Improve logging behaviour when shutdown occurs via a shutdownhook. If present,
@@ -118,6 +118,7 @@ PATCHES PROPOSED TO BACKPORT:
   (revisions 910974,918594,918792,918799,918787,918885):
   http://people.apache.org/~kkolinko/patches/2010-03-04_tc6_bug48831.patch
   +1: kkolinko
+  +1: markt with http://svn.apache.org/viewvc?rev=919347&view=rev
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48827 a regression in
@@ -132,5 +133,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Move source/target JDK versions to the main section of the manifest,
   because these values belong to the JAR file as the whole, not to some subset of it.
   http://svn.apache.org/viewvc?rev=918923&view=rev
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, markt
   -1:
