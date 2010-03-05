@@ -129,5 +129,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Remove malformed \uxxxx encoding in the french translation.
   That prevents deployment of applications when using french language.
   http://svn.apache.org/viewvc?rev=919503&view=rev
-  +1: jfclere, markt
+  +1: jfclere, markt, rjung
   -1:
+  rjung: Out of curiousity: how can example webapp strings prevent deployment?
+  svn:log of this proposal contains a reference to WebModule=//localhost/erablex.
+  Is this in any way related to the actual change proposed here?
