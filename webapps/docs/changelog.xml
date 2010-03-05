@@ -53,6 +53,10 @@
         <bug>48584</bug>: Prevent the APR connector logging an error if the
         acceptor fails during shutdown since this is expected. (mturk) 
       </fix>
+      <fix>
+        <bug>48660</bug>: Using compression should not overwrite any Vary header
+        set by a web application. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
