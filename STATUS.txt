@@ -126,7 +126,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, rjung, markt
   -1:
 
-* Remove malformed \uxxxx encoding in the french translation.
+* Replace UTF-8 characters with the proper \uxxxx encoding in the French translation.
   That prevents deployment of applications when using french language.
 +++
 Index: java/org/apache/catalina/session/LocalStrings_fr.properties
@@ -206,5 +206,5 @@ Index: webapps/examples/WEB-INF/classes/LocalStrings_fr.properties
  sessions.dataname=Nom de l''Attribut de Session:
  sessions.datavalue=Valeur de l''Attribut de Session:
 +++
-  +1: jfclere
+  +1: jfclere, kkolinko
   -1:
