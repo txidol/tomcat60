@@ -129,5 +129,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Remove malformed \uxxxx encoding in the french translation.
   That prevents deployment of applications when using french language.
   http://svn.apache.org/viewvc?rev=919503&view=rev
-  +1: jfclere
+  +1: jfclere, markt
   -1:
