@@ -121,15 +121,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt with http://svn.apache.org/viewvc?rev=919347&view=rev
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48827 a regression in
-  the original fix for
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=47977
-  Using a body with tags specified to have empty body content should cause an
-  error 
-  http://svn.apache.org/viewvc?rev=918684&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Move source/target JDK versions to the main section of the manifest,
   because these values belong to the JAR file as the whole, not to some subset of it.
   http://svn.apache.org/viewvc?rev=918923&view=rev

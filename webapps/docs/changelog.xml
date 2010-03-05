@@ -72,6 +72,11 @@
         <bug>48498</bug>: Avoid ArrayIndexOutOfBoundsException triggered by a
         Java 6/7 XML parser bug. (markt/kkolinko)
       </fix>
+      <fix>
+        <bug>48827</bug>: Correct a regression in the fix for <bug>47977</bug>
+        that caused an incorrect non-empty body error to be reported for valid
+        JSP documents. (markt) 
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
