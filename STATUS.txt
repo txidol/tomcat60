@@ -125,3 +125,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=918923&view=rev
   +1: kkolinko, rjung, markt
   -1:
+
+* Remove malformed \uxxxx encoding in the french translation.
+  That prevents deployment of applications when using french language.
+  http://svn.apache.org/viewvc?rev=919503&view=rev
+  +1: jfclere
+  -1:
