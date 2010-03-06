@@ -45,6 +45,12 @@
         Close security hole in unreleased 6.0.25 by ensuring new find leaks
         functionality is protected by a security constraint. (kkolinko)
       </fix>
+      <fix>
+        <bug>48831</bug>: Improve logging shutdown behaviour. Use Catalina's
+        shutdown hook to shutdown JULI. This enables them to be shutdown in the
+        correct order. Do not shutdown global handlers several times.
+        (markt/kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -1131,7 +1137,7 @@
       <fix>
         Correct CVE-2009-3548. When installed via the Windows installer and
         using defaults, don't create an administrative user with a blank
-        password. Additionally, the administrative user is only created of the
+        password. Additionally, the administrative user is only created if the
         manager or host-manager web applications are selected for installation.
         (markt)
       </fix>

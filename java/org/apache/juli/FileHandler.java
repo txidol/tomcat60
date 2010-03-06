@@ -26,6 +26,8 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.sql.Timestamp;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.logging.ErrorManager;
 import java.util.logging.Filter;
 import java.util.logging.Formatter;
@@ -96,9 +98,16 @@ public class FileHandler
      * The PrintWriter to which we are currently logging, if any.
      */
     private volatile PrintWriter writer = null;
-    
+
+
     /**
-     * Log buffer size
+     * Lock used to control access to the writer.
+     */
+    protected ReadWriteLock writerLock = new ReentrantReadWriteLock();
+
+
+    /**
+     * Log buffer size.
      */
     private int bufferSize = -1;
 
@@ -122,40 +131,52 @@ public class FileHandler
         String tsString = ts.toString().substring(0, 19);
         String tsDate = tsString.substring(0, 10);
 
+        writerLock.readLock().lock();
         // If the date has changed, switch log files
         if (!date.equals(tsDate)) {
-            synchronized (this) {
+            // Update to writeLock before we switch
+            writerLock.readLock().unlock();
+            writerLock.writeLock().lock();
+            try {
+                // Make sure another thread hasn't already done this
                 if (!date.equals(tsDate)) {
                     closeWriter();
                     date = tsDate;
                     openWriter();
                 }
+                // Down grade to read-lock. This ensures the writer remains valid
+                // until the log message is written
+                writerLock.readLock().lock();
+            } finally {
+                writerLock.writeLock().unlock();
             }
         }
 
-        String result = null;
         try {
-            result = getFormatter().format(record);
-        } catch (Exception e) {
-            reportError(null, e, ErrorManager.FORMAT_FAILURE);
-            return;
-        }
-        
-        try {
-            PrintWriter writer = this.writer;
-            if (writer!=null) {
-                writer.write(result);
-                if (bufferSize < 0) {
-                    writer.flush();
-                }
-            } else {
-                reportError("FileHandler is closed or not yet initialized, unable to log ["+result+"]", null, ErrorManager.WRITE_FAILURE);
+            String result = null;
+            try {
+                result = getFormatter().format(record);
+            } catch (Exception e) {
+                reportError(null, e, ErrorManager.FORMAT_FAILURE);
+                return;
             }
-        } catch (Exception e) {
-            reportError(null, e, ErrorManager.WRITE_FAILURE);
-            return;
+
+            try {
+                if (writer!=null) {
+                    writer.write(result);
+                    if (bufferSize < 0) {
+                        writer.flush();
+                    }
+                } else {
+                    reportError("FileHandler is closed or not yet initialized, unable to log ["+result+"]", null, ErrorManager.WRITE_FAILURE);
+                }
+            } catch (Exception e) {
+                reportError(null, e, ErrorManager.WRITE_FAILURE);
+                return;
+            }
+        } finally {
+            writerLock.readLock().unlock();
         }
-        
     }
     
     
@@ -171,9 +192,8 @@ public class FileHandler
 
     protected void closeWriter() {
         
+        writerLock.writeLock().lock();
         try {
-            PrintWriter writer = this.writer;
-            this.writer = null;
             if (writer == null)
                 return;
             writer.write(getFormatter().getTail(this));
@@ -183,8 +203,9 @@ public class FileHandler
             date = "";
         } catch (Exception e) {
             reportError(null, e, ErrorManager.CLOSE_FAILURE);
+        } finally {
+            writerLock.writeLock().unlock();
         }
-        
     }
 
 
@@ -193,13 +214,15 @@ public class FileHandler
      */
     public void flush() {
 
+        writerLock.readLock().lock();
         try {
-            PrintWriter writer = this.writer;
-            if (writer==null)
+            if (writer == null)
                 return;
             writer.flush();
         } catch (Exception e) {
             reportError(null, e, ErrorManager.FLUSH_FAILURE);
+        } finally {
+            writerLock.readLock().unlock();
         }
         
     }
@@ -297,6 +320,7 @@ public class FileHandler
         dir.mkdirs();
 
         // Open the current log file
+        writerLock.writeLock().lock();
         try {
             String pathname = dir.getAbsolutePath() + File.separator +
                 prefix + date + suffix;
@@ -310,6 +334,8 @@ public class FileHandler
         } catch (Exception e) {
             reportError(null, e, ErrorManager.OPEN_FAILURE);
             writer = null;
+        } finally {
+            writerLock.writeLock().unlock();
         }
 
     }

@@ -99,27 +99,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
-* Improve logging behaviour when shutdown occurs via a shutdownhook. If present,
-  use Catalina's shutdown hook to shutdown Tomcat and JULI. This enables them to
-  be shutdown in the correct order. 
-  http://svn.apache.org/viewvc?rev=910974&view=rev
-  http://svn.apache.org/viewvc?rev=918594&view=rev (review feedback BZ48831)
-  +1: markt
-  +1: kkolinko: with the additional patches proposed below
-  -1: 
-
-  Additional patches:
-  http://svn.apache.org/viewvc?rev=918792&view=rev (FileHandler: whitespace)
-  http://svn.apache.org/viewvc?rev=918799&view=rev (FileHandler: try/finally)
-  http://svn.apache.org/viewvc?rev=918787&view=rev (ClassLoaderLogManager: fix BZ48831)
-  http://svn.apache.org/viewvc?rev=918885&view=rev (ignore reset call from j.u.l.LogManager.Cleaner)
-
-  here is the combined patch file
-  (revisions 910974,918594,918792,918799,918787,918885):
-  http://people.apache.org/~kkolinko/patches/2010-03-04_tc6_bug48831.patch
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Replace UTF-8 characters with the proper \uxxxx encoding in the French translation.
   That prevents deployment of applications when using french language.
   http://people.apache.org/~rjung/patches/french_properties_utf.patch

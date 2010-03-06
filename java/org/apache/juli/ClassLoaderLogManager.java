@@ -50,25 +50,8 @@ public class ClassLoaderLogManager extends LogManager {
         
         @Override
         public void run() {
-            // The JVM us being shutdown. Make sure all loggers for all class
-            // loaders are shutdown
-            for (ClassLoaderLogInfo clLogInfo : classLoaderLoggers.values()) {
-                for (Logger logger : clLogInfo.loggers.values()) {
-                    resetLogger(logger);
-                }
-            }
-        }
-            
-        private void resetLogger(Logger logger) {
-            
-            Handler[] handlers = logger.getHandlers();
-            for (Handler handler : handlers) {
-                logger.removeHandler(handler);
-                try {
-                    handler.close();
-                } catch (Exception e) {
-                    // Ignore
-                }
+            if (useShutdownHook) {
+                shutdown();
             }
         }
 
@@ -105,7 +88,29 @@ public class ClassLoaderLogManager extends LogManager {
      */
     protected ThreadLocal<String> prefix = new ThreadLocal<String>();
 
+
+    /**
+     * Determines if the shutdown hook is used to perform any necessary
+     * clean-up such as flushing buffered handlers on JVM shutdown. Defaults to
+     * <code>true</code> but may be set to false if another component ensures
+     * that {@link #shutdown()} is called.
+     */
+    protected volatile boolean useShutdownHook = true;
+
     
+    // ------------------------------------------------------------- Properties
+
+
+    public boolean isUseShutdownHook() {
+        return useShutdownHook;
+    }
+
+
+    public void setUseShutdownHook(boolean useShutdownHook) {
+        this.useShutdownHook = useShutdownHook;
+    }
+
+
     // --------------------------------------------------------- Public Methods
 
 
@@ -291,7 +296,59 @@ public class ClassLoaderLogManager extends LogManager {
         readConfiguration(is, Thread.currentThread().getContextClassLoader());
     
     }
-        
+
+    @Override
+    public void reset() throws SecurityException {
+        Thread thread = Thread.currentThread();
+        if (thread.getClass().getName().startsWith(
+                "java.util.logging.LogManager$")) {
+            // Ignore the call from java.util.logging.LogManager.Cleaner,
+            // because we have our own shutdown hook
+            return;
+        }
+        ClassLoader classLoader = thread.getContextClassLoader();
+        ClassLoaderLogInfo clLogInfo = getClassLoaderInfo(classLoader);
+        resetLoggers(clLogInfo);
+        super.reset();
+    }
+
+    /**
+     * Shuts down the logging system.
+     */
+    public void shutdown() {
+        // The JVM us being shutdown. Make sure all loggers for all class
+        // loaders are shutdown
+        for (ClassLoaderLogInfo clLogInfo : classLoaderLoggers.values()) {
+            resetLoggers(clLogInfo);
+        }
+    }
+
+    // -------------------------------------------------------- Private Methods
+    private void resetLoggers(ClassLoaderLogInfo clLogInfo) {
+        // This differs from LogManager#resetLogger() in that we close not all
+        // handlers of all loggers, but only those that are present in our
+        // ClassLoaderLogInfo#handlers list. That is because our #addLogger(..)
+        // method can use handlers from the parent class loaders, and closing
+        // handlers that the current class loader does not own would be not
+        // good.
+        synchronized (clLogInfo) {
+            for (Logger logger : clLogInfo.loggers.values()) {
+                Handler[] handlers = logger.getHandlers();
+                for (Handler handler : handlers) {
+                    logger.removeHandler(handler);
+                }
+            }
+            for (Handler handler : clLogInfo.handlers.values()) {
+                try {
+                    handler.close();
+                } catch (Exception e) {
+                    // Ignore
+                }
+            }
+            clLogInfo.handlers.clear();
+        }
+    }
+
     // ------------------------------------------------------ Protected Methods
 
 
