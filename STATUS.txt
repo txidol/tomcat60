@@ -98,11 +98,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=918803&view=rev
   +1: kkolinko, markt
   -1:
-
-* Replace UTF-8 characters with the proper \uxxxx encoding in the French translation.
-  That prevents deployment of applications when using french language.
-  http://people.apache.org/~rjung/patches/french_properties_utf.patch
-  +1: jfclere, kkolinko, rjung, markt
-  -1:
-  rjung: I replaced the inline patch by the above link, because the inline patch
-  wasn't correctly formatted
