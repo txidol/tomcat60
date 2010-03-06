@@ -120,12 +120,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung
   -1:
 
-* Move source/target JDK versions to the main section of the manifest,
-  because these values belong to the JAR file as the whole, not to some subset of it.
-  http://svn.apache.org/viewvc?rev=918923&view=rev
-  +1: kkolinko, rjung, markt
-  -1:
-
 * Replace UTF-8 characters with the proper \uxxxx encoding in the French translation.
   That prevents deployment of applications when using french language.
 +++
