@@ -102,7 +102,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Replace UTF-8 characters with the proper \uxxxx encoding in the French translation.
   That prevents deployment of applications when using french language.
   http://people.apache.org/~rjung/patches/french_properties_utf.patch
-  +1: jfclere, kkolinko, rjung
+  +1: jfclere, kkolinko, rjung, markt
   -1:
   rjung: I replaced the inline patch by the above link, because the inline patch
   wasn't correctly formatted
@@ -110,10 +110,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Replace more UTF-8 characters with the proper \uxxxx encoding LocalStrings properties.
   I checked all files with a script. There was only one occurence remaining.
   http://svn.apache.org/viewvc?rev=919737&view=rev
-  +1: rjung, kkolinko
+  +1: rjung, kkolinko, markt
   -1:
 
 * Restore lost native chars and replace by correct utf-8 encoding.
   http://svn.apache.org/viewvc?rev=919748&view=rev
-  +1: rjung, kkolinko
+  +1: rjung, kkolinko, markt
   -1:
