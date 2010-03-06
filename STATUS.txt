@@ -112,8 +112,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=919737&view=rev
   +1: rjung, kkolinko, markt
   -1:
-
-* Restore lost native chars and replace by correct utf-8 encoding.
-  http://svn.apache.org/viewvc?rev=919748&view=rev
-  +1: rjung, kkolinko, markt
-  -1:
