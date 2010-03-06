@@ -130,6 +130,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Replace more UTF-8 characters with the proper \uxxxx encoding LocalStrings properties.
   I checked all files with a script. There was only one occurence remaining.
-  http://people.apache.org/~rjung/patches/spanish_properties_utf.patch
+  http://svn.apache.org/viewvc?rev=919737&view=rev
   +1: rjung
   -1:
