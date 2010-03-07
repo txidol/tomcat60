@@ -98,3 +98,25 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=918803&view=rev
   +1: kkolinko, markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48668
+
+  1) Fix for jasper.compiler.Parser
+  Honor isELIgnored and isDeferredSyntaxAllowed when parsing.
+  Backport of r919851:
+  http://people.apache.org/~kkolinko/patches/2010-03-07_tc6_bug48668_r919851.patch
+  +1: kkolinko
+  -1:
+
+  2) Fix for jasper.compiler.Validator
+  Fix jasper.compiler.Validator behaviour with regards to isELIgnored and
+  isDeferredSyntaxAllowedAsLiteral options. Do not try parsing EL when
+  isELIgnored = true.
+  Make jasper.compiler.ELParser aware about isDeferredSyntaxAllowedAsLiteral option.
+  Make default values of isDeferredSyntaxAllowedAsLiteral and isELIgnored
+  be determined by servlet spec version in web.xml or by jsp spec version
+  in TLD file.
+  Backport of r919914:
+  http://people.apache.org/~kkolinko/patches/2010-03-07_tc6_bug48668_r919914.patch
+  +1: kkolinko
+  -1:
