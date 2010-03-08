@@ -105,7 +105,7 @@ PATCHES PROPOSED TO BACKPORT:
   Honor isELIgnored and isDeferredSyntaxAllowed when parsing.
   Backport of r919851:
   http://people.apache.org/~kkolinko/patches/2010-03-07_tc6_bug48668_r919851.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, jfclere
   -1:
 
   2) Fix for jasper.compiler.Validator
@@ -126,5 +126,5 @@ PATCHES PROPOSED TO BACKPORT:
   Make handling of isELIgnored and isDeferredSyntaxAllowedAsLiteral consistent
   This is *NOT* required for spec compliance
   http://svn.apache.org/viewvc?rev=920110&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1: 
