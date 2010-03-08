@@ -121,10 +121,17 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   +1: markt with http://svn.apache.org/viewvc?rev=920055&view=rev
   -1:
+   kkolinko: +1 with 920055
+
+  3)
+     http://people.apache.org/~kkolinko/patches/2010-03-07_tc7_48668_Compiler.patch
+  +1: kkolinko
+  -1:
 
 * Follow up for https://issues.apache.org/bugzilla/show_bug.cgi?id=48668
   Make handling of isELIgnored and isDeferredSyntaxAllowedAsLiteral consistent
   This is *NOT* required for spec compliance
   http://svn.apache.org/viewvc?rev=920110&view=rev
   +1: markt, jfclere
-  -1: 
+  -1: kkolinko: JSP 2.0 spec chapter "Backwards Compatibility with JSP 1.2" (page xx (20 of 478))
+      does not mention it. So I think it is against the spec. See r920055 thread on dev@.
