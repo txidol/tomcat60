@@ -166,5 +166,13 @@ Index: java/org/apache/catalina/session/LocalStrings_fr.properties
   Allow user names as well as DNs to be used with the nested role search
   Add roleNested to the docs
   Patch provided by Felix Schumacher
+  http://svn.apache.org/viewvc?rev=920422&view=rev
   +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48661
+  Make error page behaviour consistent. If a response has been committed, include
+  the error page
+  http://svn.apache.org/viewvc?rev=920449&view=rev
+  +1: mark
   -1: 
