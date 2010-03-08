@@ -139,8 +139,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve log messages when a potential leak is detected by including the name
   of the offending context
   http://svn.apache.org/viewvc?view=revision&revision=920298
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+   kkolinko: I would prefer contextName to always be the 0th argument of the message
 
 * Another french translation problem (Submit by Henri Gomez):
 +++
