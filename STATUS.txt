@@ -135,3 +135,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, jfclere
   -1: kkolinko: JSP 2.0 spec chapter "Backwards Compatibility with JSP 1.2" (page xx (20 of 478))
       does not mention it. So I think it is against the spec. See r920055 thread on dev@.
+
+* Improve log messages when a potential leak is detected by including the name
+  of the offending context
+  http://svn.apache.org/viewvc?view=revision&revision=920298
+  +1: markt
+  -1: 
+ 
