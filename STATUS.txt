@@ -159,7 +159,7 @@ Index: java/org/apache/catalina/session/LocalStrings_fr.properties
  standardSession.setAttribute.ise="setAttribute": Session d\u00e9j\u00e0 invalid\u00e9e
  standardSession.setAttribute.namenull="setAttribute": le nom de param\u00e8tre ne peut \u00eatre nul
 +++
-  +1: jfclere, markt
+  +1: jfclere, markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48629
@@ -167,12 +167,12 @@ Index: java/org/apache/catalina/session/LocalStrings_fr.properties
   Add roleNested to the docs
   Patch provided by Felix Schumacher
   http://svn.apache.org/viewvc?rev=920422&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48661
   Make error page behaviour consistent. If a response has been committed, include
   the error page
   http://svn.apache.org/viewvc?rev=920449&view=rev
-  +1: mark
+  +1: markt, kkolinko
   -1: 
