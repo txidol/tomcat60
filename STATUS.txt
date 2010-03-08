@@ -161,3 +161,10 @@ Index: java/org/apache/catalina/session/LocalStrings_fr.properties
 +++
   +1: jfclere
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48629
+  Allow user names as well as DNs to be used with the nested role search
+  Add roleNested to the docs
+  Patch provided by Felix Schumacher
+  +1: markt
+  -1: 
