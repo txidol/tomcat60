@@ -1456,9 +1456,11 @@ class Parser implements TagConstants {
             err.jspError(reader.mark(), "jsp.error.no.scriptlets");
         } else if (reader.matches("<jsp:text")) {
             parseXMLTemplateText(parent);
-        } else if (reader.matches("${")) {
+        } else if (!pageInfo.isELIgnored() && reader.matches("${")) {
             parseELExpression(parent, '$');
-        } else if (reader.matches("#{")) {
+        } else if (!pageInfo.isELIgnored()
+                && !pageInfo.isDeferredSyntaxAllowedAsLiteral()
+                && reader.matches("#{")) {
             parseELExpression(parent, '#');
         } else if (reader.matches("<jsp:")) {
             parseStandardAction(parent);
@@ -1507,10 +1509,12 @@ class Parser implements TagConstants {
         } else if (reader.matches("<jsp:text")) {
             err.jspError(reader.mark(), "jsp.error.not.in.template",
                     "&lt;jsp:text");
-        } else if (reader.matches("${")) {
+        } else if (!pageInfo.isELIgnored() && reader.matches("${")) {
             err.jspError(reader.mark(), "jsp.error.not.in.template",
                     "Expression language");
-        } else if (reader.matches("#{")) {
+        } else if (!pageInfo.isELIgnored()
+                && !pageInfo.isDeferredSyntaxAllowedAsLiteral()
+                && reader.matches("#{")) {
             err.jspError(reader.mark(), "jsp.error.not.in.template",
                     "Expression language");
         } else if (reader.matches("<jsp:")) {

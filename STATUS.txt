@@ -99,21 +99,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48668
-
-  1) Fix for jasper.compiler.Parser
-  Honor isELIgnored and isDeferredSyntaxAllowed when parsing.
-  Backport of r919851:
-  http://people.apache.org/~kkolinko/patches/2010-03-07_tc6_bug48668_r919851.patch
-  +1: kkolinko, markt, jfclere
-  -1:
-
-  2) Fix for jasper.compiler.Validator etc.
-  http://people.apache.org/~kkolinko/patches/2010-03-09_tc6_bug48668-2.patch
-  (Backport of r919914,920025,920055,920596)
-  +1: kkolinko, jfclere, markt
-  -1:
-
 * Improve log messages when a potential leak is detected by including the name
   of the offending context
   http://svn.apache.org/viewvc?view=revision&revision=920298
