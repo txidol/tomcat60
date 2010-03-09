@@ -140,7 +140,8 @@ PATCHES PROPOSED TO BACKPORT:
   by <jsp:getProperty> - JSP.5.3
   http://svn.apache.org/viewvc?rev=920532&view=rev
   +1: markt
-  -1: 
+  -1: kkolinko: Processing of getNameFromAttribute() is wrong there. When
+   getNameFromAttribute() is used, the attribute value should give us the name.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
   Return roles defined by both userRoleName and roleName mechanisms
@@ -159,5 +160,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48760
   Ensure multiple threads do not end up with the same InputStream
   http://svn.apache.org/viewvc?rev=920858&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48701
+  Add system property to allow disabling enforcement of JSP.5.3
+  The spec recommends, but does not require this enforcement.
+  +1: kkolinko
+  -1:
