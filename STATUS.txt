@@ -152,12 +152,12 @@ PATCHES PROPOSED TO BACKPORT:
   Add system property to allow disabling enforcement of JSP.5.3
   The spec recommends, but does not require this enforcement.
   http://svn.apache.org/viewvc?rev=920880&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Address https://issues.apache.org/bugzilla/show_bug.cgi?id=48007#c5
   Improve exception processing in CustomObjectInputStream#resolveClass(),
   to help find the cause behind BZ 48007.
   http://svn.apache.org/viewvc?rev=920912&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
