@@ -166,5 +166,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48701
   Add system property to allow disabling enforcement of JSP.5.3
   The spec recommends, but does not require this enforcement.
+  http://svn.apache.org/viewvc?rev=920880&view=rev
   +1: kkolinko
   -1:
