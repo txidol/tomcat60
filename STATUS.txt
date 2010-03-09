@@ -120,14 +120,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-* Revisit https://issues.apache.org/bugzilla/show_bug.cgi?id=48701
-  Allow TagVariableInfo as well as VariableInfo to introduce objects later used
-  by <jsp:getProperty> - JSP.5.3
-  http://svn.apache.org/viewvc?rev=920532&view=rev
-  http://svn.apache.org/viewvc?rev=920907&view=rev (review comment)
-  +1: markt
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
   Return roles defined by both userRoleName and roleName mechanisms
   Patch provided by 'eric'
