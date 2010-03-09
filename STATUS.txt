@@ -139,9 +139,9 @@ PATCHES PROPOSED TO BACKPORT:
   Allow TagVariableInfo as well as VariableInfo to introduce objects later used
   by <jsp:getProperty> - JSP.5.3
   http://svn.apache.org/viewvc?rev=920532&view=rev
+  http://svn.apache.org/viewvc?rev=920907&view=rev (review comment)
   +1: markt
-  -1: kkolinko: Processing of getNameFromAttribute() is wrong there. When
-   getNameFromAttribute() is used, the attribute value should give us the name.
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
   Return roles defined by both userRoleName and roleName mechanisms
