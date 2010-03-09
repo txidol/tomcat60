@@ -111,7 +111,7 @@ PATCHES PROPOSED TO BACKPORT:
   2) Fix for jasper.compiler.Validator etc.
   http://people.apache.org/~kkolinko/patches/2010-03-09_tc6_bug48668-2.patch
   (Backport of r919914,920025,920055,920596)
-  +1: kkolinko, jfclere
+  +1: kkolinko, jfclere, markt
   -1:
 
 * Improve log messages when a potential leak is detected by including the name
