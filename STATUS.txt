@@ -147,3 +147,11 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by 'eric'
   +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48737
+  Don't assume paths that start with /META-INF/... are always in JARs. This is
+  not true for some IDEs
+  Patch provided by Fabrizio Giustina
+  http://svn.apache.org/viewvc?rev=920840&view=rev
+  +1: markt
+  -1: 
