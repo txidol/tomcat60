@@ -145,5 +145,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
   Return roles defined by both userRoleName and roleName mechanisms
   Patch provided by 'eric'
-  +1: markt
+  +1: markt, kkolinko
   -1: 
