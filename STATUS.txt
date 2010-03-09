@@ -153,5 +153,5 @@ PATCHES PROPOSED TO BACKPORT:
   not true for some IDEs
   Patch provided by Fabrizio Giustina
   http://svn.apache.org/viewvc?rev=920840&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
