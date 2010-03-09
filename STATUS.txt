@@ -159,3 +159,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-03-09-bug48701.patch
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48790
+  Make maxActive thread safe. I almost marked this as WONTFIX. Only the fact
+  that it is, technically, a bug stopped me.
+  http://svn.apache.org/viewvc?rev=921166&view=rev
+  +1: markt
+  -1: 
