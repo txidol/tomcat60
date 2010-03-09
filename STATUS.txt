@@ -108,23 +108,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, jfclere
   -1:
 
-  2) Fix for jasper.compiler.Validator
-  Fix jasper.compiler.Validator behaviour with regards to isELIgnored and
-  isDeferredSyntaxAllowedAsLiteral options. Do not try parsing EL when
-  isELIgnored = true.
-  Make jasper.compiler.ELParser aware about isDeferredSyntaxAllowedAsLiteral option.
-  Make default values of isDeferredSyntaxAllowedAsLiteral and isELIgnored
-  be determined by servlet spec version in web.xml or by jsp spec version
-  in TLD file.
-  Backport of r919914:
-  http://people.apache.org/~kkolinko/patches/2010-03-07_tc6_bug48668_r919914.patch
-  +1: kkolinko
-  +1: markt with http://svn.apache.org/viewvc?rev=920055&view=rev
-  -1:
-   kkolinko: +1 with 920055
-
-  3)
-     http://people.apache.org/~kkolinko/patches/2010-03-07_tc7_48668_Compiler.patch
+  2) Fix for jasper.compiler.Validator etc.
+  http://people.apache.org/~kkolinko/patches/2010-03-09_tc6_bug48668-2.patch
+  (Backport of r919914,920025,920055,920596)
   +1: kkolinko
   -1:
 
@@ -135,13 +121,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, jfclere
   -1: kkolinko: JSP 2.0 spec chapter "Backwards Compatibility with JSP 1.2" (page xx (20 of 478))
       does not mention it. So I think it is against the spec. See r920055 thread on dev@.
+      I reverted it in trunk in r920608.
 
 * Improve log messages when a potential leak is detected by including the name
   of the offending context
   http://svn.apache.org/viewvc?view=revision&revision=920298
   +1: markt, kkolinko
   -1: 
-   kkolinko: I would prefer contextName to always be the 0th argument of the message
 
 * Another french translation problem (Submit by Henri Gomez):
 +++
