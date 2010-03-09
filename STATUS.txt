@@ -155,3 +155,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=920840&view=rev
   +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48760
+  Ensure multiple threads do not end up with the same InputStream
+  http://svn.apache.org/viewvc?rev=920858&view=rev
+  +1: markt
+  -1: 
