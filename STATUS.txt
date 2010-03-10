@@ -173,3 +173,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=921444&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48795
+  If compilation fails, always try to re-compile the next time around
+  http://svn.apache.org/viewvc?rev=921464&view=rev
+  +1: markt
+  -1: 
+
