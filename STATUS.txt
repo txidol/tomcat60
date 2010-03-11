@@ -187,3 +187,11 @@ PATCHES PROPOSED TO BACKPORT:
     http://people.apache.org/~kkolinko/patches/2010-03-11_tc6_commons-daemon.patch
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48795
+  Provide an option to allow recompilation on the next request following a JSP
+  compilation error rather than waiting modifcationTestInterval before the next
+  attempt
+  http://svn.apache.org/viewvc?rev=922010&view=rev
+  +1: markt
+  -1: 
