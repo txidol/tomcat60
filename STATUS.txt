@@ -195,3 +195,15 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=922010&view=rev
   +1: markt
   -1: 
+
+* Followup to BZ 44041/48694 patches
+  - moves resolveClass() call outside the sync block
+  - does not access entry.loadedClass unless we are in a sync block
+  This is proposed as a part of alternative BZ 44041 patch for TC 5.5
+  FIXME: have not yet applied it to trunk
+  http://people.apache.org/~kkolinko/patches/2010-03-12_tc6_bug44041.patch
+  (svn diff -x -w  variant of it, ignoring whitespace changes:
+   http://people.apache.org/~kkolinko/patches/2010-03-12_tc6_bug44041_x_w.patch
+  )
+  +1: kkolinko
+  -1:
