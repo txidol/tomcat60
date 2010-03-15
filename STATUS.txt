@@ -196,14 +196,23 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Followup to BZ 44041/48694 patches
-  - moves resolveClass() call outside the sync block
-  - does not access entry.loadedClass unless we are in a sync block
-  This is proposed as a part of alternative BZ 44041 patch for TC 5.5
-  FIXME: have not yet applied it to trunk
-  http://people.apache.org/~kkolinko/patches/2010-03-12_tc6_bug44041.patch
-  (svn diff -x -w  variant of it, ignoring whitespace changes:
-   http://people.apache.org/~kkolinko/patches/2010-03-12_tc6_bug44041_x_w.patch
-  )
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48903
+  and https://issues.apache.org/bugzilla/show_bug.cgi?id=48694#c8
+
+  Fix deadlock in WebappClassLoader, caused by Sun JDK ClassLoader
+  implementation. The cause is that JDK already holds a lock on ClassLoader
+  instance when calling our ClassLoader.loadClass() method, and thus trying
+  to use a different lock causes deadlocks. See
+   http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4670071
+
+  Add system property to enable use of JDK 7 API to register a class loader
+  as capable of parallel loading. This feature will be turned off by
+  default.
+
+  Also fixed synchronization issue in JasperLoader, where findClass()
+  method was called without proper synchronization.
+
+  FIXME: This patch has not been applied to trunk yet.
+  http://people.apache.org/~kkolinko/patches/2010-03-15_tc6_bug48903.patch
   +1: kkolinko
   -1:
