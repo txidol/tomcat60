@@ -228,3 +228,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2010-03-15_tc6_bug48903_v2.patch
   +1: kkolinko
   -1:
+
+* Backport using Commons Daemon 1.0.2 from trunk
+  Vote presumes removing daemon executables from our SVN.
+  http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-daemon-1.0.2.patch
+  +1: mturk
+  -1: 
+
