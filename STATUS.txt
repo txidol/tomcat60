@@ -233,3 +233,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-03-18-SslSessionTimeout.patch
   +1: markt
   -1: 
+
+* Fix cluster regression, previous incorrect patch
+  http://svn.apache.org/viewvc?rev=924776&view=rev
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=48934
+  +1: fhanik
+  -1: 
+
+
