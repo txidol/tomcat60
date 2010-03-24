@@ -170,7 +170,8 @@ PATCHES PROPOSED TO BACKPORT:
   I think it can be done more simply:
   http://people.apache.org/~kkolinko/patches/2010-03-16_tc6_bug48790.patch
   +1: kkolinko
-  -1:
+  -1: markt - setMaxActive() also needs to use the update lock
+              I'll revert my patch above and propose a new one based on this
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48793
   Make catalina.sh more robust to different return values on different platforms
