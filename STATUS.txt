@@ -163,7 +163,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48790
   Make maxActive thread safe. I almost marked this as WONTFIX. Only the fact
   that it is, technically, a bug stopped me.
-  http://svn.apache.org/viewvc?rev=921166&view=rev
+  Simplified patch based on kkolinko's patch below
+  http://svn.apache.org/viewvc?view=revision&revision=927037
   +1: markt
   -1: 
 
