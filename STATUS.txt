@@ -182,7 +182,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Update to NSIS 2.46
   NSIS changelog: http://nsis.sourceforge.net/Docs/AppendixF.html#F.1.1
   http://svn.apache.org/viewvc?rev=921630&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Update to Commons Daemon 1.0.2 and use procrun from upstream distribution
@@ -190,7 +190,7 @@ PATCHES PROPOSED TO BACKPORT:
     svn delete res/procrun
   2)
     http://people.apache.org/~kkolinko/patches/2010-03-11_tc6_commons-daemon.patch
-  +1: kkolinko, mturk
+  +1: kkolinko, mturk, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48795
@@ -237,7 +237,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix cluster regression, previous incorrect patch
   http://svn.apache.org/viewvc?rev=924776&view=rev
   https://issues.apache.org/bugzilla/show_bug.cgi?id=48934
-  +1: fhanik
+  +1: fhanik, markt
   -1: 
 
 * Fix cross-context session expiration
