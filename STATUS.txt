@@ -248,3 +248,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=926716&view=rev
   +1: markt
   -1: 
+
+* Add support for displaying the Spring Security user name in the manager app
+  http://svn.apache.org/viewvc?rev=927062&view=rev
+  +1: markt
+  -1: 
