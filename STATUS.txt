@@ -233,3 +233,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=927062&view=rev
   +1: markt
   -1: 
+
+* Re-fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
+  Parsing re-factoring caused a regression in quote handling
+  http://svn.apache.org/viewvc?rev=927621&view=rev
+  +1: markt
+  -1: 
