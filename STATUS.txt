@@ -205,41 +205,13 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48903
   and https://issues.apache.org/bugzilla/show_bug.cgi?id=48694#c8
-
-  Fix deadlock in WebappClassLoader, caused by Sun JDK ClassLoader
-  implementation. The cause is that JDK already holds a lock on ClassLoader
-  instance when calling our ClassLoader.loadClass() method, and thus trying
-  to use a different lock causes deadlocks. See
-   http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4670071
-
-  Add system property to enable use of JDK 7 API to register a class loader
-  as capable of parallel loading. This feature will be turned off by
-  default.
-
-  Also fixed synchronization issue in JasperLoader, where findClass()
-  method was called without proper synchronization.
-
-  FIXME: Neither this, nor the alternative patch have been applied to trunk yet.
-  http://people.apache.org/~kkolinko/patches/2010-03-15_tc6_bug48903.patch
-  +1: kkolinko
-  -0: markt - I prefer the alternative
-  -1:
-
-  Alternative: the same as above, but also adds the third locking policy, "name":
-  use name.intern(). I suspect that is still might be working in some Java
-  implementations or with JRE settings that I mentioned in BZ 48903.
-  http://people.apache.org/~kkolinko/patches/2010-03-15_tc6_bug48903_v2.patch
-  +1: kkolinko
-  -1: markt - I prefer this one but it creates a dependency between Jasper
-              and Catalina. Jasper should be independent.
-              The patch also needs to use the StringManager for i18n. I'm
-              working on an updated patch.
-      kkolinko - Jasper vs. Catalina dependency can be solved by moving the
-              new LockAwareURLClassLoader class to some other package.
-              Can go into o.a.tomcat.util.<something>. that is currently
-              packed into tomcat-coyote.jar in TC 6.0. The only
-              "dependency" on Catalina there is the name of the system
-              property that controls the behaviour.
+  Fix deadlock /sync issues in WebappClassLoader. Revert to using
+  synchronized(this) as analysis and experience shows anything else will just
+  cause problems
+  The patch looks bug but it just removes the sync block and sync's the method
+  http://svn.apache.org/viewvc?rev=927565&view=rev
+  +1: markt
+  -1: 
 
 * Correct SSL session timeout attribute name
   http://people.apache.org/~markt/patches/2010-03-18-SslSessionTimeout.patch
