@@ -210,8 +210,13 @@ PATCHES PROPOSED TO BACKPORT:
   cause problems
   The patch looks bug but it just removes the sync block and sync's the method
   http://svn.apache.org/viewvc?rev=927565&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+
+  Mark ResourceEntry.loadedClass as volatile.
+  http://svn.apache.org/viewvc?rev=927877&view=rev
+  +1: kkolinko
+  -1:
 
 * Correct SSL session timeout attribute name
   http://people.apache.org/~markt/patches/2010-03-18-SslSessionTimeout.patch
@@ -231,11 +236,11 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add support for displaying the Spring Security user name in the manager app
   http://svn.apache.org/viewvc?rev=927062&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Re-fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
   Parsing re-factoring caused a regression in quote handling
   http://svn.apache.org/viewvc?rev=927621&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
