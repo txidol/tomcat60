@@ -61,9 +61,9 @@
     <blockquote><em>
     <p>The description below uses the variable name $CATALINA_BASE to refer the
     base directory against which most relative paths are resolved. If you have
-    not configured Tomcat 6 for multiple instances by setting a CATALINA_BASE
+    not configured Tomcat for multiple instances by setting a CATALINA_BASE
     directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
-    the directory into which you have installed Tomcat 6.</p>
+    the directory into which you have installed Tomcat.</p>
     </em></blockquote>
 
 </section>
@@ -82,18 +82,23 @@
         <p>The <em>Application Base</em> directory for this virtual host.
         This is the pathname of a directory that may contain web applications
         to be deployed on this virtual host.  You may specify an
-        absolute pathname for this directory, or a pathname that is relative
-        to the <code>$CATALINA_BASE</code> directory.  See
+        absolute pathname, or a pathname that is relative to the
+        <code>$CATALINA_BASE</code> directory.  See
         <a href="#Automatic Application Deployment">Automatic Application
         Deployment</a> for more information on automatic recognition and
-        deployment of web applications to be deployed automatically. If not
-        specified, the default of <code>webapps</code> will be used.</p>
+        deployment of web applications. If not specified, the default of
+        <code>webapps</code> will be used.</p>
       </attribute>
 
       <attribute name="autoDeploy" required="false">
-        <p>This flag value indicates if new web applications, dropped in to
-        the <code>appBase</code> directory while Tomcat is running, should
-        be automatically deployed.  The flag's value defaults to true.  See
+        <p>This flag value indicates if Tomcat should check periodically for new
+        or updated web applications while Tomcat is running. If true, Tomcat
+        periodically checks the <code>appBase</code> and
+        <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code>
+        directories and deploys any new web applications or context XML
+        descriptors found. Updated web applications or context XML descriptors
+        will trigger a reload of the web application. The flag's value defaults
+        to true.  See
         <a href="#Automatic Application Deployment">Automatic Application
         Deployment</a> for more information.</p>
       </attribute>
@@ -122,8 +127,8 @@
 
       <attribute name="deployOnStartup" required="false">
         <p>This flag value indicates if web applications from this host should
-        be automatically deployed by the host configurator.
-        The flag's value defaults to true.  See
+        be automatically deployed when Tomcat starts. The flag's value defaults
+        to true.  See
         <a href="#Automatic Application Deployment">Automatic Application
         Deployment</a> for more information.</p>
       </attribute>
@@ -154,14 +159,15 @@
     <attributes>
 
       <attribute name="deployXML" required="false">
-        <p>Set to <code>false</code> if you want to disable parsing the context.xml
-        file embedded inside the application (located at <code>/META-INF/context.xml</code>). 
-        Security conscious environments should set this to <code>false</code> to prevent
-        applications from interacting with the container's configuration. The 
-        administrator will then be responsible for providing an external context 
-        configuration file, and put it in 
-        <code>$CATALINA_BASE/conf/[enginename]/[hostname]/</code>.
-        The flag's value defaults to <code>true</code>.</p>
+        <p>Set to <code>false</code> if you want to disable parsing the context
+        XML descriptor embedded inside the application (located at
+        <code>/META-INF/context.xml</code>). Security conscious environments
+        should set this to <code>false</code> to prevent applications from
+        interacting with the container's configuration. The  administrator will
+        then be responsible for providing an external context configuration
+        file, and putting it in
+        <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code>. The flag's
+        value defaults to <code>true</code>.</p>
       </attribute>
 
       <attribute name="errorReportValveClass" required="false">
@@ -180,7 +186,8 @@
         placed in the <code>appBase</code> directory as web application
         archive (WAR) files to be unpacked into a corresponding disk directory
         structure, <code>false</code> to run such web applications directly
-        from a WAR file.  See
+        from a WAR file. WAR files located outside of the Host's
+        <strong>appBase</strong> will not be expanded. See
         <a href="#Automatic Application Deployment">Automatic Application
         Deployment</a> for more information.</p>
       </attribute>
@@ -232,7 +239,7 @@
   <subsection name="Logging">
 
     <p>A host is associated with the 
-       <code>org.apache.catalina.core.ContainerBase.[enginename].[hostname]</code>
+       <code>org.apache.catalina.core.ContainerBase.[engine_name].[host_name]</code>
        log category.  Note that the brackets are part of the name,
        don't omit them.</p>
 
@@ -277,41 +284,73 @@
     started, if the <code>deployOnStartup</code> property is set to
     <code>true</code> (which is the default value):</p>
     <ul>
-    <li>Any XML file in the 
-        <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code> directory is
-        assumed to contain a
+    <li>Any XML file in
+        <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code> is
+        assumed to be a context XML descriptor containing a
         <a href="context.html">Context</a> element (and its associated
-        subelements) for a single web application.  The <code>docBase</code>
-        attribute of this <code>&lt;Context&gt;</code> element will typically
-        be the absolute pathname to a web application directory, or the
-        absolute pathname of a web application archive (WAR) file (which
-        will not be expanded). The path attribute will be automatically set
-        as defined in the <a href="context.html">Context</a> documentation.</li>
-    <li>Any web application archive file within the application base (appBase)
-        directory that does not have a corresponding
-        directory of the same name (without the ".war" extension) will be
-        automatically expanded, unless the <code>unpackWARs</code> property
-        is set to <code>false</code>.  If you redeploy an updated WAR file,
-        be sure to delete the expanded directory when restarting Tomcat, so
-        that the updated WAR file will be re-expanded (note that the auto
-        deployer, if enabled, will automatically expand the updated WAR file
-        once the previously expanded directory is removed). Multi-level contexts
-        may be defined by using #, e.g. use a WAR named <code>foo#bar.war</code>
-        for a context path of <code>/foo/bar</code>.</li>
-    <li>Any subdirectory within the <em>application base directory</em>
-        will receive an automatically generated <a href="context.html">
-        Context</a> element, even if this directory is not mentioned in the
-        <code>conf/server.xml</code> file. The context path for this
-        deployed Context will be a slash character ("/") followed by the
-        directory name, unless the directory name is ROOT, in which case
-        the context path will be an empty string (""). Multi-level contexts
-        may be defined by using #, e.g. use a directory named <code>foo#bar</code>
-        for a context path of <code>/foo/bar</code>.</li>
+        sub-elements) for a single web application. The web applications
+        associated with each of these context XML descriptor files will be
+        deployed first.<br/>
+        The <code>docBase</code> attribute of this <code>&lt;Context&gt;</code>
+        element must only be set if the docBase is outside the Host's
+        <code>appBase</code>. For web applications located inside the Host's
+        <code>appBase</code>, the <code>docBase</code> will be the name of the
+        XML file with ".xml" replaced with ".war" for a web application archive
+        or the name of the XML file with ".xml" removed for a directory.<br/>
+        The <code>path</code> attribute must not be set. The context path used
+        will be a slash character ("/") followed by the name of the XML file
+        (less the .xml extension). Multi-level context paths may be defined
+        using #, e.g. <code>foo#bar.xml</code> for a context path of
+        <code>/foo/bar</code>. The default web application that has a context
+        path of <code>/</code> may be defined by using a file called
+        <code>ROOT.xml</code>.</li>
+    <li>Any web application archive file within the Host's <code>appBase</code>
+        directory that has not already been deployed as a result of a context
+        XML descriptor and does not have a corresponding directory of the same
+        name (without the ".war" extension) will be deployed next. The context
+        path used will be a slash character ("/") followed by the web
+        application archive name less the ".war" extension. The one exception to
+        this rule is that a web application archive named "ROOT.war" will be
+        deployed with a context path of <code>/</code>. Multi-level contexts may
+        be defined by using #, e.g. use a WAR named <code>foo#bar.war</code> for
+        a context path of <code>/foo/bar</code>.<br/>
+        If the <code>unpackWARs</code> attribute is <code>true</code>, the web
+        application archive file will be expanded to a directory of the same
+        name (without the ".war" extension".<br/>
+        Note: If you re-deploy an updated WAR file while Tomcat is stopped, be
+        sure to delete the associated expanded directory before restarting 
+        Tomcat, so that the updated WAR file will be re-expanded when Tomcat
+        restarts.<br/>
+        Any web application archive file within the Hosts's <code>appBase</code>
+        directory that does not have a corresponding context XML descriptor
+        (with a ".xml" extension rather than a ".war" extension) in 
+        <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code> will be
+        scanned to see if it contains a context XML descriptor (located at
+        <code>/META-INF/context.xml</code>) and if one is found the descriptor
+        will be copied to the
+        <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code> directory and
+        renamed.
+        </li>
+    <li>Finally, any sub-directory within the Host's <code>appBase</code> that
+        has not already been deployed as a result of a context XML descriptor
+        will be deployed. The context path used will be a slash character
+        ("/") followed by the directory name, unless the directory name is ROOT,
+        in which case the context path will <code>/</code>. Multi-level contexts
+        may be defined by using #, e.g. use a directory named
+        <code>foo#bar</code> for a context path of <code>/foo/bar</code>.<br/>
+        Any directory within the Hosts's <code>appBase</code> directory that
+        does not have a corresponding context XML descriptor in
+        <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code> will be
+        scanned to see if it contains a context XML descriptor (located at
+        <code>/META-INF/context.xml</code>) and if one is found the descriptor
+        will be copied to
+        <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code> and renamed.
+        </li>
     </ul>
 
     <p>In addition to the automatic deployment that occurs at startup time,
     you can also request that new XML configuration files, WAR files, or
-    subdirectories that are dropped in to the <code>appBase</code> (or 
+    sub-directories that are dropped in to the <code>appBase</code> (or 
     <code>$CATALINA_BASE/conf/[engine_name]/[host_name]</code> in the case of
     an XML configuration file) directory while Tomcat is running will be
     automatically deployed, according to the rules described above. The 
@@ -355,9 +394,10 @@
     may be experienced deploying the web application or the application may
     be deployed twice.</p>
 
-    <p>Finally, note that if you are defining contexts explicitly, you should
-    probably turn off automatic application deployment.  Otherwise, your context
-    will be deployed twice each, and that may cause problems for your app.
+    <p>Finally, note that if you are defining contexts explicitly in server.xml,
+    you should probably turn off automatic application deployment.  Otherwise,
+    the web applications will each be deployed twice, and that may cause
+    problems for the applications.
     </p>
 
   </subsection>
