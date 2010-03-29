@@ -260,11 +260,16 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-*  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
-   If CDPATH is set, cd may result in output to stdout.
-   Swallow the output. This is safe since the script outputs the value used for
-   CATALINA_HOME so any issues will be visible then.
-   Patch provided by mdietze
-   +1: markt
-   -1: 
- 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
+  If CDPATH is set, cd may result in output to stdout.
+  Swallow the output. This is safe since the script outputs the value used for
+  CATALINA_HOME so any issues will be visible then.
+  Patch provided by mdietze
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
+  Port deadlock prevention for worker allocation from NIO to BIO and APR
+  http://people.apache.org/~markt/patches/2010-03-29-bug48843-tc6.patch
+  +1: markt
+  -1: 
