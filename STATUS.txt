@@ -293,3 +293,10 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Todd Hicks
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
+  Failure of one connector should not leave some connectors started and some
+  ignored
+  http://svn.apache.org/viewvc?rev=929521&view=rev
+  +1: markt
+  -1: 
