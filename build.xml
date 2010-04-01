@@ -473,9 +473,10 @@
 
     <copy tofile="${tomcat.build}/bin/tomcat-native.tar.gz"
             file="${tomcat-native.tar.gz}" />
+    <copy tofile="${tomcat.build}/bin/commons-daemon-native.tar.gz"
+            file="${commons-daemon.native.src.tgz}" />
 
-    <copy todir="${tomcat.build}/bin" file="${commons-daemon.jar}" />
-    <copy todir="${tomcat.build}/bin" file="${commons-daemon.jsvc.tar.gz}" />
+    <copy tofile="${tomcat.build}/bin/commons-daemon.jar" file="${commons-daemon.jar}" />
 
     <!-- Copy scripts -->
     <copy todir="${tomcat.build}/bin">
@@ -719,9 +720,22 @@
       <param name="destdir" value="${tomcat-native.home}"/>
     </antcall>
 
+    <!-- Download Commons Daemon -->
     <antcall target="downloadgz">
-      <param name="sourcefile" value="${commons-daemon.loc}"/>
+      <param name="sourcefile" value="${commons-daemon.bin.loc}"/>
       <param name="destfile" value="${commons-daemon.jar}"/>
+    </antcall>
+
+    <antcall target="downloadfile">
+      <param name="sourcefile" value="${commons-daemon.native.src.loc}"/>
+      <param name="destfile" value="${commons-daemon.native.src.tgz}"/>
+      <param name="destdir" value="${commons-daemon.home}"/>
+    </antcall>
+
+    <antcall target="downloadzip">
+      <param name="sourcefile" value="${commons-daemon.native.win.loc}"/>
+      <param name="destfile" value="${commons-daemon.native.win.mgr.exe}"/>
+      <param name="destdir" value="${commons-daemon.native.win.home}"/>
     </antcall>
 
     <!-- Build Tomcat DBCP bundle -->

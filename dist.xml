@@ -306,15 +306,15 @@
     <copy file="${nsis.nsexec.dll}" todir="${tomcat.dist}" />
     <copy file="${nsis.nsisdl.dll}" todir="${tomcat.dist}" />
     <!-- 32 bit -->
-    <copy file="res/procrun/tomcat${version.major}.exe"
+    <copy file="${commons-daemon.home}/windows/prunsrv.exe"
         tofile="${tomcat.dist}/bin/tomcat${version.major}.exe" />
-    <copy file="res/procrun/tomcat${version.major}w.exe"
+    <copy file="${commons-daemon.home}/windows/prunmgr.exe"
         tofile="${tomcat.dist}/bin/tomcat${version.major}w.exe" />
     <!-- 64 bit amd -->
-    <copy file="res/procrun/amd64/tomcat${version.major}.exe"
+    <copy file="${commons-daemon.home}/windows/amd64/prunsrv.exe"
         tofile="${tomcat.dist}/bin/x64/tomcat${version.major}.exe" />
     <!-- 64 bit ia -->
-    <copy file="res/procrun/ia64/tomcat${version.major}.exe"
+    <copy file="${commons-daemon.home}/windows/ia64/prunsrv.exe"
         tofile="${tomcat.dist}/bin/i64/tomcat${version.major}.exe" />
     <!-- tc native -->
     <copy file="${tomcat-native.home}/tcnative-1.dll.x86"
