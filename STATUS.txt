@@ -269,7 +269,15 @@ PATCHES PROPOSED TO BACKPORT:
   Port deadlock prevention for worker allocation from NIO to BIO and APR
   http://people.apache.org/~markt/patches/2010-03-29-bug48843-tc6.patch
   +1: markt
+  +1: kkolinko: I will work, but I think that leaving/re-entering
+    synchronization when we are inside the loop is unneeded extra overhead.
+    Thus I am proposing another patch below.
   -1: 
+
+  Alternative patch:
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25225
+  +1: kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48862
   Port pero's patch to add backlog to JK ChannelSocket
