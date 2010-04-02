@@ -214,6 +214,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-03-18-SslSessionTimeout.patch
   +1: markt
   -1: 
+   kkolinko: In NioEndpoint (and in AbstractEndpoint in trunk) there is
+    #setSessionCacheTimeout(String). It will need renaming as well?
+    Generally, I would be against renaming some attributes, but this one
+    is already documented as "sessionTimeout" in config/http.xml, though,
+    still, renaming might break someone's configurations.
 
 * Fix cluster regression, previous incorrect patch
   http://svn.apache.org/viewvc?rev=924776&view=rev
@@ -269,21 +274,21 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48862
   Port pero's patch to add backlog to JK ChannelSocket
   http://svn.apache.org/viewvc?view=revision&revision=493480
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48895
   Make clearing thread locals optional and disabled by default since it isn't
   thread-safe
   http://svn.apache.org/viewvc?rev=928798&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48917
   Correct name of mod_jk module in ApacheConfig
   https://issues.apache.org/bugzilla/attachment.cgi?id=25132
   Patch provided by Todd Hicks
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
@@ -292,3 +297,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=929521&view=rev
   +1: markt
   -1: 
+  +0: kkolinko: good, but maybe we should also prevent against starting
+    those connectors, that failed to initialize, in StandardService#start()?
+    Also the message name (some generic name, "connector.failed"), vs.
+    message text ("starting"),  vs. what actually happened (initialize()) -
+    I won't insist on fixing that inconsistency.
