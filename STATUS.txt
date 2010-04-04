@@ -310,3 +310,10 @@ PATCHES PROPOSED TO BACKPORT:
     Also the message name (some generic name, "connector.failed"), vs.
     message text ("starting"),  vs. what actually happened (initialize()) -
     I won't insist on fixing that inconsistency.
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48983
+  Improve debug logging for situations when RemoteIpValve is bypassed
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25181
+  Patch provided by Cyrille Le Clerc
+  +1: markt
+  -1: 
