@@ -102,7 +102,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve log messages when a potential leak is detected by including the name
   of the offending context
   http://svn.apache.org/viewvc?view=revision&revision=920298
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48629
@@ -117,7 +117,7 @@ PATCHES PROPOSED TO BACKPORT:
   Make error page behaviour consistent. If a response has been committed, include
   the error page
   http://svn.apache.org/viewvc?rev=920449&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
