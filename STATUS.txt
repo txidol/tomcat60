@@ -317,3 +317,9 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Cyrille Le Clerc
   +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49051
+  memberAlive is not called if member has not already existed in membership. 
+  http://svn.apache.org/viewvc?view=revision&revision=931061
+  +1: kfujino
+  -1: 
