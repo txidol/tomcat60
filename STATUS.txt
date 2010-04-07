@@ -323,3 +323,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=931061
   +1: kfujino
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49018
+  Fix processing of time argument in the "Expire sessions" action in the
+  Manager web application.
+  The patch also provides separate templates for different variants of a
+  message, printed by that action. That is to allow proper translation of
+  those messages, though I cannot provide such translation by myself.
+  http://svn.apache.org/viewvc?rev=931415&view=rev
+  +1: kkolinko
+  -1:
