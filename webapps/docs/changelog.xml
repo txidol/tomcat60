@@ -52,6 +52,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <add>
+        <bug>48862</bug>: Add support for the backlog parameter to the AJP
+        connector. (pero/markt)
+      </add>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <update>Update to Commons Daemon 1.0.2. Use service launcher (procrun)

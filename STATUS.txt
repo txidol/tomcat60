@@ -264,12 +264,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48862
-  Port pero's patch to add backlog to JK ChannelSocket
-  http://svn.apache.org/viewvc?view=revision&revision=493480
-  +1: markt, kkolinko, kfujino
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48895
   Make clearing thread locals optional and disabled by default since it isn't
   thread-safe
