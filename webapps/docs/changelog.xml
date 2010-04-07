@@ -45,6 +45,11 @@
         Include context name when reporting memory leaks to aid root cause
         identification. (markt)
       </add>
+      <fix>
+        <bug>48661</bug>: Make error page behavior consistent, regardless of how
+        the error page is defined. If a response has been committed, always
+        include the error page. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
