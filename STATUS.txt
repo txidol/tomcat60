@@ -194,17 +194,15 @@ PATCHES PROPOSED TO BACKPORT:
 
   Mark ResourceEntry.loadedClass as volatile.
   http://svn.apache.org/viewvc?rev=927877&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Correct SSL session timeout attribute name
-  http://people.apache.org/~markt/patches/2010-03-18-SslSessionTimeout.patch
+  http://people.apache.org/~markt/patches/2010-04-07-SslSessionTimeout.patch
   +1: markt
   -1: 
-   kkolinko: In NioEndpoint (and in AbstractEndpoint in trunk) there is
-    #setSessionCacheTimeout(String). It will need renaming as well?
-    Generally, I would be against renaming some attributes, but this one
-    is already documented as "sessionTimeout" in config/http.xml, though,
+   kkolinko: Generally, I would be against renaming some attributes, but this
+    one is already documented as "sessionTimeout" in config/http.xml, though,
     still, renaming might break someone's configurations.
 
 * Fix cluster regression, previous incorrect patch
