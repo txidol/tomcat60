@@ -99,12 +99,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
-* Improve log messages when a potential leak is detected by including the name
-  of the offending context
-  http://svn.apache.org/viewvc?view=revision&revision=920298
-  +1: markt, kkolinko, kfujino
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48629
   Allow user names as well as DNs to be used with the nested role search
   Add roleNested to the docs

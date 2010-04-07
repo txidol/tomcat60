@@ -39,6 +39,14 @@
  Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
 <section name="Tomcat 6.0.27 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <add>
+        Include context name when reporting memory leaks to aid root cause
+        identification. (markt)
+      </add>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <update>Update to Commons Daemon 1.0.2. Use service launcher (procrun)

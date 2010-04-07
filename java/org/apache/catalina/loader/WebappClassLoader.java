@@ -70,6 +70,7 @@ import org.apache.catalina.LifecycleListener;
 import org.apache.catalina.util.StringManager;
 import org.apache.jasper.servlet.JasperLoader;
 import org.apache.naming.JndiPermission;
+import org.apache.naming.resources.ProxyDirContext;
 import org.apache.naming.resources.Resource;
 import org.apache.naming.resources.ResourceAttributes;
 import org.apache.tomcat.util.IntrospectionUtils;
@@ -458,6 +459,16 @@ public class WebappClassLoader
      */
     private boolean clearReferencesLogFactoryRelease = true;
 
+    
+    /**
+     * Name of associated context used with logging to associate messages with
+     * the right web application. Particularly useful for the clear references
+     * messages. Defaults to unknown but if standard Tomcat components are used
+     * it will be updated during initialisation from the resources.
+     */
+    private String contextName = "unknown";
+
+
     // ------------------------------------------------------------- Properties
 
 
@@ -478,6 +489,9 @@ public class WebappClassLoader
 
         this.resources = resources;
 
+        if (resources instanceof ProxyDirContext) {
+            contextName = ((ProxyDirContext) resources).getContextName();
+        }
     }
 
 
@@ -1656,7 +1670,7 @@ public class WebappClassLoader
         // Clearing references should be done before setting started to
         // false, due to possible side effects
         clearReferences();
-
+        
         started = false;
         
         int length = files.length;
@@ -1820,18 +1834,21 @@ public class WebappClassLoader
             List<String> driverNames = (List<String>) obj.getClass().getMethod(
                     "clearJdbcDriverRegistrations").invoke(obj);
             for (String name : driverNames) {
-                log.error(sm.getString("webappClassLoader.clearJbdc", name));
+                log.error(sm.getString("webappClassLoader.clearJbdc",
+                        contextName, name));
             }
         } catch (Exception e) {
             // So many things to go wrong above...
-            log.warn(sm.getString("webappClassLoader.jdbcRemoveFailed"), e);
+            log.warn(sm.getString(
+                    "webappClassLoader.jdbcRemoveFailed", contextName), e);
         } finally {
             if (is != null) {
                 try {
                     is.close();
                 } catch (IOException ioe) {
                     log.warn(sm.getString(
-                            "webappClassLoader.jdbcRemoveStreamError"), ioe);
+                            "webappClassLoader.jdbcRemoveStreamError",
+                            contextName), ioe);
                 }
             }
         }
@@ -1996,7 +2013,7 @@ public class WebappClassLoader
                     }
 
                     log.error(sm.getString("webappClassLoader.warnThread",
-                            thread.getName()));
+                            contextName, thread.getName()));
                     
                     // Don't try an stop the threads unless explicitly
                     // configured to do so
@@ -2026,19 +2043,19 @@ public class WebappClassLoader
                     } catch (SecurityException e) {
                         log.warn(sm.getString(
                                 "webappClassLoader.stopThreadFail",
-                                thread.getName()), e);
+                                thread.getName(), contextName), e);
                     } catch (NoSuchFieldException e) {
                         log.warn(sm.getString(
                                 "webappClassLoader.stopThreadFail",
-                                thread.getName()), e);
+                                thread.getName(), contextName), e);
                     } catch (IllegalArgumentException e) {
                         log.warn(sm.getString(
                                 "webappClassLoader.stopThreadFail",
-                                thread.getName()), e);
+                                thread.getName(), contextName), e);
                     } catch (IllegalAccessException e) {
                         log.warn(sm.getString(
                                 "webappClassLoader.stopThreadFail",
-                                thread.getName()), e);
+                                thread.getName(), contextName), e);
                     }
 
                     // This method is deprecated and for good reason. This is
@@ -2078,24 +2095,24 @@ public class WebappClassLoader
             }
             
             log.error(sm.getString("webappClassLoader.warnTimerThread",
-                    thread.getName()));
+                    contextName, thread.getName()));
 
         } catch (NoSuchFieldException e) {
             log.warn(sm.getString(
                     "webappClassLoader.stopTimerThreadFail",
-                    thread.getName()), e);
+                    thread.getName(), contextName), e);
         } catch (IllegalAccessException e) {
             log.warn(sm.getString(
                     "webappClassLoader.stopTimerThreadFail",
-                    thread.getName()), e);
+                    thread.getName(), contextName), e);
         } catch (NoSuchMethodException e) {
             log.warn(sm.getString(
                     "webappClassLoader.stopTimerThreadFail",
-                    thread.getName()), e);
+                    thread.getName(), contextName), e);
         } catch (InvocationTargetException e) {
             log.warn(sm.getString(
                     "webappClassLoader.stopTimerThreadFail",
-                    thread.getName()), e);
+                    thread.getName(), contextName), e);
         }
     }
 
@@ -2131,19 +2148,26 @@ public class WebappClassLoader
                 }
             }
         } catch (SecurityException e) {
-            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail",
+                    contextName), e);
         } catch (NoSuchFieldException e) {
-            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail",
+                    contextName), e);
         } catch (ClassNotFoundException e) {
-            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail",
+                    contextName), e);
         } catch (IllegalArgumentException e) {
-            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail",
+                    contextName), e);
         } catch (IllegalAccessException e) {
-            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail",
+                    contextName), e);
         } catch (NoSuchMethodException e) {
-            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail",
+                    contextName), e);
         } catch (InvocationTargetException e) {
-            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearThreadLocalFail",
+                    contextName), e);
         }       
     }
 
@@ -2183,14 +2207,15 @@ public class WebappClassLoader
                             remove = true;
                         }
                         if (remove) {
-                            Object[] args = new Object[4];
+                            Object[] args = new Object[5];
+                            args[0] = contextName;
                             if (key != null) {
-                                args[0] = key.getClass().getCanonicalName();
-                                args[1] = key.toString();
+                                args[1] = key.getClass().getCanonicalName();
+                                args[2] = key.toString();
                             }
                             if (value != null) {
-                                args[2] = value.getClass().getCanonicalName();
-                                args[3] = value.toString();
+                                args[3] = value.getClass().getCanonicalName();
+                                args[4] = value.toString();
                             }
                             if (value == null) {
                                 if (log.isDebugEnabled()) {
@@ -2302,15 +2327,20 @@ public class WebappClassLoader
                 }
             }
         } catch (ClassNotFoundException e) {
-            log.info(sm.getString("webappClassLoader.clearRmiInfo"), e);
+            log.info(sm.getString("webappClassLoader.clearRmiInfo",
+                    contextName), e);
         } catch (SecurityException e) {
-            log.warn(sm.getString("webappClassLoader.clearRmiFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearRmiFail",
+                    contextName), e);
         } catch (NoSuchFieldException e) {
-            log.warn(sm.getString("webappClassLoader.clearRmiFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearRmiFail",
+                    contextName), e);
         } catch (IllegalArgumentException e) {
-            log.warn(sm.getString("webappClassLoader.clearRmiFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearRmiFail",
+                    contextName), e);
         } catch (IllegalAccessException e) {
-            log.warn(sm.getString("webappClassLoader.clearRmiFail"), e);
+            log.warn(sm.getString("webappClassLoader.clearRmiFail",
+                    contextName), e);
         }
     }
     
@@ -2374,25 +2404,30 @@ public class WebappClassLoader
             if (countRemoved > 0 && log.isDebugEnabled()) {
                 log.debug(sm.getString(
                         "webappClassLoader.clearReferencesResourceBundlesCount",
-                        Integer.valueOf(countRemoved)));
+                        Integer.valueOf(countRemoved), contextName));
             }
         } catch (SecurityException e) {
             log.error(sm.getString(
-                    "webappClassLoader.clearReferencesResourceBundlesFail"), e);
+                    "webappClassLoader.clearReferencesResourceBundlesFail",
+                    contextName), e);
         } catch (NoSuchFieldException e) {
             if (System.getProperty("java.vendor").startsWith("Sun")) {
                 log.error(sm.getString(
-                "webappClassLoader.clearReferencesResourceBundlesFail"), e);
+                "webappClassLoader.clearReferencesResourceBundlesFail",
+                contextName), e);
             } else {
                 log.debug(sm.getString(
-                "webappClassLoader.clearReferencesResourceBundlesFail"), e);
+                "webappClassLoader.clearReferencesResourceBundlesFail",
+                contextName), e);
             }
         } catch (IllegalArgumentException e) {
             log.error(sm.getString(
-                    "webappClassLoader.clearReferencesResourceBundlesFail"), e);
+                    "webappClassLoader.clearReferencesResourceBundlesFail",
+                    contextName), e);
         } catch (IllegalAccessException e) {
             log.error(sm.getString(
-                    "webappClassLoader.clearReferencesResourceBundlesFail"), e);
+                    "webappClassLoader.clearReferencesResourceBundlesFail",
+                    contextName), e);
         }
     }
 
