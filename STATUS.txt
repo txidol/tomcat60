@@ -300,7 +300,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49051
   memberAlive is not called if member has not already existed in membership. 
   http://svn.apache.org/viewvc?view=revision&revision=931061
-  +1: kfujino, markt
+  +1: kfujino, markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49018
@@ -317,5 +317,5 @@ PATCHES PROPOSED TO BACKPORT:
   of keep-alive) so client can differentiate between complete and partial
   responses.
   http://svn.apache.org/viewvc?rev=931709&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
