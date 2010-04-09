@@ -304,7 +304,7 @@ PATCHES PROPOSED TO BACKPORT:
   message, printed by that action. That is to allow proper translation of
   those messages, though I cannot provide such translation by myself.
   http://svn.apache.org/viewvc?rev=931415&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * Use chunked encoding for http 1.1 requests with no content-length (regardless
@@ -317,5 +317,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48379
   Make session cookie name, domain and path configurable per context.
   http://people.apache.org/~markt/patches/2010-04-08-bug48379.patch
-  +1: markt
+  +1: markt, kfujino
   -1: 
