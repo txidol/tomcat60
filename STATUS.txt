@@ -91,12 +91,12 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by Candid Dauth
   http://svn.apache.org/viewvc?rev=910485&view=rev
   http://svn.apache.org/viewvc?rev=918489&view=rev (review feedback)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=918803&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48629
@@ -104,7 +104,7 @@ PATCHES PROPOSED TO BACKPORT:
   Add roleNested to the docs
   Patch provided by Felix Schumacher
   http://svn.apache.org/viewvc?rev=920422&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
@@ -124,21 +124,21 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48760
   Ensure multiple threads do not end up with the same InputStream
   http://svn.apache.org/viewvc?rev=920858&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48701
   Add system property to allow disabling enforcement of JSP.5.3
   The spec recommends, but does not require this enforcement.
   http://svn.apache.org/viewvc?rev=920880&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Address https://issues.apache.org/bugzilla/show_bug.cgi?id=48007#c5
   Improve exception processing in CustomObjectInputStream#resolveClass(),
   to help find the cause behind BZ 48007.
   http://svn.apache.org/viewvc?rev=920912&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48701
@@ -152,7 +152,7 @@ PATCHES PROPOSED TO BACKPORT:
   that it is, technically, a bug stopped me.
   Simplified patch based on kkolinko's patch below
   http://svn.apache.org/viewvc?view=revision&revision=927037
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
   I think it can be done more simply:
@@ -171,7 +171,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Update to NSIS 2.46
   NSIS changelog: http://nsis.sourceforge.net/Docs/AppendixF.html#F.1.1
   http://svn.apache.org/viewvc?rev=921630&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48795
@@ -311,7 +311,7 @@ PATCHES PROPOSED TO BACKPORT:
   of keep-alive) so client can differentiate between complete and partial
   responses.
   http://svn.apache.org/viewvc?rev=931709&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48379
