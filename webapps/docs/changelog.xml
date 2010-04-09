@@ -60,6 +60,14 @@
       </add>
     </changelog>
   </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <fix>
+        <bug>49051</bug>: memberAlive is not called if member has not already 
+        existed in membership. (kfujino)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <update>Update to Commons Daemon 1.0.2. Use service launcher (procrun)
