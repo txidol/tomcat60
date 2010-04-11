@@ -46,6 +46,11 @@
         identification. (markt)
       </add>
       <fix>
+        <bug>48629</bug>: Allow user names as well as DNs to be used with the
+        nested role search. Add roleNested to the documentation. Patch provided
+        by Felix Schumacher. (markt)
+      </fix>
+      <fix>
         <bug>48661</bug>: Make error page behavior consistent, regardless of how
         the error page is defined. If a response has been committed, always
         include the error page. (markt)
