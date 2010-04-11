@@ -46,6 +46,10 @@
         identification. (markt)
       </add>
       <fix>
+        Improve exception handling on session de-serialization to assist in
+        identifying the root cause of <bug>48007</bug>. (kkolinko)
+      </fix>
+      <fix>
         <bug>48629</bug>: Allow user names as well as DNs to be used with the
         nested role search. Add roleNested to the documentation. Patch provided
         by Felix Schumacher. (markt)
