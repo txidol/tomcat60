@@ -243,16 +243,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49018
-  Fix processing of time argument in the "Expire sessions" action in the
-  Manager web application.
-  The patch also provides separate templates for different variants of a
-  message, printed by that action. That is to allow proper translation of
-  those messages, though I cannot provide such translation by myself.
-  http://svn.apache.org/viewvc?rev=931415&view=rev
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Use chunked encoding for http 1.1 requests with no content-length (regardless
   of keep-alive) so client can differentiate between complete and partial
   responses.

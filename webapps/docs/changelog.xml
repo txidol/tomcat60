@@ -68,6 +68,10 @@
         <bug>48790</bug>: Fix thread safety issue in the count of the maximum
         number of active session. (markt/kkolinko)
       </fix>
+      <fix>
+        <bug>49018</bug>: Fix processing of time argument in the Expire sessions 
+        action in the Manager web application. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
