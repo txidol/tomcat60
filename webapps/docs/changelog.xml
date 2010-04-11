@@ -78,6 +78,15 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>48701</bug>: Add a system property to allow disabling enforcement
+        of JSP.5.3. The specification recommends, but does not require, this
+        enforcement. (kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <update>Update to Commons Daemon 1.0.2. Use service launcher (procrun)
