@@ -119,20 +119,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48790
-  Make maxActive thread safe. I almost marked this as WONTFIX. Only the fact
-  that it is, technically, a bug stopped me.
-  Simplified patch based on kkolinko's patch below
-  http://svn.apache.org/viewvc?view=revision&revision=927037
-  +1: markt, kkolinko, rjung
-  -1: 
-
-  I think it can be done more simply:
-  http://people.apache.org/~kkolinko/patches/2010-03-16_tc6_bug48790.patch
-  +1: kkolinko
-  -1: markt - setMaxActive() also needs to use the update lock
-              I'll revert my patch above and propose a new one based on this
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48793
   Make catalina.sh more robust to different return values on different platforms
   Patch provided by Thomas GL
