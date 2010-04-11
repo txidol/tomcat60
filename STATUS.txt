@@ -126,12 +126,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-* Update to NSIS 2.46
-  NSIS changelog: http://nsis.sourceforge.net/Docs/AppendixF.html#F.1.1
-  http://svn.apache.org/viewvc?rev=921630&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48795
   Provide an option to allow recompilation on the next request following a JSP
   compilation error rather than waiting modifcationTestInterval before the next
