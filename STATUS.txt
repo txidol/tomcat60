@@ -243,13 +243,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-* Use chunked encoding for http 1.1 requests with no content-length (regardless
-  of keep-alive) so client can differentiate between complete and partial
-  responses.
-  http://svn.apache.org/viewvc?rev=931709&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48379
   Make session cookie name, domain and path configurable per context.
   http://people.apache.org/~markt/patches/2010-04-08-bug48379.patch

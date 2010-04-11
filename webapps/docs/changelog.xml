@@ -80,6 +80,11 @@
         <bug>48862</bug>: Add support for the backlog parameter to the AJP
         connector. (pero/markt)
       </add>
+      <add>
+        Use chunked encoding for http 1.1 requests with no content-length
+        (regardless of keep-alive) so client can differentiate between complete
+        and partial responses. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Jasper">
