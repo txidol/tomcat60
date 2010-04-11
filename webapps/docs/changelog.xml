@@ -78,20 +78,24 @@
       </add>
     </changelog>
   </subsection>
-  <subsection name="Cluster">
-    <changelog>
-      <fix>
-        <bug>49051</bug>: memberAlive is not called if member has not already 
-        existed in membership. (kfujino)
-      </fix>
-    </changelog>
-  </subsection>
   <subsection name="Jasper">
     <changelog>
       <fix>
         <bug>48701</bug>: Add a system property to allow disabling enforcement
         of JSP.5.3. The specification recommends, but does not require, this
         enforcement. (kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <fix>
+        <bug>49051</bug>: memberAlive is not called if member has not already 
+        existed in membership. (kfujino)
+      </fix>
+      <fix>
+        <bug>48934</bug>: Previous fix to handle dropped connections incorrectly
+        permanently disabled session replication. (fhanik)
       </fix>
     </changelog>
   </subsection>

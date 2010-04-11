@@ -157,12 +157,6 @@ PATCHES PROPOSED TO BACKPORT:
     one is already documented as "sessionTimeout" in config/http.xml, though,
     still, renaming might break someone's configurations.
 
-* Fix cluster regression, previous incorrect patch
-  http://svn.apache.org/viewvc?rev=924776&view=rev
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=48934
-  +1: fhanik, markt, kkolinko
-  -1: 
-
 * Fix cross-context session expiration
   http://svn.apache.org/viewvc?rev=926716&view=rev
   +1: markt
