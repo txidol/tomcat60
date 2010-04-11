@@ -55,6 +55,11 @@
         the error page is defined. If a response has been committed, always
         include the error page. (markt)
       </fix>
+      <fix>
+        <bug>48760</bug>: Fix potential multi-threading issue in static resource
+        serving where multiple threads could try to use the the same
+        InputStream. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
