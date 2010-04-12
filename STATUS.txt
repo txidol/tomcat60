@@ -215,14 +215,14 @@ PATCHES PROPOSED TO BACKPORT:
   Make clearing thread locals optional and disabled by default since it isn't
   thread-safe
   http://svn.apache.org/viewvc?rev=928798&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48917
   Correct name of mod_jk module in ApacheConfig
   https://issues.apache.org/bugzilla/attachment.cgi?id=25132
   Patch provided by Todd Hicks
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
@@ -241,8 +241,9 @@ PATCHES PROPOSED TO BACKPORT:
   Improve debug logging for situations when RemoteIpValve is bypassed
   https://issues.apache.org/bugzilla/attachment.cgi?id=25181
   Patch provided by Cyrille Le Clerc
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
+  rjung: maybe using originalRemoteAddr instead of request.getRemoteAddr().
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48379
   Make session cookie name, domain and path configurable per context.
