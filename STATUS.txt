@@ -266,3 +266,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino
   -1: 
 
+* sessionCounter and expiredSessions declares as long instead of int.
+  http://svn.apache.org/viewvc?view=revision&revision=934337
+  +1: kfujino
+  -1:
+
