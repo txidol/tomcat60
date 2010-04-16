@@ -207,6 +207,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
   Alternative patch:
+  Note: This was applied to 5.5 in r934922
   https://issues.apache.org/bugzilla/attachment.cgi?id=25225
   +1: kkolinko
   -1:
@@ -269,5 +270,13 @@ PATCHES PROPOSED TO BACKPORT:
 * sessionCounter and expiredSessions declares as long instead of int.
   http://svn.apache.org/viewvc?view=revision&revision=934337
   +1: kfujino
-  -1:
+  -1: kkolinko: I think that we cannot change o.a.c.Manager API in such way
+    in a dot release. Alternative proposal below.
 
+* Fix possible overflows when calculating session statistics
+  Fixes a) miscalculating the "average" because of multiplication overflow,
+  b) ArithmeticException division by zero when numExpired overflows.
+  The fix for trunk is already provided by r934337.
+  http://people.apache.org/~kkolinko/patches/2010-04-17_tc6_StandardSession_statistics.patch
+  +1: kkolinko
+  -1:
