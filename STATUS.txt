@@ -280,3 +280,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2010-04-17_tc6_StandardSession_statistics.patch
   +1: kkolinko
   -1:
+
+* Improve the ChatServlet comet example and fix some issues there
+  http://svn.apache.org/viewvc?rev=935105&view=rev
+  +1: kkolinko
+  -1:
