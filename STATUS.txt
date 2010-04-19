@@ -285,3 +285,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=935105&view=rev
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49151
+  Avoid ClassCastException.
+  http://svn.apache.org/viewvc?view=revision&revision=935510
+  +1: kfujino
+  -1: 
+
