@@ -643,6 +643,8 @@ public class WebappLoader
                         ((StandardContext) container).getAntiJARLocking());
                 classLoader.setClearReferencesStopThreads(
                         ((StandardContext) container).getClearReferencesStopThreads());
+                classLoader.setClearReferencesThreadLocals(
+                        ((StandardContext) container).getClearReferencesThreadLocals());
             }
 
             for (int i = 0; i < repositories.length; i++) {

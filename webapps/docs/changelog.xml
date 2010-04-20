@@ -69,6 +69,11 @@
         number of active session. (markt/kkolinko)
       </fix>
       <fix>
+        <bug>48895</bug>: Make clearing of ThreadLocals that are causing memory
+        leaks on web application stop, reload or undeploy configurable since the
+        process of clearing them is not thread-safe. (markt)
+      </fix>
+      <fix>
         <bug>49018</bug>: Fix processing of time argument in the Expire sessions 
         action in the Manager web application. (kkolinko)
       </fix>
