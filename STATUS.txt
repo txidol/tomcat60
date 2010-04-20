@@ -234,15 +234,6 @@ PATCHES PROPOSED TO BACKPORT:
     message text ("starting"),  vs. what actually happened (initialize()) -
     I won't insist on fixing that inconsistency.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48983
-  Improve debug logging for situations when RemoteIpValve is bypassed
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25181
-  Patch provided by Cyrille Le Clerc
-  +1: markt, kkolinko, rjung
-  -1: 
-  rjung: maybe using originalRemoteAddr instead of request.getRemoteAddr().
-  kkolinko: I agree with rjung, though the difference will be not noticeable
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48379
   Make session cookie name, domain and path configurable per context.
   http://people.apache.org/~markt/patches/2010-04-08-bug48379.patch
