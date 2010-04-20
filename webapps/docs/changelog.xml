@@ -85,6 +85,10 @@
         <bug>48862</bug>: Add support for the backlog parameter to the AJP
         connector. (pero/markt)
       </add>
+      <fix>
+        <bug>48917</bug>: Correct name of mod_jk module in ApacheConfig. Patch
+        provided by Todd Hicks. (markt)
+      </fix>
       <add>
         Use chunked encoding for http 1.1 requests with no content-length
         (regardless of keep-alive) so client can differentiate between complete

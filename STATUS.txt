@@ -222,13 +222,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48917
-  Correct name of mod_jk module in ApacheConfig
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25132
-  Patch provided by Todd Hicks
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
   Failure of one connector should not leave some connectors started and some
   ignored

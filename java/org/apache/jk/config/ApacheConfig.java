@@ -135,7 +135,7 @@ public class ApacheConfig  extends BaseJkConfig {
     static{
         String os = System.getProperty("os.name").toLowerCase();
         if(os.indexOf("windows")>=0){ 
-           MOD_JK = "modules/mod_jk.dll";
+           MOD_JK = "modules/mod_jk.so";
         }else if(os.indexOf("netware")>=0){
            MOD_JK = "modules/mod_jk.nlm";
         }else{
