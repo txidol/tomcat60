@@ -97,7 +97,12 @@ PATCHES PROPOSED TO BACKPORT:
 
   Additional patch:
   http://svn.apache.org/viewvc?view=revision&revision=932357
-  +1: markt
+  +1: markt, kkolinko
+  -1:
+
+  Additional patch:
+  http://svn.apache.org/viewvc?rev=935983&view=rev
+  +1: kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
@@ -295,5 +300,6 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid ClassCastException.
   http://svn.apache.org/viewvc?view=revision&revision=935510
   +1: kfujino
+  +1: kkolinko: and also +1 for http://svn.apache.org/viewvc?rev=935777&view=rev
   -1: 
 
