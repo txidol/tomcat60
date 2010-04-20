@@ -150,6 +150,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
+  Note: (kkolinko): Applied to 5.5.x in r935947. The above patches address
+  BZ 44041, BZ 48903, BZ 48694. Those three issues are to be marked as RESOLVED,
+  when these patches are applied.
+
+
 * Correct SSL session timeout attribute name
   http://people.apache.org/~markt/patches/2010-04-07-SslSessionTimeout.patch
   +1: markt
