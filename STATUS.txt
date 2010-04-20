@@ -259,7 +259,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino
   -1: kkolinko: I think that we cannot change o.a.c.Manager API in such way
     in a dot release. Alternative proposal below.
-  -1: markt: We can't change the API in 6. It will have to wait until 7.
+  +1: markt: We can't change the API in 6. It will have to wait until 7.
+  -1: 
 
 * Fix possible overflows when calculating session statistics
   Fixes a) miscalculating the "average" because of multiplication overflow,
