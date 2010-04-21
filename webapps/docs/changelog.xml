@@ -41,6 +41,11 @@
 <section name="Tomcat 6.0.27 (jfclere)">
   <subsection name="Catalina">
     <changelog>
+      <fix>
+        Fix CVE-2010-1157. Prevent possible disclosure of host name or IP
+        address via the HTTP WWW-Authenticate header when using BASIC or DIGEST
+        authentication. (markt)
+      </fix>
       <add>
         Include context name when reporting memory leaks to aid root cause
         identification. (markt)
