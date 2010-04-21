@@ -287,6 +287,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49158
   http://svn.apache.org/viewvc?view=revision&revision=935998
   +1: fhanik, markt
+  -1: kkolinko: 1) because Response#addSessionCookieInternal(..) skips
+        cookies.add(cookie); call
+        2) you need to take care of the useHttpOnly flag
   -1: 
 
-
+* Configure Tomcat to use HttpOnly for session cookies by default
+  http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
+  +1: kkolinko
+  -1:
