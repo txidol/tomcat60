@@ -227,9 +227,8 @@ public class BackupManager extends StandardManager implements ClusterManager, Ma
      */
     public void stop() throws LifecycleException
     {
-        
-        LazyReplicatedMap map = (LazyReplicatedMap)sessions;
-        if ( map!=null ) {
+        if (sessions instanceof LazyReplicatedMap) {
+            LazyReplicatedMap map = (LazyReplicatedMap)sessions;
             map.breakdown();
         }
         if ( !this.started ) return;
