@@ -296,5 +296,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49170
   Do not send duplicated session.
   http://svn.apache.org/viewvc?view=revision&revision=936777
-  +1: kfujino
+  +1: kfujino, kkolinko
   -1: 
