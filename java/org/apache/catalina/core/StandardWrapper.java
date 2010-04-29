@@ -72,7 +72,7 @@ import org.apache.tomcat.util.modeler.Registry;
  *
  * @author Craig R. McClanahan
  * @author Remy Maucherat
- * @version $Revision$ $Date$
+ * @version $Id$
  */
 public class StandardWrapper
     extends ContainerBase

@@ -39,7 +39,7 @@ import org.apache.catalina.deploy.LoginConfig;
  * that utilizes SSL certificates to identify client users.
  *
  * @author Craig R. McClanahan
- * @version $Revision$ $Date$
+ * @version $Id$
  */
 
 public class SSLAuthenticator
