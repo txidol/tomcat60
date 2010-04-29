@@ -29,16 +29,16 @@ package org.apache.catalina.ha.session;
  *               A full description of this implementation can be found under
  *               <href="http://www.filip.net/tomcat/">Filip's Tomcat Page</a><BR>
  *
- * Copyright:    See apache license
- * @author  Filip Hanik
- * @version $Revision$ $Date$
+ * Copyright:    See apache license<BR>
+ *
  * Description:<BR>
  * The ReplicatedSession class is a simple extension of the StandardSession class
  * It overrides a few methods (setAttribute, removeAttribute, expire, access) and has
  * hooks into the InMemoryReplicationManager to broadcast and receive events from the cluster.<BR>
  * This class inherits the readObjectData and writeObject data methods from the StandardSession
  * and does not contain any serializable elements in addition to the inherited ones from the StandardSession
- *
+ * @author  Filip Hanik
+ * @version $Id$
  */
 import org.apache.catalina.Manager;
 import java.io.IOException;
