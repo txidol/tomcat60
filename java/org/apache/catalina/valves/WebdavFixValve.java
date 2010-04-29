@@ -40,7 +40,7 @@ import org.apache.catalina.connector.Response;
  * required. Normally, this valve would be used at the <code>Context</code>
  * level.
  *
- * @version $Revision$, $Date$
+ * @version $Id$
  */
 
 public class WebdavFixValve

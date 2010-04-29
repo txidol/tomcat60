@@ -42,7 +42,7 @@ import org.apache.catalina.Globals;
  *
  * @author Fabien Carrion
  * @author Remy Maucherat
- * @version $Revision$, $Date$
+ * @version $Id$
  */
 public class DefaultAnnotationProcessor implements AnnotationProcessor {
     

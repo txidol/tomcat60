@@ -29,7 +29,7 @@ import java.util.TimeZone;
  *
  * @author Craig R. McClanahan
  * @author Tim Tye
- * @version $Revision$ $Date$
+ * @version $Id$
  */
 
 public final class RequestUtil {
