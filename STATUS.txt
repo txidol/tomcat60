@@ -298,3 +298,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=936777
   +1: kfujino, kkolinko
   -1: 
+
+* Make the principal implement Serializable 
+ http://svn.apache.org/viewvc?view=revision&revision=939491
+ +1: fhanik
+ -1: 
+
