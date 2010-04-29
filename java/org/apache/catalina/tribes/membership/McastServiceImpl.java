@@ -40,7 +40,7 @@ import java.net.BindException;
  * Need to fix this, could use java.nio and only need one thread to send and receive, or
  * just use a timeout on the receive
  * @author Filip Hanik
- * @version $Revision$, $Date$
+ * @version $Id$
  */
 public class McastServiceImpl
 {

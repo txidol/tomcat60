@@ -40,7 +40,7 @@ import org.apache.catalina.tribes.io.BufferPool;
  * 
  * @author Filip Hanik
  * 
- * @version $Revision$, $Date$
+ * @version $Id$
  */
 public class BioReplicationTask extends AbstractRxTask {
 

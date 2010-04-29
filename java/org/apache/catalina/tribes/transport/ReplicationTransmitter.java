@@ -30,7 +30,7 @@ import org.apache.catalina.tribes.transport.nio.PooledParallelSender;
  * type 
  * 
  * @author Filip Hanik
- * @version $Revision$ $Date$
+ * @version $Id$
  */
 public class ReplicationTransmitter implements ChannelSender {
     private static org.apache.juli.logging.Log log = org.apache.juli.logging.LogFactory.getLog(ReplicationTransmitter.class);
