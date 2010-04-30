@@ -308,3 +308,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=939551&view=rev
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49236
+  Do not use indexing when packing Tomcat JARs.
+  In TC6 it affects the DBCP and JDT jars.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25381
+  +1: kkolinko
+  -1:
