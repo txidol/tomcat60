@@ -304,3 +304,8 @@ PATCHES PROPOSED TO BACKPORT:
  +1: fhanik
  -1: 
 
+* Log unexpected errors in ApplicationContext#getResource() and #getResourceAsStream()
+  This is inspired by https://issues.apache.org/bugzilla/show_bug.cgi?id=49218
+  http://svn.apache.org/viewvc?rev=939551&view=rev
+  +1: kkolinko
+  -1:
