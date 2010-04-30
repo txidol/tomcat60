@@ -44,7 +44,7 @@ import org.apache.catalina.util.StringManager;
  *
  * @author Craig R. McClanahan
  * @author Andrew R. Jaquith
- * @version $Revision$ $Date$
+ * @version $Id$
  */
 
 public class JAASCallbackHandler implements CallbackHandler {

@@ -30,7 +30,7 @@ import org.apache.tomcat.util.modeler.BaseModelMBean;
  * <code>org.apache.catalina.core.StandardService</code> component.</p>
  *
  * @author Amy Roh
- * @version $Revision$ $Date$
+ * @version $Id$
  */
 
 public class StandardServiceMBean extends BaseModelMBean {

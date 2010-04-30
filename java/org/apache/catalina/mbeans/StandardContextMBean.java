@@ -38,7 +38,7 @@ import org.apache.tomcat.util.modeler.Registry;
  * <code>org.apache.catalina.core.StandardContext</code> component.</p>
  *
  * @author Amy Roh
- * @version $Revision$ $Date$
+ * @version $Id$
  */
 
 public class StandardContextMBean extends BaseModelMBean {

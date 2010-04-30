@@ -37,7 +37,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
  * 
  * @author Bip Thelin
  * @author David Becker
- * @version $Revision$, $Date$
+ * @version $Id$
  */
 public class ResponseIncludeWrapper extends HttpServletResponseWrapper {
     /**
