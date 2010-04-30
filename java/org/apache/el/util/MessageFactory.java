@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 /**
  * @author Jacob Hookom [jacob@hookom.net]
- * @version $Change: 181177 $$DateTime: 2001/06/26 08:45:09 $$Author$
+ * @version $Id$
  */
 public final class MessageFactory {
 
