@@ -150,6 +150,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
+  Additional patch:
   Mark ResourceEntry.loadedClass as volatile.
   http://svn.apache.org/viewvc?rev=927877&view=rev
   +1: kkolinko, markt
@@ -313,5 +314,17 @@ PATCHES PROPOSED TO BACKPORT:
   Do not use indexing when packing Tomcat JARs.
   In TC6 it affects the DBCP and JDT jars.
   https://issues.apache.org/bugzilla/attachment.cgi?id=25381
+  +1: kkolinko
+  -1:
+
+* If any error happens in shutdown hook, do not forget to shutdown the
+  logging subsystem.
+
+  We have to take care of it, because logging shutdown hook is already
+  disabled at that place. This way the unwritten messages in the cache will
+  not be lost. Also if any more messages will come later, Handler.reportError()
+  will write the first one of them to stderr, thus they will leave us a trace,
+  instead of being lost in a buffer.
+  http://svn.apache.org/viewvc?rev=940064&view=rev
   +1: kkolinko
   -1:
