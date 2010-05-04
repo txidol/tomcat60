@@ -137,8 +137,10 @@ PATCHES PROPOSED TO BACKPORT:
   compilation error rather than waiting modifcationTestInterval before the next
   attempt
   http://svn.apache.org/viewvc?rev=922010&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+
+  kkolinko: We have to mention the new parameter in jasper-howto.html#Configuration
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48903
   and https://issues.apache.org/bugzilla/show_bug.cgi?id=48694#c8
