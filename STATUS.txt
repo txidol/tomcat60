@@ -169,11 +169,6 @@ PATCHES PROPOSED TO BACKPORT:
     one is already documented as "sessionTimeout" in config/http.xml, though,
     still, renaming might break someone's configurations.
 
-* Fix cross-context session expiration
-  http://svn.apache.org/viewvc?rev=926716&view=rev
-  +1: markt, kkolinko, kfujino
-  -1: 
-
 * Add support for displaying the Spring Security user name in the manager app
   http://svn.apache.org/viewvc?rev=927062&view=rev
   +1: markt, kkolinko
