@@ -252,7 +252,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49116
   If session is already invalid, expire session to prevent memory leak. 
   http://svn.apache.org/viewvc?view=revision&revision=933881
-  +1: kfujino, markt
+  +1: kfujino, markt, kkolinko
   -1: 
 
 * sessionCounter and expiredSessions declares as long instead of int.
