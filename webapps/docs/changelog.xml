@@ -31,6 +31,7 @@
     <author email="pero@apache.org">Peter Rossbach</author>
     <author email="kkolinko@apache.org">Konstantin Kolinko</author>
     <author email="jfclere@apache.org">Jean-Frederic Clere</author>
+    <author email="kfujino@apache.org">Keiichi Fujino</author>
     <title>Changelog</title>
   </properties>
 
@@ -907,8 +908,8 @@
         Ensure log messages are not lost on shutdown. (markt)
       </fix>
       <add>
-        Provide an option to allow the equals character in unquoted cookie
-        values. (markt)
+        <bug>44679</bug>: Provide an option to allow the equals character in
+        unquoted cookie values. (markt)
       </add>
       <add>
         Add support for a connectionTimeout parameter to the JNDIRealm. (markt)
