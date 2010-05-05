@@ -270,6 +270,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
   +1: kkolinko
+  -0: markt - There wasn't consensus previosuly.
+            - If you are going to change the default, do it in the code
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49170
