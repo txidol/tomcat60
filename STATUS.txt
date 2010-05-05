@@ -247,7 +247,7 @@ PATCHES PROPOSED TO BACKPORT:
   b) ArithmeticException division by zero when numExpired overflows.
   The fix for trunk is already provided by r934337.
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_StandardSession_statistics.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Improve the ChatServlet comet example and fix some issues there
