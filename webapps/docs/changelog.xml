@@ -136,6 +136,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Webapps">
+    <changelog>
+      <add>
+        Use underscores instead of spaces in anchor names in Tomcat
+        documentation. (kkolinko)
+      </add>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <update>Update to Commons Daemon 1.0.2. Use service launcher (procrun)
