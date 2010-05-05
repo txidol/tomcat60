@@ -271,25 +271,25 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49170
   Do not send duplicated session.
   http://svn.apache.org/viewvc?view=revision&revision=936777
-  +1: kfujino, kkolinko
+  +1: kfujino, kkolinko, markt
   -1: 
 
 * Make the principal implement Serializable 
  http://svn.apache.org/viewvc?view=revision&revision=939491
- +1: fhanik
+ +1: fhanik, markt
  -1: 
 
 * Log unexpected errors in ApplicationContext#getResource() and #getResourceAsStream()
   This is inspired by https://issues.apache.org/bugzilla/show_bug.cgi?id=49218
   http://svn.apache.org/viewvc?rev=939551&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49236
   Do not use indexing when packing Tomcat JARs.
   In TC6 it affects the DBCP and JDT jars.
   https://issues.apache.org/bugzilla/attachment.cgi?id=25381
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * If any error happens in shutdown hook, do not forget to shutdown the
@@ -301,5 +301,5 @@ PATCHES PROPOSED TO BACKPORT:
   will write the first one of them to stderr, thus they will leave us a trace,
   instead of being lost in a buffer.
   http://svn.apache.org/viewvc?rev=940064&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
