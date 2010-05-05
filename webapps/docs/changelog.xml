@@ -123,12 +123,17 @@
   <subsection name="Cluster">
     <changelog>
       <fix>
-        <bug>49051</bug>: memberAlive is not called if member has not already 
-        existed in membership. (kfujino)
+        <bug>48717</bug>: When a node joins a cluster and it receives all the
+        current sessions, ensure the sessionCreated event is fired if the
+        Manager is configured to replicate session events. (markt)
       </fix>
       <fix>
         <bug>48934</bug>: Previous fix to handle dropped connections incorrectly
         permanently disabled session replication. (fhanik)
+      </fix>
+      <fix>
+        <bug>49051</bug>: memberAlive is not called if member has not already 
+        existed in membership. (kfujino)
       </fix>
       <fix>
         <bug>49151</bug>: Avoid ClassCastException in BackupManager#stop. 
