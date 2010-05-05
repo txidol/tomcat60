@@ -217,13 +217,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48379
   Make session cookie name, domain and path configurable per context.
-  http://people.apache.org/~markt/patches/2010-04-08-bug48379.patch
-  +1: markt, kfujino
-  -1: kkolinko, jfclere: Re: @@ -2252,22 +2252,11 @@ patch to Request.java:
-    There is (context == null) check just below the changed lines. Either
-    that check is not needed, or the changed code may throw an NPE on
-    context.getSessionCookieName() call.
-
+  http://people.apache.org/~markt/patches/2010-05-05-bug48379.patch
+  +1: markt
+  -1:
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=49081
   "#${1+1}" should evaluate to "#2"
