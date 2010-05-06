@@ -142,28 +142,6 @@ PATCHES PROPOSED TO BACKPORT:
 
   kkolinko: We have to mention the new parameter in jasper-howto.html#Configuration
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48903
-  and https://issues.apache.org/bugzilla/show_bug.cgi?id=48694#c8
-  Fix deadlock /sync issues in WebappClassLoader. Revert to using
-  synchronized(this) as analysis and experience shows anything else will just
-  cause problems
-  The patch looks huge but it just removes the sync block and sync's the method
-  http://svn.apache.org/viewvc?rev=927565&view=rev
-  svn diff -x -w -r927564:927565 http://svn.apache.org/repos/asf/tomcat/trunk
-  +1: markt, kkolinko, rjung
-  -1: 
-
-  Additional patch:
-  Mark ResourceEntry.loadedClass as volatile.
-  http://svn.apache.org/viewvc?rev=927877&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
-  Note: (kkolinko): Applied to 5.5.x in r935947. The above patches address
-  BZ 44041, BZ 48903, BZ 48694. Those three issues are to be marked as RESOLVED,
-  when these patches are applied.
-
-
 * Correct SSL session timeout attribute name
   http://people.apache.org/~markt/patches/2010-04-07-SslSessionTimeout.patch
   +1: markt

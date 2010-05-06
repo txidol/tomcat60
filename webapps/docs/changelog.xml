@@ -47,6 +47,9 @@
         address via the HTTP WWW-Authenticate header when using BASIC or DIGEST
         authentication. (markt)
       </fix>
+      <fix>
+        <bug>48903</bug>: Fix deadlock in webapp class loader. (rjung)
+      </fix>
       <add>
         Include context name when reporting memory leaks to aid root cause
         identification. (markt)
