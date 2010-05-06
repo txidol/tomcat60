@@ -194,6 +194,7 @@ PATCHES PROPOSED TO BACKPORT:
   Swallow the output. This is safe since the script outputs the value used for
   CATALINA_HOME so any issues will be visible then.
   Patch provided by mdietze
+  http://svn.apache.org/viewvc?rev=928732&view=rev
   +1: markt
   -1: 
 
