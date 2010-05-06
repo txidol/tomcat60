@@ -147,8 +147,9 @@ PATCHES PROPOSED TO BACKPORT:
   Fix deadlock /sync issues in WebappClassLoader. Revert to using
   synchronized(this) as analysis and experience shows anything else will just
   cause problems
-  The patch looks bug but it just removes the sync block and sync's the method
+  The patch looks huge but it just removes the sync block and sync's the method
   http://svn.apache.org/viewvc?rev=927565&view=rev
+  svn diff -x -w -r927564:927565 http://svn.apache.org/repos/asf/tomcat/trunk
   +1: markt, kkolinko
   -1: 
 
