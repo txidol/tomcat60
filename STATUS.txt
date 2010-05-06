@@ -156,7 +156,7 @@ PATCHES PROPOSED TO BACKPORT:
   Additional patch:
   Mark ResourceEntry.loadedClass as volatile.
   http://svn.apache.org/viewvc?rev=927877&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
   Note: (kkolinko): Applied to 5.5.x in r935947. The above patches address
