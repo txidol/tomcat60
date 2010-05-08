@@ -244,8 +244,11 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
   Alternative patch that addresses Konstatin's review comments
   http://people.apache.org/~markt/patches/2010-05-05-bug49158.patch
-  +1: markt
+  +1: markt, kkolinko
   -1: 
+   kkolinko: (Trivial: in generateCookieString() you can declare
+     httpOnlyParam as "final" and get rid of a local variable.)
+
 
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
@@ -262,7 +265,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Make the principal implement Serializable 
  http://svn.apache.org/viewvc?view=revision&revision=939491
- +1: fhanik, markt
+ +1: fhanik, markt, kkolinko
  -1: 
 
 * Log unexpected errors in ApplicationContext#getResource() and #getResourceAsStream()
@@ -292,5 +295,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Update to DBCP 1.3
   http://people.apache.org/~markt/patches/2010-05-06-dbcp13-tc6.patch
-  +1: markt
+  +1: markt, kkolinko
   -1: 
