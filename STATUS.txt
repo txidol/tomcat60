@@ -144,7 +144,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Correct SSL session timeout attribute name
   http://people.apache.org/~markt/patches/2010-04-07-SslSessionTimeout.patch
-  +1: markt
+  +1: markt, kkolinko
   -1: 
    kkolinko: Generally, I would be against renaming some attributes, but this
     one is already documented as "sessionTimeout" in config/http.xml, though,
