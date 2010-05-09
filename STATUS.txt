@@ -198,8 +198,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48379
   Make session cookie name, domain and path configurable per context.
   http://people.apache.org/~markt/patches/2010-05-05-bug48379.patch
-  +1: markt
+  +1: markt, kkolinko
   -1:
+   kkolinko: (Trivial:
+     in JvmRouteBinderValve#setNewSessionCookie()
+     in if (log.isDebugEnabled()) { ... } block
+     s/Globals.SESSION_COOKIE_NAME/newCookie.getName()/
+   )
+
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=49081
   "#${1+1}" should evaluate to "#2"
