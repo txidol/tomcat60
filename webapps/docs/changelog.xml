@@ -92,6 +92,10 @@
         action in the Manager web application. (kkolinko)
       </fix>
       <fix>
+        <bug>49116</bug>: If session is already invalid, expire session to 
+        prevent memory leak. (kfujino)
+      </fix>
+      <fix>
         <bug>49245</bug>: Fix session expiration check in cross-context
         requests. (markt)
       </fix>
