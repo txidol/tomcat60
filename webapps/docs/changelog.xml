@@ -146,6 +146,9 @@
         <bug>49151</bug>: Avoid ClassCastException in BackupManager#stop. 
         (kfujino)
       </fix>
+      <fix>
+        <bug>49170</bug>: Do not send duplicated session. (kfujino)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
