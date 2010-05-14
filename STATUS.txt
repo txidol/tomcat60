@@ -196,3 +196,46 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=940064&view=rev
   +1: kkolinko, markt, kfujino
   -1:
+
+* Backport a couple of loader fixes and enhancements:
+
+  Expose properties of VirtualWebappLoader and WebappClassLoader via JMX.
+  http://svn.apache.org/viewvc?view=revision&revision=936819
+  +1: rjung
+  -1: 
+
+  Add property "searchExternalFirst" to WebappLoader:
+  If set, the external repositories will be searched before
+  the WEB-INF ones. Default (false) is unchanged behaviour.
+  Also expose the new property via JMX and document it.
+  http://svn.apache.org/viewvc?view=revision&revision=936823
+  http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936823.patch
+  +1: rjung
+  -1: 
+
+  Expose the new WebappLoader flag in the VirtualWebappLoader,
+  but allow alternative name searchVirtualFirst to make it
+  consistent with the "virtual" terminology.
+  Now you can decide, whether the virtual paths will
+  be searched before the webapp or after it.
+  If searched before, external resources take precendence
+  over internal ones. Before that change one couldn't overwrite
+  resources already present in the webapp.
+  http://svn.apache.org/viewvc?view=revision&revision=936825
+  http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936825.patch
+  +1: rjung
+  -1: 
+
+  Respect configurable search order in getURLs().
+  http://svn.apache.org/viewvc?view=revision&revision=936892
+  http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936892.patch
+  +1: rjung
+  -1: 
+
+  Add the new contextName property of WebappClassLoader
+  to its toString() and expose a read only via JMX.
+  http://svn.apache.org/viewvc?view=revision&revision=944396
+  http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r944396.patch
+  +1: rjung
+  -1: 
+
