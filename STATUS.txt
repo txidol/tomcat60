@@ -139,14 +139,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko, rjung
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48839
-  Correctly handle multi-line headers with the NIO connector
-  Patch suggested by Richa Baronia
-  http://svn.apache.org/viewvc?rev=928695&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-  rjung: Minor style nit: omit the space in "HeaderParsePosition. HEADER_VALUE".
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
   If CDPATH is set, cd may result in output to stdout.
   Swallow the output. This is safe since the script outputs the value used for

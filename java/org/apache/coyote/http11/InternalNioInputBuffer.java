@@ -811,6 +811,7 @@ public class InternalNioInputBuffer implements InputBuffer {
                     // be at least one space inserted between the lines)
                     buf[headerData.realPos] = chr;
                     headerData.realPos++;
+                    headerParsePos = HeaderParsePosition.HEADER_VALUE;
                 }
             }
         }

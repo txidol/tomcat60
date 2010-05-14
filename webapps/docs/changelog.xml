@@ -114,6 +114,10 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
+      <fix>
+        <bug>48839</bug>: Correctly handle HTTP header folding in the NIO
+        connector. Patch suggested by Richa Baronia. (markt)
+      </fix>
       <add>
         <bug>48862</bug>: Add support for the backlog parameter to the AJP
         connector. (pero/markt)
