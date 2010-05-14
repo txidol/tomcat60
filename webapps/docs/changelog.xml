@@ -103,6 +103,10 @@
         prevent memory leak. (kfujino)
       </fix>
       <fix>
+        <bug>49158</bug>: Ensure only one session cookie is returned for a
+        single request. (markt/fhanik)
+      </fix>
+      <fix>
         <bug>49245</bug>: Fix session expiration check in cross-context
         requests. (markt)
       </fix>

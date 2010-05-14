@@ -30,6 +30,7 @@ import java.security.PrivilegedExceptionAction;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.Vector;
@@ -222,7 +223,7 @@ public class Response
     /**
      * The set of Cookies associated with this Response.
      */
-    protected ArrayList cookies = new ArrayList();
+    protected ArrayList<Cookie> cookies = new ArrayList<Cookie>();
 
 
     /**
@@ -864,7 +865,7 @@ public class Response
      * a zero-length array if no cookies have been set.
      */
     public Cookie[] getCookies() {
-        return ((Cookie[]) cookies.toArray(new Cookie[cookies.size()]));
+        return cookies.toArray(new Cookie[cookies.size()]);
     }
 
 
@@ -968,7 +969,47 @@ public class Response
 
     }
 
-
+    /**
+     * Special method for adding a session cookie as we should be overriding 
+     * any previous 
+     * @param cookie
+     */
+    public void addSessionCookieInternal(final Cookie cookie,
+            boolean httpOnly) {
+        if (isCommitted())
+            return;
+        
+        String name = cookie.getName();
+        final String headername = "Set-Cookie";
+        final String startsWith = name + "=";
+        final StringBuffer sb = generateCookieString(cookie, httpOnly);
+        boolean set = false;
+        MimeHeaders headers = coyoteResponse.getMimeHeaders();
+        int n = headers.size();
+        for (int i = 0; i < n; i++) {
+            if (headers.getName(i).toString().equals(headername)) {
+                if (headers.getValue(i).toString().startsWith(startsWith)) {
+                    headers.setValue(sb.toString());
+                    set = true;
+                }
+            }
+        }
+        if (set) {
+            Iterator<Cookie> iter = cookies.iterator();
+            while (iter.hasNext()) {
+                Cookie c = iter.next();
+                if (name.equals(c.getName())) {
+                    iter.remove();
+                    break;
+                }
+            }
+        } else {
+            addHeader(headername, sb.toString());
+        }
+        cookies.add(cookie);
+        
+        
+    }
     /**
      * Add the specified Cookie to those that will be included with
      * this Response.
@@ -991,6 +1032,18 @@ public class Response
         if (isCommitted())
             return;
 
+        final StringBuffer sb = generateCookieString(cookie, httpOnly);
+        //if we reached here, no exception, cookie is valid
+        // the header name is Set-Cookie for both "old" and v.1 ( RFC2109 )
+        // RFC2965 is not supported by browsers and the Servlet spec
+        // asks for 2109.
+        addHeader("Set-Cookie", sb.toString());
+
+        cookies.add(cookie);
+    }
+
+    public StringBuffer generateCookieString(final Cookie cookie, 
+            final boolean httpOnly) {
         final StringBuffer sb = new StringBuffer();
         //web application code can receive a IllegalArgumentException 
         //from the appendCookieValue invokation
@@ -1012,13 +1065,7 @@ public class Response
                      cookie.getPath(), cookie.getDomain(), cookie.getComment(), 
                      cookie.getMaxAge(), cookie.getSecure(), httpOnly);
         }
-        //if we reached here, no exception, cookie is valid
-        // the header name is Set-Cookie for both "old" and v.1 ( RFC2109 )
-        // RFC2965 is not supported by browsers and the Servlet spec
-        // asks for 2109.
-        addHeader("Set-Cookie", sb.toString());
-
-        cookies.add(cookie);
+        return sb;
     }
 
 

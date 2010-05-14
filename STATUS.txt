@@ -221,21 +221,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49158
-  http://svn.apache.org/viewvc?view=revision&revision=935998
-  +1: fhanik
-  -1: kkolinko: 1) because Response#addSessionCookieInternal(..) skips
-        cookies.add(cookie); call
-        2) you need to take care of the useHttpOnly flag
-  -1: 
-  Alternative patch that addresses Konstatin's review comments
-  http://people.apache.org/~markt/patches/2010-05-05-bug49158.patch
-  +1: markt, kkolinko, rjung
-  -1: 
-   kkolinko: (Trivial: in generateCookieString() you can declare
-     httpOnlyParam as "final" and get rid of a local variable.)
-
-
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
   +1: kkolinko

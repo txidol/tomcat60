@@ -68,7 +68,6 @@ import org.apache.catalina.core.ApplicationFilterFactory;
 import org.apache.catalina.realm.GenericPrincipal;
 import org.apache.catalina.util.Enumerator;
 import org.apache.catalina.util.ParameterMap;
-import org.apache.catalina.util.RequestUtil;
 import org.apache.catalina.util.StringManager;
 import org.apache.catalina.util.StringParser;
 
@@ -2269,9 +2268,10 @@ public class Request
                 newCookie.setSecure(true);
             }
             if (context == null) {
-            	response.addCookieInternal(newCookie, false);
+            	response.addSessionCookieInternal(newCookie, false);
             } else {
-            	response.addCookieInternal(newCookie, context.getUseHttpOnly());
+            	response.addSessionCookieInternal(newCookie,
+            	        context.getUseHttpOnly());
             }
         }
     }
@@ -2398,7 +2398,7 @@ public class Request
             Cookie cookie = new Cookie(Globals.SESSION_COOKIE_NAME,
                                        session.getIdInternal());
             configureSessionCookie(cookie);
-            response.addCookieInternal(cookie, context.getUseHttpOnly());
+            response.addSessionCookieInternal(cookie, context.getUseHttpOnly());
         }
 
         if (session != null) {
