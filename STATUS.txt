@@ -140,11 +140,27 @@ PATCHES PROPOSED TO BACKPORT:
      in if (log.isDebugEnabled()) { ... } block
      s/Globals.SESSION_COOKIE_NAME/newCookie.getName()/
    )
+
    rjung: In CoyoteAdapter.parseSessionCookiesId(): should there be a check
    for context != null before calling context.getSessionCookieName()?
-   At least a few lines above that place we chaeck context != null before calling
+   At least a few lines above that place we check context != null before calling
    context.getCookies(), so it seems someone wasn't sure, whether context could
-   be null or not.
+   be null or not. I propose adding
+   http://svn.apache.org/viewvc?rev=944511&view=rev
+   +1: rjung
+   -1: 
+
+   rjung: In Request.configureSessionCookie(): should there be a check
+   for context != null before calling context.getSessionCookieDomain()?
+   At least a few lines above that place we check context != null before calling
+   context.getSessionCookiePath(), so it seems someone wasn't sure, whether context could
+   be null or not. I propose adding
+   http://people.apache.org/~rjung/patches/2010-05-14-context-null-check.patch
+   It can't be directly applied to trunk which uses
+   ApplicationSessionCookieConfig.createSessionCookie(). Do we need to add the null checks
+   into that method?
+   +1: rjung
+   -1: 
 
 * sessionCounter and expiredSessions declares as long instead of int.
   http://svn.apache.org/viewvc?view=revision&revision=934337
