@@ -69,13 +69,14 @@ tomcat-native.loc=${base-tomcat.loc}/tomcat-connectors/native/${tomcat-native.ve
 tomcat-native.dll=${base-tomcat.loc}/tomcat-connectors/native/${tomcat-native.version}/binaries
 
 # ----- Commons DBCP, version 1.1 or later -----
-commons-dbcp.version=1.2.2
-commons-dbcp.home=${base.path}/commons-dbcp-1.2.2-src
-commons-dbcp-src.loc=${base-commons.loc}/dbcp/source/commons-dbcp-1.2.2-src.tar.gz
+commons-dbcp.version=1.3
+commons-dbcp.home=${base.path}/commons-dbcp-${commons-dbcp.version}-src
+commons-dbcp-src.loc=${base-commons.loc}/dbcp/source/commons-dbcp-${commons-dbcp.version}-src.tar.gz
 
 # ----- Commons Pool, version 1.1 or later -----
-commons-pool.home=${base.path}/commons-pool-1.5.4-src
-commons-pool-src.loc=${base-commons.loc}/pool/source/commons-pool-1.5.4-src.tar.gz
+commons-pool.version=1.5.4
+commons-pool.home=${base.path}/commons-pool-${commons-pool.version}-src
+commons-pool-src.loc=${base-commons.loc}/pool/source/commons-pool-${commons-pool.version}-src.tar.gz
 
 # ----- NSIS, version 2.0 or later -----
 nsis.home=${base.path}/nsis-2.46
