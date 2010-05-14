@@ -123,16 +123,6 @@ PATCHES PROPOSED TO BACKPORT:
     one is already documented as "sessionTimeout" in config/http.xml, though,
     still, renaming might break someone's configurations.
 
-* Add support for displaying the Spring Security user name in the manager app
-  http://svn.apache.org/viewvc?rev=927062&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-  Capitalization is a bit counter intuitive w.r.t. the code comment
-  "Lower and upper-case strings will be dynamically generated.
-  Put mid-capitalised strings here!". But of course in case you know the
-  right capitalization then it will be faster of adding it straight there.
-  So it's only the comment, that is a bit to strict.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
   If CDPATH is set, cd may result in output to stdout.
   Swallow the output. This is safe since the script outputs the value used for

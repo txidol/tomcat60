@@ -180,6 +180,10 @@
         Use underscores instead of spaces in anchor names in Tomcat
         documentation. (kkolinko)
       </add>
+      <add>
+        Add support for displaying the Spring Security user name (if present) in
+        the Manager application. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Other">
