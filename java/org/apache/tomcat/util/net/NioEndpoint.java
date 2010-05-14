@@ -649,9 +649,9 @@ public class NioEndpoint {
     public int getSessionCacheSize() { return sessionCacheSize;}
     public void setSessionCacheSize(int i) { sessionCacheSize = i;}
 
-    protected int sessionCacheTimeout = 86400;
-    public int getSessionCacheTimeout() { return sessionCacheTimeout;}
-    public void setSessionCacheTimeout(int i) { sessionCacheTimeout = i;}
+    protected int sessionTimeout = 86400;
+    public int getSessionTimeout() { return sessionTimeout;}
+    public void setSessionTimeout(int i) { sessionTimeout = i;}
 
     /**
      * SSL engine.
@@ -852,7 +852,7 @@ public class NioEndpoint {
                 sslContext.getServerSessionContext();
             if (sessionContext != null) {
                 sessionContext.setSessionCacheSize(sessionCacheSize);
-                sessionContext.setSessionTimeout(sessionCacheTimeout);
+                sessionContext.setSessionTimeout(sessionTimeout);
             }
         }
         

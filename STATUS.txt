@@ -115,14 +115,6 @@ PATCHES PROPOSED TO BACKPORT:
 
   kkolinko: We have to mention the new parameter in jasper-howto.html#Configuration
 
-* Correct SSL session timeout attribute name
-  http://people.apache.org/~markt/patches/2010-04-07-SslSessionTimeout.patch
-  +1: markt, kkolinko, rjung
-  -1: 
-   kkolinko: Generally, I would be against renaming some attributes, but this
-    one is already documented as "sessionTimeout" in config/http.xml, though,
-    still, renaming might break someone's configurations.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
   If CDPATH is set, cd may result in output to stdout.
   Swallow the output. This is safe since the script outputs the value used for

@@ -431,18 +431,18 @@ public class JSSESocketFactory
             } else {
                 sessionCacheSize = defaultSessionCacheSize;
             }
-            int sessionCacheTimeout;
-            if (attributes.get("sessionCacheTimeout") != null) {
-                sessionCacheTimeout = Integer.parseInt(
-                        (String)attributes.get("sessionCacheTimeout"));
+            int sessionTimeout;
+            if (attributes.get("sessionTimeout") != null) {
+                sessionTimeout = Integer.parseInt(
+                        (String)attributes.get("sessionTimeout"));
             } else {
-                sessionCacheTimeout = defaultSessionTimeout;
+                sessionTimeout = defaultSessionTimeout;
             }
             SSLSessionContext sessionContext =
                 context.getServerSessionContext();
             if (sessionContext != null) {
                 sessionContext.setSessionCacheSize(sessionCacheSize);
-                sessionContext.setSessionTimeout(sessionCacheTimeout);
+                sessionContext.setSessionTimeout(sessionTimeout);
             }
 
             // create proxy
