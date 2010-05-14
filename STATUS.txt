@@ -32,42 +32,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* Backport cleanup of semantics of thisAccessedTime and
-  lastAccessedTime for sessions:
-  - preparational whitespace changes
-    http://svn.apache.org/viewvc?rev=711695&view=rev
-  - Give thisAccessedTime and lastAccessedTime for sessions
-    a clear semantics:
-    http://svn.apache.org/viewvc?rev=711711&view=rev
-    - thisAccessedTime will be updated at the beginning and
-      at the end of session use
-    - lastAccessedTime will only be updated at the end of
-      session use
-    This means:
-    - lastAccessedTime is the last access time of a session
-      disregarding any request still being processed on.
-      So this is good to use even from within a request
-      to detect when its own session has been used last before.
-    - thisAccessedTime already gets updated when a new request
-      disregarding any request still being processed on.
-      So this is better for any idleness check or information.
-    - thisAccessedTime >= lastAccessedTime always
-  - Port from StandardSession to DeltaSession
-    http://svn.apache.org/viewvc?rev=711714&view=rev
-  - Expose thisAccessedTime via the session interface
-    and ManagerBase, so we can use it from outside the session.
-    http://svn.apache.org/viewvc?rev=711716&view=rev
-  - Make the classes checking session idleness use thisAccessedTime.
-    http://svn.apache.org/viewvc?rev=711720&view=rev
-    This is not for invalidation, only for displaying
-    idle times and making persistance decisions.
-  +1: rjung
-   0: billbarker: generally agree with remm that this is too big of a change for the stable branch
-                 but could agree to some of it if it was split into parts
-   0: markt: Agree with Bill - smaller parts would be better
-  -1: remm: no for TC 6.0
-  -1: funkman : api change in Session.java for .x.x release
-
 * Fix the maven stuff for the maven repo.
   Before it does't find tomcat-juli.jar and the remoteRepository seems broken .
   http://people.apache.org/~jfclere/patches/maven.patch
