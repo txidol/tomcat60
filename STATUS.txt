@@ -61,26 +61,33 @@ PATCHES PROPOSED TO BACKPORT:
 
   Additional patch:
   http://svn.apache.org/viewvc?view=revision&revision=932357
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1:
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=935983&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
+
+  rjung: It seems we add roles to the user's role list in
+  getRoles(DirContext context, User user) every time it is
+  being called, if either commonRole is used or roleFormat / roleName?
+  I think we shouldn't change the original list, but instead a copy?
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
   Return roles defined by both userRoleName and roleName mechanisms
   Patch provided by 'eric'
+  http://svn.apache.org/viewvc?view=revision&revision=920824
   +1: markt, kkolinko
   -1: 
+  rjung: see comment to the proposal above.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48737
   Don't assume paths that start with /META-INF/... are always in JARs. This is
   not true for some IDEs
   Patch provided by Fabrizio Giustina
   http://svn.apache.org/viewvc?rev=920840&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48701
@@ -88,12 +95,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-03-09-bug48701.patch
   +1: markt, kkolinko
   -1: 
+  rjung: Patch withdrawn on p.a.o?
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48793
   Make catalina.sh more robust to different return values on different platforms
   Patch provided by Thomas GL
   http://svn.apache.org/viewvc?rev=921444&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48795
@@ -101,14 +109,15 @@ PATCHES PROPOSED TO BACKPORT:
   compilation error rather than waiting modifcationTestInterval before the next
   attempt
   http://svn.apache.org/viewvc?rev=922010&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
+  rjung: Minor nit: we could add the actual value to the message "Invalid value ...".
 
   kkolinko: We have to mention the new parameter in jasper-howto.html#Configuration
 
 * Correct SSL session timeout attribute name
   http://people.apache.org/~markt/patches/2010-04-07-SslSessionTimeout.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
    kkolinko: Generally, I would be against renaming some attributes, but this
     one is already documented as "sessionTimeout" in config/http.xml, though,
@@ -116,21 +125,27 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add support for displaying the Spring Security user name in the manager app
   http://svn.apache.org/viewvc?rev=927062&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
+  Capitalization is a bit counter intuitive w.r.t. the code comment
+  "Lower and upper-case strings will be dynamically generated.
+  Put mid-capitalised strings here!". But of course in case you know the
+  right capitalization then it will be faster of adding it straight there.
+  So it's only the comment, that is a bit to strict.
 
 * Re-fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
   Parsing re-factoring caused a regression in quote handling
   http://svn.apache.org/viewvc?rev=927621&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48839
   Correctly handle multi-line headers with the NIO connector
   Patch suggested by Richa Baronia
   http://svn.apache.org/viewvc?rev=928695&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
+  rjung: Minor style nit: omit the space in "HeaderParsePosition. HEADER_VALUE".
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
   If CDPATH is set, cd may result in output to stdout.
@@ -140,11 +155,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=928732&view=rev
   +1: markt
   -1: 
+  rjung: I wouldn't redirect "2>&1". At least my tests show, that CDPATH
+  output goes to stdout. stderr would still show, whether an error occured
+  during the "cd".
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
   Port deadlock prevention for worker allocation from NIO to BIO and APR
   https://issues.apache.org/bugzilla/attachment.cgi?id=25225
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
@@ -162,21 +180,25 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48379
   Make session cookie name, domain and path configurable per context.
   http://people.apache.org/~markt/patches/2010-05-05-bug48379.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1:
    kkolinko: (Trivial:
      in JvmRouteBinderValve#setNewSessionCookie()
      in if (log.isDebugEnabled()) { ... } block
      s/Globals.SESSION_COOKIE_NAME/newCookie.getName()/
    )
-
+   rjung: In CoyoteAdapter.parseSessionCookiesId(): should there be a check
+   for context != null before calling context.getSessionCookieName()?
+   At least a few lines above that place we chaeck context != null before calling
+   context.getCookies(), so it seems someone wasn't sure, whether context could
+   be null or not.
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=49081
   "#${1+1}" should evaluate to "#2"
   http://svn.apache.org/viewvc?rev=932967&view=rev
   Note that all files apart from ELParser.jjt are generated by javacc from the
   changes to ELParser.jjt
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * sessionCounter and expiredSessions declares as long instead of int.
@@ -191,12 +213,12 @@ PATCHES PROPOSED TO BACKPORT:
   b) ArithmeticException division by zero when numExpired overflows.
   The fix for trunk is already provided by r934337.
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_StandardSession_statistics.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Improve the ChatServlet comet example and fix some issues there
   http://svn.apache.org/viewvc?rev=935105&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49158
@@ -208,7 +230,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
   Alternative patch that addresses Konstatin's review comments
   http://people.apache.org/~markt/patches/2010-05-05-bug49158.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
    kkolinko: (Trivial: in generateCookieString() you can declare
      httpOnlyParam as "final" and get rid of a local variable.)
@@ -222,14 +244,15 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Make the principal implement Serializable 
- http://svn.apache.org/viewvc?view=revision&revision=939491
- +1: fhanik, markt, kkolinko
- -1: 
+  http://svn.apache.org/viewvc?view=revision&revision=939491
+  +1: fhanik, markt, kkolinko
+  -1: 
+  rjung: Should we add a serialVersionUID?
 
 * Log unexpected errors in ApplicationContext#getResource() and #getResourceAsStream()
   This is inspired by https://issues.apache.org/bugzilla/show_bug.cgi?id=49218
   http://svn.apache.org/viewvc?rev=939551&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * If any error happens in shutdown hook, do not forget to shutdown the
