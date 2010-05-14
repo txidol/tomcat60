@@ -153,6 +153,11 @@
         enforcement. (kkolinko)
       </fix>
       <fix>
+        <bug>48737</bug>: Don't assume paths that start with /META-INF/... are
+        always in JARs. This is not true for some IDEs. Patch provided by
+        Fabrizio Giustina. (markt)
+      </fix>
+      <fix>
         <bug>49081</bug>: Correctly handle EL expressions of the form #${...}.
         (markt)
       </fix>

@@ -82,14 +82,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
   rjung: see comment to the proposal above.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48737
-  Don't assume paths that start with /META-INF/... are always in JARs. This is
-  not true for some IDEs
-  Patch provided by Fabrizio Giustina
-  http://svn.apache.org/viewvc?rev=920840&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48701
   Take account of TagVariableInfo when implementing the rules of JSP.5.3
   http://people.apache.org/~markt/patches/2010-03-09-bug48701.patch
