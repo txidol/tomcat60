@@ -133,12 +133,6 @@ PATCHES PROPOSED TO BACKPORT:
   right capitalization then it will be faster of adding it straight there.
   So it's only the comment, that is a bit to strict.
 
-* Re-fix https://issues.apache.org/bugzilla/show_bug.cgi?id=45015
-  Parsing re-factoring caused a regression in quote handling
-  http://svn.apache.org/viewvc?rev=927621&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
   If CDPATH is set, cd may result in output to stdout.
   Swallow the output. This is safe since the script outputs the value used for

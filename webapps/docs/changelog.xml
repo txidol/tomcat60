@@ -136,6 +136,10 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
+        <bug>45015</bug>: Correct a regression in quote handling caused by the
+        re-factoring of attribute parsing. (markt)
+      </fix>
+      <fix>
         <bug>48701</bug>: Add a system property to allow disabling enforcement
         of JSP.5.3. The specification recommends, but does not require, this
         enforcement. (kkolinko)
