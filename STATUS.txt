@@ -97,13 +97,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
   rjung: Patch withdrawn on p.a.o?
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48793
-  Make catalina.sh more robust to different return values on different platforms
-  Patch provided by Thomas GL
-  http://svn.apache.org/viewvc?rev=921444&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48795
   Provide an option to allow recompilation on the next request following a JSP
   compilation error rather than waiting modifcationTestInterval before the next

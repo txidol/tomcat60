@@ -85,6 +85,10 @@
         number of active session. (markt/kkolinko)
       </fix>
       <fix>
+        <bug>48793</bug>: Make catalina.sh more robust to different return
+        values on different platforms. Patch provided by Thomas GL. (markt)
+      </fix>
+      <fix>
         <bug>48895</bug>: Make clearing of ThreadLocals that are causing memory
         leaks on web application stop, reload or undeploy configurable since the
         process of clearing them is not thread-safe. (markt)
