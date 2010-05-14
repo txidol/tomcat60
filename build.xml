@@ -811,7 +811,6 @@
       <include name="**" />
     </javac>
     <jar jarfile="${tomcat-dbcp.jar}"
-         index="true"
          manifest="${tomcat.manifests}/default.manifest">
       <fileset dir="${tomcat-dbcp.home}/classes">
         <include name="**/*.class" />
@@ -826,7 +825,7 @@
 
   <target name="build-jasper-jdt" depends="build-manifests">
     <unjar src="${jdt.jar}" dest="${jasper-jdt.home}" />
-    <jar destfile="${jasper-jdt.jar}" index="true"
+    <jar destfile="${jasper-jdt.jar}"
          manifest="${tomcat.manifests}/default.manifest">
       <fileset dir="${jasper-jdt.home}">
         <include name="org/eclipse/jdt/core/compiler/**"/>
