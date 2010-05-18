@@ -169,6 +169,11 @@ public final class EmbeddedServletOptions implements Options {
     private int modificationTestInterval = 4;
     
     /**
+     * Is re-compilation attempted immediately after a failure?
+     */
+    private boolean recompileOnFail = false;
+    
+    /**
      * Is generation of X-Powered-By response header enabled/disabled?
      */
     private boolean xpoweredBy;
@@ -243,6 +248,13 @@ public final class EmbeddedServletOptions implements Options {
      */
     public int getModificationTestInterval() {
         return modificationTestInterval;
+    }
+    
+    /**
+     * Re-compile on failure.
+     */
+    public boolean getRecompileOnFail() {
+        return recompileOnFail;
     }
     
     /**
@@ -485,6 +497,18 @@ public final class EmbeddedServletOptions implements Options {
             }
         }
         
+        String recompileOnFail = config.getInitParameter("recompileOnFail"); 
+        if (recompileOnFail != null) {
+            if (recompileOnFail.equalsIgnoreCase("true")) {
+                this.recompileOnFail = true;
+            } else if (recompileOnFail.equalsIgnoreCase("false")) {
+                this.recompileOnFail = false;
+            } else {
+                if (log.isWarnEnabled()) {
+                    log.warn(Localizer.getMessage("jsp.warning.recompileOnFail"));
+                }
+            }
+        }
         String development = config.getInitParameter("development");
         if (development != null) {
             if (development.equalsIgnoreCase("true")) {

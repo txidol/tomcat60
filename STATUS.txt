@@ -68,17 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48795
-  Provide an option to allow recompilation on the next request following a JSP
-  compilation error rather than waiting modifcationTestInterval before the next
-  attempt
-  http://svn.apache.org/viewvc?rev=922010&view=rev
-  +1: markt, kkolinko, rjung
-  -1: 
-  rjung: Minor nit: we could add the actual value to the message "Invalid value ...".
-
-  kkolinko: We have to mention the new parameter in jasper-howto.html#Configuration
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
   If CDPATH is set, cd may result in output to stdout.
   Swallow the output. This is safe since the script outputs the value used for
