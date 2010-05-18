@@ -98,44 +98,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48379
   Make session cookie name, domain and path configurable per context.
-  http://people.apache.org/~markt/patches/2010-05-05-bug48379.patch
-  +1: markt, rjung
-  -1: kkolinko
-   kkolinko: (Trivial:
-     in JvmRouteBinderValve#setNewSessionCookie()
-     in if (log.isDebugEnabled()) { ... } block
-     s/Globals.SESSION_COOKIE_NAME/newCookie.getName()/
-   )
-
-   rjung: In CoyoteAdapter.parseSessionCookiesId(): should there be a check
-   for context != null before calling context.getSessionCookieName()?
-   At least a few lines above that place we check context != null before calling
-   context.getCookies(), so it seems someone wasn't sure, whether context could
-   be null or not. I propose adding
-   http://svn.apache.org/viewvc?rev=944511&view=rev
-   +1: rjung
-   -1: kkolinko: I agree with the above comment, but not the patch:
-    I'd be better to move the scName (or name it 'sessionCookieName')
-    outside the loop.
-
-   kkolinko: It would be better if context.getSessionCookieName() returned
-    the same value (null) by default both in 6.0 and 7.0, so that the API were the same.
-    We can backport ApplicationSessionCookieConfig.getSessionCookieName()
-    method from TC7.
-
-   kkolinko: "context." vs "getContext()." used inconsistently in Request.java#configureSessionCookie
-
-   rjung: In Request.configureSessionCookie(): should there be a check
-   for context != null before calling context.getSessionCookieDomain()?
-   At least a few lines above that place we check context != null before calling
-   context.getSessionCookiePath(), so it seems someone wasn't sure, whether context could
-   be null or not. I propose adding
-   http://people.apache.org/~rjung/patches/2010-05-14-context-null-check.patch
-   It can't be directly applied to trunk which uses
-   ApplicationSessionCookieConfig.createSessionCookie(). Do we need to add the null checks
-   into that method?
-   +1: rjung
-   -1: 
+  Updated patch in response to review comments from kkolinko & rjung
+  http://people.apache.org/~markt/patches/2010-05-18-bug48379.patch
+  +1: markt
+  -1: 
 
 * sessionCounter and expiredSessions declares as long instead of int.
   http://svn.apache.org/viewvc?view=revision&revision=934337
