@@ -143,6 +143,9 @@
         Correct the SSL session timeout attribute name so the code agrees with
         the documentation. (markt)
       </fix>
+      <add>
+        CoyotePrincipal now implements Serializable. (fhanik)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Jasper">

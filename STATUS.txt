@@ -166,12 +166,6 @@ PATCHES PROPOSED TO BACKPORT:
             - If you are going to change the default, do it in the code
   -1:
 
-* Make the principal implement Serializable 
-  http://svn.apache.org/viewvc?view=revision&revision=939491
-  +1: fhanik, markt, kkolinko
-  -1: 
-  rjung: Should we add a serialVersionUID?
-
 * Log unexpected errors in ApplicationContext#getResource() and #getResourceAsStream()
   This is inspired by https://issues.apache.org/bugzilla/show_bug.cgi?id=49218
   http://svn.apache.org/viewvc?rev=939551&view=rev
