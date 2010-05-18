@@ -67,7 +67,6 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-03-09-bug48701.patch
   +1: markt, kkolinko
   -1: 
-  rjung: Patch withdrawn on p.a.o?
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48795
   Provide an option to allow recompilation on the next request following a JSP
