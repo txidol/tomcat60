@@ -74,11 +74,9 @@ PATCHES PROPOSED TO BACKPORT:
   CATALINA_HOME so any issues will be visible then.
   Patch provided by mdietze
   http://svn.apache.org/viewvc?rev=928732&view=rev
+  http://svn.apache.org/viewvc?rev=945835&view=rev (rjung's review comment)
   +1: markt
   -1: 
-  rjung: I wouldn't redirect "2>&1". At least my tests show, that CDPATH
-  output goes to stdout. stderr would still show, whether an error occured
-  during the "cd".
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
   Port deadlock prevention for worker allocation from NIO to BIO and APR
