@@ -54,9 +54,6 @@
         address via the HTTP WWW-Authenticate header when using BASIC or DIGEST
         authentication. (markt)
       </fix>
-      <fix>
-        <bug>48903</bug>: Fix deadlock in webapp class loader. (rjung)
-      </fix>
       <add>
         Include context name when reporting memory leaks to aid root cause
         identification. (markt)
@@ -64,6 +61,10 @@
       <fix>
         Improve exception handling on session de-serialization to assist in
         identifying the root cause of <bug>48007</bug>. (kkolinko)
+      </fix>
+      <fix>
+        <bug>48589</bug>: Make JNDIRealm easier to extend. Based on a patch by
+        Candid Dauth. (markt/kkolinko)
       </fix>
       <fix>
         <bug>48629</bug>: Allow user names as well as DNs to be used with the
@@ -92,6 +93,9 @@
         <bug>48895</bug>: Make clearing of ThreadLocals that are causing memory
         leaks on web application stop, reload or undeploy configurable since the
         process of clearing them is not thread-safe. (markt)
+      </fix>
+      <fix>
+        <bug>48903</bug>: Fix deadlock in webapp class loader. (rjung)
       </fix>
       <fix>
         <bug>48983</bug>: Improve debug logging for situations when

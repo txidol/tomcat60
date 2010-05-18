@@ -50,37 +50,17 @@ PATCHES PROPOSED TO BACKPORT:
       markt: It shouldn't break existing configs. JSSE allows trust stores to be
              read without providing the password
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48589
-  Make JNDIRealm easier to extend
-  Based on a patch by Candid Dauth
-  http://svn.apache.org/viewvc?rev=910485&view=rev
-  http://svn.apache.org/viewvc?rev=918489&view=rev (review feedback)
-  http://svn.apache.org/viewvc?rev=918803&view=rev (additional patch)
-  +1: markt, kkolinko, rjung
-  -1: 
-
-  Additional patch:
-  http://svn.apache.org/viewvc?view=revision&revision=932357
-  +1: markt, kkolinko, rjung
-  -1:
-
-  Additional patch:
-  http://svn.apache.org/viewvc?rev=935983&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
-  rjung: It seems we add roles to the user's role list in
-  getRoles(DirContext context, User user) every time it is
-  being called, if either commonRole is used or roleFormat / roleName?
-  I think we shouldn't change the original list, but instead a copy?
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
   Return roles defined by both userRoleName and roleName mechanisms
   Patch provided by 'eric'
   http://svn.apache.org/viewvc?view=revision&revision=920824
   +1: markt, kkolinko
   -1: 
-  rjung: see comment to the proposal above.
+
+  rjung: It seems we add roles to the user's role list in
+  getRoles(DirContext context, User user) every time it is
+  being called, if either commonRole is used or roleFormat / roleName?
+  I think we shouldn't change the original list, but instead a copy?
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48701
   Take account of TagVariableInfo when implementing the rules of JSP.5.3

@@ -25,7 +25,6 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
@@ -1423,10 +1422,10 @@ public class JNDIRealm extends RealmBase {
          if (containerLog.isTraceEnabled()) {
              if (validated) {
                  containerLog.trace(sm.getString("jndiRealm.authenticateSuccess",
-                                  user.username));
+                                  user.getUserName()));
              } else {
                  containerLog.trace(sm.getString("jndiRealm.authenticateFailure",
-                                  user.username));
+                                  user.getUserName()));
              }
          }
          return (validated);
@@ -1452,7 +1451,7 @@ public class JNDIRealm extends RealmBase {
         if (info == null || credentials == null)
             return (false);
 
-        String password = info.password;
+        String password = info.getPassword();
         if (password == null)
             return (false);
 
@@ -1542,7 +1541,7 @@ public class JNDIRealm extends RealmBase {
          if (credentials == null || user == null)
              return (false);
 
-         String dn = user.dn;
+         String dn = user.getDN();
          if (dn == null)
              return (false);
 
@@ -1606,8 +1605,8 @@ public class JNDIRealm extends RealmBase {
         if (user == null)
             return (null);
 
-        String dn = user.dn;
-        String username = user.username;
+        String dn = user.getDN();
+        String username = user.getUserName();
 
         if (dn == null || username == null)
             return (null);
@@ -1616,7 +1615,7 @@ public class JNDIRealm extends RealmBase {
             containerLog.trace("  getRoles(" + dn + ")");
 
         // Start with roles retrieved from the user entry
-        ArrayList<String> list = user.roles;
+        List<String> list = user.getRoles();
         if (list == null) {
             list = new ArrayList<String>();
         }
@@ -1927,8 +1926,8 @@ public class JNDIRealm extends RealmBase {
         User user = getUser(context, username);
 
         if (user != null) {
-            return new GenericPrincipal(this, user.username, user.password,
-                    getRoles(context, user));
+            return new GenericPrincipal(this, user.getUserName(),
+                    user.getPassword(), getRoles(context, user));
         }
         
         return null;
@@ -2209,26 +2208,43 @@ public class JNDIRealm extends RealmBase {
     }
 
 
+     // ------------------------------------------------------ Private Classes
+    
+     /**
+      * A protected class representing a User
+      */
+     protected static class User {
+         
+         final private String username;
+         final private String dn;
+         final private String password;
+         final private List<String> roles = new ArrayList<String>();
+
+         public User(String username, String dn, String password,
+                 List<String> roles) {
+             this.username = username;
+             this.dn = dn;
+             this.password = password;
+             if (roles != null) {
+                 this.roles.addAll(roles);
+             }
+         }
+    
+         public String getUserName() {
+             return username;
+         }
+         
+         public String getDN() {
+             return dn;
+         }
+         
+         public String getPassword() {
+             return password;
+         }
+         
+         public List<String> getRoles() {
+             return roles;
+         }
+     }
 }
 
-// ------------------------------------------------------ Private Classes
-
-/**
- * A private class representing a User
- */
-class User {
-    String username = null;
-    String dn = null;
-    String password = null;
-    ArrayList<String> roles = null;
-
-
-    User(String username, String dn, String password,
-            ArrayList<String> roles) {
-        this.username = username;
-        this.dn = dn;
-        this.password = password;
-        this.roles = roles;
-    }
-
-}
