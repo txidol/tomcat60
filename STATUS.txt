@@ -57,10 +57,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-  rjung: It seems we add roles to the user's role list in
-  getRoles(DirContext context, User user) every time it is
-  being called, if either commonRole is used or roleFormat / roleName?
-  I think we shouldn't change the original list, but instead a copy?
+* Make user's role list immutable. Modify a copy in getRoles(DirContext, User)
+  http://svn.apache.org/viewvc?rev=945841&view=rev
+  +1: markt
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48701
   Take account of TagVariableInfo when implementing the rules of JSP.5.3
