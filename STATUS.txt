@@ -126,7 +126,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
   +1: kkolinko
-  -0: markt - There wasn't consensus previosuly.
+  -0: markt - There wasn't consensus previously.
             - If you are going to change the default, do it in the code
   -1:
 
@@ -152,7 +152,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   Expose properties of VirtualWebappLoader and WebappClassLoader via JMX.
   http://svn.apache.org/viewvc?view=revision&revision=936819
-  +1: rjung
+  +1: rjung, markt
   -1: 
 
   Add property "searchExternalFirst" to WebappLoader:
@@ -162,7 +162,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=936823
   http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936823.patch
   +1: rjung
-  -1: 
+  -1: markt - The new block
+              if (hasExternalRepositories && searchExternalFirst) {...}
+              needs to silently swallow CNFE to have same behaviour as previous
+              code
 
   Expose the new WebappLoader flag in the VirtualWebappLoader,
   but allow alternative name searchVirtualFirst to make it
@@ -187,6 +190,6 @@ PATCHES PROPOSED TO BACKPORT:
   to its toString() and expose a read only via JMX.
   http://svn.apache.org/viewvc?view=revision&revision=944396
   http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r944396.patch
-  +1: rjung
+  +1: rjung, markt
   -1: 
 
