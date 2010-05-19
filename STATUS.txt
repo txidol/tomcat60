@@ -75,7 +75,7 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by mdietze
   http://svn.apache.org/viewvc?rev=928732&view=rev
   http://svn.apache.org/viewvc?rev=945835&view=rev (rjung's review comment)
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
