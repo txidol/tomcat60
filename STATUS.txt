@@ -193,3 +193,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, markt
   -1: 
 
+* Fix missing message text and logging with unexpected logger issues in cluster
+  listeners
+  http://people.apache.org/~markt/patches/2010-05-19-lost-messages.patch
+  +1: markt
+  -1: 
