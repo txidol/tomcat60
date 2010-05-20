@@ -188,3 +188,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-05-19-lost-messages.patch
   +1: markt
   -1: 
+
+* Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
+  Port the fix from catalina.sh to tool-wrapper.sh as well.
+  http://svn.apache.org/viewvc?rev=946686&view=rev
+  +1: kkolinko
+  -1:
