@@ -492,8 +492,12 @@ public class ApplicationContext
                     return new URL
                         ("jndi", "", 0, getJNDIUri(hostName, fullPath),
                          new DirContextURLStreamHandler(resources));
-                } catch (Exception e) {
+                } catch (NamingException e) {
                     // Ignore
+                } catch (Exception e) {
+                    // Unexpected
+                    log(sm.getString("applicationContext.lookup.error", path,
+                            getContextPath()), e);
                 }
             }
         }
@@ -529,7 +533,12 @@ public class ApplicationContext
                 Object resource = resources.lookup(path);
                 if (resource instanceof Resource)
                     return (((Resource) resource).streamContent());
+            } catch (NamingException e) {
+                // Ignore
             } catch (Exception e) {
+                // Unexpected
+                log(sm.getString("applicationContext.lookup.error", path,
+                        getContextPath()), e);
             }
         }
         return (null);

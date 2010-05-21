@@ -125,6 +125,10 @@
       <fix>
         Fix possible overflows when calculating session statistics. (kkolinko)
       </fix>
+      <add>
+        Log unexpected exceptions when providing access to web application
+        resources in ApplicationContext. (kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
