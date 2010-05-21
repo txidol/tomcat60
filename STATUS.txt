@@ -93,21 +93,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* sessionCounter and expiredSessions declares as long instead of int.
-  http://svn.apache.org/viewvc?view=revision&revision=934337
-  +1: kfujino
-  -1: kkolinko: I think that we cannot change o.a.c.Manager API in such way
-    in a dot release. Alternative proposal below.
-  -1: markt: We can't change the API in 6. It will have to wait until 7.
-
-* Fix possible overflows when calculating session statistics
-  Fixes a) miscalculating the "average" because of multiplication overflow,
-  b) ArithmeticException division by zero when numExpired overflows.
-  The fix for trunk is already provided by r934337.
-  http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_StandardSession_statistics.patch
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Improve the ChatServlet comet example and fix some issues there
   http://svn.apache.org/viewvc?rev=935105&view=rev
   +1: kkolinko, markt, rjung

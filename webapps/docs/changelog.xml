@@ -122,6 +122,9 @@
         <bug>49245</bug>: Fix session expiration check in cross-context
         requests. (markt)
       </fix>
+      <fix>
+        Fix possible overflows when calculating session statistics. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
