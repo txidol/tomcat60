@@ -129,6 +129,9 @@
         Log unexpected exceptions when providing access to web application
         resources in ApplicationContext. (kkolinko)
       </add>
+      <fix>
+        Improve exception handling in CatalinaShutdownHook. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

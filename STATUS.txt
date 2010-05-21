@@ -105,18 +105,6 @@ PATCHES PROPOSED TO BACKPORT:
             - If you are going to change the default, do it in the code
   -1:
 
-* If any error happens in shutdown hook, do not forget to shutdown the
-  logging subsystem.
-
-  We have to take care of it, because logging shutdown hook is already
-  disabled at that place. This way the unwritten messages in the cache will
-  not be lost. Also if any more messages will come later, Handler.reportError()
-  will write the first one of them to stderr, thus they will leave us a trace,
-  instead of being lost in a buffer.
-  http://svn.apache.org/viewvc?rev=940064&view=rev
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Backport a couple of loader fixes and enhancements:
 
   Expose properties of VirtualWebappLoader and WebappClassLoader via JMX.
