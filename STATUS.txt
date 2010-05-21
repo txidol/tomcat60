@@ -159,7 +159,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
   Port the fix from catalina.sh to tool-wrapper.sh as well.
   http://svn.apache.org/viewvc?rev=946686&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Code cleanup in o.a.t.util.buf classes - port from tc5.5.x
@@ -169,10 +169,30 @@ PATCHES PROPOSED TO BACKPORT:
    plus resolving a conflict in UDecoder.java
   ) Patch:
   http://people.apache.org/~kkolinko/patches/2010-05-20_tc6_r481614_cleanup.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix ByteChunk.indexOf(String, ...) when the string is of length 1
   http://svn.apache.org/viewvc?rev=945231&view=rev
   +1: kkolinko
   -1:
+  -0: markt - I know it is style over substance but that continue mainLoop: is
+              really bugging me. How about this instead:
+Index: java/org/apache/tomcat/util/buf/ByteChunk.java
+===================================================================
+--- java/org/apache/tomcat/util/buf/ByteChunk.java  (revision 947047)
++++ java/org/apache/tomcat/util/buf/ByteChunk.java  (working copy)
+@@ -684,6 +684,10 @@
+         for( int i=myOff+start; i <= (end - srcLen); i++ ) {
+             if( buff[i] != first ) continue;
+             // found first char, now look for a match
++            if (srcLen == 1) {
++                return i-start;
++            }
++
+             int myPos=i+1;
+             for( int srcPos=srcOff + 1; srcPos< srcEnd; ) {
+                 if( buff[myPos++] != src.charAt( srcPos++ ))
+              
+
+  
