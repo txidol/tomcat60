@@ -77,6 +77,11 @@
         include the error page. (markt)
       </fix>
       <fix>
+        <bug>48729</bug>: Return roles defined by both userRoleName and roleName
+        mechanisms. Patch provided by 'eric'. Also make user's role list
+        immutable.(markt)
+      </fix>
+      <fix>
         <bug>48760</bug>: Fix potential multi-threading issue in static resource
         serving where multiple threads could try to use the the same
         InputStream. (markt)

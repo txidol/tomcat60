@@ -50,24 +50,6 @@ PATCHES PROPOSED TO BACKPORT:
       markt: It shouldn't break existing configs. JSSE allows trust stores to be
              read without providing the password
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48729
-  Return roles defined by both userRoleName and roleName mechanisms
-  Patch provided by 'eric'
-  http://svn.apache.org/viewvc?view=revision&revision=920824
-  +1: markt, kkolinko
-  +1: rjung, when combined with the "immutable" change below (r945841)
-  -1: 
-
-* Make user's role list immutable. Modify a copy in getRoles(DirContext, User)
-  http://svn.apache.org/viewvc?rev=945841&view=rev
-  +1: markt, rjung, kkolinko
-  -1: 
-    kkolinko: There is one caveat with Collections.unmodifiableList(): the
-    original list is still owned and modifieable by whoever created it,
-    i.e. by the caller of User class constructor. Though with the current
-    code of JNDIRealm that does not manifest itself and can be left as an
-    API comment.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
   Port deadlock prevention for worker allocation from NIO to BIO and APR
   https://issues.apache.org/bugzilla/attachment.cgi?id=25225
