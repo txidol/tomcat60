@@ -157,12 +157,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1: 
 
-* Additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=48840
-  Port the fix from catalina.sh to tool-wrapper.sh as well.
-  http://svn.apache.org/viewvc?rev=946686&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Code cleanup in o.a.t.util.buf classes - port from tc5.5.x
   (It is backport of r481614 of TC55,
      cd java/org/apache/tomcat/util/buf
