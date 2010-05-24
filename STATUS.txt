@@ -148,7 +148,7 @@ PATCHES PROPOSED TO BACKPORT:
   to its toString() and expose as read only via JMX.
   http://svn.apache.org/viewvc?view=revision&revision=944396
   http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r944396.patch
-  +1: rjung, markt
+  +1: rjung, markt, kkolinko
   -1: 
 
 * Fix missing message text and logging with unexpected logger issues in cluster
