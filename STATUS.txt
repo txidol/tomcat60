@@ -177,5 +177,11 @@ Index: java/org/apache/tomcat/util/buf/ByteChunk.java
              for( int srcPos=srcOff + 1; srcPos< srcEnd; ) {
                  if( buff[myPos++] != src.charAt( srcPos++ ))
               
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48990
+  Fix the skip.installer build property so once set, the Windows installer is
+  skipped but all the other artifacts are created
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25477&action=edit
+  +1: markt
+  -1: 
 
   
