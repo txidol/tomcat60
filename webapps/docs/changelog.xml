@@ -108,6 +108,10 @@
         <bug>48903</bug>: Fix deadlock in webapp class loader. (rjung)
       </fix>
       <fix>
+        <bug>48976</bug>: Document JAVA_ENDORSED_DIRS in start-up scripts. Patch
+        provided by Laurent Vaills. (markt)
+      </fix>
+      <fix>
         <bug>48983</bug>: Improve debug logging for situations when
         <code>RemoteIpValve</code> is bypassed. Patch provided by Cyrille Le
         Clerc. (markt)
