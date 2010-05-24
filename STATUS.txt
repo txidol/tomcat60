@@ -115,8 +115,15 @@ PATCHES PROPOSED TO BACKPORT:
 
   Expose properties of VirtualWebappLoader and WebappClassLoader via JMX.
   http://svn.apache.org/viewvc?view=revision&revision=936819
-  +1: rjung, markt
+  +1: rjung, markt, kkolinko
   -1: 
+   kkolinko:
+     1) Descriptions should be written on a single line.
+        When they are split into several lines it looks nasty in JConsole (JDK 6u20)
+     2) Maybe capitalize "uRLs" as "URLs"?
+        I tested and either one of these two capitalization variants works correctly.
+        Though you need to configure a VirtualWebappLoader to test that:
+        without it the property is always a zero-length array.
 
   Add property "searchExternalFirst" to WebappLoader:
   If set, the external repositories will be searched before
