@@ -184,4 +184,14 @@ Index: java/org/apache/tomcat/util/buf/ByteChunk.java
   +1: markt
   -1: 
 
-  
+* Fix issues running AJP BIO coyote connector under a security manager
+  http://svn.apache.org/viewvc?rev=947717&view=rev
+  +1: markt
+  -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49095
+  AprEndpoint does not wakeup accepts with deferred accept or BSD filters
+  Based on a patch provided by Ruediger Pluem
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25266
+  +1: markt
+  -1: 
