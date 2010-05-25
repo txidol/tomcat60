@@ -157,25 +157,8 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix ByteChunk.indexOf(String, ...) when the string is of length 1
   http://svn.apache.org/viewvc?rev=945231&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
-  -0: markt - I know it is style over substance but that continue mainLoop: is
-              really bugging me. How about this instead:
-Index: java/org/apache/tomcat/util/buf/ByteChunk.java
-===================================================================
---- java/org/apache/tomcat/util/buf/ByteChunk.java  (revision 947047)
-+++ java/org/apache/tomcat/util/buf/ByteChunk.java  (working copy)
-@@ -684,6 +684,10 @@
-         for( int i=myOff+start; i <= (end - srcLen); i++ ) {
-             if( buff[i] != first ) continue;
-             // found first char, now look for a match
-+            if (srcLen == 1) {
-+                return i-start;
-+            }
-+
-             int myPos=i+1;
-             for( int srcPos=srcOff + 1; srcPos< srcEnd; ) {
-                 if( buff[myPos++] != src.charAt( srcPos++ ))
               
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48990
   Fix the skip.installer build property so once set, the Windows installer is
