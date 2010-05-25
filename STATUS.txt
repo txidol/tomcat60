@@ -195,3 +195,9 @@ Index: java/org/apache/tomcat/util/buf/ByteChunk.java
   https://issues.apache.org/bugzilla/attachment.cgi?id=25266
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49196
+  Avoid NPE in PageContext.getErrorData()
+  http://svn.apache.org/viewvc?rev=948057&view=rev
+  +1: markt
+  -1: 
