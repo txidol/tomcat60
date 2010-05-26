@@ -184,3 +184,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=948057&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49343
+  When ChannelException is thrown, remove listener from channel.
+  http://svn.apache.org/viewvc?view=revision&revision=948402
+  +1: kfujino
+  -1: 
