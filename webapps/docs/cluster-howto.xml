@@ -620,7 +620,7 @@ should be completed:</p>
 
 
 
-
+<!--
 <section name="Monitoring your Cluster with JMX">
 <p>Monitoring is a very important question when you use a cluster. Some of the cluster objects are JMX MBeans </p>
 <p>Add the following parameter to your startup script with Java 5:
@@ -694,6 +694,7 @@ List of Cluster Mbeans<br/>
 </table>
 </p>
 </section>
+-->
 
 <section name="FAQ">
 <p>Please see <a href="http://wiki.apache.org/tomcat/FAQ/Clustering">the clustering section of the FAQ</a>.</p>
