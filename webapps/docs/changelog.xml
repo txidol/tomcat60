@@ -246,6 +246,9 @@
         <bug>49236</bug>: Do not use indexing when packing Tomcat JARs.
         (kkolinko)
       </fix>
+      <fix>
+        Remove unused code from org.apache.tomcat.util.buf classes. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>
