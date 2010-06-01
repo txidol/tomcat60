@@ -228,6 +228,10 @@
         Add support for displaying the Spring Security user name (if present) in
         the Manager application. (markt)
       </add>
+      <update>
+        Improve the ChatServlet <a href="aio.html">Comet</a> example
+        (/examples/jsp/chat/). (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Other">

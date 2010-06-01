@@ -75,11 +75,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Improve the ChatServlet comet example and fix some issues there
-  http://svn.apache.org/viewvc?rev=935105&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
   +1: kkolinko
