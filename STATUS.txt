@@ -175,3 +175,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=948402
   +1: kfujino
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48971
+  Make stopping of leaking Timer threads optional
+  http://svn.apache.org/viewvc?rev=950164&view=rev
+  +1: markt
+  -1: 
