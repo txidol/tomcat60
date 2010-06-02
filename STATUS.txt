@@ -143,12 +143,13 @@ PATCHES PROPOSED TO BACKPORT:
   Fix the skip.installer build property so once set, the Windows installer is
   skipped but all the other artifacts are created
   https://issues.apache.org/bugzilla/attachment.cgi?id=25477&action=edit
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix issues running AJP BIO coyote connector under a security manager
   http://svn.apache.org/viewvc?rev=947717&view=rev
   +1: markt
+  +1: kkolinko (without the changes to SecurityClassLoad.loadUtilPackage())
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49095
@@ -157,7 +158,7 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=25266
   +1: markt
   -1: 
-  kkolinko: I updated the above patch to use explicit encoding when
+  +0: kkolinko: I updated the above patch to use explicit encoding when
   creating the writer:
   https://issues.apache.org/bugzilla/attachment.cgi?id=25510
   +1: kkolinko
@@ -191,11 +192,20 @@ PATCHES PROPOSED TO BACKPORT:
   the standard access log
   http://svn.apache.org/viewvc?rev=950587&view=rev
   +1: markt
+  +1: kkolinko: only if together with r950809
   -1: 
+   kkolinko: 1) JDBCAccessLogValve is not a child of AccessLogValve, will need
+   its own implementation. 2) It would be nice to log requests using the timestamp
+   when it was received (like HTTPD 2.0+ does), not when it was processed. If that
+   is to be implemented, an additional parameter will be needed for the log() method
+   in the AccessLog interface. I suppose that might be "long t1, long t2" instead
+   of "long time".
+   3) I see no way to turn off this feature or filter the output.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49178
   Provide commented out additional permission for code located in
   $CATALINA_BASE/lib
   http://svn.apache.org/viewvc?rev=950596&view=rev
   +1: markt
+  +1: kkolinko: s/ie/i.e./ in the comment
   -1: 
