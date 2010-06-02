@@ -752,18 +752,17 @@ public class JIoEndpoint {
      */
     protected Worker getWorkerThread() {
         // Allocate a new worker thread
-        Worker workerThread = createWorkerThread();
-        while (workerThread == null) {
-            try {
-                synchronized (workers) {
+        synchronized (workers) {
+            Worker workerThread;
+            while ((workerThread = createWorkerThread()) == null) {
+                try {
                     workers.wait();
+                } catch (InterruptedException e) {
+                    // Ignore
                 }
-            } catch (InterruptedException e) {
-                // Ignore
             }
-            workerThread = createWorkerThread();
+            return workerThread;
         }
-        return workerThread;
     }
 
 

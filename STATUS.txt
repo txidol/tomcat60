@@ -50,12 +50,6 @@ PATCHES PROPOSED TO BACKPORT:
       markt: It shouldn't break existing configs. JSSE allows trust stores to be
              read without providing the password
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
-  Port deadlock prevention for worker allocation from NIO to BIO and APR
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25225
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
   Failure of one connector should not leave some connectors started and some
   ignored

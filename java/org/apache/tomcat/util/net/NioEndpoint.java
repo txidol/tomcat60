@@ -1218,19 +1218,17 @@ public class NioEndpoint {
      */
     protected Worker getWorkerThread() {
         // Allocate a new worker thread
-        Worker workerThread = createWorkerThread();
-        while (workerThread == null) {
-            try {
-                synchronized (workers) {
-                    workerThread = createWorkerThread();
-                    if ( workerThread == null ) workers.wait();
+        synchronized (workers) {
+            Worker workerThread;
+            while ((workerThread = createWorkerThread()) == null) {
+                try {
+                    workers.wait();
+                } catch (InterruptedException e) {
+                    // Ignore
                 }
-            } catch (InterruptedException e) {
-                // Ignore
             }
-            if ( workerThread == null ) workerThread = createWorkerThread();
+            return workerThread;
         }
-        return workerThread;
     }
 
 

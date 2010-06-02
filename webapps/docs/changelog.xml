@@ -150,6 +150,10 @@
         <bug>48839</bug>: Correctly handle HTTP header folding in the NIO
         connector. Patch suggested by Richa Baronia. (markt)
       </fix>
+      <fix>
+        <bug>48843</bug>: Prevent possible deadlock for worker allocation in
+        connectors. (kkolinko)
+      </fix>
       <add>
         <bug>48862</bug>: Add support for the backlog parameter to the AJP
         connector. (pero/markt)
