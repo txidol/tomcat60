@@ -175,3 +175,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=950164&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49099
+  Provide a mechanism for including requests rejected by the CoyoteAdapter in
+  the standard access log
+  http://svn.apache.org/viewvc?rev=950587&view=rev
+  +1: markt
+  -1: 
