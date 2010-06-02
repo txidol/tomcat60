@@ -67,7 +67,10 @@ PATCHES PROPOSED TO BACKPORT:
   Updated patch in response to review comments from kkolinko & rjung
   http://people.apache.org/~markt/patches/2010-05-18-bug48379.patch
   +1: markt
-  -1: 
+  -1: kkolinko: Reviewing the code it looks that
+    context.getSessionCookieName() now returns null by default, like it does
+    in TC7. That is good, but this null result is not taken care of in
+    Request.java, JvmRouteBinderValve.java
 
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
