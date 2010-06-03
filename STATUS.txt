@@ -156,7 +156,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Additional clean-up possible as a result of above fix
   http://svn.apache.org/viewvc?rev=950905&view=rev (associated clean-up)
-  +1: markt
+  +1: markt, kkolinko
   -1: 
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49095
@@ -190,7 +190,7 @@ PATCHES PROPOSED TO BACKPORT:
   "this.channel.removeChannelListener(this.rpcChannel);" call is 
   replaced with "this.rpcChannel.breakdown();". 
   http://svn.apache.org/viewvc?view=revision&revision=950922
-  +1: kfujino
+  +1: kfujino, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48971
