@@ -185,7 +185,13 @@ PATCHES PROPOSED TO BACKPORT:
    kkolinko:
     Maybe "this.channel.removeChannelListener(this.rpcChannel);" call
     has to be replaced with "this.rpcChannel.breakdown();"
-
+  
+  Additional patch.
+  "this.channel.removeChannelListener(this.rpcChannel);" call is 
+  replaced with "this.rpcChannel.breakdown();". 
+  http://svn.apache.org/viewvc?view=revision&revision=950922
+  +1: kfujino
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48971
   Make stopping of leaking Timer threads optional
