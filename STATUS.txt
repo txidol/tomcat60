@@ -212,3 +212,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   +1: kkolinko: s/ie/i.e./ in the comment
   -1: 
+
+* Fix issue that is similar to https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
+  Prevent possible deadlocks in AprEndpoint.Poller and AprEndpoint.Sendfile,
+  caused by missing Object.notify() wakeup,
+  http://svn.apache.org/viewvc?rev=950851&view=rev
+  (Easier to review if you ignore whitespaces during the diff)
+  +1: kkolinko
+  -1:
