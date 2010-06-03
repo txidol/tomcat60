@@ -174,7 +174,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49196
   Avoid NPE in PageContext.getErrorData()
   http://svn.apache.org/viewvc?rev=948057&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49343
@@ -198,6 +198,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=950164&view=rev
   +1: markt
   +1: kkolinko (with r950614)
+  +1: kfujino (with r950614)
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49099
@@ -221,6 +222,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=950596&view=rev
   +1: markt
   +1: kkolinko: s/ie/i.e./ in the comment
+  +1: kfujino: s/ie/i.e./ in the comment
   -1: 
 
 * Fix issue that is similar to https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
@@ -228,5 +230,5 @@ PATCHES PROPOSED TO BACKPORT:
   caused by missing Object.notify() wakeup,
   http://svn.apache.org/viewvc?rev=950851&view=rev
   (Easier to review if you ignore whitespaces during the diff)
-  +1: kkolinko
+  +1: kkolinko, kfujino
   -1:
