@@ -150,11 +150,15 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Fix issues running AJP BIO coyote connector under a security manager
-  http://svn.apache.org/viewvc?rev=947717&view=rev
-  +1: markt
-  +1: kkolinko (without the changes to SecurityClassLoad.loadUtilPackage())
+  http://svn.apache.org/viewvc?rev=947717&view=rev (less changes to loadUtilPackage())
+  +1: markt, kkolinko
   -1: 
 
+* Additional clean-up possible as a result of above fix
+  http://svn.apache.org/viewvc?rev=950905&view=rev (associated clean-up)
+  +1: markt
+  -1: 
+  
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49095
   AprEndpoint does not wakeup accepts with deferred accept or BSD filters
   Based on a patch provided by Ruediger Pluem
