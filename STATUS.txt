@@ -216,15 +216,6 @@ PATCHES PROPOSED TO BACKPORT:
    of "long time".
    3) I see no way to turn off this feature or filter the output.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49178
-  Provide commented out additional permission for code located in
-  $CATALINA_BASE/lib
-  http://svn.apache.org/viewvc?rev=950596&view=rev
-  +1: markt
-  +1: kkolinko: s/ie/i.e./ in the comment
-  +1: kfujino: s/ie/i.e./ in the comment
-  -1: 
-
 * Fix issue that is similar to https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
   Prevent possible deadlocks in AprEndpoint.Poller and AprEndpoint.Sendfile,
   caused by missing Object.notify() wakeup,

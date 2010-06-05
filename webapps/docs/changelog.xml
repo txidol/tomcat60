@@ -247,6 +247,11 @@
         Update to NSIS 2.46. (kkolinko)
       </update>
       <fix>
+        <bug>49178</bug>: Provide in catalina.policy an example of additional
+        permissions that might be needed for code located in
+        <code>$CATALINA_BASE/lib</code>. (markt)
+      </fix>
+      <fix>
         <bug>49236</bug>: Do not use indexing when packing Tomcat JARs.
         (kkolinko)
       </fix>
