@@ -643,6 +643,8 @@ public class WebappLoader
                         ((StandardContext) container).getAntiJARLocking());
                 classLoader.setClearReferencesStopThreads(
                         ((StandardContext) container).getClearReferencesStopThreads());
+                classLoader.setClearReferencesStopTimerThreads(
+                        ((StandardContext) container).getClearReferencesStopTimerThreads());
                 classLoader.setClearReferencesThreadLocals(
                         ((StandardContext) container).getClearReferencesThreadLocals());
             }
