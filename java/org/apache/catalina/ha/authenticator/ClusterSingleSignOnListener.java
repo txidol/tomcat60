@@ -24,6 +24,8 @@ import org.apache.catalina.Session;
 import org.apache.catalina.ha.ClusterManager;
 import org.apache.catalina.ha.ClusterMessage;
 import org.apache.catalina.ha.ClusterListener;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 
 /**
  * Receive replicated SingleSignOnMessage form other cluster node.
@@ -32,6 +34,9 @@ import org.apache.catalina.ha.ClusterListener;
  */
 public class ClusterSingleSignOnListener extends ClusterListener {
  
+    private static final Log log =
+        LogFactory.getLog(ClusterSingleSignOnListener.class);
+
     /**
      * The descriptive information about this implementation.
      */

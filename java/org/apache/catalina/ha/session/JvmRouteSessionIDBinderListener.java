@@ -24,9 +24,12 @@ import org.apache.catalina.Context;
 import org.apache.catalina.Engine;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.Session;
+import org.apache.catalina.ha.ClusterListener;
 import org.apache.catalina.ha.ClusterMessage;
 import org.apache.catalina.core.StandardEngine;
-import org.apache.catalina.ha.*;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
+import org.apache.tomcat.util.res.StringManager;
 
 /**
  * Receive SessionID cluster change from other backup node after primary session
@@ -37,6 +40,12 @@ import org.apache.catalina.ha.*;
  */
 public class JvmRouteSessionIDBinderListener extends ClusterListener {
  
+    private static final Log log =
+        LogFactory.getLog(JvmRouteSessionIDBinderListener.class);
+    
+    private static final StringManager sm =
+        StringManager.getManager(Constants.Package);
+
     /**
      * The descriptive information about this implementation.
      */

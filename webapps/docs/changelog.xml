@@ -228,6 +228,10 @@
       <fix>
         <bug>49170</bug>: Do not send duplicated session. (kfujino)
       </fix>
+      <fix>
+        Add missing messages and ensure cluster listeners log messages to
+        correct logger. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
