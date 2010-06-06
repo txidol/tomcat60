@@ -178,6 +178,9 @@
       <add>
         CoyotePrincipal now implements Serializable. (fhanik)
       </add>
+      <fix>
+        Enable the BIO AJP connector to run under a security manager. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

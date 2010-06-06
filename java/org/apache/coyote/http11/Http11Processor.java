@@ -21,8 +21,6 @@ import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -1576,19 +1574,7 @@ public class Http11Processor implements ActionHook {
         }
 
         // Add date header
-        String date = null;
-        if (isSecurityEnabled){
-            date = (String)AccessController.doPrivileged(
-                    new PrivilegedAction() {
-                        public Object run(){
-                            return FastHttpDateFormat.getCurrentDate();
-                        }
-                    }
-            );
-        } else {
-            date = FastHttpDateFormat.getCurrentDate();
-        }
-        headers.setValue("Date").setString(date);
+        headers.setValue("Date").setString(FastHttpDateFormat.getCurrentDate());
 
         // FIXME: Add transfer encoding header
 

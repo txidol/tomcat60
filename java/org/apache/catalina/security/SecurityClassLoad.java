@@ -42,8 +42,8 @@ public final class SecurityClassLoad {
         loadSessionPackage(loader);
         loadUtilPackage(loader);
         loadJavaxPackage(loader);
-        loadCoyotePackage(loader);        
-        loadHttp11Package(loader);        
+        loadCoyotePackage(loader);
+        loadHttp11Package(loader);
         loadTomcatPackage(loader);
     }
     
@@ -119,7 +119,6 @@ public final class SecurityClassLoad {
     private final static void loadHttp11Package(ClassLoader loader)
         throws Exception {
         String basePackage = "org.apache.coyote.http11.";
-        loader.loadClass(basePackage + "Http11Processor$1");
         loader.loadClass(basePackage + "InternalOutputBuffer$1");
         loader.loadClass(basePackage + "InternalOutputBuffer$2");
     }
@@ -212,6 +211,10 @@ public final class SecurityClassLoad {
         throws Exception {
         String basePackage = "org.apache.tomcat.";
         loader.loadClass(basePackage + "util.net.SSLSupport$CipherData");
+        // Make sure system property is read at this point
+        Class<?> clazz = loader.loadClass(
+                basePackage + "util.http.FastHttpDateFormat");
+        clazz.newInstance();
     }
 }
 

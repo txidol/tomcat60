@@ -105,10 +105,6 @@ public class Http11NioProcessor implements ActionHook {
 
         // Cause loading of HexUtils
         int foo = HexUtils.DEC[0];
-
-        // Cause loading of FastHttpDateFormat
-        FastHttpDateFormat.getCurrentDate();
-
     }
 
 
