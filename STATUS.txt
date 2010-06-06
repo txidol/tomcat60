@@ -165,13 +165,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49095
   AprEndpoint does not wakeup accepts with deferred accept or BSD filters
   Based on a patch provided by Ruediger Pluem
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25266
-  +1: markt
-  -1: 
-  +0: kkolinko: I updated the above patch to use explicit encoding when
-  creating the writer:
   https://issues.apache.org/bugzilla/attachment.cgi?id=25510
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49343
