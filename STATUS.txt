@@ -223,3 +223,12 @@ PATCHES PROPOSED TO BACKPORT:
   (Easier to review if you ignore whitespaces during the diff)
   +1: kkolinko, kfujino
   -1:
+
+* Rearrange tomcat-juli permissions in catalina.policy for better readability,
+  and wrap long lines, as already done in trunk and in security-manager-howto.
+  The reason is that we have a copy of this file in security-manager-howto.html,
+  and long lines break layout of the document.
+  I am not very confident that this patch needs applying, but here it is.
+  http://people.apache.org/~kkolinko/patches/2010-06-06_tc6_policy-juli.patch
+  +1: kkolinko
+  -1:
