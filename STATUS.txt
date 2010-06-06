@@ -95,6 +95,7 @@ PATCHES PROPOSED TO BACKPORT:
         Though you need to configure a VirtualWebappLoader to test that:
         without it the property is always a zero-length array.
    Mark: Does your +1 stand including the second part of the path?
+   markt: Yes
 
   Add property "searchExternalFirst" to WebappLoader:
   If set, the external repositories will be searched before
