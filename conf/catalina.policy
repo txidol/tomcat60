@@ -14,14 +14,15 @@
 // limitations under the License.
 
 // ============================================================================
-// catalina.corepolicy - Security Policy Permissions for Tomcat @VERSION_MAJOR@
+// catalina.policy - Security Policy Permissions for Tomcat @VERSION_MAJOR@
 //
 // This file contains a default set of security policies to be enforced (by the
 // JVM) when Catalina is executed with the "-security" option.  In addition
 // to the permissions granted here, the following additional permissions are
 // granted to the codebase specific to each web application:
 //
-// * Read access to the document root directory
+// * Read access to its document root directory
+// * Read, write and delete access to its working directory
 //
 // $Id$
 // ============================================================================
