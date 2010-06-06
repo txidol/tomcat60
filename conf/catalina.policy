@@ -62,6 +62,9 @@ grant codeBase "file:${catalina.home}/bin/commons-daemon.jar" {
 };
 
 // These permissions apply to the logging API
+// Note: If tomcat-juli.jar is in ${catalina.base} and not in ${catalina.home},
+// update this section accordingly.
+//  grant codeBase "file:${catalina.base}/bin/tomcat-juli.jar" {..}
 grant codeBase "file:${catalina.home}/bin/tomcat-juli.jar" {
         permission java.util.PropertyPermission "java.util.logging.config.class", "read";
         permission java.util.PropertyPermission "java.util.logging.config.file", "read";
@@ -74,9 +77,11 @@ grant codeBase "file:${catalina.home}/bin/tomcat-juli.jar" {
         permission java.io.FilePermission "${catalina.base}${file.separator}logs${file.separator}*", "read, write";
         permission java.lang.RuntimePermission "getClassLoader";
         permission java.lang.RuntimePermission "setContextClassLoader";
-        // To enable per context logging configuration, permit read access to the appropriate file.
-        // Be sure that the logging configuration is secure before enabling such access
-        // eg for the examples web application:
+
+        // Note: To enable per context logging configuration, permit read access to
+        // the appropriate file. Be sure that the logging configuration is
+        // secure before enabling such access.
+        // E.g. for the examples web application, all in one line:
         // permission java.io.FilePermission "${catalina.base}${file.separator}webapps${file.separator}examples${file.separator}WEB-INF${file.separator}classes${file.separator}logging.properties", "read";
 };
 
