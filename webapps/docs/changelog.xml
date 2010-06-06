@@ -270,6 +270,10 @@
       <fix>
         Remove unused code from org.apache.tomcat.util.buf classes. (kkolinko)
       </fix>
+      <fix>
+        Fix the skip.installer build property so if set, only the Windows
+        installer is skipped. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>

@@ -140,13 +140,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48990
-  Fix the skip.installer build property so once set, the Windows installer is
-  skipped but all the other artifacts are created
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25477&action=edit
-  +1: markt, kkolinko, rjung
-  -1: 
-
 * Fix issues running AJP BIO coyote connector under a security manager
   http://svn.apache.org/viewvc?rev=947717&view=rev (less changes to loadUtilPackage())
   +1: markt, kkolinko, rjung
