@@ -83,6 +83,8 @@ PATCHES PROPOSED TO BACKPORT:
 
   Expose properties of VirtualWebappLoader and WebappClassLoader via JMX.
   http://svn.apache.org/viewvc?view=revision&revision=936819
+  Added per Konstantin's review comment:
+  http://svn.apache.org/viewvc?view=revision&revision=947617
   +1: rjung, markt, kkolinko
   -1: 
    kkolinko:
@@ -92,6 +94,7 @@ PATCHES PROPOSED TO BACKPORT:
         I tested and either one of these two capitalization variants works correctly.
         Though you need to configure a VirtualWebappLoader to test that:
         without it the property is always a zero-length array.
+   Mark: Does your +1 stand including the second part of the path?
 
   Add property "searchExternalFirst" to WebappLoader:
   If set, the external repositories will be searched before
@@ -139,24 +142,24 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix ByteChunk.indexOf(String, ...) when the string is of length 1
   http://svn.apache.org/viewvc?rev=945231&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
-              
+
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48990
   Fix the skip.installer build property so once set, the Windows installer is
   skipped but all the other artifacts are created
   https://issues.apache.org/bugzilla/attachment.cgi?id=25477&action=edit
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Fix issues running AJP BIO coyote connector under a security manager
   http://svn.apache.org/viewvc?rev=947717&view=rev (less changes to loadUtilPackage())
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Additional clean-up possible as a result of above fix
   http://svn.apache.org/viewvc?rev=950905&view=rev (associated clean-up)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49095
@@ -168,7 +171,7 @@ PATCHES PROPOSED TO BACKPORT:
   +0: kkolinko: I updated the above patch to use explicit encoding when
   creating the writer:
   https://issues.apache.org/bugzilla/attachment.cgi?id=25510
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49196
@@ -230,5 +233,7 @@ PATCHES PROPOSED TO BACKPORT:
   and long lines break layout of the document.
   I am not very confident that this patch needs applying, but here it is.
   http://people.apache.org/~kkolinko/patches/2010-06-06_tc6_policy-juli.patch
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
+  rjung: Please remove the "all in one line" comment directly before the commented
+         example line that you were breaking up into multiple lines.
