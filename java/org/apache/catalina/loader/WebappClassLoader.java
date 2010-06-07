@@ -475,7 +475,7 @@ public class WebappClassLoader
 
     
     /**
-     * Name of associated context used with logging to associate messages with
+     * Name of associated context used with logging and JMX to associate with
      * the right web application. Particularly useful for the clear references
      * messages. Defaults to unknown but if standard Tomcat components are used
      * it will be updated during initialisation from the resources.
@@ -506,6 +506,16 @@ public class WebappClassLoader
         if (resources instanceof ProxyDirContext) {
             contextName = ((ProxyDirContext) resources).getContextName();
         }
+    }
+
+
+    /**
+     * Return the context name for this class loader.
+     */
+    public String getContextName() {
+
+        return (this.contextName);
+
     }
 
 
@@ -998,6 +1008,9 @@ public class WebappClassLoader
     public String toString() {
 
         StringBuffer sb = new StringBuffer("WebappClassLoader\r\n");
+        sb.append("  context: ");
+        sb.append(contextName);
+        sb.append("\r\n");
         sb.append("  delegate: ");
         sb.append(delegate);
         sb.append("\r\n");

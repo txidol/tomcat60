@@ -112,13 +112,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung
   -1: 
 
-  Add the new contextName property of WebappClassLoader
-  to its toString() and expose as read only via JMX.
-  http://svn.apache.org/viewvc?view=revision&revision=944396
-  http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r944396.patch
-  +1: rjung, markt, kkolinko
-  -1: 
-
 * Fix ByteChunk.indexOf(String, ...) when the string is of length 1
   http://svn.apache.org/viewvc?rev=945231&view=rev
   +1: kkolinko, markt, rjung
