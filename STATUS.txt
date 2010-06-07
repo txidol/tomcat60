@@ -128,17 +128,17 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49099
   Provide a mechanism for including requests rejected by the CoyoteAdapter in
   the standard access log
-  http://svn.apache.org/viewvc?rev=950587&view=rev
+  http://people.apache.org/~markt/patches/2010-07-07-bug49099.patch
+  This is a backport of: r950587, r950809, r951018, r951093, r951447,
+                         r951892, r952295
   +1: markt
-  +1: kkolinko: only if together with r950809
   -1: 
-   kkolinko: 1) JDBCAccessLogValve is not a child of AccessLogValve, will need
-   its own implementation. 2) It would be nice to log requests using the timestamp
-   when it was received (like HTTPD 2.0+ does), not when it was processed. If that
-   is to be implemented, an additional parameter will be needed for the log() method
-   in the AccessLog interface. I suppose that might be "long t1, long t2" instead
+   kkolinko: 1) It would be nice to log requests using the timestamp when it was
+   received (like HTTPD 2.0+ does), not when it was processed. If that is to be
+   implemented, an additional parameter will be needed for the log() method in
+   the AccessLog interface. I suppose that might be "long t1, long t2" instead
    of "long time".
-   3) I see no way to turn off this feature or filter the output.
+   2) I see no way to turn off this feature or filter the output.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48843#c8
   Fix handling the add queue in AprEndpoint.Poller and AprEndpoint.Sendfile.
