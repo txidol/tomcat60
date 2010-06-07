@@ -137,6 +137,10 @@
         requests. (markt)
       </fix>
       <fix>
+        <bug>49398</bug>: ByteChunk.indexOf(String, int, int, int) could not
+        find a string of length 1. (kkolinko)
+      </fix>
+      <fix>
         Fix possible overflows when calculating session statistics. (kkolinko)
       </fix>
       <add>
