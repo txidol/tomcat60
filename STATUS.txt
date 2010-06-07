@@ -140,9 +140,9 @@ PATCHES PROPOSED TO BACKPORT:
    of "long time".
    3) I see no way to turn off this feature or filter the output.
 
-* Fix issue that is similar to https://issues.apache.org/bugzilla/show_bug.cgi?id=48843
-  Prevent possible deadlocks in AprEndpoint.Poller and AprEndpoint.Sendfile,
-  caused by missing Object.notify() wakeup,
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48843#c8
+  Fix handling the add queue in AprEndpoint.Poller and AprEndpoint.Sendfile.
+  Do not miss Object.notify() wakeup.
   http://svn.apache.org/viewvc?rev=950851&view=rev
   (Easier to review if you ignore whitespaces during the diff)
   +1: kkolinko, kfujino
