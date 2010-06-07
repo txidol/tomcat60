@@ -210,7 +210,7 @@
 
     <touch file="${tomcat.dist}/temp/safeToDelete.tmp" />
 
-  	<!-- Windows binaries for each platform -->
+    <!-- Windows binaries for each platform -->
     <!-- 32 bit -->
     <copy file="${commons-daemon.home}/windows/prunsrv.exe"
         tofile="${tomcat.dist}/bin/tomcat${version.major}.exe" />
