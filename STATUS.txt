@@ -154,7 +154,17 @@ PATCHES PROPOSED TO BACKPORT:
   and long lines break layout of the document.
   I am not very confident that this patch needs applying, but here it is.
   http://people.apache.org/~kkolinko/patches/2010-06-06_tc6_policy-juli.patch
+  (minus the "all in one line" phrase, r952481)
   +1: kkolinko, rjung
   -1:
   rjung: Please remove the "all in one line" comment directly before the commented
          example line that you were breaking up into multiple lines.
+  kkolinko: Ok, I agree, updated the doc accordingly. Will take care of it when
+         applying the patch.
+
+* Do not evaluate "execute.installer" in dist.xml, as it is never used:
+  "skip.installer" is used instead. Backport of r952478.
+  It is just a cleanup and removal of obsolete comment. Not important.
+  http://people.apache.org/~kkolinko/patches/2010-06-07_tc6_build_cleanup.patch
+  +1: kkolinko
+  -1:
