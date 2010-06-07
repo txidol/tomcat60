@@ -17,6 +17,7 @@
 
 package org.apache.tomcat.util.net;
 
+import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
@@ -906,6 +907,19 @@ public class AprEndpoint {
                 log.debug("About to unlock socket for: " + saddr);
             }
             s.connect(saddr, unlockTimeout);
+            /*
+             * In the case of a deferred accept / accept filters we need to
+             * send data to wake up the accept. Send OPTIONS * to bypass even
+             * BSD accept filters. The Acceptor will discard it.
+             */
+            if (deferAccept) {
+                OutputStreamWriter sw;
+
+                sw = new OutputStreamWriter(s.getOutputStream(), "ISO-8859-1");
+                sw.write("OPTIONS * HTTP/1.0\r\n"
+                        + "User-Agent: Tomcat wakeup connection\r\n\r\n");
+                sw.flush();
+            }
         } catch(Exception e) {
             if (log.isDebugEnabled()) {
                 log.debug(sm.getString("endpoint.debug.unlock", "" + port), e);
@@ -1153,6 +1167,15 @@ public class AprEndpoint {
                 try {
                     // Accept the next incoming connection from the server socket
                     long socket = Socket.accept(serverSock);
+                    /*
+                     * In the case of a deferred accept unlockAccept needs to
+                     * send data. This data will be rubbish, so destroy the
+                     * socket and don't process it.
+                     */
+                    if (deferAccept && (paused || !running)) {
+                        Socket.destroy(socket);
+                        continue;
+                    }
                     // Hand this socket off to an appropriate processor
                     if (!processSocketWithOptions(socket)) {
                         // Close socket and pool right away

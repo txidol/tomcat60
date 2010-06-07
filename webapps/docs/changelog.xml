@@ -166,6 +166,11 @@
         <bug>48917</bug>: Correct name of mod_jk module in ApacheConfig. Patch
         provided by Todd Hicks. (markt)
       </fix>
+      <fix>
+        <bug>49095</bug>: AprEndpoint did not wakeup acceptors during shutdown
+        when deferAccept option was enabled. Based on a patch provided by
+        Ruediger Pluem. (kkolinko)
+      </fix>
       <add>
         Use chunked encoding for http 1.1 requests with no content-length
         (regardless of keep-alive) so client can differentiate between complete
