@@ -81,22 +81,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Backport a couple of loader fixes and enhancements:
 
-  Expose properties of VirtualWebappLoader and WebappClassLoader via JMX.
-  http://svn.apache.org/viewvc?view=revision&revision=936819
-  Added per Konstantin's review comment:
-  http://svn.apache.org/viewvc?view=revision&revision=947617
-  +1: rjung, markt, kkolinko
-  -1: 
-   kkolinko:
-     1) Descriptions should be written on a single line.
-        When they are split into several lines it looks nasty in JConsole (JDK 6u20)
-     2) Maybe capitalize "uRLs" as "URLs"?
-        I tested and either one of these two capitalization variants works correctly.
-        Though you need to configure a VirtualWebappLoader to test that:
-        without it the property is always a zero-length array.
-   Mark: Does your +1 stand including the second part of the path?
-   markt: Yes
-
   Add property "searchExternalFirst" to WebappLoader:
   If set, the external repositories will be searched before
   the WEB-INF ones. Default (false) is unchanged behaviour.

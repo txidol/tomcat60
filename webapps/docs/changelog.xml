@@ -146,6 +146,10 @@
       <fix>
         Improve exception handling in CatalinaShutdownHook. (kkolinko)
       </fix>
+      <add>
+        Expose properties of VirtualWebappLoader and WebappClassLoader via JMX.
+        (rjung)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
