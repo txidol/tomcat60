@@ -166,6 +166,10 @@
         <bug>48843</bug>: Prevent possible deadlock for worker allocation in
         connectors. (kkolinko)
       </fix>
+      <fix>
+        <bug>48843</bug>: Fix handling of add queues in AprEndpoint.Poller and
+        AprEndpoint.Sendfile. Do not miss wakeups. (kkolinko)
+      </fix>
       <add>
         <bug>48862</bug>: Add support for the backlog parameter to the AJP
         connector. (pero/markt)
