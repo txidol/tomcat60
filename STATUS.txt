@@ -137,5 +137,5 @@ PATCHES PROPOSED TO BACKPORT:
   "skip.installer" is used instead. Backport of r952478.
   It is just a cleanup and removal of obsolete comment. Not important.
   http://people.apache.org/~kkolinko/patches/2010-06-07_tc6_build_cleanup.patch
-  +1: kkolinko, jfclere
+  +1: kkolinko, jfclere, markt
   -1:
