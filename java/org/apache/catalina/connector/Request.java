@@ -2251,22 +2251,18 @@ public class Request
             return;
         
         if (response != null) {
-            Cookie newCookie = new Cookie(Globals.SESSION_COOKIE_NAME,
-                    newSessionId);
-            newCookie.setMaxAge(-1);
-            String contextPath = null;
-            if (!response.getConnector().getEmptySessionPath()
-                    && (context != null)) {
-                contextPath = context.getEncodedPath();
+            String scName = null;
+            if (context != null) {
+                scName = context.getSessionCookieName();
             }
-            if ((contextPath != null) && (contextPath.length() > 0)) {
-                newCookie.setPath(contextPath);
-            } else {
-                newCookie.setPath("/");
+            if (scName == null) {
+                scName = Globals.SESSION_COOKIE_NAME;
             }
-            if (isSecure()) {
-                newCookie.setSecure(true);
-            }
+            
+            Cookie newCookie = new Cookie(scName, newSessionId);
+
+            configureSessionCookie(newCookie);
+
             if (context == null) {
             	response.addSessionCookieInternal(newCookie, false);
             } else {
@@ -2395,8 +2391,11 @@ public class Request
         // Creating a new session cookie based on that session
         if ((session != null) && (getContext() != null)
                && getContext().getCookies()) {
-            Cookie cookie = new Cookie(Globals.SESSION_COOKIE_NAME,
-                                       session.getIdInternal());
+            String scName = context.getSessionCookieName();
+            if (scName == null) {
+                scName = Globals.SESSION_COOKIE_NAME;
+            }
+            Cookie cookie = new Cookie(scName, session.getIdInternal());
             configureSessionCookie(cookie);
             response.addSessionCookieInternal(cookie, context.getUseHttpOnly());
         }
@@ -2417,15 +2416,27 @@ public class Request
      */
     protected void configureSessionCookie(Cookie cookie) {
         cookie.setMaxAge(-1);
+        
+        Context ctxt = getContext();
+        
         String contextPath = null;
-        if (!connector.getEmptySessionPath() && (getContext() != null)) {
-            contextPath = getContext().getEncodedPath();
+        if (ctxt != null && !getConnector().getEmptySessionPath()) {
+            if (ctxt.getSessionCookiePath() != null) {
+                contextPath = ctxt.getSessionCookiePath();
+            } else {
+                contextPath = ctxt.getEncodedPath();
+            }
         }
         if ((contextPath != null) && (contextPath.length() > 0)) {
             cookie.setPath(contextPath);
         } else {
             cookie.setPath("/");
         }
+        
+        if (ctxt != null && ctxt.getSessionCookieDomain() != null) {
+            cookie.setDomain(ctxt.getSessionCookieDomain());
+        }
+
         if (isSecure()) {
             cookie.setSecure(true);
         }

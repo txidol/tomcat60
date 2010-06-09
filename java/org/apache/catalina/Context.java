@@ -181,6 +181,26 @@ public interface Context extends Container {
      */
     public void setCookies(boolean cookies);
 
+    
+    /**
+     * Gets the name to use for session cookies. Overrides any setting that
+     * may be specified by the application.
+     * 
+     * @return  The value of the default session cookie name or null if not
+     *          specified
+     */
+    public String getSessionCookieName();
+    
+    
+    /**
+     * Sets the name to use for session cookies. Overrides any setting that
+     * may be specified by the application.
+     * 
+     * @param sessionCookieName   The name to use
+     */
+    public void setSessionCookieName(String sessionCookieName);
+
+    
     /**
      * Gets the value of the use HttpOnly cookies for session cookies flag.
      * 
@@ -198,11 +218,49 @@ public interface Context extends Container {
      */
     public void setUseHttpOnly(boolean useHttpOnly);
     
+    
+    /**
+     * Gets the domain to use for session cookies. Overrides any setting that
+     * may be specified by the application.
+     * 
+     * @return  The value of the default session cookie domain or null if not
+     *          specified
+     */
+    public String getSessionCookieDomain();
+    
+    
+    /**
+     * Sets the domain to use for session cookies. Overrides any setting that
+     * may be specified by the application.
+     * 
+     * @param sessionCookieDomain   The domain to use
+     */
+    public void setSessionCookieDomain(String sessionCookieDomain);
+
+    
+    /**
+     * Gets the path to use for session cookies. Overrides any setting that
+     * may be specified by the application.
+     * 
+     * @return  The value of the default session cookie path or null if not
+     *          specified
+     */
+    public String getSessionCookiePath();
+    
+    
+    /**
+     * Sets the path to use for session cookies. Overrides any setting that
+     * may be specified by the application.
+     * 
+     * @param sessionCookiePath   The path to use
+     */
+    public void setSessionCookiePath(String sessionCookiePath);
+
+    
     /**
      * Return the "allow crossing servlet contexts" flag.
      */
     public boolean getCrossContext();
-
 
     
     /**

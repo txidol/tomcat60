@@ -592,9 +592,11 @@ public class CoyoteAdapter implements Adapter {
         if (count <= 0)
             return;
 
+        String sessionCookieName = getSessionCookieName(context);
+        
         for (int i = 0; i < count; i++) {
             ServerCookie scookie = serverCookies.getCookie(i);
-            if (scookie.getName().equals(Globals.SESSION_COOKIE_NAME)) {
+            if (scookie.getName().equals(sessionCookieName)) {
                 // Override anything requested in the URL
                 if (!request.isRequestedSessionIdFromCookie()) {
                     // Accept only the first session id cookie
@@ -868,9 +870,6 @@ public class CoyoteAdapter implements Adapter {
     }
 
 
-    // ------------------------------------------------------ Protected Methods
-
-
     /**
      * Copy an array of bytes to a different position. Used during 
      * normalization.
@@ -882,4 +881,18 @@ public class CoyoteAdapter implements Adapter {
     }
 
 
+    private String getSessionCookieName(Context context) {
+        
+        String result = null;
+        
+        if (context != null) {
+            result = context.getSessionCookieName();
+        }
+        
+        if (result == null) {
+            result = Globals.SESSION_COOKIE_NAME;
+        }
+        
+        return result;
+    }
 }

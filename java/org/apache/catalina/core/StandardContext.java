@@ -703,11 +703,34 @@ public class StandardContext
      */
     private boolean saveConfig = true;
 
+    
     /**
      * The flag that indicates that session cookies should use HttpOnly
      */
     private boolean useHttpOnly = false;
 
+    
+    /**
+     * The domain to use for session cookies. <code>null</code> indicates that
+     * the domain is controlled by the application.
+     */
+    private String sessionCookieDomain;
+
+    
+    /**
+     * The path to use for session cookies. <code>null</code> indicates that
+     * the path is controlled by the application.
+     */
+    private String sessionCookiePath;
+
+    
+    /**
+     * The name to use for session cookies. <code>null</code> indicates that
+     * the name is controlled by the application.
+     */
+    private String sessionCookieName;
+
+    
     /**
      * Should Tomcat attempt to terminate threads that have been started by the
      * web application? Stopping threads is performed via the deprecated (for
@@ -1176,8 +1199,79 @@ public class StandardContext
     }
     
     
+    /**
+     * Gets the domain to use for session cookies.
+     * 
+     * @return  The value of the default session cookie domain or null if not
+     *          specified
+     */
+    public String getSessionCookieDomain() {
+        return sessionCookieDomain;
+    }
+    
+    
+    /**
+     * Sets the domain to use for session cookies.
+     * 
+     * @param sessionCookieDomain   The domain to use
+     */
+    public void setSessionCookieDomain(String sessionCookieDomain) {
+        String oldSessionCookieDomain = this.sessionCookieDomain;
+        this.sessionCookieDomain = sessionCookieDomain;
+        support.firePropertyChange("sessionCookieDomain",
+                oldSessionCookieDomain, sessionCookieDomain);
+    }
 
 
+    /**
+     * Gets the path to use for session cookies.
+     * 
+     * @return  The value of the default session cookie path or null if not
+     *          specified
+     */
+    public String getSessionCookiePath() {
+        return sessionCookiePath;
+    }
+    
+    
+    /**
+     * Sets the path to use for session cookies.
+     * 
+     * @param sessionCookiePath   The path to use
+     */
+    public void setSessionCookiePath(String sessionCookiePath) {
+        String oldSessionCookiePath = this.sessionCookiePath;
+        this.sessionCookiePath = sessionCookiePath;
+        support.firePropertyChange("sessionCookiePath",
+                oldSessionCookiePath, sessionCookiePath);
+    }
+
+    
+    /**
+     * Gets the name to use for session cookies.
+     * 
+     * @return  The value of the default session cookie name or null if not
+     *          specified
+     */
+    public String getSessionCookieName() {
+        return sessionCookieName;
+    }
+    
+    
+    /**
+     * Sets the name to use for session cookies. Overrides any setting that
+     * may be specified by the application.
+     * 
+     * @param sessionCookieName   The name to use
+     */
+    public void setSessionCookieName(String sessionCookieName) {
+        String oldSessionCookieName = this.sessionCookieName;
+        this.sessionCookieName = sessionCookieName;
+        support.firePropertyChange("sessionCookieName",
+                oldSessionCookieName, sessionCookieName);
+    }
+
+    
     /**
      * Return the "allow crossing servlet contexts" flag.
      */

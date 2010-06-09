@@ -227,6 +227,27 @@
         on demand.</p>
       </attribute>
 
+      <attribute name="sessionCookieDomain" required="false">
+        <p>The domain to be used for all session cookies created for this
+        Context. If not set, no domain will be specified for session cookies.
+        </p>
+      </attribute>
+      
+      <attribute name="sessionCookieName" required="false">
+        <p>The name to be used for all session cookies created for this
+        Context. If not set, the default of JSESSIONID will be used. Note that
+        this default will be overridden by the
+        <strong>org.apache.catalina.SESSION_COOKIE_NAME</strong> system
+        property.</p>
+      </attribute>
+
+      <attribute name="sessionCookiePath" required="false">
+        <p>The path to be used for all session cookies created for this
+        Context. If not set, the context path will be used. Note that this will
+        be overridden by the <strong>emptySessionPath</strong> attribute on the
+        connector used to access this Context.</p>
+      </attribute>
+
       <attribute name="wrapperClass" required="false">
         <p>Java class name of the <code>org.apache.catalina.Wrapper</code>
         implementation class that will be used for servlets managed by this

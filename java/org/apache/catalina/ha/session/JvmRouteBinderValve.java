@@ -455,25 +455,40 @@ public class JvmRouteBinderValve extends ValveBase implements ClusterValve, Life
             Context context = request.getContext();
             if (context.getCookies()) {
                 // set a new session cookie
-                Cookie newCookie = new Cookie(Globals.SESSION_COOKIE_NAME,
-                        sessionId);
+                String scName = context.getSessionCookieName();
+                if (scName == null) {
+                    scName = Globals.SESSION_COOKIE_NAME;
+                }
+                Cookie newCookie = new Cookie(scName, sessionId);
+                
                 newCookie.setMaxAge(-1);
+                
                 String contextPath = null;
-                if (!response.getConnector().getEmptySessionPath()
-                        && (context != null)) {
-                    contextPath = context.getEncodedPath();
+                if (!response.getConnector().getEmptySessionPath() &&
+                        (context != null)) {
+                    if (context.getSessionCookiePath() != null) {
+                        contextPath = context.getSessionCookiePath();
+                    } else {
+                        contextPath = context.getEncodedPath();
+                    }
                 }
                 if ((contextPath != null) && (contextPath.length() > 0)) {
                     newCookie.setPath(contextPath);
                 } else {
                     newCookie.setPath("/");
                 }
+                
+                if (context.getSessionCookieDomain() != null) {
+                    newCookie.setDomain(context.getSessionCookieDomain());
+                }
+
                 if (request.isSecure()) {
                     newCookie.setSecure(true);
                 }
+
                 if (log.isDebugEnabled()) {
                     Object[] args = new Object[] {sessionId,
-                            Globals.SESSION_COOKIE_NAME,
+                            newCookie.getName(),
                             newCookie.getPath(),
                             new Boolean(newCookie.getSecure()),
                             new Boolean(context.getUseHttpOnly())};

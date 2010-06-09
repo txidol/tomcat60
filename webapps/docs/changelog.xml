@@ -62,6 +62,10 @@
         Improve exception handling on session de-serialization to assist in
         identifying the root cause of <bug>48007</bug>. (kkolinko)
       </fix>
+      <add>
+        <bug>48379</bug>: Make session cookie name, domain and path configurable
+        per context. (markt)
+      </add>
       <fix>
         <bug>48589</bug>: Make JNDIRealm easier to extend. Based on a patch by
         Candid Dauth. (markt/kkolinko)
