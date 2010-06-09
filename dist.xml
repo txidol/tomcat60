@@ -142,19 +142,6 @@
 
     <delete dir="${tomcat.deployer}"/>
     <delete dir="${tomcat.dist}" failonerror="false"/>
-
-    <!-- This is why releasing must be done on a Windows box:
-         otherwise this check fails and the .exe distro is not generated -->
-    <condition property="execute.installer">
-      <and>
-        <os family="windows" />
-        <available file="${nsis.exe}" />
-        <available file="${nsis.installoptions.dll}" />
-        <available file="${nsis.nsexec.dll}" />
-        <available file="${nsis.nsisdl.dll}" />
-      </and>
-    </condition>
-
   </target>
 
 

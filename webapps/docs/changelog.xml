@@ -303,6 +303,11 @@
         <code>conf/catalina.policy</code> file, to make the text more readable
         when cited in documentation. (kkolinko)
       </update>
+      <fix>
+        Do not evaluate the <code>execute.installer</code> property when building
+        a release. The <code>skip.installer</code> property is used instead.
+        (kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>
