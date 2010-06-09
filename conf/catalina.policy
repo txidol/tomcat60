@@ -66,23 +66,33 @@ grant codeBase "file:${catalina.home}/bin/commons-daemon.jar" {
 // update this section accordingly.
 //  grant codeBase "file:${catalina.base}/bin/tomcat-juli.jar" {..}
 grant codeBase "file:${catalina.home}/bin/tomcat-juli.jar" {
-        permission java.util.PropertyPermission "java.util.logging.config.class", "read";
-        permission java.util.PropertyPermission "java.util.logging.config.file", "read";
-        permission java.io.FilePermission "${java.home}${file.separator}lib${file.separator}logging.properties", "read"; 
+        permission java.io.FilePermission
+         "${java.home}${file.separator}lib${file.separator}logging.properties", "read"; 
+
+        permission java.io.FilePermission
+         "${catalina.base}${file.separator}conf${file.separator}logging.properties", "read";
+        permission java.io.FilePermission
+         "${catalina.base}${file.separator}logs", "read, write";
+        permission java.io.FilePermission
+         "${catalina.base}${file.separator}logs${file.separator}*", "read, write";
+
         permission java.lang.RuntimePermission "shutdownHooks";
-        permission java.io.FilePermission "${catalina.base}${file.separator}conf${file.separator}logging.properties", "read";
-        permission java.util.PropertyPermission "catalina.base", "read";
-        permission java.util.logging.LoggingPermission "control";
-        permission java.io.FilePermission "${catalina.base}${file.separator}logs", "read, write";
-        permission java.io.FilePermission "${catalina.base}${file.separator}logs${file.separator}*", "read, write";
         permission java.lang.RuntimePermission "getClassLoader";
         permission java.lang.RuntimePermission "setContextClassLoader";
+
+        permission java.util.logging.LoggingPermission "control";
+
+        permission java.util.PropertyPermission "java.util.logging.config.class", "read";
+        permission java.util.PropertyPermission "java.util.logging.config.file", "read";
+        permission java.util.PropertyPermission "catalina.base", "read";
 
         // Note: To enable per context logging configuration, permit read access to
         // the appropriate file. Be sure that the logging configuration is
         // secure before enabling such access.
         // E.g. for the examples web application:
-        // permission java.io.FilePermission "${catalina.base}${file.separator}webapps${file.separator}examples${file.separator}WEB-INF${file.separator}classes${file.separator}logging.properties", "read";
+        // permission java.io.FilePermission "${catalina.base}${file.separator}
+        //  webapps${file.separator}examples${file.separator}WEB-INF
+        //  ${file.separator}classes${file.separator}logging.properties", "read";
 };
 
 // These permissions apply to the server startup code
@@ -154,7 +164,8 @@ grant {
     permission java.lang.RuntimePermission "accessClassInPackage.org.apache.jasper.runtime.*";
     
     // Precompiled JSPs need access to these system properties.
-    permission java.util.PropertyPermission "org.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER", "read";
+    permission java.util.PropertyPermission
+     "org.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER", "read";
     permission java.util.PropertyPermission "org.apache.el.parser.COERCE_TO_ZERO", "read";
 };
 

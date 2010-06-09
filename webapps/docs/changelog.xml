@@ -290,6 +290,11 @@
       <fix>
         Remove unused code from org.apache.tomcat.util.buf classes. (kkolinko)
       </fix>
+      <update>
+        Rearrange tomcat-juli.jar permissions and wrap long lines in the
+        <code>conf/catalina.policy</code> file, to make the text more readable
+        when cited in documentation. (kkolinko)
+      </update>
     </changelog>
   </subsection>
 </section>
