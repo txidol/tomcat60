@@ -53,14 +53,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
   Failure of one connector should not leave some connectors started and some
   ignored
-  http://svn.apache.org/viewvc?rev=929521&view=rev
+  http://people.apache.org/~markt/patches/2010-06-14-bug49030.patch
   +1: markt
   -1: 
   +0: kkolinko: good, but maybe we should also prevent against starting
-    those connectors, that failed to initialize, in StandardService#start()?
-    Also the message name (some generic name, "connector.failed"), vs.
-    message text ("starting"),  vs. what actually happened (initialize()) -
-    I won't insist on fixing that inconsistency.
+      those connectors, that failed to initialize, in StandardService#start()?
+      markt: We could, but that would make the patch more complex. My preference
+      is to keep this fix simple
 
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
