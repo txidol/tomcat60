@@ -138,3 +138,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=953434&view=rev
   +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49213
+  Additional permissions required by Manager app
+  http://svn.apache.org/viewvc?view=revision&revision=954435  
+  +1: markt
+  -1: 
