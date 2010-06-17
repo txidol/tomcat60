@@ -141,8 +141,15 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49213
   Additional permissions required by Manager app
   http://svn.apache.org/viewvc?view=revision&revision=954435  
-  +1: markt, kfujino
+  http://svn.apache.org/viewvc?view=revision&revision=955648 (docs)
+  +1: markt, kfujino, kkolinko
   -1: 
+
+  Additional patch:
+  The Manager is in ${catalina.base}.
+  http://svn.apache.org/viewvc?view=revision&revision=955655
+  +1: kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49445
   The change in session ID is notified to other node. 
