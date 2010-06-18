@@ -48,6 +48,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Webapps">
+    <changelog>
+      <fix>
+        <bug>49436</bug>: Correct documented default for readonly attribute of
+        the UserDatabase component. (markt)
+      </fix>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.27 (jfclere)">
   <subsection name="General">
