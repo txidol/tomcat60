@@ -51,6 +51,10 @@
   <subsection name="Webapps">
     <changelog>
       <fix>
+        <bug>49213</bug>: Grant permissions required by manager application when
+        running under a security manager. (markt)
+      </fix>
+      <fix>
         <bug>49436</bug>: Correct documented default for readonly attribute of
         the UserDatabase component. (markt)
       </fix>
