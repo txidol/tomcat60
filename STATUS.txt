@@ -77,10 +77,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=936823
   http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936823.patch
   +1: rjung
-  -1: markt - The new block
-              if (hasExternalRepositories && searchExternalFirst) {...}
-              needs to silently swallow CNFE to have same behaviour as previous
-              code
+  +1: markt if r956252 is also applied
+  -1:
 
   Expose the new WebappLoader flag in the VirtualWebappLoader,
   but allow alternative name searchVirtualFirst to make it
