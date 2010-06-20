@@ -148,3 +148,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-06-18-bug49443-tc6.patch
   +1: markt, kkolinko
   -1: 
+
+* Backport the CSRF prevention filter to Tomcat 6 and configure the Manager and
+  Host Manager applications to use it. The configuration is such that the using
+  the old roles (manager, admin) will work and will bypass the CSRF protection
+  but using the new roles (manager-gui, admin-gui etc.) will not bypass the CSRF
+  protection.
+  http://people.apache.org/~markt/patches/2010-06-20-crsf-prevention-filter-tc6.patch
+  +1: markt
+  -1: 
