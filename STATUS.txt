@@ -130,7 +130,7 @@ PATCHES PROPOSED TO BACKPORT:
    of "long time".
    2) I see no way to turn off this feature or filter the output.
 
-  Additional patch related to
+* Additional patch related to
   https://issues.apache.org/bugzilla/show_bug.cgi?id=49213
   The Manager is in ${catalina.base}.
   http://svn.apache.org/viewvc?view=revision&revision=955655
@@ -150,7 +150,29 @@ PATCHES PROPOSED TO BACKPORT:
   protection.
   http://people.apache.org/~markt/patches/2010-06-20-crsf-prevention-filter-tc6.patch
   +1: markt
-  -1: 
+  -1: kkolinko: (
+   minor: - s/Tomact/Tomcat/ in several comments
+          - @author xxd in FilterBase.java
+          - In CsrfPreventionFilter.setEntryPoints(String) maybe do trimming of the strings,
+            this.entryPoints.add(value.trim());
+   major:
+   Running with a user that has role manager-gui.
+     1. Sessions list page does not work. 
+        Cannot see session detail, cannot invalidate a session.
+        It is similar to BZ 49476 of TC7.
+
+        This issue also occurs for the user with role "manager". Maybe
+        allow the filter to skip its check if the user has certain role?
+
+     2. Showing the standard "error 403" page without any explanation is rude.
+     3. I cannot access the Server Status page. This differs with TC7, where
+       all "manager-*" roles have access to /status/*
+     4. I cannot access the following URL, which worked in TC 6.0.26:
+        http://localhost:8080/manager/html/
+     The filter prevents access to it.
+     The following URL works:
+        http://localhost:8080/manager/html
+  )
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49230
   Additional JRE leak protection. HttpClient keep-alive thread
@@ -158,3 +180,5 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=956832&view=rev
   +1: markt, kfujino
   -1: 
+   kkolinko: +1 if it is off by default, +0 otherwise, because handling of
+   non-Sun JREs should be improved here.
