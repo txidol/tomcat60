@@ -48,6 +48,15 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <fix>
+        <bug>49445</bug>: When session ID is changed after authentication,
+        ensure the DeltaManager replicates the change in ID to the other nodes
+        in the cluster. (kfujino)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Webapps">
     <changelog>
       <fix>
