@@ -140,13 +140,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49445
   The change in session ID is notified to other node. 
   http://svn.apache.org/viewvc?view=revision&revision=955190
-  +1: kfujino, markt
+  +1: kfujino, markt, rjung
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49443
   Use remoteIpHeader rather then remoteIPHeader consistently
   http://people.apache.org/~markt/patches/2010-06-18-bug49443-tc6.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1: 
 
 * Backport the CSRF prevention filter to Tomcat 6 and configure the Manager and
