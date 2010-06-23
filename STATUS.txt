@@ -130,13 +130,6 @@ PATCHES PROPOSED TO BACKPORT:
    of "long time".
    2) I see no way to turn off this feature or filter the output.
 
-* Additional patch related to
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=49213
-  The Manager is in ${catalina.base}.
-  http://svn.apache.org/viewvc?view=revision&revision=955655
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49443
   Use remoteIpHeader rather then remoteIPHeader consistently
   http://people.apache.org/~markt/patches/2010-06-18-bug49443-tc6.patch
