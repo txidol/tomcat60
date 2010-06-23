@@ -171,7 +171,6 @@ PATCHES PROPOSED TO BACKPORT:
   Additional JRE leak protection. HttpClient keep-alive thread
   Patch by Rob Kooper
   http://svn.apache.org/viewvc?rev=956832&view=rev
-  +1: markt, kfujino
+  http://svn.apache.org/viewvc?rev=957130&view=rev
+  +1: markt
   -1: 
-   kkolinko: +1 if it is off by default, +0 otherwise, because handling of
-   non-Sun JREs should be improved here.
