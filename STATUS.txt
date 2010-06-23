@@ -39,6 +39,15 @@ PATCHES PROPOSED TO BACKPORT:
   -1: fhanik - easier to pass in the root path (lib/bin) to the macro instead of hacking around it
                if we remove the SCP auto feature, then there should be something to replace it with
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
+  -1: kkolinko: 
+       1. Ignoring ${maven.repo.url} in <remoteRepository/> does not look good,
+        because that is a valuable argument, provided by deploy-snapshot,
+        deploy-staging and deploy-release targets.
+        I say/agree that there can be several implementations of this deploy
+        action (ssh + key, local, ssh + pwd?), so maybe split it into several
+        implementations and select one based on what property is defined.
+       2. It publishes wrong tomcat-juli.jar, as already noted,
+        http://markmail.org/message/5sysomjlrfhcd3ec
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
   Truststores don't have to have passwords
@@ -172,5 +181,5 @@ PATCHES PROPOSED TO BACKPORT:
   Patch by Rob Kooper
   http://svn.apache.org/viewvc?rev=956832&view=rev
   http://svn.apache.org/viewvc?rev=957130&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
