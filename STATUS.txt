@@ -191,4 +191,12 @@ PATCHES PROPOSED TO BACKPORT:
   warning about still running threads when an application stops.
   http://svn.apache.org/viewvc?rev=957830&view=rev
   +1: markt, jfclere
+  +1: kkolinko: (There is also CoyoteAdapter.event() in TC6 and TC7 and
+    CoyoteAdapter.asyncDispatch() in TC7. I think that there is actually
+    no need to test for the name of the method. If it is CoyoteAdapter,
+    I think is is enough to diagnose it as request processing thread.
+    +1 to the patch as is,
+    and +1 if "service".equals(element.getMethodName()) check
+    is removed from isRequestThread(Thread).
+  )
   -1: 
