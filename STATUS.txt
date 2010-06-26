@@ -183,5 +183,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49351
   Avoid possible NPE when embedding
   https://issues.apache.org/bugzilla/show_bug.cgi?id=49351#c1
-  +1: markt
+  +1: markt, kkolinko
   -1: 
