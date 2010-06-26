@@ -54,7 +54,7 @@ import org.apache.juli.logging.LogFactory;
  * If the incoming <code>request.getRemoteAddr()</code> matches the valve's list of internal proxies :
  * <ul>
  * <li>Loop on the comma delimited list of IPs and hostnames passed by the preceding load balancer or proxy in the given request's Http
- * header named <code>$remoteIPHeader</code> (default value <code>x-forwarded-for</code>). Values are processed in right-to-left order.</li>
+ * header named <code>$remoteIpHeader</code> (default value <code>x-forwarded-for</code>). Values are processed in right-to-left order.</li>
  * <li>For each ip/host of the list:
  * <ul>
  * <li>if it matches the internal proxies list, the ip/host is swallowed</li>
@@ -79,7 +79,7 @@ import org.apache.juli.logging.LogFactory;
  * <th>Default Value</th>
  * </tr>
  * <tr>
- * <td>remoteIPHeader</td>
+ * <td>remoteIpHeader</td>
  * <td>Name of the Http Header read by this valve that holds the list of traversed IP addresses starting from the requesting client</td>
  * <td>RemoteIPHeader</td>
  * <td>Compliant http header name</td>
@@ -99,7 +99,7 @@ import org.apache.juli.logging.LogFactory;
  * <tr>
  * <td>proxiesHeader</td>
  * <td>Name of the http header created by this valve to hold the list of proxies that have been processed in the incoming
- * <code>remoteIPHeader</code></td>
+ * <code>remoteIpHeader</code></td>
  * <td>RemoteIPProxiesHeader</td>
  * <td>Compliant http header name</td>
  * <td>x-forwarded-by</td>
@@ -165,8 +165,8 @@ import org.apache.juli.logging.LogFactory;
  * &lt;Valve 
  *   className="org.apache.catalina.valves.RemoteIpValve"
  *   internalProxies="192\.168\.0\.10, 192\.168\.0\.11"
- *   remoteIPHeader="x-forwarded-for"
- *   remoteIPProxiesHeader="x-forwarded-by"
+ *   remoteIpHeader="x-forwarded-for"
+ *   remoteIpProxiesHeader="x-forwarded-by"
  *   protocolHeader="x-forwarded-proto"
  *   /&gt;</pre></code>
  * <p>
@@ -227,8 +227,8 @@ import org.apache.juli.logging.LogFactory;
  * &lt;Valve 
  *   className="org.apache.catalina.valves.RemoteIpValve"
  *   internalProxies="192\.168\.0\.10, 192\.168\.0\.11"
- *   remoteIPHeader="x-forwarded-for"
- *   remoteIPProxiesHeader="x-forwarded-by"
+ *   remoteIpHeader="x-forwarded-for"
+ *   remoteIpProxiesHeader="x-forwarded-by"
  *   trustedProxies="proxy1, proxy2"
  *   /&gt;</pre></code>
  * <p>
@@ -269,8 +269,8 @@ import org.apache.juli.logging.LogFactory;
  * &lt;Valve 
  *   className="org.apache.catalina.valves.RemoteIpValve"
  *   internalProxies="192\.168\.0\.10, 192\.168\.0\.11"
- *   remoteIPHeader="x-forwarded-for"
- *   remoteIPProxiesHeader="x-forwarded-by"
+ *   remoteIpHeader="x-forwarded-for"
+ *   remoteIpProxiesHeader="x-forwarded-by"
  *   trustedProxies="proxy1, proxy2"
  *   /&gt;</pre></code>
  * <p>
@@ -312,8 +312,8 @@ import org.apache.juli.logging.LogFactory;
  * &lt;Valve 
  *   className="org.apache.catalina.valves.RemoteIpValve"
  *   internalProxies="192\.168\.0\.10, 192\.168\.0\.11"
- *   remoteIPHeader="x-forwarded-for"
- *   remoteIPProxiesHeader="x-forwarded-by"
+ *   remoteIpHeader="x-forwarded-for"
+ *   remoteIpProxiesHeader="x-forwarded-by"
  *   trustedProxies="proxy1, proxy2"
  *   /&gt;</pre></code>
  * <p>
@@ -559,11 +559,11 @@ public class RemoteIpValve extends ValveBase {
             // In java 6, proxiesHeaderValue should be declared as a java.util.Deque
             LinkedList<String> proxiesHeaderValue = new LinkedList<String>();
             
-            String[] remoteIPHeaderValue = commaDelimitedListToStringArray(request.getHeader(remoteIpHeader));
+            String[] remoteIpHeaderValue = commaDelimitedListToStringArray(request.getHeader(remoteIpHeader));
             int idx;
-            // loop on remoteIPHeaderValue to find the first trusted remote ip and to build the proxies chain
-            for (idx = remoteIPHeaderValue.length - 1; idx >= 0; idx--) {
-                String currentRemoteIp = remoteIPHeaderValue[idx];
+            // loop on remoteIpHeaderValue to find the first trusted remote ip and to build the proxies chain
+            for (idx = remoteIpHeaderValue.length - 1; idx >= 0; idx--) {
+                String currentRemoteIp = remoteIpHeaderValue[idx];
                 remoteIp = currentRemoteIp;
                 if (matchesOne(currentRemoteIp, internalProxies)) {
                     // do nothing, internalProxies IPs are not appended to the
@@ -574,10 +574,10 @@ public class RemoteIpValve extends ValveBase {
                     break;
                 }
             }
-            // continue to loop on remoteIPHeaderValue to build the new value of the remoteIPHeader
+            // continue to loop on remoteIpHeaderValue to build the new value of the remoteIpHeader
             LinkedList<String> newRemoteIpHeaderValue = new LinkedList<String>();
             for (; idx >= 0; idx--) {
-                String currentRemoteIp = remoteIPHeaderValue[idx];
+                String currentRemoteIp = remoteIpHeaderValue[idx];
                 newRemoteIpHeaderValue.addFirst(currentRemoteIp);
             }
             if (remoteIp != null) {
@@ -740,7 +740,7 @@ public class RemoteIpValve extends ValveBase {
      * Default value : <code>X-Forwarded-For</code>
      * </p>
      * 
-     * @param remoteIPHeader
+     * @param remoteIpHeader
      */
     public void setRemoteIpHeader(String remoteIpHeader) {
         this.remoteIpHeader = remoteIpHeader;
@@ -748,7 +748,7 @@ public class RemoteIpValve extends ValveBase {
     
     /**
      * <p>
-     * Comma delimited list of proxies that are trusted when they appear in the {@link #remoteIPHeader} header. Can be expressed as a
+     * Comma delimited list of proxies that are trusted when they appear in the {@link #remoteIpHeader} header. Can be expressed as a
      * regular expression.
      * </p>
      * <p>
