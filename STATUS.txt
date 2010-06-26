@@ -179,3 +179,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=958192&view=rev
   +1: markt, jfclere, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49351
+  Avoid possible NPE when embedding
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=49351#c1
+  +1: markt
+  -1: 
