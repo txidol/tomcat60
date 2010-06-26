@@ -67,6 +67,19 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
         this.appContextProtection = appContextProtection;
     }
 
+     /**
+      * Protect against the memory leak caused when the first call to
+      * <code>sun.net.www.http.HttpClient</code> is triggered by a web
+      * application. This first call will start a KeepAlive thread with the
+      * thread's context class loader configured to be the web application class
+      * loader. Defaults to <code>true</code>.
+      */
+     private boolean keepAliveProtection = true;
+     public boolean isKeepAliveProtection() { return keepAliveProtection; }
+     public void setKeepAliveProtection(boolean keepAliveProtection) {
+         this.keepAliveProtection = keepAliveProtection;
+     }
+    
     /**
      * Protect against resources being read for JAR files and, as a side-effect,
      * the JAR file becoming locked. Note this disables caching for all
@@ -126,6 +139,61 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
             }
             
             /*
+             * Several components end up calling:
+             * sun.misc.GC.requestLatency(long)
+             * 
+             * Those libraries / components known to trigger memory leaks due to
+             * eventual calls to requestLatency(long) are:
+             * - javax.management.remote.rmi.RMIConnectorServer.start()
+             */
+            if (gcDaemonProtection) {
+                try {
+                    Class<?> clazz = Class.forName("sun.misc.GC");
+                    Method method = clazz.getDeclaredMethod("requestLatency",
+                            new Class[] {long.class});
+                    method.invoke(null, Long.valueOf(3600000));
+                } catch (ClassNotFoundException e) {
+                    if (System.getProperty("java.vendor").startsWith("Sun")) {
+                        log.error(sm.getString(
+                                "jreLeakListener.gcDaemonFail"), e);
+                    } else {
+                        log.debug(sm.getString(
+                                "jreLeakListener.gcDaemonFail"), e);
+                    }
+                } catch (SecurityException e) {
+                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
+                } catch (NoSuchMethodException e) {
+                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
+                } catch (IllegalArgumentException e) {
+                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
+                } catch (IllegalAccessException e) {
+                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
+                } catch (InvocationTargetException e) {
+                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
+                }
+            }
+
+            /*
+             * When a servlet opens a connection using a URL it will use
+             * sun.net.www.http.HttpClient which keeps a static reference to a
+             * keep-alive cache which is loaded using the web application class
+             * loader.
+             */
+            if (keepAliveProtection) {
+                try {
+                    Class.forName("sun.net.www.http.HttpClient");
+                } catch (ClassNotFoundException e) {
+                    if (System.getProperty("java.vendor").startsWith("Sun")) {
+                        log.error(sm.getString(
+                                "jreLeakListener.keepAliveFail"), e);
+                    } else {
+                        log.debug(sm.getString(
+                                "jreLeakListener.keepAliveFail"), e);
+                    }
+                }
+            }
+            
+            /*
              * Several components end up opening JarURLConnections without first
              * disabling caching. This effectively locks the file. Whilst more
              * noticeable and harder to ignore on Windows, it affects all
@@ -167,42 +235,6 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
                     log.error(sm.getString("jreLeakListener.xmlParseFail"), e);
                 }
             }
-            
-            /*
-             * Several components end up calling:
-             * sun.misc.GC.requestLatency(long)
-             * 
-             * Those libraries / components known to trigger memory leaks due to
-             * eventual calls to requestLatency(long) are:
-             * - javax.management.remote.rmi.RMIConnectorServer.start()
-             */
-            if (gcDaemonProtection) {
-                try {
-                    Class<?> clazz = Class.forName("sun.misc.GC");
-                    Method method = clazz.getDeclaredMethod("requestLatency",
-                            new Class[] {long.class});
-                    method.invoke(null, Long.valueOf(3600000));
-                } catch (ClassNotFoundException e) {
-                    if (System.getProperty("java.vendor").startsWith("Sun")) {
-                        log.error(sm.getString(
-                                "jreLeakListener.gcDaemonFail"), e);
-                    } else {
-                        log.debug(sm.getString(
-                                "jreLeakListener.gcDaemonFail"), e);
-                    }
-                } catch (SecurityException e) {
-                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
-                } catch (NoSuchMethodException e) {
-                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
-                } catch (IllegalArgumentException e) {
-                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
-                } catch (IllegalAccessException e) {
-                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
-                } catch (InvocationTargetException e) {
-                    log.error(sm.getString("jreLeakListener.gcDaemonFail"), e);
-                }
-            }
         }
     }
-
 }

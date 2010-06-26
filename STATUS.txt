@@ -172,14 +172,6 @@ PATCHES PROPOSED TO BACKPORT:
         http://localhost:8080/manager/html
   )
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49230
-  Additional JRE leak protection. HttpClient keep-alive thread
-  Patch by Rob Kooper
-  http://svn.apache.org/viewvc?rev=956832&view=rev
-  http://svn.apache.org/viewvc?rev=957130&view=rev
-  +1: markt, kkolinko, jfclere
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49414
   Differentiate between request threads and application created threads when
   warning about still running threads when an application stops.
