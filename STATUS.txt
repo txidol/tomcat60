@@ -146,31 +146,9 @@ PATCHES PROPOSED TO BACKPORT:
   the old roles (manager, admin) will work and will bypass the CSRF protection
   but using the new roles (manager-gui, admin-gui etc.) will not bypass the CSRF
   protection.
-  http://people.apache.org/~markt/patches/2010-06-20-crsf-prevention-filter-tc6.patch
+  http://people.apache.org/~markt/patches/2010-06-26-crsf-prevention-filter-tc6.patch
   +1: markt
-  -1: kkolinko: (
-   minor: - s/Tomact/Tomcat/ in several comments
-          - @author xxd in FilterBase.java
-          - In CsrfPreventionFilter.setEntryPoints(String) maybe do trimming of the strings,
-            this.entryPoints.add(value.trim());
-   major:
-   Running with a user that has role manager-gui.
-     1. Sessions list page does not work. 
-        Cannot see session detail, cannot invalidate a session.
-        It is similar to BZ 49476 of TC7.
-
-        This issue also occurs for the user with role "manager". Maybe
-        allow the filter to skip its check if the user has certain role?
-
-     2. Showing the standard "error 403" page without any explanation is rude.
-     3. I cannot access the Server Status page. This differs with TC7, where
-       all "manager-*" roles have access to /status/*
-     4. I cannot access the following URL, which worked in TC 6.0.26:
-        http://localhost:8080/manager/html/
-     The filter prevents access to it.
-     The following URL works:
-        http://localhost:8080/manager/html
-  )
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49414
   Differentiate between request threads and application created threads when
