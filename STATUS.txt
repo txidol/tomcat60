@@ -156,3 +156,11 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/show_bug.cgi?id=49351#c1
   +1: markt, kkolinko, rjung
   -1: 
+
+* Add support for *.jar pattern in VirtualWebappLoader
+  and perform trimming of the tokens.
+  I propose the following patch, but without removing the "not for production"
+  warning from JavaDoc:
+  http://svn.apache.org/viewvc?rev=958615&view=rev
+  +1: kkolinko
+  -1:
