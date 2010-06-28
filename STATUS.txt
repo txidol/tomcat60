@@ -89,6 +89,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936823.patch
   +1: rjung
   +1: markt if r956252 is also applied
+  +1: kkolinko if r956252 is also applied
   -1:
 
   Expose the new WebappLoader flag in the VirtualWebappLoader,
@@ -103,11 +104,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936825.patch
   +1: rjung
   -1: 
+  -0: kkolinko: The patch itself is OK, but I think having a synonym will
+   cause confusion. I'd prefer not to invent a new name, but mention the
+   one that we already have when documenting virtualClasspath.
 
   Respect configurable search order in getURLs().
   http://svn.apache.org/viewvc?view=revision&revision=936892
   http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936892.patch
-  +1: rjung
+  +1: rjung, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49343
