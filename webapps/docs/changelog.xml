@@ -56,6 +56,11 @@
         <bug>49443</bug>: Use remoteIpHeader rather than remoteIPHeader
         consistently. (markt)
       </fix>
+      <add>
+        Add property <code>searchExternalFirst</code> to WebappLoader.
+        If set, the external repositories will be searched before
+        the WEB-INF ones. (rjung)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Cluster">

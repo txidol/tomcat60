@@ -81,17 +81,6 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Backport a couple of loader fixes and enhancements:
 
-  Add property "searchExternalFirst" to WebappLoader:
-  If set, the external repositories will be searched before
-  the WEB-INF ones. Default (false) is unchanged behaviour.
-  Also expose the new property via JMX and document it.
-  http://svn.apache.org/viewvc?view=revision&revision=936823
-  http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936823.patch
-  +1: rjung
-  +1: markt if r956252 is also applied
-  +1: kkolinko if r956252 is also applied
-  -1:
-
   Expose the new WebappLoader flag in the VirtualWebappLoader,
   but allow alternative name searchVirtualFirst to make it
   consistent with the "virtual" terminology.

@@ -209,6 +209,12 @@ public class WebappLoader
     private ArrayList loaderRepositories = null;
 
 
+    /**
+     * Whether we should search the external repositories first
+     */
+    private boolean searchExternalFirst = false;
+
+
     // ------------------------------------------------------------- Properties
 
 
@@ -342,6 +348,23 @@ public class WebappLoader
                                    new Boolean(oldReloadable),
                                    new Boolean(this.reloadable));
 
+    }
+
+    /**
+     * @return Returns searchExternalFirst.
+     */
+    public boolean getSearchExternalFirst() {
+        return searchExternalFirst;
+    }
+
+    /**
+     * @param searchExternalFirst Whether external repositories should be searched first
+     */
+    public void setSearchExternalFirst(boolean searchExternalFirst) {
+        this.searchExternalFirst = searchExternalFirst;
+        if (classLoader != null) {
+            classLoader.setSearchExternalFirst(searchExternalFirst);
+        }
     }
 
 
@@ -638,6 +661,7 @@ public class WebappLoader
             classLoader = createClassLoader();
             classLoader.setResources(container.getResources());
             classLoader.setDelegate(this.delegate);
+            classLoader.setSearchExternalFirst(searchExternalFirst);
             if (container instanceof StandardContext) {
                 classLoader.setAntiJARLocking(
                         ((StandardContext) container).getAntiJARLocking());
