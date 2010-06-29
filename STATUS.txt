@@ -164,3 +164,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=958615&view=rev
   +1: kkolinko
   -1:
+
+* Arrange filter logic.
+  http://svn.apache.org/viewvc?rev=958911&view=rev
+  +1: jfclere
+  -1:
