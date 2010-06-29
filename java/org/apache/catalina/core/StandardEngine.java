@@ -354,6 +354,8 @@ public class StandardEngine
                 service=new StandardService();
                 service.setContainer( this );
                 service.initialize();
+                // Use same name for Service
+                service.setName(getName());
             } catch( Throwable t ) {
                 log.error(t);
             }
