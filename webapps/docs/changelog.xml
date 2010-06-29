@@ -53,6 +53,11 @@
         POST request. (markt)
       </fix>
       <fix>
+        <bug>49414</bug>: Differentiate between request threads and application
+        created threads when warning about still running threads when an
+        application stops. (markt)
+      </fix>
+      <fix>
         <bug>49443</bug>: Use remoteIpHeader rather than remoteIPHeader
         consistently. (markt)
       </fix>
