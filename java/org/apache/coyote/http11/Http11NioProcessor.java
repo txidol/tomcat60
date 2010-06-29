@@ -81,6 +81,13 @@ public class Http11NioProcessor implements ActionHook {
      */
     protected SSLSupport sslSupport;
 
+    /*
+     * Tracks how many internal filters are in the filter library so they
+     * are skipped when looking for pluggable filters. 
+     */
+    private int pluggableFilterIndex = Integer.MAX_VALUE;
+
+
     // ----------------------------------------------------------- Constructors
 
 
@@ -1769,6 +1776,8 @@ public class Http11NioProcessor implements ActionHook {
         //inputBuffer.addFilter(new GzipInputFilter());
         outputBuffer.addFilter(new GzipOutputFilter());
 
+        pluggableFilterIndex = inputBuffer.filterLibrary.length;
+
     }
 
 
@@ -1787,7 +1796,7 @@ public class Http11NioProcessor implements ActionHook {
                 (inputFilters[Constants.CHUNKED_FILTER]);
             contentDelimitation = true;
         } else {
-            for (int i = 2; i < inputFilters.length; i++) {
+            for (int i = pluggableFilterIndex; i < inputFilters.length; i++) {
                 if (inputFilters[i].getEncodingName()
                     .toString().equals(encodingName)) {
                     inputBuffer.addActiveFilter(inputFilters[i]);

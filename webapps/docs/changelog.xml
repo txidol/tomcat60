@@ -42,6 +42,8 @@
 <section name="Tomcat 6.0.28 (jfclere)">
   <subsection name="Catalina">
     <changelog>
+      <fix>Arrange filter logic. (jfclere)
+      </fix>
       <fix>
         <bug>49230</bug>: Enhance JRE leak prevention listener with protection
         for the keep-alive thread started by
