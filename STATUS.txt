@@ -150,3 +150,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=958615&view=rev
   +1: kkolinko
   -1:
+
+* Remove *.rtf from fixcrlf patternset.
+  No need for native line ends in RTF files.
+  Their spec indicates they should use CRLF.
+  Backport form trunk:
+  http://svn.apache.org/viewvc?rev=960350&view=rev
+  TC 6 patch:
+  http://people.apache.org/~rjung/patches/tc6-remove-rtf-from-fixcrlf.patch
+  +1: rjung
+  -1:
