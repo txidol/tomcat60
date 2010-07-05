@@ -148,7 +148,7 @@ PATCHES PROPOSED TO BACKPORT:
   I propose the following patch, but without removing the "not for production"
   warning from JavaDoc:
   http://svn.apache.org/viewvc?rev=958615&view=rev
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, kfujino
   -1:
 
 * Remove *.rtf from fixcrlf patternset.
@@ -158,5 +158,5 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=960350&view=rev
   TC 6 patch:
   http://people.apache.org/~rjung/patches/tc6-remove-rtf-from-fixcrlf.patch
-  +1: rjung, kkolinko
+  +1: rjung, kkolinko, kfujino
   -1:
