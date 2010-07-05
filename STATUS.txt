@@ -150,3 +150,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=958615&view=rev
   +1: kkolinko, rjung, kfujino, pero
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49551
+  Allow default context.xml file to be specified using an absolute path
+  http://svn.apache.org/viewvc?rev=960701&view=rev
+  +1: markt
+  -1: 
