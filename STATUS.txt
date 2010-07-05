@@ -156,3 +156,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=960701&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
+  Prevent use of Java keywords in EL identifiers
+  http://svn.apache.org/viewvc?rev=960711&view=rev
+  +1: markt
+  -1: 
