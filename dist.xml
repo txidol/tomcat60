@@ -123,7 +123,6 @@
     <include name="**/*.pom"/>
     <include name="**/*.properties"/>
     <include name="**/*.properties.default"/>
-    <include name="**/*.rtf"/>
     <include name="**/*.sh"/>
     <include name="**/*.svg"/>
     <include name="**/*.tag"/>
