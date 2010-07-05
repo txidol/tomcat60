@@ -100,7 +100,7 @@ PATCHES PROPOSED TO BACKPORT:
   Respect configurable search order in getURLs().
   http://svn.apache.org/viewvc?view=revision&revision=936892
   http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936892.patch
-  +1: rjung, kkolinko
+  +1: rjung, kkolinko, pero
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49343
@@ -140,7 +140,7 @@ PATCHES PROPOSED TO BACKPORT:
   but using the new roles (manager-gui, admin-gui etc.) will not bypass the CSRF
   protection.
   http://people.apache.org/~markt/patches/2010-06-26-crsf-prevention-filter-tc6.patch
-  +1: markt
+  +1: markt, pero
   -1: 
 
 * Add support for *.jar pattern in VirtualWebappLoader
@@ -148,7 +148,7 @@ PATCHES PROPOSED TO BACKPORT:
   I propose the following patch, but without removing the "not for production"
   warning from JavaDoc:
   http://svn.apache.org/viewvc?rev=958615&view=rev
-  +1: kkolinko, rjung, kfujino
+  +1: kkolinko, rjung, kfujino, pero
   -1:
 
 * Remove *.rtf from fixcrlf patternset.
