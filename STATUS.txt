@@ -154,11 +154,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49551
   Allow default context.xml file to be specified using an absolute path
   http://svn.apache.org/viewvc?rev=960701&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
   Prevent use of Java keywords in EL identifiers
   http://svn.apache.org/viewvc?rev=960711&view=rev
   +1: markt
-  -1: 
+  -1: kkolinko: r960711 is a testcase, the fix is in r960712
+   Regarding r960712 I am -1 because 1) the list of reserved keywords must be shorter,
+   as I mentioned in Comment #3 for the issue and 2) it might break existing applications,
+   so I think it must be possible to turn this check off.
