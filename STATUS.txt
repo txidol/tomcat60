@@ -160,6 +160,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
   Ensure EL identifiers conform to the Java Language Specification with an
   option to disable this check.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25726
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25727
   +1: markt
   -1: 
