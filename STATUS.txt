@@ -158,10 +158,8 @@ PATCHES PROPOSED TO BACKPORT:
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
-  Prevent use of Java keywords in EL identifiers
-  http://svn.apache.org/viewvc?rev=960711&view=rev
+  Ensure EL identifiers conform to the Java Language Specification with an
+  option to disable this check.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25726
   +1: markt
-  -1: kkolinko: r960711 is a testcase, the fix is in r960712
-   Regarding r960712 I am -1 because 1) the list of reserved keywords must be shorter,
-   as I mentioned in Comment #3 for the issue and 2) it might break existing applications,
-   so I think it must be possible to turn this check off.
+  -1: 
