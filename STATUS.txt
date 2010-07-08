@@ -163,3 +163,10 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=25727
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49555
+  Correctly handle tag libraries that use functions defined in static inner
+  classes
+  http://svn.apache.org/viewvc?rev=961948&view=rev
+  +1: markt
+  -1: 
