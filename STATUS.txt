@@ -34,7 +34,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix the maven stuff for the maven repo.
   Before it does't find tomcat-juli.jar and the remoteRepository seems broken .
-  http://people.apache.org/~jfclere/patches/maven.patch
+  http://people.apache.org/~jfclere/patches/maven.patch.100711
   +1: jfclere
   -1: fhanik - easier to pass in the root path (lib/bin) to the macro instead of hacking around it
                if we remove the SCP auto feature, then there should be something to replace it with
@@ -48,6 +48,7 @@ PATCHES PROPOSED TO BACKPORT:
         implementations and select one based on what property is defined.
        2. It publishes wrong tomcat-juli.jar, as already noted,
         http://markmail.org/message/5sysomjlrfhcd3ec
+        jfclere: the new patch fixes the second issue.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
   Truststores don't have to have passwords
