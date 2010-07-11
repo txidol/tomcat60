@@ -173,5 +173,6 @@ PATCHES PROPOSED TO BACKPORT:
   Correctly handle tag libraries that use functions defined in static inner
   classes
   http://svn.apache.org/viewvc?rev=961948&view=rev
+  http://svn.apache.org/viewvc?rev=963106&view=rev
   +1: markt
   -1: 
