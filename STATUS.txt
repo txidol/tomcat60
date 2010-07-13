@@ -176,3 +176,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=963106&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48960
+  Disable exec in SSI by default and provide new option to enable it
+  http://svn.apache.org/viewvc?rev=963868&view=rev
+  +1: markt
+  -1: 
