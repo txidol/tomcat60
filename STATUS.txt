@@ -159,7 +159,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49551
   Allow default context.xml file to be specified using an absolute path
   http://svn.apache.org/viewvc?rev=960701&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
@@ -180,5 +180,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48960
   Disable exec in SSI by default and provide new option to enable it
   http://svn.apache.org/viewvc?rev=963868&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1: 
