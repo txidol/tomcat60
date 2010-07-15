@@ -188,5 +188,5 @@ PATCHES PROPOSED TO BACKPORT:
   This was a regression in 6.0.28 in the fix for
   https://issues.apache.org/bugzilla/show_bug.cgi?id=49158
   http://svn.apache.org/viewvc?rev=964614&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
