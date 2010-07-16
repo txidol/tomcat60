@@ -156,12 +156,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, rjung, kfujino, pero
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49551
-  Allow default context.xml file to be specified using an absolute path
-  http://svn.apache.org/viewvc?rev=960701&view=rev
-  +1: markt, kkolinko, kfujino
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
   Ensure EL identifiers conform to the Java Language Specification with an
   option to disable this check.
