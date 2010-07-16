@@ -51,6 +51,11 @@
         <bug>49551</bug>: Allow default context.xml location to be specified
         using an absolute path. (markt)
       </fix>
+      <fix>
+        <bug>49598</bug>: When session is changed and the session cookie is
+        replaced, ensure that the new Set-Cookie header overwrites the old
+        Set-Cookie header. (markt) 
+      </fix>
     </changelog>
   </subsection>
 </section>

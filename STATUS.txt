@@ -170,11 +170,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=963106&view=rev
   +1: markt, kkolinko
   -1: 
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49598
-  When updating the session cookie, correctly replace the Set-Cookie header
-  This was a regression in 6.0.28 in the fix for
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=49158
-  http://svn.apache.org/viewvc?rev=964614&view=rev
-  +1: markt, kkolinko, kfujino
-  -1: 
