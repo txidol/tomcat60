@@ -56,6 +56,9 @@
         replaced, ensure that the new Set-Cookie header overwrites the old
         Set-Cookie header. (markt) 
       </fix>
+      <fix>
+        Fix order when listing Webapp loader search URLs. (rjung)
+      </fix>
     </changelog>
   </subsection>
 </section>
