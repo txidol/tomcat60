@@ -142,14 +142,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1: 
 
-* Add support for *.jar pattern in VirtualWebappLoader
-  and perform trimming of the tokens.
-  I propose the following patch, but without removing the "not for production"
-  warning from JavaDoc:
-  http://svn.apache.org/viewvc?rev=958615&view=rev
-  +1: kkolinko, rjung, kfujino, pero
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
   Ensure EL identifiers conform to the Java Language Specification with an
   option to disable this check.

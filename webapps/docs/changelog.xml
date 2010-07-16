@@ -59,6 +59,10 @@
       <fix>
         Fix order when listing Webapp loader search URLs. (rjung)
       </fix>
+      <add>
+        Add support for <code>*.jar</code> pattern in VirtualWebappLoader.
+        (kkolinko)
+      </add>
     </changelog>
   </subsection>
 </section>
