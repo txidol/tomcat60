@@ -156,3 +156,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=963106&view=rev
   +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49521
+  http://people.apache.org/~kkolinko/patches/2010-07-17_tc6_bug49521.patch
+  - Disable scanning for a free port in Jk AJP/1.3 connector by default.
+  - Do not change maxPort field value of ChannelSocket in its #setPort()
+    and #init() methods.
+  - Add support for "maxPort" attribute on a <Connector> element as a synonym
+    for channelSocket.maxPort
+  +1: kkolinko
+  -1:
