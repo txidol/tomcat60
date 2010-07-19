@@ -39,16 +39,12 @@ PATCHES PROPOSED TO BACKPORT:
   -1: fhanik - easier to pass in the root path (lib/bin) to the macro instead of hacking around it
                if we remove the SCP auto feature, then there should be something to replace it with
                (http://ant.apache.org/manual/OptionalTasks/scp.html)  
-  -1: kkolinko: 
-       1. Ignoring ${maven.repo.url} in <remoteRepository/> does not look good,
-        because that is a valuable argument, provided by deploy-snapshot,
-        deploy-staging and deploy-release targets.
-        I say/agree that there can be several implementations of this deploy
-        action (ssh + key, local, ssh + pwd?), so maybe split it into several
-        implementations and select one based on what property is defined.
-       2. It publishes wrong tomcat-juli.jar, as already noted,
-        http://markmail.org/message/5sysomjlrfhcd3ec
-        jfclere: the new patch fixes the second issue.
+  +1: kkolinko: +1 for the updated patch (maven.patch.100711)
+      I still think that it is not so good to remove the old code of <remoteRepository/>,
+      because it ignores ${maven.repo.url} parameter provided by deploy-snapshot,
+      deploy-staging and deploy-release targets. Maybe leave old code as a comment
+      and fix it later if needed? I think that actually nobody besides the release manager
+      uses this, so I am letting this pass.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
   Truststores don't have to have passwords
@@ -59,6 +55,15 @@ PATCHES PROPOSED TO BACKPORT:
                so that would break existing configurations.
       markt: It shouldn't break existing configs. JSSE allows trust stores to be
              read without providing the password
+      kkolinko: 1. My understanding of KeyStore.load(stream,pwd) doc is that when the
+             password is not needed to open a store, it is used to verify its integrity.
+             So, this patch changes behaviour: skips the verification.
+             2. Note, that the password might be provided by overriding the
+             getKeystorePassword() method. There is no way to provide such password
+             for the truststore in the new code.
+             3. I would be fine if this new behaviour in TC6 were triggered by some
+             system property, but defaults to the old behaviour.
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
   Failure of one connector should not leave some connectors started and some
@@ -80,9 +85,7 @@ PATCHES PROPOSED TO BACKPORT:
             - If you are going to change the default, do it in the code
   -1:
 
-* Backport a couple of loader fixes and enhancements:
-
-  Expose the new WebappLoader flag in the VirtualWebappLoader,
+* Expose the new WebappLoader flag in the VirtualWebappLoader,
   but allow alternative name searchVirtualFirst to make it
   consistent with the "virtual" terminology.
   Now you can decide, whether the virtual paths will
@@ -122,12 +125,7 @@ PATCHES PROPOSED TO BACKPORT:
                          r951892, r952295
   +1: markt
   -1: 
-   kkolinko: 1) It would be nice to log requests using the timestamp when it was
-   received (like HTTPD 2.0+ does), not when it was processed. If that is to be
-   implemented, an additional parameter will be needed for the log() method in
-   the AccessLog interface. I suppose that might be "long t1, long t2" instead
-   of "long time".
-   2) I see no way to turn off this feature or filter the output.
+
 
 * Backport the CSRF prevention filter to Tomcat 6 and configure the Manager and
   Host Manager applications to use it. The configuration is such that the using
