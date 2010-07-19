@@ -152,7 +152,7 @@ PATCHES PROPOSED TO BACKPORT:
   classes
   http://svn.apache.org/viewvc?rev=961948&view=rev
   http://svn.apache.org/viewvc?rev=963106&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49521
