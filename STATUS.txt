@@ -152,8 +152,10 @@ PATCHES PROPOSED TO BACKPORT:
   classes
   http://svn.apache.org/viewvc?rev=961948&view=rev
   http://svn.apache.org/viewvc?rev=963106&view=rev
-  +1: markt, kkolinko, jfclere
-  -1: 
+  +1: markt, jfclere
+  -1: kkolinko:
+      Needs to use TCCL instead of plain Class.forName(String) call.
+      The /examples/jsp/jsp2/el/functions.jsp page breaks with a ClassNotFoundException.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49521
   http://people.apache.org/~kkolinko/patches/2010-07-17_tc6_bug49521.patch
