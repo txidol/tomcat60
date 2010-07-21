@@ -171,3 +171,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-07-21-line-endings.patch
   +1: markt, kkolinko, jfclere
   -1: 
+
+* Return a copy of the URL being used from the webapp class loader, not the
+  original.
+  http://svn.apache.org/viewvc?rev=966292&view=rev
+  +1: markt
+  -1: 
