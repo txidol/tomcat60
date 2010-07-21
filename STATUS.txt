@@ -169,5 +169,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Correct line endings in -src.zip distribution
   http://people.apache.org/~markt/patches/2010-07-21-line-endings.patch
-  +1: markt
+  +1: markt, kkolinko
   -1: 
