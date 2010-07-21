@@ -105,6 +105,7 @@
     <include name="**/NOTICE"/>
     <include name="**/RELEASE-NOTES"/>
     <include name="**/*.bat"/>
+    <include name="**/*.classpath"/>
     <include name="**/*.dtd"/>
     <include name="**/*.htm"/>
     <include name="**/*.html"/>
@@ -121,6 +122,7 @@
     <include name="**/*.nsi"/>
     <include name="**/*.policy"/>
     <include name="**/*.pom"/>
+    <include name="**/*.project"/>
     <include name="**/*.properties"/>
     <include name="**/*.properties.default"/>
     <include name="**/*.sh"/>
