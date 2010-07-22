@@ -49,7 +49,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.29 (jfclere)">
+<section name="Tomcat 6.0.29 (jfclere)" rtext="released 2010-07-22">
   <subsection name="Catalina">
     <changelog>
       <add>
