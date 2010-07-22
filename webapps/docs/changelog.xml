@@ -40,6 +40,15 @@
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
 <section name="Tomcat 6.0.30 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        Return a copy of the current URLs for the <code>WebappClassLoader</code>
+        to prevent modification. This facilitated, although it wasn't the root
+        cause, CVE-2010-1622. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <fix>
