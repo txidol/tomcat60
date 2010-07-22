@@ -68,14 +68,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
   Failure of one connector should not leave some connectors started and some
   ignored
-  http://people.apache.org/~markt/patches/2010-06-14-bug49030.patch
-  +1: markt
-  -1: kkolinko: it breaks the fix for BZ 48625
-    https://issues.apache.org/bugzilla/show_bug.cgi?id=49030#c4
-
-  Alternative patch:
   https://issues.apache.org/bugzilla/attachment.cgi?id=25633
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Configure Tomcat to use HttpOnly for session cookies by default
@@ -104,7 +98,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49343
   When ChannelException is thrown, remove listener from channel.
   http://svn.apache.org/viewvc?view=revision&revision=948402
-  +1: kfujino, kkolinko
+  +1: kfujino, kkolinko, markt
   -1: 
    kkolinko:
     Maybe "this.channel.removeChannelListener(this.rpcChannel);" call
@@ -114,7 +108,7 @@ PATCHES PROPOSED TO BACKPORT:
   "this.channel.removeChannelListener(this.rpcChannel);" call is 
   replaced with "this.rpcChannel.breakdown();". 
   http://svn.apache.org/viewvc?view=revision&revision=950922
-  +1: kfujino, kkolinko
+  +1: kfujino, kkolinko, markt
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49099
