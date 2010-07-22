@@ -172,3 +172,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=966292&view=rev
   +1: markt, kfujino, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49613
+  Improve performance for multiple calls to Request.getAttributeNames() when
+  using SSL. Patch provided by Sampo Savolainen.
+  http://svn.apache.org/viewvc?rev=966692&view=rev
+  +1: markt
+  -1: 
