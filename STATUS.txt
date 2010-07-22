@@ -170,5 +170,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Return a copy of the URL being used from the webapp class loader, not the
   original.
   http://svn.apache.org/viewvc?rev=966292&view=rev
-  +1: markt, kfujino
+  +1: markt, kfujino, kkolinko
   -1: 
