@@ -95,22 +95,6 @@ PATCHES PROPOSED TO BACKPORT:
    cause confusion. I'd prefer not to invent a new name, but mention the
    one that we already have when documenting virtualClasspath.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49343
-  When ChannelException is thrown, remove listener from channel.
-  http://svn.apache.org/viewvc?view=revision&revision=948402
-  +1: kfujino, kkolinko, markt
-  -1: 
-   kkolinko:
-    Maybe "this.channel.removeChannelListener(this.rpcChannel);" call
-    has to be replaced with "this.rpcChannel.breakdown();"
-  
-  Additional patch.
-  "this.channel.removeChannelListener(this.rpcChannel);" call is 
-  replaced with "this.rpcChannel.breakdown();". 
-  http://svn.apache.org/viewvc?view=revision&revision=950922
-  +1: kfujino, kkolinko, markt
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49099
   Provide a mechanism for including requests rejected by the CoyoteAdapter in
   the standard access log
