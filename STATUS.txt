@@ -150,3 +150,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=966692&view=rev
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49674
+  Upgrade to Commons Daemon 1.0.3
+  http://svn.apache.org/viewvc?rev=981815&view=rev
+  +1: markt
+  -1: 
