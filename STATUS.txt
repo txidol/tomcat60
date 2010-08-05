@@ -49,9 +49,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
   Truststores don't have to have passwords
   Based on a patch by 'smmwpf54'
-  http://svn.apache.org/viewvc?view=revision&revision=910266
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25848
   +1: markt
-  -1: jfclere: Doc says it should use keystorePass (http://tomcat.apache.org/tomcat-6.0-doc/config/http.html).
+  -1:
+  Comments on previous patch
+    jfclere: Doc says it should use keystorePass (http://tomcat.apache.org/tomcat-6.0-doc/config/http.html).
                so that would break existing configurations.
       markt: It shouldn't break existing configs. JSSE allows trust stores to be
              read without providing the password
