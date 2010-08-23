@@ -169,3 +169,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-08-23-ecj-tc6.patch
   +1: markt
   -1: 
+
+* Allow off-line building of the extras packages. Also saves downloading deps
+  every build
+  http://people.apache.org/~markt/patches/2010-08-23-offline-extras-tc6.patch
+  +1: markt
+  -1: 
