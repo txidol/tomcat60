@@ -167,6 +167,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Switch to using ecj.jar directly (smaller download, simpler build, same
   result)
   http://people.apache.org/~markt/patches/2010-08-23-ecj-tc6.patch
+  http://svn.apache.org/viewvc?rev=987896&view=rev
   +1: markt
   -1: 
 
