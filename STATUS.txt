@@ -117,6 +117,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=962872&view=rev
   http://svn.apache.org/viewvc?rev=962881&view=rev
   http://svn.apache.org/viewvc?rev=962900&view=rev
+  http://svn.apache.org/viewvc?rev=988448&view=rev
   +1: markt
   -1: 
 
