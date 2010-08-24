@@ -176,3 +176,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-08-23-offline-extras-tc6.patch
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48738
+  Add flush support for gzip'd output
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25932
+  +1: markt
+  -1: 
