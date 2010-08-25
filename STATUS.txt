@@ -157,7 +157,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49674
   Upgrade to Commons Daemon 1.0.3
   http://svn.apache.org/viewvc?rev=981815&view=rev
-  +1: markt, kfujino
+  +1: markt, kfujino, mturk
   -1:
 
 * Add Null check when CHANGE_SESSION_ID message received.
