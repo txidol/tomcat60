@@ -40,6 +40,13 @@
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
 <section name="Tomcat 6.0.30 (jfclere)">
+  <subsection name="General">
+    <changelog>
+      <fix>
+        <bug>49674</bug>: Update to Commons Daemon 1.0.3. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Catalina">
     <changelog>
       <fix>
