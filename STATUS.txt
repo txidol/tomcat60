@@ -181,5 +181,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Backport r988817 from trunk which allows using tomcat-native
   1.2.x versions.
   http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-aprver.patch
-  +1: mturk
+  +1: mturk, markt
   -1:
