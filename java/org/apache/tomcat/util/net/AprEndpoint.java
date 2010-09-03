@@ -157,7 +157,7 @@ public class AprEndpoint {
      */
     protected long sslContext = 0;
 
-    
+
     // ------------------------------------------------------------- Properties
 
 
@@ -167,7 +167,7 @@ public class AprEndpoint {
     protected boolean deferAccept = true;
     public void setDeferAccept(boolean deferAccept) { this.deferAccept = deferAccept; }
     public boolean getDeferAccept() { return deferAccept; }
-    
+
 
     /**
      * External Executor based thread pool.
@@ -409,7 +409,7 @@ public class AprEndpoint {
         this.unlockTimeout = unlockTimeout;
     }
 
-    
+
     /**
      * SSL engine.
      */
@@ -564,7 +564,7 @@ public class AprEndpoint {
     }
 
     /**
-     * Return the amount of threads that are in use 
+     * Return the amount of threads that are in use
      *
      * @return the amount of threads that are in use
      */
@@ -608,7 +608,7 @@ public class AprEndpoint {
 
         if (initialized)
             return;
-        
+
         // Create the root APR memory pool
         rootPool = Pool.create(0);
         // Create the pool for the server socket
@@ -689,7 +689,7 @@ public class AprEndpoint {
                 sendfileThreadCount = 1;
             }
         }
-        
+
         // Delay accepting of new connections until data is available
         // Only Linux kernels 2.4 + have that implemented
         // on other platforms this call is noop and will return APR_ENOTIMPL.
@@ -701,7 +701,7 @@ public class AprEndpoint {
 
         // Initialize SSL if needed
         if (SSLEnabled) {
-            
+
             // SSL protocol
             int value = SSL.SSL_PROTOCOL_ALL;
             if ("SSLv2".equalsIgnoreCase(SSLProtocol)) {
@@ -1058,7 +1058,7 @@ public class AprEndpoint {
         }
     }
 
-    
+
     /**
      * Allocate a new poller of the specified size.
      */
@@ -1076,7 +1076,7 @@ public class AprEndpoint {
         }
     }
 
-    
+
     /**
      * Process given socket.
      */
@@ -1095,7 +1095,7 @@ public class AprEndpoint {
         }
         return true;
     }
-    
+
 
     /**
      * Process given socket.
@@ -1115,7 +1115,7 @@ public class AprEndpoint {
         }
         return true;
     }
-    
+
 
     /**
      * Process given socket for an event.
@@ -1135,7 +1135,7 @@ public class AprEndpoint {
         }
         return true;
     }
-    
+
 
     // --------------------------------------------------- Acceptor Inner Class
 
@@ -1208,7 +1208,7 @@ public class AprEndpoint {
 
         protected long[] addS;
         protected volatile int addCount = 0;
-        
+
         protected boolean comet = true;
 
         protected volatile int keepAliveCount = 0;
@@ -1217,7 +1217,7 @@ public class AprEndpoint {
         public Poller(boolean comet) {
             this.comet = comet;
         }
-        
+
         /**
          * Create the poller. With some versions of APR, the maximum poller size will
          * be 62 (recompiling APR is necessary to remove this limitation).
@@ -1377,7 +1377,7 @@ public class AprEndpoint {
                             // Check for failed sockets and hand this socket off to a worker
                             if (((desc[n*2] & Poll.APR_POLLHUP) == Poll.APR_POLLHUP)
                                     || ((desc[n*2] & Poll.APR_POLLERR) == Poll.APR_POLLERR)
-                                    || (comet && (!processSocket(desc[n*2+1], SocketStatus.OPEN))) 
+                                    || (comet && (!processSocket(desc[n*2+1], SocketStatus.OPEN)))
                                     || (!comet && (!processSocket(desc[n*2+1])))) {
                                 // Close socket and clear pool
                                 if (comet) {
@@ -1430,7 +1430,7 @@ public class AprEndpoint {
             }
 
         }
-        
+
     }
 
 
@@ -1581,7 +1581,7 @@ public class AprEndpoint {
                         // Close socket and pool
                         Socket.destroy(socket);
                         socket = 0;
-                    } else if ((status == null) && ((options && !setSocketOptions(socket)) 
+                    } else if ((status == null) && ((options && !setSocketOptions(socket))
                             || handler.process(socket) == Handler.SocketState.CLOSED)) {
                         // Close socket and pool
                         Socket.destroy(socket);
@@ -1646,7 +1646,7 @@ public class AprEndpoint {
         protected long pool = 0;
         protected long[] desc;
         protected HashMap<Long, SendfileData> sendfileData;
-        
+
         protected volatile int sendfileCount;
         public int getSendfileCount() { return sendfileCount; }
 
@@ -1951,18 +1951,18 @@ public class AprEndpoint {
 
 
     public class WorkerStack {
-        
+
         protected Worker[] workers = null;
         protected int end = 0;
-        
+
         public WorkerStack(int size) {
             workers = new Worker[size];
         }
-        
-        /** 
+
+        /**
          * Put the object into the queue. If the queue is full (for example if
          * the queue has been reduced in size) the object will be dropped.
-         * 
+         *
          * @param   object  the object to be appended to the queue (first
          *                  element).
          */
@@ -1973,10 +1973,10 @@ public class AprEndpoint {
                 curThreads--;
             }
         }
-        
+
         /**
          * Get the first object out of the queue. Return null if the queue
-         * is empty. 
+         * is empty.
          */
         public Worker pop() {
             if (end > 0) {
@@ -1984,7 +1984,7 @@ public class AprEndpoint {
             }
             return null;
         }
-        
+
         /**
          * Get the first object out of the queue, Return null if the queue
          * is empty.
@@ -1992,25 +1992,25 @@ public class AprEndpoint {
         public Worker peek() {
             return workers[end];
         }
-        
+
         /**
          * Is the queue empty?
          */
         public boolean isEmpty() {
             return (end == 0);
         }
-        
+
         /**
          * How many elements are there in this queue?
          */
         public int size() {
             return (end);
         }
-        
+
         /**
          * Resize the queue. If there are too many objects in the queue for the
          * new size, drop the excess.
-         * 
+         *
          * @param newSize
          */
         public void resize(int newSize) {
@@ -2034,9 +2034,9 @@ public class AprEndpoint {
      * and do the handshake.
      */
     protected class SocketWithOptionsProcessor implements Runnable {
-        
+
         protected long socket = 0;
-        
+
         public SocketWithOptionsProcessor(long socket) {
             this.socket = socket;
         }
@@ -2053,7 +2053,7 @@ public class AprEndpoint {
                 }
             } else {
                 // Process the request from this socket
-                if (!setSocketOptions(socket) 
+                if (!setSocketOptions(socket)
                         || handler.process(socket) == Handler.SocketState.CLOSED) {
                     // Close socket and pool
                     Socket.destroy(socket);
@@ -2062,10 +2062,10 @@ public class AprEndpoint {
             }
 
         }
-        
+
     }
-    
-    
+
+
     // ---------------------------------------------- SocketProcessor Inner Class
 
 
@@ -2074,9 +2074,9 @@ public class AprEndpoint {
      * external Executor thread pool.
      */
     protected class SocketProcessor implements Runnable {
-        
+
         protected long socket = 0;
-        
+
         public SocketProcessor(long socket) {
             this.socket = socket;
         }
@@ -2091,10 +2091,10 @@ public class AprEndpoint {
             }
 
         }
-        
+
     }
-    
-    
+
+
     // --------------------------------------- SocketEventProcessor Inner Class
 
 
@@ -2103,10 +2103,10 @@ public class AprEndpoint {
      * external Executor thread pool.
      */
     protected class SocketEventProcessor implements Runnable {
-        
+
         protected long socket = 0;
-        protected SocketStatus status = null; 
-        
+        protected SocketStatus status = null;
+
         public SocketEventProcessor(long socket, SocketStatus status) {
             this.socket = socket;
             this.status = status;
@@ -2122,8 +2122,8 @@ public class AprEndpoint {
             }
 
         }
-        
+
     }
-    
-    
+
+
 }
