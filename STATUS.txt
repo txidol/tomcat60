@@ -28,12 +28,6 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
-* Backport r988817 from trunk which allows using tomcat-native
-  1.2.x versions.
-  http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-aprver.patch
-  +1: mturk, markt, rjung
-  -1:
-
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 

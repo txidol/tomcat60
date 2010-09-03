@@ -34,7 +34,7 @@ import org.apache.tomcat.jni.Library;
 /**
  * Implementation of <code>LifecycleListener</code> that will init and
  * and destroy APR.
- * 
+ *
  * @author Remy Maucherat
  * @author Filip Hanik
  * @version $Id$
@@ -76,7 +76,7 @@ public class AprLifecycleListener
         if (instanceCreated) init();
         return aprAvailable;
     }
-    
+
     public AprLifecycleListener() {
         instanceCreated = true;
     }
@@ -135,11 +135,14 @@ public class AprLifecycleListener
         int major = 0;
         int minor = 0;
         int patch = 0;
+        int apver = 0;
+        int rqver = TCN_REQUIRED_MAJOR * 1000 + TCN_REQUIRED_MINOR * 100 + TCN_REQUIRED_PATCH;
+        int rcver = TCN_REQUIRED_MAJOR * 1000 + TCN_REQUIRED_MINOR * 100 + TCN_RECOMMENDED_PV;
         if (aprInitialized) {
-            return;    
+            return;
         }
         aprInitialized = true;
-        
+
         try {
             String methodName = "initialize";
             Class paramTypes[] = new Class[1];
@@ -152,6 +155,7 @@ public class AprLifecycleListener
             major = clazz.getField("TCN_MAJOR_VERSION").getInt(null);
             minor = clazz.getField("TCN_MINOR_VERSION").getInt(null);
             patch = clazz.getField("TCN_PATCH_VERSION").getInt(null);
+            apver = major * 1000 + minor * 100 + patch;
         } catch (Throwable t) {
             if (!log.isDebugEnabled()) {
                 log.info(sm.getString("aprListener.aprInit",
@@ -162,9 +166,7 @@ public class AprLifecycleListener
             }
             return;
         }
-        if ((major != TCN_REQUIRED_MAJOR)  ||
-            (minor != TCN_REQUIRED_MINOR) ||
-            (patch <  TCN_REQUIRED_PATCH)) {
+        if (apver < rqver) {
             log.error(sm.getString("aprListener.tcnInvalid", major + "."
                     + minor + "." + patch,
                     TCN_REQUIRED_MAJOR + "." +
@@ -172,14 +174,14 @@ public class AprLifecycleListener
                     TCN_REQUIRED_PATCH));
             try {
                 // Terminate the APR in case the version
-                // is below required.                
+                // is below required.
                 terminateAPR();
             } catch (Throwable t) {
                 // Ignore
             }
             return;
         }
-        if (patch <  TCN_RECOMMENDED_PV) {
+        if (apver <  rcver) {
             if (!log.isDebugEnabled()) {
                 log.info(sm.getString("aprListener.tcnVersion", major + "."
                         + minor + "." + patch,
@@ -203,7 +205,7 @@ public class AprLifecycleListener
                      + minor + "." + patch));
         }
         // Log APR flags
-        log.info(sm.getString("aprListener.flags", Library.APR_HAVE_IPV6, Library.APR_HAS_SENDFILE, 
+        log.info(sm.getString("aprListener.flags", Library.APR_HAVE_IPV6, Library.APR_HAS_SENDFILE,
                 Library.APR_HAS_SO_ACCEPTFILTER, Library.APR_HAS_RANDOM));
         aprAvailable = true;
     }
@@ -230,13 +232,13 @@ public class AprLifecycleListener
         Class clazz = Class.forName("org.apache.tomcat.jni.SSL");
         Method method = clazz.getMethod(methodName, paramTypes);
         method.invoke(null, paramValues);
-        
+
 
         methodName = "initialize";
         paramValues[0] = "on".equalsIgnoreCase(SSLEngine)?null:SSLEngine;
         method = clazz.getMethod(methodName, paramTypes);
         method.invoke(null, paramValues);
- 
+
         sslAvailable = true;
     }
 
@@ -255,5 +257,5 @@ public class AprLifecycleListener
     public void setSSLRandomSeed(String SSLRandomSeed) {
         this.SSLRandomSeed = SSLRandomSeed;
     }
-    
+
 }
