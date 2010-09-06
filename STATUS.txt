@@ -210,4 +210,11 @@ PATCHES PROPOSED TO BACKPORT:
   stack trace but doesn't do anything to deal with the failure)
   http://svn.apache.org/viewvc?rev=993007&view=rev
   +1: markt
-  -1: 
+  -1:
+
+* Fix a possible NPE when a parallel request invalidates the session before the
+  current request has a chance to send the replication message.
+  http://svn.apache.org/viewvc?rev=993042&view=rev
+  +1: markt
+  -1:
+ 
