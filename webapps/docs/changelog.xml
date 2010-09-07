@@ -61,6 +61,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Coyote">
+    <changelog>
+      <add>
+        <bug>48738</bug>: Add support for flushing gzipped output. Based on a
+        patch by Jiong Wang. (markt)
+      </add>
+    </changelog>
+  </subsection>
   <subsection name="Cluster">
     <changelog>
       <fix>

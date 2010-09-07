@@ -32,6 +32,7 @@ import org.apache.tomcat.util.res.StringManager;
 import org.apache.coyote.ActionCode;
 import org.apache.coyote.OutputBuffer;
 import org.apache.coyote.Response;
+import org.apache.coyote.http11.filters.GzipOutputFilter;
 
 /**
  * Output buffer.
@@ -90,6 +91,11 @@ public class InternalOutputBuffer
     protected static StringManager sm =
         StringManager.getManager(Constants.Package);
 
+    /**
+     * Logger.
+     */
+    private static final org.apache.juli.logging.Log log
+        = org.apache.juli.logging.LogFactory.getLog(InternalOutputBuffer.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -294,6 +300,19 @@ public class InternalOutputBuffer
 
         }
 
+        // go through the filters and if there is gzip filter
+        // invoke it to flush
+        for (int i = 0; i <= lastActiveFilter; i++) {
+            if (activeFilters[i] instanceof GzipOutputFilter) {
+                if (log.isDebugEnabled()) {
+                    log.debug("Flushing the gzip filter at position " + i +
+                            " of the filter chain...");
+                }
+                ((GzipOutputFilter) activeFilters[i]).flush();
+                break;
+            }
+        }
+        
         // Flush the current buffer
         if (useSocketBuffer) {
             socketBuffer.flushBuffer();
