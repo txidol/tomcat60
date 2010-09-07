@@ -173,6 +173,13 @@ public class Request
 
 
     /**
+     * Flag that indicates if SSL attributes have been parsed to improve
+     * performance for applications (usually frameworks) that make multiple
+     * calls to {@link Request#getAttributeNames()}.
+     */
+    protected boolean sslAttributesParsed = false;
+
+    /**
      * List of read only attributes for this Request.
      */
     private HashMap readOnlyAttributes = new HashMap();
@@ -412,6 +419,7 @@ public class Request
         localName = null;
 
         attributes.clear();
+        sslAttributesParsed = false;
         notes.clear();
         cookies = null;
 
@@ -912,6 +920,7 @@ public class Request
                 attributes.put(Globals.SSL_SESSION_ID_ATTR, attr);
             }
             attr = attributes.get(name);
+            sslAttributesParsed = true;
         }
         return attr;
     }
@@ -955,7 +964,7 @@ public class Request
      * attributes and may also support additional attributes.
      */
     public Enumeration getAttributeNames() {
-        if (isSecure()) {
+        if (isSecure() && !sslAttributesParsed) {
             getAttribute(Globals.CERTIFICATES_ATTR);
         }
         return new Enumerator(attributes.keySet(), true);

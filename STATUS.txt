@@ -146,13 +146,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, kfujino
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49613
-  Improve performance for multiple calls to Request.getAttributeNames() when
-  using SSL. Patch provided by Sampo Savolainen.
-  http://svn.apache.org/viewvc?rev=966692&view=rev
-  +1: markt, kfujino, rjung
-  -1:
-
 * Switch to using ecj.jar directly (smaller download, simpler build, same
   result)
   http://people.apache.org/~markt/patches/2010-08-23-ecj-tc6.patch

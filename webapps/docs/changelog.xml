@@ -54,6 +54,11 @@
         to prevent modification. This facilitated, although it wasn't the root
         cause, CVE-2010-1622. (markt)
       </fix>
+      <fix>
+        <bug>49613</bug>: Improve performance when using SSL for applications
+        that make multiple class to <code>Request.getAttributeNames()</code>.
+        Patch provided by Sampo Savolainen. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
