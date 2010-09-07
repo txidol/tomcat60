@@ -50,6 +50,11 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>38113</bug>: Provide a system property that enables a strict
+        interpretation of the specification for <code>getQueryString()</code>
+        when an empty query string is provided by the user agent. (markt)
+      </fix>
+      <fix>
         Return a copy of the current URLs for the <code>WebappClassLoader</code>
         to prevent modification. This facilitated, although it wasn't the root
         cause, CVE-2010-1622. (markt)
