@@ -153,11 +153,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino, rjung
   -1:
 
-* Add Null check when CHANGE_SESSION_ID message received.
-  http://svn.apache.org/viewvc?rev=982877&view=rev
-  +1: kfujino, kkolinko, rjung
-  -1:
-
 * Switch to using ecj.jar directly (smaller download, simpler build, same
   result)
   http://people.apache.org/~markt/patches/2010-08-23-ecj-tc6.patch
