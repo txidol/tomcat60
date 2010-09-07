@@ -59,6 +59,9 @@
         that make multiple class to <code>Request.getAttributeNames()</code>.
         Patch provided by Sampo Savolainen. (markt)
       </fix>
+      <fix>
+        <bug>49749</bug>: Use httpOnly setting when creating SSO cookie. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

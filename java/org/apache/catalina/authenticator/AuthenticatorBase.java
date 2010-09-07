@@ -797,7 +797,7 @@ public abstract class AuthenticatorBase
                 cookie.setDomain(ssoDomain);
             }
 
-            response.addCookie(cookie);
+            response.addCookieInternal(cookie, context.getUseHttpOnly());
 
             // Register this principal with our SSO valve
             sso.register(ssoId, principal, authType, username, password);
