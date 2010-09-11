@@ -193,3 +193,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-09-11-configClass.patch
   +1: markt
   -1:
+
+* Update commons pool to 1.5.5
+  http://svn.apache.org/viewvc?rev=996163&view=rev
+  +1: markt
+  -1:
