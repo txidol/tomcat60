@@ -198,3 +198,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=996163&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49924
+  When non-primary node changes into a primary node, 
+  make sure isPrimarySession is changed to true.
+  http://svn.apache.org/viewvc?view=revision&revision=996778
+  +1: kfujino
+  -1:
