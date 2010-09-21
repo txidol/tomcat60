@@ -125,7 +125,12 @@ PATCHES PROPOSED TO BACKPORT:
   option to disable this check.
   https://issues.apache.org/bugzilla/attachment.cgi?id=25727
   +1: markt
+  +1: kkolinko (if doc part is adjusted to the code)
   -1:
+   kkolinko: doc says the SKIP_* property defaults to false, but in the code the
+    default is true. (Maybe tie it to STRICT_SERVLET_COMPLIANCE?)
+    Maybe document this in the "Specification" part of the systemprops.xml,
+    instead of "Expression Language" as done in 7.0.2?
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49555
   Correctly handle tag libraries that use functions defined in static inner
@@ -133,8 +138,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=961948&view=rev
   http://svn.apache.org/viewvc?rev=963106&view=rev
   http://svn.apache.org/viewvc?rev=966863&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
+   kkolinko: I was worried that ELFunctionMapper$PrivilegedGetTccl
+   should be preloaded in o.a.jasper.security.SecurityClassLoad, 
+   but from debugging it looks that it is called by Tomcat code only
+   (JspServlet). 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49521
   http://people.apache.org/~kkolinko/patches/2010-07-17_tc6_bug49521.patch
@@ -150,8 +159,14 @@ PATCHES PROPOSED TO BACKPORT:
   result)
   http://people.apache.org/~markt/patches/2010-08-23-ecj-tc6.patch
   http://svn.apache.org/viewvc?rev=987896&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1:
+   kkolinko: Regarding the comment added to  build.properties.default:
+     When changing JDT version, updating TldConfig.java and TldLocationsCache.java
+     is a must, but the following files also mention the JDT version number:
+      - res/maven/jasper.pom
+      - eclipse.classpath
+
 
 * Allow off-line building of the extras packages. Also saves downloading deps
   every build
