@@ -45,6 +45,10 @@
       <fix>
         <bug>49674</bug>: Update to Commons Daemon 1.0.3. (markt)
       </fix>
+      <update>
+        Switch to using the Eclipse compiler JAR directly rather than creating
+        it from the larger JDT download. (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Catalina">

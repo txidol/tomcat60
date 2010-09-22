@@ -90,9 +90,7 @@
   <property name="jasper-el.jar" value="${tomcat.build}/lib/jasper-el.jar"/>
 
   <property name="tomcat-dbcp.home" value="${base.path}/tomcat${version.major}-deps/dbcp" />
-  <property name="jasper-jdt.home" value="${base.path}/tomcat${version.major}-deps/jdt" />
   <property name="tomcat-dbcp.jar" value="${tomcat-dbcp.home}/tomcat-dbcp.jar"/>
-  <property name="jasper-jdt.jar" value="${jasper-jdt.home}/jasper-jdt.jar"/>
   <available property="tomcat-dbcp.present" file="${tomcat-dbcp.jar}" />
   <available property="jdk16.present" classname="javax.sql.StatementEvent" />
 
@@ -114,6 +112,7 @@
     <filter token="VERSION_MAJOR" value="${version.major}"/>
     <filter token="VERSION_MAJOR_MINOR" value="${version.major.minor}"/>
     <filter token="VERSION_BUILT" value="${TODAY} ${TSTAMP}"/>
+    <filter token="JDT_VERSION" value="${jdt.version}"/>
   </filterset>
 
   <!-- Just build Tomcat -->
@@ -632,14 +631,13 @@
 
     <copy file="${tomcat-dbcp.jar}" todir="${tomcat.build}/lib"
       failonerror="false"/>
-    <copy file="${jasper-jdt.jar}" todir="${tomcat.build}/lib" />
+    <copy file="${jdt.jar}" todir="${tomcat.build}/lib" />
 
   </target>
 
   <target name="clean-depend"
           description="Clean depend src components">
      <delete dir="${tomcat-dbcp.home}"/>
-     <delete dir="${jasper-jdt.home}"/>
   </target>
 
   <target name="clean">
@@ -689,6 +687,38 @@
   <target name="downloadfile" unless="exist" depends="setproxy,testexist">
     <!-- Download extract the file -->
     <mkdir dir="${destdir}" />
+    <get src="${sourcefile}" dest="${destfile}" />
+  </target>
+
+  <target name="downloadfile-2" unless="exist" depends="testexist">
+    <!-- Download the file from the two alternative locations -->
+    <mkdir dir="${destdir}" />
+
+    <antcall target="trydownload">
+      <param name="sourcefile" value="${sourcefile.1}" />
+    </antcall>
+
+    <antcall target="trydownload">
+      <param name="sourcefile" value="${sourcefile.2}" />
+    </antcall>
+
+    <available file="${destfile}" property="exist"/>
+    <fail unless="exist" message="Failed to download [${destfile}]. All download sources are unavailable." />
+  </target>
+
+  <target name="trydownload.check" depends="setproxy">
+    <condition property="trydownload.run">
+      <and>
+        <not>
+          <available file="${destfile}" />
+        </not>
+        <http url="${sourcefile}" />
+      </and>
+    </condition>
+  </target>
+
+  <target name="trydownload" if="trydownload.run" depends="trydownload.check">
+    <!-- Downloads a file if not yet downloaded and the source URL is available -->
     <get src="${sourcefile}" dest="${destfile}" />
   </target>
 
@@ -752,15 +782,12 @@
       <param name="basedir" value="${tomcat-dbcp.home}" />
     </antcall>
 
-    <!-- Build Jasper JDT bundle -->
-    <antcall target="downloadzip">
-      <param name="sourcefile" value="${jdt.loc}"/>
+    <!-- Download JDT (Eclipse compiler) -->
+    <antcall target="downloadfile-2">
+      <param name="sourcefile.1" value="${jdt.loc.1}"/>
+      <param name="sourcefile.2" value="${jdt.loc.2}"/>
       <param name="destfile" value="${jdt.jar}"/>
-      <param name="destdir" value="${base.path}"/>
-    </antcall>
-    <mkdir dir="${jasper-jdt.home}"/>
-    <antcall target="build-jasper-jdt">
-      <param name="basedir" value="${jasper-jdt.home}" />
+      <param name="destdir" value="${jdt.home}"/>
     </antcall>
 
     <antcall target="downloadzip">
@@ -820,22 +847,6 @@
       <zipfileset file="${tomcat.manifests}/default.notice"
         fullpath="META-INF/NOTICE" />
       <zipfileset file="${tomcat.manifests}/default.license"
-        fullpath="META-INF/LICENSE" />
-    </jar>
-  </target>
-
-  <target name="build-jasper-jdt" depends="build-manifests">
-    <unjar src="${jdt.jar}" dest="${jasper-jdt.home}" />
-    <jar destfile="${jasper-jdt.jar}"
-         manifest="${tomcat.manifests}/default.manifest">
-      <fileset dir="${jasper-jdt.home}">
-        <include name="org/eclipse/jdt/core/compiler/**"/>
-        <include name="org/eclipse/jdt/internal/compiler/**"/>
-        <include name="org/eclipse/jdt/internal/core/util/CommentRecorder*"/>
-      </fileset>
-      <zipfileset file="${tomcat.manifests}/jasper-jdt.jar.notice"
-        fullpath="META-INF/NOTICE" />
-      <zipfileset file="${tomcat.manifests}/jasper-jdt.jar.license"
         fullpath="META-INF/LICENSE" />
     </jar>
   </target>

@@ -138,7 +138,6 @@
     <doMavenDeploy artifactId="juli" jarFileName="tomcat-juli.jar"/> <!--Deploy JULI-->
     <doMavenDeploy artifactId="tribes" jarFileName="catalina-tribes.jar"/> <!--Deploy Tribes-->
     <doMavenDeploy artifactId="jasper-el"/> <!--Deploy Jasper EL-->
-    <doMavenDeploy artifactId="jasper-jdt"/> <!--Deploy Jasper JDT-->
     <doMavenDeploy artifactId="coyote" jarFileName="tomcat-coyote.jar"/> <!--Deploy Coyote-->
     <doMavenDeploy artifactId="catalina"/> <!--Deploy Catalina-->
     <doMavenDeploy artifactId="catalina-ha"/> <!--Deploy Catalina-HA-->

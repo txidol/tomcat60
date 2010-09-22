@@ -56,10 +56,19 @@ jaxrpc-src.loc=http://repo1.maven.org/maven2/geronimo-spec/geronimo-spec-jaxrpc/
 wsdl4j-src.loc=http://repo1.maven.org/maven2/wsdl4j/wsdl4j/1.6.1/wsdl4j-1.6.1.jar
 
 # ----- Eclipse JDT, version 3.2 or later -----
-jdt.home=${base.path}/eclipse/plugins
-jdt.lib=${jdt.home}
-jdt.jar=${jdt.lib}/org.eclipse.jdt.core_3.3.1.v_780_R33x.jar
-jdt.loc=http://archive.eclipse.org/eclipse/downloads/drops/R-3.3.1-200709211145/eclipse-JDT-3.3.1.zip
+# When updating this, also need to update:
+# - noTldJars in o.a.c.startup.TldConfig
+# - noTldJars in o.a.j.compiler.TldLocationsCache
+# - res/maven/jasper.pom
+# - eclipse.classpath
+jdt.version=3.3.1
+jdt.release=R-3.3.1-200709211145
+jdt.home=${base.path}/ecj-${jdt.version}
+jdt.jar=${jdt.home}/ecj-${jdt.version}.jar
+# The download will be moved to the archive area eventually. We are taking care of that in advance.
+# Note older JARs were called ecj.jar. Newer JARs are called ecj-${jdt.version}.jar
+jdt.loc.1=http://archive.eclipse.org/eclipse/downloads/drops/${jdt.release}/ecj.jar
+jdt.loc.2=http://download.eclipse.org/eclipse/downloads/drops/${jdt.release}/ecj.jar
 
 # ----- Tomcat native library -----
 tomcat-native.version=1.1.20

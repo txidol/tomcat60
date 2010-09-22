@@ -84,9 +84,7 @@
   <property name="jasper-el.jar" value="${tomcat.build}/lib/jasper-el.jar"/>
 
   <property name="tomcat-dbcp.home" value="${base.path}/tomcat${version.major}-deps/dbcp" />
-  <property name="jasper-jdt.home" value="${base.path}/tomcat${version.major}-deps/jdt" />
   <property name="tomcat-dbcp.jar" value="${tomcat-dbcp.home}/tomcat-dbcp.jar"/>
-  <property name="jasper-jdt.jar" value="${jasper-jdt.home}/jasper-jdt.jar"/>
 
   <!-- Version info filter set -->
   <filterset id="version.filters">

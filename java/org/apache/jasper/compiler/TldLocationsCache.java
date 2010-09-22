@@ -128,7 +128,7 @@ public class TldLocationsCache {
         noTldJars.add("el-api.jar");
         noTldJars.add("jasper.jar");
         noTldJars.add("jasper-el.jar");
-        noTldJars.add("jasper-jdt.jar");
+        noTldJars.add("ecj-3.3.1.jar");
         noTldJars.add("jsp-api.jar");
         noTldJars.add("servlet-api.jar");
         noTldJars.add("tomcat-coyote.jar");
