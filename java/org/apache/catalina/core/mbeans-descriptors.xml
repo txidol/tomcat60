@@ -234,6 +234,10 @@
     <attribute name="state"
                description="Current state of this component"
                type="int"/>
+
+    <attribute name="stateName"
+               description="The name of the LifecycleState that this component is currently in"
+               type="java.lang.String"/>
                      
     <attribute name="stateManageable"
                description="State management support for this managed object"

@@ -69,7 +69,13 @@ public final class LifecycleSupport {
     
     private final Object listenersLock = new Object(); // Lock object for changes to listeners
 
-
+    /**
+     * Tracks the current state of lifecycle object based on the events that
+     * are fired. As far as possible, matches the state names used in Tomcat 7
+     * for consistency. 
+     */
+    private String state = "NEW";
+    
     // --------------------------------------------------------- Public Methods
 
 
@@ -113,6 +119,23 @@ public final class LifecycleSupport {
      */
     public void fireLifecycleEvent(String type, Object data) {
 
+        if (Lifecycle.INIT_EVENT.equals(type)) {
+            state = "INITIALIZED";
+        } else if (Lifecycle.BEFORE_START_EVENT.equals(type)) {
+            state = "STARTING_PREP";
+        } else if (Lifecycle.START_EVENT.equals(type)) {
+            state = "STARTING";
+        } else if (Lifecycle.AFTER_START_EVENT.equals(type)) {
+            state = "STARTED";
+        } else if (Lifecycle.BEFORE_STOP_EVENT.equals(type)) {
+            state = "STOPPING_PREP";
+        } else if (Lifecycle.STOP_EVENT.equals(type)) {
+            state = "STOPPING";
+        } else if (Lifecycle.AFTER_STOP_EVENT.equals(type)) {
+            state = "STOPPED";
+        } else if (Lifecycle.DESTROY_EVENT.equals(type)) {
+            state = "DESTROYED";
+        }
         LifecycleEvent event = new LifecycleEvent(lifecycle, type, data);
         LifecycleListener interested[] = listeners;
         for (int i = 0; i < interested.length; i++)
@@ -150,5 +173,7 @@ public final class LifecycleSupport {
 
     }
 
-
+    public String getState() {
+        return state;
+    }
 }

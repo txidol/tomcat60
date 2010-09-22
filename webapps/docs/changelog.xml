@@ -71,6 +71,9 @@
       <fix>
         <bug>49749</bug>: Use httpOnly setting when creating SSO cookie. (markt)
       </fix>
+      <add>
+        Provide better web application state information via JMX. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

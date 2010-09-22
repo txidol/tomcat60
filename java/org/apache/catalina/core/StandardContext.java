@@ -5882,6 +5882,10 @@ public class StandardContext
         return 3; // STOPPED
     }
     
+    public String getStateName() {
+        return lifecycle.getState();
+    }
+
     /**
      * The J2EE Server ObjectName this module is deployed on.
      */     

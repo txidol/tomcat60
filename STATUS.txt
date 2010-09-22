@@ -162,15 +162,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
   rjung: s/vesion/version/g
 
-* Provide better web application state information via JMX
-  A limited back-port of http://svn.apache.org/viewvc?rev=992245&view=rev that
-  could be extended to other components that use LifecycleSupport and expose
-  an MBean
-  http://people.apache.org/~markt/patches/2010-09-03-better-state-info.patch
-  +1: markt, kfujino, kkolinko
-  -1:
-   kkolinko: s/Tomact/Tomcat/
-
 * Fix unlockAccept when the soTimeout is -1 (default).
   Default conf has soTimeout -1 and that will throw exception if
   used in setSoTimeout method.
