@@ -82,6 +82,11 @@
         <bug>48738</bug>: Add support for flushing gzipped output. Based on a
         patch by Jiong Wang. (markt)
       </add>
+      <fix>
+        Avoid a NPE in the DeltaManager when a parallel request invalidates the
+        session before the current request has a chance to send the replication
+        message. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">

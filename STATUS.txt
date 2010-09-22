@@ -176,12 +176,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino
   -1:
 
-* Fix a possible NPE when a parallel request invalidates the session before the
-  current request has a chance to send the replication message.
-  http://svn.apache.org/viewvc?rev=993042&view=rev
-  +1: markt, kfujino, kkolinko
-  -1:
-
 * Make sure Contexts defined in server.xml pick up any configClass setting from
   the parent Host.
   http://people.apache.org/~markt/patches/2010-09-11-configClass.patch
