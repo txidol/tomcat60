@@ -166,7 +166,7 @@ PATCHES PROPOSED TO BACKPORT:
   Default conf has soTimeout -1 and that will throw exception if
   used in setSoTimeout method.
   http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-aprunlockaccept.patch
-  +1: mturk, kfujino
+  +1: mturk, kfujino, markt
   -1:
 
 * When a cluster node disappears when using the backup manager, handle the
