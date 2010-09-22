@@ -192,5 +192,5 @@ PATCHES PROPOSED TO BACKPORT:
   When non-primary node changes into a primary node,
   make sure isPrimarySession is changed to true.
   http://svn.apache.org/viewvc?view=revision&revision=996778
-  +1: kfujino
+  +1: kfujino, markt
   -1:
