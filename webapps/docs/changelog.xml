@@ -78,6 +78,10 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
+      <fix>
+        Avoid a NPE for APR connector unlockAccept with default soTimeout
+        (mturk).
+      </fix>
       <add>
         <bug>48738</bug>: Add support for flushing gzipped output. Based on a
         patch by Jiong Wang. (markt)
@@ -92,7 +96,7 @@
   <subsection name="Cluster">
     <changelog>
       <fix>
-        <bug>49343</bug>: When ChannelException is thrown, remove listener from 
+        <bug>49343</bug>: When ChannelException is thrown, remove listener from
         channel. (kfujino)
       </fix>
       <fix>
@@ -112,7 +116,7 @@
     <changelog>
       <fix>
         Use native line endings for example Eclipse configuration files in
-        source distribution. (markt) 
+        source distribution. (markt)
       </fix>
     </changelog>
   </subsection>
@@ -132,7 +136,7 @@
       <fix>
         <bug>49598</bug>: When session is changed and the session cookie is
         replaced, ensure that the new Set-Cookie header overwrites the old
-        Set-Cookie header. (markt) 
+        Set-Cookie header. (markt)
       </fix>
       <fix>
         Fix order when listing Webapp loader search URLs. (rjung)
@@ -287,11 +291,11 @@
         Clerc. (markt)
       </fix>
       <fix>
-        <bug>49018</bug>: Fix processing of time argument in the Expire sessions 
+        <bug>49018</bug>: Fix processing of time argument in the Expire sessions
         action in the Manager web application. (kkolinko)
       </fix>
       <fix>
-        <bug>49116</bug>: If session is already invalid, expire session to 
+        <bug>49116</bug>: If session is already invalid, expire session to
         prevent memory leak. (kfujino)
       </fix>
       <fix>
@@ -404,11 +408,11 @@
         permanently disabled session replication. (fhanik)
       </fix>
       <fix>
-        <bug>49051</bug>: memberAlive is not called if member has not already 
+        <bug>49051</bug>: memberAlive is not called if member has not already
         existed in membership. (kfujino)
       </fix>
       <fix>
-        <bug>49151</bug>: Avoid ClassCastException in BackupManager#stop. 
+        <bug>49151</bug>: Avoid ClassCastException in BackupManager#stop.
         (kfujino)
       </fix>
       <fix>
@@ -492,7 +496,7 @@
     <changelog>
       <fix>
         <bug>48584</bug>: Prevent the APR connector logging an error if the
-        acceptor fails during shutdown since this is expected. (mturk) 
+        acceptor fails during shutdown since this is expected. (mturk)
       </fix>
       <fix>
         <bug>48660</bug>: Using compression should not overwrite any Vary header
@@ -507,7 +511,7 @@
         correct location when using JspC and allow the option that controls this
         to be configured on the command line. Also allow the encoding of web.xml
         to be configured when using JspC and deprecate some unused JspC methods.
-        (markt/kkolinko) 
+        (markt/kkolinko)
       </fix>
       <fix>
         <bug>48498</bug>: Avoid ArrayIndexOutOfBoundsException triggered by a
@@ -520,7 +524,7 @@
       <fix>
         <bug>48827</bug>: Correct a regression in the fix for <bug>47977</bug>
         that caused an incorrect non-empty body error to be reported for valid
-        JSP documents. (markt) 
+        JSP documents. (markt)
       </fix>
     </changelog>
   </subsection>
@@ -655,7 +659,7 @@
       </add>
       <fix>
         <bug>48170</bug>: Remove unnecessary synchronization that is causing
-        issues under load. (markt) 
+        issues under load. (markt)
       </fix>
       <fix>
         <bug>48580</bug>: Prevent AccessControlException if first access is to a
@@ -668,7 +672,7 @@
         <bug>48616</bug>: Don't declare or synchronize scripting variables for
         JSP fragments since they are scriptless. This is an alternative fix for
         <bug>42390</bug> that avoids both the original problem and the
-        regression in the first fix. (kkolinko) 
+        regression in the first fix. (kkolinko)
       </fix>
       <fix>
         <bug>48627</bug>: Fix regression in re-factored EL parsing. Keep
@@ -769,14 +773,14 @@
         operation. Patch provided by sebb. (markt)
       </fix>
       <fix>
-        <bug>48417</bug>: Update French translations. Patch provided by André
+        <bug>48417</bug>: Update French translations. Patch provided by Andrï¿½
         Warnier. (markt/kkolinko)
       </fix>
       <fix>
         <bug>48421</bug>: Fix file descriptor and potential memory leak when a
         web application uses a local logging.properties file. Allow a web
         applciation's log files to be deleted once the web application has been
-        stopped. (markt) 
+        stopped. (markt)
       </fix>
       <fix>
         <bug>48454</bug>: Ensure stderr is completely read before terminating
@@ -913,7 +917,7 @@
       </fix>
       <fix>
         Remove duplicate mime-mapping entries in web.xml. Re-order entries
-        alphabetically to make it easier to identify duplicates. (markt) 
+        alphabetically to make it easier to identify duplicates. (markt)
       </fix>
       <update>
         Use a more sensible default (webapps) for a Host's appBase.
@@ -938,7 +942,7 @@
       </fix>
       <fix>
         <bug>40380</bug>: Fix potential synchronization issue in
-        StandardSession.expire(). (markt) 
+        StandardSession.expire(). (markt)
       </fix>
       <fix>
         <bug>41059</bug>: Reduce chances of errors when ENABLE_CLEAR_REFERENCES
@@ -962,7 +966,7 @@
       </fix>
       <fix>
         <bug>45403</bug>: Add additional checks on web application deployment
-        and do not swallow IO errors. (kkolinko) 
+        and do not swallow IO errors. (kkolinko)
       </fix>
       <fix>
         <bug>45785</bug>: Additional fix required for the extension validator.
@@ -993,7 +997,7 @@
       </fix>
       <fix>
         <bug>47158</bug>: Fix some thread safety issues in the AccessLogValve.
-        (markt) 
+        (markt)
       </fix>
       <fix>
         <bug>47228</bug>: Correct French translations. Patch provided by sebb.
@@ -1070,7 +1074,7 @@
       </fix>
       <fix>
         <bug>47918</bug>: Correct mbean descriptors for the host deployer. Patch
-        provided by Uwe Günther. (markt)
+        provided by Uwe Gï¿½nther. (markt)
       </fix>
       <fix>
         <bug>47930</bug>: Fix thread safety issues on session swap-in in the
@@ -1101,7 +1105,7 @@
       </fix>
       <fix>
         <bug>48257</bug>: Correct error in Spanish translations. Patch provided
-        by Guillermo Gutiérrez. (markt)
+        by Guillermo Gutiï¿½rrez. (markt)
       </fix>
       <fix>
         <bug>48306</bug>, <bug>48307</bug>: Correct French translations. Patches
@@ -1113,7 +1117,7 @@
       </fix>
       <fix>
         <bug>48413</bug>: Correct some French translations. Patch provided by
-        André Warnier. (markt)
+        Andrï¿½ Warnier. (markt)
       </fix>
       <update>
         Deprecate the <code>caseSensitive</code> option on the
@@ -1126,7 +1130,7 @@
       </fix>
       <add>
         Better logging for parameter decoding issues to help identify broken
-        requests. (markt) 
+        requests. (markt)
       </add>
       <update>
         Update Apache Commons Pool from 1.4 to 1.5.4. This update includes
@@ -1156,7 +1160,7 @@
       <update>
         Various JNDI realm improvements for Active Directory. These include the
         ability to specify a default role, optional handling for nested roles
-        and an option to ignore PartialResultExceptions (markt). 
+        and an option to ignore PartialResultExceptions (markt).
       </update>
       <add>
         Expose Servlet Filters via JMX. Based on a patch by Xie Xiaodong as part
@@ -1215,7 +1219,7 @@
       </update>
       <fix>
         Prevent NPE in JULI during shutdown when resources try to log messages
-        after JULI has been shutdown. (fhanik/kkolinko) 
+        after JULI has been shutdown. (fhanik/kkolinko)
       </fix>
       <add>
         Make the JULI FileHandler easier to extend. (fhanik)
@@ -1265,7 +1269,7 @@
       <fix>
         Align tcnative native and Java method names. (rjung)
       </fix>
-      <update>Dont report thread count from connector if an external executor is used.</update> 
+      <update>Dont report thread count from connector if an external executor is used.</update>
       <fix>
         <bug>39637</bug>: Enable the AJP connectors to correctly handle client
         certificate chains. Patch by Patrik Schnellmann. (markt)
@@ -1500,7 +1504,7 @@
       <fix>
         <bug>47769</bug>: Clarify the JNDI docs with repect to use of
         &lt;resource-ref&gt; and related elements, specifically when they are
-        required and when they may be omitted. (markt) 
+        required and when they may be omitted. (markt)
       </fix>
       <fix>
         <bug>48381</bug>: Add information on how Tomcat treats host names to the
@@ -1537,7 +1541,7 @@
       </update>
       <fix>
         Don't add blank lines to end of files when fixing line-endings for
-        tar.gz distribution. (markt) 
+        tar.gz distribution. (markt)
       </fix>
       <fix>
         Use explicit encoding during filtering operations when building Tomcat
@@ -1765,7 +1769,7 @@
       </fix>
       <fix>
         <bug>38553</bug>: Return 401 rather than 400 if client does not present
-        a certificate CLIENT-CERT authentication. (markt)        
+        a certificate CLIENT-CERT authentication. (markt)
       </fix>
       <fix>
         <bug>38570</bug>: When checking docBase against appBase, make sure we
@@ -1790,7 +1794,7 @@
         Fix read/write timeout of async comet operations
         (r719264)
       </update>
-      <update> 
+      <update>
         Implement async close behaviour for Comet/NIO.
         No-op for APR (same behavior as before)
         (r719262)
@@ -1865,7 +1869,7 @@
       </fix>
       <add>
         Provide full stacktrace and message when the ErrorReportValveClass can't
-        be instantiated. (funkman) 
+        be instantiated. (funkman)
       </add>
       <fix>
         <bug>45608</bug>: Make allocated servlet count synchronized to ensure
@@ -1874,7 +1878,7 @@
       </fix>
       <fix>
         <bug>45628</bug>: When checking MANIFEST dependancies, JARs without
-        dependencies should allows be considered to be full-filled. (markt) 
+        dependencies should allows be considered to be full-filled. (markt)
       </fix>
       <fix>
         <bug>45735</bug>: Improve ETag handling. (remm)
@@ -1897,7 +1901,7 @@
       </fix>
       <add>
         Add the CombinedRealm that enables authentication to be attempted
-        against multiple realms. (markt) 
+        against multiple realms. (markt)
       </add>
       <add>
         Add the LockOutRealm that enables a standard Realm to be wrapped with
@@ -2013,7 +2017,7 @@
         Fix possible synchronisation bottleneck in cookie creation. (markt)
       </fix>
       <fix>
-        Fix various spelling errors reported on the mailing lists. (markt) 
+        Fix various spelling errors reported on the mailing lists. (markt)
       </fix>
       <add>
         Make the logging manager and properties file configurable via
@@ -2162,7 +2166,7 @@
       <fix>
         <bug>46047</bug>: Include the path to the JAR when recording
         dependencies that are located inside a JAR file. Patch provided by
-        Cédric Mailleux. (markt)
+        Cï¿½dric Mailleux. (markt)
       </fix>
       <fix>
         <bug>46381</bug>: Composite expressions used for attribute values must
@@ -2232,7 +2236,7 @@
         <bug>46035</bug>: Fix multiple typos in monitoring how to. (markt)
       </fix>
       <fix>
-        <bug>46067</bug>: Fix typos in Advanced IO how to. (markt) 
+        <bug>46067</bug>: Fix typos in Advanced IO how to. (markt)
       </fix>
       <fix>
         <bug>46115</bug>: Correct Manager UI to show that path is required when
@@ -2299,7 +2303,7 @@
       </fix>
       <fix>
         <bug>46366</bug>: Correct information in RUNNING.txt regarding use of
-        CATALINA_HOME and CATALINA_BASE. (markt) 
+        CATALINA_HOME and CATALINA_BASE. (markt)
       </fix>
       <fix>
         Use more useful JPDA defaults in catalina.bat. (markt)
@@ -2386,7 +2390,7 @@
       </update>
       <update>
         Expose alwaysSend flag for message dispatch interceptor. (fhanik)
-      </update>  
+      </update>
       <fix>
         <bug>29936</bug>: Create digesters and parsers earlier so we aren't
         using the webapp class loader when we create them. (markt)
@@ -2593,7 +2597,7 @@
       </fix>
       <fix>
         <bug>44391</bug>: Correct handling of escaped values in SSI processing.
-        (markt) 
+        (markt)
       </fix>
       <fix>
         <bug>44392</bug>: HTML entities now handled correctly in SSI processing.
@@ -2614,7 +2618,7 @@
         connector. (markt)
       </fix>
       <update>
-        Log errors for AJP signoffs at DEBUG level, 
+        Log errors for AJP signoffs at DEBUG level,
         since it is harmless if mod_jk has hung up the phone. (billbarker)
       </update>
       <fix>
@@ -2668,8 +2672,8 @@
       </fix>
       <fix>
         <bug>45015</bug>: You can't use an unescaped quote if you quote the
-        value with that character. (markt/fhanik)  
-      </fix>  
+        value with that character. (markt/fhanik)
+      </fix>
       <add>
         Add HTML filtering of error messages for included resources in case the
         app has tried to include an unsafe URL that does not exist. This is
@@ -2699,7 +2703,7 @@
       <fix>
         <bug>43366</bug>: Provide backwards compatibility for manager sessions
         command. (markt)
-      </fix> 
+      </fix>
       <fix>
         <bug>44541</bug>: Document packetSize attribute for AJP connector.
         (markt)
@@ -3446,7 +3450,7 @@
         Fix various paths in the manager webapps (remm)
       </fix>
       <add>
-        Session viewer and editor for the HTML manager. Submitted by Cédrik Lime. (remm)
+        Session viewer and editor for the HTML manager. Submitted by Cï¿½drik Lime. (remm)
       </add>
       <add>
         Session handling tools for the manager. Submitted by Rainer Jung. (remm)
@@ -3578,7 +3582,7 @@
         Cleanup hello webapp from the docs and fix a XSS issue in the JSP.  (remm)
       </fix>
       <fix>
-        Examples webapp cleanup. Submitted by Takayuki Kaneko and Markus Schönhaber. (remm)
+        Examples webapp cleanup. Submitted by Takayuki Kaneko and Markus Schï¿½nhaber. (remm)
       </fix>
       <fix>
         <bug>41289</bug>: Create configBase, since it is no longer created elsewhere.
@@ -3723,7 +3727,7 @@
         Use 2.5 xsd in Tomcat webapps. (markt)
       </fix>
       <fix>
-        Compression filter improvements, submitted by Eric Hedström. (markt)
+        Compression filter improvements, submitted by Eric Hedstrï¿½m. (markt)
       </fix>
     </changelog>
   </subsection>
@@ -3873,7 +3877,7 @@
       </update>
       <fix>
         <bug>39572</bug>: Improvements to CompressionFilter example provided by
-        Eric Hedström. (markt)
+        Eric Hedstrï¿½m. (markt)
       </fix>
     </changelog>
   </subsection>

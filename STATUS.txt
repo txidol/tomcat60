@@ -28,13 +28,6 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
-* Fix unlockAccept when the soTimeout is -1 (default).
-  Default conf has soTimeout -1 and that will throw exception if
-  used in setSoTimeout method.
-  http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-aprunlockaccept.patch
-  +1: mturk, kfujino, markt
-  -1:
-
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 

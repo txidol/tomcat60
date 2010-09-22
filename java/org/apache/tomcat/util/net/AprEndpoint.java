@@ -901,7 +901,7 @@ public class AprEndpoint {
                 saddr = new InetSocketAddress(address,port);
             }
             s = new java.net.Socket();
-            s.setSoTimeout(soTimeout);
+            s.setSoTimeout(soTimeout > 0 ? soTimeout : 60000);
             s.setSoLinger(true ,0);
             if (log.isDebugEnabled()) {
                 log.debug("About to unlock socket for: " + saddr);
