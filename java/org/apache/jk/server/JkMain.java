@@ -521,6 +521,7 @@ public class JkMain implements MBeanRegistration
     static Hashtable replacements=new Hashtable();
     static {
         replacements.put("port","channelSocket.port");
+        replacements.put("maxPort", "channelSocket.maxPort");
         replacements.put("maxThreads", "channelSocket.maxThreads");   
         replacements.put("minSpareThreads", "channelSocket.minSpareThreads");   
         replacements.put("maxSpareThreads", "channelSocket.maxSpareThreads");   
