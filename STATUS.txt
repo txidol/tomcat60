@@ -70,7 +70,7 @@ PATCHES PROPOSED TO BACKPORT:
   Failure of one connector should not leave some connectors started and some
   ignored
   https://issues.apache.org/bugzilla/attachment.cgi?id=25633
-  +1: kkolinko, markt
+  +1: kkolinko, markt, mturk
   -1:
 
 * Configure Tomcat to use HttpOnly for session cookies by default
@@ -141,9 +141,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
    kkolinko: I was worried that ELFunctionMapper$PrivilegedGetTccl
-   should be preloaded in o.a.jasper.security.SecurityClassLoad, 
+   should be preloaded in o.a.jasper.security.SecurityClassLoad,
    but from debugging it looks that it is called by Tomcat code only
-   (JspServlet). 
+   (JspServlet).
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49521
   http://people.apache.org/~kkolinko/patches/2010-07-17_tc6_bug49521.patch
@@ -189,7 +189,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49924
-  When non-primary node changes into a primary node, 
+  When non-primary node changes into a primary node,
   make sure isPrimarySession is changed to true.
   http://svn.apache.org/viewvc?view=revision&revision=996778
   +1: kfujino
