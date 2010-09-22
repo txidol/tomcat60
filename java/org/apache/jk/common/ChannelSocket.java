@@ -509,7 +509,9 @@ public class ChannelSocket extends JkHandler
 		unLockSocket();
 	    }
 
-            sSocket.close(); // XXX?
+            if (sSocket != null) {
+                sSocket.close(); // XXX?
+            }
             
             if( tpOName != null )  {
                 Registry.getRegistry(null, null).unregisterComponent(tpOName);

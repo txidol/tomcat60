@@ -66,13 +66,6 @@ PATCHES PROPOSED TO BACKPORT:
              system property, but defaults to the old behaviour.
 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49030
-  Failure of one connector should not leave some connectors started and some
-  ignored
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25633
-  +1: kkolinko, markt, mturk
-  -1:
-
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
   +1: kkolinko

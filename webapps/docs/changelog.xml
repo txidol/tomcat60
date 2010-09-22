@@ -65,6 +65,10 @@
         cause, CVE-2010-1622. (markt)
       </fix>
       <fix>
+        <bug>49030</bug>: Failure during start of one connector should not leave
+        some connectors started and some ignored. (kkolinko)
+      </fix>
+      <fix>
         <bug>49613</bug>: Improve performance when using SSL for applications
         that make multiple class to <code>Request.getAttributeNames()</code>.
         Patch provided by Sampo Savolainen. (markt)

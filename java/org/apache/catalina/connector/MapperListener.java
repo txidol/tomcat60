@@ -169,8 +169,10 @@ public class MapperListener
      * unregister this from JMImplementation:type=MBeanServerDelegate
      */
     public void destroy() {
+        if (mBeanServer == null) {
+            return;
+        }
         try {
-
             ObjectName objectName = new ObjectName(
                     "JMImplementation:type=MBeanServerDelegate");
             mBeanServer.removeNotificationListener(objectName, this);
