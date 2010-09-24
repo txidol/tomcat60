@@ -175,3 +175,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
    kkolinko: I think getMapOwner().objectMadePrimay(key, entry.getValue()); can
     throw an NPE. Can the mapOwner be null?
+     kfujino : mapOwner is specified by the argument of the constructor of AbstractReplicatedMap. 
+       LazyReplicatedMap is constructed  specifying "this" in BackupManager#startInternal(). 
+       Therefore, I think mapOwner can not be null. 
