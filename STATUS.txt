@@ -157,3 +157,10 @@ PATCHES PROPOSED TO BACKPORT:
      kfujino : mapOwner is specified by the argument of the constructor of AbstractReplicatedMap. 
        LazyReplicatedMap is constructed  specifying "this" in BackupManager#startInternal(). 
        Therefore, I think mapOwner can not be null. 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49209
+  Prevent possible AccessControlException during undeployment when running with a security manager
+  Patch provided by Sylvain Laurent
+  http://svn.apache.org/viewvc?rev=1001955&view=rev
+  +1: markt
+  -1:
