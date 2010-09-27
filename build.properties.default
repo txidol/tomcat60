@@ -123,7 +123,7 @@ commons-dbcp.home=${base.path}/commons-dbcp-${commons-dbcp.version}-src
 commons-dbcp-src.loc=${base-commons.loc}/dbcp/source/commons-dbcp-${commons-dbcp.version}-src.tar.gz
 
 # ----- Commons Pool, version 1.1 or later -----
-commons-pool.version=1.5.4
+commons-pool.version=1.5.5
 commons-pool.home=${base.path}/commons-pool-${commons-pool.version}-src
 commons-pool-src.loc=${base-commons.loc}/pool/source/commons-pool-${commons-pool.version}-src.tar.gz
 

@@ -53,6 +53,9 @@
       <add>
         Allow the off-line building of the extras package. (markt)
       </add>
+      <update>
+        Update to Commons Pool 1.5.5. (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Catalina">
