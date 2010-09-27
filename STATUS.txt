@@ -138,14 +138,6 @@ PATCHES PROPOSED TO BACKPORT:
    but from debugging it looks that it is called by Tomcat code only
    (JspServlet).
 
-* When a cluster node disappears when using the backup manager, handle the
-  failed ping message rather than propagating the exception (which just logs the
-  stack trace but doesn't do anything to deal with the failure)
-  http://svn.apache.org/viewvc?rev=993007&view=rev
-  +1: markt, kfujino, kkolinko
-  -1:
-   kkolinko: s/membersq/members/ in a comment
-
 * Make sure Contexts defined in server.xml pick up any configClass setting from
   the parent Host.
   http://people.apache.org/~markt/patches/2010-09-11-configClass.patch
