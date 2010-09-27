@@ -164,7 +164,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Update commons pool to 1.5.5
   http://svn.apache.org/viewvc?rev=996163&view=rev
   (Changelog: http://commons.apache.org/pool/changes-report.html#a1.5.5)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49924
