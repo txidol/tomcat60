@@ -50,6 +50,9 @@
         Switch to using the Eclipse compiler JAR directly rather than creating
         it from the larger JDT download. (markt)
       </update>
+      <add>
+        Allow the off-line building of the extras package. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Catalina">
