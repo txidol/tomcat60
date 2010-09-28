@@ -186,3 +186,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1002185&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49728
+  Improve PID file handling when another process is managing the PID file and
+  Tomcat does not have write access.
+  http://svn.apache.org/viewvc?rev=1002263&view=rev
+  +1: markt
+  -1:
