@@ -191,6 +191,8 @@ PATCHES PROPOSED TO BACKPORT:
   Improve PID file handling when another process is managing the PID file and
   Tomcat does not have write access.
   http://svn.apache.org/viewvc?rev=1002263&view=rev
+  http://svn.apache.org/viewvc?rev=1002359&view=rev (review)
+  http://svn.apache.org/viewvc?rev=1002362&view=rev (review)
   +1: markt
   -1:
   -0: mturk: Needs a review before backport.
