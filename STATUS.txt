@@ -193,3 +193,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1002263&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49665
+  Better handling for missing TLD files. Report JSP filename and location.
+  http://svn.apache.org/viewvc?rev=1002274&view=rev
+  +1: markt
+  -1:
