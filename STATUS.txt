@@ -172,3 +172,12 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=26094
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49625
+  Ensure Vary header is set if response may be compressed rather than only
+  setting it if it is compressed.
+  http://svn.apache.org/viewvc?rev=1002133&view=rev
+  (patch needs to be applied separately to BIO, NIO and APR HTTP connectors)
+  +1: markt
+  -1: 
+
