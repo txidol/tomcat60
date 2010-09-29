@@ -157,6 +157,9 @@ PATCHES PROPOSED TO BACKPORT:
      kfujino : mapOwner is specified by the argument of the constructor of AbstractReplicatedMap.
        LazyReplicatedMap is constructed  specifying "this" in BackupManager#startInternal().
        Therefore, I think mapOwner can not be null.
+     kkolinko: LazyReplicatedMap is constructed  specifying "null" in o.a.c.tribes.demos.MapDemo
+       The other call to objectMadePrimay() (in AbstractReplicatedMap.memberDisappeared(..)) checks for null:
+         if ( mapOwner!=null ) mapOwner.objectMadePrimay(entry.getKey(),entry.getValue());
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49209
   Prevent possible AccessControlException during undeployment when running with
