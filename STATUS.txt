@@ -163,7 +163,7 @@ PATCHES PROPOSED TO BACKPORT:
   a security manager
   Patch provided by Sylvain Laurent
   http://svn.apache.org/viewvc?rev=1001955&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49497
@@ -184,7 +184,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49657
   Correctly handle spaces in CGI executable name/path
   http://svn.apache.org/viewvc?rev=1002185&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49728
@@ -193,20 +193,22 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1002263&view=rev
   http://svn.apache.org/viewvc?rev=1002359&view=rev (review)
   http://svn.apache.org/viewvc?rev=1002362&view=rev (review)
-  +1: markt, mturk
+  +1: markt, mturk, kkolinko
   -1:
   mturk: +1 With the following small consistency update:
   http://svn.apache.org/viewvc?rev=1002481&view=rev (review)
+  kkolinko: +1 With the above and with this:
+  http://svn.apache.org/viewvc?rev=1002514&view=rev (correct a typo)
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49665
   Better handling for missing TLD files. Report JSP filename and location.
   http://svn.apache.org/viewvc?rev=1002274&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49195
   Avoid error message when shutting down Windows service when the shutdown port
   is disabled.
   http://svn.apache.org/viewvc?rev=1002349&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
