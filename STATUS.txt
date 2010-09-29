@@ -193,9 +193,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1002263&view=rev
   http://svn.apache.org/viewvc?rev=1002359&view=rev (review)
   http://svn.apache.org/viewvc?rev=1002362&view=rev (review)
-  +1: markt
+  +1: markt, mturk
   -1:
-  -0: mturk: Needs a review before backport.
+  mturk: +1 With the following small consistency update:
+  http://svn.apache.org/viewvc?rev=1002481&view=rev (review)
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49665
   Better handling for missing TLD files. Report JSP filename and location.
