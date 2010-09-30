@@ -150,6 +150,7 @@ PATCHES PROPOSED TO BACKPORT:
   When non-primary node changes into a primary node,
   make sure isPrimarySession is changed to true.
   http://svn.apache.org/viewvc?view=revision&revision=996778
+  http://svn.apache.org/viewvc?rev=1002935&view=rev
   +1: kfujino, markt
   -1:
    kkolinko: I think getMapOwner().objectMadePrimay(key, entry.getValue()); can
@@ -160,6 +161,7 @@ PATCHES PROPOSED TO BACKPORT:
      kkolinko: LazyReplicatedMap is constructed  specifying "null" in o.a.c.tribes.demos.MapDemo
        The other call to objectMadePrimay() (in AbstractReplicatedMap.memberDisappeared(..)) checks for null:
          if ( mapOwner!=null ) mapOwner.objectMadePrimay(entry.getKey(),entry.getValue());
+     kfujino: I see, I'll add check for null.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49209
   Prevent possible AccessControlException during undeployment when running with
