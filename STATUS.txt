@@ -204,3 +204,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1002349&view=rev
   +1: markt, kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49730
+  Correct race condition in StandardThreadExecutor that can lead to long delays
+  in processing requests. Patch provided by Sylvain Laurent.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25865
+  +1: markt
+  -1:
