@@ -227,8 +227,14 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49860
-  Add support for trailing headers
+  Add support for trailing headers.
   http://svn.apache.org/viewvc?rev=1003461&view=rev
   Note: Don't change return type for parseEndChunk(), just return true.
+  +1: markt
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49667
+  Ensure JDBC leak prevention code doesn't trigger a leak.
+  http://svn.apache.org/viewvc?rev=1003481&view=rev
   +1: markt
   -1:
