@@ -238,3 +238,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1003481&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49861
+  Don't log RMI port values formatted with commas
+  http://svn.apache.org/viewvc?rev=1003488&view=rev
+  +1: markt
+  -1:
