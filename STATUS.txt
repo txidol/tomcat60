@@ -249,3 +249,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1003556&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49905
+  Prevent memory leak when using async session replication
+  http://svn.apache.org/viewvc?rev=1003572&view=rev
+  +1: markt
+  -1:
