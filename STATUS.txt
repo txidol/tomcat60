@@ -255,3 +255,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1003572&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49915
+  Don't hide StoreConfig errors, particularly from JConsole
+  http://svn.apache.org/viewvc?rev=1003581&view=rev
+  +1: markt
+  -1:
