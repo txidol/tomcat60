@@ -261,3 +261,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1003581&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49985
+  Fix thread safety issue in EL Parser
+  http://svn.apache.org/viewvc?rev=1003861&view=rev
+  +1: markt
+  -1:
