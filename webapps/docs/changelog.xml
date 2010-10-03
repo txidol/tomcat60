@@ -84,6 +84,11 @@
         Patch provided by Sampo Savolainen. (markt)
       </fix>
       <fix>
+        <bug>49667</bug>: Ensure that using the JDBC driver memory leak
+        prevention code does not cause a one of the memory leaks it is meant to
+        avoid. (markt)
+      </fix>
+      <fix>
         <bug>49749</bug>: Use httpOnly setting when creating SSO cookie. (markt)
       </fix>
       <add>
