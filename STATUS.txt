@@ -217,13 +217,15 @@ PATCHES PROPOSED TO BACKPORT:
   clients. Patch provided by Panagiotis Astithas.
   http://svn.apache.org/viewvc?view=revision&revision=964780
   +1: markt
-  -1:
-
+  -1: kkolinko:
+    See Re:r964780 on dev@. To summarize:
+    1) There are some elements where namespace prefix was not added
+    2) Our XMLWriter class has support for namespaces. I'd be better to use that.
   
 * Fix http://people.apache.org/~markt/patches/2010-09-30-bug49856-tc6.patch
   Add executor name to connector in JMX
   http://people.apache.org/~markt/patches/2010-09-30-bug49856-tc6.patch
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49860
@@ -248,7 +250,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49985
   Fix thread safety issue in EL Parser
   http://svn.apache.org/viewvc?rev=1003861&view=rev
-  +1: markt, timw
+  +1: markt, timw, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49998
