@@ -33,6 +33,7 @@
     <author email="jfclere@apache.org">Jean-Frederic Clere</author>
     <author email="kfujino@apache.org">Keiichi Fujino</author>
     <author email="mturk@apache.org">Mladen Turk</author>
+    <author email="timw@apache.org">Tim Whittington</author>
     <title>Changelog</title>
   </properties>
 
@@ -120,6 +121,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>49998</bug>: Make jsp:root detection work with single quoted
+        attributes as well. (timw)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Cluster">
     <changelog>
       <fix>
@@ -145,15 +154,6 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Jasper">
-    <changelog>
-      <fix>
-        <bug>49987</bug>: Make jsp:root detection work with single quoted
-        attributes as well. (timw)
-      </fix>
-    </changelog>
-  </subsection>
-  
   <subsection name="Other">
     <changelog>
       <fix>
