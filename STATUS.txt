@@ -233,12 +233,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49667
-  Ensure JDBC leak prevention code doesn't trigger a leak.
-  http://svn.apache.org/viewvc?rev=1003481&view=rev
-  +1: markt, kkolinko. timw
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49861
   Don't log RMI port values formatted with commas
   http://svn.apache.org/viewvc?rev=1003488&view=rev
