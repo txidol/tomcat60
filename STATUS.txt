@@ -236,18 +236,18 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49667
   Ensure JDBC leak prevention code doesn't trigger a leak.
   http://svn.apache.org/viewvc?rev=1003481&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko. timw
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49861
   Don't log RMI port values formatted with commas
   http://svn.apache.org/viewvc?rev=1003488&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, timw
   -1:
 
 * Make recent catalina.sh changes work on Solaris
   http://svn.apache.org/viewvc?rev=1003556&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, timw
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49905
@@ -265,5 +265,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49985
   Fix thread safety issue in EL Parser
   http://svn.apache.org/viewvc?rev=1003861&view=rev
-  +1: markt
+  +1: markt, timw
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49998
+  Handle single quoted attributes in detection of jsp:root element in XML syntax JSP files.
+  http://svn.apache.org/viewvc?view=revision&revision=1003923
+  +1: timw
   -1:
