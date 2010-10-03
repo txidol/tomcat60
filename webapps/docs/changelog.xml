@@ -145,6 +145,15 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>49987</bug>: Make jsp:root detection work with single quoted
+        attributes as well. (timw)
+      </fix>
+    </changelog>
+  </subsection>
+  
   <subsection name="Other">
     <changelog>
       <fix>
