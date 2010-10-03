@@ -254,5 +254,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49998
   Handle single quoted attributes in detection of jsp:root element in XML syntax JSP files.
   http://svn.apache.org/viewvc?view=revision&revision=1003923
-  +1: timw, kkolinko
+  +1: timw, kkolinko, markt
   -1:
