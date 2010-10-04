@@ -1615,38 +1615,20 @@ public final class CGIServlet extends HttpServlet {
             Process proc = null;
             int bufRead = -1;
 
+            String[] cmdAndArgs = new String[params.size() + 2];
+            
+            cmdAndArgs[0] = cgiExecutable;
+            
+            cmdAndArgs[1] = command;
+
             //create query arguments
-            StringBuffer cmdAndArgs = new StringBuffer();
-            if (command.indexOf(" ") < 0) {
-                cmdAndArgs.append(command);
-            } else {
-                // Spaces used as delimiter, so need to use quotes
-                cmdAndArgs.append("\"");
-                cmdAndArgs.append(command);
-                cmdAndArgs.append("\"");
-            }
-
             for (int i=0; i < params.size(); i++) {
-                cmdAndArgs.append(" ");
-                String param = (String) params.get(i);
-                if (param.indexOf(" ") < 0) {
-                    cmdAndArgs.append(param);
-                } else {
-                    // Spaces used as delimiter, so need to use quotes
-                    cmdAndArgs.append("\"");
-                    cmdAndArgs.append(param);
-                    cmdAndArgs.append("\"");
-                }
+                cmdAndArgs[i + 2] = (String) params.get(i);
             }
-
-            StringBuffer command = new StringBuffer(cgiExecutable);
-            command.append(" ");
-            command.append(cmdAndArgs.toString());
-            cmdAndArgs = command;
 
             try {
                 rt = Runtime.getRuntime();
-                proc = rt.exec(cmdAndArgs.toString(), hashToStringArray(env), wd);
+                proc = rt.exec(cmdAndArgs, hashToStringArray(env), wd);
     
                 String sContentLength = (String) env.get("CONTENT_LENGTH");
 
