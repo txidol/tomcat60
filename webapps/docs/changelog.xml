@@ -107,6 +107,11 @@
         <bug>49856</bug>: Expose the executor name for the connector via JMX.
         (markt)
       </add>
+      <fix>
+        <bug>49915</bug>: Make error more obvious, particularly when accessed
+        via JConsole, if StandardServer.storeConfig() is called when there is
+        no StoreConfig implementation present. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
