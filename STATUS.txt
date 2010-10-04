@@ -209,12 +209,6 @@ PATCHES PROPOSED TO BACKPORT:
     1) There are some elements where namespace prefix was not added
     2) Our XMLWriter class has support for namespaces. I'd be better to use that.
   
-* Fix http://people.apache.org/~markt/patches/2010-09-30-bug49856-tc6.patch
-  Add executor name to connector in JMX
-  http://people.apache.org/~markt/patches/2010-09-30-bug49856-tc6.patch
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49860
   Add support for trailing headers.
   http://svn.apache.org/viewvc?rev=1003461&view=rev

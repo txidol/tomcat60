@@ -103,6 +103,10 @@
       <add>
         Provide better web application state information via JMX. (markt)
       </add>
+      <add>
+        <bug>49856</bug>: Expose the executor name for the connector via JMX.
+        (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

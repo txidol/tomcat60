@@ -886,6 +886,15 @@ public class Connector
         return useIPVHosts;
     }
 
+
+    public String getExecutorName() {
+        Object ex = IntrospectionUtils.getProperty(protocolHandler, "executor");
+        if (ex instanceof org.apache.catalina.Executor) {
+            return ((org.apache.catalina.Executor) ex).getName();
+        }
+        return "Internal";
+    }
+
     // --------------------------------------------------------- Public Methods
 
 
