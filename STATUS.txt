@@ -238,13 +238,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49905
   Prevent memory leak when using async session replication
   http://svn.apache.org/viewvc?rev=1003572&view=rev
-  +1: markt
+  +1: markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49915
   Don't hide StoreConfig errors, particularly from JConsole
   http://svn.apache.org/viewvc?rev=1003581&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49985
