@@ -399,6 +399,10 @@ public class Catalina extends Embedded {
                 log.error("Catalina.stop: ", e);
                 System.exit(1);
             }
+        } else {
+            // Server object already present. Must be running as a service
+            // Shutdown hook will take care of clean-up
+            System.exit(0);
         }
 
         // Stop the existing server
