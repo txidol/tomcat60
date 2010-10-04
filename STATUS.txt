@@ -189,7 +189,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49657
   Correctly handle spaces in CGI executable name/path
   http://svn.apache.org/viewvc?rev=1002185&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49665
@@ -202,7 +202,7 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid error message when shutting down Windows service when the shutdown port
   is disabled.
   http://svn.apache.org/viewvc?rev=1002349&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49730
@@ -225,7 +225,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix http://people.apache.org/~markt/patches/2010-09-30-bug49856-tc6.patch
   Add executor name to connector in JMX
   http://people.apache.org/~markt/patches/2010-09-30-bug49856-tc6.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49860
