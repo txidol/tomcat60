@@ -141,6 +141,7 @@ public class BackupManager extends StandardManager implements ClusterManager, Ma
             DeltaSession session = (DeltaSession)value;
             synchronized (session) {
                 session.access();
+                session.setPrimarySession(true);
                 session.endAccess();
             }
         }
