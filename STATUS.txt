@@ -220,3 +220,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: timw
   -1:
 
+* Backport all JRE leak prevention listener changes to tc6
+  http://people.apache.org/~markt/patches/2010-10-05-leak-preotection-tc6.patch
+  +1: markt
+  -1:
