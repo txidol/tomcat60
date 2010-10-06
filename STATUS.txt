@@ -202,7 +202,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49905
   Prevent memory leak when using async session replication
   http://svn.apache.org/viewvc?rev=1003572&view=rev
-  +1: markt, kfujino
+  +1: markt, kfujino, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
@@ -219,6 +219,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1004415&view=rev
   +1: timw
   -1:
+   kkolinko: See Re:r1004393 on dev@
 
 * Backport all JRE leak prevention listener changes to tc6
   http://people.apache.org/~markt/patches/2010-10-05-leak-preotection-tc6.patch
