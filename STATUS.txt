@@ -232,3 +232,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1004869&view=rev
   +1: kkolinko
   -1:
+
+* Fix path parameter handling. Currently the following URL fails with a 404:
+  http://localhost:8080/examples/jsp/snp;x=y/snoop.jsp
+  http://people.apache.org/~markt/patches/2010-10-06-path-param-tc6.patch
+  +1: markt
+  -1:
