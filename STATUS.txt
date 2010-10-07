@@ -245,3 +245,10 @@ PATCHES PROPOSED TO BACKPORT:
   (Port of http://svn.apache.org/viewvc?view=revision&revision=920820)
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49811
+  Add context option to disable URL re-writing and session parsing from URLs
+  Based on a patch by Wesley.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=26135
+  +1: markt
+  -1:
