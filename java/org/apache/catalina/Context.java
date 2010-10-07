@@ -1095,10 +1095,6 @@ public interface Context extends Container {
      * @param xmlNamespaceAware true to enable namespace awareness
      */
     public void setXmlNamespaceAware(boolean xmlNamespaceAware);
-    /**
-     * Get the server.xml <context> attribute's xmlValidation.
-     * @return true if validation is enabled.
-     */
      
 
     /**
@@ -1110,9 +1106,9 @@ public interface Context extends Container {
 
 
     /**
-     * Get the server.xml <context> attribute's webXmlValidation.
+     * Get the validation feature of the XML parser used when
+     * parsing tlds files. 
      * @return true if validation is enabled.
-     *
      */
     public boolean getTldValidation();
 
@@ -1130,7 +1126,5 @@ public interface Context extends Container {
      * @param tldNamespaceAware true to enable namespace awareness
      */
     public void setTldNamespaceAware(boolean tldNamespaceAware);
-
-
 }
 
