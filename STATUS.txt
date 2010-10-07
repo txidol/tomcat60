@@ -258,3 +258,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1005467&view=rev (timw)
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49987
+  Thread safety issue with population of servlet context initialization
+  parameters.
+  http://svn.apache.org/viewvc?rev=1005647&view=rev
+  +1: markt
+  -1:
+
+  
