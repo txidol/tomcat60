@@ -266,4 +266,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-  
+  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50066
+  Compile recursive tag file if it depends on a JAR. Patch provided by Sylvain
+  Laurent.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=26149
+  +1: markt
+  -1:
