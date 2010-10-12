@@ -207,6 +207,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: timw
   -1:
    kkolinko: See Re:r1004393 on dev@
+    timw: fixed in http://svn.apache.org/viewvc?rev=1004912&view=rev
 
 * Backport all JRE leak prevention listener changes to tc6
   http://people.apache.org/~markt/patches/2010-10-05-leak-preotection-tc6.patch
@@ -250,20 +251,21 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49972
   Potential thread safety issues in FastHttpDateFormat
   http://svn.apache.org/viewvc?rev=1005452&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, timw
   -1:
+  timw: Minor issue: the synchronized (parseCache) in parseDate() is probably unnecessary
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49986
   Thread safety for JSP reload.
   http://svn.apache.org/viewvc?rev=1005467&view=rev (timw)
-  +1: markt, kfujino, kkolinko
+  +1: markt, kfujino, kkolinko, timw
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49987
   Thread safety issue with population of servlet context initialization
   parameters.
   http://svn.apache.org/viewvc?rev=1005647&view=rev
-  +1: markt, kfujino, kkolinko
+  +1: markt, kfujino, kkolinko, timw
   -1:
 
   Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50066
