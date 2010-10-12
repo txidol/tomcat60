@@ -256,14 +256,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49986
   Thread safety for JSP reload.
   http://svn.apache.org/viewvc?rev=1005467&view=rev (timw)
-  +1: markt
+  +1: markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49987
   Thread safety issue with population of servlet context initialization
   parameters.
   http://svn.apache.org/viewvc?rev=1005647&view=rev
-  +1: markt
+  +1: markt, kfujino
   -1:
 
   Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50066
