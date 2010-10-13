@@ -265,3 +265,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1022120&view=rev
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50072
+  NIO connector can mis-read request line if not sent in a single pacaket
+  https://issues.apache.org/bugzilla/attachment.cgi?id=26173&action=edit
+  +1: markt
+  -1:
