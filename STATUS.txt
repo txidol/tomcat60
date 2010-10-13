@@ -249,3 +249,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1022134&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49428
+  Add a work-around for the known namespace issues for some Microsoft WebDAV
+  clients. Based on the patch provided by Panagiotis Astithas.
+  http://svn.apache.org/viewvc?rev=1022120&view=rev
+  +1: kkolinko
+  -1:
