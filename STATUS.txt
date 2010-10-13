@@ -238,9 +238,14 @@ PATCHES PROPOSED TO BACKPORT:
      - Do not remove "// Make sure no session ID is returned" comment.
      - Documentation update will be needed.
 
-  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50066
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50066
   Compile recursive tag file if it depends on a JAR. Patch provided by Sylvain
   Laurent.
   https://issues.apache.org/bugzilla/attachment.cgi?id=26149
   +1: markt, kkolinko
+  -1:
+
+* Avoid unnecessary cast
+  http://svn.apache.org/viewvc?rev=1022134&view=rev
+  +1: markt
   -1:
