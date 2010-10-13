@@ -247,7 +247,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Avoid unnecessary cast
   http://svn.apache.org/viewvc?rev=1022134&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49428
