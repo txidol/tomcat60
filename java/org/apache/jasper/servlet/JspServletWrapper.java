@@ -75,11 +75,13 @@ public class JspServletWrapper {
     private ServletConfig config;
     private Options options;
     private boolean firstTime = true;
-    private boolean reload = true;
+    /** Whether the servlet needs reloading on next access */
+    private volatile boolean reload = true;
     private boolean isTagFile;
     private int tripCount;
     private JasperException compileException;
-    private long servletClassLastModifiedTime;
+    /** Timestamp of last time servlet resource was modified */
+    private volatile long servletClassLastModifiedTime;
     private long lastModificationTest = 0L;
 
     /*
@@ -130,6 +132,9 @@ public class JspServletWrapper {
     public Servlet getServlet()
         throws ServletException, IOException, FileNotFoundException
     {
+        // DCL on 'reload' requires that 'reload' be volatile
+        // (this also forces a read memory barrier, ensuring the 
+        // new servlet object is read consistently)
         if (reload) {
             synchronized (this) {
                 // Synchronizing on jsw enables simultaneous loading
@@ -138,7 +143,7 @@ public class JspServletWrapper {
                     // This is to maintain the original protocol.
                     destroy();
                     
-                    Servlet servlet = null;
+                    final Servlet servlet;
                     
                     try {
                         servletClass = ctxt.load();
@@ -164,6 +169,7 @@ public class JspServletWrapper {
 
                     theServlet = servlet;
                     reload = false;
+                    // Volatile 'reload' forces in order write of 'theServlet' and new servlet object
                 }
             }    
         }
@@ -190,6 +196,9 @@ public class JspServletWrapper {
      * @param lastModified Last-modified time of servlet class
      */
     public void setServletClassLastModifiedTime(long lastModified) {
+        // DCL requires servletClassLastModifiedTime be volatile
+        // to force read and write barriers on access/set
+        // (and to get atomic write of long)
         if (this.servletClassLastModifiedTime < lastModified) {
             synchronized (this) {
                 if (this.servletClassLastModifiedTime < lastModified) {
