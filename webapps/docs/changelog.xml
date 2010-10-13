@@ -117,6 +117,10 @@
         via JConsole, if StandardServer.storeConfig() is called when there is
         no StoreConfig implementation present. (markt)
       </fix>
+      <fix>
+        <bug>49987</bug>: Fix potential data race in the population of the
+        Servlet Context initialisation parameters. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

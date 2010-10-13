@@ -251,13 +251,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino, kkolinko, timw
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49987
-  Thread safety issue with population of servlet context initialization
-  parameters.
-  http://svn.apache.org/viewvc?rev=1005647&view=rev
-  +1: markt, kfujino, kkolinko, timw
-  -1:
-
   Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50066
   Compile recursive tag file if it depends on a JAR. Patch provided by Sylvain
   Laurent.

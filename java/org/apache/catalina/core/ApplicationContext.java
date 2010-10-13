@@ -122,7 +122,8 @@ public class ApplicationContext
     /**
      * The merged context initialization parameters for this Context.
      */
-    private Map parameters = null;
+    private Map<String,String> parameters =
+        new ConcurrentHashMap<String,String>();
 
 
     /**
@@ -251,10 +252,17 @@ public class ApplicationContext
      * @param name Name of the initialization parameter to retrieve
      */
     public String getInitParameter(final String name) {
+        return parameters.get(name);
+    }
 
-        mergeParameters();
-        return ((String) parameters.get(name));
 
+    public boolean setInitParameter(String name, String value) {
+        if (parameters.containsKey(name)) {
+            return false;
+        }
+        
+        parameters.put(name, value);
+        return true;
     }
 
 
@@ -263,10 +271,7 @@ public class ApplicationContext
      * empty enumeration if the context has no initialization parameters.
      */
     public Enumeration getInitParameterNames() {
-
-        mergeParameters();
         return (new Enumerator(parameters.keySet()));
-
     }
 
 
@@ -863,38 +868,6 @@ public class ApplicationContext
 
         if (attributes.containsKey(name))
             readOnlyAttributes.put(name, name);
-
-    }
-
-
-    // -------------------------------------------------------- Private Methods
-
-
-    /**
-     * Merge the context initialization parameters specified in the application
-     * deployment descriptor with the application parameters described in the
-     * server configuration, respecting the <code>override</code> property of
-     * the application parameters appropriately.
-     */
-    private void mergeParameters() {
-
-        if (parameters != null)
-            return;
-        Map results = new ConcurrentHashMap();
-        String names[] = context.findParameters();
-        for (int i = 0; i < names.length; i++)
-            results.put(names[i], context.findParameter(names[i]));
-        ApplicationParameter params[] =
-            context.findApplicationParameters();
-        for (int i = 0; i < params.length; i++) {
-            if (params[i].getOverride()) {
-                if (results.get(params[i].getName()) == null)
-                    results.put(params[i].getName(), params[i].getValue());
-            } else {
-                results.put(params[i].getName(), params[i].getValue());
-            }
-        }
-        parameters = results;
 
     }
 

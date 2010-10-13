@@ -4620,6 +4620,9 @@ public class StandardContext
                 postWelcomeFiles();
             }
             
+            // Set up the context init params
+            mergeParameters();
+
             if (ok) {
                 // Notify our interested LifecycleListeners
                 lifecycle.fireLifecycleEvent(AFTER_START_EVENT, null);
@@ -4720,6 +4723,33 @@ public class StandardContext
         } catch( Throwable t ) {
             if(log.isInfoEnabled())
                 log.info("Error saving context.ser ", t);
+        }
+    }
+
+    
+    /**
+     * Merge the context initialization parameters specified in the application
+     * deployment descriptor with the application parameters described in the
+     * server configuration, respecting the <code>override</code> property of
+     * the application parameters appropriately.
+     */
+    private void mergeParameters() {
+        String names[] = findParameters();
+        for (int i = 0; i < names.length; i++) {
+            context.setInitParameter(names[i], findParameter(names[i]));
+        }
+
+        ApplicationParameter params[] = findApplicationParameters();
+        for (int i = 0; i < params.length; i++) {
+            if (params[i].getOverride()) {
+                if (context.getInitParameter(params[i].getName()) == null) {
+                    context.setInitParameter(params[i].getName(),
+                            params[i].getValue());
+                }
+            } else {
+                context.setInitParameter(params[i].getName(),
+                        params[i].getValue());
+            }
         }
     }
 
