@@ -145,6 +145,10 @@
         support for <code>maxPort</code> attribute on a <code>Connector</code>
         element as a synonym for channelSocket.maxPort
       </fix>
+      <fix>
+        <bug>49972</bug>: Fix potential thread safe issue when formatting dates
+        for use in HTTP headers. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
