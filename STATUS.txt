@@ -174,16 +174,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49428
-  Add a work-around for the known namespace issues for some Microsoft WebDAV
-  clients. Patch provided by Panagiotis Astithas.
-  http://svn.apache.org/viewvc?view=revision&revision=964780
-  +1: markt
-  -1: kkolinko:
-    See Re:r964780 on dev@. To summarize:
-    1) There are some elements where namespace prefix was not added
-    2) Our XMLWriter class has support for namespaces. I'd be better to use that.
-  
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49860
   Add support for trailing headers.
   http://svn.apache.org/viewvc?rev=1003461&view=rev
