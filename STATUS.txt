@@ -251,13 +251,6 @@ PATCHES PROPOSED TO BACKPORT:
      - Do not remove "// Make sure no session ID is returned" comment.
      - Documentation update will be needed.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49428
-  Add a work-around for the known namespace issues for some Microsoft WebDAV
-  clients. Based on the patch provided by Panagiotis Astithas.
-  http://svn.apache.org/viewvc?rev=1022120&view=rev
-  +1: kkolinko, markt, timw
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50072
   NIO connector can mis-read request line if not sent in a single pacaket
   https://issues.apache.org/bugzilla/attachment.cgi?id=26173&action=edit
