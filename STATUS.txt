@@ -211,7 +211,7 @@ PATCHES PROPOSED TO BACKPORT:
   Additional patch:
   http://svn.apache.org/viewvc?rev=1004868&view=rev
   http://svn.apache.org/viewvc?rev=1004869&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix path parameter handling. Currently the following URL fails with a 404:
@@ -279,7 +279,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=1022323&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
   Additional patch:
