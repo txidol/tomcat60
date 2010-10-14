@@ -163,6 +163,10 @@
         <bug>49998</bug>: Make jsp:root detection work with single quoted
         attributes as well. (timw)
       </fix>
+      <fix>
+        <bug>50066</bug>: Compile a recursive tag file if it depends on a JAR.
+        Patch provided by Sylvain Laurent. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
