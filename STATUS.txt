@@ -251,19 +251,19 @@ PATCHES PROPOSED TO BACKPORT:
   Compile recursive tag file if it depends on a JAR. Patch provided by Sylvain
   Laurent.
   https://issues.apache.org/bugzilla/attachment.cgi?id=26149
-  +1: markt, kkolinko
+  +1: markt, kkolinko, timw
   -1:
 
 * Avoid unnecessary cast
   http://svn.apache.org/viewvc?rev=1022134&view=rev
-  +1: markt, kkolinko, rjung
+  +1: markt, kkolinko, rjung, timw
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49428
   Add a work-around for the known namespace issues for some Microsoft WebDAV
   clients. Based on the patch provided by Panagiotis Astithas.
   http://svn.apache.org/viewvc?rev=1022120&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, timw
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50072
