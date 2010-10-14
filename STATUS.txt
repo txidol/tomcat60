@@ -141,10 +141,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Make sure Contexts defined in server.xml pick up any configClass setting from
   the parent Host.
   http://people.apache.org/~markt/patches/2010-09-11-configClass.patch
-  +1: markt
+  +1: markt, kkolinko
   -1:
-   kkolinko: A bit hard to understand. The proposal is about a rule that processes
-    <Context>, but LifecycleListenerRule is used for <Engine> and <Host> as well.
+   kkolinko: Though 1) I do not see any documentation on configClass attribute in
+    the docs at all. Though it is in JavaDoc for StandardHost.
+    2) It looks, formally, the patch does more than is announced. It applies to any
+    LifecycleListenerRule. Actually, though, for Engine's engineConfigClass attribute
+    and Host's hostConfigClass attribute it does not change their behaviour,
+    because their containers do not have those attributes.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49497
   Stop accepting new requests (inc keep-alive) once the BIO connector is paused
