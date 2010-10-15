@@ -276,4 +276,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1022623&view=rev (cache sizes)
   +1: markt
   -1:
- 
+
+* Do not call reset if the default LogManager is in use
+  (an additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=48716)
+  Patch by markt.
+  http://svn.apache.org/viewvc?rev=1005802&view=rev
+  +1: kkolinko
+  -1:
