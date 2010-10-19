@@ -290,3 +290,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1024224&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50084
+  Handle the case where the PID file is read/write accessible but the directory
+  is not so the PID file can not be deleted
+  http://svn.apache.org/viewvc?rev=1024251&view=rev
+  +1: markt
+  -1:
