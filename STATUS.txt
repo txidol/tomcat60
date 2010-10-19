@@ -283,3 +283,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1005802&view=rev
   +1: kkolinko, kfujino
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50105
+  Use Enum.name() rather than Enum.toString() when evaluating composite
+  expressions
+  http://svn.apache.org/viewvc?rev=1024224&view=rev
+  +1: markt
+  -1:
