@@ -124,6 +124,10 @@
       <fix>
         Code clean-up. Avoid some casts in StandardContext. (markt)
       </fix>
+      <add>
+        Add security policy and token poller protection to the JRE memory leak
+        protection provided in Tomcat 6. (markt/kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

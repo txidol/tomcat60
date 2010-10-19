@@ -25,7 +25,6 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import javax.imageio.ImageIO;
-import javax.security.auth.Policy;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -50,7 +49,6 @@ import org.apache.tomcat.util.res.StringManager;
  * first disabling Jar URL connection caching. The workaround is to disable this
  * caching by default. 
  */
-@SuppressWarnings("deprecation")
 public class JreMemoryLeakPreventionListener implements LifecycleListener {
 
     private static final Log log =
@@ -232,10 +230,24 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
              */
             if (securityPolicyProtection) {
                 try {
-                    Policy.getPolicy();
+                    // Policy.getPolicy();
+                    Class<?> policyClass = Class
+                            .forName("javax.security.auth.Policy");
+                    Method method = policyClass.getMethod("getPolicy");
+                    method.invoke(null);
+                } catch(ClassNotFoundException e) {
+                    // Ignore. The class is deprecated.
                 } catch(SecurityException e) {
                     // Ignore. Don't need call to getPolicy() to be successful,
                     // just need to trigger static initializer.
+                } catch (NoSuchMethodException e) {
+                    log.warn(sm.getString("jreLeakListener.authPolicyFail"), e);
+                } catch (IllegalArgumentException e) {
+                    log.warn(sm.getString("jreLeakListener.authPolicyFail"), e);
+                } catch (IllegalAccessException e) {
+                    log.warn(sm.getString("jreLeakListener.authPolicyFail"), e);
+                } catch (InvocationTargetException e) {
+                    log.warn(sm.getString("jreLeakListener.authPolicyFail"), e);
                 }
             }
 
