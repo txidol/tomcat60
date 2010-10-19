@@ -266,13 +266,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino
   -1:
 
-* Do not call reset if the default LogManager is in use
-  (an additional fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=48716)
-  Patch by markt.
-  http://svn.apache.org/viewvc?rev=1005802&view=rev
-  +1: kkolinko, kfujino, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50105
   Use Enum.name() rather than Enum.toString() when evaluating composite
   expressions
