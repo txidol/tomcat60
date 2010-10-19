@@ -204,11 +204,6 @@ PATCHES PROPOSED TO BACKPORT:
     timw: fixed in http://svn.apache.org/viewvc?rev=1004912&view=rev
 
 * Backport all JRE leak prevention listener changes to tc6
-  http://people.apache.org/~markt/patches/2010-10-05-leak-preotection-tc6.patch
-  +1: markt, kkolinko, kfujino
-  -1:
-
-  Additional patch:
   http://svn.apache.org/viewvc?rev=1004868&view=rev
   http://svn.apache.org/viewvc?rev=1004869&view=rev
   +1: kkolinko, markt, kfujino

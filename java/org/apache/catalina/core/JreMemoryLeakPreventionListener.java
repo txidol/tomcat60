@@ -25,6 +25,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import javax.imageio.ImageIO;
+import javax.security.auth.Policy;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -49,6 +50,7 @@ import org.apache.tomcat.util.res.StringManager;
  * first disabling Jar URL connection caching. The workaround is to disable this
  * caching by default. 
  */
+@SuppressWarnings("deprecation")
 public class JreMemoryLeakPreventionListener implements LifecycleListener {
 
     private static final Log log =
@@ -66,6 +68,19 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
     public void setAppContextProtection(boolean appContextProtection) {
         this.appContextProtection = appContextProtection;
     }
+    
+    /**
+     * Protect against the memory leak caused when the first call to
+     * <code>sun.misc.GC.requestLatency(long)</code> is triggered by a web
+     * application. This first call will start a GC Daemon thread with the
+     * thread's context class loader configured to be the web application class
+     * loader. Defaults to <code>true</code>.
+     */
+    private boolean gcDaemonProtection = true;
+    public boolean isGcDaemonProtection() { return gcDaemonProtection; }
+    public void setGcDaemonProtection(boolean gcDaemonProtection) {
+        this.gcDaemonProtection = gcDaemonProtection;
+    }
 
      /**
       * Protect against the memory leak caused when the first call to
@@ -80,6 +95,35 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
          this.keepAliveProtection = keepAliveProtection;
      }
     
+     /**
+      * Protect against the memory leak caused when the first call to
+      * <code>javax.security.auth.Policy</code> is triggered by a web
+      * application. This first call populate a static variable with a reference
+      * to the context class loader. Defaults to <code>true</code>.
+      */
+     private boolean securityPolicyProtection = true;
+     public boolean isSecurityPolicyProtection() {
+         return securityPolicyProtection;
+     }
+     public void setSecurityPolicyProtection(boolean securityPolicyProtection) {
+         this.securityPolicyProtection = securityPolicyProtection;
+     }
+     
+    /**
+     * Protect against the memory leak, when the initialization of the
+     * Java Cryptography Architecture is triggered by initializing
+     * a MessageDigest during web application deployment.
+     * This will occasionally start a Token Poller thread with the thread's
+     * context class loader equal to the web application class loader.
+     * Instead we initialize JCA early.
+     * Defaults to <code>true</code>.
+     */
+    private boolean tokenPollerProtection = true;
+    public boolean isTokenPollerProtection() { return tokenPollerProtection; }
+    public void setTokenPollerProtection(boolean tokenPollerProtection) {
+        this.tokenPollerProtection = tokenPollerProtection;
+    }
+
     /**
      * Protect against resources being read for JAR files and, as a side-effect,
      * the JAR file becoming locked. Note this disables caching for all
@@ -95,25 +139,14 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
     /**
      * XML parsing can pin a web application class loader in memory. This is
      * particularly nasty as profilers (at least YourKit and Eclipse MAT) don't
-     * identify any GC roots related to this. 
+     * identify any GC roots related to this.
+     * <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6916498">
+     * http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6916498</a>
      */
     private boolean xmlParsingProtection = true;
     public boolean isXmlParsingProtection() { return xmlParsingProtection; }
     public void setXmlParsingProtection(boolean xmlParsingProtection) {
         this.xmlParsingProtection = xmlParsingProtection;
-    }
-    
-    /**
-     * Protect against the memory leak caused when the first call to
-     * <code>sun.misc.GC.requestLatency(long)</code> is triggered by a web
-     * application. This first call will start a GC Daemon thread with the
-     * thread's context class loader configured to be the web application class
-     * loader. Defaults to <code>true</code>.
-     */
-    private boolean gcDaemonProtection = true;
-    public boolean isGcDaemonProtection() { return gcDaemonProtection; }
-    public void setGcDaemonProtection(boolean gcDaemonProtection) {
-        this.gcDaemonProtection = gcDaemonProtection;
     }
     
     public void lifecycleEvent(LifecycleEvent event) {
@@ -194,6 +227,31 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
             }
             
             /*
+             * Calling getPolicy retains a static reference to the context class
+             * loader.
+             */
+            if (securityPolicyProtection) {
+                try {
+                    Policy.getPolicy();
+                } catch(SecurityException e) {
+                    // Ignore. Don't need call to getPolicy() to be successful,
+                    // just need to trigger static initializer.
+                }
+            }
+
+            /*
+             * Creating a MessageDigest during web application startup
+             * initializes the Java Cryptography Architecture. Under certain
+             * conditions this starts a Token poller thread with TCCL equal
+             * to the web application class loader.
+             * 
+             * Instead we initialize JCA right now.
+             */
+            if (tokenPollerProtection) {
+                java.security.Security.getProviders();
+            }
+            
+            /*
              * Several components end up opening JarURLConnections without first
              * disabling caching. This effectively locks the file. Whilst more
              * noticeable and harder to ignore on Windows, it affects all
@@ -237,4 +295,5 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
             }
         }
     }
+
 }
