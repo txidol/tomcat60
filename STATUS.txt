@@ -279,3 +279,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1024251&view=rev
   +1: markt
   -1:
+
+* Add support for maxActiveSessions attributes to BackupManager.
+  http://svn.apache.org/viewvc?rev=1025899&view=rev
+  +1: kfujino
+  -1:
