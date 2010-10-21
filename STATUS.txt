@@ -229,7 +229,7 @@ PATCHES PROPOSED TO BACKPORT:
   Add context option to disable URL re-writing and session parsing from URLs
   Based on a patch by Wesley.
   https://issues.apache.org/bugzilla/attachment.cgi?id=26135
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
    kkolinko: minor thoughts, not mandatory:
      - I think in CoyoteAdapter.java the added "if (isURLRewritingDisabled(request))" call
