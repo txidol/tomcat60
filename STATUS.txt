@@ -284,7 +284,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add support for maxActiveSessions attributes to BackupManager.
   http://svn.apache.org/viewvc?rev=1025899&view=rev
-  +1: kfujino
+  +1: kfujino, kkolinko
   -1:
 
 * Improve sending an access message in DeltaManager.
