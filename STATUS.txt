@@ -270,7 +270,7 @@ PATCHES PROPOSED TO BACKPORT:
   Use Enum.name() rather than Enum.toString() when evaluating composite
   expressions
   http://svn.apache.org/viewvc?rev=1024224&view=rev
-  +1: markt
+  +1: markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50084
@@ -295,5 +295,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50138
   Correct threading issues in SecurityUtil
   http://svn.apache.org/viewvc?rev=1026042&view=rev
-  +1: markt
+  +1: markt, kfujino
   -1:
