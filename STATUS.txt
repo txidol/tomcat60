@@ -284,7 +284,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add support for maxActiveSessions attributes to BackupManager.
   http://svn.apache.org/viewvc?rev=1025899&view=rev
-  +1: kfujino, kkolinko
+  +1: kfujino, kkolinko, markt
   -1:
 
 * Improve sending an access message in DeltaManager.
@@ -292,6 +292,10 @@ PATCHES PROPOSED TO BACKPORT:
   If maxInactiveInterval is negative, an access message is not sending. 
   http://svn.apache.org/viewvc?rev=1025924&view=rev
   +1: kfujino
+  +1: markt - At first I wondered what the purpose of this code is but on closer
+              inspection DeltaSessions on non-primary nodes are expired at
+              2*getMaxInactiveInterval() rather than getMaxInactiveInterval() so
+              this makes sense.
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50138
@@ -304,7 +308,7 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid possible NPE in debug output in PersistentValve.
   Patch by sebb
   https://issues.apache.org/bugzilla/attachment.cgi?id=26194
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, markt
   -1:
 
 + Improve exception handling in PersistentManagerBase when running with a
@@ -312,5 +316,5 @@ PATCHES PROPOSED TO BACKPORT:
   Fixes https://issues.apache.org/bugzilla/show_bug.cgi?id=50128
   It is backport of r1026784,1026912,1026920
   http://people.apache.org/~kkolinko/patches/2010-10-25_tc6_PersistentManagerBase_v2.patch
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, markt
   -1:
