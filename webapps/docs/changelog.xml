@@ -178,6 +178,11 @@
         <bug>50066</bug>: Compile a recursive tag file if it depends on a JAR.
         Patch provided by Sylvain Laurent. (markt)
       </fix>
+      <fix>
+        <bug>50105</bug>: When processing composite EL expressions use
+        <code>Enum.name()</code> rather than <code>Enum.toString()</code> as
+        required by the EL specification. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">

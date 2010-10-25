@@ -266,13 +266,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50105
-  Use Enum.name() rather than Enum.toString() when evaluating composite
-  expressions
-  http://svn.apache.org/viewvc?rev=1024224&view=rev
-  +1: markt, kfujino, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50084
   Handle the case where the PID file is read/write accessible but the directory
   is not so the PID file can not be deleted
