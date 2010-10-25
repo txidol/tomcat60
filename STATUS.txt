@@ -258,14 +258,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50078
-  Fix threading issues in EL caches and make cache sizes configurable
-  Threading patch provided by Takayoshi Kimura
-  http://svn.apache.org/viewvc?rev=1022606&view=rev (threading)
-  http://svn.apache.org/viewvc?rev=1022623&view=rev (cache sizes)
-  +1: markt, kfujino, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50084
   Handle the case where the PID file is read/write accessible but the directory
   is not so the PID file can not be deleted

@@ -25,6 +25,8 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,10 +36,29 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class BeanELResolver extends ELResolver {
 
-	private final boolean readOnly;
+    private static final int CACHE_SIZE;
+    private static final String CACHE_SIZE_PROP =
+        "org.apache.el.BeanELResolver.CACHE_SIZE";
 
-	private final ConcurrentCache<String, BeanProperties> cache = new ConcurrentCache<String, BeanProperties>(
-			1000);
+    static {
+        if (System.getSecurityManager() == null) {
+            CACHE_SIZE = Integer.parseInt(
+                    System.getProperty(CACHE_SIZE_PROP, "1000"));
+        } else {
+            CACHE_SIZE = AccessController.doPrivileged(
+                    new PrivilegedAction<Integer>() {
+                    public Integer run() {
+                        return Integer.valueOf(
+                                System.getProperty(CACHE_SIZE_PROP, "1000"));
+                    }
+                }).intValue();
+        }
+    }
+
+    private final boolean readOnly;
+
+    private final ConcurrentCache<String, BeanProperties> cache =
+        new ConcurrentCache<String, BeanProperties>(CACHE_SIZE);
 
 	public BeanELResolver() {
 		this.readOnly = false;
@@ -311,34 +332,37 @@ public class BeanELResolver extends ELResolver {
 	
 	private final static class ConcurrentCache<K,V> {
 
-		private final int size;
-		private final Map<K,V> eden;
-		private final Map<K,V> longterm;
-		
-		public ConcurrentCache(int size) {
-			this.size = size;
-			this.eden = new ConcurrentHashMap<K,V>(size);
-			this.longterm = new WeakHashMap<K,V>(size);
-		}
-		
-		public V get(K key) {
-			V value = this.eden.get(key);
-			if (value == null) {
-				value = this.longterm.get(key);
-				if (value != null) {
-					this.eden.put(key, value);
-				}
-			}
-			return value;
-		}
-		
-		public void put(K key, V value) {
-			if (this.eden.size() >= this.size) {
-				this.longterm.putAll(this.eden);
-				this.eden.clear();
-			}
-			this.eden.put(key, value);
-		}
-
+        private final int size;
+        private final Map<K,V> eden;
+        private final Map<K,V> longterm;
+        
+        public ConcurrentCache(int size) {
+            this.size = size;
+            this.eden = new ConcurrentHashMap<K,V>(size);
+            this.longterm = new WeakHashMap<K,V>(size);
+        }
+        
+        public V get(K key) {
+            V value = this.eden.get(key);
+            if (value == null) {
+                synchronized (longterm) {
+                    value = this.longterm.get(key);
+                }
+                if (value != null) {
+                    this.eden.put(key, value);
+                }
+            }
+            return value;
+        }
+        
+        public void put(K key, V value) {
+            if (this.eden.size() >= this.size) {
+                synchronized (longterm) {
+                    this.longterm.putAll(this.eden);
+                }
+                this.eden.clear();
+            }
+            this.eden.put(key, value);
+        }
 	}
 }

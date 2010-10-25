@@ -179,6 +179,10 @@
         Patch provided by Sylvain Laurent. (markt)
       </fix>
       <fix>
+        <bug>50078</bug>: Fix threading issues in EL caches and make cache sizes
+        configurable. Threading patch provided by Takayoshi Kimura. (markt)
+      </fix>
+      <fix>
         <bug>50105</bug>: When processing composite EL expressions use
         <code>Enum.name()</code> rather than <code>Enum.toString()</code> as
         required by the EL specification. (markt)
