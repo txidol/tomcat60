@@ -325,6 +325,35 @@ public interface Context extends Container {
      * @param docBase The new document root
      */
     public void setDocBase(String docBase);
+    
+    
+    /**
+     * Is URL rewriting disabled?
+     * URL rewriting is an optional component of the servlet 2.5 specification.
+     * However if set to true this will be non-compliant with the specification
+     * as the specification requires that there <b>must</b> be a way to retain
+     * sessions if the client doesn't allow session cookies.
+     * 
+     * @return true If URL rewriting is disabled.
+     * 
+     * @see <a href="http://jcp.org/aboutJava/communityprocess/mrel/jsr154/index2.html">Servlet
+     *      2.5 Specification. Sections SRV.7.1.3 and SRV.7.1.4</a>
+     * @see javax.servlet.http.HttpServletResponse#encodeURL(String) encodeURL
+     * @see javax.servlet.http.HttpServletResponse#encodeRedirectURL(String)
+     *      encodeRedirectURL
+     */
+    public boolean isDisableURLRewriting();
+    
+    /**
+     * Is URL rewriting disabled?
+     * URL rewriting is an optional component of the servlet 2.5 specification.
+     * However if set to true this will be non-compliant with the specification
+     * as the specification requires that there <b>must</b> be a way to retain
+     * sessions if the client doesn't allow session cookies.
+     *
+     * @param disable True to disable URL Rewriting. Default <b>false</b>.
+     */
+    public void setDisableURLRewriting(boolean disable);
 
 
     /**

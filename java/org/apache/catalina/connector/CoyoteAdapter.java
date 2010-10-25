@@ -462,6 +462,13 @@ public class CoyoteAdapter implements Adapter {
         connector.getMapper().map(serverName, decodedURI, 
                                   request.getMappingData());
         request.setContext((Context) request.getMappingData().context);
+        
+        // Had to do this after the context was set.
+        // Unfortunately parseSessionId is still necessary as it 
+        // affects the final URL. Safe as session cookies still 
+        // haven't been parsed.
+        if (isURLRewritingDisabled(request))
+            clearRequestedSessionURL(request);
         request.setWrapper((Wrapper) request.getMappingData().wrapper);
 
         // Filter trace method
@@ -516,6 +523,13 @@ public class CoyoteAdapter implements Adapter {
         return true;
     }
 
+    private boolean isURLRewritingDisabled(Request request) {
+        Context context = (Context) request.getMappingData().context;
+        if (context != null)
+            return (context.isDisableURLRewriting());
+        else
+            return (false);
+    }
 
     /**
      * Parse session id in URL.
@@ -561,15 +575,19 @@ public class CoyoteAdapter implements Adapter {
                 request.setRequestedSessionURL(true);
             } catch (UnsupportedEncodingException uee) {
                 // Make sure no session ID is returned
-                request.setRequestedSessionId(null);
-                request.setRequestedSessionURL(false);
+                clearRequestedSessionURL(request);
                 log.warn(sm.getString("coyoteAdapter.parseSession", enc), uee);
             }
         } else {
-            request.setRequestedSessionId(null);
-            request.setRequestedSessionURL(false);
+            clearRequestedSessionURL(request);
         }
 
+    }
+
+
+    private void clearRequestedSessionURL(Request request) {
+        request.setRequestedSessionId(null);
+        request.setRequestedSessionURL(false);
     }
 
 

@@ -225,21 +225,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49811
-  Add context option to disable URL re-writing and session parsing from URLs
-  Based on a patch by Wesley.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=26135
-  +1: markt, kkolinko, kfujino
-  -1:
-   kkolinko: minor thoughts, not mandatory:
-     - I think in CoyoteAdapter.java the added "if (isURLRewritingDisabled(request))" call
-      should better be moved below setWrapper(..), for better readability.
-     - Implementation of CoyoteAdapter.isURLRewritingDisabled(request) could call
-      request.getContext(), because request.setContext(..) was already called,
-      but I do not insist on such changes.
-     - Do not remove "// Make sure no session ID is returned" comment.
-     - Documentation update will be needed.
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50072
   NIO connector can mis-read request line if not sent in a single pacaket
   https://issues.apache.org/bugzilla/attachment.cgi?id=26173&action=edit

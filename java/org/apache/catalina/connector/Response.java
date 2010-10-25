@@ -1479,12 +1479,14 @@ public class Response
      * <li>The requested session ID was not received via a cookie
      * <li>The specified URL points back to somewhere within the web
      *     application that is responding to this request
+     * <li>If URL rewriting hasn't been disabled for this context
      * </ul>
      *
      * @param location Absolute URL to be validated
      */
     protected boolean isEncodeable(final String location) {
-
+        if (getContext().isDisableURLRewriting())
+            return (false);
         if (location == null)
             return (false);
 

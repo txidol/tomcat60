@@ -167,6 +167,17 @@
         return <code>null</code>.</p>
       </attribute>
 
+      <attribute name="disableURLRewriting" required="false">
+        <p>Set to <code>true</code> to disable support for using URL rewriting
+        to track session IDs for clients of this Context. URL rewriting is an
+        optional component of the servlet 2.5 specification but disabling URL
+        rewriting will result in non-compliant behaviour since the specification
+        requires that there <em>must</em> be a way to retain sessions if the
+        client doesn't allow session cookies. If not specified, the
+        specification compliant default value of <code>false</code> will be
+        used.</p>
+      </attribute>
+
       <attribute name="docBase" required="true">
         <p>The <em>Document Base</em> (also known as the <em>Context
         Root</em>) directory for this web application, or the pathname

@@ -109,6 +109,10 @@
         Provide better web application state information via JMX. (markt)
       </add>
       <add>
+        <bug>49811</bug>: Add an option to disable URL rewriting on a per
+        Context basis. (markt)
+      </add>
+      <add>
         <bug>49856</bug>: Expose the executor name for the connector via JMX.
         (markt)
       </add>

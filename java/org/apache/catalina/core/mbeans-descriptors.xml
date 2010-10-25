@@ -135,6 +135,11 @@
                description="String deployment descriptor "
                type="java.lang.String"/>
                      
+    <attribute name="disableURLRewriting"
+               description="Is URL Rewriting disabled?"
+               is="true"
+               type="boolean"/>
+    
     <attribute name="docBase"
                description="The document root for this web application"
                type="java.lang.String"/>
