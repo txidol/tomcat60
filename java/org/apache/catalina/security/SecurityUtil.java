@@ -23,7 +23,8 @@ import java.lang.reflect.Method;
 import java.security.Principal;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
-import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.security.auth.Subject;
 import javax.servlet.Filter;
@@ -62,7 +63,8 @@ public final class SecurityUtil{
     /**
      * Cache every object for which we are creating method on it.
      */
-    private static HashMap objectCache = new HashMap();
+    private static final Map<Object,Method[]> objectCache =
+        new ConcurrentHashMap<Object,Method[]>();
         
     private static org.apache.juli.logging.Log log=
         org.apache.juli.logging.LogFactory.getLog( SecurityUtil.class );
@@ -142,21 +144,20 @@ public final class SecurityUtil{
         throws java.lang.Exception{
 
         Method method = null;
-        Method[] methodsCache = null;
-        if(objectCache.containsKey(targetObject)){
-            methodsCache = (Method[])objectCache.get(targetObject);
+        Method[] methodsCache = objectCache.get(targetObject);
+        if(methodsCache == null) {
+            method = createMethodAndCacheIt(methodsCache,
+                                            methodName,
+                                            targetObject,
+                                            targetType);                     
+        } else {
             method = findMethod(methodsCache, methodName);
-            if (method == null){
+            if (method == null) {
                 method = createMethodAndCacheIt(methodsCache,
                                                 methodName,
                                                 targetObject,
                                                 targetType);
             }
-        } else {
-            method = createMethodAndCacheIt(methodsCache,
-                                            methodName,
-                                            targetObject,
-                                            targetType);                     
         }
 
         execute(method, targetObject, targetArguments, principal);
@@ -221,23 +222,22 @@ public final class SecurityUtil{
                                      final Object[] targetArguments,
                                      Principal principal) 
         throws java.lang.Exception{
+        
         Method method = null;
-
-        Method[] methodsCache = null;
-        if(objectCache.containsKey(targetObject)){
-            methodsCache = (Method[])objectCache.get(targetObject);
+        Method[] methodsCache = objectCache.get(targetObject);
+        if(methodsCache == null) {
+            method = createMethodAndCacheIt(methodsCache,
+                                            methodName,
+                                            targetObject,
+                                            targetType);                     
+        } else {
             method = findMethod(methodsCache, methodName);
-            if (method == null){
+            if (method == null) {
                 method = createMethodAndCacheIt(methodsCache,
                                                 methodName,
                                                 targetObject,
                                                 targetType);
             }
-        } else {
-            method = createMethodAndCacheIt(methodsCache,
-                                            methodName,
-                                            targetObject,
-                                            targetType);                     
         }
 
         execute(method, targetObject, targetArguments, principal);
@@ -264,8 +264,9 @@ public final class SecurityUtil{
        
         try{   
             Subject subject = null;
-            PrivilegedExceptionAction pea = new PrivilegedExceptionAction(){
-                    public Object run() throws Exception{
+            PrivilegedExceptionAction<Void> pea =
+                new PrivilegedExceptionAction<Void>(){
+                    public Void run() throws Exception{
                        method.invoke(targetObject, targetArguments);
                        return null;
                     }

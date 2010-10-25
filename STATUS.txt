@@ -298,12 +298,6 @@ PATCHES PROPOSED TO BACKPORT:
               this makes sense.
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50138
-  Correct threading issues in SecurityUtil
-  http://svn.apache.org/viewvc?rev=1026042&view=rev
-  +1: markt, kfujino, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50131
   Avoid possible NPE in debug output in PersistentValve.
   Patch by sebb
