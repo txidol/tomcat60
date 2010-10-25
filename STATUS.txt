@@ -309,8 +309,8 @@ PATCHES PROPOSED TO BACKPORT:
 
 + Improve exception handling in PersistentManagerBase when running with a
   security manager.
-  (Return early instead of an NPE in the next executed line of code).
-  It is backport of r1026784, r1026912
-  http://people.apache.org/~kkolinko/patches/2010-10-25_tc6_PersistentManagerBase.patch
+  Fixes https://issues.apache.org/bugzilla/show_bug.cgi?id=50128
+  It is backport of r1026784,1026912,1026920
+  http://people.apache.org/~kkolinko/patches/2010-10-25_tc6_PersistentManagerBase_v2.patch
   +1: kkolinko
   -1:
