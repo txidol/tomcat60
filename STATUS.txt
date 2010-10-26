@@ -252,11 +252,6 @@ PATCHES PROPOSED TO BACKPORT:
    kkolinko: There are known problems with "-x" and "-r" on os400, (see
    comments in the *.sh files) so maybe "-w" does not work there as well.
 
-* Add support for maxActiveSessions attributes to BackupManager.
-  http://svn.apache.org/viewvc?rev=1025899&view=rev
-  +1: kfujino, kkolinko, markt
-  -1:
-
 * Improve sending an access message in DeltaManager.
   maxInactiveInterval of not Manager but the session is used. 
   If maxInactiveInterval is negative, an access message is not sending. 
