@@ -58,8 +58,9 @@
         Update to Commons Pool 1.5.5. (markt)
       </update>
       <fix>
-        <bug>49728</bug>: Improve PID file handling when another process is
-        managing the PID file and Tomcat does not have write access. (markt)
+        <bug>49728</bug>, <bug>50084</bug>: Improve PID file handling when
+        another process is managing the PID file and Tomcat does not have write
+        access. (markt)
       </fix>
     </changelog>
   </subsection>
