@@ -141,7 +141,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Make sure Contexts defined in server.xml pick up any configClass setting from
   the parent Host.
   http://people.apache.org/~markt/patches/2010-09-11-configClass.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
    kkolinko: Though 1) I do not see any documentation on configClass attribute in
     the docs at all. Though it is in JavaDoc for StandardHost.
@@ -154,7 +154,7 @@ PATCHES PROPOSED TO BACKPORT:
   Stop accepting new requests (inc keep-alive) once the BIO connector is paused
   and the current request has finished processing
   https://issues.apache.org/bugzilla/attachment.cgi?id=26094
-  +1: markt
+  +1: markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49625
