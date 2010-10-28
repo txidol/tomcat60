@@ -138,6 +138,10 @@
         when running with a security manager. (kkolinko)
       </fix>
       <fix>
+        <bug>50131</bug>: Avoid possible NPE in debug output in PersistentValve.
+        Patch provided by sebb. (kkolinko)
+      </fix>
+      <fix>
         <bug>50138</bug>: Fix threading issues in
         <code>org.apache.catalina.security.SecurityUtil</code>. (markt)
       </fix>

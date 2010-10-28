@@ -258,13 +258,6 @@ PATCHES PROPOSED TO BACKPORT:
               this makes sense.
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50131
-  Avoid possible NPE in debug output in PersistentValve.
-  Patch by sebb
-  https://issues.apache.org/bugzilla/attachment.cgi?id=26194
-  +1: kkolinko, kfujino, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50140
   Don't ignore user specified installation directory on 64-bit platforms
   Allow 32-bit and 64-bit JDKs to be selected on 64-bit platforms
