@@ -134,6 +134,10 @@
         protection provided in Tomcat 6. (markt/kkolinko)
       </add>
       <fix>
+        <bug>50128</bug>: Improve exception handling in PersistentManagerBase
+        when running with a security manager. (kkolinko)
+      </fix>
+      <fix>
         <bug>50138</bug>: Fix threading issues in
         <code>org.apache.catalina.security.SecurityUtil</code>. (markt)
       </fix>
