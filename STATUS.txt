@@ -97,7 +97,11 @@ PATCHES PROPOSED TO BACKPORT:
                          r951892, r952295
   +1: markt, mturk
   -1:
-
+  rjung: Would be +1, but one question: in ContainerBase method logAccess(),
+  if getAccessLog() succeeds, isn't the logging done twice, once there and again
+  to the parent? It seems either we should check for "!logged" before logging
+  to the parent (at the moment "logged" isn't used at all), or simply return, because
+  nothing else is done after parent logging.
 
 * Backport the CSRF prevention filter to Tomcat 6 and configure the Manager and
   Host Manager applications to use it. The configuration is such that the using
@@ -118,7 +122,7 @@ PATCHES PROPOSED TO BACKPORT:
   option to disable this check.
   https://issues.apache.org/bugzilla/attachment.cgi?id=25727
   +1: markt
-  +1: kkolinko (if doc part is adjusted to the code)
+  +1: kkolinko, rjung (if doc part is adjusted to the code)
   -1:
    kkolinko: doc says the SKIP_* property defaults to false, but in the code the
     default is true. (Maybe tie it to STRICT_SERVLET_COMPLIANCE?)
@@ -168,21 +172,21 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49665
   Better handling for missing TLD files. Report JSP filename and location.
   http://svn.apache.org/viewvc?rev=1002274&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49730
   Correct race condition in StandardThreadExecutor that can lead to long delays
   in processing requests. Patch provided by Sylvain Laurent.
   https://issues.apache.org/bugzilla/attachment.cgi?id=25865
-  +1: markt
+  +1: markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49860
   Add support for trailing headers.
   http://svn.apache.org/viewvc?rev=1003461&view=rev
   Note: Don't change return type for parseEndChunk(), just return true.
-  +1: markt
+  +1: markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
@@ -222,32 +226,32 @@ PATCHES PROPOSED TO BACKPORT:
 
   Alternative patch:
   http://people.apache.org/~kkolinko/patches/2010-10-13_tc6_bug49965.patch
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50072
-  NIO connector can mis-read request line if not sent in a single pacaket
+  NIO connector can mis-read request line if not sent in a single packet
   https://issues.apache.org/bugzilla/attachment.cgi?id=26173&action=edit
   +1: markt
-  +1: kkolinko: if together with r1022323
+  +1: kkolinko, rjung: if together with r1022323
   -1:
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=1022323&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
   Additional patch:
   * Improve recycling of processors in Http11NioProtocol
   http://svn.apache.org/viewvc?rev=1022415&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Improve sending an access message in DeltaManager.
   maxInactiveInterval of not Manager but the session is used. 
   If maxInactiveInterval is negative, an access message is not sending. 
   http://svn.apache.org/viewvc?rev=1025924&view=rev
-  +1: kfujino
+  +1: kfujino, rjung
   +1: markt - At first I wondered what the purpose of this code is but on closer
               inspection DeltaSessions on non-primary nodes are expired at
               2*getMaxInactiveInterval() rather than getMaxInactiveInterval() so
@@ -279,6 +283,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Update Commons daemon to 1.0.4
   Version 1.0.4 is bug fixing release. (Patch is trivial changing the version
   number to 1.0.4 in build.properties.default, so not provided)
-  +1: mturk
+  +1: mturk, rjung
   -1:
 
