@@ -95,7 +95,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-07-07-bug49099.patch
   This is a backport of: r950587, r950809, r951018, r951093, r951447,
                          r951892, r952295
-  +1: markt
+  +1: markt, mturk
   -1:
 
 
@@ -110,7 +110,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=962881&view=rev
   http://svn.apache.org/viewvc?rev=962900&view=rev
   http://svn.apache.org/viewvc?rev=988448&view=rev
-  +1: markt
+  +1: markt, mturk
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
@@ -154,7 +154,7 @@ PATCHES PROPOSED TO BACKPORT:
   Stop accepting new requests (inc keep-alive) once the BIO connector is paused
   and the current request has finished processing
   https://issues.apache.org/bugzilla/attachment.cgi?id=26094
-  +1: markt, kfujino
+  +1: markt, kfujino, mturk
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49625
@@ -162,7 +162,7 @@ PATCHES PROPOSED TO BACKPORT:
   setting it if it is compressed.
   http://svn.apache.org/viewvc?rev=1002133&view=rev
   (patch needs to be applied separately to BIO, NIO and APR HTTP connectors)
-  +1: markt
+  +1: markt, mturk
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49665
@@ -273,7 +273,7 @@ PATCHES PROPOSED TO BACKPORT:
   Don't ignore user specified installation directory on 64-bit platforms
   Allow 32-bit and 64-bit JDKs to be selected on 64-bit platforms
   http://svn.apache.org/viewvc?rev=1027504&view=rev
-  +1: markt
+  +1: markt, mturk
   -1:
 
 * Update Commons daemon to 1.0.4
