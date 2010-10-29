@@ -213,22 +213,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -0: kkolinko: see Re:r1005192 thread on dev@
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49965
-  Use correct i18n resources for StringManager in JAASRealm
-  http://people.apache.org/~markt/patches/2010-10-07-bug49965-tc6.patch
-  (Port of http://svn.apache.org/viewvc?view=revision&revision=920820)
-  +1: markt
-  -1:
-  -0: kkolinko: It is amazing that the patch just removes N lines and fixes
-    the issue, but I think that removing static protected fields is not
-    good for binary compatibility between releases. Alternative patch
-    proposed below.
-
-  Alternative patch:
-  http://people.apache.org/~kkolinko/patches/2010-10-13_tc6_bug49965.patch
-  +1: kkolinko, kfujino, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50072
   NIO connector can mis-read request line if not sent in a single packet
   https://issues.apache.org/bugzilla/attachment.cgi?id=26173&action=edit

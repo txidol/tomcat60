@@ -123,6 +123,10 @@
         no StoreConfig implementation present. (markt)
       </fix>
       <fix>
+        <bug>49965</bug>: Use correct i18n resources for StringManager in
+        JAASRealm. (kkolinko)
+      </fix>
+      <fix>
         <bug>49987</bug>: Fix potential data race in the population of the
         Servlet Context initialisation parameters. (markt)
       </fix>

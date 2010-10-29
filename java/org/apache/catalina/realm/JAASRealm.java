@@ -34,7 +34,6 @@ import javax.security.auth.login.LoginException;
 
 import org.apache.catalina.Container;
 import org.apache.catalina.LifecycleException;
-import org.apache.catalina.authenticator.Constants;
 import org.apache.catalina.util.StringManager;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -357,7 +356,7 @@ public class JAASRealm
         return authenticate(username,
                 new JAASCallbackHandler(this, username, clientDigest, nonce,
                         nc, cnonce, qop, realmName, md5a2,
-                        Constants.DIGEST_METHOD));
+                        org.apache.catalina.authenticator.Constants.DIGEST_METHOD));
     }
 
 
@@ -483,7 +482,8 @@ public class JAASRealm
 
         return authenticate(username,
                 new JAASCallbackHandler(this, username, null, null, null, null,
-                        null, null, null, Constants.CERT_METHOD));
+                        null, null, null,
+                        org.apache.catalina.authenticator.Constants.CERT_METHOD));
 
     }
 
