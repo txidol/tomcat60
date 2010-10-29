@@ -182,6 +182,11 @@
   <subsection name="Jasper">
     <changelog>
       <fix>
+        <bug>49665</bug>: Provide better information including JSP file name and
+        location when a missing file is detected during TLD handling. Patch
+        provided by Ted Leung. (markt)
+      </fix>
+      <fix>
         <bug>49985</bug>: Fix thread safety issue in EL parser. (markt)
       </fix>
       <fix>

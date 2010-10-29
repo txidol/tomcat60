@@ -1086,8 +1086,10 @@ class Generator {
                                 + property
                                 + "\")));");
             } else {
-                StringBuilder msg =
-                    new StringBuilder("jsp:getProperty for bean with name '");
+                StringBuilder msg = new StringBuilder();
+                msg.append("file:");
+                msg.append(n.getStart());
+                msg.append(" jsp:getProperty for bean with name '");
                 msg.append(name);
                 msg.append(
                         "'. Name was not previously introduced as per JSP.5.3");

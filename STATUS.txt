@@ -169,12 +169,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, mturk
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49665
-  Better handling for missing TLD files. Report JSP filename and location.
-  http://svn.apache.org/viewvc?rev=1002274&view=rev
-  +1: markt, kkolinko, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49730
   Correct race condition in StandardThreadExecutor that can lead to long delays
   in processing requests. Patch provided by Sylvain Laurent.

@@ -1288,7 +1288,8 @@ class JspDocumentParser
                             prefix,
                             uri,
                             location,
-                            err);
+                            err,
+                            null);
                     if (ctxt.getOptions().isCaching()) {
                         ctxt.getOptions().getCache().put(uri, result);
                     }

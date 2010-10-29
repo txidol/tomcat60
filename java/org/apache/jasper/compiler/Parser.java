@@ -384,7 +384,8 @@ class Parser implements TagConstants {
                     if (impl == null) {
                         String[] location = ctxt.getTldLocation(uri);
                         impl = new TagLibraryInfoImpl(ctxt, parserController, pageInfo,
-                                prefix, uri, location, err);
+                                prefix, uri, location, err,
+                                reader.mark());
                         if (ctxt.getOptions().isCaching()) {
                             ctxt.getOptions().getCache().put(uri, impl);
                         }

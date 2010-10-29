@@ -130,8 +130,9 @@ class TagLibraryInfoImpl extends TagLibraryInfo implements TagConstants {
     /**
      * Constructor.
      */
-    public TagLibraryInfoImpl(JspCompilationContext ctxt, ParserController pc, PageInfo pi,
-            String prefix, String uriIn, String[] location, ErrorDispatcher err)
+    public TagLibraryInfoImpl(JspCompilationContext ctxt, ParserController pc,
+            PageInfo pi, String prefix, String uriIn, String[] location,
+            ErrorDispatcher err, Mark mark)
             throws JasperException {
         super(prefix, uriIn);
 
@@ -157,7 +158,7 @@ class TagLibraryInfoImpl extends TagLibraryInfo implements TagConstants {
                         throw new FileNotFoundException(location[0]);
                     }
                 } catch (FileNotFoundException ex) {
-                    err.jspError("jsp.error.file.not.found", location[0]);
+                    err.jspError(mark, "jsp.error.file.not.found", location[0]);
                 }
 
                 parseTLD(ctxt, location[0], in, null);
@@ -179,7 +180,7 @@ class TagLibraryInfoImpl extends TagLibraryInfo implements TagConstants {
                     in = jarFile.getInputStream(jarEntry);
                     parseTLD(ctxt, location[0], in, jarFileUrl);
                 } catch (Exception ex) {
-                    err.jspError("jsp.error.tld.unable_to_read", location[0],
+                    err.jspError(mark, "jsp.error.tld.unable_to_read", location[0],
                             location[1], ex.toString());
                 }
             }
