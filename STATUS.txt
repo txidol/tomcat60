@@ -242,6 +242,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1027504&view=rev
   +1: markt, mturk
   -1:
+   kkolinko: merging r1027504 does not perform cleanly
 
 * Update Commons daemon to 1.0.4
   Version 1.0.4 is bug fixing release. (Patch is trivial changing the version
