@@ -225,17 +225,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, rjung
   -1:
 
-* Improve sending an access message in DeltaManager.
-  maxInactiveInterval of not Manager but the session is used. 
-  If maxInactiveInterval is negative, an access message is not sending. 
-  http://svn.apache.org/viewvc?rev=1025924&view=rev
-  +1: kfujino, rjung
-  +1: markt - At first I wondered what the purpose of this code is but on closer
-              inspection DeltaSessions on non-primary nodes are expired at
-              2*getMaxInactiveInterval() rather than getMaxInactiveInterval() so
-              this makes sense.
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50140
   Don't ignore user specified installation directory on 64-bit platforms
   Allow 32-bit and 64-bit JDKs to be selected on 64-bit platforms
