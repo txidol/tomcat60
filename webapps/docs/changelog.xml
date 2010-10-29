@@ -249,6 +249,10 @@
   </subsection>
   <subsection name="Other">
     <changelog>
+      <update>
+        <bug>48716</bug>: Do not call reset if the default LogManager is in use.
+        (markt)
+      </update>
       <fix>
         Use native line endings for example Eclipse configuration files in
         source distribution. (markt)
