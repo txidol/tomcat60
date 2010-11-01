@@ -96,12 +96,25 @@ PATCHES PROPOSED TO BACKPORT:
   This is a backport of: r950587, r950809, r951018, r951093, r951447,
                          r951892, r952295
   +1: markt, mturk
+  +1: kkolinko: s/if (accessLog != null)/if (getAccessLog() != null)/
+   in StandardEngine.logAccess(..), because otherwise accessLog field is never
+   initialized and remains null.
   -1:
   rjung: Would be +1, but one question: in ContainerBase method logAccess(),
   if getAccessLog() succeeds, isn't the logging done twice, once there and again
   to the parent? It seems either we should check for "!logged" before logging
   to the parent (at the moment "logged" isn't used at all), or simply return, because
   nothing else is done after parent logging.
+
+  kkolinko (Re: rjung): I understand that it is intended: It is logged in all
+  parents, but not in the siblings (because passing 'false' as useDefault
+  argument when calling getParent().logAccess(..)).
+
+  kkolinko: I do not quite understand why CoyoteAdapter.log() recycles
+  request and response even if it did not create them, but I do not see
+  valid reasons why it should not. Access logging occurs once request
+  processing is completed, so it seems valid to recycle them at that point.
+
 
 * Backport the CSRF prevention filter to Tomcat 6 and configure the Manager and
   Host Manager applications to use it. The configuration is such that the using
@@ -181,7 +194,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1003461&view=rev
   Note: Don't change return type for parseEndChunk(), just return true.
   +1: markt, rjung
-  -1:
+  -1: kkolinko:
+    Regarding implementation of ChunkedInputFilter.parseHeader():
+    One cannot remember old value of 'pos' (e.g. 'int start = pos')
+    outside of a loop that calls readBytes(). The remembered positions
+    are not valid after the readBytes() call.
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
   Force DefaultServlet to serve all resources relative to context root
