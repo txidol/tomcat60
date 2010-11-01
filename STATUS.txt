@@ -127,7 +127,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=962881&view=rev
   http://svn.apache.org/viewvc?rev=962900&view=rev
   http://svn.apache.org/viewvc?rev=988448&view=rev
-  +1: markt, mturk
+  +1: markt, mturk, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
@@ -179,7 +179,7 @@ PATCHES PROPOSED TO BACKPORT:
   setting it if it is compressed.
   http://svn.apache.org/viewvc?rev=1002133&view=rev
   (patch needs to be applied separately to BIO, NIO and APR HTTP connectors)
-  +1: markt, mturk
+  +1: markt, mturk, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49730
