@@ -109,11 +109,20 @@ PATCHES PROPOSED TO BACKPORT:
   kkolinko (Re: rjung): I understand that it is intended: It is logged in all
   parents, but not in the siblings (because passing 'false' as useDefault
   argument when calling getParent().logAccess(..)).
+  
+  markt (Re: rjung): It is done this way to maintain default behaviour. If you
+  define an AccessLog for a Host and an Engine, requests to the Host will be
+  logged in both. The logged flag is used to determine if we need to try and
+  find a default logger to ensure the request is logged somewhere.
 
   kkolinko: I do not quite understand why CoyoteAdapter.log() recycles
   request and response even if it did not create them, but I do not see
   valid reasons why it should not. Access logging occurs once request
   processing is completed, so it seems valid to recycle them at that point.
+  
+  markt (Re: kkolinko): CoyoteAdapter.log() recycles the request and response
+  since it may get called without a call to CoyoteAdapter.service() and it was
+  easier to always recycle than to figure out if a recycle was required or not.
 
 
 * Backport the CSRF prevention filter to Tomcat 6 and configure the Manager and
