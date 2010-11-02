@@ -829,6 +829,7 @@ public class Http11Processor implements ActionHook {
                 }
                 // 400 - Bad Request
                 response.setStatus(400);
+                adapter.log(request, response, 0);
                 error = true;
             }
 
@@ -843,6 +844,7 @@ public class Http11Processor implements ActionHook {
                     }
                     // 400 - Internal Server Error
                     response.setStatus(400);
+                    adapter.log(request, response, 0);
                     error = true;
                 }
             }
@@ -871,6 +873,7 @@ public class Http11Processor implements ActionHook {
                     log.error(sm.getString("http11processor.request.process"), t);
                     // 500 - Internal Server Error
                     response.setStatus(500);
+                    adapter.log(request, response, 0);
                     error = true;
                 }
             }
@@ -890,6 +893,7 @@ public class Http11Processor implements ActionHook {
                 log.error(sm.getString("http11processor.request.finish"), t);
                 // 500 - Internal Server Error
                 response.setStatus(500);
+                adapter.log(request, response, 0);
                 error = true;
             }
             try {
@@ -1197,6 +1201,7 @@ public class Http11Processor implements ActionHook {
                           " Unsupported HTTP version \""+protocolMB+"\"");
             }
             response.setStatus(505);
+            adapter.log(request, response, 0);
         }
 
         MessageBytes methodMB = request.method();
@@ -1294,6 +1299,7 @@ public class Http11Processor implements ActionHook {
                     error = true;
                     // 501 - Unimplemented
                     response.setStatus(501);
+                    adapter.log(request, response, 0);
                 }
                 startPos = commaPos + 1;
                 commaPos = transferEncodingValue.indexOf(',', startPos);
@@ -1309,6 +1315,7 @@ public class Http11Processor implements ActionHook {
                               " Unsupported transfer encoding \""+encodingName+"\"");
                 }
                 response.setStatus(501);
+                adapter.log(request, response, 0);
             }
         }
 
@@ -1331,6 +1338,7 @@ public class Http11Processor implements ActionHook {
                           " host header missing");
             }
             response.setStatus(400);
+            adapter.log(request, response, 0);
         }
 
         parseHost(valueMB);

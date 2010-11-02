@@ -29,6 +29,7 @@ import java.util.Properties;
 
 import javax.servlet.ServletException;
 
+import org.apache.catalina.AccessLog;
 import org.apache.catalina.Lifecycle;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.LifecycleListener;
@@ -114,9 +115,8 @@ import org.apache.catalina.util.StringManager;
  * @author Peter Rossbach
  */
 
-public final class JDBCAccessLogValve 
-    extends ValveBase 
-    implements Lifecycle {
+public final class JDBCAccessLogValve extends ValveBase
+        implements AccessLog, Lifecycle {
 
     // ----------------------------------------------------------- Constructors
 
@@ -458,11 +458,18 @@ public final class JDBCAccessLogValve
      */    
     public void invoke(Request request, Response response) 
         throws IOException, ServletException {
-        final String EMPTY = "" ;
         
         getNext().invoke(request, response);
 
-        String remoteHost = EMPTY;
+        log (request, response, 0);
+    }
+
+
+    public void log(Request request, Response response, long time) {
+        final String EMPTY = "" ;
+        
+        String remoteHost;
+
         if(resolveHosts)
             remoteHost = request.getRemoteHost();
         else

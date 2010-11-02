@@ -344,6 +344,41 @@ public class CoyoteAdapter implements Adapter {
     }
 
 
+    public void log(org.apache.coyote.Request req,
+            org.apache.coyote.Response res, long time) {
+
+        Request request = (Request) req.getNote(ADAPTER_NOTES);
+        Response response = (Response) res.getNote(ADAPTER_NOTES);
+
+        if (request == null) {
+
+            // Create objects
+            request = connector.createRequest();
+            request.setCoyoteRequest(req);
+            response = connector.createResponse();
+            response.setCoyoteResponse(res);
+
+            // Link objects
+            request.setResponse(response);
+            response.setRequest(request);
+
+            // Set as notes
+            req.setNote(ADAPTER_NOTES, request);
+            res.setNote(ADAPTER_NOTES, response);
+
+            // Set query string encoding
+            req.getParameters().setQueryStringEncoding
+                (connector.getURIEncoding());
+        }
+        
+        connector.getService().getContainer().logAccess(
+                request, response, time, true);
+        
+        request.recycle();
+        response.recycle();
+    }
+    
+    
     // ------------------------------------------------------ Protected Methods
 
 
@@ -406,12 +441,16 @@ public class CoyoteAdapter implements Adapter {
             } catch (IOException ioe) {
                 res.setStatus(400);
                 res.setMessage("Invalid URI: " + ioe.getMessage());
+                connector.getService().getContainer().logAccess(
+                        request, response, 0, true);
                 return false;
             }
             // Normalization
             if (!normalize(req.decodedURI())) {
                 res.setStatus(400);
                 res.setMessage("Invalid URI");
+                connector.getService().getContainer().logAccess(
+                        request, response, 0, true);
                 return false;
             }
             // Character decoding
@@ -420,6 +459,8 @@ public class CoyoteAdapter implements Adapter {
             if (!checkNormalize(req.decodedURI())) {
                 res.setStatus(400);
                 res.setMessage("Invalid URI character encoding");
+                connector.getService().getContainer().logAccess(
+                        request, response, 0, true);
                 return false;
             }
         } else {
@@ -494,6 +535,7 @@ public class CoyoteAdapter implements Adapter {
             res.setStatus(405);
             res.addHeader("Allow", header);
             res.setMessage("TRACE method is not allowed");
+            request.getContext().logAccess(request, response, 0, true);
             return false;
         }
 
@@ -514,6 +556,7 @@ public class CoyoteAdapter implements Adapter {
                 redirectPath = redirectPath + "?" + query;
             }
             response.sendRedirect(redirectPath);
+            request.getContext().logAccess(request, response, 0, true);
             return false;
         }
 
@@ -897,8 +940,6 @@ public class CoyoteAdapter implements Adapter {
             b[pos + dest] = b[pos + src];
         }
     }
-
-
     private String getSessionCookieName(Context context) {
         
         String result = null;

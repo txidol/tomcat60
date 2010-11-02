@@ -89,42 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
    cause confusion. I'd prefer not to invent a new name, but mention the
    one that we already have when documenting virtualClasspath.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49099
-  Provide a mechanism for including requests rejected by the CoyoteAdapter in
-  the standard access log
-  http://people.apache.org/~markt/patches/2010-07-07-bug49099.patch
-  This is a backport of: r950587, r950809, r951018, r951093, r951447,
-                         r951892, r952295
-  +1: markt, mturk
-  +1: kkolinko: s/if (accessLog != null)/if (getAccessLog() != null)/
-   in StandardEngine.logAccess(..), because otherwise accessLog field is never
-   initialized and remains null.
-  -1:
-  rjung: Would be +1, but one question: in ContainerBase method logAccess(),
-  if getAccessLog() succeeds, isn't the logging done twice, once there and again
-  to the parent? It seems either we should check for "!logged" before logging
-  to the parent (at the moment "logged" isn't used at all), or simply return, because
-  nothing else is done after parent logging.
-
-  kkolinko (Re: rjung): I understand that it is intended: It is logged in all
-  parents, but not in the siblings (because passing 'false' as useDefault
-  argument when calling getParent().logAccess(..)).
-  
-  markt (Re: rjung): It is done this way to maintain default behaviour. If you
-  define an AccessLog for a Host and an Engine, requests to the Host will be
-  logged in both. The logged flag is used to determine if we need to try and
-  find a default logger to ensure the request is logged somewhere.
-
-  kkolinko: I do not quite understand why CoyoteAdapter.log() recycles
-  request and response even if it did not create them, but I do not see
-  valid reasons why it should not. Access logging occurs once request
-  processing is completed, so it seems valid to recycle them at that point.
-  
-  markt (Re: kkolinko): CoyoteAdapter.log() recycles the request and response
-  since it may get called without a call to CoyoteAdapter.service() and it was
-  easier to always recycle than to figure out if a recycle was required or not.
-
-
 * Backport the CSRF prevention filter to Tomcat 6 and configure the Manager and
   Host Manager applications to use it. The configuration is such that the using
   the old roles (manager, admin) will work and will bypass the CSRF protection
