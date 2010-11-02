@@ -232,3 +232,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mturk, rjung, kkolinko
   -1:
 
+* Additional minor patch / followup to r1030188
+  Add logging for some rare case in Http11Processor.parseHost()
+  To reproduce, send a HTTP/1.1 request with an invalid value for the port
+  number in the Host header.
+  http://people.apache.org/~kkolinko/patches/2010-11-03_tc6_49099_Http11Processor.patch
+  +1: kkolinko
+  -1:
