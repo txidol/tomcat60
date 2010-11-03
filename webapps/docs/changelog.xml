@@ -153,6 +153,10 @@
         <bug>50138</bug>: Fix threading issues in
         <code>org.apache.catalina.security.SecurityUtil</code>. (markt)
       </fix>
+      <add>
+        Add a new filter to provide generic cross-site request forgery (CSRF)
+        protection for web applications. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -255,6 +259,18 @@
         <bug>49585</bug>: Update JSVC documentation to reflect new packaging
         of Commons Daemon. (markt)
       </fix>
+      <add>
+        Configure the Manager web application to use the new CSRF protection. To
+        take advantge of this protection, the manager role must be removed from
+        all users and the new manager-gui and manager-script roles used instead.
+        (markt)
+      </add>
+      <add>
+        Configure the Host Manager web application to use the new CSRF
+        protection. To take advantge of this protection, the admin role must be
+        removed from all users and the new admin-gui and admin-script roles used
+        instead. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Other">

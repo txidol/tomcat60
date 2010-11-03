@@ -15,7 +15,7 @@
   limitations under the License.
 --%>
 <%
-  response.setHeader("WWW-Authenticate", "Basic realm=\"Tomcat Manager Application\"");
+  response.setHeader("WWW-Authenticate", "Basic realm=\"Tomcat Host Manager Application\"");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -39,46 +39,37 @@
     file must contain the credentials to let you use this webapp.
    </p>
    <p>
-    For example, to add the <tt>manager-gui</tt> role to a user named
+    For example, to add the <tt>admin-gui</tt> role to a user named
     <tt>tomcat</tt> with a password of <tt>s3cret</tt>, add the following to the
     config file listed above.
    </p>
 <pre>
-&lt;role rolename="manager-gui"/&gt;
-&lt;user username="tomcat" password="s3cret" roles="manager-gui"/&gt;
+&lt;role rolename="admin-gui"/&gt;
+&lt;user username="tomcat" password="s3cret" roles="admin-gui"/&gt;
 </pre>
    <p>
-    Note that for Tomcat 6.0.30 onwards, the roles required to use the manager
-    application were changed from the single <tt>manager</tt> role to the
-    following four roles. You will need to assign the role(s) required for
+    Note that for Tomcat 6.0.30 onwards, the roles required to use the host
+    manager application were changed from the single <tt>admin</tt> role to the
+    following two roles. You will need to assign the role(s) required for
     the functionality you wish to access.
    </p>
     <ul>
-      <li><tt>manager-gui</tt> - allows access to the HTML GUI and the status
-          pages</li>
-      <li><tt>manager-script</tt> - allows access to the text interface and the
-          status pages</li>
-      <li><tt>manager-jmx</tt> - allows access to the JMX proxy and the status
-          pages</li>
-      <li><tt>manager-status</tt> - allows access to the status pages only</li>
+      <li><tt>admin-gui</tt> - allows access to the HTML GUI</li>
+      <li><tt>admin-script</tt> - allows access to the text interface</li>
     </ul>
    <p>
-    The HTML interface is protected against CSRF but the text and JMX interfaces
-    are not. To maintain the CSRF protection:
+    The HTML interface is protected against CSRF but the text interface is not.
+    To maintain the CSRF protection:
    </p>
    <ul>
-    <li>The deprecated <tt>manager</tt> role should not be assigned to any
+    <li>The deprecated <tt>admin</tt> role should not be assigned to any
         user.</li>
-    <li>Users with the <tt>manager-gui</tt> role should not be granted either
-        the <tt>manager-script</tt> or <tt>manager-jmx</tt> roles.</li>
-    <li>If the text or jmx interfaces are accessed through a browser (e.g. for
-        testing since these interfaces are intended for tools not humans) then
-        the browser must be closed afterwards to terminate the session.</li>
+    <li>Users with the <tt>admin-gui</tt> role should not be granted the
+       <tt>manager-script</tt> role.</li>
+    <li>If the text interface is accessed through a browser (e.g. for testing
+        since this interface is intended for tools not humans) then the browser
+        must be closed afterwards to terminate the session.</li>
    </ul>
-   <p>
-    For more information - please see the
-    <a href="/docs/manager-howto.html">Manager App HOW-TO</a>.
-   </p>
  </body>
 
 </html>

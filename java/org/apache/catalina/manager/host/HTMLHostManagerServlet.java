@@ -105,6 +105,13 @@ public final class HTMLHostManagerServlet extends HostManagerServlet {
     }
 
     
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        doGet(request, response);
+    }
+    
+    
     /**
      * Add a host using the specified parameters.
      *
@@ -435,7 +442,7 @@ public final class HTMLHostManagerServlet extends HostManagerServlet {
         "</tr>\n" +
         "<tr>\n" +
         " <td colspan=\"2\">\n" +
-        "<form method=\"get\" action=\"{2}\">\n" +
+        "<form method=\"post\" action=\"{2}\">\n" +
         "<table cellspacing=\"0\" cellpadding=\"3\">\n" +
         "<tr>\n" +
         " <td class=\"row-right\">\n" +
