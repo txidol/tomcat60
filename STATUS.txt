@@ -102,14 +102,6 @@ PATCHES PROPOSED TO BACKPORT:
    but from debugging it looks that it is called by Tomcat code only
    (JspServlet).
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49625
-  Ensure Vary header is set if response may be compressed rather than only
-  setting it if it is compressed.
-  http://svn.apache.org/viewvc?rev=1002133&view=rev
-  (patch needs to be applied separately to BIO, NIO and APR HTTP connectors)
-  +1: markt, mturk, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49730
   Correct race condition in StandardThreadExecutor that can lead to long delays
   in processing requests. Patch provided by Sylvain Laurent.
