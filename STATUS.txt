@@ -106,7 +106,7 @@ PATCHES PROPOSED TO BACKPORT:
   Correct race condition in StandardThreadExecutor that can lead to long delays
   in processing requests. Patch provided by Sylvain Laurent.
   https://issues.apache.org/bugzilla/attachment.cgi?id=25865
-  +1: markt, rjung
+  +1: markt, rjung, funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49860
@@ -147,7 +147,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Improve recycling of processors in Http11NioProtocol
   http://svn.apache.org/viewvc?rev=1022415&view=rev
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung,funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50140
@@ -163,7 +163,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Update Commons daemon to 1.0.4
   Version 1.0.4 is bug fixing release. (Patch is trivial changing the version
   number to 1.0.4 in build.properties.default, so not provided)
-  +1: mturk, rjung, kkolinko
+  +1: mturk, rjung, kkolinko,funkman
   -1:
 
 * Additional minor patch / followup to r1030188
@@ -171,7 +171,7 @@ PATCHES PROPOSED TO BACKPORT:
   To reproduce, send a HTTP/1.1 request with an invalid value for the port
   number in the Host header.
   http://people.apache.org/~kkolinko/patches/2010-11-03_tc6_49099_Http11Processor.patch
-  +1: kkolinko
+  +1: kkolinko,funkman
   -1:
 
 * Followup to r1030188
@@ -180,5 +180,5 @@ PATCHES PROPOSED TO BACKPORT:
   To reproduce, start Tomcat without the ROOT webapp and make an invalid
   request. An NPE happens. It is backport of r966570, r1030253.
   http://people.apache.org/~kkolinko/patches/2010-11-03_tc6_49099_StandardEngine.patch
-  +1: kkolinko
+  +1: kkolinko, funkman
   -1:
