@@ -799,7 +799,7 @@ public class Http11Processor implements ActionHook {
 
         boolean keptAlive = false;
 
-        while (started && !error && keepAlive) {
+        while (started && !error && keepAlive && !endpoint.isPaused()) {
 
             // Parsing the request header
             try {
