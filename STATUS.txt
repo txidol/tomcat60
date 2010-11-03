@@ -171,7 +171,7 @@ PATCHES PROPOSED TO BACKPORT:
   To reproduce, send a HTTP/1.1 request with an invalid value for the port
   number in the Host header.
   http://people.apache.org/~kkolinko/patches/2010-11-03_tc6_49099_Http11Processor.patch
-  +1: kkolinko,funkman
+  +1: kkolinko,funkman,markt
   -1:
 
 * Followup to r1030188
@@ -180,5 +180,5 @@ PATCHES PROPOSED TO BACKPORT:
   To reproduce, start Tomcat without the ROOT webapp and make an invalid
   request. An NPE happens. It is backport of r966570, r1030253.
   http://people.apache.org/~kkolinko/patches/2010-11-03_tc6_49099_StandardEngine.patch
-  +1: kkolinko, funkman
+  +1: kkolinko, funkman, markt
   -1:
