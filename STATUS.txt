@@ -89,18 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
    cause confusion. I'd prefer not to invent a new name, but mention the
    one that we already have when documenting virtualClasspath.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49217
-  Ensure EL identifiers conform to the Java Language Specification with an
-  option to disable this check.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25727
-  +1: markt
-  +1: kkolinko, rjung (if doc part is adjusted to the code)
-  -1:
-   kkolinko: doc says the SKIP_* property defaults to false, but in the code the
-    default is true. (Maybe tie it to STRICT_SERVLET_COMPLIANCE?)
-    Maybe document this in the "Specification" part of the systemprops.xml,
-    instead of "Expression Language" as done in 7.0.2?
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49555
   Correctly handle tag libraries that use functions defined in static inner
   classes
