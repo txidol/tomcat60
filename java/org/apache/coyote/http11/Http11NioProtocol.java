@@ -720,21 +720,24 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
 
                 SocketState state = processor.process(socket);
                 if (state == SocketState.LONG) {
-                    // Associate the connection with the processor. The next request 
-                    // processed by this thread will use either a new or a recycled
-                    // processor.
-                    //if (log.isDebugEnabled()) log.debug("Not recycling ["+processor+"] Comet="+((NioEndpoint.KeyAttachment)socket.getAttachment(false)).getComet());
+                    // In the middle of processing a request/response. Keep the
+                    // socket associated with the processor.
                     connections.put(socket, processor);
+
                     if (processor.comet) {
                         NioEndpoint.KeyAttachment att = (NioEndpoint.KeyAttachment)socket.getAttachment(false);
                         socket.getPoller().add(socket,att.getCometOps());
                     } else {
-                    	//we should not hold on to the processor objects
-                    	release(socket);
                         socket.getPoller().add(socket);
                     }
+                } else if (state == SocketState.OPEN) {
+                    // In keep-alive but between requests. OK to recycle
+                    // processor. Continue to poll for the next request.
+                    release(socket);
+                    socket.getPoller().add(socket);
                 } else {
-                    recycledProcessors.offer(processor);
+                    // Connection closed. OK to recycle the processor.
+                    release(socket);
                 }
                 return state;
 

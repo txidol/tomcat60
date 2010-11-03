@@ -404,7 +404,7 @@ public class InternalNioInputBuffer implements InputBuffer {
      * @return true if data is properly fed; false if no data is available 
      * immediately and thread should be freed
      */
-    public boolean parseRequestLine(boolean useAvailableData)
+    public boolean parseRequestLine(boolean useAvailableDataOnly)
         throws IOException {
 
         //check state
@@ -418,7 +418,7 @@ public class InternalNioInputBuffer implements InputBuffer {
                 
                 // Read new bytes if needed
                 if (pos >= lastValid) {
-                    if (useAvailableData) {
+                    if (useAvailableDataOnly) {
                         return false;
                     }
                     // Do a simple read with a short timeout
@@ -434,7 +434,7 @@ public class InternalNioInputBuffer implements InputBuffer {
             // Mark the current buffer position
             
             if (pos >= lastValid) {
-                if (useAvailableData) {
+                if (useAvailableDataOnly) {
                     return false;
                 }
                 // Do a simple read with a short timeout
@@ -465,7 +465,6 @@ public class InternalNioInputBuffer implements InputBuffer {
                 }
                 pos++;
             }
-            parsingRequestLineStart = pos;
             parsingRequestLinePhase = 3;
         }
         if ( parsingRequestLinePhase == 3 ) {
@@ -483,13 +482,17 @@ public class InternalNioInputBuffer implements InputBuffer {
                     space = false;
                 }
             }
-
+            parsingRequestLineStart = pos;
+            parsingRequestLinePhase = 4;
+        }
+        if (parsingRequestLinePhase == 4) {
             // Mark the current buffer position
             
             int end = 0;
             //
             // Reading the URI
             //
+            boolean space = false;
             while (!space) {
                 // Read new bytes if needed
                 if (pos >= lastValid) {
@@ -519,10 +522,9 @@ public class InternalNioInputBuffer implements InputBuffer {
             } else {
                 request.requestURI().setBytes(buf, parsingRequestLineStart, end - parsingRequestLineStart);
             }
-            parsingRequestLineStart = pos;
-            parsingRequestLinePhase = 4;
+            parsingRequestLinePhase = 5;
         }
-        if ( parsingRequestLinePhase == 4 ) {
+        if ( parsingRequestLinePhase == 5 ) {
             // Spec says single SP but also be tolerant of multiple and/or HT
             boolean space = true;
             while (space) {
@@ -537,7 +539,10 @@ public class InternalNioInputBuffer implements InputBuffer {
                     space = false;
                 }
             }
-
+            parsingRequestLineStart = pos;
+            parsingRequestLinePhase = 6;
+        }
+        if (parsingRequestLinePhase == 6) { 
             // Mark the current buffer position
             
             end = 0;
@@ -548,7 +553,7 @@ public class InternalNioInputBuffer implements InputBuffer {
             while (!parsingRequestLineEol) {
                 // Read new bytes if needed
                 if (pos >= lastValid) {
-                    if (!fill(true, false)) //reques line parsing
+                    if (!fill(true, false)) //request line parsing
                         return false;
                 }
         

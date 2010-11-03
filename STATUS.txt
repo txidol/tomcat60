@@ -145,20 +145,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -0: kkolinko: see Re:r1005192 thread on dev@
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50072
-  NIO connector can mis-read request line if not sent in a single packet
-  https://issues.apache.org/bugzilla/attachment.cgi?id=26173&action=edit
-  +1: markt
-  +1: kkolinko, rjung: if together with r1022323
-  -1:
-
-  Additional patch:
-  http://svn.apache.org/viewvc?rev=1022323&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
-  Additional patch:
-  * Improve recycling of processors in Http11NioProtocol
+* Improve recycling of processors in Http11NioProtocol
   http://svn.apache.org/viewvc?rev=1022415&view=rev
   +1: kkolinko, rjung
   -1:
