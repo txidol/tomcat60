@@ -157,6 +157,10 @@
         Add a new filter to provide generic cross-site request forgery (CSRF)
         protection for web applications. (markt)
       </add>
+      <fix>
+        Make sure Contexts defined in server.xml pick up any configClass setting
+        from the parent Host. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -175,6 +179,11 @@
         message. (markt)
       </fix>
       <fix>
+        <bug>49497</bug>: Stop accepting new requests (inc keep-alive) once the
+        BIO connector is paused and the current request has finished processing.
+        (markt)
+      </fix>
+      <fix>
         <bug>49521</bug>: Disable scanning for a free port in Jk AJP/1.3
         connector by default. Do not change maxPort field value of ChannelSocket
         in its <code>setPort()</code> and <code>init()</code> methods. Add
@@ -182,8 +191,16 @@
         element as a synonym for channelSocket.maxPort
       </fix>
       <fix>
+        <bug>49625</bug>: Ensure Vary header is set if response may be
+        compressed rather than only setting it if it is compressed. (markt)
+      </fix>
+      <fix>
         <bug>49972</bug>: Fix potential thread safe issue when formatting dates
         for use in HTTP headers. (markt)
+      </fix>
+      <fix>
+        <bug>50072</bug>: NIO connector can mis-read request line if not sent in
+        a single packet. (markt/kkolinko)
       </fix>
     </changelog>
   </subsection>
