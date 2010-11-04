@@ -49,6 +49,11 @@ public class StandardThreadExecutor implements Executor {
     
     protected String name;
     
+    /**
+     * Number of tasks submitted and not yet completed.
+     */
+    protected AtomicInteger submittedTasksCount;
+    
     private LifecycleSupport lifecycle = new LifecycleSupport(this);
     // ---------------------------------------------- Constructors
     public StandardThreadExecutor() {
@@ -63,8 +68,17 @@ public class StandardThreadExecutor implements Executor {
         TaskQueue taskqueue = new TaskQueue();
         TaskThreadFactory tf = new TaskThreadFactory(namePrefix);
         lifecycle.fireLifecycleEvent(START_EVENT, null);
-        executor = new ThreadPoolExecutor(getMinSpareThreads(), getMaxThreads(), maxIdleTime, TimeUnit.MILLISECONDS,taskqueue, tf);
+        executor = new ThreadPoolExecutor(getMinSpareThreads(), getMaxThreads(), maxIdleTime, TimeUnit.MILLISECONDS,taskqueue, tf) {
+			@Override
+			protected void afterExecute(Runnable r, Throwable t) {
+				AtomicInteger atomic = submittedTasksCount;
+				if(atomic!=null) {
+					atomic.decrementAndGet();
+				}
+			}
+        };
         taskqueue.setParent( (ThreadPoolExecutor) executor);
+        submittedTasksCount = new AtomicInteger();
         lifecycle.fireLifecycleEvent(AFTER_START_EVENT, null);
     }
     
@@ -73,16 +87,21 @@ public class StandardThreadExecutor implements Executor {
         lifecycle.fireLifecycleEvent(STOP_EVENT, null);
         if ( executor != null ) executor.shutdown();
         executor = null;
+        submittedTasksCount = null;
         lifecycle.fireLifecycleEvent(AFTER_STOP_EVENT, null);
     }
     
     public void execute(Runnable command) {
         if ( executor != null ) {
+        	submittedTasksCount.incrementAndGet();
             try {
                 executor.execute(command);
             } catch (RejectedExecutionException rx) {
                 //there could have been contention around the queue
-                if ( !( (TaskQueue) executor.getQueue()).force(command) ) throw new RejectedExecutionException();
+                if ( !( (TaskQueue) executor.getQueue()).force(command) ) {
+                	submittedTasksCount.decrementAndGet();
+                	throw new RejectedExecutionException();
+                }
             }
         } else throw new IllegalStateException("StandardThreadPool not started.");
     }
@@ -234,13 +253,17 @@ public class StandardThreadExecutor implements Executor {
         public boolean offer(Runnable o) {
             //we can't do any checks
             if (parent==null) return super.offer(o);
+            int poolSize = parent.getPoolSize();
             //we are maxed out on threads, simply queue the object
             if (parent.getPoolSize() == parent.getMaximumPoolSize()) return super.offer(o);
             //we have idle threads, just add it to the queue
-            //this is an approximation, so it could use some tuning
-            if (parent.getActiveCount()<(parent.getPoolSize())) return super.offer(o);
+            //note that we don't use getActiveCount(), see BZ 49730
+			AtomicInteger submittedTasksCount = StandardThreadExecutor.this.submittedTasksCount;
+			if(submittedTasksCount!=null) {
+				if (submittedTasksCount.get()<=poolSize) return super.offer(o);
+			}
             //if we have less threads than maximum force creation of a new thread
-            if (parent.getPoolSize()<parent.getMaximumPoolSize()) return false;
+            if (poolSize<parent.getMaximumPoolSize()) return false;
             //if we reached here, we need to add it to the queue
             return super.offer(o);
         }
