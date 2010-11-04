@@ -112,6 +112,10 @@ PATCHES PROPOSED TO BACKPORT:
     One cannot remember old value of 'pos' (e.g. 'int start = pos')
     outside of a loop that calls readBytes(). The remembered positions
     are not valid after the readBytes() call.
+    markt: This is pretty much an exact copy of
+           InternalInputBuffer.parseHeader() which has been working for years.
+           Could you elaborate on where you see the issue. A test case that
+           demonstrates it would be even better.
 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
