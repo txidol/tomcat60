@@ -178,5 +178,5 @@ PATCHES PROPOSED TO BACKPORT:
   Copy local addr from local name just as we do in the ajp processor
   implementation.
   http://people.apache.org/~rjung/patches/bz48925-tc6-ajp-localaddr.patch
-  +1: rjung
+  +1: rjung, kkolinko
   -1: 
