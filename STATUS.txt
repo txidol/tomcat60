@@ -116,6 +116,8 @@ PATCHES PROPOSED TO BACKPORT:
            InternalInputBuffer.parseHeader() which has been working for years.
            Could you elaborate on where you see the issue. A test case that
            demonstrates it would be even better.
+    kkolinko: I have replied in Re:r1031024
+      Here is a testcase: https://issues.apache.org/bugzilla/attachment.cgi?id=26265&action=edit
 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
