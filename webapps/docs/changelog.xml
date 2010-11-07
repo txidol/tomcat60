@@ -49,7 +49,7 @@
         they reach the AccessLogValve to appear in the access log. (markt)
       </fix>
       <fix>
-        <bug>49674</bug>: Update to Commons Daemon 1.0.3. (markt)
+        <bug>49674</bug>: Update to Commons Daemon 1.0.4. (mturk)
       </fix>
       <update>
         Switch to using the Eclipse compiler JAR directly rather than creating

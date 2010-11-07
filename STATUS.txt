@@ -157,12 +157,6 @@ PATCHES PROPOSED TO BACKPORT:
    when I go from JRE selection page to the next page in TC7 installer.
    kkolinko: merging r1027504 does not perform cleanly
 
-* Update Commons daemon to 1.0.4
-  Version 1.0.4 is bug fixing release. (Patch is trivial changing the version
-  number to 1.0.4 in build.properties.default, so not provided)
-  +1: mturk, rjung, kkolinko,funkman
-  -1:
-
 * Additional minor patch / followup to r1030188
   Add logging for some rare case in Http11Processor.parseHost()
   To reproduce, send a HTTP/1.1 request with an invalid value for the port
