@@ -496,24 +496,27 @@ public class StandardEngine
         }
 
         if (!logged && useDefault) {
-            Host host = null;
             if (defaultAccessLog == null) {
                 // If we reached this point, this Engine can't have an AccessLog
                 // Look in the defaultHost
-                host = (Host) findChild(getDefaultHost());
-                defaultAccessLog = host.getAccessLog();
-
-                if (defaultAccessLog == null) {
-                    // Try the ROOT context of default host
-                    Context context = (Context) host.findChild("");
-                    defaultAccessLog = context.getAccessLog();
+                Host host = (Host) findChild(getDefaultHost());
+                if (host != null) {
+                    defaultAccessLog = host.getAccessLog();
 
                     if (defaultAccessLog == null) {
-                        defaultAccessLog = new NoopAccessLog();
+                        // Try the ROOT context of default host
+                        Context context = (Context) host.findChild("");
+                        if (context != null) {
+                            defaultAccessLog = context.getAccessLog();
+                        }
                     }
                 }
+
+                if (defaultAccessLog == null) {
+                    defaultAccessLog = new NoopAccessLog();
+                }
             }
-            
+
             defaultAccessLog.log(request, response, time);
         }
     }

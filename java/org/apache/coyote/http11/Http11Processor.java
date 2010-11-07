@@ -1418,6 +1418,7 @@ public class Http11Processor implements ActionHook {
                     error = true;
                     // 400 - Bad request
                     response.setStatus(400);
+                    adapter.log(request, response, 0);
                     break;
                 }
                 port = port + (charValue * mult);
