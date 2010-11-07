@@ -180,3 +180,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~rjung/patches/bz48925-tc6-ajp-localaddr.patch
   +1: rjung, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50228
+  Improve recycling of BodyContentImpl.
+  Recycle it as early. Do not wait until it is actually reused.
+  http://svn.apache.org/viewvc?rev=1032232&view=rev
+  +1: kkolinko
+  -1:
