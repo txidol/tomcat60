@@ -50,6 +50,7 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by 'smmwpf54'
   https://issues.apache.org/bugzilla/attachment.cgi?id=25848
   +1: markt
+  +1: kkolinko: OK with this one, but I am proposing a slightly corrected version below.
   -1:
   Comments on previous patch
     jfclere: Doc says it should use keystorePass (http://tomcat.apache.org/tomcat-6.0-doc/config/http.html).
@@ -65,6 +66,10 @@ PATCHES PROPOSED TO BACKPORT:
              3. I would be fine if this new behaviour in TC6 were triggered by some
              system property, but defaults to the old behaviour.
 
+  Updated patch:
+  https://issues.apache.org/bugzilla/attachment.cgi?id=26268
+  +1: kkolinko
+  -1:
 
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
