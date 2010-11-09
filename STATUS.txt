@@ -48,27 +48,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
   Truststores don't have to have passwords
   Based on a patch by 'smmwpf54'
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25848
-  +1: markt
-  +1: kkolinko: OK with this one, but I am proposing a slightly corrected version below.
-  -1:
-  Comments on previous patch
-    jfclere: Doc says it should use keystorePass (http://tomcat.apache.org/tomcat-6.0-doc/config/http.html).
-               so that would break existing configurations.
-      markt: It shouldn't break existing configs. JSSE allows trust stores to be
-             read without providing the password
-      kkolinko: 1. My understanding of KeyStore.load(stream,pwd) doc is that when the
-             password is not needed to open a store, it is used to verify its integrity.
-             So, this patch changes behaviour: skips the verification.
-             2. Note, that the password might be provided by overriding the
-             getKeystorePassword() method. There is no way to provide such password
-             for the truststore in the new code.
-             3. I would be fine if this new behaviour in TC6 were triggered by some
-             system property, but defaults to the old behaviour.
-
-  Updated patch:
   https://issues.apache.org/bugzilla/attachment.cgi?id=26268
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Configure Tomcat to use HttpOnly for session cookies by default
