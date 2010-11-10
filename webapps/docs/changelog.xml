@@ -207,6 +207,9 @@
         <bug>50072</bug>: NIO connector can mis-read request line if not sent in
         a single packet. (markt/kkolinko)
       </fix>
+      <fix>
+        Improve recycling of processors in Http11NioProtocol. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

@@ -676,8 +676,7 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
                         (sm.getString("http11protocol.proto.error"), e);
                 } finally {
                     if (state != SocketState.LONG) {
-                        connections.remove(socket);
-                        recycledProcessors.offer(result);
+                        release(socket);
                         if (state == SocketState.OPEN) {
                             socket.getPoller().add(socket);
                         }
@@ -762,6 +761,8 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
                 Http11NioProtocol.log.error
                     (sm.getString("http11protocol.proto.error"), e);
             }
+            connections.remove(socket);
+            processor.recycle();
             recycledProcessors.offer(processor);
             return SocketState.CLOSED;
         }

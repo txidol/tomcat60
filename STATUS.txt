@@ -144,11 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
 
    kkolinko: Discussed in Re:r1005192 thread on dev@
 
-* Improve recycling of processors in Http11NioProtocol
-  http://svn.apache.org/viewvc?rev=1022415&view=rev
-  +1: kkolinko, rjung,funkman
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50140
   Don't ignore user specified installation directory on 64-bit platforms
   Allow 32-bit and 64-bit JDKs to be selected on 64-bit platforms
