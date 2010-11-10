@@ -144,14 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
    when I go from JRE selection page to the next page in TC7 installer.
    kkolinko: merging r1027504 does not perform cleanly
 
-* Fix for BZ 48925: request.getLocalAddr() returns "null"
-  It only happens for the old ajp implementation, so no fix for TC 7 needed.
-  Copy local addr from local name just as we do in the ajp processor
-  implementation.
-  http://people.apache.org/~rjung/patches/bz48925-tc6-ajp-localaddr.patch
-  +1: rjung, kkolinko, markt
-  -1: 
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50228
   Improve recycling of BodyContentImpl.
   Recycle it as early. Do not wait until it is actually reused.

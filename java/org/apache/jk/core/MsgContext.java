@@ -377,6 +377,10 @@ public class MsgContext implements ActionHook {
             ByteChunk bc = (ByteChunk)param;
             req.setContentLength(bc.getLength());
             jkIS.setReplay(bc);
+        } else if (actionCode == ActionCode.ACTION_REQ_LOCAL_ADDR_ATTRIBUTE) {
+            // Copy from local name for now, which should simply be an address
+            Request req=(Request)param;
+            req.localAddr().setString(req.localName().toString());
         }
     }
     
