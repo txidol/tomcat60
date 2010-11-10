@@ -91,20 +91,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49860
   Add support for trailing headers.
   http://svn.apache.org/viewvc?rev=1003461&view=rev
+  http://svn.apache.org/viewvc?rev=1033415&view=rev
   Note: Don't change return type for parseEndChunk(), just return true.
-  +1: markt, rjung
-  -1: kkolinko:
-    Regarding implementation of ChunkedInputFilter.parseHeader():
-    One cannot remember old value of 'pos' (e.g. 'int start = pos')
-    outside of a loop that calls readBytes(). The remembered positions
-    are not valid after the readBytes() call.
-    markt: This is pretty much an exact copy of
-           InternalInputBuffer.parseHeader() which has been working for years.
-           Could you elaborate on where you see the issue. A test case that
-           demonstrates it would be even better.
-    kkolinko: I have replied in Re:r1031024
-      Here is a testcase: https://issues.apache.org/bugzilla/attachment.cgi?id=26265&action=edit
-
+  +1: markt
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
   Force DefaultServlet to serve all resources relative to context root
