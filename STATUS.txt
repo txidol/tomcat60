@@ -119,6 +119,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1004415&view=rev
   http://svn.apache.org/viewvc?rev=1004912&view=rev (fix for includes)
   +1: timw
+  -0: markt - It prevents the legitimate exposure of WEB-INF and META-INF for
+              editing via WebDAV. I'll look into making this optional for
+              WebDAV only.
   -1:
    kkolinko: See Re:r1004393 on dev@
     timw: fixed in http://svn.apache.org/viewvc?rev=1004912&view=rev
