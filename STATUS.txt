@@ -156,6 +156,6 @@ PATCHES PROPOSED TO BACKPORT:
   work better in an embedded environment.
   Patch provided by Christopher Schultz.
   http://svn.apache.org/viewvc?rev=1033448&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
