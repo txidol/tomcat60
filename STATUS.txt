@@ -93,8 +93,17 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1003461&view=rev
   http://svn.apache.org/viewvc?rev=1033415&view=rev
   Note: Don't change return type for parseEndChunk(), just return true.
-  +1: markt
+  +1: markt, kkolinko
   -1:
+
+  kkolinko: Additional patch:
+  http://svn.apache.org/viewvc?rev=1033842&view=rev
+  +1: kkolinko
+  -1:
+
+  kkolinko: Maybe we can/should add a system property to allow to impose
+  a limit on the trailers length? Via ByteChunk.setLimit().
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
   Force DefaultServlet to serve all resources relative to context root
