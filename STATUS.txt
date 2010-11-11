@@ -151,7 +151,14 @@ PATCHES PROPOSED TO BACKPORT:
   -1: kkolinko: The function checkJava spawns a .bat file
    (ExecWait '"$R0.bat"'). It is visible as a flickering black window
    when I go from JRE selection page to the next page in TC7 installer.
+   -> fixed by r1033882
    kkolinko: merging r1027504 does not perform cleanly
+
+  kkolinko: Additional patches:
+  http://svn.apache.org/viewvc?rev=1033856&view=rev
+  http://svn.apache.org/viewvc?rev=1033882&view=rev
+  http://svn.apache.org/viewvc?rev=1033884&view=rev
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50228
   Improve recycling of BodyContentImpl.
