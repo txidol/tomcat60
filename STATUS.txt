@@ -119,7 +119,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1004415&view=rev
   http://svn.apache.org/viewvc?rev=1004912&view=rev (fix for includes)
   +1: timw
-  +1: markt if http://svn.apache.org/viewvc?rev=1033897&view=rev
+  +1: markt, kkolinko if http://svn.apache.org/viewvc?rev=1033897&view=rev
             is also applied
   -1:
    kkolinko: See Re:r1004393 on dev@
