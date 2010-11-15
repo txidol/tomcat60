@@ -166,8 +166,8 @@
     <property name="org.apache.jasper.Constants. PRECOMPILE">
       <p>The name of the query parameter that causes the JSP engine to just
       pregenerate the servlet but not invoke it.</p>
-      <p>If not specified, the default value of
-      <code>org.apache.catalina.jsp_precompile</code> will be used.</p>
+      <p>If not specified, the default value of <code>jsp_precompile</code>
+      will be used, as defined by JSP specification (JSP.11.4.2).</p>
     </property>
 
     <property name="org.apache.jasper.Constants. JSP_PACKAGE_NAME">
