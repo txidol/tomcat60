@@ -204,7 +204,8 @@ PATCHES PROPOSED TO BACKPORT:
 
   Backported revisions:
   964211,982151,982157,999976,1003840,1027504,1033856,1033882,1034911,1034924,
-  1034926,1035051,1035062,1035068,1035071,1035083,1035088,1035093,1035094
+  1034926,1035051,1035062,1035068,1035071,1035083,1035088,1035093,1035094,
+  1035132
 
   1. Run the following SVN commands:
    svn del res/config.ini
@@ -217,7 +218,7 @@ PATCHES PROPOSED TO BACKPORT:
   2. Apply patch:
    http://people.apache.org/~kkolinko/patches/2010-11-15_tc6_tomcat-nsi.patch
   (
-   For reference: here is the diff of tomcat.nsi of trunk @1035094 if I copy
+   For reference: here is the diff of tomcat.nsi of trunk @1035132 if I copy
    this patched tc6 version on top of it:
    http://people.apache.org/~kkolinko/patches/2010-11-15_tc6_tomcat-nsi-of-tc7_vs_tc6.diff
   )
