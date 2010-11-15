@@ -220,6 +220,11 @@
   </subsection>
   <subsection name="Jasper">
     <changelog>
+      <update>
+        <bug>49217</bug>: Ensure that identifiers used in EL meet the
+        requirements of the Java Language Specification. This check is off by
+        default and can be enabled by setting a system property. (markt)
+      </update>
       <fix>
         <bug>49665</bug>: Provide better information including JSP file name and
         location when a missing file is detected during TLD handling. Patch
