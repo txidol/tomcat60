@@ -122,8 +122,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko if http://svn.apache.org/viewvc?rev=1033897&view=rev
             is also applied
   -1:
-   kkolinko: See Re:r1004393 on dev@
-    timw: fixed in http://svn.apache.org/viewvc?rev=1004912&view=rev
 
 * Fix path parameter handling. Currently the following URL fails with a 404:
   http://localhost:8080/examples/jsp/snp;x=y/snoop.jsp
@@ -131,13 +129,17 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   +1: kkolinko:
     with the following trivial changes:
-     - with r1022389
+     - with r1022389 and r1035973
      - with access logging as done by r1030188
      - Mark CoyoteAdapter.parseSessionId(..) as @deprecated, because it is no more used
-     - in initial assignment of 'int pathParamEnd' can s/uriBC.getStart()/start/ and s/uriBC.getEnd()/end/
-     - boolean warnedEncoding = false;  I think is useless, because it is set
-       to 'false' in every loop. It'd be OK to move it outside the loop.
+       In the updated patch below I replaced its implementation with a call to parsePathParameters().
      - Add 'coyoteAdapter.parsePathParam' message to org/apache/catalina/connector/LocalStrings.properties
+  -1:
+
+    Updated patch, based on markt's one and my above comments:
+  http://people.apache.org/~kkolinko/patches/2010-11-17_tc6_path-params.patch
+  +1: kkolinko
+  -1:
 
    kkolinko: The old parseSessionId() method calls "clearRequestedSessionURL(request);"
      when there is no sessionid in the path. The new code does not do that. Was that
