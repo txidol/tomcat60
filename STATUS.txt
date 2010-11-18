@@ -226,3 +226,12 @@ PATCHES PROPOSED TO BACKPORT:
   )
    +1: kkolinko
    -1:
+
+* Backport JSP unloading patch (BZ48358).
+  The patch has substantially changed since the original version.
+  Original revisions are: 937787, 1028377, 1028389, 1028396, 1028861, 1028862, 1028863,
+  1028935, 1028939, 1028940, 1028944, 1028950, 1030014, 1030037
+  Combined TC 6 patch:
+  http://people.apache.org/~rjung/patches/BZ48358-JSP_Unloading-TC6_20101118.patch
+  +1: rjung
+  -1:
