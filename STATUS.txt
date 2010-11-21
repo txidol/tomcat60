@@ -98,7 +98,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   kkolinko: Additional patch:
   http://svn.apache.org/viewvc?rev=1033842&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
   kkolinko: Maybe we can/should add a system property to allow to impose
@@ -224,7 +224,7 @@ PATCHES PROPOSED TO BACKPORT:
    this patched tc6 version on top of it:
    http://people.apache.org/~kkolinko/patches/2010-11-15_tc6_tomcat-nsi-of-tc7_vs_tc6.diff
   )
-   +1: kkolinko
+   +1: kkolinko, markt
    -1:
 
 * Backport JSP unloading patch (BZ48358).
