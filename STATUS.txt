@@ -235,3 +235,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-11-18-session-rate-stats.patch
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50273
+  Provide a workaround for an HP-UX issue that can result in large numbers of
+  SEVERE log messages appearing in the logs as a result of normal operation.
+  +1: markt
+  -1:
+ 
