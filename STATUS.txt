@@ -253,3 +253,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2010-11-22_tc6_httpOnly.patch
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50316
+  Fix minor glitch with display of negative values in Manager webapp
+  http://svn.apache.org/viewvc?rev=1037887&view=rev
+  +1: kkolinko
+  -1:
