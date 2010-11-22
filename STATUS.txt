@@ -248,3 +248,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1037794&view=rev
   +1: kkolinko
   -1:
+
+* Configure manager and host-manager webapps to use HttpOnly for session cookies
+  http://people.apache.org/~kkolinko/patches/2010-11-22_tc6_httpOnly.patch
+  +1: kkolinko
+  -1:
