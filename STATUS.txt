@@ -95,15 +95,19 @@ PATCHES PROPOSED TO BACKPORT:
   Note: Don't change return type for parseEndChunk(), just return true.
   +1: markt, kkolinko
   -1:
+  kkolinko: Only if accompanied by a patch that sets limit on the maximum
+  size of ChunkedInputFilter.trailingHeaders buffer. I am proposing such a
+  patch below. Otherwise it would be vulnerable to a DOS.
 
   kkolinko: Additional patch:
   http://svn.apache.org/viewvc?rev=1033842&view=rev
   +1: kkolinko, markt
   -1:
 
-  kkolinko: Maybe we can/should add a system property to allow to impose
-  a limit on the trailers length? Via ByteChunk.setLimit().
-
+  kkolinko: Patch to impose limit on the trailers length:
+  http://svn.apache.org/viewvc?rev=1037924&view=rev
+  +1: kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
   Force DefaultServlet to serve all resources relative to context root
