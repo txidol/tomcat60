@@ -239,6 +239,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50273
   Provide a workaround for an HP-UX issue that can result in large numbers of
   SEVERE log messages appearing in the logs as a result of normal operation.
-  +1: markt
+  http://svn.apache.org/viewvc?rev=1037715&view=rev
+  +1: markt, kkolinko
   -1:
  
