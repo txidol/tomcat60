@@ -161,7 +161,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Backport Windows installer improvements from Tomcat 7.0.5.
-  
+
   - Add default --PidFile (new with daemon 1.0.3) (r982157, mturk)
 
   - Use *modern* types of nsis install/uninstall icons (r999976, mturk)
@@ -238,7 +238,7 @@ PATCHES PROPOSED TO BACKPORT:
   is doing. Should be less overhead with less contention.
   http://people.apache.org/~markt/patches/2010-11-18-session-rate-stats.patch
   +1: markt
-  -1: 
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50273
   Provide a workaround for an HP-UX issue that can result in large numbers of
@@ -262,4 +262,9 @@ PATCHES PROPOSED TO BACKPORT:
   Fix minor glitch with display of negative values in Manager webapp
   http://svn.apache.org/viewvc?rev=1037887&view=rev
   +1: kkolinko
+  -1:
+
+* Backport AprEndpoint shutdown patch (BZ49795 and similar).
+  http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-aprshutdown.patch
+  +1: mturk
   -1:
