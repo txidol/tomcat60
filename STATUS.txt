@@ -279,5 +279,6 @@ PATCHES PROPOSED TO BACKPORT:
   Extend threads local memory leak detection / fixing to classes loaded by the
   JSP class loaders
   Patch by Sylvain Laurent
+  https://issues.apache.org/bugzilla/attachment.cgi?id=25116
   +1: markt
   -1:
