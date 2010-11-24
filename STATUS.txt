@@ -274,3 +274,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1038041&view=rev
   +1: markt, kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48837
+  Extend threads local memory leak detection / fixing to classes loaded by the
+  JSP class loaders
+  Patch by Sylvain Laurent
+  +1: markt
+  -1:
