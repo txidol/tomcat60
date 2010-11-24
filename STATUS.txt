@@ -106,7 +106,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   kkolinko: Patch to impose limit on the trailers length:
   http://svn.apache.org/viewvc?rev=1037924&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
