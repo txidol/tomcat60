@@ -81,27 +81,6 @@ PATCHES PROPOSED TO BACKPORT:
    but from debugging it looks that it is called by Tomcat code only
    (JspServlet).
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49860
-  Add support for trailing headers.
-  http://svn.apache.org/viewvc?rev=1003461&view=rev
-  http://svn.apache.org/viewvc?rev=1033415&view=rev
-  Note: Don't change return type for parseEndChunk(), just return true.
-  +1: markt, kkolinko, jfclere
-  -1:
-  kkolinko: Only if accompanied by a patch that sets limit on the maximum
-  size of ChunkedInputFilter.trailingHeaders buffer. I am proposing such a
-  patch below. Otherwise it would be vulnerable to a DOS.
-
-  kkolinko: Additional patch:
-  http://svn.apache.org/viewvc?rev=1033842&view=rev
-  +1: kkolinko, markt, jfclere
-  -1:
-
-  kkolinko: Patch to impose limit on the trailers length:
-  http://svn.apache.org/viewvc?rev=1037924&view=rev
-  +1: kkolinko, markt, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
   Force DefaultServlet to serve all resources relative to context root
   regardless of mappings/mount point.

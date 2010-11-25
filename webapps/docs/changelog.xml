@@ -220,6 +220,11 @@
       <fix>
         Improve recycling of processors in Http11NioProtocol. (kkolinko)
       </fix>
+      <fix>
+        <bug>49860</bug>: Add support for trailing headers in chunked HTTP
+        requests. The header length is limited to 8192 by default and the limit
+        can be changed via a system property. (markt/kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
