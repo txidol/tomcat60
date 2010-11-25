@@ -215,6 +215,11 @@
         Laurent. (markt)
       </fix>
       <fix>
+        <bug>49860</bug>: Add support for trailing headers in chunked HTTP
+        requests. The header length is limited to 8192 by default and the limit
+        can be changed via a system property. (markt/kkolinko)
+      </fix>
+      <fix>
         <bug>49972</bug>: Fix potential thread safe issue when formatting dates
         for use in HTTP headers. (markt)
       </fix>
@@ -225,11 +230,12 @@
       <fix>
         Improve recycling of processors in Http11NioProtocol. (kkolinko)
       </fix>
-      <fix>
-        <bug>49860</bug>: Add support for trailing headers in chunked HTTP
-        requests. The header length is limited to 8192 by default and the limit
-        can be changed via a system property. (markt/kkolinko)
-      </fix>
+      <add>
+        <bug>50273</bug>: Provide a workaround for an HP-UX issue that can
+        result in large numbers of SEVERE log messages appearing in the logs as
+        a result of normal operation. (markt)
+      </add>
+      
     </changelog>
   </subsection>
   <subsection name="Jasper">

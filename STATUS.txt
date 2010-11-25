@@ -204,13 +204,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50273
-  Provide a workaround for an HP-UX issue that can result in large numbers of
-  SEVERE log messages appearing in the logs as a result of normal operation.
-  http://svn.apache.org/viewvc?rev=1037715&view=rev
-  +1: markt, kkolinko, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50228
   Improve recycling of BodyContentImpl.
   http://svn.apache.org/viewvc?rev=1037794&view=rev

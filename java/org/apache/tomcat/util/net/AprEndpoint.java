@@ -1145,6 +1145,7 @@ public class AprEndpoint {
      */
     protected class Acceptor implements Runnable {
 
+        private final Log log = LogFactory.getLog(AprEndpoint.Acceptor.class);
 
         /**
          * The background thread that listens for incoming TCP/IP connections and
@@ -1182,7 +1183,22 @@ public class AprEndpoint {
                         Socket.destroy(socket);
                     }
                 } catch (Throwable t) {
-                    if (running) log.error(sm.getString("endpoint.accept.fail"), t);
+                    if (running) {
+                        String msg = sm.getString("endpoint.accept.fail");
+                        if (t instanceof Error) {
+                            Error e = (Error) t;
+                            if (e.getError() == 233) {
+                                // Not an error on HP-UX so log as a warning
+                                // so it can be filtered out on that platform
+                                // See bug 50273
+                                log.warn(msg, t);
+                            } else {
+                                log.error(msg, t);
+                            }
+                        } else {
+                                log.error(msg, t);
+                        }
+                    }
                 }
 
                 // The processor will recycle itself when it finishes
