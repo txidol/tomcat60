@@ -222,9 +222,8 @@ PATCHES PROPOSED TO BACKPORT:
    http://people.apache.org/~kkolinko/patches/2010-11-15_tc6_tomcat-nsi-of-tc7_vs_tc6.diff
   )
    +1: kkolinko
-   -1: markt - I found an issue with using a PID file in 7.0.x that prevents the
-               service from starting (a second attempt succeeds). I am assuming
-               6.0.x will also be affected. 
+   +1: markt - with r1038975 to remove use of PID file
+   -1: 
 
 * Backport JSP unloading patch (BZ48358).
   The patch has substantially changed since the original version.
