@@ -101,20 +101,8 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix path parameter handling. Currently the following URL fails with a 404:
   http://localhost:8080/examples/jsp/snp;x=y/snoop.jsp
-  http://people.apache.org/~markt/patches/2010-10-06-path-param-tc6.patch
-  +1: markt
-  +1: kkolinko:
-    with the following trivial changes:
-     - with r1022389 and r1035973
-     - with access logging as done by r1030188
-     - Mark CoyoteAdapter.parseSessionId(..) as @deprecated, because it is no more used
-       In the updated patch below I replaced its implementation with a call to parsePathParameters().
-     - Add 'coyoteAdapter.parsePathParam' message to org/apache/catalina/connector/LocalStrings.properties
-  -1:
-
-    Updated patch, based on markt's one and my above comments:
   http://people.apache.org/~kkolinko/patches/2010-11-17_tc6_path-params.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
    kkolinko: The old parseSessionId() method calls "clearRequestedSessionURL(request);"
@@ -195,6 +183,9 @@ PATCHES PROPOSED TO BACKPORT:
   Combined TC 6 patch:
   http://people.apache.org/~rjung/patches/BZ48358-JSP_Unloading-TC6_20101118.patch
   +1: rjung
+  -0: markt - http://markmail.org/thread/777be426ulcfmdd3 suggests there may be
+              a memory leak in this code somewhere. I'd like to get to the
+              bottom of that before porting this
   -1:
 
 * Add session creation / expiration rate statistics to the session managers
@@ -207,23 +198,24 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50228
   Improve recycling of BodyContentImpl.
   http://svn.apache.org/viewvc?rev=1037794&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Configure manager and host-manager webapps to use HttpOnly for session cookies
   http://people.apache.org/~kkolinko/patches/2010-11-22_tc6_httpOnly.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50316
   Fix minor glitch with display of negative values in Manager webapp
   http://svn.apache.org/viewvc?rev=1037887&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Backport AprEndpoint shutdown patch (BZ49795 and similar).
   http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-aprshutdown.patch
   +1: mturk
+  -0: markt - Patch doesn't apply cleanly to tc6.0.x/trunk
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48837
