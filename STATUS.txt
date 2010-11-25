@@ -221,8 +221,10 @@ PATCHES PROPOSED TO BACKPORT:
    this patched tc6 version on top of it:
    http://people.apache.org/~kkolinko/patches/2010-11-15_tc6_tomcat-nsi-of-tc7_vs_tc6.diff
   )
-   +1: kkolinko, markt
-   -1:
+   +1: kkolinko
+   -1: markt - I found an issue with using a PID file in 7.0.x that prevents the
+               service from starting (a second attempt succeeds). I am assuming
+               6.0.x will also be affected. 
 
 * Backport JSP unloading patch (BZ48358).
   The patch has substantially changed since the original version.
