@@ -124,14 +124,6 @@ PATCHES PROPOSED TO BACKPORT:
    kkolinko: Discussed in Re:r1005192 thread on dev@
 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50222
-  Pin the system rather than the common class loader in memory which will
-  work better in an embedded environment.
-  Patch provided by Christopher Schultz.
-  http://svn.apache.org/viewvc?rev=1033448&view=rev
-  +1: kkolinko, markt, jfclere
-  -1:
-
 * Backport Windows installer improvements from Tomcat 7.0.5.
 
   - Add default --PidFile (new with daemon 1.0.3) (r982157, mturk)

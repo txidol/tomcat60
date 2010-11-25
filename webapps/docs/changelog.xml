@@ -163,6 +163,11 @@
         Make sure Contexts defined in server.xml pick up any <code>configClass</code>
         setting from the parent Host. (markt)
       </fix>
+      <add>
+        <bug>50222</bug>: Modify memory leak prevention code so it pins the
+        system class loader in memory rather than than the common class loader,
+        which is better for embedded systems. (schultz) 
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
