@@ -280,5 +280,7 @@ PATCHES PROPOSED TO BACKPORT:
   JSP class loaders
   Patch by Sylvain Laurent
   https://issues.apache.org/bugzilla/attachment.cgi?id=25116
-  +1: markt
+  +1: markt, kkolinko
   -1:
+    kkolinko: I'd like to s/isLoadedByThisWebAppClassLoader/isLoadedByThisWebappClassLoader/
+    to match this class name. Also do not change JavaDoc at class declaration.
