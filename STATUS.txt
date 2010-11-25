@@ -49,7 +49,7 @@ PATCHES PROPOSED TO BACKPORT:
   Truststores don't have to have passwords
   Based on a patch by 'smmwpf54'
   https://issues.apache.org/bugzilla/attachment.cgi?id=26268
-  +1: kkolinko, markt
+  +1: kkolinko, markt, jfclere
   -1:
 
 * Configure Tomcat to use HttpOnly for session cookies by default
@@ -93,7 +93,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1003461&view=rev
   http://svn.apache.org/viewvc?rev=1033415&view=rev
   Note: Don't change return type for parseEndChunk(), just return true.
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1:
   kkolinko: Only if accompanied by a patch that sets limit on the maximum
   size of ChunkedInputFilter.trailingHeaders buffer. I am proposing such a
@@ -101,12 +101,12 @@ PATCHES PROPOSED TO BACKPORT:
 
   kkolinko: Additional patch:
   http://svn.apache.org/viewvc?rev=1033842&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, jfclere
   -1:
 
   kkolinko: Patch to impose limit on the trailers length:
   http://svn.apache.org/viewvc?rev=1037924&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
@@ -157,7 +157,7 @@ PATCHES PROPOSED TO BACKPORT:
   work better in an embedded environment.
   Patch provided by Christopher Schultz.
   http://svn.apache.org/viewvc?rev=1033448&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, jfclere
   -1:
 
 * Backport Windows installer improvements from Tomcat 7.0.5.
@@ -244,7 +244,7 @@ PATCHES PROPOSED TO BACKPORT:
   Provide a workaround for an HP-UX issue that can result in large numbers of
   SEVERE log messages appearing in the logs as a result of normal operation.
   http://svn.apache.org/viewvc?rev=1037715&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50228
@@ -272,7 +272,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Make memory leak prevention code that clears ThreadLocal instances more robust
   against objects with toString() methods that throw exceptions.
   http://svn.apache.org/viewvc?rev=1038041&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48837
