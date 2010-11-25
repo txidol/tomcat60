@@ -186,6 +186,9 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - http://markmail.org/thread/777be426ulcfmdd3 suggests there may be
               a memory leak in this code somewhere. I'd like to get to the
               bottom of that before porting this
+      rjung:  I started a discussion about JSPs and memory on the dev list.
+              The updated patch fixes a race condition.
+              We can stall this item until we get some feedback about 7.0.5.
   -1:
 
 * Add session creation / expiration rate statistics to the session managers
