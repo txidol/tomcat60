@@ -266,7 +266,15 @@ public class JSSESocketFactory
         if (keystoreFile == null)
             keystoreFile = defaultKeystoreFile;
 
-        return getStore(type, provider, keystoreFile, pass);
+        try {
+            return getStore(type, provider, keystoreFile, pass);
+        } catch (FileNotFoundException fnfe) {
+            throw fnfe;
+        } catch (IOException ioe) {
+            log.error(sm.getString("jsse.keystore_load_failed", type,
+                    keystoreFile, ioe.getMessage()), ioe);
+            throw ioe;
+        }
     }
 
     /*
@@ -316,9 +324,33 @@ public class JSSESocketFactory
             log.debug("trustProvider = " + truststoreProvider);
         }
 
-        if (truststoreFile != null && truststorePassword != null){
-            trustStore = getStore(truststoreType, truststoreProvider,
-                    truststoreFile, truststorePassword);
+        if (truststoreFile != null) {
+            try {
+                trustStore = getStore(truststoreType, truststoreProvider,
+                        truststoreFile, truststorePassword);
+            } catch (FileNotFoundException fnfe) {
+                throw fnfe;
+            } catch (IOException ioe) {
+                // Log a warning that we had a password issue
+                // and re-try, unless the password is null already
+                if (truststorePassword != null) {
+                    log.warn(sm.getString("jsse.invalid_truststore_password"),
+                            ioe);
+                    try {
+                        trustStore = getStore(truststoreType,
+                                truststoreProvider, truststoreFile, null);
+                        ioe = null;
+                    } catch (IOException ioe2) {
+                        ioe = ioe2;
+                    }
+                }
+                if (ioe != null) {
+                    log.error(sm.getString("jsse.keystore_load_failed",
+                            truststoreType, truststoreFile, ioe.getMessage()),
+                            ioe);
+                    throw ioe;
+                }
+            }
         }
 
         return trustStore;
@@ -347,15 +379,19 @@ public class JSSESocketFactory
                 istream = new FileInputStream(keyStoreFile);
             }
 
-            ks.load(istream, pass.toCharArray());
+            char[] storePass = null;
+            if (pass != null && !"".equals(pass)) {
+                storePass = pass.toCharArray();
+            }
+            ks.load(istream, storePass);
         } catch (FileNotFoundException fnfe) {
             log.error(sm.getString("jsse.keystore_load_failed", type, path,
                     fnfe.getMessage()), fnfe);
             throw fnfe;
         } catch (IOException ioe) {
-            log.error(sm.getString("jsse.keystore_load_failed", type, path,
-                    ioe.getMessage()), ioe);
-            throw ioe;      
+            // May be expected when working with a trust store
+            // Re-throw. Caller will catch and log as required
+            throw ioe;
         } catch(Exception ex) {
             String msg = sm.getString("jsse.keystore_load_failed", type, path,
                     ex.getMessage());

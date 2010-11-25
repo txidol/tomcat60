@@ -45,13 +45,6 @@ PATCHES PROPOSED TO BACKPORT:
       and fix it later if needed? I think that actually nobody besides the release manager
       uses this, so I am letting this pass.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48545
-  Truststores don't have to have passwords
-  Based on a patch by 'smmwpf54'
-  https://issues.apache.org/bugzilla/attachment.cgi?id=26268
-  +1: kkolinko, markt, jfclere
-  -1:
-
 * Configure Tomcat to use HttpOnly for session cookies by default
   http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
   +1: kkolinko

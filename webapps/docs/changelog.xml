@@ -172,6 +172,10 @@
         (mturk)
       </fix>
       <add>
+        <bug>48545</bug>: Allow JSSE trust stores to be used without providing
+        a password. Based on a patch by smmwpf54. (kkolinko)
+      </add>
+      <add>
         <bug>48738</bug>: Add support for flushing gzipped output. Based on a
         patch by Jiong Wang. (markt)
       </add>
