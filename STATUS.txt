@@ -226,12 +226,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mturk
   -1:
 
-* Make memory leak prevention code that clears ThreadLocal instances more robust
-  against objects with toString() methods that throw exceptions.
-  http://svn.apache.org/viewvc?rev=1038041&view=rev
-  +1: markt, kkolinko, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48837
   Extend threads local memory leak detection / fixing to classes loaded by the
   JSP class loaders

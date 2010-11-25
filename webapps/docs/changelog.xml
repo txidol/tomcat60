@@ -168,6 +168,11 @@
         system class loader in memory rather than than the common class loader,
         which is better for embedded systems. (schultz) 
       </add>
+      <add>
+        Make memory leak prevention code that clears ThreadLocal instances more
+        robust against objects with <code>toString()</code> methods that throw
+        exceptions. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
