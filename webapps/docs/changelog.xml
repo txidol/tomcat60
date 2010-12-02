@@ -353,6 +353,10 @@
         Configure the Manager and Host-Manager web applications to use HttpOnly
         flag for their session cookies. (kkolinko)
       </update>
+      <fix>
+        <bug>50316</bug>: Fix display of negative values in the Manager web
+        application. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
