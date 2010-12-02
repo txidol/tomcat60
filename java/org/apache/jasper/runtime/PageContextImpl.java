@@ -203,6 +203,9 @@ public class PageContextImpl extends PageContext {
             baseOut.recycle();
             session = null;
             attributes.clear();
+            for (BodyContentImpl body: outs) {
+                body.recycle();
+            }
         }
     }
 
