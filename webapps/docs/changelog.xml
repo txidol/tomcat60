@@ -80,6 +80,12 @@
         to prevent modification. This facilitated, although it wasn't the root
         cause, CVE-2010-1622. (markt)
       </fix>
+      <add>
+        <bug>48837</bug>: Extend thread local memory leak detection to include
+        classes loaded by subordinate class loaders to the web
+        application&apos;s class loader such as the Jasper class loader.
+        Patch provided by Sylvain Laurent. (kkolinko)
+      </add>
       <fix>
         <bug>49030</bug>: Failure during start of one connector should not leave
         some connectors started and some ignored. (kkolinko)

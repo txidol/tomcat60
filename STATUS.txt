@@ -203,13 +203,3 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mturk
   -0: markt - Patch doesn't apply cleanly to tc6.0.x/trunk
   -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48837
-  Extend threads local memory leak detection / fixing to classes loaded by the
-  JSP class loaders
-  Patch by Sylvain Laurent
-  https://issues.apache.org/bugzilla/attachment.cgi?id=25116
-  +1: markt, kkolinko, kfujino
-  -1:
-    kkolinko: I'd like to s/isLoadedByThisWebAppClassLoader/isLoadedByThisWebappClassLoader/
-    to match this class name. Also do not change JavaDoc at class declaration.
