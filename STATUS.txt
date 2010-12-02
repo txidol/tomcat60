@@ -198,12 +198,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50316
-  Fix minor glitch with display of negative values in Manager webapp
-  http://svn.apache.org/viewvc?rev=1037887&view=rev
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Backport AprEndpoint shutdown patch (BZ49795 and similar).
   http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-aprshutdown.patch
   +1: mturk
