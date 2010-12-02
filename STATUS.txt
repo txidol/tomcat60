@@ -201,3 +201,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mturk
   -0: markt - Patch doesn't apply cleanly to tc6.0.x/trunk
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50201
+  Handle ROOT webapp redployment, host start/stop etc for default access log
+  http://people.apache.org/~markt/patches/2010-12-02-bug50201-tc6.patch
+  +1: markt
+  -1:
