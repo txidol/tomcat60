@@ -198,11 +198,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-* Configure manager and host-manager webapps to use HttpOnly for session cookies
-  http://people.apache.org/~kkolinko/patches/2010-11-22_tc6_httpOnly.patch
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50316
   Fix minor glitch with display of negative values in Manager webapp
   http://svn.apache.org/viewvc?rev=1037887&view=rev

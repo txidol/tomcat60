@@ -349,6 +349,10 @@
         <bug>50294</bug>: Add more information to documentation regarding format
         of configuration files. Patch provided by Luke Meyer. (markt) 
       </add>
+      <update>
+        Configure the Manager and Host-Manager web applications to use HttpOnly
+        flag for their session cookies. (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Other">
