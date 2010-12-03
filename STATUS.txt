@@ -207,3 +207,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2010-12-02-bug50201-tc6.patch
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48973
+  Avoid creating file SESSIONS.ser if there's no session.
+  The patch provided by Marc Guillemot works for tc 6 & 7
+  +1: slaurent
+  -1:
+  
