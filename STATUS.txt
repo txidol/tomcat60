@@ -235,13 +235,13 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid creating file SESSIONS.ser if there's no session.
   The patch provided by Marc Guillemot works for tc 6 & 7
   http://svn.apache.org/viewvc?rev=1042022&view=rev
-  +1: slaurent
+  +1: slaurent, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50282
   Improve JreMemoryLeakPreventionListener to load 
   javax.security.auth.login.Configuration to avoid redeployment leak.
   http://svn.apache.org/viewvc?rev=1042029&view=rev
-  +1: slaurent
+  +1: slaurent, kkolinko
   -1:
   
