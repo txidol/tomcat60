@@ -206,17 +206,42 @@ PATCHES PROPOSED TO BACKPORT:
   Handle ROOT webapp redployment, host start/stop etc for default access log
   http://people.apache.org/~markt/patches/2010-12-02-bug50201-tc6.patch
   +1: markt
-  -1:
+  -1: kkolinko:
+  1) A typo: in "checkHost = ((ContainerBase) context).started;"
+   should be s/checkHost/checkContext/
+  2) Possible NPEs in StandardEngine.logAccess(). With the old code
+   the defaultAccessLog field can be checked once, and we know that
+   if it is already not-null it will never become null. That is no
+   longer the case and subsequent accesses to that volatile field can result in NPE.
+   One needs to keep a local copy of that field.
+  3) addPropertyChangeListener(l). If we are only interested in "defaultHost"
+   property change, shouldn't we add the listener to StandardEngine?
+   I think that there is no need to add it to Context or Host (and
+   are they notified about that change at all?).
+  4) Initializing defaultAccessLog may be performed by several threads
+   concurrently. That may result in several listener instances being
+   added. (It won't break their operation, but it is just a waste).
+  5) in AccessLogListener.containerEvent():
+     Context context = (Context) event.getData();
+   Maybe it'd be better to add an instanceof check before that cast.
+  6) In the proposed patch the Listener is only installed iff there
+   is an access log there. It should be installed unconditionally.
+   E.g., if Tomcat starts without access logs, NoopAccessLog is created.
+   As there are no listeners, any change to the configuration
+   (e.g. redeploying the ROOT webapp) will pass unnoticed
+   and won't reenable the access log.
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48973
   Avoid creating file SESSIONS.ser if there's no session.
   The patch provided by Marc Guillemot works for tc 6 & 7
+  http://svn.apache.org/viewvc?rev=1042022&view=rev
   +1: slaurent
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50282
   Improve JreMemoryLeakPreventionListener to load 
   javax.security.auth.login.Configuration to avoid redeployment leak.
+  http://svn.apache.org/viewvc?rev=1042029&view=rev
   +1: slaurent
   -1:
   
