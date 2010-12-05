@@ -236,6 +236,7 @@ PATCHES PROPOSED TO BACKPORT:
   The patch provided by Marc Guillemot works for tc 6 & 7
   http://svn.apache.org/viewvc?rev=1042022&view=rev
   +1: slaurent, kkolinko
+  -0: markt - See http://markmail.org/message/xp5beek4mdacygsc
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50282
@@ -243,5 +244,6 @@ PATCHES PROPOSED TO BACKPORT:
   javax.security.auth.login.Configuration to avoid redeployment leak.
   http://svn.apache.org/viewvc?rev=1042029&view=rev
   +1: slaurent, kkolinko
+  -0: markt - See http://markmail.org/message/mnowpijhnxg554t5
   -1:
   
