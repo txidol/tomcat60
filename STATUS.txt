@@ -203,7 +203,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50201
-  Handle ROOT webapp redployment, host start/stop etc for default access log
+  Handle ROOT webapp redeployment, host start/stop etc for default access log
   http://people.apache.org/~markt/patches/2010-12-05-bug50201-tc6.patch
   +1: markt
   -1: kkolinko:
@@ -238,6 +238,26 @@ PATCHES PROPOSED TO BACKPORT:
      (e.g. redeploying the ROOT webapp) will pass unnoticed
      and won't reenable the access log.
      markt: Fixed in updated patch above
+
+  kkolinko: (Re: markt's 2010-12-05-bug50201-tc6.patch)
+  7) Why "Lifecycle.DESTROY_EVENT.endsWith(type)" in a condition?
+     s/endsWith/equals/
+  8) I do not see how the listener can be reused when recalculation
+     happens.
+     (We are now installing a new listener when NoAccessLog wins,
+     so my understanding is that it is no more necessary to wait for
+     reuse there. The new listener will catch all the necessary events).
+     Thus all events that force recalculation should result
+     in disabling the listener.
+  9) I propose to use an AtomicReference to guard against registering
+     duplicate listeners (a fix for 4)). See the patch.
+  10) I added install() and uninstall() method to AccessLogListener
+      to help register/unregister the listeners.
+  Here is an amended version of Mark's patch that includes 7),8),9),10). 
+  I have not applied those changes to TC7 yet, and it might need some more
+  testing:
+  http://people.apache.org/~kkolinko/patches/2010-12-07_tc6_bug50201.patch
+
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48973
   Avoid creating file SESSIONS.ser if there's no session.
