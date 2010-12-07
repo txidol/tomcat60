@@ -274,4 +274,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: slaurent, kkolinko
   -0: markt - See http://markmail.org/message/mnowpijhnxg554t5
   -1:
-  
+
+* Make SSL protocol selection consistent between BIO and NIO and update docs
+  to reflect current BIO and post-patch NIO.
+  http://people.apache.org/~markt/patches/2010-12-07-ssl-algorithm-tc6.patch
+  +1: markt
+  -1:
