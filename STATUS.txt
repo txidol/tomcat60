@@ -242,6 +242,7 @@ PATCHES PROPOSED TO BACKPORT:
   kkolinko: (Re: markt's 2010-12-05-bug50201-tc6.patch)
   7) Why "Lifecycle.DESTROY_EVENT.endsWith(type)" in a condition?
      s/endsWith/equals/
+     markt: Auto-complete snafu - fixed in trunk
   8) I do not see how the listener can be reused when recalculation
      happens.
      (We are now installing a new listener when NoAccessLog wins,
@@ -257,6 +258,7 @@ PATCHES PROPOSED TO BACKPORT:
   I have not applied those changes to TC7 yet, and it might need some more
   testing:
   http://people.apache.org/~kkolinko/patches/2010-12-07_tc6_bug50201.patch
+  markt: +1 to making these changes in TC7
 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48973
