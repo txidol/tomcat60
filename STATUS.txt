@@ -266,12 +266,12 @@ PATCHES PROPOSED TO BACKPORT:
   The patch provided by Marc Guillemot works for tc 6 & 7
   http://svn.apache.org/viewvc?rev=1042022&view=rev
   +1: slaurent, kkolinko
-  -0: markt - See http://markmail.org/message/xp5beek4mdacygsc
+  +1: markt with r1044944
   -1:
 
   Additional patch: i18n, as asked by Mark:
   http://svn.apache.org/viewvc?rev=1044944&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50282
