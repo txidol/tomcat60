@@ -254,12 +254,10 @@ PATCHES PROPOSED TO BACKPORT:
      duplicate listeners (a fix for 4)). See the patch.
   10) I added install() and uninstall() method to AccessLogListener
       to help register/unregister the listeners.
-  Here is an amended version of Mark's patch that includes 7),8),9),10). 
-  I have not applied those changes to TC7 yet, and it might need some more
-  testing:
+      8),9),10) were applied to trunk in r1045003
   http://people.apache.org/~kkolinko/patches/2010-12-07_tc6_bug50201.patch
-  markt: +1 to making these changes in TC7
-
+  +1: kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48973
   Avoid creating file SESSIONS.ser if there's no session.
