@@ -307,3 +307,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~slaurent/patches/2010-12-12_BZ50459_bindThread_tc6.patch
   +1: slaurent
   -1: kkolinko: https://issues.apache.org/bugzilla/show_bug.cgi?id=50459#c5
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43960
+  Expose available property of StandardWrapper via JMX
+  http://people.apache.org/~markt/patches/2010-12-13-bug43960-tc6.patch
+  +1: markt
+  -1:
