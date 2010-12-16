@@ -317,5 +317,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50460
   Avoid leak caused by using a cached exception instance
   http://svn.apache.org/viewvc?rev=1044987&view=rev
-  +1: kkolinko
+  +1: kkolinko, slaurent
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48822
+  Include context name in reload and stop log statements.
+  http://people.apache.org/~slaurent/patches/2010-12-16_BZ48822_context_name_on_reload-tc6.patch
+  +1: slaurent
+  -1: 
