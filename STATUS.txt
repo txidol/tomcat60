@@ -305,8 +305,8 @@ PATCHES PROPOSED TO BACKPORT:
   StandardContext.bindThread() and unbindThread() are not symmetrical and not 
   limited to current thread
   http://people.apache.org/~slaurent/patches/2010-12-12_BZ50459_bindThread_tc6.patch
-  +1: slaurent
-  -1: kkolinko: https://issues.apache.org/bugzilla/show_bug.cgi?id=50459#c5
+  +1: slaurent, kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=43960
   Expose available property of StandardWrapper via JMX
@@ -324,4 +324,8 @@ PATCHES PROPOSED TO BACKPORT:
   Include context name in reload and stop log statements.
   http://people.apache.org/~slaurent/patches/2010-12-16_BZ48822_context_name_on_reload-tc6.patch
   +1: slaurent
-  -1: 
+  +0: kkolinko: Good idea, though logName() is
+      "org.apache.catalina.core.ContainerBase.[engine].[host].[path]"
+      which is not just a context name and looks ugly. The patch is not
+      clean - it includes BZ 50459 bindThread patch that was proposed above.
+  -1:
