@@ -371,6 +371,9 @@
         <bug>50316</bug>: Fix display of negative values in the Manager web
         application. (kkolinko)
       </fix>
+      <update>
+        Improve documentation of database connection factory. (rjung)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Other">
