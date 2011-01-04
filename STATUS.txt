@@ -330,3 +330,10 @@ PATCHES PROPOSED TO BACKPORT:
       which is not just a context name and looks ugly. The patch is not
       clean - it includes BZ 50459 bindThread patch that was proposed above.
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50500
+  Use correct coercions for EL arithmetic operations. Based on a patch by Brian
+  Weisleder
+  http://svn.apache.org/viewvc?rev=1055055&view=rev
+  +1: markt
+  -1:
