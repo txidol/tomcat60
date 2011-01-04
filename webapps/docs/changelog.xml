@@ -45,10 +45,6 @@
   <subsection name="General">
     <changelog>
       <fix>
-        <bug>49909</bug>: Provide a mechanism to log requests rejected before
-        they reach the AccessLogValve to appear in the access log. (markt)
-      </fix>
-      <fix>
         <bug>49674</bug>: Update to Commons Daemon 1.0.4. (mturk)
       </fix>
       <update>
@@ -65,6 +61,10 @@
         <bug>49728</bug>, <bug>50084</bug>: Improve PID file handling when
         another process is managing the PID file and Tomcat does not have write
         access. (markt)
+      </fix>
+      <fix>
+        <bug>49909</bug>: Provide a mechanism to log requests rejected before
+        they reach the AccessLogValve to appear in the access log. (markt)
       </fix>
     </changelog>
   </subsection>
