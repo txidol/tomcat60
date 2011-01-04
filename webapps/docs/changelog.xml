@@ -45,6 +45,10 @@
   <subsection name="General">
     <changelog>
       <fix>
+        <bug>43960</bug>: Expose available property of StandardWrapper via JMX.
+        (markt)
+      </fix>
+      <fix>
         <bug>49674</bug>: Update to Commons Daemon 1.0.4. (mturk)
       </fix>
       <update>
