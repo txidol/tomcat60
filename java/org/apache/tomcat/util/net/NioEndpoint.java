@@ -603,7 +603,7 @@ public class NioEndpoint {
     public void setKeyAlias(String s ) { keyAlias = s;}
     
     
-    protected String algorithm = "SunX509";
+    protected String algorithm = KeyManagerFactory.getDefaultAlgorithm();
     public String getAlgorithm() { return algorithm;}
     public void setAlgorithm(String s ) { this.algorithm = s;}
 

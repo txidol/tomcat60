@@ -250,7 +250,11 @@
         result in large numbers of SEVERE log messages appearing in the logs as
         a result of normal operation. (markt)
       </add>
-      
+      <fix>
+        Make SSL certificate encoding algorithm consistent between connectors by
+        using the JVM default for all connectors. This also fixes an issue with
+        the NIO connector on IBM JVMs. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
