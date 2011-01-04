@@ -300,7 +300,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
   +0: kkolinko: I like it, but it cannot be applied as is:
-     HttpServletRequest.getStatus() is @since Servlet 3.0
+     HttpServletResponse.getStatus() is @since Servlet 3.0
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50459 
   StandardContext.bindThread() and unbindThread() are not symmetrical and not 
