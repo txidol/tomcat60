@@ -318,7 +318,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50460
   Avoid leak caused by using a cached exception instance
   http://svn.apache.org/viewvc?rev=1044987&view=rev
-  +1: kkolinko, slaurent, kfujino
+  +1: kkolinko, slaurent, kfujino, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48822
@@ -329,6 +329,9 @@ PATCHES PROPOSED TO BACKPORT:
       "org.apache.catalina.core.ContainerBase.[engine].[host].[path]"
       which is not just a context name and looks ugly. The patch is not
       clean - it includes BZ 50459 bindThread patch that was proposed above.
+  -0: markt: The patch is not clean (includes BZ50459)
+             logName() is the wrong thing to be using. getName() should be
+             sufficient
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50500
