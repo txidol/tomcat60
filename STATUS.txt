@@ -274,3 +274,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1055458&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50453
+  Correct handle multiple X-Forwarded-For headers in RemoteIpValve
+  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/valves/RemoteIpValve.java?r1=1055482&r2=1055481&pathrev=1055482
+  +1: markt
+  -1:
