@@ -281,3 +281,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1055236&view=rev
   +1: markt, jfclere
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50467
+  Avoid NOE that causes NIO poller to fail
+  http://svn.apache.org/viewvc?rev=1055458&view=rev
+  +1: markt
+  -1:
