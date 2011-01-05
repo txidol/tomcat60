@@ -212,14 +212,14 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid creating file SESSIONS.ser if there's no session.
   The patch provided by Marc Guillemot works for tc 6 & 7
   http://svn.apache.org/viewvc?rev=1042022&view=rev
-  +1: slaurent, kkolinko
+  +1: slaurent, kkolinko, jfclere
   +1: markt with r1044944
   +1: kfujino with r1044944
   -1:
 
   Additional patch: i18n, as asked by Mark:
   http://svn.apache.org/viewvc?rev=1044944&view=rev
-  +1: kkolinko, markt, kfujino
+  +1: kkolinko, markt, kfujino, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50282
@@ -240,7 +240,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50413
   Ensure 304s are not returned when using static files as error pages
   http://people.apache.org/~markt/patches/2011-01-04-bug50413-tc6.patch
-  +1: markt
+  +1: markt, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50459 
@@ -279,5 +279,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50527
   Improve error message
   http://svn.apache.org/viewvc?rev=1055236&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1:
