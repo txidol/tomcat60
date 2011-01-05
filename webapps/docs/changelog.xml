@@ -183,6 +183,10 @@
         robust against objects with <code>toString()</code> methods that throw
         exceptions. (markt)
       </add>
+      <fix>
+        <bug>50459</bug>: Fix thread/classloader binding issues in
+        StandardContext. (slaurent) 
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

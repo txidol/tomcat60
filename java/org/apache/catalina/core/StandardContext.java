@@ -4540,10 +4540,11 @@ public class StandardContext
                 if ((loader != null) && (loader instanceof Lifecycle))
                     ((Lifecycle) loader).start();
 
-                // Unbinding thread
+                // since the loader just started, the webapp classloader is now
+                // created.
+                // By calling unbindThread and bindThread in a row, we setup the
+                // current Thread CCL to be the webapp classloader
                 unbindThread(oldCCL);
-
-                // Binding thread
                 oldCCL = bindThread();
 
                 // Initialize logger again. Other components might have used it too early, 
@@ -5062,7 +5063,7 @@ public class StandardContext
                 (getLoader().getClassLoader());
         }
 
-        DirContextURLStreamHandler.bind(getResources());
+        DirContextURLStreamHandler.bindThread(getResources());
 
         if (isUseNaming()) {
             try {
@@ -5083,16 +5084,13 @@ public class StandardContext
      */
     private void unbindThread(ClassLoader oldContextClassLoader) {
 
-        Thread.currentThread().setContextClassLoader(oldContextClassLoader);
-
-        oldContextClassLoader = null;
-
         if (isUseNaming()) {
             ContextBindings.unbindThread(this, this);
         }
 
-        DirContextURLStreamHandler.unbind();
+        DirContextURLStreamHandler.unbindThread();
 
+        Thread.currentThread().setContextClassLoader(oldContextClassLoader);
     }
 
 
