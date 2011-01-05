@@ -297,6 +297,10 @@
         This avoids keeping a cached reference to a webapp-provided Writer
         used in JspFragment.invoke() calls. (kkolinko)
       </fix>
+      <fix>
+        <bug>50460</bug>: Fox memory leak in JspDocumentParser triggered by
+        first access to a jspx page. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">

@@ -37,4 +37,9 @@ public class ImmutableNameNotFoundException
     public void setResolverName(Name name) {}
     public void setRootCause(Throwable e) {}
 
+    @Override
+    public synchronized Throwable fillInStackTrace() {
+        // This class does not provide a stack trace
+        return this;
+    }
 }
