@@ -286,3 +286,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1055798
   +1: kfujino
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47319
+  Return IP address rather than null for getRemoteHost() and the APR connector
+  http://people.apache.org/~markt/patches/2011-01-06-bug47319-tc6.patch
+  +1: markt
+  -1:
