@@ -171,7 +171,7 @@ PATCHES PROPOSED TO BACKPORT:
    this patched tc6 version on top of it:
    http://people.apache.org/~kkolinko/patches/2010-12-02_tc6_tomcat-nsi-of-tc7_vs_tc6.diff
   )
-   +1: kkolinko, markt
+   +1: kkolinko, markt, fhanik
    -1: 
 
 * Backport JSP unloading patch (BZ48358).
@@ -205,7 +205,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50201
   Handle ROOT webapp redeployment, host start/stop etc for default access log
   http://people.apache.org/~kkolinko/patches/2010-12-07_tc6_bug50201.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48973
@@ -235,6 +235,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1042447
   http://svn.apache.org/viewvc?view=revision&revision=1042494
   +1: kkolinko
+   0: fhanik - don't see a need to change any line wrappings, it just causes clutter in the SVN diffs, but if it floats your boat :)
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50413
@@ -260,41 +261,49 @@ PATCHES PROPOSED TO BACKPORT:
   Use correct coercions for EL arithmetic operations. Based on a patch by Brian
   Weisleder
   http://svn.apache.org/viewvc?rev=1055055&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50527
   Improve error message
   http://svn.apache.org/viewvc?rev=1055236&view=rev
-  +1: markt, jfclere
+  +1: markt, jfclere, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50467
   Avoid NOE that causes NIO poller to fail
   http://svn.apache.org/viewvc?rev=1055458&view=rev
   +1: markt
+  +1: fhanik - fix indentation
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50453
   Correct handle multiple X-Forwarded-For headers in RemoteIpValve
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/valves/RemoteIpValve.java?r1=1055482&r2=1055481&pathrev=1055482
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50547
   Add time stamp for CHANGE_SESSION_ID and SESSION_EXPIRED message.
   http://svn.apache.org/viewvc?view=revision&revision=1055798
-  +1: kfujino
+  +1: kfujino, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47319
   Return IP address rather than null for getRemoteHost() and the APR connector
   http://people.apache.org/~markt/patches/2011-01-06-bug47319-tc6.patch
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50550
   Requests for a newly created directory using MKCOL should not result in a 404
   http://svn.apache.org/viewvc?rev=1055975&view=rev
   +1: markt
+  +1: fhanik - what does the boolean 'result' signify if the first unload() is false, and the second is true?
   -1:
+  
+* Add helper class to allow a shared data source with different credentials
+  http://svn.apache.org/viewvc?view=revision&revision=1055989
+  +1: fhanik
+  -1: 
+    
