@@ -280,3 +280,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/valves/RemoteIpValve.java?r1=1055482&r2=1055481&pathrev=1055482
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50547
+  Add time stamp for CHANGE_SESSION_ID and SESSION_EXPIRED message.
+  http://svn.apache.org/viewvc?view=revision&revision=1055798
+  +1: kfujino
+  -1:
