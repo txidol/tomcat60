@@ -324,6 +324,12 @@
         <bug>50460</bug>: Fix memory leak in JspDocumentParser triggered by
         first access to a jspx page. (kkolinko)
       </fix>
+      <fix>
+        <bug>50500</bug>: Use correct coercions (as per the EL spec) for
+        arithmetic operations involving string values containing &apos;.&apos;,
+        &apos;e&apos; or &apos;E&apos;. Based on a patch by Brian Weisleder.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
