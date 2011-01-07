@@ -45,13 +45,6 @@ PATCHES PROPOSED TO BACKPORT:
       and fix it later if needed? I think that actually nobody besides the release manager
       uses this, so I am letting this pass.
 
-* Configure Tomcat to use HttpOnly for session cookies by default
-  http://people.apache.org/~kkolinko/patches/2010-04-21_tc6_context_httpOnly.patch
-  +1: kkolinko
-  -0: markt - There wasn't consensus previously.
-            - If you are going to change the default, do it in the code
-  -1:
-
 * Expose the new WebappLoader flag in the VirtualWebappLoader,
   but allow alternative name searchVirtualFirst to make it
   consistent with the "virtual" terminology.
