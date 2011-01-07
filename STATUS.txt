@@ -181,24 +181,10 @@ PATCHES PROPOSED TO BACKPORT:
              sufficient
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50500
-  Use correct coercions for EL arithmetic operations. Based on a patch by Brian
-  Weisleder
-  http://svn.apache.org/viewvc?rev=1055055&view=rev
-  +1: markt, fhanik, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50527
   Improve error message
   http://svn.apache.org/viewvc?rev=1055236&view=rev
   +1: markt, jfclere, fhanik, kfujino
-  -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50467
-  Avoid NOE that causes NIO poller to fail
-  http://svn.apache.org/viewvc?rev=1055458&view=rev
-  +1: markt, kfujino
-  +1: fhanik - fix indentation
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50550

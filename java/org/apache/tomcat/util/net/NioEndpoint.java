@@ -1617,9 +1617,15 @@ public class NioEndpoint {
                     while (iterator != null && iterator.hasNext()) {
                         SelectionKey sk = (SelectionKey) iterator.next();
                         KeyAttachment attachment = (KeyAttachment)sk.attachment();
-                        attachment.access();
-                        iterator.remove();
-                        processKey(sk, attachment);
+                        // Attachment may be null if another thread has called
+                        // cancelledKey()
+                        if (attachment == null) {
+                            iterator.remove();
+                        } else {
+                            attachment.access();
+                            iterator.remove();
+                            processKey(sk, attachment);
+                        }
                     }//while
 
                     //process timeouts

@@ -269,6 +269,11 @@
         using the JVM default for all connectors. This also fixes an issue with
         the NIO connector on IBM JVMs. (markt)
       </fix>
+      <fix>
+        <bug>50467</bug>: Protected against NPE triggered by a race condition
+        that causes the NIO poller to fail, preventing the processing of further
+        requests. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
@@ -316,7 +321,7 @@
         used in JspFragment.invoke() calls. (kkolinko)
       </fix>
       <fix>
-        <bug>50460</bug>: Fox memory leak in JspDocumentParser triggered by
+        <bug>50460</bug>: Fix memory leak in JspDocumentParser triggered by
         first access to a jspx page. (kkolinko)
       </fix>
     </changelog>
