@@ -192,6 +192,11 @@
   <subsection name="Coyote">
     <changelog>
       <fix>
+        <bug>47913</bug>: Return the IP address rather than null for
+        <code>getRemoteHost()</code> with the APR connector if the IP address
+        does not resolve. (markt)
+      </fix>
+      <fix>
         Avoid a NPE for APR connector unlockAccept with default soTimeout.
         (mturk)
       </fix>
