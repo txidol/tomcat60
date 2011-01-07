@@ -203,3 +203,9 @@ PATCHES PROPOSED TO BACKPORT:
   Patch is trivial so not provided.
   +1: mturk, jfclere
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50556
+  Improve JreMemoryLeakPreventionListener against leak caused by LdapPoolManager
+  Patch tc 6: http://people.apache.org/~slaurent/patches/2011-01-07_BZ50556_jre_leak_ldapPoolManager.patch
+  +1: slaurent
+  -1: 
