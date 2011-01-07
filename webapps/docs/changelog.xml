@@ -185,6 +185,10 @@
         exceptions. (markt)
       </add>
       <fix>
+        <bug>50453</bug>: Correctly handle multiple <code>X-Forwarded-For</code>
+        headers in the RemoteIpValve. Patch provided by Jim Riggs. (markt)
+      </fix>
+      <fix>
         <bug>50459</bug>: Fix thread/classloader binding issues in
         StandardContext. (slaurent) 
       </fix>

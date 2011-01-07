@@ -201,12 +201,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik - fix indentation
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50453
-  Correct handle multiple X-Forwarded-For headers in RemoteIpValve
-  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/valves/RemoteIpValve.java?r1=1055482&r2=1055481&pathrev=1055482
-  +1: markt, fhanik, funkman
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50550
   Requests for a newly created directory using MKCOL should not result in a 404
   http://svn.apache.org/viewvc?rev=1055975&view=rev
