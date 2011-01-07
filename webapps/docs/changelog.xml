@@ -67,8 +67,9 @@
         access. (markt)
       </fix>
       <fix>
-        <bug>49909</bug>: Provide a mechanism to log requests rejected before
-        they reach the AccessLogValve to appear in the access log. (markt)
+        <bug>49909</bug>, <bug>50201</bug>: Provide a mechanism to log requests
+        rejected before they reach the AccessLogValve to appear in the access
+        log. (markt/kkolinko)
       </fix>
     </changelog>
   </subsection>

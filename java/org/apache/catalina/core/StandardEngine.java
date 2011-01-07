@@ -19,8 +19,11 @@
 package org.apache.catalina.core;
 
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 import javax.management.MBeanServer;
 import javax.management.MalformedObjectNameException;
@@ -28,10 +31,15 @@ import javax.management.ObjectName;
 
 import org.apache.catalina.AccessLog;
 import org.apache.catalina.Container;
+import org.apache.catalina.ContainerEvent;
+import org.apache.catalina.ContainerListener;
 import org.apache.catalina.Context;
 import org.apache.catalina.Engine;
 import org.apache.catalina.Host;
+import org.apache.catalina.Lifecycle;
+import org.apache.catalina.LifecycleEvent;
 import org.apache.catalina.LifecycleException;
+import org.apache.catalina.LifecycleListener;
 import org.apache.catalina.Realm;
 import org.apache.catalina.Service;
 import org.apache.catalina.connector.Request;
@@ -132,7 +140,8 @@ public class StandardEngine
      * Default access log to use for request/response pairs where we can't ID
      * the intended host and context.
      */
-    private volatile AccessLog defaultAccessLog;
+    private final AtomicReference<AccessLog> defaultAccessLog =
+        new AtomicReference<AccessLog>();
 
     // ------------------------------------------------------------- Properties
 
@@ -496,28 +505,59 @@ public class StandardEngine
         }
 
         if (!logged && useDefault) {
-            if (defaultAccessLog == null) {
+            AccessLog newDefaultAccessLog = defaultAccessLog.get();
+            if (newDefaultAccessLog == null) {
                 // If we reached this point, this Engine can't have an AccessLog
                 // Look in the defaultHost
                 Host host = (Host) findChild(getDefaultHost());
-                if (host != null) {
-                    defaultAccessLog = host.getAccessLog();
+                Context context = null;
+                boolean checkHost = (host != null);
+                if (checkHost && host instanceof ContainerBase) {
+                    checkHost = ((ContainerBase) host).started;
+                }
+                if (checkHost) {
+                    newDefaultAccessLog = host.getAccessLog();
 
-                    if (defaultAccessLog == null) {
+                    if (newDefaultAccessLog != null) {
+                        if (defaultAccessLog.compareAndSet(null,
+                                newDefaultAccessLog)) {
+                            AccessLogListener l = new AccessLogListener(this,
+                                    host, null);
+                            l.install();
+                        }
+                    } else {
                         // Try the ROOT context of default host
-                        Context context = (Context) host.findChild("");
-                        if (context != null) {
-                            defaultAccessLog = context.getAccessLog();
+                        context = (Context) host.findChild("");
+                        boolean checkContext = (context != null);
+                        if (checkContext && context instanceof ContainerBase) {
+                            checkContext = ((ContainerBase) context).started;
+                        }
+                        if (checkContext) {
+                            newDefaultAccessLog = context.getAccessLog();
+                            if (newDefaultAccessLog != null) {
+                                if (defaultAccessLog.compareAndSet(null,
+                                        newDefaultAccessLog)) {
+                                    AccessLogListener l = new AccessLogListener(
+                                            this, null, context);
+                                    l.install();
+                                }
+                            }
                         }
                     }
                 }
 
-                if (defaultAccessLog == null) {
-                    defaultAccessLog = new NoopAccessLog();
+                if (newDefaultAccessLog == null) {
+                    newDefaultAccessLog = new NoopAccessLog();
+                    if (defaultAccessLog.compareAndSet(null,
+                            newDefaultAccessLog)) {
+                        AccessLogListener l = new AccessLogListener(this, host,
+                                context);
+                        l.install();
+                    }
                 }
             }
 
-            defaultAccessLog.log(request, response, time);
+            newDefaultAccessLog.log(request, response, time);
         }
     }
 
@@ -584,5 +624,88 @@ public class StandardEngine
     public void setDomain(String domain) {
         this.domain = domain;
     }
-    
+ 
+    protected static final class AccessLogListener
+            implements PropertyChangeListener, LifecycleListener,
+            ContainerListener {
+
+        private StandardEngine engine;
+        private Host host;
+        private Context context;
+        private volatile boolean disabled = false;
+
+        public AccessLogListener(StandardEngine engine, Host host,
+                Context context) {
+            this.engine = engine;
+            this.host = host;
+            this.context = context;
+        }
+
+        public void install() {
+            engine.addPropertyChangeListener(this);
+            if (host != null) {
+                host.addContainerListener(this);
+                if (host instanceof Lifecycle) {
+                    ((Lifecycle) host).addLifecycleListener(this);
+                }
+            }
+            if (context instanceof Lifecycle) {
+                ((Lifecycle) context).addLifecycleListener(this);
+            }
+        }
+
+        private void uninstall() {
+            disabled = true;
+            if (context instanceof Lifecycle) {
+                ((Lifecycle) context).removeLifecycleListener(this);
+            }
+            if (host != null) {
+                if (host instanceof Lifecycle) {
+                    ((Lifecycle) host).removeLifecycleListener(this);
+                }
+                host.removeContainerListener(this);
+            }
+            engine.removePropertyChangeListener(this);
+        }
+
+        public void lifecycleEvent(LifecycleEvent event) {
+            if (disabled) return;
+
+            String type = event.getType();
+            if (Lifecycle.AFTER_START_EVENT.equals(type) ||
+                    Lifecycle.BEFORE_STOP_EVENT.equals(type) ||
+                    Lifecycle.DESTROY_EVENT.equals(type)) {
+                // Container is being started/stopped/removed
+                // Force re-calculation and disable listener since it won't
+                // be re-used
+                engine.defaultAccessLog.set(null);
+                uninstall();
+            }
+        }
+
+        public void propertyChange(PropertyChangeEvent evt) {
+            if (disabled) return;
+            if ("defaultHost".equals(evt.getPropertyName())) {
+                // Force re-calculation and disable listener since it won't
+                // be re-used
+                engine.defaultAccessLog.set(null);
+                uninstall();
+            }
+        }
+
+        public void containerEvent(ContainerEvent event) {
+            // Only useful for hosts
+            if (disabled) return;
+            if (Container.ADD_CHILD_EVENT.equals(event.getType())) {
+                Context context = (Context) event.getData();
+                if ("".equals(context.getPath())) {
+                    // New ROOT context in default host
+                    // Force re-calculation and disable listener since it won't
+                    // be re-used
+                    engine.defaultAccessLog.set(null);
+                    uninstall();
+                }
+            }
+        }
+    }
 }

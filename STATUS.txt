@@ -127,12 +127,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - Patch doesn't apply cleanly to tc6.0.x/trunk
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50201
-  Handle ROOT webapp redeployment, host start/stop etc for default access log
-  http://people.apache.org/~kkolinko/patches/2010-12-07_tc6_bug50201.patch
-  +1: kkolinko, markt, fhanik
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48973
   Avoid creating file SESSIONS.ser if there's no session.
   The patch provided by Marc Guillemot works for tc 6 & 7
