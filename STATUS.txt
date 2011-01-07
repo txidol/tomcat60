@@ -68,19 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
    cause confusion. I'd prefer not to invent a new name, but mention the
    one that we already have when documenting virtualClasspath.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49555
-  Correctly handle tag libraries that use functions defined in static inner
-  classes
-  http://svn.apache.org/viewvc?rev=961948&view=rev
-  http://svn.apache.org/viewvc?rev=963106&view=rev
-  http://svn.apache.org/viewvc?rev=966863&view=rev
-  +1: markt, kkolinko,funkman
-  -1:
-   kkolinko: I was worried that ELFunctionMapper$PrivilegedGetTccl
-   should be preloaded in o.a.jasper.security.SecurityClassLoad,
-   but from debugging it looks that it is called by Tomcat code only
-   (JspServlet).
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
   Force DefaultServlet to serve all resources relative to context root
   regardless of mappings/mount point.
