@@ -311,3 +311,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1056264&view=rev
   +1: markt
   -1:
+
+* Upgrade Commons Daemon to version 1.0.5
+  Fixes various Windows platform issues.
+  Patch is trivial so not provided.
+  +1: mturk
+  -1:
