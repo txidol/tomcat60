@@ -439,7 +439,7 @@
         on 64-bit platforms when using the Windows installer. (markt)
       </fix>
       <update>
-        Numerous improvements to the Windows installar: update install/uninstall
+        Numerous improvements to the Windows installer: update install/uninstall
         icons, create an installation log, allow 32-bit JVMs to be selected when
         installing on a 64-bit platform, replace the .ini files with the script
         equivalents, use the new manager and host-manager roles, provide the
