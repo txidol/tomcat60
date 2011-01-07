@@ -340,6 +340,10 @@
         If <code>maxInactiveInterval</code> is negative, the access message is not
         being sent. (kfujino)
       </fix>
+      <fix>
+        <bug>50547</bug>: Add time stamp for CHANGE_SESSION_ID message and 
+        SESSION_EXPIRED message. (kfujino)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
