@@ -309,11 +309,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50552
   Avoid NPE that hides error message
   http://svn.apache.org/viewvc?rev=1056264&view=rev
-  +1: markt
+  +1: markt, jfclere
   -1:
 
 * Upgrade Commons Daemon to version 1.0.5
   Fixes various Windows platform issues.
   Patch is trivial so not provided.
-  +1: mturk
+  +1: mturk, jfclere
   -1:
