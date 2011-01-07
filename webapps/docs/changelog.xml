@@ -424,6 +424,20 @@
         <bug>49861</bug>: Fix formatting of log messages in JXM remote listener.
         Do not use commas when printing RMI port numbers. (markt)
       </fix>
+      <fix>
+        <bug>50140</bug>: Don&apos;t ignore a user specified install directory
+        on 64-bit platforms when using the Windows installer. (markt)
+      </fix>
+      <update>
+        Numerous improvements to the Windows installar: update install/uninstall
+        icons, create an installation log, allow 32-bit JVMs to be selected when
+        installing on a 64-bit platform, replace the .ini files with the script
+        equivalents, use the new manager and host-manager roles, provide the
+        ability to edit the roles for the added user, add support for the
+        <code>/?</code> command line switch, clean up fully after installation,
+        add DetailPrint statements for operations that may take time and
+        improve the descriptions of the components. (kkolinko, mturk, markt)
+      </update>
     </changelog>
   </subsection>
 </section>

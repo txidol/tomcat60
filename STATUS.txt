@@ -99,68 +99,6 @@ PATCHES PROPOSED TO BACKPORT:
    kkolinko: Discussed in Re:r1005192 thread on dev@
 
 
-* Backport Windows installer improvements from Tomcat 7.0.5.
-
-  - Use *modern* types of nsis install/uninstall icons (r999976, mturk)
-
-  - Create service-install.log file during installation with params that
-  were used to invoke commons daemon. (r1003840, mturk; r1035083,r1035088 kkolinko)
-
-  - Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50140
-  Don't ignore a user specified install directory on 64-bit platforms.
-  - Allow 32-bit or 64-bit JVMs to be selected when installing on a 64-bit
-  platform.
-  (r1027504, markt; r1033856,r1033882 kkolinko)
-
-  - Reimplemented the Windows installer GUI using nsDialogs and MUI2 libraries,
-  instead of deprecated InstallOptions.
-  The *.ini files are no more used. All is specified in the nsi script.
-  (r1034911, kkolinko)
-
-  - Use new admin-gui and manager-gui roles for the user (r982151, mturk)
-
-  - Add a field to display/edit the roles for the user that we add to tomcat-user.xml
-  - The roles are calculated depending on what webapps are installed
-  (only manager, vs. host-manager, vs. both of them).
-  - Do not display "username", "password", "roles" fields when neither
-  manager nor host-manager are selected. In the previous version we showed
-  them as disabled. Now we do not show them on screen.
-  - Add support for the '/?' command line option. It displays a message box.
-  See .onInit function in tomcat.nsi for details.
-  (r1034911, kkolinko)
-
-  - When installing on Windows, do not leave undeleted stale files in
-  $TEMP/src/res/confinstall/. Pack only needed fines, not duplicates.
-  Place those files into $PLUGINSDIR instead of $TEMP.
-  - Add DetailPrint statements for operations that take noticeable time.
-  (r1034924, kkolinko)
-
-  - Improve descriptions of the components.
-  (r964211, r1035051)
-
-  Backported revisions:
-  964211,982151,982157,999976,1003840,1027504,1033856,1033882,1034911,1034924,
-  1034926,1035051,1035062,1035068,1035071,1035083,1035088,1035093,1035094,
-  1035132, 1038975
-
-  1. Run the following SVN commands:
-   svn del res/config.ini
-   svn del res/jvm.ini
-   svn del res/main.ico
-   svn del res/uninst.ico
-   # copy icons from TC7, see r999976
-   svn copy ../../trunk/res/main.ico res/
-   svn copy ../../trunk/res/uninst.ico res/
-  2. Apply patch:
-   http://people.apache.org/~kkolinko/patches/2010-12-02_tc6_tomcat-nsi.patch
-  (
-   For reference: here is the diff of tomcat.nsi of trunk @1041257 if I copy
-   this patched tc6 version on top of it:
-   http://people.apache.org/~kkolinko/patches/2010-12-02_tc6_tomcat-nsi-of-tc7_vs_tc6.diff
-  )
-   +1: kkolinko, markt, fhanik
-   -1: 
-
 * Backport JSP unloading patch (BZ48358).
   The patch has substantially changed since the original version.
   Original revisions are: 937787, 1028377, 1028389, 1028396, 1028861, 1028862, 1028863,
