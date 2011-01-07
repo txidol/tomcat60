@@ -305,4 +305,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1055989
   +1: fhanik, funkman
   -1: 
-    
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50552
+  Avoid NPE that hides error message
+  http://svn.apache.org/viewvc?rev=1056264&view=rev
+  +1: markt
+  -1:
