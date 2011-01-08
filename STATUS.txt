@@ -133,6 +133,11 @@ PATCHES PROPOSED TO BACKPORT:
                        wasn't found. The caller isn't told (to reduce possible
                        confusion) that a similarly named resource was found
                        and was unloaded.
+  +1: kkolinko
+  -1:
+  Additional patch (not important):
+  http://svn.apache.org/viewvc?rev=1056828&view=rev
+  +1: kkolinko
   -1:
   
 * Add helper class to allow a shared data source with different credentials
