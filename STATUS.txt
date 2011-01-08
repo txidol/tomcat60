@@ -102,27 +102,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - Patch doesn't apply cleanly to tc6.0.x/trunk
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50282
-  Improve JreMemoryLeakPreventionListener to load 
-  javax.security.auth.login.Configuration to avoid redeployment leak.
-  http://svn.apache.org/viewvc?rev=1042029&view=rev
-  +1: slaurent, kkolinko, funkman
-  -0: markt - See http://markmail.org/message/mnowpijhnxg554t5
-  -1:
-
-  Additional patches: (line wrapping and docs spelling)
-  http://svn.apache.org/viewvc?view=revision&revision=1042452
-  http://svn.apache.org/viewvc?view=revision&revision=1042447
-  http://svn.apache.org/viewvc?view=revision&revision=1042494
-  +1: kkolinko
-   0: fhanik - don't see a need to change any line wrappings, it just causes clutter in the SVN diffs, but if it floats your boat :)
-      kkolinko: The above three additional patches (two by silvain and one by markt)
-      are trivial and IMHO qualify as CTR, so no actual need to vote for them.
-      I've put them here so that they are not forgotten.  Is there anything else
-      that Mark does not like with his "-0" ? I do not see anything else
-      in http://markmail.org/message/mnowpijhnxg554t5
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50413
   Ensure 304s are not returned when using static files as error pages
   http://people.apache.org/~markt/patches/2011-01-04-bug50413-tc6.patch

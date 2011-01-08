@@ -194,6 +194,12 @@
         robust against objects with <code>toString()</code> methods that throw
         exceptions. (markt)
       </add>
+      <add>
+        <bug>50282</bug>: Load <code>javax.security.auth.login.Configuration</code>
+        with <code>JreMemoryLeakPreventionListener</code> to avoid memory leak
+        when stopping a webapp that would use JAAS.
+        (slaurent)
+      </add>
       <fix>
         <bug>50453</bug>: Correctly handle multiple <code>X-Forwarded-For</code>
         headers in the RemoteIpValve. Patch provided by Jim Riggs. (markt)
