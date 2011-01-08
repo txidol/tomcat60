@@ -34,6 +34,7 @@
     <author email="kfujino@apache.org">Keiichi Fujino</author>
     <author email="mturk@apache.org">Mladen Turk</author>
     <author email="timw@apache.org">Tim Whittington</author>
+    <author email="slaurent@apache.org">Sylvain Laurent</author>
     <title>Changelog</title>
   </properties>
 
@@ -90,6 +91,11 @@
         classes loaded by subordinate class loaders to the web
         application&apos;s class loader such as the Jasper class loader.
         Patch provided by Sylvain Laurent. (kkolinko)
+      </add>
+      <add>
+        <bug>48973</bug>: Avoid creating a SESSIONS.ser file when stopping an 
+        application if there's no session. Patch provided by Marc Guillemot.
+        (slaurent)
       </add>
       <fix>
         <bug>49030</bug>: Failure during start of one connector should not leave

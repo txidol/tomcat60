@@ -481,7 +481,12 @@ public class StandardManager
     protected void doUnload() throws IOException {
 
         if (log.isDebugEnabled())
-            log.debug("Unloading persisted sessions");
+            log.debug(sm.getString("standardManager.unloading.debug"));
+
+        if (sessions.isEmpty()) {
+            log.debug(sm.getString("standardManager.unloading.nosessions"));
+            return; // nothing to do
+        }
 
         // Open an output stream to the specified pathname, if any
         File file = file();
