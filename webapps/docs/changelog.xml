@@ -153,6 +153,10 @@
         Add security policy and token poller protection to the JRE memory leak
         protection provided in Tomcat 6. (markt/kkolinko)
       </add>
+      <add>
+        <bug>50026</bug>: Add support for mapping the default servlet to URLs
+        other than /. (timw)
+      </add>
       <fix>
         <bug>50128</bug>: Improve exception handling in PersistentManagerBase
         when running with a security manager. (kkolinko)

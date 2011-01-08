@@ -61,24 +61,6 @@ PATCHES PROPOSED TO BACKPORT:
    cause confusion. I'd prefer not to invent a new name, but mention the
    one that we already have when documenting virtualClasspath.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50026
-  Force DefaultServlet to serve all resources relative to context root
-  regardless of mappings/mount point.
-  Prevents access to WEB-INF and META-INF when the default servlet is
-  mapped to a sub-path. Also fixes WebdavServlet, which is affected for GET
-  requests.
-  This is a breaking change for anyone re-mapping DefaultServlet to a sub-path
-  (current behaviour is to remount the entire web application under the path,
-  which exposes WEB-INF/META-INF).
-  http://svn.apache.org/viewvc?rev=1004393&view=rev
-  http://svn.apache.org/viewvc?rev=1004409&view=rev
-  http://svn.apache.org/viewvc?rev=1004415&view=rev
-  http://svn.apache.org/viewvc?rev=1004912&view=rev (fix for includes)
-  +1: timw
-  +1: markt, kkolinko,funkman if http://svn.apache.org/viewvc?rev=1033897&view=rev
-            is also applied
-  -1:
-
 * Fix path parameter handling. Currently the following URL fails with a 404:
   http://localhost:8080/examples/jsp/snp;x=y/snoop.jsp
   http://people.apache.org/~kkolinko/patches/2010-11-17_tc6_path-params.patch
