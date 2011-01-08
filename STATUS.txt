@@ -206,7 +206,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Upgrade Commons Daemon to version 1.0.5
   Fixes various Windows platform issues.
   Patch is trivial so not provided.
-  +1: mturk, jfclere
+  +1: mturk, jfclere, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50556
