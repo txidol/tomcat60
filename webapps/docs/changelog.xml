@@ -35,6 +35,7 @@
     <author email="mturk@apache.org">Mladen Turk</author>
     <author email="timw@apache.org">Tim Whittington</author>
     <author email="slaurent@apache.org">Sylvain Laurent</author>
+    <author email="schultz@apache.org">Christopher Schultz</author>
     <title>Changelog</title>
   </properties>
 
@@ -463,6 +464,10 @@
       <fix>
         <bug>50140</bug>: Don&apos;t ignore a user specified install directory
         on 64-bit platforms when using the Windows installer. (markt)
+      </fix>
+      <fix>
+        <bug>50552</bug>: Avoid NPE that hides error message when using Ant
+        tasks. (schultz)
       </fix>
       <update>
         Numerous improvements to the Windows installer: update install/uninstall
