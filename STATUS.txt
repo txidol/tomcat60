@@ -102,12 +102,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - Patch doesn't apply cleanly to tc6.0.x/trunk
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50413
-  Ensure 304s are not returned when using static files as error pages
-  http://people.apache.org/~markt/patches/2011-01-04-bug50413-tc6.patch
-  +1: markt, jfclere, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48822
   Include context name in reload and stop log statements.
   http://people.apache.org/~slaurent/patches/2010-12-16_BZ48822_context_name_on_reload-tc6.patch

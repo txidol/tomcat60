@@ -201,6 +201,10 @@
         (slaurent)
       </add>
       <fix>
+        <bug>50413</bug>: Ensure 304s are not returned when using static files
+        as error pages. (markt)
+      </fix>
+      <fix>
         <bug>50453</bug>: Correctly handle multiple <code>X-Forwarded-For</code>
         headers in the RemoteIpValve. Patch provided by Jim Riggs. (markt)
       </fix>
