@@ -129,6 +129,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1055975&view=rev
   +1: markt, funkman
   +1: fhanik - what does the boolean 'result' signify if the first unload() is false, and the second is true?
+               markt - it means the resource the caller asked to be unloaded
+                       wasn't found. The caller isn't told (to reduce possible
+                       confusion) that a similarly named resource was found
+                       and was unloaded.
   -1:
   
 * Add helper class to allow a shared data source with different credentials
