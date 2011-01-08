@@ -203,12 +203,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, jfclere, kkolinko
   -1:
 
-* Upgrade Commons Daemon to version 1.0.5
-  Fixes various Windows platform issues.
-  Patch is trivial so not provided.
-  +1: mturk, jfclere, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50556
   Improve JreMemoryLeakPreventionListener against leak caused by LdapPoolManager
   Patch tc 6: http://people.apache.org/~slaurent/patches/2011-01-07_BZ50556_jre_leak_ldapPoolManager.patch
