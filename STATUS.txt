@@ -93,8 +93,11 @@ PATCHES PROPOSED TO BACKPORT:
   Adds ~10% to the session creation/destruction process when that is all Tomcat
   is doing. Should be less overhead with less contention.
   http://people.apache.org/~markt/patches/2010-11-18-session-rate-stats.patch
-  +1: markt
+  +1: markt, rjung
   -1:
+  rjung: getSessionExpireRate() and getSessionCreateRate() could share a common
+         implementation (same method body expcept for the input list). The member
+          "duration" of SessionTiming doesn not seem to get used.
 
 * Backport AprEndpoint shutdown patch (BZ49795 and similar).
   http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-aprshutdown.patch
@@ -147,10 +150,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50556
   Improve JreMemoryLeakPreventionListener against leak caused by LdapPoolManager
   Patch tc 6: http://people.apache.org/~slaurent/patches/2011-01-07_BZ50556_jre_leak_ldapPoolManager.patch
-  +1: slaurent
+  +1: slaurent, rjung
   -1:
    0: kkolinko (not tested)
   Additional patch:
   http://svn.apache.org/viewvc?rev=1056576&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
