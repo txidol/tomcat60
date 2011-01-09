@@ -143,3 +143,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1056569&view=rev
   +1: kkolinko
   -1:
+
+* Additional patch for bug 50413:
+  Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50413#c6
+  Serve the error page regardless of "Range" header in the original request.
+  http://svn.apache.org/viewvc?rev=1056889&view=rev
+  +1: kkolinko
+  -1:
