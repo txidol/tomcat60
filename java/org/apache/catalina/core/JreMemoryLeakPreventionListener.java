@@ -162,6 +162,20 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
         this.xmlParsingProtection = xmlParsingProtection;
     }
     
+    /**
+     * <code>com.sun.jndi.ldap.LdapPoolManager</code> class spawns a thread when it
+     * is initialized if the system property
+     * <code>com.sun.jndi.ldap.connect.pool.timeout</code> is greater than 0.
+     * That thread inherits the context class loader of the current thread, so
+     * that there may be a web application class loader leak if the web app
+     * is the first to use <code>LdapPoolManager</code>. 
+     */
+    private boolean ldapPoolProtection = true;
+    public boolean isLdapPoolProtection() { return ldapPoolProtection; }
+    public void setLdapPoolProtection(boolean ldapPoolProtection) {
+        this.ldapPoolProtection = ldapPoolProtection;
+    }
+    
     public void lifecycleEvent(LifecycleEvent event) {
         // Initialise these classes when Tomcat starts
         if (Lifecycle.INIT_EVENT.equals(event.getType())) {
@@ -357,6 +371,22 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
                                 e);
                     }
                 }
+                
+                if (ldapPoolProtection) {
+                    try {
+                        Class.forName("com.sun.jndi.ldap.LdapPoolManager");
+                    } catch (ClassNotFoundException e) {
+                        if (System.getProperty("java.vendor").startsWith(
+                                "Sun")) {
+                            log.error(sm.getString(
+                                    "jreLeakListener.ldapPoolManagerFail"), e);
+                        } else {
+                            log.debug(sm.getString(
+                                    "jreLeakListener.ldapPoolManagerFail"), e);
+                        }
+                    }
+                }
+
             } finally {
                 Thread.currentThread().setContextClassLoader(loader);
             }
