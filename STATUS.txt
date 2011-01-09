@@ -118,12 +118,6 @@ PATCHES PROPOSED TO BACKPORT:
              sufficient
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50527
-  Improve error message
-  http://svn.apache.org/viewvc?rev=1055236&view=rev
-  +1: markt, jfclere, fhanik, kfujino, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50550
   Requests for a newly created directory using MKCOL should not result in a 404
   http://svn.apache.org/viewvc?rev=1055975&view=rev

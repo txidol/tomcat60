@@ -213,6 +213,9 @@
         <bug>50459</bug>: Fix thread/classloader binding issues in
         StandardContext. (slaurent) 
       </fix>
+      <update>
+        <bug>50527</bug>: Improve an error message shown by HttpServlet. (markt)
+      </update>
       <add>
         <bug>50556</bug>: Improve JreMemoryLeakPreventionListener to prevent
         a potential class loader leak caused by a thread spawned when the class
