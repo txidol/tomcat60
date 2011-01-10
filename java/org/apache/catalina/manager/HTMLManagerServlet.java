@@ -407,10 +407,11 @@ public final class HTMLManagerServlet extends ManagerServlet {
                 
                 args = new Object[7];
                 args[0] = URL_ENCODER.encode(displayPath);
-                args[1] = displayPath;
-                args[2] = context.getDisplayName();
-                if (args[2] == null) {
+                args[1] = RequestUtil.filter(displayPath);
+                if (context.getDisplayName() == null) {
                     args[2] = "&nbsp;";
+                } else {
+                    args[2] = RequestUtil.filter(context.getDisplayName());
                 }
                 args[3] = new Boolean(context.getAvailable());
                 args[4] = response.encodeURL
