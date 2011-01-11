@@ -135,13 +135,8 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
   
 * Add helper class to allow a shared data source with different credentials
-  http://svn.apache.org/viewvc?view=revision&revision=1055989
+  http://people.apache.org/~fhanik/dslink.patch
   +1: fhanik, funkman
-  -1:
-   0: kkolinko (have not tested it with TC6 yet)
-  Additional patch:
-  http://svn.apache.org/viewvc?rev=1056569&view=rev
-  +1: kkolinko
   -1:
 
 * Additional patch for bug 50413:
