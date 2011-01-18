@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
+import java.util.regex.Pattern;
 
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
@@ -179,6 +180,14 @@ public class StandardHost
       */
      private Map<ClassLoader, String> childClassLoaders =
          new WeakHashMap<ClassLoader, String>();
+
+     /**
+      * Any file or directory in {@link #appBase} that this pattern matches will
+      * be ignored by the automatic deployment process (both
+      * {@link #deployOnStartup} and {@link #autoDeploy}).
+      */
+     private Pattern deployIgnore = null;
+
 
     // ------------------------------------------------------------- Properties
 
@@ -384,8 +393,8 @@ public class StandardHost
                                    this.errorReportValveClass);
 
     }
-
-
+    
+    
     /**
      * Return the canonical, fully qualified, name of the virtual host
      * this Container represents.
@@ -493,6 +502,52 @@ public class StandardHost
     public void setWorkDir(String workDir) {
 
         this.workDir = workDir;
+    }
+
+
+    /**
+     * Return the regular expression that defines the files and directories in
+     * the host's {@link #appBase} that will be ignored by the automatic
+     * deployment process.
+     */
+    public String getDeployIgnore() {
+        if (deployIgnore == null) {
+            return null;
+        } 
+        return this.deployIgnore.toString();
+    }
+
+
+    /**
+     * Return the compiled regular expression that defines the files and
+     * directories in the host's {@link #appBase} that will be ignored by the
+     * automatic deployment process.
+     */
+    public Pattern getDeployIgnorePattern() {
+        return this.deployIgnore;
+    }
+
+
+    /**
+     * Set the regular expression that defines the files and directories in
+     * the host's {@link #appBase} that will be ignored by the automatic
+     * deployment process.
+     */
+    public void setDeployIgnore(String deployIgnore) {
+        String oldDeployIgnore;
+        if (this.deployIgnore == null) {
+            oldDeployIgnore = null;
+        } else {
+            oldDeployIgnore = this.deployIgnore.toString();
+        }
+        if (deployIgnore == null) {
+            this.deployIgnore = null;
+        } else {
+            this.deployIgnore = Pattern.compile(deployIgnore);
+        }
+        support.firePropertyChange("deployIgnore",
+                                   oldDeployIgnore, 
+                                   deployIgnore);
     }
 
 

@@ -466,6 +466,10 @@
                description="The configuration class for contexts"
                type="java.lang.String"/>
       
+    <attribute name="deployIgnore"
+               description="Paths within appBase ignored for automatic deployment"
+               type="java.lang.String"/>
+
     <attribute name="deployOnStartup"
                description="The deploy on startup flag for this Host"
                type="boolean"/>

@@ -44,6 +44,14 @@
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
 <section name="Tomcar 6.0.31 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <add>
+        <bug>50205</bug>: Add the deployIgnorePaths attribute to the Host
+        element. Based on a patch by Jim Riggs. (markt/kkolinko)
+      </add>
+    </changelog>
+  </subsection>
   <subsection name="Cluster">
     <changelog>
       <fix>

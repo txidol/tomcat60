@@ -30,9 +30,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.management.ObjectName;
 
@@ -494,13 +497,48 @@ public class HostConfig
 
         File appBase = appBase();
         File configBase = configBase();
+        String[] filteredAppPaths = filterAppPaths(appBase.list());
         // Deploy XML descriptors from configBase
         deployDescriptors(configBase, configBase.list());
         // Deploy WARs, and loop if additional descriptors are found
-        deployWARs(appBase, appBase.list());
+        deployWARs(appBase, filteredAppPaths);
         // Deploy expanded folders
-        deployDirectories(appBase, appBase.list());
+        deployDirectories(appBase, filteredAppPaths);
         
+    }
+
+
+    /**
+     * Filter the list of application file paths to remove those that match
+     * the regular expression defined by {@link Host#getDeployIgnore()}.
+     *  
+     * @param unfilteredAppPaths    The list of application paths to filtert
+     * 
+     * @return  The filtered list of application paths
+     */
+    protected String[] filterAppPaths(String[] unfilteredAppPaths) {
+        Pattern filter = host.getDeployIgnorePattern();
+        if (filter == null) {
+            return unfilteredAppPaths;
+        }
+
+        List<String> filteredList = new ArrayList<String>();
+        Matcher matcher = null;
+        for (String appPath : unfilteredAppPaths) {
+            if (matcher == null) {
+                matcher = filter.matcher(appPath);
+            } else {
+                matcher.reset(appPath);
+            }
+            if (matcher.matches()) {
+                if (log.isDebugEnabled()) {
+                    log.debug(sm.getString("hostConfig.ignorePath", appPath));
+                }
+            } else {
+                filteredList.add(appPath);
+            }
+        }
+        return filteredList.toArray(new String[filteredList.size()]);
     }
 
 

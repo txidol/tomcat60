@@ -145,15 +145,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1056889&view=rev
   +1: kkolinko, markt, kfujino
   -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50205
-  Add deployIgnore to Host
-  Based on a patch by Jim Riggs
-  http://svn.apache.org/viewvc?rev=1057275&view=rev
-  +1: markt
-  -1:
-
-  Updated patch (merge of revs.1057275,1057788,1057990):
-  http://people.apache.org/~kkolinko/patches/2011-01-17_tc6_50205.patch
-  +1: kkolinko, kfujino
-  -1:

@@ -14,10 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
 package org.apache.catalina;
 
+import java.util.regex.Pattern;
 
 
 /**
@@ -179,6 +178,30 @@ public interface Host extends Container {
      * @param xmlNamespaceAware true to enable namespace awareness
      */
     public void setXmlNamespaceAware(boolean xmlNamespaceAware);
+
+
+    /**
+     * Return the regular expression that defines the files and directories in
+     * the host's {@link #appBase} that will be ignored by the automatic
+     * deployment process.
+     */
+    public String getDeployIgnore();
+
+
+    /**
+     * Return the compiled regular expression that defines the files and
+     * directories in the host's {@link #appBase} that will be ignored by the
+     * automatic deployment process.
+     */
+    public Pattern getDeployIgnorePattern();
+
+
+    /**
+     * Set the regular expression that defines the files and directories in
+     * the host's {@link #appBase} that will be ignored by the automatic
+     * deployment process.
+     */
+    public void setDeployIgnore(String deployIgnore);
 
 
     // --------------------------------------------------------- Public Methods
