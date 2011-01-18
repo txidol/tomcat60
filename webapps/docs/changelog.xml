@@ -43,7 +43,17 @@
 <!-- Section names:
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
-<section name="Tomcat 6.0.30 (jfclere)">
+<section name="Tomcar 6.0.31 (jfclere)">
+  <subsection name="Cluster">
+    <changelog>
+      <fix>
+        <bug>50600</bug>: Prevent a <code>ConcurrentModificationException</code>
+        when removing a WAR file via the FarmWarDeployer. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 6.0.30 (jfclere)" rtext="released 2011-01-13">
   <subsection name="General">
     <changelog>
       <fix>

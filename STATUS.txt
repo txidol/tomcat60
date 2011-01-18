@@ -157,11 +157,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2011-01-17_tc6_50205.patch
   +1: kkolinko, kfujino
   -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50600
-  Avoid ConcurrentModificationException when removing WAR via FarmWarDeployer
-  http://svn.apache.org/viewvc?rev=1059881&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
-  
