@@ -49,7 +49,16 @@ public class ContextResourceLink extends ResourceBase implements Serializable {
         this.global = global;
     }
 
+    private String factory = null;
 
+    public String getFactory() {
+        return factory;
+    }
+
+    public void setFactory(String factory) {
+        this.factory = factory;
+    }    
+    
     // --------------------------------------------------------- Public Methods
 
 

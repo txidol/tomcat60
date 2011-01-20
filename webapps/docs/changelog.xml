@@ -46,6 +46,10 @@
 <section name="Tomcat 6.0.31 (jfclere)">
   <subsection name="Catalina">
     <changelog>
+      <fix>
+        <bug>49543</bug>: Allow Tomcat to use shared data sources with per
+        application credentials. (fhanik)
+      </fix>
       <add>
         <bug>50205</bug>: Add the deployIgnorePaths attribute to the Host
         element. Based on a patch by Jim Riggs. (markt/kkolinko)
@@ -458,7 +462,7 @@
       </add>
       <add>
         Configure the Host Manager web application to use the new CSRF
-        protection. To take advantge of this protection, the <code>admin</code> role
+        protection. To take advantage of this protection, the <code>admin</code> role
         must be removed from all users and the new <code>admin-gui</code> and
         <code>admin-script</code> roles used instead. (markt)
       </add>

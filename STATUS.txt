@@ -108,11 +108,6 @@ PATCHES PROPOSED TO BACKPORT:
              sufficient
   -1:
 
-* Add helper class to allow a shared data source with different credentials
-  http://people.apache.org/~fhanik/dslink.patch
-  +1: fhanik, funkman, kkolinko
-  -1:
-
 * Fix very large memory leak in NIO connector
   Additional patch (not important):
   http://svn.apache.org/viewvc?rev=1061397&view=rev
