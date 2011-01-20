@@ -111,7 +111,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix very large memory leak in NIO connector
   Additional patch (not important):
   http://svn.apache.org/viewvc?rev=1061397&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1:
 
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=50606
@@ -119,12 +119,12 @@ PATCHES PROPOSED TO BACKPORT:
   executable init-param. Provide support for explicit additional arguments
   for the executable. Those were broken when implementing fix for bug 49657.
   http://svn.apache.org/viewvc?rev=1061412&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50620
   http://svn.apache.org/viewvc?rev=1061442&view=rev
   http://svn.apache.org/viewvc?rev=1061446&view=rev
   Plus copy o.a.tomcat.util.ExceptionUtils from trunk
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1:
