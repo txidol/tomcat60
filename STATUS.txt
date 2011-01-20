@@ -110,16 +110,8 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Add helper class to allow a shared data source with different credentials
   http://people.apache.org/~fhanik/dslink.patch
-  +1: fhanik, funkman
+  +1: fhanik, funkman, kkolinko
   -1:
-   kkolinko:
-    1) Need to remove @Override at DataSourceLinkFactory.DataSourceHandler#invoke().
-    Otherwise it does not compile with Java 5. That is because InvocationHandler is an interface.
-    2) The following line in NamingContextListener#addResourceLink():
-    Iterator<String> i = resourceLink.listProperties();
-    Here ContextResourceLink#listProperties() returns Iterator, not
-    Iterator<String>, but IDE does not give me a warning and I see no
-    @SuppressWarnings arround. It is odd.
 
 * Fix very large memory leak in NIO connector
   Additional patch (not important):
