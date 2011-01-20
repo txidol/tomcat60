@@ -118,17 +118,7 @@ PATCHES PROPOSED TO BACKPORT:
              sufficient
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50550
-  Requests for a newly created directory using MKCOL should not result in a 404
-  http://svn.apache.org/viewvc?rev=1055975&view=rev
-  +1: markt, funkman
-  +1: fhanik - what does the boolean 'result' signify if the first unload() is false, and the second is true?
-               markt - it means the resource the caller asked to be unloaded
-                       wasn't found. The caller isn't told (to reduce possible
-                       confusion) that a similarly named resource was found
-                       and was unloaded.
-  +1: kkolinko
-  -1:
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=50550
   Additional patch (not important):
   http://svn.apache.org/viewvc?rev=1056828&view=rev
   +1: kkolinko, markt

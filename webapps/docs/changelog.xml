@@ -50,6 +50,11 @@
         <bug>50205</bug>: Add the deployIgnorePaths attribute to the Host
         element. Based on a patch by Jim Riggs. (markt/kkolinko)
       </add>
+      <fix>
+        <bug>50550</bug>: When a new directory is created (e.g. via WebDAV)
+        ensure that a subsequent request for that directory does not result in a
+        404 response. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
