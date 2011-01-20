@@ -148,5 +148,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix very large memory leak in NIO connector
   http://svn.apache.org/viewvc?view=revision&revision=1050249
-  +1: markt
+  +1: markt, jfclere
   -1:
