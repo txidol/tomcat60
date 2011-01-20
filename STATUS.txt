@@ -107,11 +107,3 @@ PATCHES PROPOSED TO BACKPORT:
              logName() is the wrong thing to be using. getName() should be
              sufficient
   -1:
-
-* Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=50606
-  Improve CGIServlet. Provide support for specifying empty value for the
-  executable init-param. Provide support for explicit additional arguments
-  for the executable. Those were broken when implementing fix for bug 49657.
-  http://svn.apache.org/viewvc?rev=1061412&view=rev
-  +1: kkolinko, markt, fhanik
-  -1:
