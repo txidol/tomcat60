@@ -70,6 +70,9 @@ import org.apache.catalina.util.Enumerator;
 import org.apache.catalina.util.ParameterMap;
 import org.apache.catalina.util.StringManager;
 import org.apache.catalina.util.StringParser;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
+import org.apache.tomcat.util.ExceptionUtils;
 
 
 /**
@@ -85,6 +88,8 @@ public class Request
 
     private final static boolean ALLOW_EMPTY_QUERY_STRING;
 
+    private static final Log log = LogFactory.getLog(Request.class);
+    
     static {
         // Ensure that classes are loaded for SM
         new StringCache.ByteEntry();
@@ -428,7 +433,12 @@ public class Request
         cookies = null;
 
         if (session != null) {
-            session.endAccess();
+            try {
+                session.endAccess();
+            } catch (Throwable t) {
+                ExceptionUtils.handleThrowable(t);
+                log.warn(sm.getString("coyoteRequest.sessionEndAccessFail"), t);
+            }
         }
         session = null;
         requestedSessionCookie = false;

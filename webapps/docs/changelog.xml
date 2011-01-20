@@ -67,6 +67,11 @@
         Provide session creation and destruction rate metrics in the session
         managers. (markt) 
       </add>
+      <fix>
+        <bug>50620</bug>: Stop exceptions that occur during
+        <code>Session.endAccess()</code> from preventing the normal completion
+        of <code>Request.recycle()</code>. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

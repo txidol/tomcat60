@@ -115,10 +115,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1061412&view=rev
   +1: kkolinko, markt, fhanik
   -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50620
-  http://svn.apache.org/viewvc?rev=1061442&view=rev
-  http://svn.apache.org/viewvc?rev=1061446&view=rev
-  Plus copy o.a.tomcat.util.ExceptionUtils from trunk
-  +1: markt, kkolinko, fhanik
-  -1:
