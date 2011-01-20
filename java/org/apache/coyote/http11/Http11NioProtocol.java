@@ -637,6 +637,10 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
             recycledProcessors.clear();
         }
         
+        /**
+         * Use this only if the processor is not available, otherwise use
+         * {@link #release(NioChannel, Http11NioProcessor).
+         */
         public void release(NioChannel socket) {
             Http11NioProcessor result = connections.remove(socket);
             if ( result != null ) {
@@ -644,6 +648,14 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
                 recycledProcessors.offer(result);
             }
         }
+
+
+        public void release(NioChannel socket, Http11NioProcessor processor) {
+            connections.remove(socket);
+            processor.recycle();
+            recycledProcessors.offer(processor);
+        }
+
 
         public SocketState event(NioChannel socket, SocketStatus status) {
             Http11NioProcessor result = connections.get(socket);
@@ -676,7 +688,7 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
                         (sm.getString("http11protocol.proto.error"), e);
                 } finally {
                     if (state != SocketState.LONG) {
-                        release(socket);
+                        release(socket, result);
                         if (state == SocketState.OPEN) {
                             socket.getPoller().add(socket);
                         }
@@ -732,11 +744,11 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
                 } else if (state == SocketState.OPEN) {
                     // In keep-alive but between requests. OK to recycle
                     // processor. Continue to poll for the next request.
-                    release(socket);
+                    release(socket, processor);
                     socket.getPoller().add(socket);
                 } else {
                     // Connection closed. OK to recycle the processor.
-                    release(socket);
+                    release(socket, processor);
                 }
                 return state;
 

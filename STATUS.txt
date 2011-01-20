@@ -129,11 +129,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik, funkman
   -1:
 
-* Fix very large memory leak in NIO connector
-  http://svn.apache.org/viewvc?view=revision&revision=1050249
-  +1: markt, jfclere, kkolinko
-  -1:
-
   Additional patch (not important):
   http://svn.apache.org/viewvc?rev=1061397&view=rev
   +1: kkolinko
