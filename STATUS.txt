@@ -112,8 +112,16 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~fhanik/dslink.patch
   +1: fhanik, funkman
   -1:
+   kkolinko:
+    1) Need to remove @Override at DataSourceLinkFactory.DataSourceHandler#invoke().
+    Otherwise it does not compile with Java 5. That is because InvocationHandler is an interface.
+    2) The following line in NamingContextListener#addResourceLink():
+    Iterator<String> i = resourceLink.listProperties();
+    Here ContextResourceLink#listProperties() returns Iterator, not
+    Iterator<String>, but IDE does not give me a warning and I see no
+    @SuppressWarnings arround. It is odd.
 
-  Fix very large memory leak in NIO connector
+* Fix very large memory leak in NIO connector
   Additional patch (not important):
   http://svn.apache.org/viewvc?rev=1061397&view=rev
   +1: kkolinko, markt
@@ -131,5 +139,5 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1061442&view=rev
   http://svn.apache.org/viewvc?rev=1061446&view=rev
   Plus copy o.a.tomcat.util.ExceptionUtils from trunk
-  +1: markt
+  +1: markt, kkolinko
   -1:
