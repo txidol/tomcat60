@@ -145,3 +145,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1056889&view=rev
   +1: kkolinko, markt, kfujino
   -1:
+
+* Fix very large memory leak in NIO connector
+  http://svn.apache.org/viewvc?view=revision&revision=1050249
+  +1: markt
+  -1:
