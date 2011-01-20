@@ -773,9 +773,7 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
                 Http11NioProtocol.log.error
                     (sm.getString("http11protocol.proto.error"), e);
             }
-            connections.remove(socket);
-            processor.recycle();
-            recycledProcessors.offer(processor);
+            release(socket, processor);
             return SocketState.CLOSED;
         }
 

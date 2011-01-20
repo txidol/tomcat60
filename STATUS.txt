@@ -108,12 +108,6 @@ PATCHES PROPOSED TO BACKPORT:
              sufficient
   -1:
 
-* Fix very large memory leak in NIO connector
-  Additional patch (not important):
-  http://svn.apache.org/viewvc?rev=1061397&view=rev
-  +1: kkolinko, markt, fhanik
-  -1:
-
 * Fix http://issues.apache.org/bugzilla/show_bug.cgi?id=50606
   Improve CGIServlet. Provide support for specifying empty value for the
   executable init-param. Provide support for explicit additional arguments
