@@ -83,10 +83,20 @@
                  type="int" 
             writeable="false"/>
 
+    <attribute   name="sessionCreateRate"
+          description="Session creation rate in sessions per minute"
+                 type="int"
+            writeable="false" />
+
     <attribute   name="sessionCounter"
           description="Total number of sessions created by this manager"
                  type="int" />
-
+                 
+    <attribute   name="sessionExpireRate"
+          description="Session expiration rate in sessions per minute"
+                 type="int"
+            writeable="false" />
+                 
     <attribute   name="maxActive"
           description="Maximum number of active sessions so far"
                  type="int" />
@@ -245,10 +255,20 @@
                  type="int" 
             writeable="false"/>
 
+    <attribute   name="sessionCreateRate"
+          description="Session creation rate in sessions per minute"
+                 type="int"
+            writeable="false" />
+
     <attribute   name="sessionCounter"
           description="Total number of sessions created by this manager"
                  type="int" />
-
+                 
+    <attribute   name="sessionExpireRate"
+          description="Session expiration rate in sessions per minute"
+                 type="int"
+            writeable="false" />
+                 
     <attribute   name="maxActive"
           description="Maximum number of active sessions so far"
                  type="int" />

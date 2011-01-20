@@ -59,6 +59,10 @@
         ensure that a subsequent request for that directory does not result in a
         404 response. (markt/kkolinko)
       </fix>
+      <add>
+        Provide session creation and destruction rate metrics in the session
+        managers. (markt) 
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

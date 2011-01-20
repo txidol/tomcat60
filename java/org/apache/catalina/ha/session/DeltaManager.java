@@ -40,6 +40,7 @@ import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.ha.CatalinaCluster;
 import org.apache.catalina.ha.ClusterMessage;
 import org.apache.catalina.ha.tcp.ReplicationValve;
+import org.apache.catalina.session.ManagerBase;
 import org.apache.catalina.tribes.Member;
 import org.apache.catalina.tribes.io.ReplicationStream;
 import org.apache.catalina.util.LifecycleSupport;
@@ -1286,6 +1287,16 @@ public class DeltaManager extends ClusterManagerBase{
     public synchronized void resetStatistics() {
         processingTime = 0 ;
         expiredSessions = 0 ;
+        sessionCreationTiming.clear();
+        while (sessionCreationTiming.size() <
+                ManagerBase.TIMING_STATS_CACHE_SIZE) {
+            sessionCreationTiming.add(null);
+        }
+        sessionExpirationTiming.clear();
+        while (sessionExpirationTiming.size() <
+                ManagerBase.TIMING_STATS_CACHE_SIZE) {
+            sessionExpirationTiming.add(null);
+        }
         rejectedSessions = 0 ;
         sessionReplaceCounter = 0 ;
         counterNoStateTransfered = 0 ;

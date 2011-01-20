@@ -59,6 +59,7 @@ import org.apache.catalina.util.StringManager;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.realm.GenericPrincipal;
 import org.apache.catalina.security.SecurityUtil;
+import org.apache.catalina.session.ManagerBase.SessionTiming;
 
 /**
  * Standard implementation of the <b>Session</b> interface.  This object is
@@ -760,6 +761,15 @@ public class StandardSession
                 average = (int) (((((long) average) * (numExpired - 1)) + timeAlive)
                         / numExpired);
                 manager.setSessionAverageAliveTime(average);
+            }
+
+            if (manager instanceof ManagerBase) {
+                ManagerBase mb = (ManagerBase) manager;
+                SessionTiming timing = new SessionTiming(timeNow, timeAlive);
+                synchronized (mb.sessionExpirationTiming) {
+                    mb.sessionExpirationTiming.add(timing);
+                    mb.sessionExpirationTiming.poll();
+                }
             }
 
             // Remove this session from our manager's active sessions

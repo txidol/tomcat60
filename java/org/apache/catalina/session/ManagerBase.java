@@ -30,10 +30,13 @@ import java.security.AccessController;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivilegedAction;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
@@ -163,6 +166,15 @@ public abstract class ManagerBase implements Manager, MBeanRegistration {
      * Average time (in seconds) that expired sessions had been alive.
      */
     protected int sessionAverageAliveTime;
+
+
+    protected static final int TIMING_STATS_CACHE_SIZE = 100;
+
+    protected LinkedList<SessionTiming> sessionCreationTiming =
+        new LinkedList<SessionTiming>();
+
+    protected LinkedList<SessionTiming> sessionExpirationTiming =
+        new LinkedList<SessionTiming>();
 
 
     /**
@@ -752,6 +764,15 @@ public abstract class ManagerBase implements Manager, MBeanRegistration {
         // Initialize random number generation
         getRandomBytes(new byte[16]);
         
+        // Ensure caches for timing stats are the right size by filling with
+        // nulls.
+        while (sessionCreationTiming.size() < TIMING_STATS_CACHE_SIZE) {
+            sessionCreationTiming.add(null);
+        }
+        while (sessionExpirationTiming.size() < TIMING_STATS_CACHE_SIZE) {
+            sessionExpirationTiming.add(null);
+        }
+
         if(log.isDebugEnabled())
             log.debug("Registering " + oname );
                
@@ -860,6 +881,11 @@ public abstract class ManagerBase implements Manager, MBeanRegistration {
         session.setId(sessionId);
         sessionCounter++;
 
+        SessionTiming timing = new SessionTiming(session.getCreationTime(), 0);
+        synchronized (sessionCreationTiming) {
+            sessionCreationTiming.add(timing);
+            sessionCreationTiming.poll();
+        }
         return (session);
 
     }
@@ -1167,6 +1193,91 @@ public abstract class ManagerBase implements Manager, MBeanRegistration {
     }
 
 
+    /**
+     * Gets the current rate of session creation (in session per minute) based
+     * on the creation time of the previous 100 sessions created. If less than
+     * 100 sessions have been created then all available data is used.
+     * 
+     * @return  The current rate (in sessions per minute) of session creation
+     */
+    public int getSessionCreateRate() {
+        long now = System.currentTimeMillis();
+        // Copy current stats
+        List<SessionTiming> copy = new ArrayList<SessionTiming>();
+        synchronized (sessionCreationTiming) {
+            copy.addAll(sessionCreationTiming);
+        }
+        
+        // Init
+        long oldest = now;
+        int counter = 0;
+        int result = 0;
+        Iterator<SessionTiming> iter = copy.iterator();
+        
+        // Calculate rate
+        while (iter.hasNext()) {
+            SessionTiming timing = iter.next();
+            if (timing != null) {
+                counter++;
+                if (timing.getTimestamp() < oldest) {
+                    oldest = timing.getTimestamp();
+                }
+            }
+        }
+        if (counter > 0) {
+            if (oldest < now) {
+                result = (int) ((1000*60*counter)/(now - oldest));
+            } else {
+                result = Integer.MAX_VALUE;
+            }
+        }
+        return result;
+    }
+    
+
+    /**
+     * Gets the current rate of session expiration (in session per minute) based
+     * on the expiry time of the previous 100 sessions expired. If less than
+     * 100 sessions have expired then all available data is used.
+     * 
+     * @return  The current rate (in sessions per minute) of session expiration
+     */
+    public int getSessionExpireRate() {
+        long now = System.currentTimeMillis();
+        // Copy current stats
+        List<SessionTiming> copy = new ArrayList<SessionTiming>();
+        synchronized (sessionExpirationTiming) {
+            copy.addAll(sessionExpirationTiming);
+        }
+        
+        // Init
+        long oldest = now;
+        int counter = 0;
+        int result = 0;
+        Iterator<SessionTiming> iter = copy.iterator();
+        
+        // Calculate rate
+        while (iter.hasNext()) {
+            SessionTiming timing = iter.next();
+            if (timing != null) {
+                counter++;
+                if (timing.getTimestamp() < oldest) {
+                    oldest = timing.getTimestamp();
+                }
+            }
+        }
+        if (counter > 0) {
+            if (oldest < now) {
+                result = (int) ((1000*60*counter)/(now - oldest));
+            } else {
+                // Better than reporting zero
+                result = Integer.MAX_VALUE;
+            }
+        }
+        return result;
+    }
+
+
     /** 
      * For debugging: return a list of all session ids currently active
      *
@@ -1311,4 +1422,30 @@ public abstract class ManagerBase implements Manager, MBeanRegistration {
     public void postDeregister() {
     }
 
+    // ----------------------------------------------------------- Inner classes
+    
+    protected static final class SessionTiming {
+        private long timestamp;
+        private int duration;
+        
+        public SessionTiming(long timestamp, int duration) {
+            this.timestamp = timestamp;
+            this.duration = duration;
+        }
+        
+        /**
+         * Time stamp associated with this piece of timing information in
+         * milliseconds.
+         */
+        public long getTimestamp() {
+            return timestamp;
+        }
+        
+        /**
+         * Duration associated with this piece of timing information in seconds.
+         */
+        public int getDuration() {
+            return duration;
+        }
+    }
 }
