@@ -43,7 +43,7 @@
 <!-- Section names:
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
-<section name="Tomcar 6.0.31 (jfclere)">
+<section name="Tomcat 6.0.31 (jfclere)">
   <subsection name="Catalina">
     <changelog>
       <add>
