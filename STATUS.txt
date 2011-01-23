@@ -107,3 +107,10 @@ PATCHES PROPOSED TO BACKPORT:
              logName() is the wrong thing to be using. getName() should be
              sufficient
   -1:
+
+* Followup to r1061433
+  Be consistent with locks on sessionCreationTiming, sessionExpirationTiming
+  in DeltaManager.resetStatistics(): use the same lock as elsewhere.
+  http://svn.apache.org/viewvc?rev=1062398&view=rev
+  +1: kkolinko
+  -1:
