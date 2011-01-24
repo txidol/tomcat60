@@ -97,15 +97,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48822
   Include context name in reload and stop log statements.
-  http://people.apache.org/~slaurent/patches/2010-12-16_BZ48822_context_name_on_reload-tc6.patch
-  +1: slaurent
-  +0: kkolinko: Good idea, though logName() is
-      "org.apache.catalina.core.ContainerBase.[engine].[host].[path]"
-      which is not just a context name and looks ugly. The patch is not
-      clean - it includes BZ 50459 bindThread patch that was proposed above.
-  -0: markt: The patch is not clean (includes BZ50459)
-             logName() is the wrong thing to be using. getName() should be
-             sufficient
+  Based on the patch by Marc Guillemot.
+  http://people.apache.org/~kkolinko/patches/2011-01-23_tc6_48822.patch
+  +1: kkolinko
   -1:
 
 * Followup to r1061433
