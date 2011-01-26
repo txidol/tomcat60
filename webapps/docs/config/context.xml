@@ -189,6 +189,10 @@
         <p>The value of this field must not be set when the Context is
         configured using a <code>META-INF/context.xml</code> file as it will be
         inferred by the automatic deployment process.</p>
+        <p>If a symbolic link is used for docBase then changes to the
+        symbolic link will only be effective after a Tomcat restart or
+        by undeploying and redeploying the context. A context reload is not
+        sufficient.</p>
       </attribute>
 
       <attribute name="override" required="false">
@@ -196,10 +200,6 @@
         Context element override any corresponding settings in either the global
         or <a href="host.html">Host</a> default contexts.  By default, settings
         from a default context will be used.</p>
-        <p>If a symbolic link is used for docBase then changes to the
-        symbolic link will only be effective after a Tomcat restart or
-        by undeploying and redeploying the context. A context reload is not
-        sufficient.</p>
       </attribute>
 
       <attribute name="privileged" required="false">
