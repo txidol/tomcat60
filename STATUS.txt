@@ -118,5 +118,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50651
   NPE in InternalNioOutputBuffer.recycle()
   https://issues.apache.org/bugzilla/attachment.cgi?id=26549
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
