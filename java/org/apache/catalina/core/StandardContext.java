@@ -3413,7 +3413,8 @@ public class StandardContext
         //          throw new IllegalStateException
         //              (sm.getString("standardContext.notReloadable"));
         if(log.isInfoEnabled())
-            log.info(sm.getString("standardContext.reloadingStarted"));
+            log.info(sm.getString("standardContext.reloadingStarted",
+                    getName()));
 
         // Stop accepting requests temporarily
         setPaused(true);
@@ -3421,13 +3422,15 @@ public class StandardContext
         try {
             stop();
         } catch (LifecycleException e) {
-            log.error(sm.getString("standardContext.stoppingContext"), e);
+            log.error(sm.getString("standardContext.stoppingContext",
+                    getName()), e);
         }
 
         try {
             start();
         } catch (LifecycleException e) {
-            log.error(sm.getString("standardContext.startingContext"), e);
+            log.error(sm.getString("standardContext.startingContext",
+                    getName()), e);
         }
 
         setPaused(false);

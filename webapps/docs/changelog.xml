@@ -44,6 +44,14 @@
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
 <section name="Tomcat 6.0.32 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <update>
+        <bug>48822</bug>: Include context name in reload and stop log statements.
+        Based on the patch provided by Marc Guillemot. (kkolinko)
+      </update>
+    </changelog>
+  </subsection>
   <subsection name="Coyote">
     <changelog>
       <fix>

@@ -100,10 +100,3 @@ PATCHES PROPOSED TO BACKPORT:
   (kkolinko: not tested, thus not voting yet)
   +1:
   -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48822
-  Include context name in reload and stop log statements.
-  Based on the patch by Marc Guillemot.
-  http://people.apache.org/~kkolinko/patches/2011-01-23_tc6_48822.patch
-  +1: kkolinko, markt, fhanik
-  -1:
