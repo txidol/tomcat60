@@ -52,6 +52,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <fix>
+        Be consistent with locks on sessionCreationTiming,
+        sessionExpirationTiming in DeltaManager.resetStatistics(). (kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.31 (jfclere)">
   <subsection name="Catalina">
