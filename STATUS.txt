@@ -125,5 +125,5 @@ PATCHES PROPOSED TO BACKPORT:
   Recycle request and response in CoyoteAdapter#log() only if they were
   created there.
   https://issues.apache.org/bugzilla/attachment.cgi?id=26557
-  +1: kkolinko, fhanik
+  +1: kkolinko, fhanik, markt
   -1:
