@@ -348,9 +348,10 @@ public class InternalNioOutputBuffer
 
         // Recycle Request object
         response.recycle();
-        socket.getBufHandler().getWriteBuffer().clear();
-
-        socket = null;
+        if (socket != null) {
+            socket.getBufHandler().getWriteBuffer().clear();
+            socket = null;
+        }
         pos = 0;
         lastActiveFilter = -1;
         committed = false;

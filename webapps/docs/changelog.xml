@@ -43,6 +43,16 @@
 <!-- Section names:
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
+<section name="Tomcat 6.0.32 (jfclere)">
+  <subsection name="Coyote">
+    <changelog>
+      <fix>
+        <bug>50651</bug>: Fix NPE in InternalNioOutputBuffer.recycle().
+        (kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.31 (jfclere)">
   <subsection name="Catalina">
     <changelog>
