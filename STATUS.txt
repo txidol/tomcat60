@@ -100,3 +100,9 @@ PATCHES PROPOSED TO BACKPORT:
   (kkolinko: not tested, thus not voting yet)
   +1:
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50642
+  Better memory leak protection for HttpClient keep-alive thread
+  http://svn.apache.org/viewvc?rev=1064652&view=rev
+  +1: markt
+  -1:
