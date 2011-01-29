@@ -106,3 +106,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1064652&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50689
+  Provide 100 Continue responses at appropriate points during FORM
+  authentication if client indicates that they are expected.
+  (It is backport of r987948.)
+  https://issues.apache.org/bugzilla/attachment.cgi?id=26576
+  +1: kkolinko
+  -1:
