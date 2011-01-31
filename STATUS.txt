@@ -91,7 +91,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Backport AprEndpoint shutdown patch (BZ49795 and similar).
   http://people.apache.org/~kkolinko/patches/2011-01-24_tc6_aprshutdown.patch
-  +1: mturk, kkolinko
+  +1: mturk, kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50642
@@ -109,5 +109,5 @@ PATCHES PROPOSED TO BACKPORT:
   authentication if client indicates that they are expected.
   (It is backport of r987948.)
   https://issues.apache.org/bugzilla/attachment.cgi?id=26576
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
