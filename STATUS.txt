@@ -90,15 +90,8 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Backport AprEndpoint shutdown patch (BZ49795 and similar).
-  http://people.apache.org/~mturk/tomcat/patches/tomcat-6.0.x-aprshutdown.patch
-  +1: mturk
-  -0: markt - Patch doesn't apply cleanly to tc6.0.x/trunk
-  -1:
-
-  Mladen's patch with svn conflict resolved:
   http://people.apache.org/~kkolinko/patches/2011-01-24_tc6_aprshutdown.patch
-  (kkolinko: not tested, thus not voting yet)
-  +1:
+  +1: mturk, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50642
