@@ -117,3 +117,10 @@ PATCHES PROPOSED TO BACKPORT:
      I think it would be better to do not change visibility of
      defaultProtocol, defaultKeystoreType, though I do not see much
      concerns against it.
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50631
+  InternalNioInputBuffer should honor maxHttpHeadSize
+  (backport of r1065939)
+  http://people.apache.org/~kkolinko/patches/2011-02-01_tc6_50631.patch
+  +1: kkolinko
+  -1:
