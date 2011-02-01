@@ -124,3 +124,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2011-02-01_tc6_50631.patch
   +1: kkolinko
   -1:
+
+* Improve HTTP specification compliance
+  http://svn.apache.org/viewvc?rev=1066244&view=rev
+  +1: kkolinko
+  -1:
