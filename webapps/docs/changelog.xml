@@ -55,6 +55,10 @@
   <subsection name="Coyote">
     <changelog>
       <fix>
+        <bug>49795</bug>: Backport AprEndpoint shutdown improvements, to make
+        it more robust. (mturk/kkolinko)
+      </fix>
+      <fix>
         <bug>50651</bug>: Fix NPE in InternalNioOutputBuffer.recycle().
         (kkolinko)
       </fix>

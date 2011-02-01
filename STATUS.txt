@@ -89,11 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
               We can stall this item until we get some feedback about 7.0.5.
   -1:
 
-* Backport AprEndpoint shutdown patch (BZ49795 and similar).
-  http://people.apache.org/~kkolinko/patches/2011-01-24_tc6_aprshutdown.patch
-  +1: mturk, kkolinko, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50642
   Better memory leak protection for HttpClient keep-alive thread
   http://svn.apache.org/viewvc?rev=1064652&view=rev

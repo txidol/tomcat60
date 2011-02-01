@@ -157,6 +157,8 @@ public class AprEndpoint {
      */
     protected long sslContext = 0;
 
+    /* Acceptor thread array */
+    private Acceptor acceptors[] = null;
 
     // ------------------------------------------------------------- Properties
 
@@ -767,10 +769,10 @@ public class AprEndpoint {
             for (int i = 0; i < pollerThreadCount; i++) {
                 pollers[i] = new Poller(false);
                 pollers[i].init();
-                Thread pollerThread = new Thread(pollers[i], getName() + "-Poller-" + i);
-                pollerThread.setPriority(threadPriority);
-                pollerThread.setDaemon(true);
-                pollerThread.start();
+                pollers[i].setName(getName() + "-Poller-" + i);
+                pollers[i].setPriority(threadPriority);
+                pollers[i].setDaemon(true);
+                pollers[i].start();
             }
 
             // Start comet poller threads
@@ -778,10 +780,10 @@ public class AprEndpoint {
             for (int i = 0; i < pollerThreadCount; i++) {
                 cometPollers[i] = new Poller(true);
                 cometPollers[i].init();
-                Thread pollerThread = new Thread(cometPollers[i], getName() + "-CometPoller-" + i);
-                pollerThread.setPriority(threadPriority);
-                pollerThread.setDaemon(true);
-                pollerThread.start();
+                cometPollers[i].setName(getName() + "-CometPoller-" + i);
+                cometPollers[i].setPriority(threadPriority);
+                cometPollers[i].setDaemon(true);
+                cometPollers[i].start();
             }
 
             // Start sendfile threads
@@ -790,19 +792,21 @@ public class AprEndpoint {
                 for (int i = 0; i < sendfileThreadCount; i++) {
                     sendfiles[i] = new Sendfile();
                     sendfiles[i].init();
-                    Thread sendfileThread = new Thread(sendfiles[i], getName() + "-Sendfile-" + i);
-                    sendfileThread.setPriority(threadPriority);
-                    sendfileThread.setDaemon(true);
-                    sendfileThread.start();
+                    sendfiles[i].setName(getName() + "-Sendfile-" + i);
+                    sendfiles[i].setPriority(threadPriority);
+                    sendfiles[i].setDaemon(true);
+                    sendfiles[i].start();
                 }
             }
 
             // Start acceptor threads
+            acceptors = new Acceptor[acceptorThreadCount];
             for (int i = 0; i < acceptorThreadCount; i++) {
-                Thread acceptorThread = new Thread(new Acceptor(), getName() + "-Acceptor-" + i);
-                acceptorThread.setPriority(threadPriority);
-                acceptorThread.setDaemon(daemon);
-                acceptorThread.start();
+                acceptors[i] = new Acceptor();
+                acceptors[i].setName(getName() + "-Acceptor-" + i);
+                acceptors[i].setPriority(threadPriority);
+                acceptors[i].setDaemon(getDaemon());
+                acceptors[i].start();
             }
 
         }
@@ -835,20 +839,56 @@ public class AprEndpoint {
      * Stop the endpoint. This will cause all processing threads to stop.
      */
     public void stop() {
+        if (!paused) {
+            pause();
+        }
         if (running) {
             running = false;
             unlockAccept();
+            for (int i = 0; i < acceptors.length; i++) {
+                long s = System.currentTimeMillis() + 30000;
+                while (acceptors[i].isAlive()) {
+                    try {
+                        acceptors[i].interrupt();
+                        acceptors[i].join(1000);
+                    } catch (InterruptedException e) {
+                        // Ignore
+                    }
+                    if (System.currentTimeMillis() >= s) {
+                        log.warn(sm.getString("endpoint.warn.unlockAcceptorFailed",
+                                 acceptors[i].getName()));
+                        // If the Acceptor is still running force
+                        // the hard socket close.
+                        if (serverSock != 0) {
+                            Socket.shutdown(serverSock, Socket.APR_SHUTDOWN_READ);
+                            serverSock = 0;
+                        }
+                    }
+                }
+            }
             for (int i = 0; i < pollers.length; i++) {
-                pollers[i].destroy();
+                try {
+                    pollers[i].destroy();
+                } catch (Exception e) {
+                    // Ignore
+                }
             }
             pollers = null;
             for (int i = 0; i < cometPollers.length; i++) {
-                cometPollers[i].destroy();
+                try {
+                    cometPollers[i].destroy();
+                } catch (Exception e) {
+                    // Ignore
+                }
             }
             cometPollers = null;
             if (useSendfile) {
                 for (int i = 0; i < sendfiles.length; i++) {
-                    sendfiles[i].destroy();
+                    try {
+                        sendfiles[i].destroy();
+                    } catch (Exception e) {
+                        // Ignore
+                    }
                 }
                 sendfiles = null;
             }
@@ -863,15 +903,26 @@ public class AprEndpoint {
         if (running) {
             stop();
         }
-        Pool.destroy(serverSockPool);
-        serverSockPool = 0;
-        // Close server socket
-        Socket.close(serverSock);
-        serverSock = 0;
+        // Destroy pool if it was initialised
+        if (serverSockPool != 0) {
+            Pool.destroy(serverSockPool);
+            serverSockPool = 0;
+        }
+
+        // Close server socket if it was initialised
+        if (serverSock != 0) {
+            Socket.close(serverSock);
+            serverSock = 0;
+        }
+
         sslContext = 0;
-        // Close all APR memory pools and resources
-        Pool.destroy(rootPool);
-        rootPool = 0;
+
+        // Close all APR memory pools and resources if initialised
+        if (rootPool != 0) {
+            Pool.destroy(rootPool);
+            rootPool = 0;
+        }
+
         initialized = false;
     }
 
@@ -1136,6 +1187,15 @@ public class AprEndpoint {
         return true;
     }
 
+    private void destroySocket(long socket) {
+        if (running && socket != 0) {
+            // If not running the socket will be destroyed by
+            // parent pool or acceptor socket.
+            // In any case disable double free which would cause JVM core.
+            Socket.destroy(socket);
+        }
+    }
+
 
     // --------------------------------------------------- Acceptor Inner Class
 
@@ -1143,7 +1203,7 @@ public class AprEndpoint {
     /**
      * Server socket acceptor thread.
      */
-    protected class Acceptor implements Runnable {
+    protected class Acceptor extends Thread {
 
         private final Log log = LogFactory.getLog(AprEndpoint.Acceptor.class);
 
@@ -1157,7 +1217,7 @@ public class AprEndpoint {
             while (running) {
 
                 // Loop if endpoint is paused
-                while (paused) {
+                while (paused && running) {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -1165,6 +1225,9 @@ public class AprEndpoint {
                     }
                 }
 
+                if (!running) {
+                    break;
+                }
                 try {
                     // Accept the next incoming connection from the server socket
                     long socket = Socket.accept(serverSock);
@@ -1174,13 +1237,13 @@ public class AprEndpoint {
                      * socket and don't process it.
                      */
                     if (deferAccept && (paused || !running)) {
-                        Socket.destroy(socket);
+                        destroySocket(socket);
                         continue;
                     }
                     // Hand this socket off to an appropriate processor
                     if (!processSocketWithOptions(socket)) {
                         // Close socket and pool right away
-                        Socket.destroy(socket);
+                        destroySocket(socket);
                     }
                 } catch (Throwable t) {
                     if (running) {
@@ -1216,7 +1279,7 @@ public class AprEndpoint {
     /**
      * Poller class.
      */
-    public class Poller implements Runnable {
+    public class Poller extends Thread {
 
         protected long serverPollset = 0;
         protected long pool = 0;
@@ -1263,23 +1326,13 @@ public class AprEndpoint {
         /**
          * Destroy the poller.
          */
-        protected void destroy() {
-            // Wait for polltime before doing anything, so that the poller threads
-            // exit, otherwise parallel descturction of sockets which are still
-            // in the poller can cause problems
-            try {
-                synchronized (this) {
-                    this.wait(pollTime / 1000);
-                }
-            } catch (InterruptedException e) {
-                // Ignore
-            }
+        public void destroy() {
             // Close all sockets in the add queue
             for (int i = 0; i < addCount; i++) {
                 if (comet) {
                     processSocket(addS[i], SocketStatus.STOP);
                 } else {
-                    Socket.destroy(addS[i]);
+                    destroySocket(addS[i]);
                 }
             }
             // Close all sockets still in the poller
@@ -1289,13 +1342,21 @@ public class AprEndpoint {
                     if (comet) {
                         processSocket(desc[n*2+1], SocketStatus.STOP);
                     } else {
-                        Socket.destroy(desc[n*2+1]);
+                        destroySocket(desc[n*2+1]);
                     }
                 }
             }
             Pool.destroy(pool);
             keepAliveCount = 0;
             addCount = 0;
+            try {
+                while (this.isAlive()) {
+                    this.interrupt();
+                    this.join(1000);
+                }
+            } catch (InterruptedException e) {
+                // Ignore
+            }
         }
 
         /**
@@ -1315,7 +1376,7 @@ public class AprEndpoint {
                     if (comet) {
                         processSocket(socket, SocketStatus.ERROR);
                     } else {
-                        Socket.destroy(socket);
+                        destroySocket(socket);
                     }
                     return;
                 }
@@ -1335,7 +1396,7 @@ public class AprEndpoint {
             // Loop until we receive a shutdown command
             while (running) {
                 // Loop if endpoint is paused
-                while (paused) {
+                while (paused && running) {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -1343,9 +1404,12 @@ public class AprEndpoint {
                     }
                 }
 
+                if (!running) {
+                    break;
+                }
                 if (keepAliveCount < 1 && addCount < 1) {
                     synchronized (this) {
-                        while (keepAliveCount < 1 && addCount < 1) {
+                        while (keepAliveCount < 1 && addCount < 1 && running) {
                             // Reset maintain time.
                             maintainTime = 0;
                             try {
@@ -1357,6 +1421,9 @@ public class AprEndpoint {
                     }
                 }
 
+                if (!running) {
+                    break;
+                }
                 try {
                     // Add sockets which are waiting to the poller
                     if (addCount > 0) {
@@ -1373,7 +1440,7 @@ public class AprEndpoint {
                                         if (comet) {
                                             processSocket(addS[i], SocketStatus.ERROR);
                                         } else {
-                                            Socket.destroy(addS[i]);
+                                            destroySocket(addS[i]);
                                         }
                                     }
                                 }
@@ -1399,7 +1466,7 @@ public class AprEndpoint {
                                 if (comet) {
                                     processSocket(desc[n*2+1], SocketStatus.DISCONNECT);
                                 } else {
-                                    Socket.destroy(desc[n*2+1]);
+                                    destroySocket(desc[n*2+1]);
                                 }
                                 continue;
                             }
@@ -1430,7 +1497,7 @@ public class AprEndpoint {
                                 if (comet) {
                                     processSocket(desc[n], SocketStatus.TIMEOUT);
                                 } else {
-                                    Socket.destroy(desc[n]);
+                                    destroySocket(desc[n]);
                                 }
                             }
                         }
@@ -1444,9 +1511,7 @@ public class AprEndpoint {
             synchronized (this) {
                 this.notifyAll();
             }
-
         }
-
     }
 
 
@@ -1587,7 +1652,7 @@ public class AprEndpoint {
                         getPoller().add(socket);
                     } else {
                         // Close socket and pool
-                        Socket.destroy(socket);
+                        destroySocket(socket);
                         socket = 0;
                     }
                 } else {
@@ -1595,12 +1660,12 @@ public class AprEndpoint {
                     // Process the request from this socket
                     if ((status != null) && (handler.event(socket, status) == Handler.SocketState.CLOSED)) {
                         // Close socket and pool
-                        Socket.destroy(socket);
+                        destroySocket(socket);
                         socket = 0;
                     } else if ((status == null) && ((options && !setSocketOptions(socket))
                             || handler.process(socket) == Handler.SocketState.CLOSED)) {
                         // Close socket and pool
-                        Socket.destroy(socket);
+                        destroySocket(socket);
                         socket = 0;
                     }
                 }
@@ -1656,7 +1721,7 @@ public class AprEndpoint {
     /**
      * Sendfile class.
      */
-    public class Sendfile implements Runnable {
+    public class Sendfile extends Thread {
 
         protected long sendfilePollset = 0;
         protected long pool = 0;
@@ -1694,32 +1759,31 @@ public class AprEndpoint {
         /**
          * Destroy the poller.
          */
-        protected void destroy() {
-            // Wait for polltime before doing anything, so that the poller threads
-            // exit, otherwise parallel descturction of sockets which are still
-            // in the poller can cause problems
-            try {
-                synchronized (this) {
-                    this.wait(pollTime / 1000);
-                }
-            } catch (InterruptedException e) {
-                // Ignore
-            }
+        public void destroy() {
             // Close any socket remaining in the add queue
             addCount = 0;
             for (int i = (addS.size() - 1); i >= 0; i--) {
                 SendfileData data = addS.get(i);
-                Socket.destroy(data.socket);
+                destroySocket(data.socket);
             }
+            addS.clear();
             // Close all sockets still in the poller
             int rv = Poll.pollset(sendfilePollset, desc);
             if (rv > 0) {
                 for (int n = 0; n < rv; n++) {
-                    Socket.destroy(desc[n*2+1]);
+                    destroySocket(desc[n*2+1]);
                 }
             }
             Pool.destroy(pool);
             sendfileData.clear();
+            try {
+                while (this.isAlive()) {
+                    this.interrupt();
+                    this.join(1000);
+                }
+            } catch (InterruptedException e) {
+                // Ignore
+            }
         }
 
         /**
@@ -1748,7 +1812,7 @@ public class AprEndpoint {
                                                data.pos, data.end - data.pos, 0);
                     if (nw < 0) {
                         if (!(-nw == Status.EAGAIN)) {
-                            Socket.destroy(data.socket);
+                            destroySocket(data.socket);
                             data.socket = 0;
                             return false;
                         } else {
@@ -1804,7 +1868,7 @@ public class AprEndpoint {
             while (running) {
 
                 // Loop if endpoint is paused
-                while (paused) {
+                while (paused && running) {
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -1812,9 +1876,12 @@ public class AprEndpoint {
                     }
                 }
 
+                if (!running) {
+                    break;
+                }
                 if (sendfileCount < 1 && addCount < 1) {
                     synchronized (this) {
-                        while (sendfileCount < 1 && addS.size() < 1) {
+                        while (sendfileCount < 1 && addS.size() < 1 && running) {
                             // Reset maintain time.
                             maintainTime = 0;
                             try {
@@ -1826,6 +1893,9 @@ public class AprEndpoint {
                     }
                 }
 
+                if (!running) {
+                    break;
+                }
                 try {
                     // Add socket to the poller
                     if (addCount > 0) {
@@ -1841,7 +1911,7 @@ public class AprEndpoint {
                                     } else {
                                         log.warn(sm.getString("endpoint.sendfile.addfail", "" + rv, Error.strerror(rv)));
                                         // Can't do anything: close the socket right away
-                                        Socket.destroy(data.socket);
+                                        destroySocket(data.socket);
                                     }
                                 }
                             } finally {
@@ -1867,7 +1937,7 @@ public class AprEndpoint {
                                 remove(state);
                                 // Destroy file descriptor pool, which should close the file
                                 // Close the socket, as the reponse would be incomplete
-                                Socket.destroy(state.socket);
+                                destroySocket(state.socket);
                                 continue;
                             }
                             // Write some data using sendfile
@@ -1879,7 +1949,7 @@ public class AprEndpoint {
                                 remove(state);
                                 // Close the socket, as the reponse would be incomplete
                                 // This will close the file too.
-                                Socket.destroy(state.socket);
+                                destroySocket(state.socket);
                                 continue;
                             }
 
@@ -1896,7 +1966,7 @@ public class AprEndpoint {
                                 } else {
                                     // Close the socket since this is
                                     // the end of not keep-alive request.
-                                    Socket.destroy(state.socket);
+                                    destroySocket(state.socket);
                                 }
                             }
                         }
@@ -1928,7 +1998,7 @@ public class AprEndpoint {
                                 remove(state);
                                 // Destroy file descriptor pool, which should close the file
                                 // Close the socket, as the response would be incomplete
-                                Socket.destroy(state.socket);
+                                destroySocket(state.socket);
                             }
                         }
                     }
@@ -2064,7 +2134,7 @@ public class AprEndpoint {
                     getPoller().add(socket);
                 } else {
                     // Close socket and pool
-                    Socket.destroy(socket);
+                    destroySocket(socket);
                     socket = 0;
                 }
             } else {
@@ -2072,7 +2142,7 @@ public class AprEndpoint {
                 if (!setSocketOptions(socket)
                         || handler.process(socket) == Handler.SocketState.CLOSED) {
                     // Close socket and pool
-                    Socket.destroy(socket);
+                    destroySocket(socket);
                     socket = 0;
                 }
             }
@@ -2102,7 +2172,7 @@ public class AprEndpoint {
             // Process the request from this socket
             if (handler.process(socket) == Handler.SocketState.CLOSED) {
                 // Close socket and pool
-                Socket.destroy(socket);
+                destroySocket(socket);
                 socket = 0;
             }
 
@@ -2133,7 +2203,7 @@ public class AprEndpoint {
             // Process the request from this socket
             if (handler.event(socket, status) == Handler.SocketState.CLOSED) {
                 // Close socket and pool
-                Socket.destroy(socket);
+                destroySocket(socket);
                 socket = 0;
             }
 
