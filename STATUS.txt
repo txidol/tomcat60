@@ -119,13 +119,6 @@ PATCHES PROPOSED TO BACKPORT:
      concerns against it.
    markt: Happy to exclude those changes
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50631
-  InternalNioInputBuffer should honor maxHttpHeadSize
-  (backport of r1065939)
-  http://people.apache.org/~kkolinko/patches/2011-02-01_tc6_50631.patch
-  +1: kkolinko, markt, funkman
-  -1:
-
 * Improve HTTP specification compliance
   http://svn.apache.org/viewvc?rev=1066244&view=rev
   +1: kkolinko, rjung, markt, funkman

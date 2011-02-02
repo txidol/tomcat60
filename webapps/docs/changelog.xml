@@ -59,6 +59,10 @@
         it more robust. (mturk/kkolinko)
       </fix>
       <fix>
+        <bug>50631</bug>: InternalNioInputBuffer should honor
+        <code>maxHttpHeadSize</code>. (kkolinko)
+      </fix>
+      <fix>
         <bug>50651</bug>: Fix NPE in InternalNioOutputBuffer.recycle().
         (kkolinko)
       </fix>
