@@ -34,6 +34,7 @@ import java.util.logging.LogManager;
 import org.apache.catalina.Container;
 import org.apache.catalina.Lifecycle;
 import org.apache.catalina.LifecycleException;
+import org.apache.catalina.Server;
 import org.apache.catalina.core.StandardServer;
 import org.apache.juli.ClassLoaderLogManager;
 import org.apache.tomcat.util.digester.Digester;
@@ -382,7 +383,8 @@ public class Catalina extends Embedded {
             arguments(arguments);
         }
 
-        if( getServer() == null ) {
+        Server s = getServer();
+        if( s == null ) {
             // Create and execute our Digester
             Digester digester = createStopDigester();
             digester.setClassLoader(Thread.currentThread().getContextClassLoader());
@@ -401,17 +403,25 @@ public class Catalina extends Embedded {
             }
         } else {
             // Server object already present. Must be running as a service
-            // Shutdown hook will take care of clean-up
-            System.exit(0);
+            if (s instanceof Lifecycle) {
+                try {
+                    ((Lifecycle) s).stop();
+                } catch (LifecycleException e) {
+                    log.error("Catalina.stop: ", e);
+                }
+                return;
+            }
+            // else fall down
         }
 
         // Stop the existing server
+        s = getServer();
         try {
-            if (getServer().getPort()>0) { 
+            if (s.getPort()>0) { 
                 String hostAddress = InetAddress.getByName("localhost").getHostAddress();
                 Socket socket = new Socket(hostAddress, getServer().getPort());
                 OutputStream stream = socket.getOutputStream();
-                String shutdown = getServer().getShutdown();
+                String shutdown = s.getShutdown();
                 for (int i = 0; i < shutdown.length(); i++)
                     stream.write(shutdown.charAt(i));
                 stream.flush();

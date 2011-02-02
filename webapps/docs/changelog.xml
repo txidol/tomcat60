@@ -51,6 +51,10 @@
         Based on the patch provided by Marc Guillemot. (kkolinko)
       </update>
       <fix>
+        <bug>50673</bug>: Improve Catalina shutdown when running as a service.
+        Do not call System.exit(). (kkolinko)
+      </fix>
+      <fix>
         <bug>50689</bug>: Provide 100 Continue responses at appropriate points
         during FORM authentication if client indicates that they are expected.
         (kkolinko)
