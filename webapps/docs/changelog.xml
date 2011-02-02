@@ -50,6 +50,11 @@
         <bug>48822</bug>: Include context name in reload and stop log statements.
         Based on the patch provided by Marc Guillemot. (kkolinko)
       </update>
+      <fix>
+        <bug>50689</bug>: Provide 100 Continue responses at appropriate points
+        during FORM authentication if client indicates that they are expected.
+        (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
