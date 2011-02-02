@@ -110,3 +110,10 @@ PATCHES PROPOSED TO BACKPORT:
      defaultProtocol, defaultKeystoreType, though I do not see much
      concerns against it.
    markt: Happy to exclude those changes
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50673
+  Improve Catalina shutdown when running as a service. Do not call
+  System.exit().
+  https://issues.apache.org/bugzilla/attachment.cgi?id=26591
+  +1: kkolinko
+  -1:
