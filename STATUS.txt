@@ -88,15 +88,3 @@ PATCHES PROPOSED TO BACKPORT:
               The updated patch fixes a race condition.
               We can stall this item until we get some feedback about 7.0.5.
   -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50325
-  Use JVM provided solutions to CVE-2009-3555 if available (i.e. RFC 5746
-  support)
-  http://svn.apache.org/viewvc?rev=1065859&view=rev
-  +1: markt, kkolinko, funkman
-  -1:
-   kkolinko:
-     I think it would be better to do not change visibility of
-     defaultProtocol, defaultKeystoreType, though I do not see much
-     concerns against it.
-   markt: Happy to exclude those changes
