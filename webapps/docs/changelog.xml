@@ -55,6 +55,10 @@
         during FORM authentication if client indicates that they are expected.
         (kkolinko)
       </fix>
+      <fix>
+        Improve HTTP specification compliance in support of
+        <code>Accept-Language</code> header. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
