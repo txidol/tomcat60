@@ -92,7 +92,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50642
   Better memory leak protection for HttpClient keep-alive thread
   http://svn.apache.org/viewvc?rev=1064652&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko,funkman
   -1:
 
   kkolinko: About the docs: it might be better to be explicit:
@@ -104,14 +104,14 @@ PATCHES PROPOSED TO BACKPORT:
   authentication if client indicates that they are expected.
   (It is backport of r987948.)
   https://issues.apache.org/bugzilla/attachment.cgi?id=26576
-  +1: kkolinko, markt
+  +1: kkolinko, markt,funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50325
   Use JVM provided solutions to CVE-2009-3555 if available (i.e. RFC 5746
   support)
   http://svn.apache.org/viewvc?rev=1065859&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, funkman
   -1:
    kkolinko:
      I think it would be better to do not change visibility of
@@ -123,10 +123,10 @@ PATCHES PROPOSED TO BACKPORT:
   InternalNioInputBuffer should honor maxHttpHeadSize
   (backport of r1065939)
   http://people.apache.org/~kkolinko/patches/2011-02-01_tc6_50631.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, funkman
   -1:
 
 * Improve HTTP specification compliance
   http://svn.apache.org/viewvc?rev=1066244&view=rev
-  +1: kkolinko, rjung, markt
+  +1: kkolinko, rjung, markt, funkman
   -1:
