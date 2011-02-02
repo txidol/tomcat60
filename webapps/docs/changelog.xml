@@ -323,6 +323,12 @@
         system property <code>com.sun.jndi.ldap.connect.pool.timeout</code> is 
         set to a value greater than 0. (slaurent)
       </add>
+      <fix>
+        <bug>50642</bug>: Move the <code>sun.net.www.http.HttpClient</code>
+        keep-alive thread memory leak protection from the 
+        JreMemoryLeakPreventionListener to the WebappClassLoader since the
+        thread that triggers the memory leak is created on demand. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

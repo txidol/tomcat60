@@ -89,16 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
               We can stall this item until we get some feedback about 7.0.5.
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50642
-  Better memory leak protection for HttpClient keep-alive thread
-  http://svn.apache.org/viewvc?rev=1064652&view=rev
-  +1: markt, kkolinko,funkman
-  -1:
-
-  kkolinko: About the docs: it might be better to be explicit:
-  s/HttpClient/sun.net.www.http.HttpClient/, to avoid confusion with Apache
-  component with the same name, http://hc.apache.org/httpcomponents-client-ga/
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50325
   Use JVM provided solutions to CVE-2009-3555 if available (i.e. RFC 5746
   support)

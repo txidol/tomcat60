@@ -671,6 +671,8 @@ public class WebappLoader
                         ((StandardContext) container).getClearReferencesStopTimerThreads());
                 classLoader.setClearReferencesThreadLocals(
                         ((StandardContext) container).getClearReferencesThreadLocals());
+                classLoader.setClearReferencesHttpClientKeepAliveThread(
+                        ((StandardContext) container).getClearReferencesHttpClientKeepAliveThread());
             }
 
             for (int i = 0; i < repositories.length; i++) {
