@@ -43,7 +43,7 @@
 <!-- Section names:
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
-<section name="Tomcat 6.0.32 (jfclere)">
+<section name="Tomcat 6.0.32 (jfclere)" rtext="released 2011-02-03">
   <subsection name="Catalina">
     <changelog>
       <update>
@@ -96,7 +96,7 @@
     </changelog>
   </subsection>
 </section>
-<section name="Tomcat 6.0.31 (jfclere)">
+<section name="Tomcat 6.0.31 (jfclere)" rtext="not released">
   <subsection name="Catalina">
     <changelog>
       <fix>
