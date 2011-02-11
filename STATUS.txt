@@ -100,3 +100,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1069770&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50751
+  Don't try to retrieve attributes if we don't need to. If anonymous bind is not
+  allowed, the login will always fail.
+  http://svn.apache.org/viewvc?rev=1069824&view=rev
+  +1: markt
+  -1:
