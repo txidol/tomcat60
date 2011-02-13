@@ -63,6 +63,10 @@
         Improve HTTP specification compliance in support of
         <code>Accept-Language</code> header. (kkolinko)
       </fix>
+      <fix>
+        <bug>50752</bug>: Fix typo in debug message in
+        <code>org.apache.catalina.startup.Embedded</code>. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

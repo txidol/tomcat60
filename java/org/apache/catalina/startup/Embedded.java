@@ -906,7 +906,7 @@ public class Embedded  extends StandardService implements Lifecycle {
                     (javax.naming.Context.INITIAL_CONTEXT_FACTORY,
                      "org.apache.naming.java.javaURLContextFactory");
             } else {
-                log.debug( "INITIAL_CONTEXT_FACTORY alread set " + value );
+                log.debug( "INITIAL_CONTEXT_FACTORY already set " + value );
             }
         }
     }
