@@ -100,14 +100,14 @@ PATCHES PROPOSED TO BACKPORT:
   allowed, the login will always fail.
   http://svn.apache.org/viewvc?rev=1069824&view=rev
   http://svn.apache.org/viewvc?rev=1070420&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50734
   Return 404 rather than 400 for requests to / when no ROOT context is deployed
   https://issues.apache.org/bugzilla/attachment.cgi?id=26626
   Patch provided by Violeta Georgieva
-  +1: markt, kfujino
+  +1: markt, kfujino, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50726
