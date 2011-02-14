@@ -99,6 +99,7 @@ PATCHES PROPOSED TO BACKPORT:
   Don't try to retrieve attributes if we don't need to. If anonymous bind is not
   allowed, the login will always fail.
   http://svn.apache.org/viewvc?rev=1069824&view=rev
+  http://svn.apache.org/viewvc?rev=1070420&view=rev
   +1: markt
   -1:
 
