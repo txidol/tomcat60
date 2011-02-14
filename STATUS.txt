@@ -116,3 +116,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1070139&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50771
+  Ensure HttpServletRequest#getAuthType() returns the name of the authentication scheme 
+  if request has already been authenticated.
+  http://svn.apache.org/viewvc?view=revision&revision=1070409
+  https://issues.apache.org/bugzilla/attachment.cgi?id=26649 (patch against tc6.0)
+  +1: kfujino
+  -1:
