@@ -124,3 +124,10 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=26649 (patch against tc6.0)
   +1: kfujino
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50700
+  Ensure that the override attribute of context parameters is correctly
+  followed.
+  http://svn.apache.org/viewvc?rev=1070609&view=rev
+  +1: markt
+  -1:
