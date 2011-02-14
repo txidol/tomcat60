@@ -92,7 +92,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Reduce severity of log messages in o.a.t.util.http.Parameters
   (backport of revs 1067039, 1067139)
   http://people.apache.org/~kkolinko/patches/2011-02-08_tc6_Parameters.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50751
@@ -106,7 +106,7 @@ PATCHES PROPOSED TO BACKPORT:
   Return 404 rather than 400 for requests to / when no ROOT context is deployed
   https://issues.apache.org/bugzilla/attachment.cgi?id=26626
   Patch provided by Violeta Georgieva
-  +1: markt
+  +1: markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50726
