@@ -507,6 +507,15 @@ public class CoyoteAdapter implements Adapter {
                                   request.getMappingData());
         request.setContext((Context) request.getMappingData().context);
         
+        // If there is no context at this point, it is likely no ROOT context
+        // has been deployed
+        if (request.getContext() == null) {
+            res.setStatus(404);
+            res.setMessage("Not found");
+            connector.getService().getContainer().logAccess(request, response, 0, true);
+            return false;
+        }
+        
         // Had to do this after the context was set.
         // Unfortunately parseSessionId is still necessary as it 
         // affects the final URL. Safe as session cookies still 

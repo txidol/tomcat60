@@ -47,6 +47,11 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>50734</bug>: Return 404 rather than 400 for requests to the ROOT
+        context when no ROOT context is deployed. Patch provided by Violeta
+        Georgieva. (markt)
+      </fix>
+      <fix>
         <bug>50752</bug>: Fix typo in debug message in
         <code>org.apache.catalina.startup.Embedded</code>. (markt)
       </fix>
