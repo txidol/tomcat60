@@ -129,5 +129,5 @@ PATCHES PROPOSED TO BACKPORT:
   Ensure that the override attribute of context parameters is correctly
   followed.
   http://svn.apache.org/viewvc?rev=1070609&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
