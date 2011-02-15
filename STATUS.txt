@@ -115,7 +115,7 @@ PATCHES PROPOSED TO BACKPORT:
   if request has already been authenticated.
   http://svn.apache.org/viewvc?view=revision&revision=1070409
   https://issues.apache.org/bugzilla/attachment.cgi?id=26649 (patch against tc6.0)
-  +1: kfujino
+  +1: kfujino, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50700
