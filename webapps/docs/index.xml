@@ -149,9 +149,9 @@ are responsible for installing, configuring, and operating a Apache Tomcat 6 ser
     - Complete documentation and HOWTOs on the JK native webserver connector,
       used to interface Apache Tomcat with servers like Apache HTTPd, IIS
       and others.</li>
-<li><a href="http://java.sun.com/products/servlet/2.5/docs/servlet-2_5-mr2/index.html">
+<li><a href="http://download.oracle.com/docs/cd/E17802_01/products/products/servlet/2.5/docs/servlet-2_5-mr2/">
     <strong>Servlet API Javadocs</strong></a> - The Servlet 2.5 API Javadocs.</li>
-<li><a href="http://java.sun.com/products/jsp/2.1/docs/jsp-2_1-pfd2/index.html">
+<li><a href="http://download.oracle.com/docs/cd/E17802_01/products/products/jsp/2.1/docs/jsp-2_1-pfd2/index.html">
     <strong>JSP API Javadocs</strong></a> - The JSP 2.1 API Javadocs.</li>
 </ul>
 
