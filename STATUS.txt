@@ -133,3 +133,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, mturk
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48863
+  Better logging when specifying an invalid directory for a class loader.
+  Based on a patch by Ralf Hauser.
+  http://svn.apache.org/viewvc?rev=1072145&view=rev
+  +1: markt
+  -1:
