@@ -130,7 +130,7 @@ PATCHES PROPOSED TO BACKPORT:
   reads from the request since this causes various problems in the connectors
   which do not expect this.
   http://svn.apache.org/viewvc?rev=1072042&view=rev
-  +1: markt, mturk
+  +1: markt, mturk, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48863
@@ -138,4 +138,14 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by Ralf Hauser.
   http://people.apache.org/~markt/patches/2011-02-18-bug48870.patch
   +1: markt
+  -0: kkolinko: If I understand it corretly, it will nag about missing
+    ${catalina.base}/lib when running with separate home and base and that
+    directory does not exist. I think that is too common issue to use warn(),
+    and will need i18n if we would use info() and maybe use a simpler
+    message for the common "does not exist" case. That will need a new
+    patch.
+    For the proposed patch: I am +1 to use it as is if s/log.warn/log.debug/.
+    While we are at it, maybe add messages for the IS_JAR, IS_GLOB branches
+    as well.
   -1:
+
