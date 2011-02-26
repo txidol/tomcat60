@@ -403,21 +403,23 @@ public final class Parameters extends MultiMap {
             pos=valEnd+1;
             
             if( nameEnd<=nameStart ) {
-                StringBuilder msg = new StringBuilder("Parameters: Invalid chunk ");
-                // No name eg ...&=xx&... will trigger this
-                if (valEnd >= nameStart) {
-                    msg.append('\'');
-                    try {
-                        msg.append(new String(bytes, nameStart,
-                                valEnd - nameStart, DEFAULT_ENCODING));
-                    } catch (UnsupportedEncodingException e) {
-                        // Should never happen...
-                        log.error("Unable to convert bytes", e);
+                if (log.isInfoEnabled()) {
+                    StringBuilder msg = new StringBuilder("Parameters: Invalid chunk ");
+                    // No name eg ...&=xx&... will trigger this
+                    if (valEnd >= nameStart) {
+                        msg.append('\'');
+                        try {
+                            msg.append(new String(bytes, nameStart,
+                                    valEnd - nameStart, DEFAULT_ENCODING));
+                        } catch (UnsupportedEncodingException e) {
+                            // Should never happen...
+                            log.error("Unable to convert bytes", e);
+                        }
+                        msg.append("' ");
                     }
-                    msg.append("' ");
+                    msg.append("ignored.");
+                    log.info(msg);
                 }
-                msg.append("ignored.");
-                log.warn(msg);
                 continue;
                 // invalid chunk - it's better to ignore
             }
@@ -449,7 +451,7 @@ public final class Parameters extends MultiMap {
                     msg.append(origValue.toString());
                     msg.append("' has been ignored.");
                     log.debug(msg, e);
-                } else {
+                } else if (log.isInfoEnabled()) {
                     msg.append(tmpName.toString());
                     msg.append("' with value '");
                     msg.append(tmpValue.toString());
@@ -457,7 +459,7 @@ public final class Parameters extends MultiMap {
                     msg.append("value quoted here may corrupted due to the ");
                     msg.append("failed decoding. Use debug level logging to ");
                     msg.append("see the original, non-corrupted values.");
-                    log.warn(msg);
+                    log.info(msg);
                 }
             }
 

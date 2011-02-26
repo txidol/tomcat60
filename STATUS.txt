@@ -89,12 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
               We can stall this item until we get some feedback about 7.0.5.
   -1:
 
-* Reduce severity of log messages in o.a.t.util.http.Parameters
-  (backport of revs 1067039, 1067139)
-  http://people.apache.org/~kkolinko/patches/2011-02-08_tc6_Parameters.patch
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50751
   Don't try to retrieve attributes if we don't need to. If anonymous bind is not
   allowed, the login will always fail.
