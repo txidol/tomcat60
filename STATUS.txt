@@ -125,3 +125,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2011-02-28-bug48863-tc6.patch
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=28852
+  Add URL encoding where missing to parameters in URLs presented by Ant tasks to
+  the Manager application.
+  Based on a patch by Stephane Bailliez.
+  http://svn.apache.org/viewvc?rev=1075458&view=rev
+  +1: markt
+  -1:
