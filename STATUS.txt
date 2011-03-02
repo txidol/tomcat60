@@ -122,13 +122,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48863
   Provide an warning if there is a problem with a class path entry but use debug
   level logging if it is expected due to catalina home/base split
-  http://people.apache.org/~markt/patches/2011-02-28-bug48863-tc6.patch
-  +1: markt
-  -1:
-
-  Improved patch (added r1076059):
   http://people.apache.org/~kkolinko/patches/2011-03-02_tc6_48863.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=28852
