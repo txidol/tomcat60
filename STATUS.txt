@@ -162,5 +162,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50854
   Allow shared manager app when running under a security manager
   https://issues.apache.org/bugzilla/attachment.cgi?id=26758
-  +1: markt
+  +1: markt, kkolinko
   -1:
+    kkolinko: This is not a default configuration, but a well-used one, so I
+    agree that it is OK to enable those permissions by default. Note, that
+    1) I think it would be nice to s/${catalina.home}/${catalina.base}/
+    for the /examples webapps at the end of the file, as done by r881432
+    Those are comments, so looks like CTR.
+    2) The policy file is cited by security-manager-howto.xml. That
+    document should be updated accordingly.
