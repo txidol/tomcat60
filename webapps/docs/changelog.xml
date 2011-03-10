@@ -52,6 +52,10 @@
         various problems in the connectors which do not expect this. (markt)
       </fix>
       <fix>
+        <bug>50700</bug>: Ensure that the override attribute of context
+        parameters is correctly followed. (markt)
+      </fix>
+      <fix>
         <bug>50734</bug>: Return 404 rather than 400 for requests to the ROOT
         context when no ROOT context is deployed. Patch provided by Violeta
         Georgieva. (markt)

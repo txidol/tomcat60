@@ -112,13 +112,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50700
-  Ensure that the override attribute of context parameters is correctly
-  followed.
-  http://svn.apache.org/viewvc?rev=1070609&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48863
   Provide an warning if there is a problem with a class path entry but use debug
   level logging if it is expected due to catalina home/base split

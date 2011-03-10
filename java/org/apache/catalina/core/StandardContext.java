@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Stack;
 import java.util.TreeMap;
 
@@ -4805,23 +4806,29 @@ public class StandardContext
      * the application parameters appropriately.
      */
     private void mergeParameters() {
+        Map<String,String> mergedParams = new HashMap<String,String>();
+        
         String names[] = findParameters();
         for (int i = 0; i < names.length; i++) {
-            context.setInitParameter(names[i], findParameter(names[i]));
+            mergedParams.put(names[i], findParameter(names[i]));
         }
 
         ApplicationParameter params[] = findApplicationParameters();
         for (int i = 0; i < params.length; i++) {
             if (params[i].getOverride()) {
-                if (context.getInitParameter(params[i].getName()) == null) {
-                    context.setInitParameter(params[i].getName(),
+                if (mergedParams.get(params[i].getName()) == null) {
+                    mergedParams.put(params[i].getName(),
                             params[i].getValue());
                 }
             } else {
-                context.setInitParameter(params[i].getName(),
-                        params[i].getValue());
+                mergedParams.put(params[i].getName(), params[i].getValue());
             }
         }
+        
+        for (Map.Entry<String,String> entry : mergedParams.entrySet()) {
+            context.setInitParameter(entry.getKey(), entry.getValue());
+        }
+
     }
 
     
