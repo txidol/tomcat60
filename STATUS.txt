@@ -171,3 +171,9 @@ PATCHES PROPOSED TO BACKPORT:
     Those are comments, so looks like CTR.
     2) The policy file is cited by security-manager-howto.xml. That
     document should be updated accordingly.
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50895
+  Don't initialize classes during compilation
+  http://svn.apache.org/viewvc?rev=1079801&view=rev
+  +1: markt
+  -1:
