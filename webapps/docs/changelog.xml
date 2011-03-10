@@ -69,6 +69,10 @@
         <bug>50752</bug>: Fix typo in debug message in
         <code>org.apache.catalina.startup.Embedded</code>. (markt)
       </fix>
+      <fix>
+        <bug>50855</bug>: Fix NPE on AuthenticatorBase.register() when debug
+        logging is enabled. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

@@ -131,12 +131,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50855
-  Fix NPE on HttpServletRequest.logout() when debug logging is enabled.
-  http://svn.apache.org/viewvc?rev=1078412&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48208
   Provide an option to specify a custom trust manager
   https://issues.apache.org/bugzilla/attachment.cgi?id=26732
