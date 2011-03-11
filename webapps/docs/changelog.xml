@@ -49,7 +49,7 @@
       <fix>
         <bug>28852</bug>: Add URL encoding where missing to parameters in URLs
         presented by Ant tasks to the Manager application. Based on a patch by
-        Stephane Bailliez. (mark) 
+        Stephane Bailliez. (markt) 
       </fix>
       <fix>
         <bug>50189</bug>: Once the application has finished writing to the
