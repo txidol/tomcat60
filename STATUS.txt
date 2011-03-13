@@ -156,3 +156,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1079801&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50887
+  Enable the provider to be configured when generating SSL certs
+  Based on a patch by pknopp
+  https://issues.apache.org/bugzilla/attachment.cgi?id=26765
+  +1: markt
+  -1:
