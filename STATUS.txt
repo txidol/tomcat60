@@ -172,3 +172,8 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~markt/patches/2011-03-14-serverinfo-tc6.patch
   +1: markt, kkolinko
   -1:
+
+* Remove unnecessary whitespace from MIME mapping entries in default web.xml
+  http://svn.apache.org/viewvc?rev=1081334&view=rev
+  +1: markt
+  -1:
