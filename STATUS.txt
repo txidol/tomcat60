@@ -154,7 +154,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50895
   Don't initialize classes during compilation
   http://svn.apache.org/viewvc?rev=1079801&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50887
@@ -175,5 +175,5 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Remove unnecessary whitespace from MIME mapping entries in default web.xml
   http://svn.apache.org/viewvc?rev=1081334&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
