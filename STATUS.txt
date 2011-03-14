@@ -165,6 +165,10 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Fix timestamp when using version.[sh|bat]
+  The problem is that version.bat in 6.0.32 displays
+  "Server built: February 2 2011 2003" instead of "Feb 2 2011 20:03"
+  because of the default format of DSTAMP, TSTAMP and TODAY properties.
+  See http://ant.apache.org/manual/Tasks/tstamp.html
   http://people.apache.org/~markt/patches/2011-03-14-serverinfo-tc6.patch
-  +1: markt
+  +1: markt, kkolinko
   -1:
