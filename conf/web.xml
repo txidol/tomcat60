@@ -37,7 +37,7 @@
   <!-- The default servlet for all web applications, that serves static     -->
   <!-- resources.  It processes all requests that are not mapped to other   -->
   <!-- servlets with servlet mappings (defined either here or in your own   -->
-  <!-- web.xml file.  This servlet supports the following initialization    -->
+  <!-- web.xml file).  This servlet supports the following initialization   -->
   <!-- parameters (default values are in square brackets):                  -->
   <!--                                                                      -->
   <!--   debug               Debugging detail level for messages logged     -->
