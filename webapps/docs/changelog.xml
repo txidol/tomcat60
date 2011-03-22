@@ -203,7 +203,7 @@
   <subsection name="General">
     <changelog>
       <fix>
-        filter input of manager app servlets. (kkolinko)
+        Filter input of manager app servlets. (kkolinko)
       </fix>
       <fix>
         <bug>43960</bug>: Expose available property of StandardWrapper via JMX.
