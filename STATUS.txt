@@ -177,3 +177,8 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49180
+  Add option to disable log rotation in juli FileHandler
+  https://issues.apache.org/bugzilla/attachment.cgi?id=26844
+  +1: kkolinko
+  -1:
