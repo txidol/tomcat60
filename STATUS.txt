@@ -183,3 +183,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1088179&view=rev
   +1: kkolinko
   -1:
+
+* Update download paths in build.properties.default:
+  Use maven2 repository, because servletapi-2.3 disappeared from the maven1
+  one. These downloads are needed when building extras.
+  It is backport of r1072962
+  http://people.apache.org/~kkolinko/patches/2011-04-03_tc6_maven2.patch
+  +1: kkolinko
+  -1:
+
