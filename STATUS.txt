@@ -175,13 +175,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49180
   Add option to disable log rotation in juli FileHandler
   https://issues.apache.org/bugzilla/attachment.cgi?id=26844
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Clarify error messages in *.sh files to mention that if a script is not
   found it might be because execute permission is needed.
   http://svn.apache.org/viewvc?rev=1088179&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Update download paths in build.properties.default:
@@ -189,10 +189,10 @@ PATCHES PROPOSED TO BACKPORT:
   one. These downloads are needed when building extras.
   It is backport of r1072962
   http://people.apache.org/~kkolinko/patches/2011-04-03_tc6_maven2.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Implement display of multiple request headers in AccessLogValve
   http://svn.apache.org/viewvc?rev=1088460&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
