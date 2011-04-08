@@ -201,3 +201,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1090022
   +1: schultz
   -1:
+
+* Add StuckThreadDetectionValve
+  https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b
+  +1: slaurent
