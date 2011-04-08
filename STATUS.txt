@@ -94,7 +94,7 @@ PATCHES PROPOSED TO BACKPORT:
   allowed, the login will always fail.
   http://svn.apache.org/viewvc?rev=1069824&view=rev
   http://svn.apache.org/viewvc?rev=1070420&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50726
@@ -195,4 +195,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Implement display of multiple request headers in AccessLogValve
   http://svn.apache.org/viewvc?rev=1088460&view=rev
   +1: kkolinko, markt
+  -1:
+
+* Backport exception logging from revision 1090022
+  http://svn.apache.org/viewvc?view=revision&revision=1090022
+  +1: schultz
   -1:
