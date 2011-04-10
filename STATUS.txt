@@ -89,14 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
               We can stall this item until we get some feedback about 7.0.5.
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50751
-  Don't try to retrieve attributes if we don't need to. If anonymous bind is not
-  allowed, the login will always fail.
-  http://svn.apache.org/viewvc?rev=1069824&view=rev
-  http://svn.apache.org/viewvc?rev=1070420&view=rev
-  +1: markt, kkolinko, schultz
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50726
   Ensure that the use of the genStringAsCharArray does not result in String
   constants that are too long for valid Java code.
