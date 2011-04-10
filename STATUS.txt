@@ -205,3 +205,9 @@ PATCHES PROPOSED TO BACKPORT:
 * Add StuckThreadDetectionValve
   https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b
   +1: slaurent
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36362
+  Check that tag file attribute names use valid Java identifiers
+  http://svn.apache.org/viewvc?rev=1090766&view=rev
+  +1: markt
+  -1:
