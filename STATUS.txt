@@ -198,17 +198,3 @@ PATCHES PROPOSED TO BACKPORT:
 * Add StuckThreadDetectionValve
   https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b
   +1: slaurent
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36362
-  Check that tag file attribute names use valid Java identifiers
-  http://svn.apache.org/viewvc?rev=1090766&view=rev
-  +1: markt, kkolinko
-  -1:
-   kkolinko: 1) Message key "jsp.error.identifier" is too broad while the
-   message says about attributes only. What about <%@variable%> directives,
-   if we would implement the same check for their name-given or alias?
-   2) By the way, one more restriction in JSP.11.1.1.1: "The JSP
-   specification reserves names for methods and variables starting with
-   jsp, _jsp, jspx, and _jspx, in any combination of upper and lower case."
-   3) I am OK with enabling this specific check unconditionally, because I
-   think it is already enforced when compiling a tag file.
