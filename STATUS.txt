@@ -198,3 +198,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Add StuckThreadDetectionValve
   https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b
   +1: slaurent
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51042
+  Don't notify session creation listeners when changing session ID on
+  authentication
+  http://svn.apache.org/viewvc?view=revision&revision=1094069
+  +1: markt
+  -1:
