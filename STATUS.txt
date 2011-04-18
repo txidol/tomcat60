@@ -159,11 +159,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
-* Implement display of multiple request headers in AccessLogValve
-  http://svn.apache.org/viewvc?rev=1088460&view=rev
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Backport exception logging from revision 1090022
   http://svn.apache.org/viewvc?view=revision&revision=1090022
   +1: schultz

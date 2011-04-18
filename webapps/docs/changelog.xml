@@ -92,6 +92,11 @@
         <bug>49180</bug>: Add an option to disable file rotation in JULI
         FileHandler. (kkolinko)
       </add>
+      <update>
+        Implement display of multiple request headers in AccessLogValve:
+        print not just the value of the first header, but of the all of them,
+        separated by commas. (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">
