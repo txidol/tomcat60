@@ -81,6 +81,9 @@
         <bug>50855</bug>: Fix NPE on AuthenticatorBase.register() when debug
         logging is enabled. (markt)
       </fix>
+      <fix>
+        Correctly format the timestamp reported by version.[sh|bat]. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
