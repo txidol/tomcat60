@@ -132,12 +132,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50895
-  Don't initialize classes during compilation
-  http://svn.apache.org/viewvc?rev=1079801&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50887
   Enable the provider to be configured when generating SSL certs
   Based on a patch by pknopp

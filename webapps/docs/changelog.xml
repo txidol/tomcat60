@@ -91,6 +91,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>50895</bug>: Don&apos;t initialize classes created during the
+        compilation stage. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Webapps">
     <changelog>
       <fix>
