@@ -135,7 +135,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50895
   Don't initialize classes during compilation
   http://svn.apache.org/viewvc?rev=1079801&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50887
@@ -151,12 +151,12 @@ PATCHES PROPOSED TO BACKPORT:
   because of the default format of DSTAMP, TSTAMP and TODAY properties.
   See http://ant.apache.org/manual/Tasks/tstamp.html
   http://people.apache.org/~markt/patches/2011-03-14-serverinfo-tc6.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Remove unnecessary whitespace from MIME mapping entries in default web.xml
   http://svn.apache.org/viewvc?rev=1081334&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Add additional configuration options to the DIGEST authenticator
@@ -167,7 +167,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49180
   Add option to disable log rotation in juli FileHandler
   https://issues.apache.org/bugzilla/attachment.cgi?id=26844
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47880
@@ -187,7 +187,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Implement display of multiple request headers in AccessLogValve
   http://svn.apache.org/viewvc?rev=1088460&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * Backport exception logging from revision 1090022
