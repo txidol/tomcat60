@@ -84,6 +84,10 @@
       <fix>
         Correctly format the timestamp reported by version.[sh|bat]. (markt)
       </fix>
+      <fix>
+        Remove unnecessary whitespace from MIME mapping entries in global
+        web.xml file. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
