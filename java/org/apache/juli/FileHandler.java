@@ -50,6 +50,11 @@ import java.util.logging.SimpleFormatter;
  *    specify an absolute path for this property,
  *    <code>${catalina.base}/logs</code> 
  *    Default value: <code>logs</code></li>
+ *   <li><code>rotatable</code> - If <code>true</code>, the log file will be
+ *    rotated on the first write past midnight and the filename will be
+ *    <code>{prefix}{date}{suffix}</code>, where date is yyyy-MM-dd. If <code>false</code>,
+ *    the file will not be rotated and the filename will be <code>{prefix}{suffix}</code>.
+ *    Default value: <code>true</code></li>
  *   <li><code>prefix</code> - The leading part of the log file name.
  *    Default value: <code>juli.</code></li>
  *   <li><code>suffix</code> - The trailing part of the log file name. Default value: <code>.log</code></li>
@@ -124,6 +129,12 @@ public class FileHandler
 
 
     /**
+     * Determines whether the logfile is rotatable
+     */
+    private boolean rotatable = true;
+
+
+    /**
      * The PrintWriter to which we are currently logging, if any.
      */
     private volatile PrintWriter writer = null;
@@ -162,7 +173,7 @@ public class FileHandler
 
         writerLock.readLock().lock();
         // If the date has changed, switch log files
-        if (!date.equals(tsDate)) {
+        if (rotatable && !date.equals(tsDate)) {
             // Update to writeLock before we switch
             writerLock.readLock().unlock();
             writerLock.writeLock().lock();
@@ -271,6 +282,7 @@ public class FileHandler
         ClassLoader cl = Thread.currentThread().getContextClassLoader();
         
         // Retrieve configuration of logging file name
+        rotatable = Boolean.parseBoolean(getProperty(className + ".rotatable", "true"));
         if (directory == null)
             directory = getProperty(className + ".directory", "logs");
         if (prefix == null)
@@ -352,7 +364,7 @@ public class FileHandler
         writerLock.writeLock().lock();
         try {
             String pathname = dir.getAbsolutePath() + File.separator +
-                prefix + date + suffix;
+                prefix + (rotatable ? date : "")  + suffix;
             String encoding = getEncoding();
             FileOutputStream fos = new FileOutputStream(pathname, true);
             OutputStream os = bufferSize>0?new BufferedOutputStream(fos,bufferSize):fos;

@@ -88,6 +88,10 @@
         Remove unnecessary whitespace from MIME mapping entries in global
         web.xml file. (markt)
       </fix>
+      <add>
+        <bug>49180</bug>: Add an option to disable file rotation in JULI
+        FileHandler. (kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
