@@ -191,3 +191,12 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=26957&action=diff
   +1: markt, kkolinko
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51119
+  Add JAAS authentication support to the JmxRemoteLifecycleListener
+  Patch provided by Neil Laurance
+  http://svn.apache.org/viewvc?rev=1099586&view=rev
+  +1: markt
+  -1: 
+
+  
