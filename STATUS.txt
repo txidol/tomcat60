@@ -196,7 +196,7 @@ PATCHES PROPOSED TO BACKPORT:
   Add JAAS authentication support to the JmxRemoteLifecycleListener
   Patch provided by Neil Laurance
   http://svn.apache.org/viewvc?rev=1099586&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
   
