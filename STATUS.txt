@@ -199,4 +199,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1: 
 
-  
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47371
+  Correctly coerce the empty string to zero when used as an operand in EL
+  arithmetic.
+  Patch provided by gbt.
+  http://svn.apache.org/viewvc?rev=1099789&view=rev
+  +1: markt
+  -1: 
