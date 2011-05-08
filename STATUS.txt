@@ -204,17 +204,17 @@ PATCHES PROPOSED TO BACKPORT:
   arithmetic.
   Patch provided by gbt.
   http://svn.apache.org/viewvc?rev=1099789&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51156
   Expose session expiration option for apps defined in server.xml 
   http://svn.apache.org/viewvc?rev=1100145&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix SSLValve so it returns key size as an Integer rather than a String
   http://svn.apache.org/viewvc?rev=1100822&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
  
