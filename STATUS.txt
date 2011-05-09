@@ -223,3 +223,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=943112
   +1: markt
   -1: 
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51177
+  MapElResolver should always return Object.class for getType()
+  http://svn.apache.org/viewvc?rev=1101094&view=rev
+  +1: markt
+  -1: 
