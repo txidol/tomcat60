@@ -221,19 +221,19 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51162
   NPE protection
   http://svn.apache.org/viewvc?view=revision&revision=943112
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51177
-  MapElResolver/LisrELResilver should always return Object.class for getType()
+  MapELResolver/ListELResilver should always return Object.class for getType()
   http://svn.apache.org/viewvc?rev=1101094&view=rev
   http://svn.apache.org/viewvc?rev=1101144&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50950
   Prevent NotSerializableException caused by trying to replicate the Subject
   when running a cluster under a security manager.
   http://svn.apache.org/viewvc?rev=1099772&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1: 
