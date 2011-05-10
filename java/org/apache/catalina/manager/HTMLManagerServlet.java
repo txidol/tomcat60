@@ -1073,7 +1073,7 @@ public final class HTMLManagerServlet extends ManagerServlet {
         "</tr>\n<tr></tr>\n";
 
     private static final String STARTED_NONDEPLOYED_APPS_ROW_BUTTON_SECTION =
-        " <td class=\"row-left\" bgcolor=\"{13}\" rowspan=\"2\">\n" +
+        " <td class=\"row-left\" bgcolor=\"{13}\">\n" +
         "  <small>\n" +
         "  &nbsp;{1}&nbsp;\n" +
         "  &nbsp;<a href=\"{2}\" onclick=\"return(confirm('''Are you sure?'''))\">{3}</a>&nbsp;\n" +
@@ -1081,7 +1081,15 @@ public final class HTMLManagerServlet extends ManagerServlet {
         "  &nbsp;{7}&nbsp;\n" +
         "  </small>\n" +
         " </td>\n" +
-        "</tr>\n<tr></tr>\n";
+        " </tr><tr>\n" +
+        " <td class=\"row-left\" bgcolor=\"{13}\">\n" +
+        "  <form method=\"POST\" action=\"{8}\">\n" +
+        "  <small>\n" +
+        "  &nbsp;<input type=\"submit\" value=\"{9}\">&nbsp;{10}&nbsp;<input type=\"text\" name=\"idle\" size=\"5\" value=\"{11}\">&nbsp;{12}&nbsp;\n" +
+        "  </small>\n" +
+        "  </form>\n" +
+        " </td>\n" +
+        "</tr>\n";
 
     private static final String STOPPED_NONDEPLOYED_APPS_ROW_BUTTON_SECTION =
         " <td class=\"row-left\" bgcolor=\"{13}\" rowspan=\"2\">\n" +

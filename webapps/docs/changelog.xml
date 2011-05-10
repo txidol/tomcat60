@@ -142,6 +142,11 @@
         conf/catalina.policy file when the documentation is built, rather
         than maintaining a copy of its content. (kkolinko)
       </update>
+      <fix>
+        <bug>51156</bug>: Ensure session expiration option is available in
+        Manager application was running web applications that were defined in
+        server.xml. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>
