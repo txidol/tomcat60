@@ -113,6 +113,11 @@
         <bug>50895</bug>: Don&apos;t initialize classes created during the
         compilation stage. (markt)
       </fix>
+      <fix>
+        <bug>51177</bug>: Ensure Tomcat&apos;s MapELResolver and ListELResolver
+        always return <code>Object.class</code> for <code>getType()</code> as
+        required by the EL specification. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
