@@ -153,6 +153,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection>
+    <changelog>
+      <fix>
+        <bug>51155</bug>: Add comments to @deprecated tags that have none. Patch
+        provided by sebb. (kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.32 (jfclere)" rtext="released 2011-02-03">
   <subsection name="Catalina">

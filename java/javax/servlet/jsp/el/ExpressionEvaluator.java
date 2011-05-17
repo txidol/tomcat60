@@ -51,7 +51,7 @@ package javax.servlet.jsp.el;
  * </p>
  *
  * @since 2.0
- * @deprecated
+ * @deprecated As of JSP 2.1, replaced by javax.el.ExpressionFactory
  */
 @SuppressWarnings("dep-ann") // TCK signature test fails with annotation
 public abstract class ExpressionEvaluator {
