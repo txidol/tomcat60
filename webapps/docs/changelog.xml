@@ -153,7 +153,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection>
+  <subsection name="Other">
     <changelog>
       <fix>
         <bug>51155</bug>: Add comments to @deprecated tags that have none. Patch
