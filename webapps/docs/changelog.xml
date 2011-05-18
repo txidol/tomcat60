@@ -152,6 +152,10 @@
         than maintaining a copy of its content. (kkolinko)
       </update>
       <fix>
+        <bug>51147</bug>: Fix deployment via HTML Manager that was broken by
+        addition of CRSF protection. Patch provided by Alexis Hassler. (markt)
+      </fix>
+      <fix>
         <bug>51156</bug>: Ensure session expiration option is available in
         Manager application was running web applications that were defined in
         server.xml. (markt)

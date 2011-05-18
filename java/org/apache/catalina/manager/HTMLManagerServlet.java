@@ -1114,7 +1114,7 @@ public final class HTMLManagerServlet extends ManagerServlet {
         "</tr>\n" +
         "<tr>\n" +
         " <td colspan=\"2\">\n" +
-        "<form method=\"get\" action=\"{2}\">\n" +
+        "<form method=\"post\" action=\"{2}\">\n" +
         "<table cellspacing=\"0\" cellpadding=\"3\">\n" +
         "<tr>\n" +
         " <td class=\"row-right\">\n" +
