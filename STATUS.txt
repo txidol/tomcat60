@@ -178,13 +178,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51119
-  Add JAAS authentication support to the JmxRemoteLifecycleListener
-  Patch provided by Neil Laurance
-  http://svn.apache.org/viewvc?rev=1099586&view=rev
-  +1: markt, kkolinko, kfujino
-  -1: 
-
 * Fix SSLValve so it returns key size as an Integer rather than a String
   http://svn.apache.org/viewvc?rev=1100822&view=rev
   +1: markt, kkolinko, kfujino

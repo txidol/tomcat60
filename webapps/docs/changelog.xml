@@ -54,6 +54,10 @@
         presented by Ant tasks to the Manager application. Based on a patch by
         Stephane Bailliez. (markt) 
       </fix>
+      <add>
+        <bug>49180</bug>: Add an option to disable file rotation in JULI
+        FileHandler. (kkolinko)
+      </add>
       <fix>
         <bug>50189</bug>: Once the application has finished writing to the
         response, prevent further reads from the request since this causes
@@ -89,8 +93,8 @@
         web.xml file. (markt)
       </fix>
       <add>
-        <bug>49180</bug>: Add an option to disable file rotation in JULI
-        FileHandler. (kkolinko)
+        <bug>51119</bug>: Add JAAS authentication support to the
+        JMXRemoteLifecycleListener. Patch provided by Neil Laurance. (markt) 
       </add>
       <update>
         Implement display of multiple request headers in AccessLogValve:
