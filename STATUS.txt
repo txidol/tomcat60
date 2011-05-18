@@ -177,8 +177,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1094069
   +1: markt
   -1:
-
-* Fix SSLValve so it returns key size as an Integer rather than a String
-  http://svn.apache.org/viewvc?rev=1100822&view=rev
-  +1: markt, kkolinko, kfujino
-  -1: 

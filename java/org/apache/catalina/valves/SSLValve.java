@@ -108,7 +108,8 @@ public class SSLValve
         }
         strcert0 = mygetHeader(request, "ssl_cipher_usekeysize");
         if (strcert0 != null) {
-            request.setAttribute("javax.servlet.request.key_size", strcert0);
+            request.setAttribute("javax.servlet.request.key_size",
+                    Integer.valueOf(strcert0));
         }
         getNext().invoke(request, response);
     }

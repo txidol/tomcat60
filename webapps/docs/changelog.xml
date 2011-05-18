@@ -101,6 +101,10 @@
         print not just the value of the first header, but of the all of them,
         separated by commas. (kkolinko)
       </update>
+      <fix>
+        Correct the SSLValve so it returns the SSL key size as an Integer rather
+        than as a String. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
