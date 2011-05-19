@@ -183,5 +183,6 @@ PATCHES PROPOSED TO BACKPORT:
   class.
   Based on a patch by Dan Mikusa.
   http://svn.apache.org/viewvc?rev=1124680&view=rev
+  http://svn.apache.org/viewvc?rev=1124757&view=rev (fixes copy/paste error)
   +1: markt
   -1:
