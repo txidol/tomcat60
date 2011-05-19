@@ -177,3 +177,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1094069
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51220
+  Add a system property to enable tag pooling with JSPs that use a custom base
+  class.
+  Based on a patch by Dan Mikusa.
+  http://svn.apache.org/viewvc?rev=1124680&view=rev
+  +1: markt
+  -1:
