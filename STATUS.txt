@@ -191,6 +191,7 @@ PATCHES PROPOSED TO BACKPORT:
   Make Tomcat more robust if an OOME occurs. Yes, after an OOME all bets are off
   but this patch appears to help some users and the description of a
   'recoverable' OOME in the bug is a plausible one.
+  Patch provided by Ramiro
   http://svn.apache.org/viewvc?rev=1099575&view=rev
   +1: markt
   -1:
