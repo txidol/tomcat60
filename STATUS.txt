@@ -93,7 +93,7 @@ PATCHES PROPOSED TO BACKPORT:
   Ensure that the use of the genStringAsCharArray does not result in String
   constants that are too long for valid Java code.
   http://svn.apache.org/viewvc?rev=1070139&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50771
@@ -108,13 +108,14 @@ PATCHES PROPOSED TO BACKPORT:
   Provide an warning if there is a problem with a class path entry but use debug
   level logging if it is expected due to catalina home/base split
   http://people.apache.org/~kkolinko/patches/2011-03-02_tc6_48863.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, schultz
   -1:
 
 * Fix possible threading issue in JSP compilation when development mode is
   enabled
   http://svn.apache.org/viewvc?rev=1078409&view=rev
-  +1: markt, kfujino
+  Original report: http://markmail.org/thread/htekwb5aq4urrf76
+  +1: markt, kfujino, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48208
@@ -136,19 +137,20 @@ PATCHES PROPOSED TO BACKPORT:
   Enable the provider to be configured when generating SSL certs
   Based on a patch by pknopp
   https://issues.apache.org/bugzilla/attachment.cgi?id=26765
-  +1: markt, kkolinko
+  +1: markt, kkolinko, schultz
   -1:
 
 * Add additional configuration options to the DIGEST authenticator
   http://people.apache.org/~markt/patches/2011-04-01-digest-tc6.patch
   +1: markt
+  +1: schultz : if s/nOnce/nonce/g for the whole file, not just some of it
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47880
   Clarify error messages in *.sh files to mention that if a script is not
   found it might be because execute permission is needed.
   http://svn.apache.org/viewvc?rev=1088179&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, schultz
   -1:
 
 * Update download paths in build.properties.default:
@@ -175,7 +177,7 @@ PATCHES PROPOSED TO BACKPORT:
   Don't notify session creation listeners when changing session ID on
   authentication
   http://svn.apache.org/viewvc?view=revision&revision=1094069
-  +1: markt
+  +1: markt, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51220
