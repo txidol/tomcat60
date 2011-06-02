@@ -204,3 +204,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1130625&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51309
+  Correct logic in catalina.sh stop when using a PID file to ensure the correct
+  message is shown.
+  Patch provided by Caio Cezar.
+  http://svn.apache.org/viewvc?rev=1130774&view=rev
+  +1: markt
+  -1:
