@@ -197,3 +197,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1099575&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51249
+  Correct ClassLoaderLogManager system property replacement code so properties
+  of the form ${...}${...} can be used without error.
+  http://svn.apache.org/viewvc?rev=1130625&view=rev
+  +1: markt
+  -1:
