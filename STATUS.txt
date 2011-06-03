@@ -97,13 +97,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino, markt
   -1:
 
-* Fix possible threading issue in JSP compilation when development mode is
-  enabled
-  http://svn.apache.org/viewvc?rev=1078409&view=rev
-  Original report: http://markmail.org/thread/htekwb5aq4urrf76
-  +1: markt, kfujino, schultz
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48208
   Provide an option to specify a custom trust manager
   https://issues.apache.org/bugzilla/attachment.cgi?id=26732

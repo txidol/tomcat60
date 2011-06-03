@@ -145,6 +145,10 @@
         always return <code>Object.class</code> for <code>getType()</code> as
         required by the EL specification. (markt)
       </fix>
+      <fix>
+        Correct possible threading issue in JSP compilation when development
+        mode is used. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">
