@@ -127,6 +127,11 @@
         an operand in EL arithmetic. Patch provided by gbt. (markt)
       </fix>
       <fix>
+        <bug>50726</bug>: Ensure that the use of the genStringAsCharArray does
+        not result in String constants that are too long for valid Java code.
+        (markt)
+      </fix>
+      <fix>
         <bug>50895</bug>: Don&apos;t initialize classes created during the
         compilation stage. (markt)
       </fix>
