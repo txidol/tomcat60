@@ -97,13 +97,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48863
-  Provide an warning if there is a problem with a class path entry but use debug
-  level logging if it is expected due to catalina home/base split
-  http://people.apache.org/~kkolinko/patches/2011-03-02_tc6_48863.patch
-  +1: kkolinko, markt, schultz
-  -1:
-
 * Fix possible threading issue in JSP compilation when development mode is
   enabled
   http://svn.apache.org/viewvc?rev=1078409&view=rev

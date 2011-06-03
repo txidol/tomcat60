@@ -55,6 +55,11 @@
         Stephane Bailliez. (markt) 
       </fix>
       <add>
+        <bug>48863</bug>: Provide an warning if there is a problem with a class
+        path entry but use debug level logging if it is expected due to catalina
+        home/base split. (kkolinko)
+      </add>
+      <add>
         <bug>49180</bug>: Add an option to disable file rotation in JULI
         FileHandler. (kkolinko)
       </add>

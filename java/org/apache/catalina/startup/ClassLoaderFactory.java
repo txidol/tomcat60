@@ -20,6 +20,7 @@ package org.apache.catalina.startup;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -198,28 +199,30 @@ public final class ClassLoaderFactory {
                     set.add(url);
                 } else if ( types[i] == IS_DIR ) {
                     File directory = new File(location);
-                    directory = new File(directory.getCanonicalPath());
-                    if (!directory.exists() || !directory.isDirectory() ||
-                        !directory.canRead())
-                         continue;
+                    directory = directory.getCanonicalFile();
+                    if (!validateFile(directory, IS_DIR)) {
+                        continue;
+                    }
                     URL url = directory.toURI().toURL();
                     if (log.isDebugEnabled())
                         log.debug("  Including directory " + url);
                     set.add(url);
                 } else if ( types[i] == IS_JAR ) {
                     File file=new File(location);
-                    file = new File(file.getCanonicalPath());
-                    if (!file.exists() || !file.canRead())
+                    file = file.getCanonicalFile();
+                    if (!validateFile(file, IS_JAR)) {
                         continue;
+                    }
                     URL url = file.toURI().toURL();
                     if (log.isDebugEnabled())
                         log.debug("  Including jar file " + url);
                     set.add(url);
                 } else if ( types[i] == IS_GLOB ) {
                     File directory=new File(location);
-                    if (!directory.exists() || !directory.isDirectory() ||
-                        !directory.canRead())
+                    directory = directory.getCanonicalFile();
+                    if (!validateFile(directory, IS_GLOB)) {
                         continue;
+                    }
                     if (log.isDebugEnabled())
                         log.debug("  Including directory glob "
                             + directory.getAbsolutePath());
@@ -229,9 +232,10 @@ public final class ClassLoaderFactory {
                         if (!filename.endsWith(".jar"))
                             continue;
                         File file = new File(directory, filenames[j]);
-                        file = new File(file.getCanonicalPath());
-                        if (!file.exists() || !file.canRead())
+                        file = file.getCanonicalFile();
+                        if (!validateFile(file, IS_JAR)) {
                             continue;
+                        }
                         if (log.isDebugEnabled())
                             log.debug("    Including glob jar file "
                                 + file.getAbsolutePath());
@@ -257,5 +261,41 @@ public final class ClassLoaderFactory {
 
     }
 
+    private static boolean validateFile(File file,
+            Integer type) throws IOException {
+        if (type == IS_DIR || type == IS_GLOB) {
+            if (!file.exists() || !file.isDirectory() || !file.canRead()) {
+                String msg = "Problem with directory [" + file +
+                        "], exists: [" + file.exists() +
+                        "], isDirectory: [" + file.isDirectory() +
+                        "], canRead: [" + file.canRead() + "]";
 
+                File home = new File (Bootstrap.getCatalinaHome());
+                home = home.getCanonicalFile();
+                File base = new File (Bootstrap.getCatalinaBase());
+                base = base.getCanonicalFile();
+                File defaultValue = new File(base, "lib");
+
+                // Existence of ${catalina.base}/lib directory is optional.
+                // Hide the warning if Tomcat runs with separate catalina.home
+                // and catalina.base and that directory is absent.
+                if (!home.getPath().equals(base.getPath())
+                        && file.getPath().equals(defaultValue.getPath())
+                        && !file.exists()) {
+                    log.debug(msg);
+                } else {
+                    log.warn(msg);
+                }
+                return false;
+            }
+        } else if (type == IS_JAR) {
+            if (!file.exists() || !file.canRead()) {
+                log.warn("Problem with JAR file [" + file +
+                        "], exists: [" + file.exists() +
+                        "], canRead: [" + file.canRead() + "]");
+                return false;
+            }
+        }
+        return true;
+    }
 }
