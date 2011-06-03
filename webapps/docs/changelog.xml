@@ -194,6 +194,10 @@
         <bug>51155</bug>: Add comments to @deprecated tags that have none. Patch
         provided by sebb. (kkolinko)
       </fix>
+      <update>
+        Clarify error messages in *.sh files to mention that if a script is
+        not found it might be because execute permission is needed. (kkolinko)
+      </update>
     </changelog>
   </subsection>
 </section>

@@ -118,13 +118,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz : if s/nOnce/nonce/g for the whole file, not just some of it
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=47880
-  Clarify error messages in *.sh files to mention that if a script is not
-  found it might be because execute permission is needed.
-  http://svn.apache.org/viewvc?rev=1088179&view=rev
-  +1: kkolinko, markt, schultz
-  -1:
-
 * Update download paths in build.properties.default:
   Use maven2 repository, because servletapi-2.3 disappeared from the maven1
   one. These downloads are needed when building extras.
