@@ -582,7 +582,19 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
     public boolean getSSLEnabled() { return ep.isSSLEnabled(); }
     public void setSSLEnabled(boolean SSLEnabled) { ep.setSSLEnabled(SSLEnabled); }
     
-    
+    /**
+     * When client certificate information is presented in a form other than
+     * instances of {@link java.security.cert.X509Certificate} it needs to be
+     * converted before it can be used and this property controls which JSSE
+     * provider is used to perform the conversion. For example it is used with
+     * the AJP connectors, the HTTP APR connector and with the
+     * {@link org.apache.catalina.valves.SSLValve}. If not specified, the
+     * default provider will be used. 
+     */
+    protected String clientCertProvider = null;
+    public String getClientCertProvider() { return clientCertProvider; }
+    public void setClientCertProvider(String s) { this.clientCertProvider = s; }
+
 
     // --------------------  Connection handler --------------------
 

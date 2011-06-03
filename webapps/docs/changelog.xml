@@ -118,6 +118,10 @@
         Reduce level of log message for invalid URL parameters from WARNING to
         INFO. (kkolinko) 
       </fix>
+      <add>
+        <bug>50887</bug>: Enable the provider to be configured when generating
+        SSL certs. Based on a patch by pknopp. (markt)
+      </add>
       <fix>
         <bug>51073</bug>: Throw an exception and do not start the APR connector
         if it is configured for SSL and an invalid value is provided for

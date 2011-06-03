@@ -112,13 +112,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50887
-  Enable the provider to be configured when generating SSL certs
-  Based on a patch by pknopp
-  https://issues.apache.org/bugzilla/attachment.cgi?id=26765
-  +1: markt, kkolinko, schultz
-  -1:
-
 * Add additional configuration options to the DIGEST authenticator
   http://people.apache.org/~markt/patches/2011-04-01-digest-tc6.patch
   +1: markt
