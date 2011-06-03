@@ -177,3 +177,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1130774&view=rev
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51315
+  Removing an authenticator valve triggers an IAE
+  Patch provided by Violeta Georgieva
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=51315#c0
+  +1: markt
+  -1:
