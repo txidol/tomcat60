@@ -186,6 +186,10 @@
         Manager application was running web applications that were defined in
         server.xml. (markt)
       </fix>
+      <fix>
+        Correct the log4j configuration settings when defining conversion
+        patterns in the documentation web application. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
