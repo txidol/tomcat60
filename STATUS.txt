@@ -206,5 +206,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51348
   Prevent possible NPE when processing WebDAV locks
   https://issues.apache.org/bugzilla/attachment.cgi?id=27140&action=edit
-  +1: markt
+  +1: markt, kkolinko
   -1:
