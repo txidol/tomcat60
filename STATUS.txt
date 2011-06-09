@@ -167,7 +167,7 @@ PATCHES PROPOSED TO BACKPORT:
   Correct ClassLoaderLogManager system property replacement code so properties
   of the form ${...}${...} can be used without error.
   http://svn.apache.org/viewvc?rev=1130625&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51309
@@ -175,12 +175,12 @@ PATCHES PROPOSED TO BACKPORT:
   message is shown.
   Patch provided by Caio Cezar.
   http://svn.apache.org/viewvc?rev=1130774&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51315
   Removing an authenticator valve triggers an IAE
   Patch provided by Violeta Georgieva
   https://issues.apache.org/bugzilla/show_bug.cgi?id=51315#c0
-  +1: markt
+  +1: markt, kkolinko
   -1:
