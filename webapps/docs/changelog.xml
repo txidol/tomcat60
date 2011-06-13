@@ -190,6 +190,10 @@
         Correct the log4j configuration settings when defining conversion
         patterns in the documentation web application. (markt)
       </fix>
+      <fix>
+        Update Maven repository information in the documentation to reflect
+        current usage. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
