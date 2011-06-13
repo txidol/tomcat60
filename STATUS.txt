@@ -208,3 +208,11 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=27140&action=edit
   +1: markt, kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51306.
+  Avoid NPE when handleSESSION_EXPIRED is processed while handleSESSION_CREATED is being processed. 
+  -setMaxInactiveInterval is not added to DeltaRequest in handleSESSION_CREATED.
+  -When the session expiration is received, the session message is never 
+   transmitted to a primary node. 
+  +1: kfujino
+  -1:
