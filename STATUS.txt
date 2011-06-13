@@ -102,14 +102,14 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=26732
   Based on a patch by Luciana Moreira.
   +1: markt
-  +1: kkolinko: if a typo in the code is corrected:
+  +1: kkolinko, rjung: if a typo in the code is corrected:
     s/get("trustManageClassName")/get("trustManagerClassName")/
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50854
   Allow shared manager app when running under a security manager
   https://issues.apache.org/bugzilla/attachment.cgi?id=26758
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1:
 
 * Add additional configuration options to the DIGEST authenticator
@@ -123,13 +123,13 @@ PATCHES PROPOSED TO BACKPORT:
   one. These downloads are needed when building extras.
   It is backport of r1072962
   http://people.apache.org/~kkolinko/patches/2011-04-03_tc6_maven2.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Backport exception logging from revision 1090022
   http://svn.apache.org/viewvc?view=revision&revision=1090022
   +1: schultz
-  +1: kkolinko: +1, but I think it is better to combine this with r1073393
+  +1: kkolinko, jung: +1, but I think it is better to combine this with r1073393
       (http://markmail.org/message/vkao3gcwe2w63jxj)
   -1:
 
@@ -142,7 +142,7 @@ PATCHES PROPOSED TO BACKPORT:
   Don't notify session creation listeners when changing session ID on
   authentication
   http://svn.apache.org/viewvc?view=revision&revision=1094069
-  +1: markt, schultz
+  +1: markt, schultz, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51220
@@ -151,7 +151,7 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by Dan Mikusa.
   http://svn.apache.org/viewvc?rev=1124680&view=rev
   http://svn.apache.org/viewvc?rev=1124757&view=rev (fixes copy/paste error)
-  +1: markt
+  +1: markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51124
@@ -160,7 +160,7 @@ PATCHES PROPOSED TO BACKPORT:
   'recoverable' OOME in the bug is a plausible one.
   Patch provided by Ramiro
   http://svn.apache.org/viewvc?rev=1099575&view=rev
-  +1: markt
+  +1: markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51249
@@ -185,7 +185,7 @@ PATCHES PROPOSED TO BACKPORT:
    The old code did not perform recursion if replacement failed.
    3. Do not call System.getProperty() for empty property name,
    which was throwing IllegalArgumentException.
- +1: kkolinko
+ +1: kkolinko, jung
  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51309
@@ -193,20 +193,20 @@ PATCHES PROPOSED TO BACKPORT:
   message is shown.
   Patch provided by Caio Cezar.
   http://svn.apache.org/viewvc?rev=1130774&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51315
   Removing an authenticator valve triggers an IAE
   Patch provided by Violeta Georgieva
   https://issues.apache.org/bugzilla/show_bug.cgi?id=51315#c0
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51348
   Prevent possible NPE when processing WebDAV locks
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27140&action=edit
-  +1: markt, kkolinko
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27140
+  +1: markt, kkolinko, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51306.
