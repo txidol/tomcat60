@@ -121,7 +121,11 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1094069
   +1: markt, schultz, rjung
   -0: kfujino: Is rev1097899 necessary?
-      http://svn.apache.org/viewvc?view=revision&revision=1097899
+  -1:
+
+* Expose a container event for changing the session ID
+  http://svn.apache.org/viewvc?view=revision&revision=1097899
+  +1: markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51220
