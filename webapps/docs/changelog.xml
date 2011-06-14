@@ -225,6 +225,11 @@
         repository as some libraries have been removed from the central Apache
         Maven 1 repository. (kkolinko)
       </fix>
+      <fix>
+        <bug>51309</bug>: Correct logic in catalina.sh stop when using a PID
+        file to ensure the correct message is shown. Patch provided by Caio
+        Cezar. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>

@@ -155,14 +155,6 @@ PATCHES PROPOSED TO BACKPORT:
  +1: kkolinko, jung, markt
  -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51309
-  Correct logic in catalina.sh stop when using a PID file to ensure the correct
-  message is shown.
-  Patch provided by Caio Cezar.
-  http://svn.apache.org/viewvc?rev=1130774&view=rev
-  +1: markt, kkolinko, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51315
   Removing an authenticator valve triggers an IAE
   Patch provided by Violeta Georgieva
