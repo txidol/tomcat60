@@ -97,15 +97,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48208
-  Provide an option to specify a custom trust manager
-  https://issues.apache.org/bugzilla/attachment.cgi?id=26732
-  Based on a patch by Luciana Moreira.
-  +1: markt
-  +1: kkolinko, rjung: if a typo in the code is corrected:
-    s/get("trustManageClassName")/get("trustManagerClassName")/
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50854
   Allow shared manager app when running under a security manager
   https://issues.apache.org/bugzilla/attachment.cgi?id=26758
