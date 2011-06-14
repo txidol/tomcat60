@@ -97,6 +97,10 @@
         Remove unnecessary whitespace from MIME mapping entries in global
         web.xml file. (markt)
       </fix>
+      <fix>
+        <bug>51042</bug>: Don&apos;t trigger session creation listeners when a
+        session ID is changed as part of the authentication process. (markt)
+      </fix>
       <add>
         <bug>51119</bug>: Add JAAS authentication support to the
         JMXRemoteLifecycleListener. Patch provided by Neil Laurance. (markt) 

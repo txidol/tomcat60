@@ -115,14 +115,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: slaurent
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51042
-  Don't notify session creation listeners when changing session ID on
-  authentication
-  http://svn.apache.org/viewvc?view=revision&revision=1094069
-  +1: markt, schultz, rjung
-  -0: kfujino: Is rev1097899 necessary?
-  -1:
-
 * Expose a container event for changing the session ID
   http://svn.apache.org/viewvc?view=revision&revision=1097899
   +1: markt

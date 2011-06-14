@@ -1563,12 +1563,7 @@ public class DeltaManager extends ClusterManagerBase{
         // use container maxInactiveInterval so that session will expire correctly in case of primary transfer
         session.setMaxInactiveInterval(getMaxInactiveInterval());
         session.access();
-        if(notifySessionListenersOnReplication) {
-            session.setId(msg.getSessionID());
-        } else {
-            session.setIdInternal(msg.getSessionID());
-            add(session);
-        }
+        session.setId(msg.getSessionID(), notifySessionListenersOnReplication);
         session.resetDeltaRequest();
         session.endAccess();
 
@@ -1644,12 +1639,7 @@ public class DeltaManager extends ClusterManagerBase{
         if (session != null) {
             String newSessionID = deserializeSessionId(msg.getSession());
             session.setPrimarySession(false);
-            if (notifySessionListenersOnReplication) {
-                session.setId(newSessionID);
-            } else {
-                session.setIdInternal(newSessionID);
-                add(session);
-            }
+            session.setId(newSessionID, notifyListenersOnReplication);
         }
     }
 
