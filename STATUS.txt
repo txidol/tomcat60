@@ -155,13 +155,6 @@ PATCHES PROPOSED TO BACKPORT:
  +1: kkolinko, jung, markt
  -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51315
-  Removing an authenticator valve triggers an IAE
-  Patch provided by Violeta Georgieva
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=51315#c0
-  +1: markt, kkolinko, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51348
   Prevent possible NPE when processing WebDAV locks
   https://issues.apache.org/bugzilla/attachment.cgi?id=27140
