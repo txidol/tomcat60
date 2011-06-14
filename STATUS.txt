@@ -113,7 +113,26 @@ PATCHES PROPOSED TO BACKPORT:
 * Add StuckThreadDetectionValve
   https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b
   +1: slaurent
+  +1: kkolinko: several comments are below
   -1:
+  kkolinko: To view/download this as a patch file you add ".diff" to the URL above. That is:
+  https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b.diff
+
+  kkolinko: Minor glitches:
+    - In mbeans-descriptors.xml:
+      - There are no properties "asyncSupported", "stateName" in TC6 version of this valve.
+    - In valve.xml:
+      - s/tomcat log/Tomcat log/ (or Apache Tomcat log)
+    - In StuckThreadDetectionValve.java:
+      - s/private class CompletedStuckThread/private static class CompletedStuckThread/
+        MonitoredThread can be made static as well.
+      - result[i] = idList.get(i); and arguments to sm.getString()
+        I'd prefer the boxing/unboxing conversion to be coded explicitly.
+      - s/new Long(/Long.valueOf(/
+      - ConcurrentHashMap: Maybe the defaults could be tuned with system properties.
+        I wonder whether ConcurrentHashMap.DEFAULT_CONCURRENCY_LEVEL which is 16 is enough.
+      - getStuckThreadIds() returns a list of ids. It might be useful to
+        have a similar method that returns Thread.getName() names.
 
 * Expose a container event for changing the session ID
   http://svn.apache.org/viewvc?view=revision&revision=1097899
