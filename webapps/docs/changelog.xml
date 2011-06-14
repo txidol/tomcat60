@@ -216,6 +216,11 @@
         file to support running the manager web application from CATALINA_HOME
         or CATALINA_BASE. (markt) 
       </fix>
+      <fix>
+        Update default download sources to use the central Apache Maven 2
+        repository as some libraries have been removed from the central Apache
+        Maven 1 repository. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>

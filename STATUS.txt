@@ -103,14 +103,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz : if s/nOnce/nonce/g for the whole file, not just some of it
   -1:
 
-* Update download paths in build.properties.default:
-  Use maven2 repository, because servletapi-2.3 disappeared from the maven1
-  one. These downloads are needed when building extras.
-  It is backport of r1072962
-  http://people.apache.org/~kkolinko/patches/2011-04-03_tc6_maven2.patch
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Backport exception logging from revision 1090022
   http://svn.apache.org/viewvc?view=revision&revision=1090022
   +1: schultz
