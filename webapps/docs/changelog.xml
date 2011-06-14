@@ -211,6 +211,11 @@
         Clarify error messages in *.sh files to mention that if a script is
         not found it might be because execute permission is needed. (kkolinko)
       </update>
+      <fix>
+        <bug>50854</bug>: Add additional entries to the default catalina.policy
+        file to support running the manager web application from CATALINA_HOME
+        or CATALINA_BASE. (markt) 
+      </fix>
     </changelog>
   </subsection>
 </section>

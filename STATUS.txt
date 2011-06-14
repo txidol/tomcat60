@@ -97,12 +97,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50854
-  Allow shared manager app when running under a security manager
-  https://issues.apache.org/bugzilla/attachment.cgi?id=26758
-  +1: markt, kkolinko, rjung
-  -1:
-
 * Add additional configuration options to the DIGEST authenticator
   http://people.apache.org/~markt/patches/2011-04-01-digest-tc6.patch
   +1: markt
