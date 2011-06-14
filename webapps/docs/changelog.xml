@@ -210,6 +210,11 @@
         Update Maven repository information in the documentation to reflect
         current usage. (markt)
       </fix>
+      <fix>
+        <bug>51346</bug>: Update the documentation web application to make clear
+        the circumstances in which the RequestDumperValve will consume the
+        request&apos;s InputStream. Based on a patch by pid. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">

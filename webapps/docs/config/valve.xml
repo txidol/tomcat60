@@ -353,7 +353,9 @@
     output from this valve includes any parameters included with the request.
     The parameters will be decoded using the default platform encoding. Any
     subsequent calls to <code>request.setCharacterEncoding()</code> within
-    the web application will have no effect.</p>
+    the web application will have no effect. NOTE: Since all parameters are
+    included in the output, the InputStream is consumed for requests made with
+    the method POST and content-type application/x-www-form-urlencoded.</p>
 
   </subsection>
 

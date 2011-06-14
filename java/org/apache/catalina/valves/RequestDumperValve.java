@@ -37,6 +37,11 @@ import org.apache.juli.logging.Log;
  * (after processing).  It is especially useful in debugging problems
  * related to headers and cookies.</p>
  *
+ * <p><b>WARNING: Using this valve has side-effects.</b> The output from this 
+ * valve includes any parameters associated with the request. Therefore, the
+ * InputStream is consumed for requests made with the method POST and
+ * content-type application/x-www-form-urlencoded.</p>
+ *
  * <p>This Valve may be attached to any Container, depending on the granularity
  * of the logging you wish to perform.</p>
  *
