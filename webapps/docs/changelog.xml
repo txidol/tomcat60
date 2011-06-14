@@ -118,6 +118,9 @@
         <bug>51315</bug>: Fix NPE when removing an authenticator valve from a
         container. Patch provided by Violeta Georgieva. (markt)
       </fix>
+      <fix>
+        <bug>51348</bug>: Fix possible NPE when processing WebDAV locks. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

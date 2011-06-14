@@ -1329,7 +1329,7 @@ public class WebdavServlet
 
             LockInfo toRenew = (LockInfo) resourceLocks.get(path);
             Enumeration tokenList = null;
-            if (lock != null) {
+            if (toRenew != null) {
 
                 // At least one of the tokens of the locks must have been given
 
