@@ -157,23 +157,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51249
-  Improve system property replacement code in ClassLoaderLogManager of Tomcat JULI.
-  1) Tests
-   svn copy "^/tomcat/trunk/test/org/apache/juli" "test/org/apache/juli"
-  2) Patch (backport of r1133857)
-   http://people.apache.org/~kkolinko/patches/2011-06-09_tc6_ClassLoaderLogManager.patch
-  It fixes the following issues:
-   1. Correctly search for "}" so properties in the form "}${property}" are
-   correctly replaced. This is BZ 51249.
-   Note, that ${property}${property} is already working in 6.0.32, thanks to recursion.
-   2. Do not stop processing on first unrecognized property.
-   The old code did not perform recursion if replacement failed.
-   3. Do not call System.getProperty() for empty property name,
-   which was throwing IllegalArgumentException.
- +1: kkolinko, jung, markt
- -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51306.
   Avoid NPE when handleSESSION_EXPIRED is processed while handleSESSION_CREATED is being processed. 
   -setMaxInactiveInterval is not added to DeltaRequest in handleSESSION_CREATED.
