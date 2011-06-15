@@ -136,7 +136,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Expose a container event for changing the session ID
   http://svn.apache.org/viewvc?view=revision&revision=1097899
-  +1: markt
+  +1: markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51220
