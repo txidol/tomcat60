@@ -136,7 +136,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Expose a container event for changing the session ID
   http://svn.apache.org/viewvc?view=revision&revision=1097899
-  +1: markt, kfujino
+  +1: markt, kfujino, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51220
@@ -154,7 +154,7 @@ PATCHES PROPOSED TO BACKPORT:
   'recoverable' OOME in the bug is a plausible one.
   Patch provided by Ramiro
   http://svn.apache.org/viewvc?rev=1099575&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51306.
@@ -163,5 +163,5 @@ PATCHES PROPOSED TO BACKPORT:
   -When the session expiration is received, the session message is never 
    transmitted to a primary node. 
   http://svn.apache.org/viewvc?rev=1135069&view=rev
-  +1: kfujino
+  +1: kfujino, schultz
   -1:
