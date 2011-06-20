@@ -134,11 +134,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Expose a container event for changing the session ID
-  http://svn.apache.org/viewvc?view=revision&revision=1097899
-  +1: markt, kfujino, schultz
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51220
   Add a system property to enable tag pooling with JSPs that use a custom base
   class.

@@ -126,6 +126,10 @@
       <fix>
         <bug>51348</bug>: Fix possible NPE when processing WebDAV locks. (markt)
       </fix>
+      <add>
+        Add a container event that is fired when a session&apos;s ID is changed,
+        e.g. on authentication. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">

@@ -65,6 +65,11 @@ public interface Context extends Container {
     public static final String RELOAD_EVENT = "reload";
 
 
+    /**
+     * Container event for changing the ID of a session.
+     */
+    public static final String CHANGE_SESSION_ID_EVENT = "changeSessionId";
+
     // ------------------------------------------------------------- Properties
 
 

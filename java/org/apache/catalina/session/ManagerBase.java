@@ -46,10 +46,12 @@ import javax.management.MBeanServer;
 import javax.management.ObjectName;
 
 import org.apache.catalina.Container;
+import org.apache.catalina.Context;
 import org.apache.catalina.Engine;
 import org.apache.catalina.Globals;
 import org.apache.catalina.Manager;
 import org.apache.catalina.Session;
+import org.apache.catalina.core.ContainerBase;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.core.StandardHost;
 import org.apache.catalina.util.StringManager;
@@ -963,7 +965,14 @@ public abstract class ManagerBase implements Manager, MBeanRegistration {
      * @param session   The session to change the session ID for
      */
     public void changeSessionId(Session session) {
+        String oldId = session.getIdInternal();
         session.setId(generateSessionId(), false);
+        String newId = session.getIdInternal();
+        if (container instanceof ContainerBase) {
+            ((ContainerBase)container).fireContainerEvent(
+                    Context.CHANGE_SESSION_ID_EVENT,
+                    new String[] {oldId, newId});
+        }
     }
     
     
