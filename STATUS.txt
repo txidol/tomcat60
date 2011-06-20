@@ -149,5 +149,5 @@ PATCHES PROPOSED TO BACKPORT:
   -When the session expiration is received, the session message is never 
    transmitted to a primary node. 
   http://svn.apache.org/viewvc?rev=1135069&view=rev
-  +1: kfujino, schultz
+  +1: kfujino, schultz, markt
   -1:
