@@ -148,15 +148,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51124
-  Make Tomcat more robust if an OOME occurs. Yes, after an OOME all bets are off
-  but this patch appears to help some users and the description of a
-  'recoverable' OOME in the bug is a plausible one.
-  Patch provided by Ramiro
-  http://svn.apache.org/viewvc?rev=1099575&view=rev
-  +1: markt, rjung, schultz
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51306.
   Avoid NPE when handleSESSION_EXPIRED is processed while handleSESSION_CREATED is being processed. 
   -setMaxInactiveInterval is not added to DeltaRequest in handleSESSION_CREATED.

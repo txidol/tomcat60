@@ -165,6 +165,12 @@
         <bug>50895</bug>: Don&apos;t initialize classes created during the
         compilation stage. (markt)
       </fix>
+      <add>
+        <bug>51124</bug>: Make Tomcat more robust if an OOME occurs. Usually
+        after an OOME all bets are off but this change appears to help some
+        users and the description of a &apos;recoverable&apos; OOME in the bug
+        is a plausible one. Based on a patch by Ramiro. (markt)
+      </add>
       <fix>
         <bug>51177</bug>: Ensure Tomcat&apos;s MapELResolver and ListELResolver
         always return <code>Object.class</code> for <code>getType()</code> as
