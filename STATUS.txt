@@ -143,15 +143,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51306.
-  Avoid NPE when handleSESSION_EXPIRED is processed while handleSESSION_CREATED is being processed. 
-  -setMaxInactiveInterval is not added to DeltaRequest in handleSESSION_CREATED.
-  -When the session expiration is received, the session message is never 
-   transmitted to a primary node. 
-  http://svn.apache.org/viewvc?rev=1135069&view=rev
-  +1: kfujino, schultz, markt
-  -1:
-
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=51403
   Avoid NPE in JULI FileHandler if formatter is misconfigured
   http://svn.apache.org/viewvc?rev=1137996&view=rev
