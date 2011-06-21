@@ -193,6 +193,12 @@
         authenticated session when running with a security manager. (markt)
       </fix>
     </changelog>
+    <changelog>
+      <fix>
+        <bug>51306</bug>: Avoid NPE when handleSESSION_EXPIRED is processed 
+        while handleSESSION_CREATED is being processed. (kfujino)
+      </fix>
+    </changelog>
   </subsection>
   <subsection name="Webapps">
     <changelog>
