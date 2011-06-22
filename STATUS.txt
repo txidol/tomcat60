@@ -160,4 +160,6 @@ PATCHES PROPOSED TO BACKPORT:
   Based on https://issues.jboss.org/browse/JBWEB-196
   http://people.apache.org/~jfclere/patches/patch.110622.txt
   +1: jfclere
+  -1: markt Separators are defined by the HTTP specification and as per section
+            2.2 of RFC 2616 must be quoted to be used within a parameter value.
   -1
