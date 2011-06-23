@@ -163,3 +163,10 @@ PATCHES PROPOSED TO BACKPORT:
   -1: markt Separators are defined by the HTTP specification and as per section
             2.2 of RFC 2616 must be quoted to be used within a parameter value.
   -1
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36362
+  Handle tag files with attribute names that are not valid Java identifiers
+  http://svn.apache.org/viewvc?rev=1138950&view=rev
+  http://svn.apache.org/viewvc?rev=1138953&view=rev
+  +1: markt
+  -1:
