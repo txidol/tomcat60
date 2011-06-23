@@ -64,7 +64,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix path parameter handling. Currently the following URL fails with a 404:
   http://localhost:8080/examples/jsp/snp;x=y/snoop.jsp
   http://people.apache.org/~kkolinko/patches/2010-11-17_tc6_path-params.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, schultz
   -1:
 
    kkolinko: The old parseSessionId() method calls "clearRequestedSessionURL(request);"
@@ -140,7 +140,7 @@ PATCHES PROPOSED TO BACKPORT:
   Based on a patch by Dan Mikusa.
   http://svn.apache.org/viewvc?rev=1124680&view=rev
   http://svn.apache.org/viewvc?rev=1124757&view=rev (fixes copy/paste error)
-  +1: markt, rjung
+  +1: markt, rjung, schultz
   -1:
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=51403
@@ -154,6 +154,8 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=27189
   Based on a patch by Dave Engberg
   +1: markt
+  +1: schultz Please see further discussion in BZ 51400. I believe more
+              improvements are in order.
   -1:
 
 * Fix truncated cookies.
@@ -168,5 +170,5 @@ PATCHES PROPOSED TO BACKPORT:
   Handle tag files with attribute names that are not valid Java identifiers
   http://svn.apache.org/viewvc?rev=1138950&view=rev
   http://svn.apache.org/viewvc?rev=1138953&view=rev
-  +1: markt
+  +1: markt, schultz
   -1:
