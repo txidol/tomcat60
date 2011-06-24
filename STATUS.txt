@@ -188,5 +188,6 @@ PATCHES PROPOSED TO BACKPORT:
     Fix auto-detection of JAVA_HOME for 64-bit Windows platforms that only have
     a 32-bit JVM installed.
   http://people.apache.org/~markt/patches/2011-06-24-windows-installer-multiple-tc6.patch
+  plus addition of http://svn.apache.org/repos/asf/tomcat/trunk/res/confinstall/server_3.xml
   +1: markt
   -1:
