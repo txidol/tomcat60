@@ -130,6 +130,11 @@
         Add a container event that is fired when a session&apos;s ID is changed,
         e.g. on authentication. (markt)
       </add>
+      <fix>
+        Fix CVE-2011-2204. Prevent user passwords appearing in log files if a
+        runtime exception (e.g. OOME) occurs while creating a new user for a
+        MemoryUserDatabase via JMX. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
