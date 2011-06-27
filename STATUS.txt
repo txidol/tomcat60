@@ -151,8 +151,8 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51400
   Avoid jvm bottleneck on String/byte[] conversion currently affecting a user
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27211
-  Based on a patch by Dave Engberg
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27212
+  Based on patches by Dave Engberg and Konstantin Preiﬂer
   +1: markt
   -1:
 
