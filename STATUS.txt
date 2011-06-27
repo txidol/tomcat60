@@ -151,11 +151,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51400
   Avoid jvm bottleneck on String/byte[] conversion currently affecting a user
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27189
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27211
   Based on a patch by Dave Engberg
   +1: markt
-  +1: schultz Please see further discussion in BZ 51400. I believe more
-              improvements are in order.
   -1:
 
 * Fix truncated cookies.
