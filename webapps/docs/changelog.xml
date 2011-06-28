@@ -241,6 +241,10 @@
         the circumstances in which the RequestDumperValve will consume the
         request&apos;s InputStream. Based on a patch by pid. (markt)
       </fix>
+      <fix>
+        <bug>51443</bug>: Document the notifySessionListenersOnReplication
+        attribute for the DeltaManager. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
