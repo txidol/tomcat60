@@ -1516,15 +1516,12 @@ public class Request
 
         if (usingReader)
             return;
-        
-        // Ensure that the specified encoding is valid
-        byte buffer[] = new byte[1];
-        buffer[0] = (byte) 'a';
-        String dummy = new String(buffer, enc);
+
+        // Confirm that the encoding name is valid
+        B2CConverter.getCharset(enc);
 
         // Save the validated encoding
         coyoteRequest.setCharacterEncoding(enc);
-
     }
 
 

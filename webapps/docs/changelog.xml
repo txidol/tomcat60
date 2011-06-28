@@ -135,6 +135,11 @@
         runtime exception (e.g. OOME) occurs while creating a new user for a
         MemoryUserDatabase via JMX. (markt)
       </fix>
+      <fix>
+        <bug>51400</bug>: Avoid jvm bottleneck on String/byte[] conversion
+        triggered by a JVM bug. Based on patches by Dave Engberg and Konstantin
+        Preiﬂer. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

@@ -19,6 +19,8 @@ package org.apache.tomcat.util.buf;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 
 /*
  * In a server it is very important to be able to operate on
@@ -95,7 +97,12 @@ public final class ByteChunk implements Cloneable, Serializable {
         8859_1, and this object is used mostly for servlets. 
     */
     public static final String DEFAULT_CHARACTER_ENCODING="ISO-8859-1";
-        
+
+    /** Default Charset to use for interpreting byte[] as as String
+    */
+    public static final Charset DEFAULT_CHARSET =
+        Charset.forName(DEFAULT_CHARACTER_ENCODING);
+    
     // byte[]
     private byte[] buff;
 
@@ -493,8 +500,14 @@ public final class ByteChunk implements Cloneable, Serializable {
     public String toStringInternal() {
         String strValue=null;
         try {
-            if( enc==null ) enc=DEFAULT_CHARACTER_ENCODING;
-            strValue = new String( buff, start, end-start, enc );
+            Charset charset;
+            if (enc == null) {
+                charset = DEFAULT_CHARSET;
+            } else {
+                charset = B2CConverter.getCharset(enc);
+            }
+            strValue = charset.decode(
+                    ByteBuffer.wrap(buff, start, end-start)).toString();
             /*
              Does not improve the speed too much on most systems,
              it's safer to use the "clasical" new String().

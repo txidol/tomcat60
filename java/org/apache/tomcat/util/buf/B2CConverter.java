@@ -22,6 +22,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
 /** Efficient conversion of bytes  to character .
  *  
@@ -39,7 +43,36 @@ public class B2CConverter {
     
     private static org.apache.juli.logging.Log log=
         org.apache.juli.logging.LogFactory.getLog( B2CConverter.class );
+
+    private static final Map<String, Charset> encodingToCharsetCache =
+        new HashMap<String, Charset>();
     
+    static {
+        for (Charset charset: Charset.availableCharsets().values()) {
+            encodingToCharsetCache.put(
+                    charset.name().toLowerCase(Locale.US), charset);
+            for (String alias : charset.aliases()) {
+                encodingToCharsetCache.put(
+                        alias.toLowerCase(Locale.US), charset);
+            }
+        }
+    }
+
+    public static Charset getCharset(String enc)
+            throws UnsupportedEncodingException {
+
+        // Encoding names should all be ASCII
+        String lowerCaseEnc = enc.toLowerCase(Locale.US);
+        
+        Charset charset = encodingToCharsetCache.get(lowerCaseEnc);
+
+        if (charset == null) {
+            // Pre-population of the cache means this must be invalid
+            throw new UnsupportedEncodingException(enc);
+        }
+        return charset;
+    }
+
     private IntermediateInputStream iis;
     private ReadConvertor conv;
     private String encoding;
@@ -114,7 +147,7 @@ public class B2CConverter {
     {
         // destroy the reader/iis
         iis=new IntermediateInputStream();
-        conv=new ReadConvertor( iis, encoding );
+        conv=new ReadConvertor( iis, getCharset(encoding) );
     }
 
     private final int debug=0;
@@ -192,10 +225,9 @@ final class  ReadConvertor extends InputStreamReader {
     
     /** Create a converter.
      */
-    public ReadConvertor( IntermediateInputStream in, String enc )
-        throws UnsupportedEncodingException
+    public ReadConvertor( IntermediateInputStream in, Charset charset )
     {
-        super( in, enc );
+        super( in, charset );
     }
     
     /** Overriden - will do nothing but reset internal state.
