@@ -168,15 +168,9 @@ PATCHES PROPOSED TO BACKPORT:
   Handle tag files with attribute names that are not valid Java identifiers
   http://svn.apache.org/viewvc?rev=1138950&view=rev
   http://svn.apache.org/viewvc?rev=1138953&view=rev
-  +1: markt, schultz
-  -1: kkolinko: 1) It would be OK if it were mangling only reserved words
-    (where the tag wouldn't compile previously, so there were no regressions),
-    but JspUtils.makeJavaIdentifier() mangles '_' character, which will break
-    code that was previously working. E.g. <%=hello_world%>
-    2) Maybe it would be better to prefix the names with [_]jsp_ and use some
-    numbered suffix, to never collide with names that people may use in their
-    code.
-
+  http://svn.apache.org/viewvc?rev=1140693&view=rev
+  +1: markt
+  -1:
 
 * Multiple improvements to the Windows Installer
   - https://issues.apache.org/bugzilla/show_bug.cgi?id=33262
