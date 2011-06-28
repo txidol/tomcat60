@@ -151,10 +151,18 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51400
   Avoid jvm bottleneck on String/byte[] conversion currently affecting a user
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27212
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27214
   Based on patches by Dave Engberg and Konstantin Preiﬂer
-  +1: markt
+  +1: markt, kkolinko
   -1:
+   kkolinko: minor tweaks:
+     1) in Request.java in two places:
+     s/new UnsupportedEncodingException()/new UnsupportedEncodingException(enc)/
+     BTW, I see that this change to Request#setCharacterEncoding() has not been
+     applied to TC7 yet.
+     2) in B2CConverter we might s/ConcurrentHashMap/HashMap/ as the map is
+     immutable at runtime. Though that is not of much difference.
+
 
 * Fix truncated cookies.
   Based on https://issues.jboss.org/browse/JBWEB-196
