@@ -190,3 +190,11 @@ PATCHES PROPOSED TO BACKPORT:
   plus addition of http://people.apache.org/~markt/patches/2011-06-24-windows-installer-multiple-tc6.server_3.xml
   +1: markt
   -1:
+
+* Notifications of changes in session ID to other nodes in the cluster should be
+  controlled by notifySessionListenersOnReplication rather than
+  notifyListenersOnReplication.
+  http://svn.apache.org/viewvc?rev=1140801&view=rev
+  +1: markt
+  -1:
+
