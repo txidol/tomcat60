@@ -134,15 +134,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51220
-  Add a system property to enable tag pooling with JSPs that use a custom base
-  class.
-  Based on a patch by Dan Mikusa.
-  http://svn.apache.org/viewvc?rev=1124680&view=rev
-  http://svn.apache.org/viewvc?rev=1124757&view=rev (fixes copy/paste error)
-  +1: markt, rjung, schultz
-  -1:
-
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=51403
   Avoid NPE in JULI FileHandler if formatter is misconfigured
   http://svn.apache.org/viewvc?rev=1137996&view=rev

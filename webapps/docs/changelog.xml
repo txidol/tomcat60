@@ -189,6 +189,10 @@
         Correct possible threading issue in JSP compilation when development
         mode is used. (markt)
       </fix>
+      <add>
+        <bug>51220</bug>: Add a system property to enable tag pooling with JSPs
+        that use a custom base class. Based on a patch by Dan Mikusa. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Cluster">
