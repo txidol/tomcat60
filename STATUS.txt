@@ -196,3 +196,9 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=26544
   +1: markt
   -1:
+
+* Better exception messages for expression parsing failures that may help track
+  down https://issues.apache.org/bugzilla/show_bug.cgi?id=51088
+  http://svn.apache.org/viewvc?rev=1141104&view=rev
+  +1: markt
+  -1:
