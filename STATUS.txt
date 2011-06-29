@@ -208,3 +208,10 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=27228&action=edit
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51206
+  Make CATALINA_BASE visible to setenv.[sh|bat]
+  http://svn.apache.org/viewvc?rev=1137862&view=rev
+  Patch by rjung
+  +1: markt
+  -1:
