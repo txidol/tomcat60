@@ -186,7 +186,7 @@ PATCHES PROPOSED TO BACKPORT:
   No definitive information that this is the fix but back-porting Mladen's fix
   from 7.0.x can't hurt and may help
   http://svn.apache.org/viewvc?view=revision&revision=1066772
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50646
@@ -194,24 +194,28 @@ PATCHES PROPOSED TO BACKPORT:
   buffer size
   Patch provided by Olivier Costet
   https://issues.apache.org/bugzilla/attachment.cgi?id=26544
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Better exception messages for expression parsing failures that may help track
   down https://issues.apache.org/bugzilla/show_bug.cgi?id=51088
   http://svn.apache.org/viewvc?rev=1141104&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51162
   Prevent possible NPE when removing a web application
   https://issues.apache.org/bugzilla/attachment.cgi?id=27228&action=edit
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51206
   Make CATALINA_BASE visible to setenv.[sh|bat]
   http://svn.apache.org/viewvc?rev=1137862&view=rev
   Patch by rjung
-  +1: markt
+  +1: markt, kkolinko
   -1:
+
+   kkolinko: As a slight enhancement to the fix, the code that calls
+   setenv.bat|sh few lines later can be a bit simplified now, knowing
+   that CATALINA_BASE is already set.
