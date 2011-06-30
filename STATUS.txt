@@ -182,6 +182,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
+  Alternative patch.
+   The change in session ID is notified to not the session listener but the 
+   container event listener.
+   http://svn.apache.org/viewvc?view=revision&revision=1141441
+   +1: kfujino
+   -1:
+
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49929
   No definitive information that this is the fix but back-porting Mladen's fix
   from 7.0.x can't hurt and may help
