@@ -154,6 +154,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1138953&view=rev
   http://svn.apache.org/viewvc?rev=1140693&view=rev
   +1: markt
+  +1: kkolinko (with r1142043)
+  -1:
+
+  Additional patch:
+  http://svn.apache.org/viewvc?rev=1142043&view=rev
+  +1: kkolinko
   -1:
 
 * Multiple improvements to the Windows Installer
