@@ -214,12 +214,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko, kfujino
   -1:
 
-* Better exception messages for expression parsing failures that may help track
-  down https://issues.apache.org/bugzilla/show_bug.cgi?id=51088
-  http://svn.apache.org/viewvc?rev=1141104&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51206
   Make CATALINA_BASE visible to setenv.[sh|bat]
   http://svn.apache.org/viewvc?rev=1137862&view=rev

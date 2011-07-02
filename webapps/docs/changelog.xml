@@ -202,6 +202,12 @@
         <bug>51220</bug>: Add a system property to enable tag pooling with JSPs
         that use a custom base class. Based on a patch by Dan Mikusa. (markt)
       </add>
+      <add>
+        Broaden the exception handling in the EL Parser so that more failures to
+        parse an expression include the failed expression in the exception
+        message. Hopefully, this will help track down the cause of
+        <bug>51088</bug>. (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Cluster">
