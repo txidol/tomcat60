@@ -115,6 +115,10 @@
         than as a String. (markt)
       </fix>
       <fix>
+        <bug>51162</bug>: Prevent possible NPE when removing a web application.
+        (markt)
+      </fix>
+      <fix>
         <bug>51249</bug>: Improve system property replacement code
         in ClassLoaderLogManager of Tomcat JULI to cover some corner cases.
         (kkolinko)

@@ -1214,11 +1214,13 @@ public class HostConfig
                     log.warn(sm.getString
                              ("hostConfig.context.remove", app.name), t);
                 }
-                try {
-                    context.destroy();
-                } catch (Throwable t) {
-                    log.warn(sm.getString
-                             ("hostConfig.context.destroy", app.name), t);
+                if (context != null) {
+                    try {
+                        context.destroy();
+                    } catch (Throwable t) {
+                        log.warn(sm.getString
+                                ("hostConfig.context.destroy", app.name), t);
+                    }
                 }
                 // Delete all redeploy resources
                 for (int j = i + 1; j < resources.length; j++) {
