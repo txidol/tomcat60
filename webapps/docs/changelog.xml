@@ -213,11 +213,14 @@
   <subsection name="Cluster">
     <changelog>
       <fix>
+        <bug>50646</bug>: Fix cluster message data corruption if message size
+        exceeds the underlying buffer size. Patch provided by Olivier Costet.
+        (markt)
+      </fix>
+      <fix>
         <bug>50950</bug>: Correct possible NotSerializableException for an
         authenticated session when running with a security manager. (markt)
       </fix>
-    </changelog>
-    <changelog>
       <fix>
         <bug>51306</bug>: Avoid NPE when handleSESSION_EXPIRED is processed 
         while handleSESSION_CREATED is being processed. (kfujino)

@@ -206,14 +206,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50646
-  Tribes ByteMessage will get corrupted if message size exceeds the underlying
-  buffer size
-  Patch provided by Olivier Costet
-  https://issues.apache.org/bugzilla/attachment.cgi?id=26544
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51206
   Make CATALINA_BASE visible to setenv.[sh|bat]
   http://svn.apache.org/viewvc?rev=1137862&view=rev
