@@ -216,3 +216,10 @@ PATCHES PROPOSED TO BACKPORT:
    kkolinko: As a slight enhancement to the fix, the code that calls
    setenv.bat|sh few lines later can be a bit simplified now, knowing
    that CATALINA_BASE is already set.
+
+* Update commons pool to 1.5.6
+  http://svn.apache.org/viewvc?rev=1095138&view=rev
+  It is used in TC7 since 7.0.14
+  Changelog: http://commons.apache.org/pool/changes-report.html
+  +1: kkolinko
+  -1:
