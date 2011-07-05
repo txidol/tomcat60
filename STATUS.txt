@@ -232,9 +232,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1133014&view=rev
   +1: kkolinko, markt
   -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51472
-  Correctly test modifiers when resolving bean methods with the BeanELResolver.
-  Patch provided by Friedhelm Kuehn.
-  +1: markt
-  -1:
