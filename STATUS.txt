@@ -137,7 +137,7 @@ PATCHES PROPOSED TO BACKPORT:
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=51403
   Avoid NPE in JULI FileHandler if formatter is misconfigured
   http://svn.apache.org/viewvc?rev=1137996&view=rev
-  +1: kkolinko, schultz
+  +1: kkolinko, schultz, markt
   -1:
 
 * Fix truncated cookies.
@@ -159,7 +159,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=1142043&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Multiple improvements to the Windows Installer
@@ -187,19 +187,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
-* Notifications of changes in session ID to other nodes in the cluster should be
-  controlled by notifySessionListenersOnReplication rather than
-  notifyListenersOnReplication.
-  http://svn.apache.org/viewvc?rev=1140801&view=rev
-  +1: markt
+* The change in session ID is notified to not the session listener but the 
+  container event listener.
+  http://svn.apache.org/viewvc?view=revision&revision=1141441
+  +1: kfujino, markt
   -1:
-
-  Alternative patch.
-   The change in session ID is notified to not the session listener but the 
-   container event listener.
-   http://svn.apache.org/viewvc?view=revision&revision=1141441
-   +1: kfujino
-   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49929
   No definitive information that this is the fix but back-porting Mladen's fix
@@ -223,14 +215,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1095138&view=rev
   It is used in TC7 since 7.0.14
   Changelog: http://commons.apache.org/pool/changes-report.html
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51473
   Fix concatenation of values in SecurityConfig.setSecurityProperty()
   when the value provided by JRE is null.
   http://svn.apache.org/viewvc?rev=1142904&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51324
@@ -238,7 +230,7 @@ PATCHES PROPOSED TO BACKPORT:
   ensure that the doFlush flag does not get stuck in the enabled state.
   Patch by Jeremy Norris.
   http://svn.apache.org/viewvc?rev=1133014&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51472
