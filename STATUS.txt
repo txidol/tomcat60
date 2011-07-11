@@ -234,7 +234,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46252
   AccessLogValve and FileHandler improvements
-  It is backport of r1145200, r1145237
+  It is backport of r1145200, r1145237, r1145268
   1) Allow to specify character set to be used to write the access log
      in AccessLogValve
   2) In JULI FileHandler and in AccessLogValve create a directory
@@ -243,6 +243,9 @@ PATCHES PROPOSED TO BACKPORT:
      specified with the <code>directory</code> attribute.
   3) Log a failure if access log file cannot be opened.
   4) I18n of messages in AccessLogValve.
+  5) Expose the new "encoding" option through JMX.
+     and also fix wrong mapping for "enabled" property - it is getEnabled().
   https://issues.apache.org/bugzilla/attachment.cgi?id=27279
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27280 (JMX)
   +1: kkolinko
   -1:
