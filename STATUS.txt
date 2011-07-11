@@ -237,5 +237,6 @@ PATCHES PROPOSED TO BACKPORT:
   Handle Gzip messages larger than the default buffer size
   Based on a patch by Christian Stöber
   http://svn.apache.org/viewvc?rev=1143134&view=rev (GzipInterceptor.java only)
-  +1: markt
+  http://svn.apache.org/viewvc?rev=1143150&view=rev
+  +1: markt, kkolinko
   -1:
