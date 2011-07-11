@@ -134,12 +134,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* https://issues.apache.org/bugzilla/show_bug.cgi?id=51403
-  Avoid NPE in JULI FileHandler if formatter is misconfigured
-  http://svn.apache.org/viewvc?rev=1137996&view=rev
-  +1: kkolinko, schultz, markt
-  -1:
-
 * Fix truncated cookies.
   Based on https://issues.jboss.org/browse/JBWEB-196
   http://people.apache.org/~jfclere/patches/patch.110622.txt
