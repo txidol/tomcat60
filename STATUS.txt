@@ -234,3 +234,10 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1143150&view=rev
   +1: markt, kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46252
+  Allow to specify character set to be used to write the access log
+  in AccessLogValve
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27278
+  +1: kkolinko
+  -1:
