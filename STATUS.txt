@@ -236,8 +236,16 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=46252
-  Allow to specify character set to be used to write the access log
-  in AccessLogValve
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27278
+  AccessLogValve and FileHandler improvements
+  It is backport of r1145200, r1145237
+  1) Allow to specify character set to be used to write the access log
+     in AccessLogValve
+  2) In JULI FileHandler and in AccessLogValve create a directory
+     automatically when it is specified as a part of the file name, e.g. in
+     the <code>prefix</code> attribute. Earlier this happened only if it was
+     specified with the <code>directory</code> attribute.
+  3) Log a failure if access log file cannot be opened.
+  4) I18n of messages in AccessLogValve.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27279
   +1: kkolinko
   -1:
