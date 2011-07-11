@@ -55,11 +55,8 @@ PATCHES PROPOSED TO BACKPORT:
   resources already present in the webapp.
   http://svn.apache.org/viewvc?view=revision&revision=936825
   http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936825.patch
-  +1: rjung, funkman
+  +1: rjung, funkman, kkolinko
   -1:
-  -0: kkolinko: The patch itself is OK, but I think having a synonym will
-   cause confusion. I'd prefer not to invent a new name, but mention the
-   one that we already have when documenting virtualClasspath.
 
 * Fix path parameter handling. Currently the following URL fails with a 404:
   http://localhost:8080/examples/jsp/snp;x=y/snoop.jsp
