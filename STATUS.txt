@@ -185,17 +185,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51206
-  Make CATALINA_BASE visible to setenv.[sh|bat]
-  http://svn.apache.org/viewvc?rev=1137862&view=rev
-  Patch by rjung
-  +1: markt, kkolinko, kfujino
-  -1:
-
-   kkolinko: As a slight enhancement to the fix, the code that calls
-   setenv.bat|sh few lines later can be a bit simplified now, knowing
-   that CATALINA_BASE is already set.
-
 * Update commons pool to 1.5.6
   http://svn.apache.org/viewvc?rev=1095138&view=rev
   It is used in TC7 since 7.0.14

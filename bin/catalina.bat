@@ -99,17 +99,22 @@ echo This environment variable is needed to run this program
 goto end
 :okHome
 
+rem Copy CATALINA_BASE from CATALINA_HOME if not defined
+if not "%CATALINA_BASE%" == "" goto gotBase
+set "CATALINA_BASE=%CATALINA_HOME%"
+:gotBase
+
 rem Ensure that any user defined CLASSPATH variables are not used on startup,
 rem but allow them to be specified in setenv.bat, in rare case when it is needed.
 set CLASSPATH=
 
 rem Get standard environment variables
-if "%CATALINA_BASE%" == "" goto gotSetenvHome
-if exist "%CATALINA_BASE%\bin\setenv.bat" call "%CATALINA_BASE%\bin\setenv.bat"
-goto gotSetenvBase
-:gotSetenvHome
+if not exist "%CATALINA_BASE%\bin\setenv.bat" goto checkSetenvHome
+call "%CATALINA_BASE%\bin\setenv.bat"
+goto setenvDone
+:checkSetenvHome
 if exist "%CATALINA_HOME%\bin\setenv.bat" call "%CATALINA_HOME%\bin\setenv.bat"
-:gotSetenvBase
+:setenvDone
 
 rem Get standard Java environment variables
 if exist "%CATALINA_HOME%\bin\setclasspath.bat" goto okSetclasspath
@@ -120,10 +125,6 @@ goto end
 set "BASEDIR=%CATALINA_HOME%"
 call "%CATALINA_HOME%\bin\setclasspath.bat" %1
 if errorlevel 1 goto end
-
-if not "%CATALINA_BASE%" == "" goto gotBase
-set "CATALINA_BASE=%CATALINA_HOME%"
-:gotBase
 
 if not "%CATALINA_TMPDIR%" == "" goto gotTmpdir
 set "CATALINA_TMPDIR=%CATALINA_BASE%\temp"
