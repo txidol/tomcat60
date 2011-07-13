@@ -135,8 +135,7 @@ PATCHES PROPOSED TO BACKPORT:
   Based on https://issues.jboss.org/browse/JBWEB-196
   http://people.apache.org/~jfclere/patches/patch.110622.txt
   +1: jfclere
-  -1: markt Separators are defined by the HTTP specification and as per section
-            2.2 of RFC 2616 must be quoted to be used within a parameter value.
+  -1: markt Should use same mechanism for this as Tomcat 7 
   -1
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36362
@@ -242,7 +241,7 @@ PATCHES PROPOSED TO BACKPORT:
      and also fix wrong mapping for "enabled" property - it is getEnabled().
   https://issues.apache.org/bugzilla/attachment.cgi?id=27279
   https://issues.apache.org/bugzilla/attachment.cgi?id=27280 (JMX)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix various sendfile issues. CVE-2011-2526
