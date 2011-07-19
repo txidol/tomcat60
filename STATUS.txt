@@ -232,3 +232,8 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=27280 (JMX)
   +1: kkolinko, markt, kfujino
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49595
+  http://svn.apache.org/viewvc?rev=1148216&view=rev
+  +1: jfclere
+  -1:
