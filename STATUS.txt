@@ -237,3 +237,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1148216&view=rev
   +1: jfclere
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50394
+  http://svn.apache.org/viewvc?rev=1148254&view=rev
+  +1: jfclere
