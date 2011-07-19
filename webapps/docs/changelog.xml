@@ -280,6 +280,11 @@
         <bug>51443</bug>: Document the notifySessionListenersOnReplication
         attribute for the DeltaManager. (markt)
       </fix>
+      <fix>
+        <bug>51516</bug>: Correct documentation web application to show correct
+        system property name for changing the name of the SSO session cookie.
+        (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
