@@ -167,6 +167,10 @@
         Improve handling of URLs with path parameters and prevent incorrect 404
         responses that could occur when path parameters were present. (kkolinko)
       </fix>
+      <fix>
+        <bug>51473</bug>: Fix concatenation of values in
+        <code>SecurityConfig.setSecurityProperty()</code>. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
