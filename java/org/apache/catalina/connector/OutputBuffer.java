@@ -227,6 +227,7 @@ public class OutputBuffer extends Writer
         
         bb.recycle(); 
         closed = false;
+        doFlush = false;
         suspended = false;
         
         if (conv!= null) {
@@ -307,15 +308,18 @@ public class OutputBuffer extends Writer
         if (suspended)
             return;
 
-        doFlush = true;
-        if (initial) {
-            coyoteResponse.sendHeaders();
-            initial = false;
+        try {
+            doFlush = true;
+            if (initial) {
+                coyoteResponse.sendHeaders();
+                initial = false;
+            }
+            if (bb.getLength() > 0) {
+                bb.flushBuffer();
+            }
+        } finally {
+            doFlush = false;
         }
-        if (bb.getLength() > 0) {
-            bb.flushBuffer();
-        }
-        doFlush = false;
 
         if (realFlush) {
             coyoteResponse.action(ActionCode.ACTION_CLIENT_FLUSH, 

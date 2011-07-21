@@ -132,6 +132,11 @@
         container. Patch provided by Violeta Georgieva. (markt)
       </fix>
       <fix>
+        <bug>51324</bug>: Improve handling of exceptions when flushing the
+        response buffer to ensure that the doFlush flag does not get stuck in
+        the enabled state. Patch provided by Jeremy Norris. (kkolinko)
+      </fix>
+      <fix>
         <bug>51348</bug>: Fix possible NPE when processing WebDAV locks. (markt)
       </fix>
       <add>
