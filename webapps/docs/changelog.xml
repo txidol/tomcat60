@@ -334,6 +334,9 @@
         file to ensure the correct message is shown. Patch provided by Caio
         Cezar. (markt)
       </fix>
+      <update>
+        Update commons pool to 1.5.6. (kkolinko)
+      </update>
     </changelog>
   </subsection>
 </section>
