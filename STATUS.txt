@@ -87,13 +87,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz : if s/nOnce/nonce/g for the whole file, not just some of it
   -1:
 
-* Backport exception logging from revision 1090022
-  http://svn.apache.org/viewvc?view=revision&revision=1090022
-  +1: schultz
-  +1: kkolinko, jung: +1, but I think it is better to combine this with r1073393
-      (http://markmail.org/message/vkao3gcwe2w63jxj)
-  -1:
-
 * Add StuckThreadDetectionValve
   https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b
   +1: slaurent

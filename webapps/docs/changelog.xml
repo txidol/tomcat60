@@ -240,6 +240,9 @@
         message. Hopefully, this will help track down the cause of
         <bug>51088</bug>. (markt)
       </add>
+      <add>
+        Improve error reporting of Jasper compilation. (schultz)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Cluster">
