@@ -165,14 +165,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51475
-  Handle Gzip messages larger than the default buffer size
-  Based on a patch by Christian Stöber
-  http://svn.apache.org/viewvc?rev=1143134&view=rev (GzipInterceptor.java only)
-  http://svn.apache.org/viewvc?rev=1143150&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49595
   http://svn.apache.org/viewvc?rev=1148216&view=rev
   +1: jfclere
