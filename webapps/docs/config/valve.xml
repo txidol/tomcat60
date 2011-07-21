@@ -103,6 +103,13 @@
         (relative to $CATALINA_BASE).</p>
       </attribute>
 
+      <attribute name="encoding" required="false">
+        <p>Character set used to write the log file. An empty string means
+        to use the system default character set. Default value: use the
+        system default character set.
+        </p>
+      </attribute>
+
       <attribute name="pattern" required="false">
         <p>A formatting layout identifying the various information fields
         from the request and response to be logged, or the word

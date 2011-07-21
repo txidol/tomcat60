@@ -35,7 +35,7 @@
 
      <attribute name="enabled"
                description="Enable Access Logging"
-               is="true"
+               is="false"
                type="boolean"/>
 
     <attribute name="containerName"
@@ -44,6 +44,10 @@
 
     <attribute name="directory"
                description="The directory in which log files are created"
+               type="java.lang.String"/>
+
+    <attribute name="encoding"
+               description="Character set used to write the log file"
                type="java.lang.String"/>
 
     <attribute   name="pattern"
@@ -132,7 +136,7 @@
 
      <attribute name="enabled"
                description="Enable Access Logging"
-               is="true"
+               is="false"
                type="boolean"/>
  
     <attribute name="containerName"
@@ -141,6 +145,10 @@
 
     <attribute name="directory"
                description="The directory in which log files are created"
+               type="java.lang.String"/>
+
+    <attribute name="encoding"
+               description="Character set used to write the log file"
                type="java.lang.String"/>
 
     <attribute   name="pattern"

@@ -21,10 +21,13 @@ package org.apache.catalina.valves;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,6 +50,7 @@ import org.apache.catalina.util.StringManager;
 import org.apache.coyote.RequestInfo;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.apache.tomcat.util.buf.B2CConverter;
 
 
 /**
@@ -301,7 +305,14 @@ public class AccessLogValve extends ValveBase implements AccessLog, Lifecycle {
      * Date format to place in log file name. Use at your own risk!
      */
     protected String fileDateFormat = null;
-    
+
+    /**
+     * Character set used by the log file. If it is <code>null</code>, the
+     * system default character set will be used. An empty string will be
+     * treated as <code>null</code> when this property is assigned.
+     */
+    protected String encoding = null;
+
     /**
      * Array of AccessLogElement, they will be used to make log message.
      */
@@ -522,6 +533,29 @@ public class AccessLogValve extends ValveBase implements AccessLog, Lifecycle {
         this.fileDateFormat =  fileDateFormat;
     }
 
+    /**
+     * Return the character set name that is used to write the log file.
+     *
+     * @return Character set name, or <code>null</code> if the system default
+     *  character set is used.
+     */
+    public String getEncoding() {
+        return encoding;
+    }
+
+    /**
+     * Set the character set that is used to write the log file.
+     * 
+     * @param encoding The name of the character set.
+     */
+    public void setEncoding(String encoding) {
+        if (encoding != null && encoding.length() > 0) {
+            this.encoding = encoding;
+        } else {
+            this.encoding = null;
+        }
+    }
+
     // --------------------------------------------------------- Public Methods
 
     /**
@@ -597,7 +631,7 @@ public class AccessLogValve extends ValveBase implements AccessLog, Lifecycle {
             try {
                 holder.renameTo(new File(newFileName));
             } catch (Throwable e) {
-                log.error("rotate failed", e);
+                log.error(sm.getString("accessLogValve.rotateFail"), e);
             }
 
             /* Make sure date is correct */
@@ -667,7 +701,7 @@ public class AccessLogValve extends ValveBase implements AccessLog, Lifecycle {
                     try {
                         close();
                     } catch (Throwable e) {
-                        log.info("at least this wasn't swallowed", e);
+                        log.info(sm.getString("accessLogValve.closeFail"), e);
                     }
 
                     /* Make sure date is correct */
@@ -717,26 +751,51 @@ public class AccessLogValve extends ValveBase implements AccessLog, Lifecycle {
         File dir = new File(directory);
         if (!dir.isAbsolute())
             dir = new File(System.getProperty("catalina.base"), directory);
-        dir.mkdirs();
+        if (!dir.exists()) {
+            if (!dir.mkdirs()) {
+                log.error(sm.getString("accessLogValve.openDirFail", dir));
+            }
+        }
 
         // Open the current log file
-        try {
-            String pathname;
-            // If no rotate - no need for dateStamp in fileName
-            if (rotatable) {
-                pathname = dir.getAbsolutePath() + File.separator + prefix
-                        + dateStamp + suffix;
-            } else {
-                pathname = dir.getAbsolutePath() + File.separator + prefix
-                        + suffix;
+        File pathname;
+        // If no rotate - no need for dateStamp in fileName
+        if (rotatable) {
+            pathname = new File(dir.getAbsoluteFile(), prefix + dateStamp
+                    + suffix);
+        } else {
+            pathname = new File(dir.getAbsoluteFile(), prefix + suffix);
+        }
+        File parent = pathname.getParentFile();
+        if (!parent.exists()) {
+            if (!parent.mkdirs()) {
+                log.error(sm.getString("accessLogValve.openDirFail", parent));
             }
-            writer = new PrintWriter(new BufferedWriter(new FileWriter(
-                    pathname, true), 128000), false);
-            
-            currentLogFile = new File(pathname);
+        }
+
+        Charset charset = null;
+        if (encoding != null) {
+            try {
+                charset = B2CConverter.getCharset(encoding);
+            } catch (UnsupportedEncodingException ex) {
+                log.error(sm.getString(
+                        "accessLogValve.unsupportedEncoding", encoding), ex);
+            }
+        }
+        if (charset == null) {
+            charset = Charset.defaultCharset();
+        }
+
+        try {
+            writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(pathname, true), charset), 128000),
+                    false);
+
+            currentLogFile = pathname;
         } catch (IOException e) {
             writer = null;
             currentLogFile = null;
+            log.error(sm.getString("accessLogValve.openFail", pathname), e);
         }
     }
  

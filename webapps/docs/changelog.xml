@@ -55,6 +55,10 @@
         Stephane Bailliez. (markt) 
       </fix>
       <add>
+        <bug>46252</bug>: Allow to specify character set to be used to write
+        the access log in AccessLogValve. (kkolinko)
+      </add>
+      <add>
         <bug>48863</bug>: Provide an warning if there is a problem with a class
         path entry but use debug level logging if it is expected due to catalina
         home/base split. (kkolinko)
@@ -148,6 +152,17 @@
         <bug>51403</bug>: Avoid NPE in JULI FileHandler if formatter is
         misconfigured. (kkolinko)
       </add>
+      <update>
+        Create a directory for access log or error log (in AccessLogValve and
+        in JULI FileHandler) automatically when it is specified as a part of
+        the file name, e.g. in the <code>prefix</code> attribute. Earlier this
+        happened only if it was specified with the <code>directory</code>
+        attribute. (kkolinko)
+      </update>
+      <fix>
+        Log a failure if access log file cannot be opened. Improve i18n
+        of messages. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
