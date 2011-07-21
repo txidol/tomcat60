@@ -388,8 +388,22 @@ public class Request
     protected String localName = null;
 
 
+    /**
+     * Path parameters
+     */
+    protected Map<String,String> pathParameters = new HashMap<String, String>();
+
+
     // --------------------------------------------------------- Public Methods
 
+
+    protected void addPathParameter(String name, String value) {
+        pathParameters.put(name, value);
+    }
+
+    protected String getPathParameter(String name) {
+        return pathParameters.get(name);
+    }
 
     /**
      * Release all object references, and initialize instance variables, in
@@ -470,6 +484,7 @@ public class Request
             }
         }
 
+        pathParameters.clear();
     }
 
 

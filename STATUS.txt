@@ -58,19 +58,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, funkman, kkolinko
   -1:
 
-* Fix path parameter handling. Currently the following URL fails with a 404:
-  http://localhost:8080/examples/jsp/snp;x=y/snoop.jsp
-  http://people.apache.org/~kkolinko/patches/2010-11-17_tc6_path-params.patch
-  +1: kkolinko, markt, schultz
-  -1:
-
-   kkolinko: The old parseSessionId() method calls "clearRequestedSessionURL(request);"
-     when there is no sessionid in the path. The new code does not do that. Was that
-     call needed? It looks that it was not needed, but I might miss something.
-
-   kkolinko: Discussed in Re:r1005192 thread on dev@
-
-
 * Backport JSP unloading patch (BZ48358).
   The patch has substantially changed since the original version.
   Original revisions are: 937787, 1028377, 1028389, 1028396, 1028861, 1028862, 1028863,

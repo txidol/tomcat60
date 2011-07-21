@@ -762,6 +762,30 @@ public final class ByteChunk implements Cloneable, Serializable {
         return -1;
     }
 
+    /**
+     * Returns the first instance of any of the given bytes in the byte array
+     * between the specified start and end.
+     * 
+     * @param bytes The byte array to search
+     * @param start The point to start searching from in the byte array
+     * @param end   The point to stop searching in the byte array
+     * @param b     The array of bytes to search for 
+     * @return      The position of the first instance of the byte or -1 if the
+     *                  byte is not found.
+     */
+    public static int findBytes(byte bytes[], int start, int end, byte b[]) {
+        int blen = b.length;
+        int offset = start;
+        while (offset < end) {
+            for (int i = 0;  i < blen; i++) 
+                if (bytes[offset] == b[i]) {
+                    return offset;
+                }
+            offset++;
+        }
+        return -1;
+    }
+
     /** Find a character, no side effects.
      *  @return index of char if found, -1 if not
      */

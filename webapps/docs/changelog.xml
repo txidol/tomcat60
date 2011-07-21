@@ -163,6 +163,10 @@
         Log a failure if access log file cannot be opened. Improve i18n
         of messages. (kkolinko)
       </fix>
+      <fix>
+        Improve handling of URLs with path parameters and prevent incorrect 404
+        responses that could occur when path parameters were present. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
