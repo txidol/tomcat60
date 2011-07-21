@@ -223,6 +223,6 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51509
   Correct concurrency issue in CSRF prevention filter
   http://svn.apache.org/viewvc?rev=1148471&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
   
