@@ -274,6 +274,10 @@
   <subsection name="Webapps">
     <changelog>
       <fix>
+        <bug>41498</bug>: Add the allRolesMode attribute to the Realm
+        configuration page in the documentation web application. (markt)
+      </fix>
+      <fix>
         <bug>50804</bug>: Update links for Servlet 2.5 and JSP 2.1 Javadoc.
         (markt)
       </fix>
