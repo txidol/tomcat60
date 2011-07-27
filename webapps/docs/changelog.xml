@@ -278,6 +278,11 @@
         configuration page in the documentation web application. (markt)
       </fix>
       <fix>
+        <bug>48997</bug>: Fixed some typos and improve cross-referencing to the
+        HTTP Connector and APR documentation with the SSL How-To page of the
+        documentation web application. (markt)
+      </fix>
+      <fix>
         <bug>50804</bug>: Update links for Servlet 2.5 and JSP 2.1 Javadoc.
         (markt)
       </fix>
