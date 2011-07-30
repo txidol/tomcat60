@@ -325,6 +325,9 @@
         system property name for changing the name of the SSO session cookie.
         (markt)
       </fix>
+      <update>
+        Improve class loading documentation. (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Other">
