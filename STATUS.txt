@@ -182,3 +182,9 @@ PATCHES PROPOSED TO BACKPORT:
   (note: The only change to NioEndpoint is adding a sync)
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51588
+  Make it easier to extend the AccessLogValve to add support for custom elements
+  http://svn.apache.org/viewvc?rev=1152601&view=rev
+  +1: markt
+  -1:
