@@ -293,6 +293,11 @@ created by this Manager"
       description="Send session start/stop events on backup nodes"
       type="boolean"/>
     <attribute
+      name="notifyContainerListenersOnReplication"
+      is="true"
+      description="Send container events on backup nodes"
+      type="boolean"/>
+    <attribute
       name="sendAllSessions"
       is="true"
       description="Send all sessions at one big block"
