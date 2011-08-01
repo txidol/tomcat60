@@ -78,7 +78,7 @@ PATCHES PROPOSED TO BACKPORT:
   if request has already been authenticated.
   http://svn.apache.org/viewvc?view=revision&revision=1070409
   https://issues.apache.org/bugzilla/attachment.cgi?id=26649 (patch against tc6.0)
-  +1: kfujino, markt
+  +1: kfujino, markt, kkolinko
   -1:
 
 * Add additional configuration options to the DIGEST authenticator
@@ -151,11 +151,13 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1142923&view=rev
   +1: markt
   -1:
+   kkolinko: An updated patch will be needed here. Some revisions were
+   added to the list above, but patch was not updated. Add r1147949 as well.
 
 * The change in session ID is notified to not the session listener but the 
   container event listener.
   http://svn.apache.org/viewvc?view=revision&revision=1141441
-  +1: kfujino, markt
+  +1: kfujino, markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49929
@@ -167,7 +169,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49595
   http://svn.apache.org/viewvc?rev=1148216&view=rev
-  +1: jfclere
+  +1: jfclere, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51509
@@ -186,5 +188,5 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51588
   Make it easier to extend the AccessLogValve to add support for custom elements
   http://svn.apache.org/viewvc?rev=1152601&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
