@@ -141,18 +141,15 @@ PATCHES PROPOSED TO BACKPORT:
   - Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51135
     Fix auto-detection of JAVA_HOME for 64-bit Windows platforms that only have
     a 32-bit JVM installed.
-  http://people.apache.org/~markt/patches/2011-06-24-windows-installer-multiple-tc6.patch
-  plus addition of http://people.apache.org/~markt/patches/2011-06-24-windows-installer-multiple-tc6.server_3.xml
-  http://svn.apache.org/viewvc?rev=1141955&view=rev
-  http://svn.apache.org/viewvc?rev=1141976&view=rev
-  http://svn.apache.org/viewvc?rev=1142001&view=rev
-  http://svn.apache.org/viewvc?rev=1142012&view=rev
-  http://svn.apache.org/viewvc?rev=1142784&view=rev
-  http://svn.apache.org/viewvc?rev=1142923&view=rev
+  - Simplify the installer by using search and replace for server.xml
+  - Provide the ability to configure the shutdown port
+  - Provide service name and port validation
+  - Update to Commons daemon 1.0.6
+  - Removes res/confinstall/server*.xml, res/tick*.bmp, res/main.ico,
+            res/uninst.ico
+  http://people.apache.org/~markt/patches/2011-08-01-windows-installer-multiple-tc6.patch
   +1: markt
   -1:
-   kkolinko: An updated patch will be needed here. Some revisions were
-   added to the list above, but patch was not updated. Add r1147949 as well.
 
 * The change in session ID is notified to not the session listener but the 
   container event listener.
