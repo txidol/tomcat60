@@ -538,7 +538,7 @@
     by nesting a <a href="valve.html">Valve</a> element like this:</p>
 
 <source>
-&lt;Context path="/examples" ...&gt;
+&lt;Context&gt;
   ...
   &lt;Valve className="org.apache.catalina.valves.AccessLogValve"
          prefix="localhost_access_log." suffix=".txt"
@@ -592,7 +592,7 @@
     <code>&lt;Parameter&gt;</code> elements inside this element.  For
     example, you can create an initialization parameter like this:</p>
 <source>
-&lt;Context ...&gt;
+&lt;Context&gt;
   ...
   &lt;Parameter name="companyName" value="My Company, Incorporated"
          override="false"/&gt;
@@ -651,7 +651,7 @@
     <code>&lt;Environment&gt;</code> entries inside this element.  For
     example, you can create an environment entry like this:</p>
 <source>
-&lt;Context ...&gt;
+&lt;Context&gt;
   ...
   &lt;Environment name="maxExemptions" value="10"
          type="java.lang.Integer" override="false"/&gt;
@@ -728,7 +728,7 @@
     lifecycle events.  Configuration of such a listener looks like this:</p>
 
 <source>
-&lt;Context path="/examples" ...&gt;
+&lt;Context&gt;
   ...
   &lt;Listener className="com.mycompany.mypackage.MyListener" ... &gt;
   ...
@@ -756,7 +756,7 @@
     Example filter declarations:</p>
 
 <source>
-&lt;Context path="/examples" ...&gt;
+&lt;Context&gt;
   ...
   &lt;Valve className="org.apache.catalina.valves.RemoteHostValve"
          allow=".*\.mycompany\.com|www\.yourcompany\.com"/&gt;
@@ -785,7 +785,7 @@
 
     <p>For example, you can create a resource definition like this:</p>
 <source>
-&lt;Context ...&gt;
+&lt;Context&gt;
   ...
   &lt;Resource name="jdbc/EmployeeDB" auth="Container"
             type="javax.sql.DataSource"
@@ -860,7 +860,7 @@
 
     <p>For example, you can create a resource link like this:</p>
 <source>
-&lt;Context ...&gt;
+&lt;Context&gt;
   ...
   &lt;ResourceLink name="linkToGlobalResource"
             global="simpleValue"
@@ -921,7 +921,7 @@
     </attributes>
     <p>Shared Data Source Example</p>
 <source>
-&lt;GlobalNamingResources ...&gt;
+&lt;GlobalNamingResources&gt;
   ...
   &lt;Resource name=&quot;sharedDataSource&quot;
             global=&quot;sharedDataSource&quot;
