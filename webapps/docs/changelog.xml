@@ -333,6 +333,11 @@
       <update>
         Improve class loading documentation. (kkolinko)
       </update>
+      <update>
+        Update documentation to be even more explicit about the implications
+        of setting the <code>path</code> attribute on a <code>Context</code>
+        element in <code>server.xml</code>. (markt/kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Other">
