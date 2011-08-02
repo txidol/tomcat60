@@ -148,6 +148,7 @@ PATCHES PROPOSED TO BACKPORT:
   - Removes res/confinstall/server*.xml, res/tick*.bmp, res/main.ico,
             res/uninst.ico
   http://people.apache.org/~markt/patches/2011-08-01-windows-installer-multiple-tc6.patch
+  http://svn.apache.org/viewvc?rev=1153075&view=rev
   +1: markt
   -1:
 
