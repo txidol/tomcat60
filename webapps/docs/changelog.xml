@@ -297,7 +297,8 @@
         (markt)
       </fix>
       <update>
-        Improve Tomcat Logging documentation. (kkolinko)
+        Improve class loading documentation and logging documentation.
+        (kkolinko)
       </update>
       <update>
         Configure Security Manager How-To to include a copy of the actual
@@ -335,9 +336,6 @@
         system property name for changing the name of the SSO session cookie.
         (markt)
       </fix>
-      <update>
-        Improve class loading documentation. (kkolinko)
-      </update>
       <update>
         Update documentation to be even more explicit about the implications
         of setting the <code>path</code> attribute on a <code>Context</code>
