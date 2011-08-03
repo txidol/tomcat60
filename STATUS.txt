@@ -157,6 +157,7 @@ PATCHES PROPOSED TO BACKPORT:
     minus update to commons-daemon-1.0.6
     (It fails to download it:
       build.xml:671: Can't get http://archive.apache.org/dist/commons/daemon/binaries/1.0.6/commons-daemon-1.0.6-bin.tar.gz to ***\libraries\tomcat6\file.tar.gz
+      -> a separate patch for this update is proposed below
     )
     minus unwanted change to TEXT_JVM_LABEL1 message
     plus r1152988, r1153075, r1153573
@@ -194,4 +195,11 @@ PATCHES PROPOSED TO BACKPORT:
   Make it easier to extend the AccessLogValve to add support for custom elements
   http://svn.apache.org/viewvc?rev=1152601&view=rev
   +1: markt, kkolinko
+  -1:
+
+* Update to Apache Commons Daemon 1.0.7
+  Use two alternative download locations for components downloaded from
+  apache.org.
+  http://people.apache.org/~kkolinko/patches/2011-08-03_tc6_daemon107.patch
+  +1: kkolinko
   -1:
