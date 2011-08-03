@@ -262,6 +262,11 @@
         (markt)
       </fix>
       <fix>
+        <bug>50771</bug>: Ensure HttpServletRequest#getAuthType() returns the 
+        name of the authentication scheme if request has already been 
+        authenticated. (kfujino)
+      </fix>
+      <fix>
         <bug>50950</bug>: Correct possible NotSerializableException for an
         authenticated session when running with a security manager. (markt)
       </fix>
