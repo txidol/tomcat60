@@ -152,6 +152,33 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
+  kkolinko:
+   1) Commands to remove files - removal of binaries cannot be expressed by the patch
+     svn rm res/confinstall/server_1.xml
+     svn rm res/confinstall/server_2.xml
+     svn rm res/tickno.bmp
+     svn rm res/tickyes.bmp
+     svn rm res/main.ico
+     svn rm res/uninst.ico
+   2) Mark's 2011-08-01-windows-installer-multiple-tc6.patch
+    minus changes to changelog.xml and deleted files,
+    minus update to commons-daemon-1.0.6
+    (It fails to download it:
+      build.xml:671: Can't get http://archive.apache.org/dist/commons/daemon/binaries/1.0.6/commons-daemon-1.0.6-bin.tar.gz to ***\libraries\tomcat6\file.tar.gz
+    )
+    minus unwanted change to TEXT_JVM_LABEL1 message
+    plus r1152988, r1153075
+  http://people.apache.org/~kkolinko/patches/2011-08-03_tc6_windows-installer.patch
+  +1: kkolinko
+  -1:
+
+  kkolinko: There is one glitch I noticed when testing my patch: if service
+  name contains a '-', in the Add/Remove Programs list there will not be
+  Apache Feather icon on "Apache Tomcat .. (remove only)" item. The default
+  icon will be used instead. I suspect something like r1152988 is needed
+  elsewhere, but I have not found where.  It does not impact functionality
+  - uninstallation performs correctly. It is not a stopper.
+
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49929
   No definitive information that this is the fix but back-porting Mladen's fix
   from 7.0.x can't hurt and may help
