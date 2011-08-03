@@ -136,33 +136,15 @@ PATCHES PROPOSED TO BACKPORT:
   - Simplify the installer by using search and replace for server.xml
   - Provide the ability to configure the shutdown port
   - Provide service name and port validation
-  - Update to Commons daemon 1.0.6
-  - Removes res/confinstall/server*.xml, res/tick*.bmp, res/main.ico,
-            res/uninst.ico
-  http://people.apache.org/~markt/patches/2011-08-01-windows-installer-multiple-tc6.patch
-  http://svn.apache.org/viewvc?rev=1153075&view=rev
-  +1: markt
-  -1:
-
-  kkolinko:
-   1) Commands to remove files - removal of binaries cannot be expressed by the patch
+  1) Commands to remove files - removal of binaries cannot be expressed by the patch
      svn rm res/confinstall/server_1.xml
      svn rm res/confinstall/server_2.xml
      svn rm res/tickno.bmp
      svn rm res/tickyes.bmp
      svn rm res/main.ico
      svn rm res/uninst.ico
-   2) Mark's 2011-08-01-windows-installer-multiple-tc6.patch
-    minus changes to changelog.xml and deleted files,
-    minus update to commons-daemon-1.0.6
-    (It fails to download it:
-      build.xml:671: Can't get http://archive.apache.org/dist/commons/daemon/binaries/1.0.6/commons-daemon-1.0.6-bin.tar.gz to ***\libraries\tomcat6\file.tar.gz
-      -> a separate patch for this update is proposed below
-    )
-    minus unwanted change to TEXT_JVM_LABEL1 message
-    plus r1152988, r1153075, r1153573
-  http://people.apache.org/~kkolinko/patches/2011-08-03_tc6_windows-installer_v2.patch
-  +1: kkolinko
+  2) http://people.apache.org/~kkolinko/patches/2011-08-03_tc6_windows-installer_v2.patch
+  +1: kkolinko, markt
   -1:
 
 
@@ -201,5 +183,5 @@ PATCHES PROPOSED TO BACKPORT:
   Use two alternative download locations for components downloaded from
   apache.org.
   http://people.apache.org/~kkolinko/patches/2011-08-03_tc6_daemon107.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
