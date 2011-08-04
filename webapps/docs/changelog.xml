@@ -355,7 +355,9 @@
         several copies of Tomcat 6 side by side. Allow to configure service
         name, connector and shutdown ports. Allow to choose whether to install
         Start menu shortcuts and Apache Tomcat monitor application for all
-        users or for the current one only. Improve server.xml file handling.
+        users or for the current one only. Improve auto-detection of JAVA_HOME
+        for 64-bit Windows platforms: autoselect 32-bit JRE if it exists and
+        64-bit one is not available. Improve server.xml file handling.
         Fix uninstallation icon. (markt/kkolinko)
       </add>
       <fix>
