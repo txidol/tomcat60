@@ -116,7 +116,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1138953&view=rev
   http://svn.apache.org/viewvc?rev=1140693&view=rev
   http://svn.apache.org/viewvc?rev=1142043&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Multiple improvements to the Windows Installer
@@ -163,7 +163,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51509
   Correct concurrency issue in CSRF prevention filter
   http://svn.apache.org/viewvc?rev=1148471&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51515
@@ -176,12 +176,12 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51588
   Make it easier to extend the AccessLogValve to add support for custom elements
   http://svn.apache.org/viewvc?rev=1152601&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko,kfujino
   -1:
 
 * Update to Apache Commons Daemon 1.0.7
   Use two alternative download locations for components downloaded from
   apache.org.
   http://people.apache.org/~kkolinko/patches/2011-08-03_tc6_daemon107.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
