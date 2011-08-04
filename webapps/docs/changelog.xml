@@ -349,6 +349,15 @@
         Clarify error messages in *.sh files to mention that if a script is
         not found it might be because execute permission is needed. (kkolinko)
       </update>
+      <add>
+        <bug>33262</bug>, <bug>40510</bug>, <bug>50949</bug>, <bug>51135</bug>:
+        Various improvements to the Windows installer to be able to install
+        several copies of Tomcat 6 side by side. Allow to configure service
+        name, connector and shutdown ports. Allow to choose whether to install
+        Start menu shortcuts and Apache Tomcat monitor application for all
+        users or for the current one only. Improve server.xml file handling.
+        Fix uninstallation icon. (markt/kkolinko)
+      </add>
       <fix>
         <bug>50854</bug>: Add additional entries to the default catalina.policy
         file to support running the manager web application from CATALINA_HOME
@@ -378,14 +387,6 @@
         At build time use two alternative download locations for components
         downloaded from apache.org. (kkolinko)
       </update>
-      <add>
-        Various improvements to the Windows installer to be able to install
-        several copies of Tomcat 6 side by side. Allow to configure service
-        name, connector and shutdown ports. Allow to choose whether to install
-        Start menu shortcuts and Apache Tomcat monitor application for all
-        users or for the current one only. Improve server.xml file handling.
-        Fix uninstallation icon. (markt/kkolinko)
-      </add>
     </changelog>
   </subsection>
 </section>

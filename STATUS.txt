@@ -119,35 +119,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko, kfujino
   -1:
 
-* Multiple improvements to the Windows Installer
-  - https://issues.apache.org/bugzilla/show_bug.cgi?id=33262
-    Install monitor to auto-start for current user only rather than all users to
-    be consistent with menu item creation.
-  - Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=40510
-    Provide an option to install shortcuts for the current user or all users.
-    Also ensure registry is correctly cleaned on uninstall for 64-bit platforms.
-  - Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50949
-    Provide the ability to specify the AJP port and service name when installing
-    Tomcat using the Windows installer. This permits multiple instances of the
-    same Tomcat version to be installed side-by-side.
-  - Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51135
-    Fix auto-detection of JAVA_HOME for 64-bit Windows platforms that only have
-    a 32-bit JVM installed.
-  - Simplify the installer by using search and replace for server.xml
-  - Provide the ability to configure the shutdown port
-  - Provide service name and port validation
-  1) Commands to remove files - removal of binaries cannot be expressed by the patch
-     svn rm res/confinstall/server_1.xml
-     svn rm res/confinstall/server_2.xml
-     svn rm res/tickno.bmp
-     svn rm res/tickyes.bmp
-     svn rm res/main.ico
-     svn rm res/uninst.ico
-  2) http://people.apache.org/~kkolinko/patches/2011-08-03_tc6_windows-installer_v2.patch
-  +1: kkolinko, markt
-  -1:
-
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49929
   No definitive information that this is the fix but back-porting Mladen's fix
   from 7.0.x can't hurt and may help
