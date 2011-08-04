@@ -178,10 +178,3 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1152601&view=rev
   +1: markt, kkolinko,kfujino
   -1:
-
-* Update to Apache Commons Daemon 1.0.7
-  Use two alternative download locations for components downloaded from
-  apache.org.
-  http://people.apache.org/~kkolinko/patches/2011-08-03_tc6_daemon107.patch
-  +1: kkolinko, markt, kfujino
-  -1:

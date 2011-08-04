@@ -371,6 +371,13 @@
       <update>
         Update Apache Commons Pool to 1.5.6. (kkolinko)
       </update>
+      <update>
+        Update Apache Commons Daemon to 1.0.7. (kkolinko)
+      </update>
+      <update>
+        At build time use two alternative download locations for components
+        downloaded from apache.org. (kkolinko)
+      </update>
     </changelog>
   </subsection>
 </section>
