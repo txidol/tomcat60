@@ -176,6 +176,10 @@
         <bug>51473</bug>: Fix concatenation of values in
         <code>SecurityConfig.setSecurityProperty()</code>. (kkolinko)
       </fix>
+      <fix>
+        <bug>51509</bug>: Fix potential concurrency issue in CSRF prevention
+        filter that may lead to some requests failing that should not. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

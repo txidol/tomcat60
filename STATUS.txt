@@ -117,12 +117,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51509
-  Correct concurrency issue in CSRF prevention filter
-  http://svn.apache.org/viewvc?rev=1148471&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-  
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51515
   Prevent immediate socket close when comet is used over HTTPS
   http://people.apache.org/~markt/patches/2011-07-22-bug51515-tc6.patch
