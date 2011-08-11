@@ -189,6 +189,10 @@
         for BIO and NIO HTTP connectors using SSL. Based on a patch by Luciana
         Moreira. (markt)
       </add>
+      <fix>
+        <bug>49595</bug>: Protect against crashes when using the APR/native
+        connector. (jfclere)
+      </fix>
       <add>
         <bug>50887</bug>: Enable the provider to be configured when generating
         SSL certs. Based on a patch by pknopp. (markt)

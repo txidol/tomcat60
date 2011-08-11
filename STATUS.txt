@@ -117,11 +117,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49595
-  http://svn.apache.org/viewvc?rev=1148216&view=rev
-  +1: jfclere, kkolinko, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51509
   Correct concurrency issue in CSRF prevention filter
   http://svn.apache.org/viewvc?rev=1148471&view=rev

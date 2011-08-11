@@ -1249,7 +1249,7 @@ public class AjpAprProcessor implements ActionHook {
     protected void flush()
         throws IOException {
         if (outputBuffer.position() > 0) {
-            if (Socket.sendbb(socket, 0, outputBuffer.position()) < 0) {
+            if ((socket != 0) && Socket.sendbb(socket, 0, outputBuffer.position()) < 0) {
                 throw new IOException(sm.getString("ajpprocessor.failedsend"));
             }
             outputBuffer.clear();
