@@ -1456,7 +1456,7 @@ public class AccessLogValve extends ValveBase implements AccessLog, Lifecycle {
     /**
      * create an AccessLogElement implementation which needs header string
      */
-    private AccessLogElement createAccessLogElement(String header, char pattern) {
+    protected AccessLogElement createAccessLogElement(String header, char pattern) {
         switch (pattern) {
         case 'i':
             return new HeaderElement(header);
@@ -1476,7 +1476,7 @@ public class AccessLogValve extends ValveBase implements AccessLog, Lifecycle {
     /**
      * create an AccessLogElement implementation
      */
-    private AccessLogElement createAccessLogElement(char pattern) {
+    protected AccessLogElement createAccessLogElement(char pattern) {
         switch (pattern) {
         case 'a':
             return new RemoteAddrElement();
