@@ -140,3 +140,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1152601&view=rev
   +1: markt, kkolinko,kfujino
   -1:
+
+* Unregisters MBean of DataSource when web application stops. (backport r1156519.)
+  http://svn.apache.org/viewvc?view=revision&revision=1156519
+  +1: kfujino
+  -1:
+
