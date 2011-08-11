@@ -110,15 +110,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1: markt Should use same mechanism for this as Tomcat 7 
   -1
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=36362
-  Handle tag files with attribute names that are not valid Java identifiers
-  http://svn.apache.org/viewvc?rev=1138950&view=rev
-  http://svn.apache.org/viewvc?rev=1138953&view=rev
-  http://svn.apache.org/viewvc?rev=1140693&view=rev
-  http://svn.apache.org/viewvc?rev=1142043&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49929
   No definitive information that this is the fix but back-porting Mladen's fix
   from 7.0.x can't hurt and may help

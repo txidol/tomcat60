@@ -991,16 +991,43 @@ public class JspUtil {
      * @return Legal Java identifier corresponding to the given identifier
      */
     public static final String makeJavaIdentifier(String identifier) {
-        StringBuffer modifiedIdentifier = 
-            new StringBuffer(identifier.length());
+        return makeJavaIdentifier(identifier, true);
+    }
+
+    /**
+     * Converts the given identifier to a legal Java identifier
+     * to be used for JSP Tag file attribute names. 
+     * 
+     * @param identifier
+     *            Identifier to convert
+     * 
+     * @return Legal Java identifier corresponding to the given identifier
+     */
+    public static final String makeJavaIdentifierForAttribute(String identifier) {
+        return makeJavaIdentifier(identifier, false);
+    }
+
+    /**
+     * Converts the given identifier to a legal Java identifier.
+     * 
+     * @param identifier
+     *            Identifier to convert
+     * 
+     * @return Legal Java identifier corresponding to the given identifier
+     */
+    private static final String makeJavaIdentifier(String identifier,
+            boolean periodToUnderscore) {
+        StringBuilder modifiedIdentifier =
+            new StringBuilder(identifier.length());
         if (!Character.isJavaIdentifierStart(identifier.charAt(0))) {
             modifiedIdentifier.append('_');
         }
         for (int i = 0; i < identifier.length(); i++) {
             char ch = identifier.charAt(i);
-            if (Character.isJavaIdentifierPart(ch) && ch != '_') {
+            if (Character.isJavaIdentifierPart(ch) &&
+                    (ch != '_' || !periodToUnderscore)) {
                 modifiedIdentifier.append(ch);
-            } else if (ch == '.') {
+            } else if (ch == '.' && periodToUnderscore) {
                 modifiedIdentifier.append('_');
             } else {
                 modifiedIdentifier.append(mangleChar(ch));
