@@ -119,7 +119,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=49595
   http://svn.apache.org/viewvc?rev=1148216&view=rev
-  +1: jfclere, kkolinko
+  +1: jfclere, kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51509
