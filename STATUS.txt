@@ -114,7 +114,7 @@ PATCHES PROPOSED TO BACKPORT:
   No definitive information that this is the fix but back-porting Mladen's fix
   from 7.0.x can't hurt and may help
   http://svn.apache.org/viewvc?view=revision&revision=1066772
-  +1: markt, kkolinko
+  +1: markt, kkolinko, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51515
