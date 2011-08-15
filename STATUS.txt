@@ -116,9 +116,3 @@ PATCHES PROPOSED TO BACKPORT:
   (note: The only change to NioEndpoint is adding a sync)
   +1: markt
   -1:
-
-* Unregisters MBean of DataSource when web application stops. (backport r1156519.)
-  http://svn.apache.org/viewvc?view=revision&revision=1156519
-  +1: kfujino, markt, jfclere
-  -1:
-

@@ -184,6 +184,9 @@
         <bug>51588</bug>: Make it easier to extend the AccessLogValve to add
         support for custom elements. (markt)
       </fix>
+      <fix>
+        Unregister DataSource MBeans when web application stops. (kfujino)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
