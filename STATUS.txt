@@ -103,13 +103,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Fix truncated cookies.
-  Based on https://issues.jboss.org/browse/JBWEB-196
-  http://people.apache.org/~jfclere/patches/patch.110622.txt
-  +1: jfclere
-  -1: markt Should use same mechanism for this as Tomcat 7 
-  -1
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51515
   Prevent immediate socket close when comet is used over HTTPS
   http://people.apache.org/~markt/patches/2011-07-22-bug51515-tc6.patch
