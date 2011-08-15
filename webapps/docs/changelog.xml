@@ -201,6 +201,10 @@
         <bug>49595</bug>: Protect against crashes when using the APR/native
         connector. (jfclere)
       </fix>
+      <fix>
+        <bug>49929</bug>: Make sure flush packet is not send after END_RESPONSE
+        packet. (mturk/markt) 
+      </fix>
       <add>
         <bug>50887</bug>: Enable the provider to be configured when generating
         SSL certs. Based on a patch by pknopp. (markt)

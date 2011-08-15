@@ -1189,8 +1189,10 @@ public class AjpProcessor implements ActionHook {
      */
     protected void flush()
         throws IOException {
-        // Send the flush message
-        output.write(flushMessageArray);
+        if (!finished) {
+            // Send the flush message
+            output.write(flushMessageArray);
+        }
     }
 
 
