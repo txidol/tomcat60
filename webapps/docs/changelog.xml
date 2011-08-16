@@ -187,6 +187,10 @@
       <fix>
         Unregister DataSource MBeans when web application stops. (kfujino)
       </fix>
+      <add>
+        Add additional configuration options to the DIGEST authenticator.
+        (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
