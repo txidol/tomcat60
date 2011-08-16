@@ -46,6 +46,9 @@
 <section name="Tomcat 6.0.33 (jfclere)">
   <subsection name="Catalina">
     <changelog>
+      <add>
+        Allow to search the virtual paths before the webapp or after it. (rjung)
+      </add>
       <fix>
         <bug>27988</bug>: Improve reporting of missing files. (markt)
       </fix>
