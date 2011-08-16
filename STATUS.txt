@@ -83,3 +83,9 @@ PATCHES PROPOSED TO BACKPORT:
         I wonder whether ConcurrentHashMap.DEFAULT_CONCURRENCY_LEVEL which is 16 is enough.
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51550
+  Display error page rather than an empty response for an IllegalStateException
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27318
+  +1: markt
+  -1:
