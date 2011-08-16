@@ -230,6 +230,10 @@
         Prevent NPEs when a socket is closed in non-error conditions after
         sendfile processing when using the HTTP NIO connector. (markt) 
       </fix>
+      <fix>
+        <bug>51515</bug>: Prevent immediate socket close when comet is used over
+        HTTPS. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
