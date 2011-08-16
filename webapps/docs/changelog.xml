@@ -46,6 +46,9 @@
 <section name="Tomcat 6.0.33 (jfclere)">
   <subsection name="Catalina">
     <changelog>
+      <add>
+        Allow to search the virtual paths before the webapp or after it. (rjung)
+      </add>
       <fix>
         <bug>27988</bug>: Improve reporting of missing files. (markt)
       </fix>
@@ -187,6 +190,10 @@
       <fix>
         Unregister DataSource MBeans when web application stops. (kfujino)
       </fix>
+      <add>
+        Add additional configuration options to the DIGEST authenticator.
+        (markt)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -225,6 +232,10 @@
       <fix>
         Prevent NPEs when a socket is closed in non-error conditions after
         sendfile processing when using the HTTP NIO connector. (markt) 
+      </fix>
+      <fix>
+        <bug>51515</bug>: Prevent immediate socket close when comet is used over
+        HTTPS. (markt)
       </fix>
     </changelog>
   </subsection>

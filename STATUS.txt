@@ -45,19 +45,6 @@ PATCHES PROPOSED TO BACKPORT:
       and fix it later if needed? I think that actually nobody besides the release manager
       uses this, so I am letting this pass.
 
-* Expose the new WebappLoader flag in the VirtualWebappLoader,
-  but allow alternative name searchVirtualFirst to make it
-  consistent with the "virtual" terminology.
-  Now you can decide, whether the virtual paths will
-  be searched before the webapp or after it.
-  If searched before, external resources take precendence
-  over internal ones. Before that change one couldn't overwrite
-  resources already present in the webapp.
-  http://svn.apache.org/viewvc?view=revision&revision=936825
-  http://people.apache.org/~rjung/patches/2010-05-14-loader-backport-r936825.patch
-  +1: rjung, funkman, kkolinko
-  -1:
-
 * Backport JSP unloading patch (BZ48358).
   The patch has substantially changed since the original version.
   Original revisions are: 937787, 1028377, 1028389, 1028396, 1028861, 1028862, 1028863,
@@ -71,12 +58,6 @@ PATCHES PROPOSED TO BACKPORT:
       rjung:  I started a discussion about JSPs and memory on the dev list.
               The updated patch fixes a race condition.
               We can stall this item until we get some feedback about 7.0.5.
-  -1:
-
-* Add additional configuration options to the DIGEST authenticator
-  http://people.apache.org/~markt/patches/2011-04-01-digest-tc6.patch
-  +1: markt
-  +1: schultz : if s/nOnce/nonce/g for the whole file, not just some of it
   -1:
 
 * Add StuckThreadDetectionValve
@@ -102,10 +83,3 @@ PATCHES PROPOSED TO BACKPORT:
         I wonder whether ConcurrentHashMap.DEFAULT_CONCURRENCY_LEVEL which is 16 is enough.
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51515
-  Prevent immediate socket close when comet is used over HTTPS
-  http://people.apache.org/~markt/patches/2011-07-22-bug51515-tc6.patch
-  (note: The only change to NioEndpoint is adding a sync)
-  +1: markt
-  -1:

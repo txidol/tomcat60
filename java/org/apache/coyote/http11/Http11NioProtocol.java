@@ -746,13 +746,7 @@ public class Http11NioProtocol implements ProtocolHandler, MBeanRegistration
                     // In the middle of processing a request/response. Keep the
                     // socket associated with the processor.
                     connections.put(socket, processor);
-
-                    if (processor.comet) {
-                        NioEndpoint.KeyAttachment att = (NioEndpoint.KeyAttachment)socket.getAttachment(false);
-                        socket.getPoller().add(socket,att.getCometOps());
-                    } else {
-                        socket.getPoller().add(socket);
-                    }
+                    socket.getPoller().add(socket);
                 } else if (state == SocketState.OPEN) {
                     // In keep-alive but between requests. OK to recycle
                     // processor. Continue to poll for the next request.
