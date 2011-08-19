@@ -89,3 +89,10 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=27318
   +1: markt
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51688
+  JreMemoryLeakPreventionListener should protect against AWT thread creation
+  http://svn.apache.org/viewvc?view=revision&revision=1159673
+  +1: schultz
+  -1:
+
