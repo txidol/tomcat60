@@ -93,11 +93,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51688
   JreMemoryLeakPreventionListener should protect against AWT thread creation
   http://svn.apache.org/viewvc?view=revision&revision=1161303
-  +1: schultz, kkolinko
+  +1: schultz, kkolinko, markt
   -1:
 
 * Fix two typos in tomcat.nsi (uppercase vs. lowercase in a macro call and in a message)
   Already fixed in 5.5, 7.0, trunk.
   http://svn.apache.org/viewvc?rev=1161310&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
