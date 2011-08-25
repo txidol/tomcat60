@@ -86,10 +86,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51550
   Display error page rather than an empty response for an IllegalStateException
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27318
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27434
   +1: markt
-  -1: kkolinko: Same concerns as in 5.5. At least it should
-    catch(Throwable) in JkCoyoteHandler.
+  -1:
 
 * Fix two typos in tomcat.nsi (uppercase vs. lowercase in a macro call and in a message)
   Already fixed in 5.5, 7.0, trunk.
