@@ -87,11 +87,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51550
   Display error page rather than an empty response for an IllegalStateException
   https://issues.apache.org/bugzilla/attachment.cgi?id=27434
-  +1: markt
-  +1: kkolinko
-       It seems though that
-        1) MemoryProtocolHandler#process() should now try/catch(Throwable).
-           The MemoryProtocolHandler is created in Embedded.java line 424.
+  +1: markt, kkolinko
   -1:
 
 * Fix two typos in tomcat.nsi (uppercase vs. lowercase in a macro call and in a message)
