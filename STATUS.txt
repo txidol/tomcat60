@@ -92,8 +92,6 @@ PATCHES PROPOSED TO BACKPORT:
        It seems though that
         1) MemoryProtocolHandler#process() should now try/catch(Throwable).
            The MemoryProtocolHandler is created in Embedded.java line 424.
-       Maybe also
-        2) i18n the message in JkCoyoteHandler.
   -1:
 
 * Fix two typos in tomcat.nsi (uppercase vs. lowercase in a macro call and in a message)
