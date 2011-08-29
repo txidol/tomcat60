@@ -125,3 +125,10 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=27438
   +1: kkolinko
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51736
+  Make rpcTimeout configurable in BackupManager.
+  http://svn.apache.org/viewvc?view=revision&revision=1162735
+  +1: kfujino
+  -1:
+
