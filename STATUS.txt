@@ -133,5 +133,5 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
   Additional patch:
   http://svn.apache.org/viewvc?rev=1162769&view=rev
-  +1: kkolinko
+  +1: kkolinko, kfujino
   -1:
