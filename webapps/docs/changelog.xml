@@ -68,6 +68,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Cluster">
+    <changelog>
+      <add>
+        <bug>51736</bug>: Make rpcTimeout configurable in BackupManager. 
+        (kfujino)
+      </add>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.33 (jfclere)" rtext="released 2011-08-18">
   <subsection name="Catalina">

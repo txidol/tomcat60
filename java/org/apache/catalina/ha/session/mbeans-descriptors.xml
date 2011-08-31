@@ -557,6 +557,10 @@ created by this Manager"
       description="mapSendOptions"
       type="int"
       writeable="false"/>
+    <attribute
+      name="rpcTimeout"
+      description="Timeout for RPC messages, how long we will wait for a reply"
+      type="long"/>
     <operation
       name="listSessionIds"
       description="Return the list of active primary session ids"
