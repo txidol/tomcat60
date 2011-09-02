@@ -292,8 +292,10 @@
 
     <attribute name="connectionLinger" required="false">
       <p>The number of milliseconds during which the sockets used by this
-      <strong>Connector</strong> will linger when they are closed.
-      The default value is -1 (socket linger is disabled).</p>
+      <strong>Connector</strong> will linger when they are closed. Setting this
+      attribute to <code>-1</code> will disable connection linger. The default
+      value for the BIO and AJP connectors is 100. The default value for the NIO
+      connection is 25.</p>
     </attribute>
 
     <attribute name="connectionTimeout" required="false">
