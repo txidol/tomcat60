@@ -84,6 +84,17 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Other">
+    <changelog>
+      <update>
+        Update the native component of the APR/native connectors to 1.1.22.
+        (markt)
+      </update>
+      <update>
+        Update the Eclipse compiler (used for JSPs) to 3.7. (markt)
+      </update>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.33 (jfclere)" rtext="released 2011-08-18">
   <subsection name="Catalina">
