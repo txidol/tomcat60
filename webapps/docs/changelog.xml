@@ -91,6 +91,10 @@
         (markt)
       </update>
       <update>
+        Update the recommended version of the native component of the APR/native
+        connectors to 1.1.22. (kkolinko)
+      </update>
+      <update>
         Update the Eclipse compiler (used for JSPs) to 3.7. (markt)
       </update>
     </changelog>
