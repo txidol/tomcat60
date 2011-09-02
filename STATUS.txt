@@ -107,11 +107,3 @@ PATCHES PROPOSED TO BACKPORT:
           never used, so cannot say whether consuming terminating '\0' is
           needed like in #doGetBytes().
   -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50394
-  Return -1 from read operation instead of throwing an exception when
-  encountering an EOF with the HTTP APR connector.
-  Native 1.1.22 is required for this fix.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27438
-  +1: kkolinko, markt, kfujino
-  -1:

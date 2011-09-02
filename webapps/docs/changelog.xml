@@ -55,6 +55,11 @@
   <subsection name="Coyote">
     <changelog>
       <fix>
+        <bug>50394</bug>: Return -1 from read operation instead of throwing an
+        exception when encountering an EOF with the HTTP APR connector.
+        (kkolinko)
+      </fix>
+      <fix>
         <bug>51698</bug>: Fix CVE-2011-3190. Prevent AJP message injection.
         (markt)
       </fix>
