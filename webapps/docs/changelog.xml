@@ -76,7 +76,7 @@
       </add>
     </changelog>
   </subsection>
-  <subsection>
+  <subsection name="Webapps">
     <changelog>
       <fix>
         Correct the documentation for the connectionLinger atribute of the HTTP
