@@ -102,6 +102,9 @@
       <update>
         Update the Eclipse compiler (used for JSPs) to 3.7. (markt)
       </update>
+      <fix>
+        Correct two typos in the Windows installer. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>
