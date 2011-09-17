@@ -45,21 +45,6 @@ PATCHES PROPOSED TO BACKPORT:
       and fix it later if needed? I think that actually nobody besides the release manager
       uses this, so I am letting this pass.
 
-* Backport JSP unloading patch (BZ48358).
-  The patch has substantially changed since the original version.
-  Original revisions are: 937787, 1028377, 1028389, 1028396, 1028861, 1028862, 1028863,
-  1028935, 1028939, 1028940, 1028944, 1028950, 1030014, 1030037
-  Combined TC 6 patch:
-  http://people.apache.org/~rjung/patches/BZ48358-JSP_Unloading-TC6_20101118.patch
-  +1: rjung
-  -0: markt - http://markmail.org/thread/777be426ulcfmdd3 suggests there may be
-              a memory leak in this code somewhere. I'd like to get to the
-              bottom of that before porting this
-      rjung:  I started a discussion about JSPs and memory on the dev list.
-              The updated patch fixes a race condition.
-              We can stall this item until we get some feedback about 7.0.5.
-  -1:
-
 * Add StuckThreadDetectionValve
   https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b
   +1: slaurent
@@ -94,12 +79,30 @@ PATCHES PROPOSED TO BACKPORT:
   Correct logger names used by Tomcat-internal copy of Commons Digester
   It is backport of r1164567, r1167394.
   https://issues.apache.org/bugzilla/attachment.cgi?id=27479
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
   
  * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51794
    Race condition in NioEndpoint selector
   +1: fhanik
   -1
-  
-  
+
+
+
+PATCHES/ISSUES THAT ARE STALLED
+
+* Backport JSP unloading patch (BZ48358).
+  The patch has substantially changed since the original version.
+  Original revisions are: 937787, 1028377, 1028389, 1028396, 1028861, 1028862, 1028863,
+  1028935, 1028939, 1028940, 1028944, 1028950, 1030014, 1030037
+  Combined TC 6 patch:
+  http://people.apache.org/~rjung/patches/BZ48358-JSP_Unloading-TC6_20101118.patch
+  +1: rjung
+  -0: markt - http://markmail.org/thread/777be426ulcfmdd3 suggests there may be
+              a memory leak in this code somewhere. I'd like to get to the
+              bottom of that before porting this
+      rjung:  I started a discussion about JSPs and memory on the dev list.
+              The updated patch fixes a race condition.
+              We can stall this item until we get some feedback about 7.0.5.
+  -1:
+
