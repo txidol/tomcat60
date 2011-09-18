@@ -87,6 +87,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1
 
+* Fine grained control of session attribute replication in clusters.
+  Trunk revisions: 1172233, 1172234, 1172236
+  TC7 revisions: 1172259
+  TC 6 patch:
+  http://people.apache.org/~rjung/patches/cluster-attribute-filter-tc6.patch
+  +1: rjung
 
 
 PATCHES/ISSUES THAT ARE STALLED
