@@ -72,14 +72,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51550
   Display error page rather than an empty response for an IllegalStateException
   https://issues.apache.org/bugzilla/attachment.cgi?id=27434
-  +1: markt, kkolinko
+  +1: markt, kkolinko, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51758
   Correct logger names used by Tomcat-internal copy of Commons Digester
   It is backport of r1164567, r1167394.
   https://issues.apache.org/bugzilla/attachment.cgi?id=27479
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, fhanik
   -1:
   
  * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51794
