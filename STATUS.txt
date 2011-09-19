@@ -110,5 +110,7 @@ PATCHES/ISSUES THAT ARE STALLED
       rjung:  I started a discussion about JSPs and memory on the dev list.
               The updated patch fixes a race condition.
               We can stall this item until we get some feedback about 7.0.5.
+      markt - r1172614 needs to be included in this proposal. With that patch,
+              my testing shows that the unloading works as designed
   -1:
 
