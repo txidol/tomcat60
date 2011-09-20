@@ -82,9 +82,9 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, rjung, fhanik
   -1:
   
- * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51794
-   Race condition in NioEndpoint selector
-  +1: fhanik
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51794
+  Race condition in NioEndpoint selector
+  +1: fhanik, kkolinko
   -1
 
 * Fine grained control of session attribute replication in clusters.
