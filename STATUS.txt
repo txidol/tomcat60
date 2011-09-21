@@ -69,12 +69,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51550
-  Display error page rather than an empty response for an IllegalStateException
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27434
-  +1: markt, kkolinko, fhanik
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51758
   Correct logger names used by Tomcat-internal copy of Commons Digester
   It is backport of r1164567, r1167394.

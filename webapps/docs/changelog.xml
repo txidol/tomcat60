@@ -47,6 +47,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>51550</bug>: Display an error page rather than an empty response
+        for an IllegalStateException caused by too many active sessions. (markt)
+      </fix>
+      <fix>
         <bug>51688</bug>: JreMemoryLeakPreventionListener now protects against
         AWT thread creation. (schultz)
       </fix>
