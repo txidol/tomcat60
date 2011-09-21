@@ -80,7 +80,7 @@ PATCHES PROPOSED TO BACKPORT:
   There is no need to call size() on a liked list to check whether it is empty,
   especially if it is followed by us iterating the list by ourselves.
   http://svn.apache.org/viewvc?rev=1173614&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
