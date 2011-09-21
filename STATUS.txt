@@ -76,6 +76,12 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~rjung/patches/cluster-attribute-filter-tc6.patch
   +1: rjung
 
+* Replace unneeded call that iterated events queue in NioEndpoint.Poller.
+  There is no need to call size() on a liked list to check whether it is empty,
+  especially if it is followed by us iterating the list by ourselves.
+  http://svn.apache.org/viewvc?rev=1173614&view=rev
+  +1: kkolinko
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
