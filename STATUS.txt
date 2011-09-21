@@ -68,13 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
         I wonder whether ConcurrentHashMap.DEFAULT_CONCURRENCY_LEVEL which is 16 is enough.
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51758
-  Correct logger names used by Tomcat-internal copy of Commons Digester
-  It is backport of r1164567, r1167394.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27479
-  +1: kkolinko, rjung, fhanik
-  -1:
   
 * Fine grained control of session attribute replication in clusters.
   Trunk revisions: 1172233, 1172234, 1172236

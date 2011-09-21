@@ -54,6 +54,13 @@
         <bug>51688</bug>: JreMemoryLeakPreventionListener now protects against
         AWT thread creation. (schultz)
       </fix>
+      <fix>
+        <bug>51758</bug>: The digester (used for processing XML files) used the
+        logger name <code>org.apache.commons.digester.Digester</code> rather
+        than the expected <code>org.apache.tomcat.util.digester.Digester</code>.
+        The digester has been changed to use the expected logger name.
+        (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
