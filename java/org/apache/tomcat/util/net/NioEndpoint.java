@@ -1579,12 +1579,11 @@ public class NioEndpoint {
                     int keyCount = 0;
                     try {
                         if ( !close ) {
-                            if (wakeupCounter.get()>0) {
+                            if (wakeupCounter.getAndSet(-1) > 0) {
                                 //if we are here, means we have other stuff to do
                                 //do a non blocking select
                                 keyCount = selector.selectNow();
-                            }else {
-                                wakeupCounter.set( -1);
+                            } else {
                                 keyCount = selector.select(selectorTimeout);
                             }
                             wakeupCounter.set(0);

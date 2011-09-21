@@ -71,6 +71,10 @@
         Detect incomplete AJP messages and reject the associated request if one
         is found. (markt)
       </fix>
+      <fix>
+        <bug>51794</bug>: Fix race condition in NioEndpoint selector. Patch
+        provided by dlord. (fhanik)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
