@@ -88,6 +88,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
+* bug 51862: JreMemoryLeakPreventionListener enhancement to load configurable classes 
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=51862
+  http://svn.apache.org/viewvc?rev=1174359&view=rev
+  +1: slaurent
+  -1: 
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
