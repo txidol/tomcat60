@@ -79,7 +79,7 @@ PATCHES PROPOSED TO BACKPORT:
   base class. This was refactored in TC 7, so the feature is available for both there.
   So it is a straight backport of r1172259, but instead of r1174181 copy the new attribute
   in DeltaManager#cloneFromtemplate().
-  +1: rjung
+  +1: rjung, kfujino
 
 * Replace unneeded call that iterated events queue in NioEndpoint.Poller.
   There is no need to call size() on a liked list to check whether it is empty,
