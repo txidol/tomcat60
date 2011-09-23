@@ -80,6 +80,9 @@ PATCHES PROPOSED TO BACKPORT:
   So it is a straight backport of r1172259, but instead of r1174181 copy the new attribute
   in DeltaManager#cloneFromtemplate().
   +1: rjung, kfujino, kkolinko
+  -1:
+    kkolinko: One has to add @Override annotation to overridden methods
+    isAttributeDistributable(), exclude() in DeltaSession.
 
 * Replace unneeded call that iterated events queue in NioEndpoint.Poller.
   There is no need to call size() on a liked list to check whether it is empty,
