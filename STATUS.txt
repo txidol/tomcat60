@@ -68,19 +68,6 @@ PATCHES PROPOSED TO BACKPORT:
         I wonder whether ConcurrentHashMap.DEFAULT_CONCURRENCY_LEVEL which is 16 is enough.
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
-  
-* Fine grained control of session attribute replication in clusters.
-  Trunk revisions: 1172233, 1172234, 1172236, 1173088, 1173090, 1173461, 1175155, 1175158
-  TC 7 revisions: 1172259, 1174181, 1175159
-  TC 6 patch:
-  http://people.apache.org/~rjung/patches/cluster-attribute-filter-tc6-v3.patch
-  Difference between TC 7 and TC 6: In TC 6 the feature will only be available for
-  DeltaManager, since Delta and BackupManager do not have ClusterManagerBase as common
-  base class. This was refactored in TC 7, so the feature is available for both there.
-  So it is a straight backport of r1172259, but instead of r1174181 copy the new attribute
-  in DeltaManager#cloneFromtemplate().
-  +1: rjung, kfujino, kkolinko
-  -1:
 
 * Replace unneeded call that iterated events queue in NioEndpoint.Poller.
   There is no need to call size() on a liked list to check whether it is empty,

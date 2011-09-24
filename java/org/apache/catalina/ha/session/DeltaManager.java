@@ -1695,6 +1695,7 @@ public class DeltaManager extends ClusterManagerBase{
         result.receiverQueue = receiverQueue ;
         result.stateTimestampDrop = stateTimestampDrop ;
         result.stateTransferCreateSendTime = stateTransferCreateSendTime; 
+        result.setSessionAttributeFilter(getSessionAttributeFilter());
         return result;
     }
 }

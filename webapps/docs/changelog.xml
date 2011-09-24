@@ -61,6 +61,10 @@
         The digester has been changed to use the expected logger name.
         (kkolinko)
       </fix>
+      <add>
+        Allow to overwrite the check for distributability
+        of session attributes by session implementations. (rjung)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
@@ -97,6 +101,11 @@
       <add>
         <bug>51736</bug>: Make rpcTimeout configurable in BackupManager. 
         (kfujino)
+      </add>
+      <add>
+        New cluster manager attribute <code>sessionAttributeFilter</code>
+        allows to filter which session attributes are replicated using a
+        regular expression applied to the attribute name. (rjung)
       </add>
     </changelog>
   </subsection>
