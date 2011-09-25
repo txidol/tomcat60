@@ -85,6 +85,12 @@ PATCHES PROPOSED TO BACKPORT:
   kkolinko: In trunk it is r1174353. Maybe better to merge from there
   instead of r1174359, for consistency. The code is the same in both.
 
+* Add build date and version to documentation pages
+  Automate copyright end date
+  It is based on r962466
+  http://people.apache.org/~kkolinko/patches/2011-09-26_tc6_docs-date.patch
+  +1: kkolinko
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
