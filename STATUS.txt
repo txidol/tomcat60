@@ -73,13 +73,13 @@ PATCHES PROPOSED TO BACKPORT:
   There is no need to call size() on a liked list to check whether it is empty,
   especially if it is followed by us iterating the list by ourselves.
   http://svn.apache.org/viewvc?rev=1173614&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * bug 51862: JreMemoryLeakPreventionListener enhancement to load configurable classes 
   https://issues.apache.org/bugzilla/show_bug.cgi?id=51862
   http://svn.apache.org/viewvc?rev=1174359&view=rev
-  +1: slaurent, kkolinko
+  +1: slaurent, kkolinko, kfujino
   -1: 
 
   kkolinko: In trunk it is r1174353. Maybe better to merge from there
@@ -89,7 +89,7 @@ PATCHES PROPOSED TO BACKPORT:
   Automate copyright end date
   It is based on r962466
   http://people.apache.org/~kkolinko/patches/2011-09-26_tc6_docs-date.patch
-  +1: kkolinko
+  +1: kkolinko, kfujino
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
