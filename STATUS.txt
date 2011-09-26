@@ -69,13 +69,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Replace unneeded call that iterated events queue in NioEndpoint.Poller.
-  There is no need to call size() on a liked list to check whether it is empty,
-  especially if it is followed by us iterating the list by ourselves.
-  http://svn.apache.org/viewvc?rev=1173614&view=rev
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * bug 51862: JreMemoryLeakPreventionListener enhancement to load configurable classes 
   https://issues.apache.org/bugzilla/show_bug.cgi?id=51862
   http://svn.apache.org/viewvc?rev=1174359&view=rev

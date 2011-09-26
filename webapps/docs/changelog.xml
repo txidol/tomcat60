@@ -86,6 +86,10 @@
         <bug>51794</bug>: Fix race condition in NioEndpoint selector. Patch
         provided by dlord. (fhanik)
       </fix>
+      <fix>
+        Replace unneeded call that iterated events queue in NioEndpoint.Poller.
+        (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

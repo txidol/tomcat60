@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.SocketAddress;
 import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 import java.nio.channels.CancelledKeyException;
@@ -1490,25 +1489,30 @@ public class NioEndpoint {
             else r.reset(socket,null,interestOps);
             addEvent(r);
         }
-        
+
+        /**
+         * Processes events in the event queue of the Poller.
+         * 
+         * @return <code>true</code> if some events were processed,
+         *   <code>false</code> if queue was empty
+         */
         public boolean events() {
             boolean result = false;
-            //synchronized (events) {
-                Runnable r = null;
-                result = (events.size() > 0);
-                while ( (r = (Runnable)events.poll()) != null ) {
-                    try {
-                        r.run();
-                        if ( r instanceof PollerEvent ) {
-                            ((PollerEvent)r).reset();
-                            eventCache.offer((PollerEvent)r);
-                        }
-                    } catch ( Throwable x ) {
-                        log.error("",x);
+
+            Runnable r = null;
+            while ( (r = (Runnable)events.poll()) != null ) {
+                result = true;
+                try {
+                    r.run();
+                    if ( r instanceof PollerEvent ) {
+                        ((PollerEvent)r).reset();
+                        eventCache.offer((PollerEvent)r);
                     }
+                } catch ( Throwable x ) {
+                    log.error("",x);
                 }
-                //events.clear();
-            //}
+            }
+
             return result;
         }
         
