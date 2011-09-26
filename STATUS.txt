@@ -59,13 +59,8 @@ PATCHES PROPOSED TO BACKPORT:
     - In valve.xml:
       - s/tomcat log/Tomcat log/ (or Apache Tomcat log)
     - In StuckThreadDetectionValve.java:
-      - s/private class CompletedStuckThread/private static class CompletedStuckThread/
-        MonitoredThread can be made static as well.
-      - result[i] = idList.get(i); and arguments to sm.getString()
-        I'd prefer the boxing/unboxing conversion to be coded explicitly.
-      - s/new Long(/Long.valueOf(/
-      - ConcurrentHashMap: Maybe the defaults could be tuned with system properties.
-        I wonder whether ConcurrentHashMap.DEFAULT_CONCURRENCY_LEVEL which is 16 is enough.
+      - private classes CompletedStuckThread, MonitoredThread: make them static (r1175897)
+      - Use Long.valueOf() and explicit boxing/unboxing (r1138132, r1175897)
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
