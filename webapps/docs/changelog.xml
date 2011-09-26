@@ -65,11 +65,6 @@
         Allow to overwrite the check for distributability
         of session attributes by session implementations. (rjung)
       </add>
-      <add>
-        Provide the log format "OneLineFormatter" for JULI that provides the same
-        information as the default plus thread name but on a single line.
-        (markt/rjung)
-      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
