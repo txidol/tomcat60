@@ -88,7 +88,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Backport (copy in) JULI OneLineFormatter plus DateFormatCache helper class
   from TC 7 JULI.
   http://people.apache.org/~rjung/patches/tc6-onelineformatter.patch
-  +1: rjung
+  +1: rjung, kkolinko
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
