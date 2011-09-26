@@ -284,8 +284,8 @@
         Unregister DataSource MBeans when web application stops. (kfujino)
       </fix>
       <add>
-        Add additional configuration options to the DIGEST authenticator.
-        (markt)
+        CVE-2011-1184: Add additional configuration options to the DIGEST
+        authenticator. (markt)
       </add>
     </changelog>
   </subsection>
