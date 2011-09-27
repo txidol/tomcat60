@@ -86,6 +86,15 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51872
+  Ensure access log always logs the correct remote IP.
+  Ensure requests with multiple errors do not result in multiple access log
+  entries.
+  http://people.apache.org/~markt/patches/2011-09-27-bug51872-tc6.patch
+  +1: markt
+  -1:
+
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
@@ -104,4 +113,3 @@ PATCHES/ISSUES THAT ARE STALLED
       markt - r1172614 needs to be included in this proposal. With that patch,
               my testing shows that the unloading works as designed
   -1:
-
