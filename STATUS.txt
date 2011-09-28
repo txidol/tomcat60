@@ -91,9 +91,15 @@ PATCHES PROPOSED TO BACKPORT:
   Ensure requests with multiple errors do not result in multiple access log
   entries.
   http://people.apache.org/~markt/patches/2011-09-27-bug51872-tc6.patch
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51905
+  Fix infinite loop in AprEndpoint shutdown if acceptor unlock
+  fails. Reduce timeout before forcefully closing the socket from 30s to 10s.
+  http://svn.apache.org/viewvc?rev=1176799&view=rev
+  +1: kkolinko
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
