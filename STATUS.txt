@@ -101,6 +101,20 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51640
+  Improve memory leak protection for DriverManager
+  http://svn.apache.org/viewvc?rev=1156171&view=rev
+  (r1156182 in TC7)
+  +1: kkolinko
+  -1:
+
+* Improve MimeHeaders.toString()
+  http://svn.apache.org/viewvc?rev=1177246&view=rev
+  (r1177125, r1177245 in trunk)
+  +1: kkolinko
+  -1:
+
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
