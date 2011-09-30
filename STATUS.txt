@@ -114,6 +114,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Fix BIO + SSL + Java7
+  http://svn.apache.org/viewvc?view=revision&revision=1174884
+  +1: markt
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
