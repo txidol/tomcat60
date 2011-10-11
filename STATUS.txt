@@ -115,6 +115,8 @@ PATCHES PROPOSED TO BACKPORT:
   requests since any HTTP method may include a body.
   Based on a patch by Nicholas Sushkin
   http://svn.apache.org/viewvc?rev=1181030&view=rev
+  http://svn.apache.org/viewvc?rev=1181137&view=rev
+  (1181028,1181136 in trunk)
   +1: markt
   -1:
 
