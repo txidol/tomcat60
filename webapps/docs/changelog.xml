@@ -62,6 +62,11 @@
         (kkolinko)
       </fix>
       <add>
+        <bug>51862</bug>: Added a <code>classesToInitialize</code> attribute to 
+        <code>JreMemoryLeakPreventionListener</code> to allow pre-loading of configurable
+        classes to avoid some classloader leaks. (slaurent)
+      </add>
+      <add>
         Allow to overwrite the check for distributability
         of session attributes by session implementations. (rjung)
       </add>

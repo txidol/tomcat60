@@ -23,6 +23,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.StringTokenizer;
 
 import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -173,6 +174,19 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
     public boolean isLdapPoolProtection() { return ldapPoolProtection; }
     public void setLdapPoolProtection(boolean ldapPoolProtection) {
         this.ldapPoolProtection = ldapPoolProtection;
+    }
+    
+    /**
+     * List of comma-separated fully qualified class names to load and initialize during
+     * the startup of this Listener. This allows to pre-load classes that are known to 
+     * provoke classloader leaks if they are loaded during a request processing.
+     */
+    private String classesToInitialize = null;
+    public String getClassesToInitialize() {
+        return classesToInitialize;
+    }
+    public void setClassesToInitialize(String classesToInitialize) {
+        this.classesToInitialize = classesToInitialize;
     }
     
     public void lifecycleEvent(LifecycleEvent event) {
@@ -367,6 +381,22 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
                         } else {
                             log.debug(sm.getString(
                                     "jreLeakListener.ldapPoolManagerFail"), e);
+                        }
+                    }
+                }
+                
+                if (classesToInitialize != null) {
+                    StringTokenizer strTok =
+                        new StringTokenizer(classesToInitialize, ", \r\n\t");
+                    while (strTok.hasMoreTokens()) {
+                        String classNameToLoad = strTok.nextToken();
+                        try {
+                            Class.forName(classNameToLoad);
+                        } catch (ClassNotFoundException e) {
+                            log.error(
+                                sm.getString("jreLeakListener.classToInitializeFail",
+                                    classNameToLoad), e);
+                            // continue with next class to load
                         }
                     }
                 }

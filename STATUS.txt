@@ -64,15 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* bug 51862: JreMemoryLeakPreventionListener enhancement to load configurable classes 
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=51862
-  http://svn.apache.org/viewvc?rev=1174359&view=rev
-  +1: slaurent, kkolinko, kfujino
-  -1: 
-
-  kkolinko: In trunk it is r1174353. Maybe better to merge from there
-  instead of r1174359, for consistency. The code is the same in both.
-
 * Add build date and version to documentation pages
   Automate copyright end date
   It is based on r962466

@@ -257,6 +257,16 @@ service:jmx:rmi://&lt;hostname&gt;:10002/jndi/rmi://&lt;hostname&gt;:10001/jmxrm
         Defaults to <code>false</code> because an AWT thread is launched.</p>
       </attribute>
 
+      <attribute name="classesToInitialize" required="false">
+        <p>List of comma-separated fully qualified class names to load and initialize 
+        during the startup of this Listener. This allows to pre-load classes that are 
+        known to provoke classloader leaks if they are loaded during a request 
+        processing. Non-JRE classes may be referenced, like 
+        <code>oracle.jdbc.driver.OracleTimeoutThreadPerVM</code>.
+        The default value is empty, but specific JRE classes are loaded by other leak 
+        protection features managed by other attributes of this Listener.</p>
+      </attribute>
+
       <attribute name="gcDaemonProtection" required="false">
         <p>Enables protection so that calls to
         <code>sun.misc.GC.requestLatency(long)</code> triggered by a web
