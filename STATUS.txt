@@ -68,13 +68,13 @@ PATCHES PROPOSED TO BACKPORT:
   Automate copyright end date
   It is based on r962466
   http://people.apache.org/~kkolinko/patches/2011-09-26_tc6_docs-date.patch
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, markt
   -1:
 
 * Backport (copy in) JULI OneLineFormatter plus DateFormatCache helper class
   from TC 7 JULI.
   http://people.apache.org/~rjung/patches/tc6-onelineformatter.patch
-  +1: rjung, kkolinko
+  +1: rjung, kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51872
@@ -89,20 +89,20 @@ PATCHES PROPOSED TO BACKPORT:
   Fix infinite loop in AprEndpoint shutdown if acceptor unlock
   fails. Reduce timeout before forcefully closing the socket from 30s to 10s.
   http://svn.apache.org/viewvc?rev=1176799&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51640
   Improve memory leak protection for DriverManager
   http://svn.apache.org/viewvc?rev=1156171&view=rev
   (r1156182 in TC7)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Improve MimeHeaders.toString()
   http://svn.apache.org/viewvc?rev=1177246&view=rev
   (r1177125, r1177245 in trunk)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix BIO + SSL + Java7
