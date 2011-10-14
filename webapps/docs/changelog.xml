@@ -124,6 +124,10 @@
         Correct the documentation for the connectionLinger atribute of the HTTP
         connector. (markt)
       </fix>
+      <add>
+        Show build date and version in the header on every documentation
+        page. (kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Other">

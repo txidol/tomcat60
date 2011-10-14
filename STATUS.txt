@@ -64,13 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Add build date and version to documentation pages
-  Automate copyright end date
-  It is based on r962466
-  http://people.apache.org/~kkolinko/patches/2011-09-26_tc6_docs-date.patch
-  +1: kkolinko, kfujino, markt
-  -1:
-
 * Backport (copy in) JULI OneLineFormatter plus DateFormatCache helper class
   from TC 7 JULI.
   http://people.apache.org/~rjung/patches/tc6-onelineformatter.patch

@@ -417,6 +417,9 @@
           excludes="build.xml project.xml"
           includes="*.xml">
       <param name="relative-path" expression="."/>
+      <param name="version" expression="${version}"/>
+      <param name="build-date" expression="${TODAY}"/>
+      <param name="year" expression="${year}"/>
     </xslt>
     <xslt basedir="webapps/docs/appdev"
            destdir="${tomcat.build}/webapps/docs/appdev"
@@ -425,6 +428,9 @@
           excludes="project.xml"
           includes="*.xml">
       <param name="relative-path" expression=".."/>
+      <param name="version" expression="${version}"/>
+      <param name="build-date" expression="${TODAY}"/>
+      <param name="year" expression="${year}"/>
     </xslt>
     <xslt basedir="webapps/docs/funcspecs"
            destdir="${tomcat.build}/webapps/docs/funcspecs"
@@ -433,6 +439,9 @@
           excludes="project.xml"
           includes="*.xml">
       <param name="relative-path" expression=".."/>
+      <param name="version" expression="${version}"/>
+      <param name="build-date" expression="${TODAY}"/>
+      <param name="year" expression="${year}"/>
     </xslt>
     <xslt basedir="webapps/docs/config"
            destdir="${tomcat.build}/webapps/docs/config"
@@ -441,6 +450,9 @@
           excludes="project.xml"
           includes="*.xml">
       <param name="relative-path" expression=".."/>
+      <param name="version" expression="${version}"/>
+      <param name="build-date" expression="${TODAY}"/>
+      <param name="year" expression="${year}"/>
     </xslt>
     <xslt basedir="webapps/docs/architecture"
            destdir="${tomcat.build}/webapps/docs/architecture"
@@ -449,6 +461,9 @@
           excludes="project.xml"
           includes="*.xml">
       <param name="relative-path" expression=".."/>
+      <param name="version" expression="${version}"/>
+      <param name="build-date" expression="${TODAY}"/>
+      <param name="year" expression="${year}"/>
     </xslt>
 
     <xslt basedir="webapps/docs/tribes"
@@ -458,6 +473,9 @@
               excludes="project.xml"
               includes="*.xml">
           <param name="relative-path" expression=".."/>
+      <param name="version" expression="${version}"/>
+      <param name="build-date" expression="${TODAY}"/>
+      <param name="year" expression="${year}"/>
     </xslt>
   </target>
 
