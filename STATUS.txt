@@ -64,12 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Backport (copy in) JULI OneLineFormatter plus DateFormatCache helper class
-  from TC 7 JULI.
-  http://people.apache.org/~rjung/patches/tc6-onelineformatter.patch
-  +1: rjung, kkolinko, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51872
   Ensure access log always logs the correct remote IP.
   Ensure requests with multiple errors do not result in multiple access log
