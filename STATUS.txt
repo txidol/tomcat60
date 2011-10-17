@@ -89,6 +89,9 @@ PATCHES PROPOSED TO BACKPORT:
   Improve memory leak protection for DriverManager
   http://svn.apache.org/viewvc?rev=1156171&view=rev
   (r1156182 in TC7)
+  + Documentation updates:
+  http://svn.apache.org/viewvc?rev=1184917&view=rev
+  http://svn.apache.org/viewvc?rev=1184919&view=rev
   +1: kkolinko, markt
   -1:
 
