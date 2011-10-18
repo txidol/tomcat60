@@ -69,14 +69,14 @@ PATCHES PROPOSED TO BACKPORT:
   Ensure requests with multiple errors do not result in multiple access log
   entries.
   http://people.apache.org/~markt/patches/2011-09-27-bug51872-tc6.patch
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51905
   Fix infinite loop in AprEndpoint shutdown if acceptor unlock
   fails. Reduce timeout before forcefully closing the socket from 30s to 10s.
   http://svn.apache.org/viewvc?rev=1176799&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51640
@@ -86,18 +86,18 @@ PATCHES PROPOSED TO BACKPORT:
   + Documentation updates:
   http://svn.apache.org/viewvc?rev=1184917&view=rev
   http://svn.apache.org/viewvc?rev=1184919&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Improve MimeHeaders.toString()
   http://svn.apache.org/viewvc?rev=1177246&view=rev
   (r1177125, r1177245 in trunk)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix BIO + SSL + Java7
   http://svn.apache.org/viewvc?view=revision&revision=1174884
-  +1: markt
+  +1: markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51940
@@ -107,7 +107,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1181030&view=rev
   http://svn.apache.org/viewvc?rev=1181137&view=rev
   (1181028,1181136 in trunk)
-  +1: markt
+  +1: markt, rjung
   -1:
 
 
