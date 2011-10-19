@@ -67,6 +67,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix BIO + SSL + Java7
   http://svn.apache.org/viewvc?view=revision&revision=1174884
   +1: markt, rjung
+  +1: kkolinko: Together with r1174882
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51940
