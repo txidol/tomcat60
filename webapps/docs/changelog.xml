@@ -66,6 +66,12 @@
         <code>JreMemoryLeakPreventionListener</code> to allow pre-loading of configurable
         classes to avoid some classloader leaks. (slaurent)
       </add>
+      <fix>
+        <bug>51872</bug>: Ensure that the access log always uses the correct
+        value for the remote IP address associated with the request and that
+        requests with multiple errors do not result in multiple entries in
+        the access log. (markt)
+      </fix>
       <add>
         Allow to overwrite the check for distributability
         of session attributes by session implementations. (rjung)

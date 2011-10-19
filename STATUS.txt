@@ -64,14 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51872
-  Ensure access log always logs the correct remote IP.
-  Ensure requests with multiple errors do not result in multiple access log
-  entries.
-  http://people.apache.org/~markt/patches/2011-09-27-bug51872-tc6.patch
-  +1: markt, kkolinko, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51905
   Fix infinite loop in AprEndpoint shutdown if acceptor unlock
   fails. Reduce timeout before forcefully closing the socket from 30s to 10s.

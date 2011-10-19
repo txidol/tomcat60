@@ -24,6 +24,7 @@ import java.io.UnsupportedEncodingException;
 import org.apache.catalina.CometEvent;
 import org.apache.catalina.Context;
 import org.apache.catalina.Globals;
+import org.apache.catalina.Host;
 import org.apache.catalina.Wrapper;
 import org.apache.catalina.util.StringManager;
 import org.apache.catalina.util.ServerInfo;
@@ -32,6 +33,7 @@ import org.apache.coyote.ActionCode;
 import org.apache.coyote.Adapter;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
+import org.apache.tomcat.util.ExceptionUtils;
 import org.apache.tomcat.util.buf.B2CConverter;
 import org.apache.tomcat.util.buf.ByteChunk;
 import org.apache.tomcat.util.buf.CharChunk;
@@ -340,10 +342,8 @@ public class CoyoteAdapter implements Adapter {
 
         Request request = (Request) req.getNote(ADAPTER_NOTES);
         Response response = (Response) res.getNote(ADAPTER_NOTES);
-        boolean create = false;
 
         if (request == null) {
-            create = true;
             // Create objects
             request = connector.createRequest();
             request.setCoyoteRequest(req);
@@ -363,10 +363,29 @@ public class CoyoteAdapter implements Adapter {
                 (connector.getURIEncoding());
         }
         
-        connector.getService().getContainer().logAccess(
-                request, response, time, true);
-        
-        if (create) {
+        try {
+            // Log at the lowest level available. logAccess() will be
+            // automatically called on parent containers.
+            boolean logged = false;
+            if (request.mappingData != null) {
+                if (request.mappingData.context != null) {
+                    logged = true;
+                    ((Context) request.mappingData.context).logAccess(
+                            request, response, time, true);
+                } else if (request.mappingData.host != null) {
+                    logged = true;
+                    ((Host) request.mappingData.host).logAccess(
+                            request, response, time, true);
+                }
+            }
+            if (!logged) {
+                connector.getService().getContainer().logAccess(
+                        request, response, time, true);
+            }
+        } catch (Throwable t) {
+            ExceptionUtils.handleThrowable(t);
+            log.warn(sm.getString("coyoteAdapter.accesslogFail"), t);
+        } finally {
             request.recycle();
             response.recycle();
         }

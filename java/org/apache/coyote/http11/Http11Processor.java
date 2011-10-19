@@ -893,7 +893,7 @@ public class Http11Processor implements ActionHook {
                 log.error(sm.getString("http11processor.request.finish"), t);
                 // 500 - Internal Server Error
                 response.setStatus(500);
-                adapter.log(request, response, 0);
+                // No access logging since after service method 
                 error = true;
             }
             try {
@@ -1201,7 +1201,6 @@ public class Http11Processor implements ActionHook {
                           " Unsupported HTTP version \""+protocolMB+"\"");
             }
             response.setStatus(505);
-            adapter.log(request, response, 0);
         }
 
         MessageBytes methodMB = request.method();
@@ -1299,7 +1298,6 @@ public class Http11Processor implements ActionHook {
                     error = true;
                     // 501 - Unimplemented
                     response.setStatus(501);
-                    adapter.log(request, response, 0);
                 }
                 startPos = commaPos + 1;
                 commaPos = transferEncodingValue.indexOf(',', startPos);
@@ -1315,7 +1313,6 @@ public class Http11Processor implements ActionHook {
                               " Unsupported transfer encoding \""+encodingName+"\"");
                 }
                 response.setStatus(501);
-                adapter.log(request, response, 0);
             }
         }
 
@@ -1338,7 +1335,6 @@ public class Http11Processor implements ActionHook {
                           " host header missing");
             }
             response.setStatus(400);
-            adapter.log(request, response, 0);
         }
 
         parseHost(valueMB);
@@ -1352,6 +1348,9 @@ public class Http11Processor implements ActionHook {
             contentDelimitation = true;
         }
 
+        if (error) {
+            adapter.log(request, response, 0);
+        }
     }
 
 
@@ -1418,7 +1417,6 @@ public class Http11Processor implements ActionHook {
                     error = true;
                     // 400 - Bad request
                     response.setStatus(400);
-                    adapter.log(request, response, 0);
                     break;
                 }
                 port = port + (charValue * mult);
