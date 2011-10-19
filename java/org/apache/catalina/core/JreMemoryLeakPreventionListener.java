@@ -23,6 +23,7 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.DriverManager;
 import java.util.StringTokenizer;
 
 import javax.imageio.ImageIO;
@@ -163,8 +164,8 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
     }
     
     /**
-     * <code>com.sun.jndi.ldap.LdapPoolManager</code> class spawns a thread when it
-     * is initialized if the system property
+     * <code>com.sun.jndi.ldap.LdapPoolManager</code> class spawns a thread when
+     * it is initialized if the system property
      * <code>com.sun.jndi.ldap.connect.pool.timeout</code> is greater than 0.
      * That thread inherits the context class loader of the current thread, so
      * that there may be a web application class loader leak if the web app
@@ -175,7 +176,21 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
     public void setLdapPoolProtection(boolean ldapPoolProtection) {
         this.ldapPoolProtection = ldapPoolProtection;
     }
-    
+
+    /**
+     * The first access to {@link DriverManager} will trigger the loading of
+     * all {@link java.sql.Driver}s in the the current class loader. The web
+     * application level memory leak protection can take care of this in most
+     * cases but triggering the loading here has fewer side-effects. 
+     */
+    private boolean driverManagerProtection = true;
+    public boolean isDriverManagerProtection() {
+        return driverManagerProtection;
+    }
+    public void setDriverManagerProtection(boolean driverManagerProtection) {
+        this.driverManagerProtection = driverManagerProtection;
+    }
+
     /**
      * List of comma-separated fully qualified class names to load and initialize during
      * the startup of this Listener. This allows to pre-load classes that are known to 
@@ -201,6 +216,14 @@ public class JreMemoryLeakPreventionListener implements LifecycleListener {
                 // ClassLoader pinning we're about to do.
                 Thread.currentThread().setContextClassLoader(
                         ClassLoader.getSystemClassLoader());
+
+                /*
+                 * First call to this loads all drivers in the current class
+                 * loader
+                 */
+                if (driverManagerProtection) {
+                    DriverManager.getDrivers();
+                }
 
                 /*
                  * Several components end up calling:
