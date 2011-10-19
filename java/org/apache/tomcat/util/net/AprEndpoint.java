@@ -856,8 +856,8 @@ public class AprEndpoint {
             running = false;
             unlockAccept();
             for (int i = 0; i < acceptors.length; i++) {
-                long s = System.currentTimeMillis() + 30000;
-                while (acceptors[i].isAlive()) {
+                long s = System.currentTimeMillis() + 10000;
+                while (acceptors[i].isAlive() && serverSock != 0) {
                     try {
                         acceptors[i].interrupt();
                         acceptors[i].join(1000);

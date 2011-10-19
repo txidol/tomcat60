@@ -64,13 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51905
-  Fix infinite loop in AprEndpoint shutdown if acceptor unlock
-  fails. Reduce timeout before forcefully closing the socket from 30s to 10s.
-  http://svn.apache.org/viewvc?rev=1176799&view=rev
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51640
   Improve memory leak protection for DriverManager
   http://svn.apache.org/viewvc?rev=1156171&view=rev

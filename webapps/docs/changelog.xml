@@ -103,6 +103,11 @@
         provided by dlord. (fhanik)
       </fix>
       <fix>
+        <bug>51905</bug>: Fix infinite loop in AprEndpoint shutdown if
+        acceptor unlock fails. Reduce timeout before forcefully closing
+        the socket from 30s to 10s. (kkolinko)
+      </fix>
+      <fix>
         Replace unneeded call that iterated events queue in NioEndpoint.Poller.
         (kkolinko)
       </fix>
