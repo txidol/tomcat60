@@ -74,12 +74,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung
   -1:
 
-* Improve MimeHeaders.toString()
-  http://svn.apache.org/viewvc?rev=1177246&view=rev
-  (r1177125, r1177245 in trunk)
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix BIO + SSL + Java7
   http://svn.apache.org/viewvc?view=revision&revision=1174884
   +1: markt, rjung

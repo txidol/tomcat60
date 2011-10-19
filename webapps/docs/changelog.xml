@@ -111,6 +111,9 @@
         Replace unneeded call that iterated events queue in NioEndpoint.Poller.
         (kkolinko)
       </fix>
+      <fix>
+        Improve MimeHeaders.toString(). (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

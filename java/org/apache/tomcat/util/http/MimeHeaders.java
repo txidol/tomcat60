@@ -142,7 +142,12 @@ public class MimeHeaders {
         Enumeration e = names();
         while (e.hasMoreElements()) {
             String n = (String)e.nextElement();
-            pw.println(n + " = " + getHeader(n));
+            Enumeration<String> ev = values(n);
+            while (ev.hasMoreElements()) {
+                pw.print(n);
+                pw.print(" = ");
+                pw.println(ev.nextElement());
+            }
         }
         return sw.toString();
     }
