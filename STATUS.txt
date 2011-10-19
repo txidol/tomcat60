@@ -64,12 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Fix BIO + SSL + Java7
-  http://svn.apache.org/viewvc?view=revision&revision=1174884
-  +1: markt, rjung
-  +1: kkolinko: Together with r1174882
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51940
   Don't limit saving of request bodies during FORM authentication to POST
   requests since any HTTP method may include a body.
