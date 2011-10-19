@@ -78,6 +78,16 @@ PATCHES PROPOSED TO BACKPORT:
   (1181028,1181136 in trunk)
   +1: markt, rjung
   -1:
+  +1: kkolinko: Performing a merge does not complete cleanly. Here is the
+  actual patch:
+   http://people.apache.org/~kkolinko/patches/2011-10-19_tc6_51940.patch
+
+  A slightly changed version of the patch, that adds a finally{} block
+  to restore original method name, so that it is printed correctly
+  in access logs:
+   http://people.apache.org/~kkolinko/patches/2011-10-19_tc6_51940_v2.patch
+  +1: kkolinko
+  -1:
 
 
 PATCHES/ISSUES THAT ARE STALLED
