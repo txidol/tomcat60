@@ -155,7 +155,12 @@
         Show build date and version in the header on every documentation
         page. (kkolinko)
       </add>
-    </changelog>
+      <fix>
+        <bug>52049</bug>: Improve setup instructions for running as a Windows
+        service: remove references to specific Windows operating systems - it
+        easily becomes dated; correct information on how a JRE is identified and
+        selected. (markt)
+      </fix>    </changelog>
   </subsection>
   <subsection name="Other">
     <changelog>
