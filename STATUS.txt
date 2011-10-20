@@ -77,19 +77,20 @@ PATCHES PROPOSED TO BACKPORT:
   In BackupManager, change of session ID is replicated by the call of a setId() method. 
   http://svn.apache.org/viewvc?view=revision&revision=1186632
   +1: kfujino
+  +0: markt (see http://markmail.org/message/otohu2w3o5v7l732)
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52059
   http://svn.apache.org/viewvc?rev=1186763&view=rev
   Fix a typo in Windows uninstaller:
   Do not forget to remove Tomcat keys from 32-bit registry on deinstallation.
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * In GenericPrincipal, SerializablePrincipal:
   Do not sort lists that have only one element
   http://svn.apache.org/viewvc?view=revision&revision=1178684
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
