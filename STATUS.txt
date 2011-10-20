@@ -66,21 +66,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51940
   Don't limit saving of request bodies during FORM authentication to POST
-  requests since any HTTP method may include a body.
+  requests since any HTTP method may include a body plus review improvements.
   Based on a patch by Nicholas Sushkin
-  http://svn.apache.org/viewvc?rev=1181030&view=rev
-  http://svn.apache.org/viewvc?rev=1181137&view=rev
-  (1181028,1181136 in trunk)
-  +1: markt, rjung
-  -1:
-  +1: kkolinko: Performing a merge does not complete cleanly. Here is the
-  actual patch:
-   http://people.apache.org/~kkolinko/patches/2011-10-19_tc6_51940.patch
-
-  Updated patch: added r1186378, r1186712
-  r1186712 = restore original method name, so that it is printed correctly in access logs
   https://issues.apache.org/bugzilla/attachment.cgi?id=27825
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Avoid an unnecessary session ID change notice. 
