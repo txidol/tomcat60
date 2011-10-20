@@ -84,6 +84,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Avoid an unnecessary session ID change notice. 
+  Notice of changed session ID by JvmRouteBinderValve is unnecessary to BackupManager. 
+  In BackupManager, change of session ID is replicated by the call of a setId() method. 
+  http://svn.apache.org/viewvc?view=revision&revision=1186632
+  +1: kfujino
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
