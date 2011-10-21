@@ -77,7 +77,7 @@ PATCHES PROPOSED TO BACKPORT:
   In BackupManager, change of session ID is replicated by the call of a setId() method. 
   http://svn.apache.org/viewvc?view=revision&revision=1186632
   http://svn.apache.org/viewvc?view=revision&revision=1187152
-  +1: kfujino, markt
+  +1: kfujino, markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52059
