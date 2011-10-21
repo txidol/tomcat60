@@ -76,6 +76,7 @@ PATCHES PROPOSED TO BACKPORT:
   Notice of changed session ID by JvmRouteBinderValve is unnecessary to BackupManager. 
   In BackupManager, change of session ID is replicated by the call of a setId() method. 
   http://svn.apache.org/viewvc?view=revision&revision=1186632
+  http://svn.apache.org/viewvc?view=revision&revision=1187152
   +1: kfujino
   +0: markt (see http://markmail.org/message/otohu2w3o5v7l732)
   -1:
