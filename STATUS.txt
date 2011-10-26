@@ -93,6 +93,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
+* Http keep-alive thread needs to have the context class loader fixed even if it
+  isn't running
+  http://svn.apache.org/viewvc?rev=1187381&view=rev
+  +1: markt
+  -1:
+
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
