@@ -104,9 +104,8 @@ PATCHES PROPOSED TO BACKPORT:
   RemoteIpValve via JMX are thread-safe.
   http://people.apache.org/~kkolinko/patches/2011-10-26_tc6_RequestFilterValve_v3.patch
   It is based on valves part of r1189256 and r1187027. (r1189258, r1187029 in TC7)
-  +1:
-  -1: kkolinko: It does not prevent app from starting and responding to
-    requests. More on dev@.
+  +1: kkolinko
+  -1:
 
 * Make configuration issue for CsrfPreventionFilter result
   in the failure of the filter rather than just a warning message.
