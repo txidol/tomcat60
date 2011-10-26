@@ -143,6 +143,12 @@
         allows to filter which session attributes are replicated using a
         regular expression applied to the attribute name. (rjung)
       </add>
+      <fix>
+        Avoid an unnecessary session ID change notice. 
+        Notice of changed session ID by JvmRouteBinderValve is unnecessary to 
+        BackupManager. In BackupManager, change of session ID is replicated by 
+        the call of a setId() method. (kfujino)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">

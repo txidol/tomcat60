@@ -426,16 +426,19 @@ public class JvmRouteBinderValve extends ValveBase implements ClusterValve, Life
      */
     protected void sendSessionIDClusterBackup(ClusterManager manager,Request request,String sessionId,
             String newSessionID) {
-        SessionIDMessage msg = new SessionIDMessage();
-        msg.setOrignalSessionID(sessionId);
-        msg.setBackupSessionID(newSessionID);
-        Context context = request.getContext();
-        msg.setContextPath(context.getPath());
-        msg.setHost(context.getParent().getName());
-        if(manager.doDomainReplication())
-            cluster.sendClusterDomain(msg);
-        else
-            cluster.send(msg);
+        if (!(getManager(request) instanceof BackupManager)) {
+            SessionIDMessage msg = new SessionIDMessage();
+            msg.setOrignalSessionID(sessionId);
+            msg.setBackupSessionID(newSessionID);
+            Context context = request.getContext();
+            msg.setContextPath(context.getPath());
+            msg.setHost(context.getParent().getName());
+            if(manager.doDomainReplication()) {
+                cluster.sendClusterDomain(msg);
+            } else {
+                cluster.send(msg);
+            }
+        }
     }
 
     /**
