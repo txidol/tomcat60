@@ -98,6 +98,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Make configuration issue for RemoteAddrValve, RemoteHostValve result
+  in the failure of the valve rather than just a warning message.
+  http://people.apache.org/~kkolinko/patches/2011-10-26_tc6_RequestFilterValve.patch
+  It is based on valves part of r1189256 and r1187027. (r1189258, r1187029 in TC7)
+  +1: kkolinko
+  -1:
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
