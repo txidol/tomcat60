@@ -148,7 +148,7 @@
   <subsection name="Webapps">
     <changelog>
       <fix>
-        Correct the documentation for the connectionLinger atribute of the HTTP
+        Correct the documentation for the connectionLinger attribute of the HTTP
         connector. (markt)
       </fix>
       <add>
@@ -157,10 +157,10 @@
       </add>
       <fix>
         <bug>52049</bug>: Improve setup instructions for running as a Windows
-        service: remove references to specific Windows operating systems - it
-        easily becomes dated; correct information on how a JRE is identified and
-        selected. (markt)
-      </fix>    </changelog>
+        service: correct information on how a JRE is identified and selected.
+        (markt)
+      </fix>
+    </changelog>
   </subsection>
   <subsection name="Other">
     <changelog>
