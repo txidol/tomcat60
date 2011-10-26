@@ -91,6 +91,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
+* Fix duplicate resetDeltaRequest() call in DeltaSession.setId(String).
+  It occurs via super.setId(id) calling overridden DeltaSession.setId(id, true).
+  http://svn.apache.org/viewvc?rev=1189386&view=rev
+  (r1189393 in TC7)
+  +1: kkolinko
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
