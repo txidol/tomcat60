@@ -82,20 +82,20 @@ PATCHES PROPOSED TO BACKPORT:
 * In GenericPrincipal, SerializablePrincipal:
   Do not sort lists that have only one element
   http://svn.apache.org/viewvc?view=revision&revision=1178684
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * Http keep-alive thread needs to have the context class loader fixed even if it
   isn't running
   http://svn.apache.org/viewvc?rev=1187381&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Fix duplicate resetDeltaRequest() call in DeltaSession.setId(String).
   It occurs via super.setId(id) calling overridden DeltaSession.setId(id, true).
   http://svn.apache.org/viewvc?rev=1189386&view=rev
   (r1189393 in TC7)
-  +1: kkolinko
+  +1: kkolinko, kfujino
   -1:
 
 * Make configuration issue for RemoteAddrValve, RemoteHostValve result
