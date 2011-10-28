@@ -117,7 +117,24 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve performance of parameter processing.
   http://people.apache.org/~markt/patches/2011-10-27-param-perf-tc6-v1.patch
   http://svn.apache.org/viewvc?rev=1190481&view=rev - fixes NPE
+  http://svn.apache.org/viewvc?rev=1190371&view=rev - make ByteChunk.DEFAULT_CHARSET final
   +1: markt
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52091
+  Address performance issues related to log creation TagHandlerPool.
+  Patch provided by Taiki Sugawara.
+  http://svn.apache.org/viewvc?rev=1190388&view=rev
+  (r1190391 in TC7)
+  +1: kkolinko
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52091
+  Address performance issues related to lock contention in StandardWrapper
+  Patch provided by Taiki Sugawara.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27862
+  (r1190389 in trunk, r1190392 in TC7)
+  +1: kkolinko
   -1:
 
 
