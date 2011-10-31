@@ -106,7 +106,7 @@ PATCHES PROPOSED TO BACKPORT:
   no context manager message is replied in order to avoid timeout (default 60sec) 
   of GET_ALL_SESSIONS sync phase. 
   http://svn.apache.org/viewvc?view=revision&revision=1195393
-  +1: kfujino, markt
+  +1: kfujino, markt, kkolinko
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
