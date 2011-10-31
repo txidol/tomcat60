@@ -252,7 +252,7 @@ public class DeltaSession extends StandardSession implements Externalizable,Clus
      *            The new session identifier
      */
     public void setId(String id) {
-        super.setId(id);
+        super.setId(id, true);
         resetDeltaRequest();
     }
 

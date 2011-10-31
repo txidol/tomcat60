@@ -162,6 +162,10 @@
         BackupManager. In BackupManager, change of session ID is replicated by 
         the call of a setId() method. (kfujino)
       </fix>
+      <fix>
+        Fix unneeded duplicate <code>resetDeltaRequest()</code> call in
+        <code>DeltaSession.setId(String)</code>. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
