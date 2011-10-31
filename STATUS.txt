@@ -89,7 +89,7 @@ PATCHES PROPOSED TO BACKPORT:
   It occurs via super.setId(id) calling overridden DeltaSession.setId(id, true).
   http://svn.apache.org/viewvc?rev=1189386&view=rev
   (r1189393 in TC7)
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, markt
   -1:
 
 * Make configuration issue for RemoteAddrValve, RemoteHostValve result
