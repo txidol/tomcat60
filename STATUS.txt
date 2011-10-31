@@ -64,12 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* In GenericPrincipal, SerializablePrincipal:
-  Do not sort lists that have only one element
-  http://svn.apache.org/viewvc?view=revision&revision=1178684
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Fix duplicate resetDeltaRequest() call in DeltaSession.setId(String).
   It occurs via super.setId(id) calling overridden DeltaSession.setId(id, true).
   http://svn.apache.org/viewvc?rev=1189386&view=rev

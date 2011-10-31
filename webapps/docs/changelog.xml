@@ -94,6 +94,10 @@
         authentication to POST requests since any HTTP method may include a
         request body. Based on a patch by Nicholas Sushkin. (kkolinko)
       </fix>
+      <update>
+        In GenericPrincipal, SerializablePrincipal: Do not sort lists of roles
+        that have only one element. (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">
