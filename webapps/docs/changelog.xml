@@ -193,6 +193,10 @@
       <fix>
         Correct two typos in the Windows installer. (kkolinko)
       </fix>
+      <fix>
+        <bug>52059</bug>: In Windows uninstaller: Do not forget to remove
+        Tomcat keys from 32-bit registry on deinstallation. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
 </section>
