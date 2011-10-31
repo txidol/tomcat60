@@ -64,14 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51940
-  Don't limit saving of request bodies during FORM authentication to POST
-  requests since any HTTP method may include a body plus review improvements.
-  Based on a patch by Nicholas Sushkin
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27825
-  +1: kkolinko, markt, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52059
   http://svn.apache.org/viewvc?rev=1186763&view=rev
   Fix a typo in Windows uninstaller:

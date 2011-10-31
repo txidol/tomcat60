@@ -89,6 +89,11 @@
         Ensure the the memory leak protection for the HttpClient keep-alive
         always operates even if the thread has already stopped. (markt)
       </fix>
+      <fix>
+        <bug>51940</bug>: Do not limit saving of request bodies during FORM
+        authentication to POST requests since any HTTP method may include a
+        request body. Based on a patch by Nicholas Sushkin. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

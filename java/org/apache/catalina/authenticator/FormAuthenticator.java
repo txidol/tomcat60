@@ -315,6 +315,17 @@ public class FormAuthenticator
      */
     protected void forwardToLoginPage(Request request, Response response,
             LoginConfig config) throws IOException {
+        
+        if (log.isDebugEnabled()) {
+            log.debug(sm.getString("formAuthenticator.forwardLogin",
+                    request.getRequestURI(), request.getMethod(),
+                    config.getLoginPage(), context.getName()));
+        }
+
+        // Always use GET for the login page, regardless of the method used
+        String oldMethod = request.getCoyoteRequest().method().toString();
+        request.getCoyoteRequest().method().setString("GET");
+
         RequestDispatcher disp =
             context.getServletContext().getRequestDispatcher
             (config.getLoginPage());
@@ -327,6 +338,9 @@ public class FormAuthenticator
             request.setAttribute(Globals.EXCEPTION_ATTR, t);
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     msg);
+        } finally {
+            // Restore original method so that it is written into access log
+            request.getCoyoteRequest().method().setString(oldMethod);
         }
     }
 
@@ -418,10 +432,11 @@ public class FormAuthenticator
             request.addCookie((Cookie) cookies.next());
         }
 
+        String method = saved.getMethod();
         MimeHeaders rmh = request.getCoyoteRequest().getMimeHeaders();
         rmh.recycle();
-        boolean cachable = "GET".equalsIgnoreCase(saved.getMethod()) ||
-                           "HEAD".equalsIgnoreCase(saved.getMethod());
+        boolean cachable = "GET".equalsIgnoreCase(method) ||
+                           "HEAD".equalsIgnoreCase(method);
         Iterator names = saved.getHeaderNames();
         while (names.hasNext()) {
             String name = (String) names.next();
@@ -447,27 +462,25 @@ public class FormAuthenticator
         request.getCoyoteRequest().getParameters().setQueryStringEncoding(
                 request.getConnector().getURIEncoding());
 
-        if ("POST".equalsIgnoreCase(saved.getMethod())) {
-            ByteChunk body = saved.getBody();
-            
-            if (body != null) {
-                request.getCoyoteRequest().action
-                    (ActionCode.ACTION_REQ_SET_BODY_REPLAY, body);
-    
-                // Set content type
-                MessageBytes contentType = MessageBytes.newInstance();
-                
-                //If no content type specified, use default for POST
-                String savedContentType = saved.getContentType();
-                if (savedContentType == null) {
-                    savedContentType = "application/x-www-form-urlencoded";
-                }
+        ByteChunk body = saved.getBody();
 
-                contentType.setString(savedContentType);
-                request.getCoyoteRequest().setContentType(contentType);
+        if (body != null) {
+            request.getCoyoteRequest().action
+                (ActionCode.ACTION_REQ_SET_BODY_REPLAY, body);
+
+            // Set content type
+            MessageBytes contentType = MessageBytes.newInstance();
+            
+            //If no content type specified, use default for POST
+            String savedContentType = saved.getContentType();
+            if (savedContentType == null && "POST".equalsIgnoreCase(method)) {
+                savedContentType = "application/x-www-form-urlencoded";
             }
+
+            contentType.setString(savedContentType);
+            request.getCoyoteRequest().setContentType(contentType);
         }
-        request.getCoyoteRequest().method().setString(saved.getMethod());
+        request.getCoyoteRequest().method().setString(method);
 
         request.getCoyoteRequest().queryString().setString
             (saved.getQueryString());
@@ -511,20 +524,22 @@ public class FormAuthenticator
             saved.addLocale(locale);
         }
 
-        if ("POST".equalsIgnoreCase(request.getMethod())) {
-            // May need to acknowledge a 100-continue expectation
-            request.getResponse().sendAcknowledgement();
+        // May need to acknowledge a 100-continue expectation
+        request.getResponse().sendAcknowledgement();
 
-            ByteChunk body = new ByteChunk();
-            body.setLimit(request.getConnector().getMaxSavePostSize());
+        ByteChunk body = new ByteChunk();
+        body.setLimit(request.getConnector().getMaxSavePostSize());
 
-            byte[] buffer = new byte[4096];
-            int bytesRead;
-            InputStream is = request.getInputStream();
-        
-            while ( (bytesRead = is.read(buffer) ) >= 0) {
-                body.append(buffer, 0, bytesRead);
-            }
+        byte[] buffer = new byte[4096];
+        int bytesRead;
+        InputStream is = request.getInputStream();
+    
+        while ( (bytesRead = is.read(buffer) ) >= 0) {
+            body.append(buffer, 0, bytesRead);
+        }
+
+        // Only save the request body if there is something to save
+        if (body.getLength() > 0) {
             saved.setContentType(request.getContentType());
             saved.setBody(body);
         }
