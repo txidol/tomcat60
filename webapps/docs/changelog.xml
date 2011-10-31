@@ -85,6 +85,10 @@
         information as the default plus thread name but on a single line.
         (markt/rjung)
       </add>
+      <fix>
+        Ensure the the memory leak protection for the HttpClient keep-alive
+        always operates even if the thread has already stopped. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

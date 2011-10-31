@@ -2154,11 +2154,6 @@ public class WebappClassLoader
                         continue;
                     }
                     
-                    // Skip threads that have already died
-                    if (!thread.isAlive()) {
-                        continue;
-                    }
-
                     // JVM controlled threads
                     ThreadGroup tg = thread.getThreadGroup();
                     if (tg != null &&
@@ -2176,6 +2171,11 @@ public class WebappClassLoader
                         continue;
                     }
                    
+                    // Skip threads that have already died
+                    if (!thread.isAlive()) {
+                        continue;
+                    }
+
                     // TimerThread can be stopped safely so treat separately
                     if (thread.getClass().getName().equals(
                             "java.util.TimerThread") &&

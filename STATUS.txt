@@ -85,12 +85,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, kfujino
   -1:
 
-* Http keep-alive thread needs to have the context class loader fixed even if it
-  isn't running
-  http://svn.apache.org/viewvc?rev=1187381&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix duplicate resetDeltaRequest() call in DeltaSession.setId(String).
   It occurs via super.setId(id) calling overridden DeltaSession.setId(id, true).
   http://svn.apache.org/viewvc?rev=1189386&view=rev
