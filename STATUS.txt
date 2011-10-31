@@ -98,7 +98,7 @@ PATCHES PROPOSED TO BACKPORT:
   RemoteIpValve via JMX are thread-safe.
   http://people.apache.org/~kkolinko/patches/2011-10-26_tc6_RequestFilterValve_v3.patch
   It is based on valves part of r1189256 and r1187027. (r1189258, r1187029 in TC7)
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, markt
   -1:
 
 * Make configuration issue for CsrfPreventionFilter result
@@ -119,7 +119,7 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Taiki Sugawara.
   http://svn.apache.org/viewvc?rev=1190388&view=rev
   (r1190391 in TC7)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52091
@@ -127,7 +127,7 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Taiki Sugawara.
   https://issues.apache.org/bugzilla/attachment.cgi?id=27862
   (r1190389 in trunk, r1190392 in TC7)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * When Context manager does not exist, 
