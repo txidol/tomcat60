@@ -166,6 +166,11 @@
         Fix unneeded duplicate <code>resetDeltaRequest()</code> call in
         <code>DeltaSession.setId(String)</code>. (kkolinko)
       </fix>
+      <add>
+        When Context manager does not exist, no context manager message is 
+        replied in order to avoid timeout (default 60 sec) of 
+        GET_ALL_SESSIONS sync phase. (kfujino)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Webapps">

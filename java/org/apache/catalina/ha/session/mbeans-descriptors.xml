@@ -172,6 +172,11 @@ created by this Manager"
       description="Number of sessions we rejected due to maxActive beeing reached"
       type="int"/>
     <attribute
+      name="noContextManagerReceived"
+      is="true"
+      description="Is no context manager message received? "
+      type="boolean"/>
+    <attribute
       name="expiredSessions"
       description="Number of sessions that expired ( doesn't include explicit invalidations )"
       type="int"/>
@@ -226,7 +231,12 @@ created by this Manager"
       name="counterReceive_EVT_CHANGE_SESSION_ID"
       description="Count receive EVT_CHANGE_SESSION_ID messages"
       type="long"
-      writeable="false"/>  
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_ALL_SESSION_NOCONTEXTMANAGER"
+      description="Count receive EVT_ALL_SESSION_NOCONTEXTMANAGER messages"
+      type="long"
+      writeable="false"/>
     <attribute
       name="counterSend_EVT_GET_ALL_SESSIONS"
       description="Count send EVT_GET_ALL_SESSIONS messages"

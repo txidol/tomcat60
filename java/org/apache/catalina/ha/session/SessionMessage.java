@@ -33,6 +33,7 @@ import org.apache.catalina.ha.ClusterMessage;
  *   <li><pre>public static final int EVT_ALL_SESSION_DATA</pre><li>
  *   <li><pre>public static final int EVT_ALL_SESSION_TRANSFERCOMPLETE</pre><li>
  *   <li><pre>public static final int EVT_CHANGE_SESSION_ID</pre><li>
+ *   <li><pre>public static final int EVT_ALL_SESSION_NOCONTEXTMANAGER</pre><li>
  * </ul>
  *
  */
@@ -82,7 +83,12 @@ public interface SessionMessage extends ClusterMessage, java.io.Serializable
      */
     public static final int EVT_CHANGE_SESSION_ID = 15;
 
-    
+    /**
+     * Event type used when context manager doesn't exist.
+     * This is used when the manager which send a session state does not exist. 
+     */
+    public static final int EVT_ALL_SESSION_NOCONTEXTMANAGER = 16;
+
     public String getContextName();
     
     public String getEventTypeString();

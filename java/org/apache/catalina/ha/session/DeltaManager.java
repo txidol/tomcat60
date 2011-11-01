@@ -115,6 +115,7 @@ public class DeltaManager extends ClusterManagerBase{
     private boolean notifySessionListenersOnReplication = true;
     private boolean notifyContainerListenersOnReplication  = true;
     private volatile boolean stateTransfered = false ;
+    private volatile boolean noContextManagerReceived = false ;
     private int stateTransferTimeout = 60;
     private boolean sendAllSessions = true;
     private boolean sendClusterDomainOnly = true ;
@@ -142,6 +143,7 @@ public class DeltaManager extends ClusterManagerBase{
     private long counterReceive_EVT_SESSION_DELTA = 0;
     private int counterReceive_EVT_ALL_SESSION_TRANSFERCOMPLETE = 0 ;
     private long counterReceive_EVT_CHANGE_SESSION_ID = 0 ;
+    private long counterReceive_EVT_ALL_SESSION_NOCONTEXTMANAGER = 0 ;
     private long counterSend_EVT_GET_ALL_SESSIONS = 0 ;
     private long counterSend_EVT_ALL_SESSION_DATA = 0 ;
     private long counterSend_EVT_SESSION_CREATED = 0;
@@ -291,7 +293,14 @@ public class DeltaManager extends ClusterManagerBase{
     public long getCounterReceive_EVT_CHANGE_SESSION_ID() {
         return counterReceive_EVT_CHANGE_SESSION_ID;
     }
-    
+
+    /**
+     * @return Returns the counterReceive_EVT_ALL_SESSION_NOCONTEXTMANAGER.
+     */
+    public long getCounterReceive_EVT_ALL_SESSION_NOCONTEXTMANAGER() {
+        return counterReceive_EVT_ALL_SESSION_NOCONTEXTMANAGER;
+    }
+
     /**
      * @return Returns the processingTime.
      */
@@ -358,7 +367,15 @@ public class DeltaManager extends ClusterManagerBase{
     public void setStateTransfered(boolean stateTransfered) {
         this.stateTransfered = stateTransfered;
     }
-    
+
+    public boolean isNoContextManagerReceived() {
+        return noContextManagerReceived;
+    }
+
+    public void setNoContextManagerReceived(boolean noContextManagerReceived) {
+        this.noContextManagerReceived = noContextManagerReceived;
+    }
+
     /**
      * @return Returns the sendAllSessionsWaitTime in msec
      */
@@ -1055,7 +1072,7 @@ public class DeltaManager extends ClusterManagerBase{
                 }
                 reqNow = System.currentTimeMillis();
                 isTimeout = ((reqNow - reqStart) > (1000 * getStateTransferTimeout()));
-            } while ((!getStateTransfered()) && (!isTimeout));
+            } while ((!getStateTransfered()) && (!isTimeout) && (!isNoContextManagerReceived()));
         } else {
             if(getStateTransferTimeout() == -1) {
                 // wait that state is transfered
@@ -1064,16 +1081,19 @@ public class DeltaManager extends ClusterManagerBase{
                         Thread.sleep(100);
                     } catch (Exception sleep) {
                     }
-                } while ((!getStateTransfered()));
+                } while ((!getStateTransfered())&& (!isNoContextManagerReceived()));
                 reqNow = System.currentTimeMillis();
             }
         }
-        if (isTimeout || (!getStateTransfered())) {
+        if (isTimeout) {
             counterNoStateTransfered++ ;
-            log.error(sm.getString("deltaManager.noSessionState",getName(),new Date(beforeSendTime),new Long(reqNow - beforeSendTime)));
+            log.error(sm.getString("deltaManager.noSessionState",getName(),new Date(beforeSendTime),Long.valueOf(reqNow - beforeSendTime)));
+        } else if (isNoContextManagerReceived()) {
+            if (log.isWarnEnabled())
+                log.warn(sm.getString("deltaManager.noContextManager",getName(),new Date(beforeSendTime),Long.valueOf(reqNow - beforeSendTime)));
         } else {
             if (log.isInfoEnabled())
-                log.info(sm.getString("deltaManager.sessionReceived",getName(), new Date(beforeSendTime), new Long(reqNow - beforeSendTime)));
+                log.info(sm.getString("deltaManager.sessionReceived",getName(), new Date(beforeSendTime), Long.valueOf(reqNow - beforeSendTime)));
         }
     }
 
@@ -1473,6 +1493,10 @@ public class DeltaManager extends ClusterManagerBase{
                     handleCHANGE_SESSION_ID(msg,sender);
                     break;
                  }
+                case SessionMessage.EVT_ALL_SESSION_NOCONTEXTMANAGER: {
+                    handleALL_SESSION_NOCONTEXTMANAGER(msg,sender);
+                    break;
+                 }
                 default: {
                     //we didn't recognize the message type, do nothing
                     break;
@@ -1658,6 +1682,18 @@ public class DeltaManager extends ClusterManagerBase{
                 }
             }
         }
+    }
+
+    /**
+     * handle receive no context manager.
+     * @param msg
+     * @param sender
+     */
+    protected void handleALL_SESSION_NOCONTEXTMANAGER(SessionMessage msg, Member sender) {
+        counterReceive_EVT_ALL_SESSION_NOCONTEXTMANAGER++ ;
+        if (log.isDebugEnabled()) 
+            log.debug(sm.getString("deltaManager.receiveMessage.noContextManager",getName(), sender.getHost(), Integer.valueOf(sender.getPort())));
+        noContextManagerReceived = true ;
     }
 
     /**
