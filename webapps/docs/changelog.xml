@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
@@ -324,7 +324,7 @@
       <fix>
         <bug>51400</bug>: Avoid jvm bottleneck on String/byte[] conversion
         triggered by a JVM bug. Based on patches by Dave Engberg and Konstantin
-        Preißer. (markt)
+        Prei&#223;er. (markt)
       </fix>
       <add>
         <bug>51403</bug>: Avoid NPE in JULI FileHandler if formatter is
@@ -1816,7 +1816,7 @@
         operation. Patch provided by sebb. (markt)
       </fix>
       <fix>
-        <bug>48417</bug>: Update French translations. Patch provided by Andrï¿½
+        <bug>48417</bug>: Update French translations. Patch provided by Andr&#233;
         Warnier. (markt/kkolinko)
       </fix>
       <fix>
@@ -2117,7 +2117,7 @@
       </fix>
       <fix>
         <bug>47918</bug>: Correct mbean descriptors for the host deployer. Patch
-        provided by Uwe Gï¿½nther. (markt)
+        provided by Uwe G&#252;nther. (markt)
       </fix>
       <fix>
         <bug>47930</bug>: Fix thread safety issues on session swap-in in the
@@ -2148,7 +2148,7 @@
       </fix>
       <fix>
         <bug>48257</bug>: Correct error in Spanish translations. Patch provided
-        by Guillermo Gutiï¿½rrez. (markt)
+        by Guillermo Guti&#233;rrez. (markt)
       </fix>
       <fix>
         <bug>48306</bug>, <bug>48307</bug>: Correct French translations. Patches
@@ -2160,7 +2160,7 @@
       </fix>
       <fix>
         <bug>48413</bug>: Correct some French translations. Patch provided by
-        Andrï¿½ Warnier. (markt)
+        Andr&#233; Warnier. (markt)
       </fix>
       <update>
         Deprecate the <code>caseSensitive</code> option on the
@@ -3209,7 +3209,7 @@
       <fix>
         <bug>46047</bug>: Include the path to the JAR when recording
         dependencies that are located inside a JAR file. Patch provided by
-        Cï¿½dric Mailleux. (markt)
+        C&#233;dric Mailleux. (markt)
       </fix>
       <fix>
         <bug>46381</bug>: Composite expressions used for attribute values must
@@ -3590,7 +3590,7 @@
       </fix>
       <fix>
         <bug>44988</bug>: Use Java5 syntax for debug options. Patch provided
-        by Cedrik Lime. (markt)
+        by C&#233;drik Lime. (markt)
       </fix>
       <fix>
         <bug>45101</bug>: Format header dates obtained from
@@ -4493,7 +4493,7 @@
         Fix various paths in the manager webapps (remm)
       </fix>
       <add>
-        Session viewer and editor for the HTML manager. Submitted by Cï¿½drik Lime. (remm)
+        Session viewer and editor for the HTML manager. Submitted by C&#233;drik Lime. (remm)
       </add>
       <add>
         Session handling tools for the manager. Submitted by Rainer Jung. (remm)
@@ -4625,7 +4625,7 @@
         Cleanup hello webapp from the docs and fix a XSS issue in the JSP.  (remm)
       </fix>
       <fix>
-        Examples webapp cleanup. Submitted by Takayuki Kaneko and Markus Schï¿½nhaber. (remm)
+        Examples webapp cleanup. Submitted by Takayuki Kaneko and Markus Sch&#246;nhaber. (remm)
       </fix>
       <fix>
         <bug>41289</bug>: Create configBase, since it is no longer created elsewhere.
@@ -4770,7 +4770,7 @@
         Use 2.5 xsd in Tomcat webapps. (markt)
       </fix>
       <fix>
-        Compression filter improvements, submitted by Eric Hedstrï¿½m. (markt)
+        Compression filter improvements, submitted by Eric Hedstr&#246;m. (markt)
       </fix>
     </changelog>
   </subsection>
@@ -4920,7 +4920,7 @@
       </update>
       <fix>
         <bug>39572</bug>: Improvements to CompressionFilter example provided by
-        Eric Hedstrï¿½m. (markt)
+        Eric Hedstr&#246;m. (markt)
       </fix>
     </changelog>
   </subsection>
