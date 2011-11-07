@@ -103,6 +103,14 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52121
+  Fix possible output corruption when compression is
+  enabled for a connector and the response is flushed.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=27905
+  +1: kkolinko
+  -1:
+
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
