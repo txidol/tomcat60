@@ -27,8 +27,12 @@ import java.util.regex.PatternSyntaxException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.Lifecycle;
+import org.apache.catalina.LifecycleException;
+import org.apache.catalina.LifecycleListener;
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.connector.Response;
+import org.apache.catalina.util.LifecycleSupport;
 import org.apache.catalina.util.StringManager;
 
 /**
@@ -66,7 +70,7 @@ import org.apache.catalina.util.StringManager;
  */
 
 public abstract class RequestFilterValve
-    extends ValveBase {
+    extends ValveBase implements Lifecycle {
 
 
     // ----------------------------------------------------- Class Variables
@@ -92,26 +96,51 @@ public abstract class RequestFilterValve
     /**
      * The comma-delimited set of <code>allow</code> expressions.
      */
-    protected String allow = null;
+    protected volatile String allow = null;
+
+    /**
+     * Helper variable to catch configuration errors.
+     * It is <code>true</code> by default, but becomes <code>false</code>
+     * if there was an attempt to assign an invalid value to the
+     * <code>allow</code> pattern.
+     */
+    protected volatile boolean allowValid = true;
 
 
     /**
      * The set of <code>allow</code> regular expressions we will evaluate.
      */
-    protected Pattern allows[] = new Pattern[0];
+    protected volatile Pattern allows[] = new Pattern[0];
 
 
     /**
      * The set of <code>deny</code> regular expressions we will evaluate.
      */
-    protected Pattern denies[] = new Pattern[0];
+    protected volatile Pattern denies[] = new Pattern[0];
 
 
     /**
      * The comma-delimited set of <code>deny</code> expressions.
      */
-    protected String deny = null;
+    protected volatile String deny = null;
 
+    /**
+     * Helper variable to catch configuration errors.
+     * It is <code>true</code> by default, but becomes <code>false</code>
+     * if there was an attempt to assign an invalid value to the
+     * <code>deny</code> pattern.
+     */
+    protected volatile boolean denyValid = true;
+
+    /**
+     * The lifecycle event support for this component.
+     */
+    protected LifecycleSupport lifecycle = new LifecycleSupport(this);
+
+    /**
+     * Has this component been started yet?
+     */
+    protected boolean started = false;
 
     // ------------------------------------------------------------- Properties
 
@@ -134,10 +163,14 @@ public abstract class RequestFilterValve
      * @param allow The new set of allow expressions
      */
     public void setAllow(String allow) {
-
-        this.allow = allow;
-        allows = precalculate(allow);
-
+        boolean success = false;
+        try {
+            allows = precalculate(allow);
+            success = true;
+            this.allow = allow;
+        } finally {
+            allowValid = success;
+        }
     }
 
 
@@ -159,10 +192,14 @@ public abstract class RequestFilterValve
      * @param deny The new set of deny expressions
      */
     public void setDeny(String deny) {
-
-        this.deny = deny;
-        denies = precalculate(deny);
-
+        boolean success = false;
+        try {
+            denies = precalculate(deny);
+            success = true;
+            this.deny = deny;
+        } finally {
+            denyValid = success;
+        }
     }
 
 
@@ -255,6 +292,10 @@ public abstract class RequestFilterValve
                            Request request, Response response)
         throws IOException, ServletException {
 
+        // Use local copies for thread safety
+        Pattern[] denies = this.denies;
+        Pattern[] allows = this.allows;
+
         // Check the deny patterns, if any
         for (int i = 0; i < denies.length; i++) {
             if (denies[i].matcher(property).matches()) {
@@ -282,5 +323,77 @@ public abstract class RequestFilterValve
 
     }
 
+
+    // ------------------------------------------------------ Lifecycle Methods
+
+
+    /**
+     * Add a lifecycle event listener to this component.
+     *
+     * @param listener The listener to add
+     */
+    public void addLifecycleListener(LifecycleListener listener) {
+        lifecycle.addLifecycleListener(listener);
+    }
+
+
+    /**
+     * Get the lifecycle listeners associated with this lifecycle. If this
+     * Lifecycle has no listeners registered, a zero-length array is returned.
+     */
+    public LifecycleListener[] findLifecycleListeners() {
+        return lifecycle.findLifecycleListeners();
+    }
+
+
+    /**
+     * Remove a lifecycle event listener from this component.
+     *
+     * @param listener The listener to add
+     */
+    public void removeLifecycleListener(LifecycleListener listener) {
+        lifecycle.removeLifecycleListener(listener);
+    }
+
+
+    /**
+     * Prepare for the beginning of active use of the public methods of this
+     * component.  This method should be called after <code>configure()</code>,
+     * and before any of the public methods of the component are utilized.
+     *
+     * @exception LifecycleException if this component detects a fatal error
+     *  that prevents this component from being used
+     */
+    public void start() throws LifecycleException {
+
+        // Validate and update our current component state
+        if (started) {
+            throw new LifecycleException(
+                    sm.getString("requestFilterValve.alreadyStarted"));
+        }
+        if (!allowValid || !denyValid) {
+            throw new LifecycleException(
+                    sm.getString("requestFilterValve.configInvalid"));
+        }
+        lifecycle.fireLifecycleEvent(START_EVENT, null);
+        started = true;
+    }
+
+    /**
+     * Gracefully terminate the active use of the public methods of this
+     * component.  This method should be the last one called on a given
+     * instance of this component.
+     *
+     * @exception LifecycleException if this component detects a fatal error
+     *  that needs to be reported
+     */
+    public void stop() throws LifecycleException {
+        // Validate and update our current component state
+        if (!started) {
+            return;
+        }
+        lifecycle.fireLifecycleEvent(STOP_EVENT, null);
+        started = false;
+    }
 
 }

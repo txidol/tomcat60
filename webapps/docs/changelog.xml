@@ -102,6 +102,15 @@
         Make configuration issue for CsrfPreventionFilter result in the
         failure of the filter rather than just a warning message. (kkolinko)
       </add>
+      <fix>
+        Ensure changes to the configuration of RemoteAddrValve and
+        RemoteHostValve via JMX are thread-safe. (kkolinko)
+      </fix>
+      <add>
+        Make configuration issue for RemoteAddrValve and
+        RemoteHostValve result in the failure of the valve rather than
+        just a warning message. (kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
