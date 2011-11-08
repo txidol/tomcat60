@@ -98,6 +98,10 @@
         In GenericPrincipal, SerializablePrincipal: Do not sort lists of roles
         that have only one element. (kkolinko)
       </update>
+      <add>
+        Make configuration issue for CsrfPreventionFilter result in the
+        failure of the filter rather than just a warning message. (kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
