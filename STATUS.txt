@@ -76,7 +76,7 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Taiki Sugawara.
   http://svn.apache.org/viewvc?rev=1190388&view=rev
   (r1190391 in TC7)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52091
@@ -84,7 +84,7 @@ PATCHES PROPOSED TO BACKPORT:
   Patch provided by Taiki Sugawara.
   https://issues.apache.org/bugzilla/attachment.cgi?id=27862
   (r1190389 in trunk, r1190392 in TC7)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52121
@@ -100,13 +100,13 @@ PATCHES PROPOSED TO BACKPORT:
   Expose previously added isAllowValid, isDenyValid properties as well.
   (r1198623 in TC7)
   http://people.apache.org/~kkolinko/patches/2011-11-08_tc6_RequestFilterValve_JMX.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50570
   Apply FIPS mode patch from TC7:
   http://svn.apache.org/viewvc?rev=1199985&view=rev
-  +1: schultz
+  +1: schultz, jfclere
   -1:
 
 
