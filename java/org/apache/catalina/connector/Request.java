@@ -920,6 +920,11 @@ public class Request
             return (requestDispatcherPath == null) 
                 ? getRequestPathMB().toString()
                 : requestDispatcherPath.toString();
+        } else if (name.equals(Globals.PARAMETER_PARSE_FAILED_ATTR)) {
+            if (coyoteRequest.getParameters().isParseFailed()) {
+                return Boolean.TRUE;
+            }
+            return null;
         }
 
         Object attr=attributes.get(name);
@@ -976,12 +981,12 @@ public class Request
      * <ul>
      * <li>{@link Globals.DISPATCHER_TYPE_ATTR}</li>
      * <li>{@link Globals.DISPATCHER_REQUEST_PATH_ATTR}</li>
-     * <li>{@link Globals.ASYNC_SUPPORTED_ATTR}</li>
      * <li>{@link Globals.CERTIFICATES_ATTR} (SSL connections only)</li>
      * <li>{@link Globals.CIPHER_SUITE_ATTR} (SSL connections only)</li>
      * <li>{@link Globals.KEY_SIZE_ATTR} (SSL connections only)</li>
      * <li>{@link Globals.SSL_SESSION_ID_ATTR} (SSL connections only)</li>
      * <li>{@link Globals.SSL_SESSION_MGR_ATTR} (SSL connections only)</li>
+     * <li>{@link Globals#PARAMETER_PARSE_FAILED_ATTR}</li>
      * </ul>
      * The underlying connector may also expose request attributes. These all
      * have names starting with "org.apache.tomcat" and include:
@@ -2565,6 +2570,8 @@ public class Request
         parametersParsed = true;
 
         Parameters parameters = coyoteRequest.getParameters();
+        // Set this every time in case limit has been changed via JMX
+        parameters.setLimit(getConnector().getMaxParameterCount());
 
         // getCharacterEncoding() may have been overridden to search for
         // hidden form field containing request encoding
@@ -2605,53 +2612,61 @@ public class Request
         if (!("application/x-www-form-urlencoded".equals(contentType)))
             return;
 
+        boolean success = false;
         int len = getContentLength();
 
-        if (len > 0) {
-            int maxPostSize = connector.getMaxPostSize();
-            if ((maxPostSize > 0) && (len > maxPostSize)) {
-                if (context.getLogger().isDebugEnabled()) {
-                    context.getLogger().debug(
-                            sm.getString("coyoteRequest.postTooLarge"));
-                }
-                return;
-            }
-            byte[] formData = null;
-            if (len < CACHED_POST_LEN) {
-                if (postData == null)
-                    postData = new byte[CACHED_POST_LEN];
-                formData = postData;
-            } else {
-                formData = new byte[len];
-            }
-            try {
-                if (readPostBody(formData, len) != len) {
+        try {
+            if (len > 0) {
+                int maxPostSize = connector.getMaxPostSize();
+                if ((maxPostSize > 0) && (len > maxPostSize)) {
+                    if (context.getLogger().isDebugEnabled()) {
+                        context.getLogger().debug(
+                                sm.getString("coyoteRequest.postTooLarge"));
+                    }
                     return;
                 }
-            } catch (IOException e) {
-                // Client disconnect
-                if (context.getLogger().isDebugEnabled()) {
-                    context.getLogger().debug(
-                            sm.getString("coyoteRequest.parseParameters"), e);
+                byte[] formData = null;
+                if (len < CACHED_POST_LEN) {
+                    if (postData == null)
+                        postData = new byte[CACHED_POST_LEN];
+                    formData = postData;
+                } else {
+                    formData = new byte[len];
                 }
-                return;
-            }
-            parameters.processParameters(formData, 0, len);
-        } else if ("chunked".equalsIgnoreCase(
-                coyoteRequest.getHeader("transfer-encoding"))) {
-            byte[] formData = null;
-            try {
-                formData = readChunkedPostBody();
-            } catch (IOException e) {
-                // Client disconnect
-                if (context.getLogger().isDebugEnabled()) {
-                    context.getLogger().debug(
-                            sm.getString("coyoteRequest.parseParameters"), e);
+                try {
+                    if (readPostBody(formData, len) != len) {
+                        return;
+                    }
+                } catch (IOException e) {
+                    // Client disconnect
+                    if (context.getLogger().isDebugEnabled()) {
+                        context.getLogger().debug(
+                                sm.getString("coyoteRequest.parseParameters"), e);
+                    }
+                    return;
                 }
-                return;
+                parameters.processParameters(formData, 0, len);
+            } else if ("chunked".equalsIgnoreCase(
+                    coyoteRequest.getHeader("transfer-encoding"))) {
+                byte[] formData = null;
+                try {
+                    formData = readChunkedPostBody();
+                } catch (IOException e) {
+                    // Client disconnect
+                    if (context.getLogger().isDebugEnabled()) {
+                        context.getLogger().debug(
+                                sm.getString("coyoteRequest.parseParameters"), e);
+                    }
+                    return;
+                }
+                if (formData != null) {
+                    parameters.processParameters(formData, 0, formData.length);
+                }
             }
-            if (formData != null) {
-                parameters.processParameters(formData, 0, formData.length);
+            success = true;
+        } finally {
+            if (!success) {
+                parameters.setParseFailed(true);
             }
         }
 

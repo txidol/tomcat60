@@ -110,7 +110,14 @@ public class B2CConverter {
         convert(bb, cb, cb.getBuffer().length - cb.getEnd());
     }
 
-    
+    /**
+     * Convert a buffer of bytes into a chars.
+     *
+     * @param bb    Input byte buffer
+     * @param cb    Output char buffer
+     * @param limit Number of bytes to convert
+     * @throws IOException
+     */    
     public void convert( ByteChunk bb, CharChunk cb, int limit) 
         throws IOException
     {
@@ -118,7 +125,7 @@ public class B2CConverter {
         try {
             // read from the reader
             int bbLengthBeforeRead  = 0;
-            while( limit > 0 ) { // conv.ready() ) {
+            while( limit > 0 ) {
                 int size = limit < BUFFER_SIZE ? limit : BUFFER_SIZE;
                 bbLengthBeforeRead = bb.getLength();
                 int cnt=conv.read( result, 0, size );
