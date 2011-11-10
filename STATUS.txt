@@ -83,12 +83,6 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
     kkolinko: +1200004, needs documentation, some unresolved issues in Re:r1199980 thread
 
-* Fix setting of some standard attributes on cluster managers.
-  Backport of r1200555 from trunk.
-  http://people.apache.org/~rjung/patches/tc6-cluster-fix-attribute-setting.patch
-  +1: rjung
-  -1:
-
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
