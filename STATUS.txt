@@ -72,14 +72,6 @@ PATCHES PROPOSED TO BACKPORT:
     kkolinko: +r1195943,r1198641 are needed, and maybe (r1195531+r1195905, r1195949, r1200218+r1200264)
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52091
-  Address performance issues related to log creation TagHandlerPool.
-  Patch provided by Taiki Sugawara.
-  http://svn.apache.org/viewvc?rev=1190388&view=rev
-  (r1190391 in TC7)
-  +1: kkolinko, markt, jfclere
-  -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52091
   Address performance issues related to lock contention in StandardWrapper
   Patch provided by Taiki Sugawara.
   https://issues.apache.org/bugzilla/attachment.cgi?id=27862

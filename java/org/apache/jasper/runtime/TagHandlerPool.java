@@ -38,8 +38,8 @@ public class TagHandlerPool {
     public static final String OPTION_TAGPOOL="tagpoolClassName";
     public static final String OPTION_MAXSIZE="tagpoolMaxSize";
 
-    private Log log = LogFactory.getLog(TagHandlerPool.class);
-    
+    private static Log log = LogFactory.getLog(TagHandlerPool.class);
+
     // index of next available tag handler
     private int current;
     protected AnnotationProcessor annotationProcessor = null;
