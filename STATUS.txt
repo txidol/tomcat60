@@ -77,7 +77,7 @@ PATCHES PROPOSED TO BACKPORT:
         New filter <code>FailedRequestFilter</code> that will reject a request
         if there were errors during HTTP parameter parsing. (kkolinko)
       </add>
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52121
