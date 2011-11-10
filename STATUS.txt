@@ -69,7 +69,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1195222&view=rev - performance tweaks
   +1: markt, jfclere
   -1:
-    kkolinko: +r1195943,r1198641 are needed, and maybe (r1195531+r1195905, r1195949)
+    kkolinko: +r1195943,r1198641 are needed, and maybe (r1195531+r1195905, r1195949, r1200218+r1200264)
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52091
   Address performance issues related to log creation TagHandlerPool.
@@ -108,6 +108,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1199985&view=rev
   +1: schultz, jfclere
   -1:
+    kkolinko: +1200004, needs documentation, some unresolved issues in Re:r1199980 thread
 
 
 PATCHES/ISSUES THAT ARE STALLED
