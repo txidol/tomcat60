@@ -77,14 +77,14 @@ PATCHES PROPOSED TO BACKPORT:
         New filter <code>FailedRequestFilter</code> that will reject a request
         if there were errors during HTTP parameter parsing. (kkolinko)
       </add>
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52121
   Fix possible output corruption when compression is
   enabled for a connector and the response is flushed.
   https://issues.apache.org/bugzilla/attachment.cgi?id=27905
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50570
