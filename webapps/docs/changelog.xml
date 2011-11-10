@@ -116,6 +116,12 @@
         RemoteHostValve result in the failure of the valve rather than
         just a warning message. (kkolinko)
       </add>
+      <update>
+        In <code>RequestFilterValve</code> (<code>RemoteAddrValve</code>,
+        <code>RemoteHostValve</code>): refactor value matching logic into
+        separate method and expose this new method <code>isAllowed</code>
+        through JMX. (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">
