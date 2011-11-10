@@ -29,6 +29,7 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Stack;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.security.AccessController;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
@@ -292,8 +293,16 @@ public class StandardWrapper
      * Restricted servlets (which can only be loaded by a privileged webapp).
      */
     protected static Properties restrictedServlets = null;
-    
-    
+
+    private final ReentrantReadWriteLock parametersLock =
+            new ReentrantReadWriteLock();
+
+    private final ReentrantReadWriteLock mappingsLock =
+            new ReentrantReadWriteLock();
+
+    private final ReentrantReadWriteLock referencesLock =
+            new ReentrantReadWriteLock();
+
     // ------------------------------------------------------------- Properties
 
 
@@ -713,8 +722,11 @@ public class StandardWrapper
      */
     public void addInitParameter(String name, String value) {
 
-        synchronized (parameters) {
+        try {
+            parametersLock.writeLock().lock();
             parameters.put(name, value);
+        } finally {
+            parametersLock.writeLock().unlock();
         }
         fireContainerEvent("addInitParameter", name);
 
@@ -740,8 +752,11 @@ public class StandardWrapper
      */
     public void addMapping(String mapping) {
 
-        synchronized (mappings) {
+        try {
+            mappingsLock.writeLock().lock();
             mappings.add(mapping);
+        } finally {
+            mappingsLock.writeLock().unlock();
         }
         fireContainerEvent("addMapping", mapping);
 
@@ -757,8 +772,11 @@ public class StandardWrapper
      */
     public void addSecurityReference(String name, String link) {
 
-        synchronized (references) {
+        try {
+            referencesLock.writeLock().lock();
             references.put(name, link);
+        } finally {
+            referencesLock.writeLock().unlock();
         }
         fireContainerEvent("addSecurityReference", name);
 
@@ -902,8 +920,11 @@ public class StandardWrapper
      */
     public String findInitParameter(String name) {
 
-        synchronized (parameters) {
+        try {
+            parametersLock.readLock().lock();
             return ((String) parameters.get(name));
+        } finally {
+            parametersLock.readLock().unlock();
         }
 
     }
@@ -915,9 +936,12 @@ public class StandardWrapper
      */
     public String[] findInitParameters() {
 
-        synchronized (parameters) {
+        try {
+            parametersLock.readLock().lock();
             String results[] = new String[parameters.size()];
             return ((String[]) parameters.keySet().toArray(results));
+        } finally {
+            parametersLock.readLock().unlock();
         }
 
     }
@@ -928,8 +952,11 @@ public class StandardWrapper
      */
     public String[] findMappings() {
 
-        synchronized (mappings) {
+        try {
+            mappingsLock.readLock().lock();
             return (String[]) mappings.toArray(new String[mappings.size()]);
+        } finally {
+            mappingsLock.readLock().unlock();
         }
 
     }
@@ -943,8 +970,11 @@ public class StandardWrapper
      */
     public String findSecurityReference(String name) {
 
-        synchronized (references) {
+        try {
+            referencesLock.readLock().lock();
             return ((String) references.get(name));
+        } finally {
+            referencesLock.readLock().unlock();
         }
 
     }
@@ -956,9 +986,12 @@ public class StandardWrapper
      */
     public String[] findSecurityReferences() {
 
-        synchronized (references) {
+        try {
+            referencesLock.readLock().lock();
             String results[] = new String[references.size()];
             return ((String[]) references.keySet().toArray(results));
+        } finally {
+            referencesLock.readLock().unlock();
         }
 
     }
@@ -1248,8 +1281,11 @@ public class StandardWrapper
      */
     public void removeInitParameter(String name) {
 
-        synchronized (parameters) {
+        try {
+            parametersLock.writeLock().lock();
             parameters.remove(name);
+        } finally {
+            parametersLock.writeLock().unlock();
         }
         fireContainerEvent("removeInitParameter", name);
 
@@ -1275,8 +1311,11 @@ public class StandardWrapper
      */
     public void removeMapping(String mapping) {
 
-        synchronized (mappings) {
+        try {
+            mappingsLock.writeLock().lock();
             mappings.remove(mapping);
+        } finally {
+            mappingsLock.writeLock().unlock();
         }
         fireContainerEvent("removeMapping", mapping);
 
@@ -1290,8 +1329,11 @@ public class StandardWrapper
      */
     public void removeSecurityReference(String name) {
 
-        synchronized (references) {
+        try {
+            referencesLock.writeLock().lock();
             references.remove(name);
+        } finally {
+            referencesLock.writeLock().unlock();
         }
         fireContainerEvent("removeSecurityReference", name);
 
@@ -1488,8 +1530,11 @@ public class StandardWrapper
      */
     public Enumeration getInitParameterNames() {
 
-        synchronized (parameters) {
+        try {
+            parametersLock.readLock().lock();
             return (new Enumerator(parameters.keySet()));
+        } finally {
+            parametersLock.readLock().unlock();
         }
 
     }

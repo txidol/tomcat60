@@ -94,6 +94,11 @@
         authentication to POST requests since any HTTP method may include a
         request body. Based on a patch by Nicholas Sushkin. (kkolinko)
       </fix>
+      <fix>
+        <bug>52091</bug>: Address performance issues related to lock contention
+        in StandardWrapper. Based on patch provided by Taiki Sugawara.
+        (kkolinko)
+      </fix>
       <update>
         In GenericPrincipal, SerializablePrincipal: Do not sort lists of roles
         that have only one element. (kkolinko)
