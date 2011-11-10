@@ -35,74 +35,58 @@ public class FlushableGZIPOutputStream extends GZIPOutputStream {
         super(os);
     }
 
+    private static final byte[] EMPTYBYTEARRAY = new byte[0];
+    private boolean hasData = false;
+
     /**
-     * It is used to reserve one byte of real data so that it can be used when
-     * flushing the stream.
+     * Here we make sure we have received data, so that the header has been for
+     * sure written to the output stream already.
      */
-    private byte[] lastByte = new byte[1];
-    private boolean hasLastByte = false;
-
     @Override
-    public void write(byte[] bytes) throws IOException {
-        write(bytes, 0, bytes.length);
-    }
-
-    @Override
-    public synchronized void write(byte[] bytes, int offset, int length)
+    public synchronized void write(byte[] bytes, int i, int i1)
             throws IOException {
-        if (length > 0) {
-            flushLastByte();
-            if (length > 1) {
-                super.write(bytes, offset, length - 1);
-            }
-            rememberLastByte(bytes[offset + length - 1]);
-        }
+        super.write(bytes, i, i1);
+        hasData = true;
     }
 
     @Override
     public synchronized void write(int i) throws IOException {
-        flushLastByte();
-        rememberLastByte((byte) i);
+        super.write(i);
+        hasData = true;
     }
 
     @Override
-    public synchronized void close() throws IOException {
-        flushLastByte();
-        super.close();
-    }
-
-    private void rememberLastByte(byte b) {
-        lastByte[0] = b;
-        hasLastByte = true;
-    }
-
-    private void flushLastByte() throws IOException {
-        if (hasLastByte) {
-            super.write(lastByte, 0, 1);
-            hasLastByte = false;
-        }
+    public synchronized void write(byte[] bytes) throws IOException {
+        super.write(bytes);
+        hasData = true;
     }
 
     @Override
     public synchronized void flush() throws IOException {
-        if (hasLastByte) {
-            // - do not allow the gzip header to be flushed on its own
-            // - do not do anything if there is no data to send
-
-            // trick the deflater to flush
-            /**
-             * Now this is tricky: We force the Deflater to flush its data by
-             * switching compression level. As yet, a perplexingly simple workaround
-             * for
-             * http://developer.java.sun.com/developer/bugParade/bugs/4255743.html
-             */
-            if (!def.finished()) {
-                def.setLevel(Deflater.NO_COMPRESSION);
-                flushLastByte();
-                def.setLevel(Deflater.DEFAULT_COMPRESSION);
-            }
+        if (!hasData) {
+            return; // do not allow the gzip header to be flushed on its own
         }
-        out.flush();
+
+        // trick the deflater to flush
+        /**
+         * Now this is tricky: We force the Deflater to flush its data by
+         * switching compression level. As yet, a perplexingly simple workaround
+         * for
+         * http://developer.java.sun.com/developer/bugParade/bugs/4255743.html
+         */
+        if (!def.finished()) {
+            def.setInput(EMPTYBYTEARRAY, 0, 0);
+
+            def.setLevel(Deflater.NO_COMPRESSION);
+            deflate();
+
+            def.setLevel(Deflater.DEFAULT_COMPRESSION);
+            deflate();
+
+            out.flush();
+        }
+
+        hasData = false; // no more data to flush
     }
 
     /*
