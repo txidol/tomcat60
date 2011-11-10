@@ -90,10 +90,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50570
   Apply FIPS mode patch from TC7:
   http://svn.apache.org/viewvc?rev=1199985&view=rev
+  http://svn.apache.org/viewvc?rev=1200004&view=rev
+  http://svn.apache.org/viewvc?rev=1200448&view=rev
   +1: schultz, jfclere
   -1:
     kkolinko: +1200004, needs documentation, some unresolved issues in Re:r1199980 thread
-
 
 PATCHES/ISSUES THAT ARE STALLED
 
