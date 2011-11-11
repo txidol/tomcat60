@@ -65,14 +65,23 @@
 
   </subsection>
 
-  <subsection name="Standard Implementation">
+</section>
+
+<section name="Nested Components">
+
+  <p>No element may be nested inside a <strong>Listener</strong>.</p>
+
+</section>
+
+
+<section name="Standard Implementation">
 
     <p>Unlike most Catalina components, there are several standard
     <strong>Listener</strong> implementations available.  As a result,
     the <code>className</code> attribute MUST be used to select the
     implementation you wish to use.</p>
 
-    <h3>APR Lifecycle Listener (org.apache.catalina.core.AprLifecycleListener)</h3>
+  <subsection name="APR Lifecycle Listener - org.apache.catalina.core.AprLifecycleListener">
 
     <p>The <strong>APR Lifecycle Listener</strong> checks for the presence of
     the APR/native library and loads the library if it is present. For more
@@ -87,11 +96,12 @@
     <attributes>
 
       <attribute name="SSLEngine" required="false">
-        <p>Name of the SSLEngine to use. off: Do not use SSL, on: Use SSL but no
-        specific ENGINE. The default value is <b>on</b>. This initializes the
+        <p>Name of the SSLEngine to use. <code>off</code>: do not use SSL,
+        <code>on</code>: use SSL but no specific ENGINE.</p>
+        <p>The default value is <b>on</b>. This initializes the
         native SSL engine, which must be enabled in the APR/native connector by
         the use of the <code>SSLEnabled</code> attribute.</p>
-        <p>See the <a href="http://www.openssl.org">Official OpenSSL website</a>
+        <p>See the <a href="http://www.openssl.org/">Official OpenSSL website</a>
         for more details on supported SSL hardware engines and manufacturers.
         </p>
       </attribute>
@@ -104,7 +114,9 @@
 
     </attributes>
 
-    <h3>Jasper Listener (org.apache.catalina.core.JasperListener)</h3>
+  </subsection>
+
+  <subsection name="Jasper Listener - org.apache.catalina.core.JasperListener">
 
     <p>The <strong>Jasper Listener</strong> initializes the Jasper 2 JSP engine
     before any web applications that may use it are loaded. For more
@@ -117,8 +129,9 @@
     <p>No additional attributes are supported by the <strong>Jasper Listener
     </strong>.</p>
 
-    <h3>Server Lifecycle Listener
-    (org.apache.catalina.mbeans.ServerLifecycleListener)</h3>
+  </subsection>
+
+  <subsection name="Server Lifecycle Listener - org.apache.catalina.mbeans.ServerLifecycleListener">
 
     <p>The <strong>Server Lifecycle Listener</strong> initializes the
     MBeanServer for the MBeans that may be used to manage Tomcat via JMX.
@@ -130,8 +143,9 @@
     <p>No additional attributes are supported by the <strong>Server Lifecycle
     Listener</strong>.</p>
 
-    <h3>Global Resources Lifecycle Listener
-    (org.apache.catalina.mbeans.GlobalResourcesLifecycleListener)</h3>
+  </subsection>
+
+  <subsection name="Global Resources Lifecycle Listener - org.apache.catalina.mbeans.GlobalResourcesLifecycleListener">
 
     <p>The <strong>Global Resources Lifecycle Listener</strong> initializes the
     Global JNDI resources defined in server.xml as part of the <a
@@ -144,8 +158,9 @@
     <p>No additional attributes are supported by the <strong>Global Resources
     Lifecycle Listener</strong>.</p>
 
-    <h3>JMX Remote Lifecycle Listener
-    (org.apache.catalina.mbeans.JmxRemoteLifecycleListener)</h3>
+  </subsection>
+
+  <subsection name="JMX Remote Lifecycle Listener - org.apache.catalina.mbeans.JmxRemoteLifecycleListener">
 
     <p>This listener requires <code>catalina-jmx-remote.jar</code> to be placed
     in <code>$CATALINA_HOME/lib</code>. This jar may be found in the extras
@@ -221,8 +236,9 @@ service:jmx:rmi://&lt;hostname&gt;:10002/jndi/rmi://&lt;hostname&gt;:10001/jmxrm
 
     </attributes>
 
-    <h3>JRE Memory Leak Prevention Listener
-        (org.apache.catalina.core.JreMemoryLeakPreventionListener)</h3>
+  </subsection>
+
+  <subsection name="JRE Memory Leak Prevention Listener - org.apache.catalina.core.JreMemoryLeakPreventionListener">
 
     <p>The <strong>JRE Memory Leak Prevention Listener</strong> provides
     work-arounds for known places where the Java Runtime environment uses
@@ -349,12 +365,6 @@ service:jmx:rmi://&lt;hostname&gt;:10002/jndi/rmi://&lt;hostname&gt;:10001/jmxrm
     </attributes>
 
   </subsection>
-
-</section>
-
-<section name="Nested Components">
-
-  <p>No element may be nested inside a <strong>Listener</strong>.</p>
 
 </section>
 
