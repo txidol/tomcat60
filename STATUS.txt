@@ -80,6 +80,13 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
     kkolinko: +1200004, needs documentation, some unresolved issues in Re:r1199980 thread
 
+* Clean up handling multi-byte chars in the connectors.
+  Backport of r1201069+1201087 from trunk resp. r1201076+r1201088 from TC7
+  plus making the JK connector consistent with the Coyote one.
+  http://people.apache.org/~rjung/patches/connectors_multi-byte_handling_cleanup.patch
+  +1: kkolinko, rjung, jfclere
+  -1:
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
