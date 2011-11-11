@@ -68,7 +68,7 @@ PATCHES PROPOSED TO BACKPORT:
   Fix possible output corruption when compression is
   enabled for a connector and the response is flushed.
   https://issues.apache.org/bugzilla/attachment.cgi?id=27924
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50570
