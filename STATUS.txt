@@ -64,13 +64,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52121
-  Fix possible output corruption when compression is
-  enabled for a connector and the response is flushed.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=27924
-  +1: kkolinko, rjung, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50570
   Apply FIPS mode patch from TC7:
   http://svn.apache.org/viewvc?rev=1199985&view=rev

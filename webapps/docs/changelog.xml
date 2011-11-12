@@ -160,6 +160,11 @@
         the socket from 30s to 10s. (kkolinko)
       </fix>
       <fix>
+        <bug>52121</bug>: Fix possible output corruption when compression is
+        enabled for a connector and the response is flushed. Test
+        case provided by David Marcks. (kkolinko)
+      </fix>
+      <fix>
         Replace unneeded call that iterated events queue in NioEndpoint.Poller.
         (kkolinko)
       </fix>

@@ -35,58 +35,93 @@ public class FlushableGZIPOutputStream extends GZIPOutputStream {
         super(os);
     }
 
-    private static final byte[] EMPTYBYTEARRAY = new byte[0];
-    private boolean hasData = false;
-
     /**
-     * Here we make sure we have received data, so that the header has been for
-     * sure written to the output stream already.
+     * It is used to reserve one byte of real data so that it can be used when
+     * flushing the stream.
      */
+    private byte[] lastByte = new byte[1];
+    private boolean hasLastByte = false;
+
     @Override
-    public synchronized void write(byte[] bytes, int i, int i1)
+    public void write(byte[] bytes) throws IOException {
+        write(bytes, 0, bytes.length);
+    }
+
+    @Override
+    public synchronized void write(byte[] bytes, int offset, int length)
             throws IOException {
-        super.write(bytes, i, i1);
-        hasData = true;
+        if (length > 0) {
+            flushLastByte();
+            if (length > 1) {
+                super.write(bytes, offset, length - 1);
+            }
+            rememberLastByte(bytes[offset + length - 1]);
+        }
     }
 
     @Override
     public synchronized void write(int i) throws IOException {
-        super.write(i);
-        hasData = true;
+        flushLastByte();
+        rememberLastByte((byte) i);
     }
 
     @Override
-    public synchronized void write(byte[] bytes) throws IOException {
-        super.write(bytes);
-        hasData = true;
+    public synchronized void finish() throws IOException {
+        try {
+            flushLastByte();
+        } catch (IOException ignore) {
+            // If our write failed, then trailer write in finish() will fail
+            // with IOException as well, but it will leave Deflater in more
+            // consistent state.
+        }
+        super.finish();
+    }
+
+    @Override
+    public synchronized void close() throws IOException {
+        try {
+            flushLastByte();
+        } catch (IOException ignored) {
+            // Ignore. As OutputStream#close() says, the contract of close()
+            // is to close the stream. It does not matter much if the
+            // stream is not writable any more.
+        }
+        super.close();
+    }
+
+    private void rememberLastByte(byte b) {
+        lastByte[0] = b;
+        hasLastByte = true;
+    }
+
+    private void flushLastByte() throws IOException {
+        if (hasLastByte) {
+            // Clear the flag first, because write() may fail
+            hasLastByte = false;
+            super.write(lastByte, 0, 1);
+        }
     }
 
     @Override
     public synchronized void flush() throws IOException {
-        if (!hasData) {
-            return; // do not allow the gzip header to be flushed on its own
+        if (hasLastByte) {
+            // - do not allow the gzip header to be flushed on its own
+            // - do not do anything if there is no data to send
+
+            // trick the deflater to flush
+            /**
+             * Now this is tricky: We force the Deflater to flush its data by
+             * switching compression level. As yet, a perplexingly simple workaround
+             * for
+             * http://developer.java.sun.com/developer/bugParade/bugs/4255743.html
+             */
+            if (!def.finished()) {
+                def.setLevel(Deflater.NO_COMPRESSION);
+                flushLastByte();
+                def.setLevel(Deflater.DEFAULT_COMPRESSION);
+            }
         }
-
-        // trick the deflater to flush
-        /**
-         * Now this is tricky: We force the Deflater to flush its data by
-         * switching compression level. As yet, a perplexingly simple workaround
-         * for
-         * http://developer.java.sun.com/developer/bugParade/bugs/4255743.html
-         */
-        if (!def.finished()) {
-            def.setInput(EMPTYBYTEARRAY, 0, 0);
-
-            def.setLevel(Deflater.NO_COMPRESSION);
-            deflate();
-
-            def.setLevel(Deflater.DEFAULT_COMPRESSION);
-            deflate();
-
-            out.flush();
-        }
-
-        hasData = false; // no more data to flush
+        out.flush();
     }
 
     /*
