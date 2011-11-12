@@ -106,8 +106,9 @@ PATCHES PROPOSED TO BACKPORT:
   Backport of r1201069+1201087 from trunk resp. r1201076+r1201088 from TC7
   plus making the JK connector consistent with the Coyote one.
   http://people.apache.org/~rjung/patches/connectors_multi-byte_handling_cleanup.patch
-  +1: rjung
+  +1: rjung, kkolinko
   -1:
+    kkolinko:s/public/private/ in two new methods in MsgAjp.
 
 PATCHES/ISSUES THAT ARE STALLED
 
