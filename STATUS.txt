@@ -77,14 +77,36 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1200004&view=rev
   http://svn.apache.org/viewvc?rev=1200448&view=rev
   +1: schultz, jfclere
+  -1: kkolinko: It needs to include more preceding and followup
+   changes. Updated patch proposed below.
+
+* Backport AprLifecycleListener improvements from TC7
+  This includes:
+   - Use consistent external synchronization object for private
+     initialization methods. Turn initialization flags to false after APR
+     has been terminated. That is, to terminate it only once.
+     (rev. 946671 + several after it)
+   - Use ExceptionUtils.handleThrowable() for fatal errors
+     (rev. 1001904)
+   - Do not allow to change SSL options if SSL engine has already been
+     initialised.
+     (rev. 1199985 + several after it)
+   - Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50570
+     Enable FIPS mode to be set in AprLifecycleListener.
+     Based upon a patch from Chris Beckey.
+     (rev. 1199985 + several after it)
+  kkolinko: I tested only that it does not break things with the current
+    released tcnative version 1.1.22 that does not have FIPS mode support.
+  http://people.apache.org/~kkolinko/patches/2011-11-12_tc6_AprLifecycleListener.patch
+  +1: kkolinko
   -1:
-    kkolinko: +1200004, needs documentation, some unresolved issues in Re:r1199980 thread
+
 
 * Clean up handling multi-byte chars in the connectors.
   Backport of r1201069+1201087 from trunk resp. r1201076+r1201088 from TC7
   plus making the JK connector consistent with the Coyote one.
   http://people.apache.org/~rjung/patches/connectors_multi-byte_handling_cleanup.patch
-  +1: kkolinko, rjung, jfclere
+  +1: rjung
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
