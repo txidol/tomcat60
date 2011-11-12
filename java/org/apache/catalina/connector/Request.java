@@ -985,7 +985,6 @@ public class Request
      * <li>{@link Globals.CIPHER_SUITE_ATTR} (SSL connections only)</li>
      * <li>{@link Globals.KEY_SIZE_ATTR} (SSL connections only)</li>
      * <li>{@link Globals.SSL_SESSION_ID_ATTR} (SSL connections only)</li>
-     * <li>{@link Globals.SSL_SESSION_MGR_ATTR} (SSL connections only)</li>
      * <li>{@link Globals#PARAMETER_PARSE_FAILED_ATTR}</li>
      * </ul>
      * The underlying connector may also expose request attributes. These all
