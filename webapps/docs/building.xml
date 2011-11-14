@@ -113,17 +113,19 @@ Use the following commands:
 </p>
 
 <p>
-NOTE: Users accessing the Internet through a proxy must use a properties
+<b>NOTE:</b> Users accessing the Internet through a proxy must use a properties
   file to indicate to Ant the proxy configuration. Read below.
 </p>
 
 <p>
-WARNING: Running this command will download binaries to the 
-  <code>/usr/share/java</code> directory. 
-  Make sure this is appropriate to do so on your computer. On Windows, 
-  this usually corresponds to the <code>C:\usr\share\java</code> directory, 
-  unless Cygwin is used. Read below to customize the directory used 
-  to download the binaries.
+<b>WARNING:</b> Running this command will download binary binaries to the
+  <code>/usr/share/java</code> directory by default.
+  On a typical Linux or MacOX system, an ordinary user
+  will not have access to write to this directory, and, even if you do,
+  it may not be appropriate for you to write there. On Windows
+  this usually corresponds to the <code>C:\usr\share\java</code> directory,
+  unless Cygwin is used. Read below to learn how to customize the directory
+  used to download the binaries.
 </p>
 
 <p>
@@ -139,7 +141,7 @@ The build can be controlled by creating a ${tomcat.source}/build.properties
     # ----- Default Base Path for Dependent Packages -----<br/>
     # Replace this path with the directory path where<br/>
     # dependencies binaries should be downloaded.<br/>
-    base.path=/usr/share/java<br/>
+    base.path=/home/me/some-place-to-download-to<br/>
 </code>
 </p>
 
@@ -160,8 +162,8 @@ and the following steps have been used by some developers.
 <p>
 Note that you <b>must</b> complete all the above steps to fetch
 the repositories and build some JAR files the first time.
-After you have completed the above steps, you can set up a
-series of Eclipse 4 projects.
+After you have completed the above steps, you can set up an
+Eclipse project.
 <b>Note</b> that this will not let you build everything under Eclipse;
 the build process requires use of Ant for the many stages that aren't
 simple Java compilations.
@@ -183,16 +185,21 @@ Variables to add two new Classpath variables:
 </p>
 
 <p>
+There are two files in the root directory, <code>eclipse.classpath</code> and
+<code>eclipse.project</code>. Create their copies with new names,
+<code>.classpath</code> and <code>.project</code> respectively.
+</p>
+
+<p>
 Use File-&gt;Import and chose &quot;Existing Projects into Workspace&quot;.
 From there import the root directory where you have checked out tomcat.
 </p>
 
 <p>
-Eclipse .project and .classpath files are provided in to root directory of tomcat repository
-should allow Eclipse to find all source trees and jars, and
+Eclipse .project and .classpath files provided in the root directory of
+tomcat repository should allow Eclipse to find all source trees and jars, and
 hopefully compile without problems. <b>Note</b> that these
-files assume you are using Eclipse with a 5.0 or later JDK; also, the
-connectors module must be built with a compiler compliance level of 5.0.
+files assume you are using Eclipse with a 5.0 or later JDK.
 </p>
 
 <p>
@@ -201,15 +208,6 @@ enter "org.apache.catalina.startup.Catalina" as the main class,
 "start" as program arguments, and
 "-Dcatalina.home=..." (with the name of your build directory) 
 as VM arguments.
-</p>
-
-<p>
-Note also that due to the way the Tomcat source is assembled
-from several SVN projects, you may not be able to use the Eclipse
-SVN client to update (nor to commit, if you are a committer).
-Use the external SVN client of your choice, then use the
-Eclipse PackageExplorer or Navigator "Refresh" context menu item
-to tell Eclipse that you've updated the files.
 </p>
 
 </section>
