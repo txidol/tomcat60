@@ -98,7 +98,10 @@ PATCHES PROPOSED TO BACKPORT:
   If autodeployment fails, create DeployedApplication object and register
   what we deployed (xml or war or dir - a single file) as redeployResource.
   If it is updated the application will be redeployed.
+  + ContainerBase patch adds display of failed apps in manager. They can be
+  listed and undeployed.
   http://people.apache.org/~kkolinko/patches/2011-11-14_tc6_HostConfig.patch
+  http://people.apache.org/~kkolinko/patches/2011-11-14_tc6_ContainerBase.patch
   +1: kkolinko
   -1:
 
