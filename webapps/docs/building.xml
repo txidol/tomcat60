@@ -82,7 +82,7 @@ available, which will be used to actually perform the build.
 <section name="Checkout or obtain the source code for Tomcat 6.0">
 
   <p>
-  Tomcat SVN repository URL:
+  Tomcat 6.0 SVN repository URL:
   <code>http://svn.apache.org/repos/asf/tomcat/tc6.0.x/</code>
   </p>
   
@@ -113,11 +113,6 @@ Use the following commands:
 </p>
 
 <p>
-<b>NOTE:</b> Users accessing the Internet through a proxy must use a properties
-  file to indicate to Ant the proxy configuration. Read below.
-</p>
-
-<p>
 <b>WARNING:</b> Running this command will download binary binaries to the
   <code>/usr/share/java</code> directory by default.
   On a typical Linux or MacOX system, an ordinary user
@@ -126,6 +121,11 @@ Use the following commands:
   this usually corresponds to the <code>C:\usr\share\java</code> directory,
   unless Cygwin is used. Read below to learn how to customize the directory
   used to download the binaries.
+</p>
+
+<p>
+<b>NOTE:</b> Users accessing the Internet through a proxy must use a properties
+  file to indicate to Ant the proxy configuration. Read below.
 </p>
 
 <p>
