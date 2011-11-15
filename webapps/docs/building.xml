@@ -83,20 +83,19 @@ available, which will be used to actually perform the build.
 
   <p>
   Tomcat 6.0 SVN repository URL:
-  <code>http://svn.apache.org/repos/asf/tomcat/tc6.0.x/</code>
+  <a href="http://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/">http://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/</a>
   </p>
-  
+
   <p>
   Download a source package from:
-  <code>http://tomcat.apache.org/download-60.cgi</code>
+  <a href="http://tomcat.apache.org/download-60.cgi">http://tomcat.apache.org/download-60.cgi</a>
   </p>
-  
+
   <p>
-  Checkout the source using SVN, selecting the desired version or
-  branch (current development source is at 
-  <code>http://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/</code>), or 
-  unpack the source package. The location where the source has been
-  placed will be referred as ${tomcat.source}.
+  Checkout the source using SVN, selecting a tag for released version or
+  trunk for the current development code, or download and unpack a
+  source package. The location where the source has been
+  placed will be referred as <code>${tomcat.source}</code>.
   </p>
 
 </section>
@@ -113,8 +112,8 @@ Use the following commands:
 </p>
 
 <p>
-<b>WARNING:</b> Running this command will download binary binaries to the
-  <code>/usr/share/java</code> directory by default.
+<b>WARNING:</b> Running "ant download" command will download libraries required
+  to build Tomcat to the <code>/usr/share/java</code> directory by default.
   On a typical Linux or MacOX system, an ordinary user
   will not have access to write to this directory, and, even if you do,
   it may not be appropriate for you to write there. On Windows
@@ -161,7 +160,7 @@ and the following steps have been used by some developers.
 
 <p>
 Note that you <b>must</b> complete all the above steps to fetch
-the repositories and build some JAR files the first time.
+dependent libraries and build some JAR files the first time.
 After you have completed the above steps, you can set up an
 Eclipse project.
 <b>Note</b> that this will not let you build everything under Eclipse;

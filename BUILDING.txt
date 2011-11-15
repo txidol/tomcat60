@@ -74,16 +74,15 @@ source distribution, do the following:
 (2.1) Checkout or obtain the source code for Tomcat 6.0
 
 * Tomcat 6.0 SVN repository URL:
-  http://svn.apache.org/repos/asf/tomcat/tc6.0.x/
+  http://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/
 
 * Download a source package from:
   http://tomcat.apache.org/download-60.cgi
 
-* Checkout the source using SVN, selecting the desired version or
-  branch (current development source is at 
-  http://svn.apache.org/repos/asf/tomcat/tc6.0.x/trunk/), or 
-  unpack the source package. The location where the source has been
-  placed will be referred as ${tomcat.source}.
+* Checkout the source using SVN, selecting a tag for released version or
+  trunk for the current development code, or unpack a source package. The
+  location where the source has been placed will be referred as
+  ${tomcat.source}.
 
 (2.2) Building
 
@@ -93,10 +92,11 @@ source distribution, do the following:
     ant download
     ant
 
-* WARNING: Running this command will download binaries to the /usr/share/java
-  directory.  On a typical Linux or MacOX system an ordinary user
-  will not have access to write to this directory, and, even if you do,
-  it may not be appropriate for you to write there.
+* WARNING: Running "ant download" command will download libraries required
+  to build Tomcat to the /usr/share/java directory.  On a typical Linux or
+  MacOX system an ordinary user  will not have access to write to this
+  directory, and, even if you do, it may not be appropriate for you to
+  write there.
 
   On Windows this usually corresponds to the "C:\usr\share\java"
   directory, unless Cygwin is used. Read below to learn how to customize
@@ -147,5 +147,3 @@ The documentation can be easly built:
 
     cd ${tomcat.source}
     ant -f dist.xml release
-
-
