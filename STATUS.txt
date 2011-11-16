@@ -113,6 +113,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Fix regression in urldecoding of parameters that contain spaces
+  http://svn.apache.org/viewvc?rev=1202705&view=rev
+  (Parameters.java only)
+  +1: kkolinko
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
