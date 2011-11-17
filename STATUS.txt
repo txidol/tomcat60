@@ -125,6 +125,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Align %2f handling between implementations of UDecoder.convert()
+  http://svn.apache.org/viewvc?rev=1203091&view=rev
+  +1: kkolinko
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
