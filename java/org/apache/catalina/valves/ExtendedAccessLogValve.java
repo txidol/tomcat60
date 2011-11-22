@@ -91,19 +91,19 @@ import org.apache.juli.logging.LogFactory;
  *
  *
  * <p>
- * Log rotation can be on or off. This is dictated by the rotatable
- * property.
+ * Log rotation can be on or off. This is dictated by the
+ * <code>rotatable</code> property.
  * </p>
  *
  * <p>
- * For UvNIX users, another field called <code>checkExists</code>is also
+ * For UNIX users, another field called <code>checkExists</code>is also
  * available. If set to true, the log file's existence will be checked before
  * each logging. This way an external log rotator can move the file
- * somewhere and tomcat will start with a new file.
+ * somewhere and Tomcat will start with a new file.
  * </p>
  *
  * <p>
- * For JMX junkies, a public method called </code>rotate</code> has
+ * For JMX junkies, a public method called <code>rotate</code> has
  * been made available to allow you to tell this instance to move
  * the existing log file to somewhere else start writing a new log file.
  * </p>
