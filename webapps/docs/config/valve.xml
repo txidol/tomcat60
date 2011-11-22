@@ -208,7 +208,9 @@
     <p>
     There is also support to write information from the cookie, incoming
     header, the Session or something else in the ServletRequest.
-    It is modeled after the apache syntax:
+    It is modeled after the
+    <a href="http://httpd.apache.org/">Apache HTTP Server</a> log configuration
+    syntax:</p>
     <ul>
     <li><b><code>%{xxx}i</code></b> for incoming headers</li>
     <li><b><code>%{xxx}o</code></b> for outgoing response headers</li>
@@ -216,7 +218,6 @@
     <li><b><code>%{xxx}r</code></b> xxx is an attribute in the ServletRequest</li>
     <li><b><code>%{xxx}s</code></b> xxx is an attribute in the HttpSession</li>
     </ul>
-    </p>
 
 
     <p>The shorthand pattern name <code>common</code> (which is also the

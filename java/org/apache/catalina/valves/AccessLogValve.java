@@ -57,7 +57,8 @@ import org.apache.tomcat.util.buf.B2CConverter;
  * <p>Implementation of the <b>Valve</b> interface that generates a web server
  * access log with the detailed line contents matching a configurable pattern.
  * The syntax of the available patterns is similar to that supported by the
- * Apache <code>mod_log_config</code> module.  As an additional feature,
+ * <a href="http://httpd.apache.org/">Apache HTTP Server</a>
+ * <code>mod_log_config</code> module.  As an additional feature,
  * automatic rollover of log files when the date changes is also supported.</p>
  *
  * <p>Patterns for the logged message may include constant text or any of the
@@ -131,7 +132,13 @@ import org.apache.tomcat.util.buf.B2CConverter;
  * Conditional logging is also supported. This can be done with the
  * <code>condition</code> property.
  * If the value returned from ServletRequest.getAttribute(condition)
- * yields a non-null value. The logging will be skipped.
+ * yields a non-null value, the logging will be skipped.
+ * </p>
+ *
+ * <p>
+ * For extended attributes coming from a getAttribute() call,
+ * it is you responsibility to ensure there are no newline or
+ * control characters.
  * </p>
  *
  * @author Craig R. McClanahan
