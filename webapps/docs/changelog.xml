@@ -43,7 +43,17 @@
 <!-- Section names:
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
-<section name="Tomcat 6.0.34 (jfclere)">
+<section name="Tomcat 6.0.35 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        Fix regression in decoding of parameters that contain spaces.
+        Patch by Willem Fibbe. (kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 6.0.34 (jfclere)" rtext="not released">
   <subsection name="Catalina">
     <changelog>
       <fix>

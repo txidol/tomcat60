@@ -278,6 +278,7 @@ public final class Parameters {
                         pos++;
                         break;
                     case '%':
+                    case '+':
                         // Decoding required
                         if (parsingName) {
                             decodeName = true;

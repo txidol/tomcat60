@@ -113,12 +113,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix regression in urldecoding of parameters that contain spaces
-  http://svn.apache.org/viewvc?rev=1202705&view=rev
-  (Parameters.java only)
-  +1: kkolinko, rjung, jfclere
-  -1:
-
 * Reduce overhead from exception handling in UDecoder
   http://people.apache.org/~kkolinko/patches/2011-11-17_tc6_UDecoder.patch
   (r1203054 in TC7)
