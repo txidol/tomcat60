@@ -138,6 +138,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Update Commons Daemon to 1.0.8
+  Change is trivial so no patch provided
+  +1: mturk
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
