@@ -31,20 +31,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* Fix the maven stuff for the maven repo.
-  Before it does't find tomcat-juli.jar and the remoteRepository seems broken .
-  http://people.apache.org/~jfclere/patches/maven.patch.100711
-  +1: jfclere
-  -1: fhanik - easier to pass in the root path (lib/bin) to the macro instead of hacking around it
-               if we remove the SCP auto feature, then there should be something to replace it with
-               (http://ant.apache.org/manual/OptionalTasks/scp.html)
-  +1: kkolinko: +1 for the updated patch (maven.patch.100711)
-      I still think that it is not so good to remove the old code of <remoteRepository/>,
-      because it ignores ${maven.repo.url} parameter provided by deploy-snapshot,
-      deploy-staging and deploy-release targets. Maybe leave old code as a comment
-      and fix it later if needed? I think that actually nobody besides the release manager
-      uses this, so I am letting this pass.
-
 * Add StuckThreadDetectionValve
   https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b
   +1: slaurent
@@ -142,6 +128,12 @@ PATCHES PROPOSED TO BACKPORT:
   Change is trivial so no patch provided
   +1: mturk
   -1:
+
+* Fix the maven stuff for the maven repo.
+  Before it does't find tomcat-juli.jar and the wagon-ssh was a broken old version.
+  http://people.apache.org/~jfclere/patches/maven.patch.111129
+  +1: jfclere
+  -1: 
 
 PATCHES/ISSUES THAT ARE STALLED
 
