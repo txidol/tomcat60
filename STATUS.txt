@@ -132,8 +132,11 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix the maven stuff for the maven repo.
   Before it does't find tomcat-juli.jar and the wagon-ssh was a broken old version.
   http://people.apache.org/~jfclere/patches/maven.patch.111129
-  +1: jfclere
+  +1: jfclere, kkolinko
   -1: 
+   kkolinko: In description of jarFileDir attribute:
+    s/if not same as artifactId/if not same as tomcat.lib.path/
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
