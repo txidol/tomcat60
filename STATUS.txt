@@ -77,7 +77,7 @@ PATCHES PROPOSED TO BACKPORT:
   kkolinko: I tested only that it does not break things with the current
     released tcnative version 1.1.22 that does not have FIPS mode support.
   http://people.apache.org/~kkolinko/patches/2011-11-12_tc6_AprLifecycleListener.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix autodeployment of applications that have configuration errors.
