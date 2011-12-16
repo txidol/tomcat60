@@ -129,14 +129,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: mturk, markt
   -1:
 
-* Fix the maven stuff for the maven repo.
-  Before it does't find tomcat-juli.jar and the wagon-ssh was a broken old version.
-  http://people.apache.org/~jfclere/patches/maven.patch.111129
-  +1: jfclere, kkolinko, markt
-  -1: 
-   kkolinko: In description of jarFileDir attribute:
-    s/if not same as artifactId/if not same as tomcat.lib.path/
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52335
   Only handle <\% and not \% as escaped in template text.
   http://svn.apache.org/viewvc?rev=1215121&view=rev
