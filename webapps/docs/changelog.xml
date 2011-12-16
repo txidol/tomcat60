@@ -43,20 +43,23 @@
 <!-- Section names:
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
+<section name="Tomcat 6.0.36 (jfclere)" rtext="">
+  <subsection name="Other">
+    <changelog>
+      <fix>
+        <bug>49402</bug>, <bug>52124</bug>: Fix Maven publishing script:
+        make sure it finds tomcat-juli.jar and use later version of
+        wagon-ssh. (jfclere)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
 <section name="Tomcat 6.0.35 (jfclere)" rtext="released 2011-12-05">
   <subsection name="Catalina">
     <changelog>
       <fix>
         Fix regression in decoding of parameters that contain spaces.
         Patch by Willem Fibbe. (kkolinko)
-      </fix>
-    </changelog>
-  </subsection>
-  <subsection name="Other">
-    <changelog>
-      <fix>
-        <bug>52124</bug>: Ensure Maven publishing process retains metadata for
-        previous releases. (jfclere) 
       </fix>
     </changelog>
   </subsection>

@@ -120,7 +120,7 @@
   <macrodef name="doMavenDeploy">
     <attribute name="artifactId"/>
     <attribute name="jarFileName" default="@{artifactId}.jar" description="only need to be specified if not same as artifactId"/>
-    <attribute name="jarFileDir" default="${tomcat.lib.path}" description="only need to be specified if not same as artifactId"/>
+    <attribute name="jarFileDir" default="${tomcat.lib.path}" description="only need to be specified if not same as tomcat.lib.path"/>
     <sequential>
       <antcall target="maven-deploy">
         <param name="file" value="@{jarFileDir}/@{jarFileName}"/>
