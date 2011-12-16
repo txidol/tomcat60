@@ -65,7 +65,7 @@
         <pathelement location="${basedir}/maven-artifact-ant-2.0.4-dep.jar" />
       </classpath>
     </typedef>
-    <artifact:install-provider artifactId="wagon-ssh" version="1.0-beta-2"/>
+    <artifact:install-provider artifactId="wagon-ssh" version="1.0-beta-6"/>
   </target>
 
   <target name="maven-deploy" depends="init-maven">
@@ -120,9 +120,10 @@
   <macrodef name="doMavenDeploy">
     <attribute name="artifactId"/>
     <attribute name="jarFileName" default="@{artifactId}.jar" description="only need to be specified if not same as artifactId"/>
+    <attribute name="jarFileDir" default="${tomcat.lib.path}" description="only need to be specified if not same as artifactId"/>
     <sequential>
       <antcall target="maven-deploy">
-        <param name="file" value="${tomcat.lib.path}/@{jarFileName}"/>
+        <param name="file" value="@{jarFileDir}/@{jarFileName}"/>
         <param name="groupId" value="org.apache.tomcat"/>
         <param name="artifactId" value="@{artifactId}"/>
         <param name="pom" value="${tomcat.pom.path}/@{artifactId}.pom"/>
@@ -135,7 +136,7 @@
     <doMavenDeploy artifactId="servlet-api"/> <!--Deploy Servlet api-->
     <doMavenDeploy artifactId="el-api"/> <!--Deploy expression lanaguage api-->
     <doMavenDeploy artifactId="jsp-api"/> <!--Deploy JSP api-->
-    <doMavenDeploy artifactId="juli" jarFileName="tomcat-juli.jar"/> <!--Deploy JULI-->
+    <doMavenDeploy artifactId="juli" jarFileName="tomcat-juli.jar" jarFileDir="${tomcat.bin.path}"/> <!--Deploy JULI-->
     <doMavenDeploy artifactId="tribes" jarFileName="catalina-tribes.jar"/> <!--Deploy Tribes-->
     <doMavenDeploy artifactId="jasper-el"/> <!--Deploy Jasper EL-->
     <doMavenDeploy artifactId="coyote" jarFileName="tomcat-coyote.jar"/> <!--Deploy Coyote-->

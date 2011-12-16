@@ -52,6 +52,14 @@
       </fix>
     </changelog>
   </subsection>
+  <subsection name="Other">
+    <changelog>
+      <fix>
+        <bug>52124</bug>: Ensure Maven publishing process retains metadata for
+        previous releases. (jfclere) 
+      </fix>
+    </changelog>
+  </subsection>
 </section>
 <section name="Tomcat 6.0.34 (jfclere)" rtext="not released">
   <subsection name="Catalina">
