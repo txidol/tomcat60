@@ -68,6 +68,29 @@
     <artifact:install-provider artifactId="wagon-ssh" version="1.0-beta-6"/>
   </target>
 
+  <target name="maven-deploy-nexus" depends="init-maven" if="nexus.set">
+    <!--deploy it in nexus -->
+    <artifact:deploy file="${file}">
+        <pom file="${pom}"/>
+        <remoteRepository url="${maven.repo.url}" layout="default">
+          <authentication username="${maven.username}" password="${maven.password}"/>
+        </remoteRepository>
+        <attach file="${file}.asc" type="jar.asc"/>
+    </artifact:deploy>
+  </target>
+
+  <target name="maven-deploy-other" depends="init-maven" unless="nexus.set">
+    <!--deploy it in nexus -->
+    <artifact:deploy file="${file}">
+        <pom file="${pom}"/>
+        <remoteRepository url="${maven.repo.url}" layout="default">
+          <authentication username="${maven.scp.username}" privateKey="${maven.scp.privateKey}" passphrase="${maven.scp.passphrase}"/>
+          <authentication username="${maven.username}" password="${maven.password}"/>
+        </remoteRepository>
+        <attach file="${file}.asc" type="jar.asc"/>
+    </artifact:deploy>
+  </target>
+
   <target name="maven-deploy" depends="init-maven">
     <!--cleanup-->
     <delete file="${pom}.tmp"/>
@@ -90,13 +113,14 @@
     </exec>
     
     <!--deploy it-->
-    <artifact:deploy file="${file}">
-        <pom file="${pom}.tmp"/>
-        <remoteRepository url="${maven.repo.url}" layout="default">
-          <authentication username="${maven.scp.username}" privateKey="${maven.scp.privateKey}" passphrase="${maven.scp.passphrase}"/>
-        </remoteRepository>
-        <attach file="${file}.asc" type="jar.asc"/>
-    </artifact:deploy>
+    <antcall target="maven-deploy-nexus">
+        <param name="file" value="${file}"/>
+        <param name="pom" value="${pom}.tmp"/>
+    </antcall>
+    <antcall target="maven-deploy-other">
+        <param name="file" value="${file}"/>
+        <param name="pom" value="${pom}.tmp"/>
+    </antcall>
 
     <!--
     <exec executable="${maven.home}/bin/${maven.bin}" failonerror="true">
@@ -175,6 +199,7 @@
   </target>
 
   <target name="deploy-release">
+    <property name="nexus.set" value="true"/>
     <antcall target="generic-deploy">
       <param name="maven.repo.repositoryId" value="${maven.asf.release.repo.repositoryId}"/>
       <param name="maven.repo.url" value="${maven.asf.release.repo.url}"/>
