@@ -35,14 +35,11 @@
   tomcat.pom.path - the path to the POM files
   All these can be defined by mvn.properties (and defaults are in mvn.properties.default)
   
-  To do password less upload, you can modify either
-  $MAVE_HOME/conf/settings.xml or ~/.m2/settings.xml and add this snippet
-    <server>
-      <id>apache.snapshots</id>
-      <username>yourusername</username>
-      <privateKey>/home/yourusername/.ssh/id_rsa</privateKey>
-      <passphrase></passphrase>
-    </server>
+  To do password less upload, you'll also need to set
+  maven.username        - YOUR APACHE LDAP USERNAME (ASF ID normally).
+  maven.password        - YOUR APACHE LDAP PASSWORD
+  maven.scp.username    - Your ASF ID
+  maven.scp.privateKey  - Path to your exported ssh key
     
   To get a private key to work on Windows, I followed these steps
   1. on a linux box execute 'ssh-keygen -t rsa'
