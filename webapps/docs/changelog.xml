@@ -44,6 +44,14 @@
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
 <section name="Tomcat 6.0.36 (jfclere)" rtext="">
+  <subsection name="Catalina">
+    <changelog>
+       <fix>
+        <bug>52225</bug>: Fix ClassCastException when adding an alias for an
+        existing host via JMX. (kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Other">
     <changelog>
       <fix>
