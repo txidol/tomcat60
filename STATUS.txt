@@ -77,7 +77,7 @@ PATCHES PROPOSED TO BACKPORT:
   kkolinko: I tested only that it does not break things with the current
     released tcnative version 1.1.22 that does not have FIPS mode support.
   http://people.apache.org/~kkolinko/patches/2011-11-12_tc6_AprLifecycleListener.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt,funkman
   -1:
 
 * Fix autodeployment of applications that have configuration errors.
@@ -102,37 +102,37 @@ PATCHES PROPOSED TO BACKPORT:
 * Reduce overhead from exception handling in UDecoder
   http://people.apache.org/~kkolinko/patches/2011-11-17_tc6_UDecoder.patch
   (r1203054 in TC7)
-  +1: kkolinko
+  +1: kkolinko,funkman
   -1:
 
 * Align %2f handling between implementations of UDecoder.convert()
   http://svn.apache.org/viewvc?rev=1203091&view=rev
-  +1: kkolinko
+  +1: kkolinko,funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52225
   Fix ClassCastException in Alias added for existing host via JMX
   http://svn.apache.org/viewvc?rev=1204856&view=rev
   (without tests; it is r1204860 in TC7)
-  +1: kkolinko, markt
+  +1: kkolinko, markt,funkman
   -1:
 
 * Do not throw IllegalArgumentException from parseParameters() call when
   chunked POST request is too large, but treat it like an IO error.
   http://svn.apache.org/viewvc?rev=1206200&view=rev
   (without tests; it is r1206205 in TC7)
-  +1: kkolinko
+  +1: kkolinko,funkman
   -1:
 
 * Update Commons Daemon to 1.0.8
   Change is trivial so no patch provided
-  +1: mturk, markt
+  +1: mturk, markt,funkman
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52335
   Only handle <\% and not \% as escaped in template text.
   http://svn.apache.org/viewvc?rev=1215121&view=rev
-  +1: markt
+  +1: markt,funkman
   -1:
 
 
