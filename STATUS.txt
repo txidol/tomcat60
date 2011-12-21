@@ -128,6 +128,14 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt,funkman
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52293
+  Correctly handle antiResourceLocking=true when unpackWARs=false
+  Correctly handle multi-level contexts when antiResourceLocking=true
+  Patch by Justin Miller
+  https://issues.apache.org/bugzilla/attachment.cgi?id=28038&action=diff
+  +1: markt
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
