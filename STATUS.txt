@@ -137,6 +137,14 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
+* Backport SetCharacterEncodingFilter
+  1) patch
+   http://people.apache.org/~kkolinko/patches/2011-12-22_tc6_SetCharacterEncodingFilter.patch
+  2)
+   svn propset svn:eol-style native java/org/apache/catalina/filters/SetCharacterEncodingFilter.java
+  +1: kkolinko
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
