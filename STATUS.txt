@@ -50,36 +50,6 @@ PATCHES PROPOSED TO BACKPORT:
       - getStuckThreadIds() returns a list of ids. It might be useful to
         have a similar method that returns Thread.getName() names.
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50570
-  Apply FIPS mode patch from TC7:
-  http://svn.apache.org/viewvc?rev=1199985&view=rev
-  http://svn.apache.org/viewvc?rev=1200004&view=rev
-  http://svn.apache.org/viewvc?rev=1200448&view=rev
-  +1: schultz, jfclere
-  -1: kkolinko: It needs to include more preceding and followup
-   changes. Updated patch proposed below.
-
-* Backport AprLifecycleListener improvements from TC7
-  This includes:
-   - Use consistent external synchronization object for private
-     initialization methods. Turn initialization flags to false after APR
-     has been terminated. That is, to terminate it only once.
-     (rev. 946671 + several after it)
-   - Use ExceptionUtils.handleThrowable() for fatal errors
-     (rev. 1001904)
-   - Do not allow to change SSL options if SSL engine has already been
-     initialised.
-     (rev. 1199985 + several after it)
-   - Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50570
-     Enable FIPS mode to be set in AprLifecycleListener.
-     Based upon a patch from Chris Beckey.
-     (rev. 1199985 + several after it)
-  kkolinko: I tested only that it does not break things with the current
-    released tcnative version 1.1.22 that does not have FIPS mode support.
-  http://people.apache.org/~kkolinko/patches/2011-11-12_tc6_AprLifecycleListener.patch
-  +1: kkolinko, markt,funkman
-  -1:
-
 * Fix autodeployment of applications that have configuration errors.
   If autodeployment fails, create DeployedApplication object and register
   what we deployed (xml or war or dir - a single file) as redeployResource.

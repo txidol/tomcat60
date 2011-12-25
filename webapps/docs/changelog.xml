@@ -46,7 +46,18 @@
 <section name="Tomcat 6.0.36 (jfclere)" rtext="">
   <subsection name="Catalina">
     <changelog>
-       <fix>
+      <fix>
+        <bug>50570</bug>: Enable FIPS mode to be set in AprLifecycleListener.
+        Based upon a patch from Chris Beckey. Note that this mode requires
+        tomcat-native 1.1.23 or later linked to a FIPS-capable OpenSSL library,
+        which one has to build by themselves. (schultz/kkolinko)
+      </fix>
+      <fix>
+        Improve synchronization and error handling in AprLifecycleListener.
+        Do not allow to change SSL options if SSL has already been initialized.
+        (schultz/kkolinko)
+      </fix>
+      <fix>
         <bug>52225</bug>: Fix ClassCastException when adding an alias for an
         existing host via JMX. (kkolinko)
       </fix>

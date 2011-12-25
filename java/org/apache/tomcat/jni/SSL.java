@@ -227,6 +227,15 @@ public final class SSL {
     public static native int initialize(String engine);
 
     /**
+     * Enable/Disable FIPS Mode.
+     *
+     * @param mode 1 - enable, 0 - disable
+     *
+     * @return FIPS_mode_set return code
+     */
+    public static native int fipsModeSet(int mode);
+
+    /**
       * Set source of entropy to use in SSL
       *  @param filename Filename containing random data
       */
