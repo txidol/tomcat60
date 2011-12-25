@@ -119,7 +119,7 @@ appropriate role.  Therefore, access to the Manager application is completely
 disabled by default.</p>
 
 <p>To enable access to the Manager web application, you must either create
-a new username/password combination and associate on of the manager roles with
+a new username/password combination and associate one of the manager roles with
 it, or add a manager role to some existing username/password combination. There
 are four roles defined by the manager application:</p>
 <ul>
