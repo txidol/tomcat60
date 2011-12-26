@@ -122,6 +122,15 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Reduce log level for the message about hitting maxParameterCount limit
+  from WARN to INFO.
+  in /java/org/apache/tomcat/util/http/Parameters.java line 242:
+  - log.warn(sm.getString("parameters.maxCountFail",
+  + log.info(sm.getString("parameters.maxCountFail",
+  (backport of http://svn.apache.org/viewvc?rev=1224665&view=rev)
+  +1: kkolinko
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
