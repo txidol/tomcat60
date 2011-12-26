@@ -44,6 +44,13 @@
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
 <section name="Tomcat 6.0.36 (jfclere)" rtext="">
+  <subsection name="General">
+    <changelog>
+      <update>
+        Update Apache Commons Daemon to 1.0.8. (mturk)
+      </update>
+    </changelog>
+  </subsection>
   <subsection name="Catalina">
     <changelog>
       <fix>
