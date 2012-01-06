@@ -118,7 +118,7 @@ PATCHES PROPOSED TO BACKPORT:
   pick up the changes, as in the usual "deploy" target there is no check
   that tomcat-dbcp.jar that has been built earlier used the specified
   versions of pool and dbcp.
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, markt
   -1:
 
 
