@@ -964,14 +964,14 @@ public class ContextConfig
                 docBase = "ROOT";
             } else {
                 if (path.startsWith("/")) {
-                    docBase = path.substring(1);
+                    docBase = path.substring(1).replace('/','#');
                 } else {
-                    docBase = path;
+                    docBase = path.replace('/','#');
                 }
             }
 
             File file = null;
-            if (docBase.toLowerCase().endsWith(".war")) {
+            if (originalDocBase.toLowerCase().endsWith(".war")) {
                 file = new File(System.getProperty("java.io.tmpdir"),
                         deploymentCount++ + "-" + docBase + ".war");
             } else {

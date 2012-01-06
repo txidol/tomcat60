@@ -80,19 +80,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko,funkman
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52293
-  Correctly handle antiResourceLocking=true when unpackWARs=false
-  Correctly handle multi-level contexts when antiResourceLocking=true
-  Patch by Justin Miller
-   kkolinko: Corrected patch in diff -u format:
-  https://issues.apache.org/bugzilla/attachment.cgi?id=28097&action=diff
-  (Original patch:  https://issues.apache.org/bugzilla/attachment.cgi?id=28038&action=diff )
-  +1: markt, kkolinko, rjung
-  -1:
-  rjung: It seems the change to line 976 is only an unwanted whitespace addition.
-  kkolinko: Yes, that is only change on that line in OP's patch (id=28038) and it is unwanted.
-   My version of the patch (id=28097) does not change that line.
-
 * Backport SetCharacterEncodingFilter
   1) patch
    http://people.apache.org/~kkolinko/patches/2011-12-22_tc6_SetCharacterEncodingFilter.patch

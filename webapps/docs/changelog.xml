@@ -69,6 +69,13 @@
         existing host via JMX. (kkolinko)
       </fix>
       <fix>
+        <bug>52293</bug>: Correctly handle the case when
+        <code>antiResourceLocking</code> is enabled at the Context level when
+        <code>unpackWARs</code> is disabled at the Host level. Correctly
+        handle multi-level contexts when <code>antiResourceLocking</code>
+        is enabled. Patch by Justin Miller. (kkolinko)
+      </fix>
+      <fix>
         Do not throw IllegalArgumentException from parseParameters() call
         when chunked POST request is too large, but treat it like an IO error.
         The <code>FailedRequestFilter</code> filter can be used to detect this
