@@ -66,7 +66,7 @@ PATCHES PROPOSED TO BACKPORT:
   HTTP response code when rejecting denied request. E.g. 404 instead of 403.
   http://people.apache.org/~kkolinko/patches/2011-11-16_tc6_RequestFilterValve_denyStatus.patch
   (r1202565 in trunk, r1202570 in TC7)
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Reduce overhead from exception handling in UDecoder
@@ -84,7 +84,7 @@ PATCHES PROPOSED TO BACKPORT:
   chunked POST request is too large, but treat it like an IO error.
   http://svn.apache.org/viewvc?rev=1206200&view=rev
   (without tests; it is r1206205 in TC7)
-  +1: kkolinko,funkman
+  +1: kkolinko,funkman, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52293
@@ -93,32 +93,35 @@ PATCHES PROPOSED TO BACKPORT:
   Patch by Justin Miller
   https://issues.apache.org/bugzilla/attachment.cgi?id=28038&action=diff
   (https://issues.apache.org/bugzilla/attachment.cgi?id=28097&action=diff)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, rjung
   -1:
+  rjung: It seems the change to line 976 is only an unwanted whitespace addition.
 
 * Backport SetCharacterEncodingFilter
   1) patch
    http://people.apache.org/~kkolinko/patches/2011-12-22_tc6_SetCharacterEncodingFilter.patch
   2)
    svn propset svn:eol-style native java/org/apache/catalina/filters/SetCharacterEncodingFilter.java
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52384
   Do not fail in Parameter parsing when debug logging is enabled.
   Also do not flag extra '&' as errors.
   http://svn.apache.org/viewvc?rev=1224659&view=rev
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Reduce log level for the message about hitting maxParameterCount limit
   from WARN to INFO.
-  in /java/org/apache/tomcat/util/http/Parameters.java line 242:
+  in java/org/apache/tomcat/util/http/Parameters.java line 242:
   - log.warn(sm.getString("parameters.maxCountFail",
   + log.info(sm.getString("parameters.maxCountFail",
   (backport of http://svn.apache.org/viewvc?rev=1224665&view=rev)
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
+  rjung: Why do we compare "parameterCount >= limit" in line 240?
+         Shouldn't it be ">"?
 
 * Update to Apache Commons Pool 1.5.7
   In build.properties.default line 138:
@@ -129,7 +132,7 @@ PATCHES PROPOSED TO BACKPORT:
   pick up the changes, as in the usual "deploy" target there is no check
   that tomcat-dbcp.jar that has been built earlier used the specified
   versions of pool and dbcp.
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 
