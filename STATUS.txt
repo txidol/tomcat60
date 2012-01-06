@@ -122,6 +122,7 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
   rjung: Why do we compare "parameterCount >= limit" in line 240?
          Shouldn't it be ">"?
+  kkolinko: I agree, it must be changed to "> limit".
 
 * Update to Apache Commons Pool 1.5.7
   In build.properties.default line 138:
