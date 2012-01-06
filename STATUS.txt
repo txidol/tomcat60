@@ -80,13 +80,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko,funkman
   -1:
 
-* Do not throw IllegalArgumentException from parseParameters() call when
-  chunked POST request is too large, but treat it like an IO error.
-  http://svn.apache.org/viewvc?rev=1206200&view=rev
-  (without tests; it is r1206205 in TC7)
-  +1: kkolinko,funkman, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52293
   Correctly handle antiResourceLocking=true when unpackWARs=false
   Correctly handle multi-level contexts when antiResourceLocking=true
