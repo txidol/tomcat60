@@ -90,13 +90,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52384
-  Do not fail in Parameter parsing when debug logging is enabled.
-  Also do not flag extra '&' as errors.
-  http://svn.apache.org/viewvc?rev=1224659&view=rev
-  +1: kkolinko, rjung, markt
-  -1:
-
 * Reduce log level for the message about hitting maxParameterCount limit
   from WARN to INFO.
   in java/org/apache/tomcat/util/http/Parameters.java line 242:
