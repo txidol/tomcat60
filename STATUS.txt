@@ -91,16 +91,12 @@ PATCHES PROPOSED TO BACKPORT:
   -1:
 
 * Reduce log level for the message about hitting maxParameterCount limit
-  from WARN to INFO.
-  in java/org/apache/tomcat/util/http/Parameters.java line 242:
-  - log.warn(sm.getString("parameters.maxCountFail",
-  + log.info(sm.getString("parameters.maxCountFail",
+  from WARN to INFO and fix comparison of parameterCount vs limit that
+  triggers this message.
+  http://people.apache.org/~kkolinko/patches/2012-01-16_tc6_Parameters_maxCountFail.patch
   (backport of http://svn.apache.org/viewvc?rev=1224665&view=rev)
   +1: kkolinko, rjung
   -1:
-  rjung: Why do we compare "parameterCount >= limit" in line 240?
-         Shouldn't it be ">"?
-  kkolinko: I agree, it must be changed to "> limit".
 
 * Update to Apache Commons Pool 1.5.7
   In build.properties.default line 138:
