@@ -697,7 +697,7 @@ public class CoyoteAdapter implements Adapter {
 
     /**
      * Parse session id in URL.
-     * @deprecated Not used since 6.0.30
+     * @deprecated Not used since 6.0.33
      */
     @Deprecated
     protected void parseSessionId(org.apache.coyote.Request req, Request request) {
