@@ -98,6 +98,19 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, rjung
   -1:
 
+* Improvements to Windows installer:
+  1. When building a Windows installer do not copy whole "res" folder to
+     output/dist, but only the files that we need. Make sure that
+     INSTALLLICENSE file has correct line ends.
+  2. Remove <code>res/License.rtf</code>. The file that is actually shown
+     by the Windows installer is <code>res/INSTALLLICENSE</code>.
+
+  It is backport of r1231779 of Tomcat 7.
+  1) Execute command:
+    svn del res/License.rtf
+  2) Patch
+    http://people.apache.org/~kkolinko/patches/2012-01-18_tc6_LicenseRtf.patch
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
