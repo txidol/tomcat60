@@ -92,6 +92,10 @@
         Do not flag extra '&amp;' characters in parameters as parse errors.
         (kkolinko)
       </fix>
+      <fix>
+        <bug>52488</bug>: Correct typos: exipre -> expire. Based on a patch by
+        prockter. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

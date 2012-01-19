@@ -290,7 +290,7 @@ created by this Manager"
     <attribute
       name="expireSessionsOnShutdown"
       is="true"
-      description="exipre all sessions cluster wide as one node goes down"
+      description="expire all sessions cluster wide as one node goes down"
       type="boolean"/>
     <attribute
       name="notifyListenersOnReplication"
@@ -385,7 +385,7 @@ created by this Manager"
     </operation>
     <operation
       name="expireAllLocalSessions"
-      description="Exipre all active local sessions and replicate the invalid sessions"
+      description="Expire all active local sessions and replicate the invalid sessions"
       impact="ACTION"
       returnType="void">    </operation>
     <operation
@@ -555,7 +555,7 @@ created by this Manager"
     <attribute
       name="expireSessionsOnShutdown"
       is="true"
-      description="exipre all sessions cluster wide as one node goes down"
+      description="expire all sessions cluster wide as one node goes down"
       type="boolean"/>
     <attribute
       name="notifyListenersOnReplication"
