@@ -113,6 +113,10 @@
         to include <code>#</code> and/or <code>;</code> in the value of an
         environment variable that is passed to the service. (markt)
       </fix>
+      <fix>
+        <bug>52641</bug>: Remove mentioning of ldap.jar from docs.
+        Patch provided by Felix Schumacher. (rjung)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
