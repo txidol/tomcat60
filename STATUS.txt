@@ -131,6 +131,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52666
+  Correct coercion order in EL for A {==,!=,eq,ne} B
+  http://svn.apache.org/viewvc?rev=1244567&view=rev
+  +1: markt
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
