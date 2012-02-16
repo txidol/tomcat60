@@ -111,6 +111,9 @@ PATCHES PROPOSED TO BACKPORT:
   2) Patch
     http://people.apache.org/~kkolinko/patches/2012-01-18_tc6_LicenseRtf.patch
 
+  +1: kkolinko
+  -1:
+
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52579
   Propose new implementation of ByteChunk.toStringInternal().
   This fix does not reintroduce issue BZ51400.
@@ -128,13 +131,13 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52548
   Upgrade to Commons Daemon 1.0.9
   http://svn.apache.org/viewvc?rev=1244519&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52666
   Correct coercion order in EL for A {==,!=,eq,ne} B
   http://svn.apache.org/viewvc?rev=1244567&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 
