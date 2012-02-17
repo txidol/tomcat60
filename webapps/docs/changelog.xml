@@ -130,6 +130,12 @@
         make sure it finds tomcat-juli.jar and use later version of
         wagon-ssh. (jfclere)
       </fix>
+      <fix>
+        Update Commons Daemon to 1.0.9 to resolve <bug>52548</bug> which meant
+        that services created with service.bat did not set the
+        <code>catalina.home</code> and <code>catalina.base</code> system
+        properties. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>

@@ -128,12 +128,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52548
-  Upgrade to Commons Daemon 1.0.9
-  http://svn.apache.org/viewvc?rev=1244519&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
 
 PATCHES/ISSUES THAT ARE STALLED
 
