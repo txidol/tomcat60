@@ -87,7 +87,7 @@ PATCHES PROPOSED TO BACKPORT:
    svn propset svn:eol-style native java/org/apache/catalina/filters/SetCharacterEncodingFilter.java
   3) Add example of configuration to conf/web.xml:
    http://svn.apache.org/viewvc?rev=1228210&view=rev
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, kfujino
   -1:
 
 * Reduce log level for the message about hitting maxParameterCount limit
@@ -95,7 +95,7 @@ PATCHES PROPOSED TO BACKPORT:
   triggers this message.
   http://people.apache.org/~kkolinko/patches/2012-01-16_tc6_Parameters_maxCountFail.patch
   (backport of http://svn.apache.org/viewvc?rev=1224665&view=rev)
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, kfujino
   -1:
 
 * Improvements to Windows installer:
@@ -125,19 +125,19 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52606
   Ensure replayed POST bodies are available when using AJP
   http://svn.apache.org/viewvc?rev=1241985&view=rev
-  +1: markt
+  +1: markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52548
   Upgrade to Commons Daemon 1.0.9
   http://svn.apache.org/viewvc?rev=1244519&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52666
   Correct coercion order in EL for A {==,!=,eq,ne} B
   http://svn.apache.org/viewvc?rev=1244567&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 
