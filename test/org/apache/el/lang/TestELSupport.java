@@ -24,6 +24,10 @@ import javax.el.ELException;
 import junit.framework.TestCase;
 
 public class TestELSupport extends TestCase {
+    public void testEquals() {
+        assertTrue(ELSupport.equals("01", Long.valueOf(1)));
+    }
+
     public void testBigDecimal() {
         testIsSame(new BigDecimal(
                 "0.123456789012345678901234567890123456789012345678901234567890123456789"));

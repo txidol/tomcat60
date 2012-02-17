@@ -104,6 +104,10 @@
         <bug>52335</bug>: Only handle <code>&lt;\%</code> and not
         <code>\%</code> as escaped in template text. (markt)
       </fix>
+      <fix>
+        <bug>52666</bug>: Correct coercion order in EL when processing the
+        equality and inequality operators. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Webapps">
