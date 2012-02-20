@@ -128,6 +128,14 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51477
+  Support all SSL/TLS protocol combinations in APR connector.
+  trunk/TC7 (applies clean except for docs):
+    http://svn.apache.org/viewvc?rev=1145209&view=rev
+  TC 6 patch:
+    http://people.apache.org/~rjung/patches/tc6-apr-all-sslprotocol-r1145209.patch
+  +1: rjung
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
