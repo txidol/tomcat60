@@ -134,7 +134,7 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc?rev=1145209&view=rev
   TC 6 patch:
     http://people.apache.org/~rjung/patches/tc6-apr-all-sslprotocol-r1145209.patch
-  +1: rjung
+  +1: rjung, mturk
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
