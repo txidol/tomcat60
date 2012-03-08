@@ -148,6 +148,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52500
+  Add configurable mechanism to retrieve user names from X509 client certificates.
+  trunk patch: http://svn.apache.org/viewvc?view=revision&revision=r1298476
+  +1: schultz
+  -1:
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
