@@ -143,6 +143,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
+* Replicate Principal in ClusterSingleSignOn.
+  http://svn.apache.org/viewvc?view=revision&revision=1298299
+  +1: kfujino
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
