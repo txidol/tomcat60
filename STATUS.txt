@@ -154,6 +154,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52723
+  Correct theoretical resource leak in StandardManager
+  http://svn.apache.org/viewvc?rev=1299036&view=rev
+  +1: markt
+  -1:
+
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
