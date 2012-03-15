@@ -66,18 +66,18 @@ PATCHES PROPOSED TO BACKPORT:
   HTTP response code when rejecting denied request. E.g. 404 instead of 403.
   http://people.apache.org/~kkolinko/patches/2011-11-16_tc6_RequestFilterValve_denyStatus.patch
   (r1202565 in trunk, r1202570 in TC7)
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, fhanik
   -1:
 
 * Reduce overhead from exception handling in UDecoder
   http://people.apache.org/~kkolinko/patches/2011-11-17_tc6_UDecoder.patch
   (r1203054 in TC7)
-  +1: kkolinko,funkman
+  +1: kkolinko,funkman, fhanik
   -1:
 
 * Align %2f handling between implementations of UDecoder.convert()
   http://svn.apache.org/viewvc?rev=1203091&view=rev
-  +1: kkolinko,funkman
+  +1: kkolinko,funkman, fhanik
   -1:
 
 * Backport SetCharacterEncodingFilter
@@ -119,13 +119,13 @@ PATCHES PROPOSED TO BACKPORT:
   This fix does not reintroduce issue BZ51400.
   This fix avoids http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6196991.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28274
-  +1: kfujino
-  -1:
+  +1: kfujino, fhanik
+  -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52606
   Ensure replayed POST bodies are available when using AJP
   http://svn.apache.org/viewvc?rev=1241985&view=rev
-  +1: markt, kfujino
+  +1: markt, kfujino, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51477
@@ -134,36 +134,37 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc?rev=1145209&view=rev
   TC 6 patch:
     http://people.apache.org/~rjung/patches/tc6-apr-all-sslprotocol-r1145209.patch
-  +1: rjung, mturk
+  +1: rjung, mturk, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52719
   Correct theoretical resource leak during Jar validation
   http://svn.apache.org/viewvc?rev=1298143&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Replicate Principal in ClusterSingleSignOn.
   http://svn.apache.org/viewvc?view=revision&revision=1298299
-  +1: kfujino
+  +1: kfujino, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52500
   Add configurable mechanism to retrieve user names from X509 client certificates.
   trunk patch: http://svn.apache.org/viewvc?view=revision&revision=r1298476
-  +1: schultz
+  +1: schultz. fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52723
   Correct theoretical resource leak in StandardManager
   http://svn.apache.org/viewvc?rev=1299036&view=rev
-  +1: markt
+  +1: markt, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52830
   Lookups using javax.naming.Name fail
   http://svn.apache.org/viewvc?rev=1298635&view=rev
   +1: markt
+  +1: fhanik - would have been easier to read if 90% of the patch wasn't document/formatting related
   -1:
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52811
@@ -171,6 +172,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1300155&view=rev (new HTTP header parser)
   http://svn.apache.org/viewvc?rev=1300161&view=rev (the actual fix)
   +1: markt
+   0: fhanik - introducing a new parser this late into a release seems too risky for 6
   -1:
 
 * Fix bug https://issues.apache.org/bugzilla/show_bug.cgi?id=52858
