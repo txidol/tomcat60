@@ -237,9 +237,9 @@ public final class Parameters {
         while(pos < end) {
             parameterCount ++;
 
-            if (limit > -1 && parameterCount >= limit) {
+            if (limit > -1 && parameterCount > limit) {
                 parseFailed = true;
-                log.warn(sm.getString("parameters.maxCountFail",
+                log.info(sm.getString("parameters.maxCountFail",
                         Integer.valueOf(limit)));
                 break;
             }

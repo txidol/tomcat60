@@ -96,6 +96,13 @@
         <bug>52488</bug>: Correct typos: exipre -> expire. Based on a patch by
         prockter. (markt)
       </fix>
+      <fix>
+        Reduce log level for the message about hitting
+        <code>maxParameterCount</code> limit from WARN to INFO.
+        Fix limit comparison to allow exactly <code>maxParameterCount</code>
+        parameters, as documentation says, instead of
+        <code>(maxParameterCount-1)</code>. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

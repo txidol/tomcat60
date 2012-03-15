@@ -90,14 +90,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, rjung, kfujino
   -1:
 
-* Reduce log level for the message about hitting maxParameterCount limit
-  from WARN to INFO and fix comparison of parameterCount vs limit that
-  triggers this message.
-  http://people.apache.org/~kkolinko/patches/2012-01-16_tc6_Parameters_maxCountFail.patch
-  (backport of http://svn.apache.org/viewvc?rev=1224665&view=rev)
-  +1: kkolinko, rjung, kfujino
-  -1:
-
 * Improvements to Windows installer:
   1. When building a Windows installer do not copy whole "res" folder to
      output/dist, but only the files that we need. Make sure that
