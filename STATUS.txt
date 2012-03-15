@@ -180,6 +180,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: fhanik
   -1:
   
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
+  Add WebSocket support to Tomcat 6
+  +1: fhanik
+    
 
 PATCHES/ISSUES THAT ARE STALLED
 
