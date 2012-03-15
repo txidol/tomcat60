@@ -103,6 +103,9 @@
         parameters, as documentation says, instead of
         <code>(maxParameterCount-1)</code>. (kkolinko)
       </fix>
+      <fix>
+        Slightly improve performance of UDecoder.convert(). (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
