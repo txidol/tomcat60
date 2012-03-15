@@ -173,6 +173,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
+* Fix bug https://issues.apache.org/bugzilla/show_bug.cgi?id=52858
+  http://svn.apache.org/viewvc?rev=1300948&view=rev
+  +1: fhanik
+  -1:
+  
 
 PATCHES/ISSUES THAT ARE STALLED
 
