@@ -61,16 +61,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Backport SetCharacterEncodingFilter
-  1) patch
-   http://people.apache.org/~kkolinko/patches/2011-12-22_tc6_SetCharacterEncodingFilter.patch
-  2)
-   svn propset svn:eol-style native java/org/apache/catalina/filters/SetCharacterEncodingFilter.java
-  3) Add example of configuration to conf/web.xml:
-   http://svn.apache.org/viewvc?rev=1228210&view=rev
-  +1: kkolinko, rjung, kfujino
-  -1:
-
 * Improvements to Windows installer:
   1. When building a Windows installer do not copy whole "res" folder to
      output/dist, but only the files that we need. Make sure that

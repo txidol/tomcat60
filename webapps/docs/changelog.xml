@@ -113,6 +113,12 @@
         It allows to use different HTTP response code when rejecting denied
         request. E.g. 404 instead of 403. (kkolinko)
       </add>
+      <add>
+        Add <code>SetCharacterEncodingFilter</code> (similar to the one
+        contained in the examples web application) to the
+        <code>org.apache.catalina.filters</code> package so that it is
+        available for all web applications. (kkolinko)
+      </add>
     </changelog>
   </subsection>
   <subsection name="Coyote">
