@@ -168,7 +168,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Update to Eclipse JDT Compiler 3.7.2.
   https://issues.apache.org/bugzilla/show_bug.cgi?id=52805
   Patch: https://issues.apache.org/bugzilla/attachment.cgi?id=28478
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 
