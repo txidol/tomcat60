@@ -133,6 +133,12 @@ public abstract class RequestFilterValve
     protected volatile boolean denyValid = true;
 
     /**
+     * The HTTP response status code that is used when rejecting denied
+     * request. It is 403 by default, but may be changed to be 404.
+     */
+    protected int denyStatus = HttpServletResponse.SC_FORBIDDEN;
+
+    /**
      * The lifecycle event support for this component.
      */
     protected LifecycleSupport lifecycle = new LifecycleSupport(this);
@@ -220,6 +226,22 @@ public abstract class RequestFilterValve
      */
     public final boolean isDenyValid() {
         return denyValid;
+    }
+
+
+    /**
+     * Return response status code that is used to reject denied request.
+     */
+    public int getDenyStatus() {
+        return denyStatus;
+    }
+
+
+    /**
+     * Set response status code that is used to reject denied request.
+     */
+    public void setDenyStatus(int denyStatus) {
+        this.denyStatus = denyStatus;
     }
 
 
@@ -318,8 +340,22 @@ public abstract class RequestFilterValve
         }
 
         // Deny this request
-        response.sendError(HttpServletResponse.SC_FORBIDDEN);
+        denyRequest(request, response);
 
+    }
+
+
+    /**
+     * Reject the request that was denied by this valve.
+     *
+     * @param request The servlet request to be processed
+     * @param response The servlet response to be processed
+     * @exception IOException if an input/output error occurs
+     * @exception ServletException if a servlet error occurs
+     */
+    protected void denyRequest(Request request, Response response)
+            throws IOException, ServletException {
+        response.sendError(denyStatus);
     }
 
 

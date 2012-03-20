@@ -61,14 +61,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Add denyStatus attribute to RequestFilterValve
-  (RemoteAddrValve, RemoteHostValve valves). It allows to use different
-  HTTP response code when rejecting denied request. E.g. 404 instead of 403.
-  http://people.apache.org/~kkolinko/patches/2011-11-16_tc6_RequestFilterValve_denyStatus.patch
-  (r1202565 in trunk, r1202570 in TC7)
-  +1: kkolinko, rjung, fhanik
-  -1:
-
 * Backport SetCharacterEncodingFilter
   1) patch
    http://people.apache.org/~kkolinko/patches/2011-12-22_tc6_SetCharacterEncodingFilter.patch
