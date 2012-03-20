@@ -104,12 +104,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - https://issues.apache.org/bugzilla/show_bug.cgi?id=52579#c8
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52606
-  Ensure replayed POST bodies are available when using AJP
-  http://svn.apache.org/viewvc?rev=1241985&view=rev
-  +1: markt, kfujino, fhanik
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51477
   Support all SSL/TLS protocol combinations in APR connector.
   trunk/TC7 (applies clean except for docs):

@@ -636,7 +636,7 @@ public class AjpProcessor implements ActionHook {
             first = false;
             empty = false;
             replay = true;
-
+            endOfStream = false;
         }
 
 
