@@ -92,7 +92,7 @@ PATCHES PROPOSED TO BACKPORT:
   2) Patch
     http://people.apache.org/~kkolinko/patches/2012-01-18_tc6_LicenseRtf.patch
 
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52579
@@ -101,6 +101,7 @@ PATCHES PROPOSED TO BACKPORT:
   This fix avoids http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6196991.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28274
   +1: kfujino, fhanik
+  -0: markt - https://issues.apache.org/bugzilla/show_bug.cgi?id=52579#c8
   -1: 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52606
@@ -115,7 +116,7 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc?rev=1145209&view=rev
   TC 6 patch:
     http://people.apache.org/~rjung/patches/tc6-apr-all-sslprotocol-r1145209.patch
-  +1: rjung, mturk, fhanik
+  +1: rjung, mturk, fhanik, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52719
@@ -126,13 +127,14 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Replicate Principal in ClusterSingleSignOn.
   http://svn.apache.org/viewvc?view=revision&revision=1298299
-  +1: kfujino, fhanik
+  +1: kfujino, fhanik, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52500
   Add configurable mechanism to retrieve user names from X509 client certificates.
   trunk patch: http://svn.apache.org/viewvc?view=revision&revision=r1298476
-  +1: schultz. fhanik
+  +1: schultz, fhanik
+  +1: markt if clean-up is also applied
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52723
@@ -158,7 +160,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix bug https://issues.apache.org/bugzilla/show_bug.cgi?id=52858
   http://svn.apache.org/viewvc?rev=1300948&view=rev
-  +1: fhanik
+  +1: fhanik, markt
   -1:
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
