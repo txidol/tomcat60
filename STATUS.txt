@@ -98,7 +98,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52719
   Correct theoretical resource leak during Jar validation
   http://svn.apache.org/viewvc?rev=1298143&view=rev
-  +1: markt, fhanik
+  +1: markt, fhanik, kkolinko
   -1:
 
 * Replicate Principal in ClusterSingleSignOn.
@@ -117,6 +117,8 @@ PATCHES PROPOSED TO BACKPORT:
   Correct theoretical resource leak in StandardManager
   http://svn.apache.org/viewvc?rev=1299036&view=rev
   +1: markt, fhanik
+  +0: kkolinko: no native resources are leaked actually, so I see no need
+       to do some work that garbage collector can do as well
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52830
@@ -124,6 +126,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1298635&view=rev
   +1: markt
   +1: fhanik - would have been easier to read if 90% of the patch wasn't document/formatting related
+  +1: kkolinko, though see
+       https://issues.apache.org/bugzilla/show_bug.cgi?id=52830#c6
+       for a possible minor fix.
   -1:
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52811
