@@ -109,6 +109,10 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52500
   Add configurable mechanism to retrieve user names from X509 client certificates.
   trunk patch: http://svn.apache.org/viewvc?view=revision&revision=r1298476
+  additional clean-up patches (good for markt?):
+     http://svn.apache.org/viewvc?view=revision&revision=r1298542
+     http://svn.apache.org/viewvc?view=revision&revision=r1298577
+     http://svn.apache.org/viewvc?view=revision&revision=r1298590
   +1: schultz, fhanik
   +1: markt if clean-up is also applied
   -1:
