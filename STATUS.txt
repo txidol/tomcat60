@@ -137,8 +137,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52811
   Fix parsing of Content-Type
-  http://svn.apache.org/viewvc?rev=1300155&view=rev (new HTTP header parser)
-  http://svn.apache.org/viewvc?rev=1300161&view=rev (the actual fix)
+  http://svn.apache.org/viewvc?rev=1300154&view=rev (new HTTP header parser)
+  http://svn.apache.org/viewvc?rev=1300155&view=rev (the actual fix)
+  (=r1300157+r1300161 in TC7)
   +1: markt
    0: fhanik - introducing a new parser this late into a release seems too risky for 6
   -1:
