@@ -130,9 +130,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1298635&view=rev
   +1: markt
   +1: fhanik - would have been easier to read if 90% of the patch wasn't document/formatting related
-  +1: kkolinko, though see
-       https://issues.apache.org/bugzilla/show_bug.cgi?id=52830#c6
-       for a possible minor fix.
+  +1: kkolinko, though see alternative implementation,
+       http://svn.apache.org/viewvc?rev=1304468&view=rev
+       (explained in https://issues.apache.org/bugzilla/show_bug.cgi?id=52830#c6 )
   -1:
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52811
