@@ -95,12 +95,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: rjung, mturk, fhanik, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52719
-  Correct theoretical resource leak during Jar validation
-  http://svn.apache.org/viewvc?rev=1298143&view=rev
-  +1: markt, fhanik, kkolinko
-  -1:
-
 * Replicate Principal in ClusterSingleSignOn.
   http://svn.apache.org/viewvc?view=revision&revision=1298299
   +1: kfujino, fhanik, markt

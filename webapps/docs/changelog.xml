@@ -119,6 +119,10 @@
         <code>org.apache.catalina.filters</code> package so that it is
         available for all web applications. (kkolinko)
       </add>
+      <fix>
+        <bug>52719</bug>: Fix a theoretical resource leak in the JAR validation
+        that checks for non-permitted classes in web application JARs. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
