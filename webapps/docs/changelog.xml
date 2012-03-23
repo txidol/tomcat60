@@ -127,6 +127,11 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
+      <update>
+        <bug>51477</bug>Support all SSL protocol combinations in the APR/native
+        connector. This only works when using the native library version 1.1.21
+        or later. (rjung)
+      </update>
       <fix>
         <bug>52606</bug>: Ensure replayed POST bodies are available when using
         AJP. (markt)

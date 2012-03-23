@@ -86,15 +86,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - https://issues.apache.org/bugzilla/show_bug.cgi?id=52579#c8
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=51477
-  Support all SSL/TLS protocol combinations in APR connector.
-  trunk/TC7 (applies clean except for docs):
-    http://svn.apache.org/viewvc?rev=1145209&view=rev
-  TC 6 patch:
-    http://people.apache.org/~rjung/patches/tc6-apr-all-sslprotocol-r1145209.patch
-  +1: rjung, mturk, fhanik, markt
-  -1:
-
 * Replicate Principal in ClusterSingleSignOn.
   http://svn.apache.org/viewvc?view=revision&revision=1298299
   +1: kfujino, fhanik, markt
