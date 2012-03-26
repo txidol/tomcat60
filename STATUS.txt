@@ -153,6 +153,20 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Backport UserDataHelper class (issue 52184)
+  Provide greater control over the logging of errors triggered by invalid
+  input data (i.e. data over which Tomcat has no control).
+
+  Note: cookies logging (o.a.t.util.http.Cookies) does not need to be
+  addressed in Tomcat 6, because all logging in that class here is done at
+  debug level.
+
+  svn cp ../../trunk/java/org/apache/tomcat/util/log/UserDataHelper.java@1242371 java/org/apache/tomcat/util/log/UserDataHelper.java
+  Patch:
+  http://people.apache.org/~kkolinko/patches/2012-03-26_tc6_UserDataHelper.patch
+  +1: kkolinko
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
