@@ -17,6 +17,7 @@
 
 package org.apache.catalina.ha.authenticator;
 
+import java.security.Principal;
 import java.util.Map;
 import java.io.IOException;
 
@@ -88,6 +89,7 @@ public class ClusterSingleSignOnListener extends ClusterListener {
             SingleSignOnMessage msg = (SingleSignOnMessage) myobj;
             int action = msg.getAction();
 	    Session session = null;
+        Principal principal = null;
 
 	    if (log.isDebugEnabled())
 		log.debug("SingleSignOnMessage Received with action "
@@ -110,12 +112,18 @@ public class ClusterSingleSignOnListener extends ClusterListener {
 		clusterSSO.deregisterLocal(msg.getSsoId());
 		break;
 	    case SingleSignOnMessage.REGISTER_SESSION:
-		clusterSSO.registerLocal(msg.getSsoId(), null, msg.getAuthType(),
-					 msg.getUsername(), msg.getPassword());
+            if (msg.getPrincipal() != null) {
+                principal = msg.getPrincipal().getPrincipal(clusterSSO.getContainer().getRealm());
+            }
+            clusterSSO.registerLocal(msg.getSsoId(), principal, msg.getAuthType(),
+                    msg.getUsername(), msg.getPassword());
 		break;
 	    case SingleSignOnMessage.UPDATE_SESSION:
-		clusterSSO.updateLocal(msg.getSsoId(), null, msg.getAuthType(),
-				       msg.getUsername(), msg.getPassword());
+            if (msg.getPrincipal() != null) {
+                principal = msg.getPrincipal().getPrincipal(clusterSSO.getContainer().getRealm());
+            }
+            clusterSSO.updateLocal(msg.getSsoId(), principal, msg.getAuthType(),
+                    msg.getUsername(), msg.getPassword());
 		break;
 	    case SingleSignOnMessage.REMOVE_SESSION:
 		session = getSession(msg.getSessionId(),

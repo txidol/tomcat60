@@ -21,8 +21,8 @@ package org.apache.catalina.ha.authenticator;
 
 import java.security.Principal;
 
-import org.apache.catalina.Container;
 import org.apache.catalina.Cluster;
+import org.apache.catalina.Container;
 import org.apache.catalina.Engine;
 import org.apache.catalina.Host;
 import org.apache.catalina.LifecycleException;
@@ -31,6 +31,8 @@ import org.apache.catalina.Session;
 import org.apache.catalina.authenticator.SingleSignOn;
 import org.apache.catalina.ha.CatalinaCluster;
 import org.apache.catalina.ha.ClusterManager;
+import org.apache.catalina.ha.session.SerializablePrincipal;
+import org.apache.catalina.realm.GenericPrincipal;
 
 
 
@@ -333,6 +335,12 @@ public class ClusterSingleSignOn
 	    msg.setUsername(username);
 	    msg.setPassword(password);
 
+        SerializablePrincipal sp = null;
+        if (principal instanceof GenericPrincipal) {
+            sp = SerializablePrincipal.createPrincipal((GenericPrincipal) principal);
+            msg.setPrincipal(sp);
+        }
+
 	    cluster.sendClusterDomain(msg);
 	    if (containerLog.isDebugEnabled())
 		containerLog.debug("SingleSignOnMessage Send with action "
@@ -389,6 +397,12 @@ public class ClusterSingleSignOn
 	    msg.setAuthType(authType);
 	    msg.setUsername(username);
 	    msg.setPassword(password);
+
+        SerializablePrincipal sp = null;
+        if (principal instanceof GenericPrincipal) {
+            sp = SerializablePrincipal.createPrincipal((GenericPrincipal) principal);
+            msg.setPrincipal(sp);
+        }
 
 	    cluster.sendClusterDomain(msg);
 	    if (containerLog.isDebugEnabled())

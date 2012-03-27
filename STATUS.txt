@@ -86,11 +86,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - https://issues.apache.org/bugzilla/show_bug.cgi?id=52579#c8
   -1: 
 
-* Replicate Principal in ClusterSingleSignOn.
-  http://svn.apache.org/viewvc?view=revision&revision=1298299
-  +1: kfujino, fhanik, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52500
   Add configurable mechanism to retrieve user names from X509 client certificates.
   trunk patch: http://svn.apache.org/viewvc?view=revision&revision=r1298476
