@@ -168,7 +168,7 @@ PATCHES PROPOSED TO BACKPORT:
   Manager applications from being accessed directly.
   http://svn.apache.org/viewvc?view=revision&revision=1084103
   http://svn.apache.org/viewvc?view=revision&revision=1084109
-  +1: mark
+  +1: markt, kkolinko
   -1:
     
 
