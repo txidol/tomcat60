@@ -93,8 +93,10 @@ PATCHES PROPOSED TO BACKPORT:
      http://svn.apache.org/viewvc?view=revision&revision=r1298542
      http://svn.apache.org/viewvc?view=revision&revision=r1298577
      http://svn.apache.org/viewvc?view=revision&revision=r1298590
+     http://svn.apache.org/viewvc?view=revision&revision=r1298592
   +1: schultz, fhanik
   +1: markt if clean-up is also applied
+  +1: kkolinko: with clean-ups (r1298542, r1298577, r1298590, r1298592)
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52723
