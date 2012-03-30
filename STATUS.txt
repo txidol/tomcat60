@@ -124,6 +124,10 @@ PATCHES PROPOSED TO BACKPORT:
   (=r1300157+r1300161 in TC7)
   +1: markt
    0: fhanik - introducing a new parser this late into a release seems too risky for 6
+  +1: kkolinko: With followups (in trunk: r1304275,1304895; in 7.0.x: r1304897).
+        The fix affects response.contentType parsing only. So I think it is
+        acceptable. I'd be more concerned if it affected request.contentType
+        processing.
   -1:
 
 * Fix bug https://issues.apache.org/bugzilla/show_bug.cgi?id=52858
