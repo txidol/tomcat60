@@ -170,7 +170,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1084109
   +1: markt, kkolinko
   -1:
-    
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53001
+  Revert the fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=46915
+  since the use case described in bug 46915 is invalid as it breaks the EL
+  specification.
+  +1: markt
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
