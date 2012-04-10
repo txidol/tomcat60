@@ -185,7 +185,12 @@ PATCHES PROPOSED TO BACKPORT:
     (The revision to revert in 6.0.x is r769336)
   +1: markt, kkolinko
   -1:
-
+  
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53056
+  Add APR version number to tcnative version INFO log message
+    http://svn.apache.org/viewvc?view=revision&revision=1311997
+  +1: schultz
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
