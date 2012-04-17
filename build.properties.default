@@ -107,8 +107,8 @@ wsdl4j-lib.jar=${wsdl4j-lib.home}/wsdl4j-${wsdl4j-lib.version}.jar
 # - noTldJars in o.a.j.compiler.TldLocationsCache
 # - res/maven/jasper.pom
 # - eclipse.classpath
-jdt.version=3.7
-jdt.release=R-3.7-201106131736
+jdt.version=3.7.2
+jdt.release=R-3.7.2-201202080800
 jdt.home=${base.path}/ecj-${jdt.version}
 jdt.jar=${jdt.home}/ecj-${jdt.version}.jar
 # The download will be moved to the archive area eventually. We are taking care of that in advance.

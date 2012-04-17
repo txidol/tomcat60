@@ -139,12 +139,6 @@ PATCHES PROPOSED TO BACKPORT:
   Add WebSocket support to Tomcat 6
   +1: fhanik
 
-* Update to Eclipse JDT Compiler 3.7.2.
-  https://issues.apache.org/bugzilla/show_bug.cgi?id=52805
-  Patch: https://issues.apache.org/bugzilla/attachment.cgi?id=28478
-  +1: kkolinko, markt, fhanik
-  -1:
-
 * Update Apache Commons Daemon to 1.0.10.
   Update the native component of the Tomcat APR/native connector to
   1.1.23 and take advantage of the simplified distribution.

@@ -44,16 +44,6 @@
  General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
 -->
 <section name="Tomcat 6.0.36 (jfclere)" rtext="">
-  <subsection name="General">
-    <changelog>
-      <update>
-        Update Apache Commons Daemon to 1.0.8. (mturk)
-      </update>
-      <update>
-        Update Apache Commons Pool to 1.5.7. (kkolinko)
-      </update>
-    </changelog>
-  </subsection>
   <subsection name="Catalina">
     <changelog>
       <fix>
@@ -128,7 +118,7 @@
   <subsection name="Coyote">
     <changelog>
       <update>
-        <bug>51477</bug>Support all SSL protocol combinations in the APR/native
+        <bug>51477</bug>: Support all SSL protocol combinations in the APR/native
         connector. This only works when using the native library version 1.1.21
         or later. (rjung)
       </update>
@@ -178,11 +168,17 @@
         wagon-ssh. (jfclere)
       </fix>
       <fix>
-        Update Commons Daemon to 1.0.9 to resolve <bug>52548</bug> which meant
-        that services created with service.bat did not set the
+        Update Apache Commons Daemon to 1.0.9 to resolve <bug>52548</bug>
+        which meant that services created with service.bat did not set the
         <code>catalina.home</code> and <code>catalina.base</code> system
         properties. (markt)
       </fix>
+      <update>
+        Update Apache Commons Pool to 1.5.7. (kkolinko)
+      </update>
+      <update>
+        <bug>52805</bug>: Update to Eclipse JDT Compiler 3.7.2. (kkolinko)
+      </update>
     </changelog>
   </subsection>
 </section>

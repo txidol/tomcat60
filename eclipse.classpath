@@ -20,7 +20,7 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="webapps/examples/WEB-INF/classes"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="var" path="TOMCAT_LIBS_BASE/ecj-3.7/ecj-3.7.jar"/>
+	<classpathentry kind="var" path="TOMCAT_LIBS_BASE/ecj-3.7.2/ecj-3.7.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="var" path="ANT_HOME/lib/ant.jar"/>
 	<classpathentry kind="output" path=".settings/output"/>
