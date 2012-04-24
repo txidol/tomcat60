@@ -59,6 +59,15 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2011-11-14_tc6_HostConfig.patch
   http://people.apache.org/~kkolinko/patches/2011-11-14_tc6_ContainerBase.patch
   +1: kkolinko
+  +0: kfujino: Question of if host.addChild(context) threw IllegalStateException.
+      E.g. case of deployDirectory.
+      If META-INF/context.xml exist in Directory, context.xml is copied to configBase.
+      If host.addChild(context) threw IllegalStateException, only a directory is 
+      registered into redeployResources. Context.xml does not register into redeployResources.
+      If manager app execute undeploy(or delete directory), directory is deleted 
+      but context.xml isn't deleted.
+      Should (conf/Catalina/localhost/)context.xml be registered into redeployResources? 
+      Or need to delete context.xml manually? 
   -1:
 
 * Improvements to Windows installer:
@@ -168,7 +177,7 @@ PATCHES PROPOSED TO BACKPORT:
   Manager applications from being accessed directly.
   http://svn.apache.org/viewvc?view=revision&revision=1084103
   http://svn.apache.org/viewvc?view=revision&revision=1084109
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53001
@@ -177,19 +186,19 @@ PATCHES PROPOSED TO BACKPORT:
   specification.
     http://svn.apache.org/viewvc?rev=1307511&view=rev
     (The revision to revert in 6.0.x is r769336)
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53056
   Add APR version number to tcnative version INFO log message
     http://svn.apache.org/viewvc?view=revision&revision=1311997
-  +1: schultz, kkolinko
+  +1: schultz, kkolinko, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53057
   Add OpenSSL version number INFO log message
     http://svn.apache.org/viewvc?view=revision&revision=1312007
-  +1: schultz, kkolinko
+  +1: schultz, kkolinko, kfujino
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
