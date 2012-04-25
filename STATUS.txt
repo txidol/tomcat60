@@ -189,12 +189,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko, kfujino
   -1:
   
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53057
-  Add OpenSSL version number INFO log message
-    http://svn.apache.org/viewvc?view=revision&revision=1312007
-  +1: schultz, kkolinko, kfujino
-  -1:
-
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
