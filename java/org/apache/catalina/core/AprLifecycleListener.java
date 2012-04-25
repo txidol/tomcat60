@@ -224,7 +224,10 @@ public class AprLifecycleListener
         }
         if (!log.isDebugEnabled()) {
            log.info(sm.getString("aprListener.tcnValid", major + "."
-                    + minor + "." + patch));
+                    + minor + "." + patch,
+                    Library.APR_MAJOR_VERSION + "."
+                    + Library.APR_MINOR_VERSION + "."
+                    + Library.APR_PATCH_VERSION));
         }
         else {
            log.debug(sm.getString("aprListener.tcnValid", major + "."

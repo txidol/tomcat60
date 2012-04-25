@@ -113,6 +113,10 @@
         <bug>52719</bug>: Fix a theoretical resource leak in the JAR validation
         that checks for non-permitted classes in web application JARs. (markt)
       </fix>
+      <fix>
+        <bug>53056</bug>: Add APR version number to tcnative version INFO log
+        message. (schultz)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
