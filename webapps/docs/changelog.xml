@@ -167,6 +167,10 @@
         Patch provided by Felix Schumacher. (rjung)
       </fix>
       <fix>
+        Remove obsolete bug warning from windows service
+        documentation page. (rjung)
+      </fix>
+      <fix>
         <bug>53158</bug>: Fix documented defaults for DBCP.
         Patch provided by ph.dezanneau at gmail.com. (rjung)
       </fix>
