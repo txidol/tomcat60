@@ -53,12 +53,12 @@ public class RequestInfoExample extends HttpServlet {
         out.println("<body bgcolor=\"white\">");
 
         // img stuff not req'd for source code html showing
-	// all links relative!
+        // all links relative!
 
         // XXX
         // making these absolute till we work out the
         // addition of a PathInfo issue
-	
+
         out.println("<a href=\"../reqinfo.html\">");
         out.println("<img src=\"../images/code.gif\" height=24 " +
                     "width=24 align=right border=0 alt=\"view code\"></a>");
@@ -73,34 +73,34 @@ public class RequestInfoExample extends HttpServlet {
         out.println(request.getMethod());
         out.println("</td></tr><tr><td>");
         out.println(rb.getString("requestinfo.label.requesturi"));
-        out.println("</td><td>");        
+        out.println("</td><td>");
         out.println(HTMLFilter.filter(request.getRequestURI()));
-        out.println("</td></tr><tr><td>");        
+        out.println("</td></tr><tr><td>");
         out.println(rb.getString("requestinfo.label.protocol"));
-        out.println("</td><td>");        
+        out.println("</td><td>");
         out.println(request.getProtocol());
         out.println("</td></tr><tr><td>");
         out.println(rb.getString("requestinfo.label.pathinfo"));
-        out.println("</td><td>");        
+        out.println("</td><td>");
         out.println(HTMLFilter.filter(request.getPathInfo()));
         out.println("</td></tr><tr><td>");
         out.println(rb.getString("requestinfo.label.remoteaddr"));
 
- 	String cipherSuite=
- 	    (String)request.getAttribute("javax.servlet.request.cipher_suite");
-        out.println("</td><td>");                
+        String cipherSuite=
+            (String)request.getAttribute("javax.servlet.request.cipher_suite");
+        out.println("</td><td>");
         out.println(request.getRemoteAddr());
         out.println("</table>");
 
- 	if(cipherSuite!=null){
- 	    out.println("</td></tr><tr><td>");	
- 	    out.println("SSLCipherSuite:");
- 	    out.println("</td>");
- 	    out.println("<td>");	    
- 	    out.println(request.getAttribute("javax.servlet.request.cipher_suite"));
-	    out.println("</td>");	    
- 	}
-	
+        if(cipherSuite!=null){
+            out.println("</td></tr><tr><td>");
+            out.println("SSLCipherSuite:");
+            out.println("</td>");
+            out.println("<td>");
+            out.println(request.getAttribute("javax.servlet.request.cipher_suite"));
+            out.println("</td>");
+        }
+
     }
 
     public void doPost(HttpServletRequest request,
