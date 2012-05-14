@@ -575,13 +575,13 @@
         <p>(byte)Value between <code>0</code> and <code>255</code> for the traffic class on the socket, <code>0x04 | 0x08 | 0x010</code></p>
       </attribute>      
       <attribute name="socket.performanceConnectionTime" required="false">
-        <p>(int)The first value for the performance settings. Default is <code>1</code>, see <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)">Socket Performance Options</a></p>
+        <p>(int)The first value for the performance settings. Default is <code>1</code>, see <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)">Socket Performance Options</a></p>
       </attribute>      
       <attribute name="socket.performanceLatency" required="false">
-        <p>(int)The second value for the performance settings. Default is <code>0</code>, see <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)">Socket Performance Options</a></p>
+        <p>(int)The second value for the performance settings. Default is <code>0</code>, see <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)">Socket Performance Options</a></p>
       </attribute>      
       <attribute name="socket.performanceBandwidth" required="false">
-        <p>(int)The third value for the performance settings. Default is <code>1</code>, see <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)">Socket Performance Options</a></p>
+        <p>(int)The third value for the performance settings. Default is <code>1</code>, see <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)">Socket Performance Options</a></p>
       </attribute>      
       <attribute name="selectorPool.maxSelectors" required="false">
         <p>(int)The max selectors to be used in the pool, to reduce selector contention.

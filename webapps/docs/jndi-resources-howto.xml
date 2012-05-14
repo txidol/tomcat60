@@ -544,7 +544,7 @@ Transport.send(message);
     <ul>
     <li><a href="http://java.sun.com/products/jdbc/">http://java.sun.com/products/jdbc/</a> -
         Home page for information about Java Database Connectivity.</li>
-    <li><a href="http://java.sun.com/j2se/1.3/docs/guide/jdbc/spec2/jdbc2.1.frame.html">http://java.sun.com/j2se/1.3/docs/guide/jdbc/spec2/jdbc2.1.frame.html</a> -
+    <li><a href="http://docs.oracle.com/javase/1.3/docs/guide/jdbc/spec2/jdbc2.1.frame.html">http://docs.oracle.com/javase/1.3/docs/guide/jdbc/spec2/jdbc2.1.frame.html</a> -
         The JDBC 2.1 API Specification.</li>
     <li><a href="http://java.sun.com/products/jdbc/jdbc20.stdext.pdf">http://java.sun.com/products/jdbc/jdbc20.stdext.pdf</a> -
         The JDBC 2.0 Standard Extension API (including the

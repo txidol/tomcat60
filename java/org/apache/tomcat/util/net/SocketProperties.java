@@ -140,19 +140,19 @@ public class SocketProperties {
     protected int soTrafficClass = 0x04 | 0x08 | 0x010;
     /**
      * Performance preferences according to
-     * http://java.sun.com/j2se/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)
+     * http://docs.oracle.com/javase/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)
      * Default value is 1
      */
     protected int performanceConnectionTime = 1;
     /**
      * Performance preferences according to
-     * http://java.sun.com/j2se/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)
+     * http://docs.oracle.com/javase/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)
      * Default value is 0
      */
     protected int performanceLatency = 0;
     /**
      * Performance preferences according to
-     * http://java.sun.com/j2se/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)
+     * http://docs.oracle.com/javase/1.5.0/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)
      * Default value is 1
      */
     protected int performanceBandwidth = 1;

@@ -174,6 +174,11 @@
         <bug>53158</bug>: Fix documented defaults for DBCP.
         Patch provided by ph.dezanneau at gmail.com. (rjung)
       </fix>
+      <update>
+        Update JavaSE documentation links to point to the current
+        docs.oracle.com site, instead of obsolete ones (download.oracle.com,
+        java.sun.com). (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Other">

@@ -42,7 +42,7 @@ import org.apache.naming.resources.Resource;
  * are met. This class builds a master list of extensions available to an
  * applicaiton and then validates those extensions.
  *
- * See http://java.sun.com/j2se/1.4/docs/guide/extensions/spec.html for
+ * See http://docs.oracle.com/javase/1.4.2/docs/guide/extensions/spec.html for
  * a detailed explanation of the extension mechanism in Java.
  *
  * @author Greg Murray
