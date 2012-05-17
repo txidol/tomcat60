@@ -83,7 +83,7 @@ PATCHES PROPOSED TO BACKPORT:
   2) Patch
     http://people.apache.org/~kkolinko/patches/2012-01-18_tc6_LicenseRtf.patch
 
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52579
@@ -141,8 +141,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix bug https://issues.apache.org/bugzilla/show_bug.cgi?id=52858
   http://svn.apache.org/viewvc?rev=1300948&view=rev
-  +1: fhanik, markt
+  +1: fhanik, markt, rjung
   -1:
+  rjung: Isn't this only fixing the regression introduced by 52858 (BZ 53138)
+  but 52858 will be again unfixed?
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
   Add WebSocket support to Tomcat 6
@@ -154,7 +156,7 @@ PATCHES PROPOSED TO BACKPORT:
   It is backport of the following revs of 7.0.x:
   r1300557 r1301269 r1305197
   http://people.apache.org/~kkolinko/patches/2012-03-26_tc6_update_deps.patch
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Backport UserDataHelper class (issue 52184)
@@ -193,7 +195,7 @@ PATCHES PROPOSED TO BACKPORT:
   e.g. duplicate <body> tag preceding <head> and <tr> following </table>
   http://people.apache.org/~kkolinko/patches/2012-05-13_tc6_sampleservlets.patch
   (backport of revs 1337719 1337734 1337741 1337745)
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
   
