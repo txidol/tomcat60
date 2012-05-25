@@ -179,6 +179,11 @@
         docs.oracle.com site, instead of obsolete ones (download.oracle.com,
         java.sun.com). (kkolinko)
       </update>
+      <update>
+        <bug>53289</bug>: Clarify <code>ResourceLink</code> example that
+        uses DataSource.getConnection(username, password) method. Not all
+        data source implementations support it. (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Other">
