@@ -308,21 +308,31 @@
    description="Create Windows installer" unless="skip.installer">
     <echo message="Builds a Windows installer based on Nullsoft Installer"/>
     <copy todir="${tomcat.dist}">
-      <fileset dir="res" />
+      <fileset dir="res">
+        <include name="INSTALLLICENSE" />
+        <include name="*.bmp" />
+        <include name="*.ico" />
+        <include name="confinstall/**" />
+      </fileset>
+    </copy>
+    <copy file="res/tomcat.nsi" tofile="${tomcat.dist}/tomcat.nsi" overwrite="true" encoding="ISO-8859-1">
+      <filterset refid="version.filters"/>
     </copy>
     <copy file="${nsis.installoptions.dll}" todir="${tomcat.dist}" />
     <copy file="${nsis.nsexec.dll}" todir="${tomcat.dist}" />
     <copy file="${nsis.nsisdl.dll}" todir="${tomcat.dist}" />
 
-    <fixcrlf srcdir="${tomcat.dist}" includes="*.txt,LICENSE,NOTICE" eol="crlf" encoding="ISO-8859-1" fixlast="false" />
-    <fixcrlf srcdir="${tomcat.dist}/conf" eol="crlf" encoding="ISO-8859-1" fixlast="false" />
-    <!-- Make sure the RELEASE-NOTES has Windows line endings as they may be
-         displayed post-install -->
-    <fixcrlf srcdir="${tomcat.dist}/webapps/ROOT"
-        includes="RELEASE-NOTES.txt" eol="crlf" encoding="ISO-8859-1" fixlast="false" />
-    <copy file="res/tomcat.nsi" tofile="${tomcat.dist}/tomcat.nsi" overwrite="true" encoding="ISO-8859-1">
-      <filterset refid="version.filters"/>
-    </copy>
+    <fixcrlf srcdir="${tomcat.dist}" eol="crlf" encoding="ISO-8859-1" fixlast="false">
+      <include name="*.txt" />
+      <include name="INSTALLLICENSE" />
+      <include name="LICENSE" />
+      <include name="NOTICE" />
+      <include name="tomcat.nsi" />
+      <include name="conf/**" />
+      <!-- Make sure the RELEASE-NOTES has Windows line endings as they may be
+           displayed post-install -->
+      <include name="webapps/ROOT/RELEASE-NOTES.txt" />
+    </fixcrlf>
     <exec dir="${tomcat.dist}" executable="${nsis.exe}" osfamily="windows">
       <arg value="/DNSISDIR=${nsis.home}" />
       <arg value="tomcat.nsi" />

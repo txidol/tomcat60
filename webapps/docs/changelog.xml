@@ -205,6 +205,17 @@
       <update>
         <bug>52805</bug>: Update to Eclipse JDT Compiler 3.7.2. (kkolinko)
       </update>
+      <fix>
+        When building a Windows installer do not copy whole "res" folder to
+        output/dist, but only the files that we need. Apply fixcrlf filter
+        only after the files are copied, so that <code>INSTALLLICENSE</code>
+        file had correct line ends. (kkolinko)
+      </fix>
+      <update>
+        Remove <code>res/License.rtf</code>. The file that is actually shown
+        by the Windows installer is <code>res/INSTALLLICENSE</code>.
+        (kkolinko)
+      </update>
     </changelog>
   </subsection>
 </section>
