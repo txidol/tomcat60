@@ -157,15 +157,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52983
-  Remove unnecessary code that makes switching to other authentication methods
-  difficult. Also prevent the custom error pages for the Manager and Host
-  Manager applications from being accessed directly.
-  http://svn.apache.org/viewvc?view=revision&revision=1084103
-  http://svn.apache.org/viewvc?view=revision&revision=1084109
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix several trivial HTML markup errors in example servlets
   e.g. duplicate <body> tag preceding <head> and <tr> following </table>
   http://people.apache.org/~kkolinko/patches/2012-05-13_tc6_sampleservlets.patch

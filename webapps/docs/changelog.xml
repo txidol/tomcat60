@@ -193,6 +193,12 @@
         uses DataSource.getConnection(username, password) method. Not all
         data source implementations support it. (kkolinko)
       </update>
+      <fix>
+        Prevent the custom error pages for the Manager and Host Manager
+        applications from being accessed directly. Configure custom
+        pages for error codes 401 and 403 in Host Manager application.
+        (markt/kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
