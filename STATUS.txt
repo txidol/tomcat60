@@ -166,15 +166,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko, kfujino
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53001
-  Revert the fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=46915
-  since the use case described in bug 46915 is invalid as it breaks the EL
-  specification.
-    http://svn.apache.org/viewvc?rev=1307511&view=rev
-    (The revision to revert in 6.0.x is r769336)
-  +1: markt, kkolinko, kfujino
-  -1:
-
 * Fix several trivial HTML markup errors in example servlets
   e.g. duplicate <body> tag preceding <head> and <tr> following </table>
   http://people.apache.org/~kkolinko/patches/2012-05-13_tc6_sampleservlets.patch
