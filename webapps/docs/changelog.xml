@@ -41,7 +41,7 @@
 
 <body>
 <!-- Section names:
- General, Catalina, Coyote, Jasper, Cluster, Webapps, Other
+ General, Catalina, Coyote, Jasper, Cluster, Web applications, Other
 -->
 <section name="Tomcat 6.0.36 (jfclere)" rtext="">
   <subsection name="Catalina">
@@ -160,7 +160,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>52243</bug>: Improve windows service documentation to clarify how
@@ -411,7 +411,7 @@
       </add>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         Correct the documentation for the connectionLinger attribute of the HTTP
@@ -728,7 +728,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>41498</bug>: Add the allRolesMode attribute to the Realm
@@ -1316,7 +1316,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>49585</bug>: Update JSVC documentation to reflect new packaging
@@ -1478,7 +1478,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>49213</bug>: Grant permissions required by manager application when
@@ -1710,7 +1710,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <add>
         Use underscores instead of spaces in anchor names in Tomcat
@@ -1814,7 +1814,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <add>
         Make changelog.xml be directly rendered as HTML by certain browsers.
@@ -1982,7 +1982,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <add>
         Add new "Find leaks" command to the Manager application. It allows to
@@ -2112,7 +2112,7 @@
     </fix>
   </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <add>
         <bug>48530</bug>: Add information on the Manager Server Status page to
@@ -2743,7 +2743,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>41564</bug>: Add some documentation on installing Tomcat as a
@@ -2995,7 +2995,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>46509</bug>: Use correct link on error page in JSP security
@@ -3512,7 +3512,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>45940</bug>: Correct name of username attribute for JDBC resources
@@ -3630,7 +3630,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <update>
         <bug>45323</bug>: Add note that context.xml files can only contain a
@@ -3968,7 +3968,7 @@
       </add>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <update>
         Update documentation to use correct version number, correct file paths
@@ -4242,7 +4242,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>43173</bug>: Fix typo in logging documentation regarding location
@@ -4441,7 +4441,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         Fix WebDAV Servlet so it works correctly with MS clients. (markt)
@@ -4579,7 +4579,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         Don't write error on System.out, use log() instead. (rjung)
@@ -4659,7 +4659,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
          Some examples webapp fixes. Submitted by Frank McCown. (remm)
@@ -4726,7 +4726,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>42025</bug>: Update valve documentation to refer to correct regular
@@ -4914,7 +4914,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         Fix previous update to servlet 2.5 xsd to use correct declaration.
@@ -5153,7 +5153,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <docs>
         Add a virtual hosting how-to contributed by Hassan Schroeder. (markt)
@@ -5347,7 +5347,7 @@
       </fix>
     </changelog>
   </subsection>
-  <subsection name="Webapps">
+  <subsection name="Web applications">
     <changelog>
       <fix>
         <bug>40677</bug>: Update SSL documentation to indicate that PKCS11
