@@ -110,6 +110,11 @@ PATCHES PROPOSED TO BACKPORT:
        (explained in https://issues.apache.org/bugzilla/show_bug.cgi?id=52830#c6 )
   -1:
 
+  Additional patch:
+  http://svn.apache.org/viewvc?rev=1304468&view=rev
+  +1: kkolinko
+  -1:
+
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52811
   Fix parsing of Content-Type
   http://svn.apache.org/viewvc?rev=1300154&view=rev (new HTTP header parser)
