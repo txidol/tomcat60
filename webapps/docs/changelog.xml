@@ -176,6 +176,10 @@
         documentation page. (rjung)
       </fix>
       <fix>
+        <bug>52983</bug>: Remove unnecessary code that makes switching to
+        other authentication methods difficult. (markt)
+      </fix>
+      <fix>
         <bug>53158</bug>: Fix documented defaults for DBCP.
         Patch provided by ph.dezanneau at gmail.com. (rjung)
       </fix>
