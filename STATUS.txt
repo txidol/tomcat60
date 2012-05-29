@@ -145,7 +145,7 @@ PATCHES PROPOSED TO BACKPORT:
   It is backport of the following revs of 7.0.x:
   r1300557 r1301269 r1305197
   http://people.apache.org/~kkolinko/patches/2012-03-26_tc6_update_deps.patch
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, markt
   -1:
 
 * Backport UserDataHelper class (issue 52184)
@@ -166,7 +166,7 @@ PATCHES PROPOSED TO BACKPORT:
   e.g. duplicate <body> tag preceding <head> and <tr> following </table>
   http://people.apache.org/~kkolinko/patches/2012-05-13_tc6_sampleservlets.patch
   (backport of revs 1337719 1337734 1337741 1337745)
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, markt
   -1:
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52055#c14
@@ -174,7 +174,7 @@ PATCHES PROPOSED TO BACKPORT:
   recycled.
   http://svn.apache.org/viewvc?rev=1342795&view=rev
   (r1342797 in Tomcat 7)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
   
