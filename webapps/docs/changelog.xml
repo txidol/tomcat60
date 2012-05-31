@@ -199,6 +199,10 @@
         pages for error codes 401 and 403 in Host Manager application.
         (markt/kkolinko)
       </fix>
+      <fix>
+        Correct documentation for <code>enableLookups</code> attribute
+        of a Connector. By default DNS lookups are disabled. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
