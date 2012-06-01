@@ -43,13 +43,12 @@ public class RequestHeaderExample extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         out.println("<html>");
-        out.println("<body bgcolor=\"white\">");
         out.println("<head>");
 
         String title = rb.getString("requestheader.title");
         out.println("<title>" + title + "</title>");
         out.println("</head>");
-        out.println("<body>");
+        out.println("<body bgcolor=\"white\">");
 
 	// all links relative
 

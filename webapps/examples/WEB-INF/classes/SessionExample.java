@@ -43,13 +43,12 @@ public class SessionExample extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         out.println("<html>");
-        out.println("<body bgcolor=\"white\">");
         out.println("<head>");
 
         String title = rb.getString("sessions.title");
         out.println("<title>" + title + "</title>");
         out.println("</head>");
-        out.println("<body>");
+        out.println("<body bgcolor=\"white\">");
 
         // img stuff not req'd for source code html showing
 	// relative links everywhere!
@@ -120,12 +119,9 @@ public class SessionExample extends HttpServlet {
         out.println("</form>");
 
         out.print("<p><a href=\"");
-	out.print(response.encodeURL("SessionExample?dataname=foo&datavalue=bar"));
-	out.println("\" >URL encoded </a>");
+        out.print(HTMLFilter.filter(response.encodeURL("SessionExample?dataname=foo&datavalue=bar")));
+        out.println("\" >URL encoded </a>");
 	
-        out.println("</body>");
-        out.println("</html>");
-        
         out.println("</body>");
         out.println("</html>");
     }

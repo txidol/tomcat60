@@ -162,13 +162,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix several trivial HTML markup errors in example servlets
-  e.g. duplicate <body> tag preceding <head> and <tr> following </table>
-  http://people.apache.org/~kkolinko/patches/2012-05-13_tc6_sampleservlets.patch
-  (backport of revs 1337719 1337734 1337741 1337745)
-  +1: kkolinko, rjung, markt
-  -1:
-
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52055#c14
   Correctly reset ChunkedInputFilter.needCRLFParse flag when the filter is
   recycled.

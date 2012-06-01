@@ -44,7 +44,6 @@ public class RequestParamExample extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         out.println("<html>");
-        out.println("<body>");
         out.println("<head>");
 
         String title = rb.getString("requestparams.title");

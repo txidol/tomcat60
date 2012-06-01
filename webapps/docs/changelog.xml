@@ -203,6 +203,10 @@
         Correct documentation for <code>enableLookups</code> attribute
         of a Connector. By default DNS lookups are disabled. (kkolinko)
       </fix>
+      <fix>
+        Fix several HTML markup errors in servlets of examples web application.
+        (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
