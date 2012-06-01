@@ -170,6 +170,16 @@ PATCHES PROPOSED TO BACKPORT:
   (r1343897 in TC7)
   +1: kkolinko, kfujino
   -1:
+
+* For https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
+  Ensure that filters are recycled.
+  Inspired by r1334790 (TC7), r565964 (TC6 Nio)
+  I do not have evidence that this change matters, but it should not hurt.
+  The nextRequest() method already recycles the filters. If it has been called,
+  then lastActiveFilter is -1 and the new code will be NOOP.
+  http://people.apache.org/~kkolinko/patches/2012-06-02_tc6_recycle.patch
+  +1: kkolinko
+  -1:
   
 PATCHES/ISSUES THAT ARE STALLED
 
