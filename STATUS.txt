@@ -174,7 +174,7 @@ PATCHES PROPOSED TO BACKPORT:
   recycled.
   http://svn.apache.org/viewvc?rev=1342795&view=rev
   (r1342797 in Tomcat 7)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53267
@@ -183,7 +183,7 @@ PATCHES PROPOSED TO BACKPORT:
   full GC every hour.
   http://svn.apache.org/viewvc?view=revision&revision=1343895
   (r1343897 in TC7)
-  +1: kkolinko
+  +1: kkolinko, kfujino
   -1:
   
 PATCHES/ISSUES THAT ARE STALLED
