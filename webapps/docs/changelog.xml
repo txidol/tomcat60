@@ -131,6 +131,10 @@
         or later. (rjung)
       </update>
       <fix>
+        <bug>52055#c14</bug>: Correctly reset ChunkedInputFilter.needCRLFParse
+        flag when the filter is recycled. (kkolinko)
+      </fix>
+      <fix>
         <bug>52606</bug>: Ensure replayed POST bodies are available when using
         AJP. (markt)
       </fix>
