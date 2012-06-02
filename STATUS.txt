@@ -43,12 +43,10 @@ PATCHES PROPOSED TO BACKPORT:
     - In mbeans-descriptors.xml:
       - There are no properties "asyncSupported", "stateName" in TC6 version of this valve.
     - In valve.xml:
-      - s/tomcat log/Tomcat log/ (or Apache Tomcat log)
+      - s/tomcat log/Tomcat log/ (r1345579)
     - In StuckThreadDetectionValve.java:
       - private classes CompletedStuckThread, MonitoredThread: make them static (r1175897)
       - Use Long.valueOf() and explicit boxing/unboxing (r1138132, r1175897)
-      - getStuckThreadIds() returns a list of ids. It might be useful to
-        have a similar method that returns Thread.getName() names.
 
 * Fix autodeployment of applications that have configuration errors.
   If autodeployment fails, create DeployedApplication object and register
@@ -82,9 +80,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52723
   Correct theoretical resource leak in StandardManager
   http://svn.apache.org/viewvc?rev=1299036&view=rev
-  +1: markt, fhanik
-  +0: kkolinko: no native resources are leaked actually, so I see no need
-       to do some work that garbage collector can do as well
+  +1: markt, fhanik, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52830
@@ -134,9 +130,10 @@ PATCHES PROPOSED TO BACKPORT:
   addressed in Tomcat 6, because all logging in that class here is done at
   debug level.
 
-  svn cp ../../trunk/java/org/apache/tomcat/util/log/UserDataHelper.java@1242371 java/org/apache/tomcat/util/log/UserDataHelper.java
-  Patch:
   http://people.apache.org/~kkolinko/patches/2012-03-26_tc6_UserDataHelper.patch
+  (includes a new file, copied from trunk:
+  svn cp ../../trunk/java/org/apache/tomcat/util/log/UserDataHelper.java@1242371 java/org/apache/tomcat/util/log/UserDataHelper.java
+  )
   +1: kkolinko
   -1:
 
