@@ -79,19 +79,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - https://issues.apache.org/bugzilla/show_bug.cgi?id=52579#c8
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52500
-  Add configurable mechanism to retrieve user names from X509 client certificates.
-  trunk patch: http://svn.apache.org/viewvc?view=revision&revision=r1298476
-  additional clean-up patches (good for markt?):
-     http://svn.apache.org/viewvc?view=revision&revision=r1298542
-     http://svn.apache.org/viewvc?view=revision&revision=r1298577
-     http://svn.apache.org/viewvc?view=revision&revision=r1298590
-     http://svn.apache.org/viewvc?view=revision&revision=r1298592
-  +1: schultz, fhanik
-  +1: markt if clean-up is also applied
-  +1: kkolinko: with clean-ups (r1298542, r1298577, r1298590, r1298592)
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52723
   Correct theoretical resource leak in StandardManager
   http://svn.apache.org/viewvc?rev=1299036&view=rev

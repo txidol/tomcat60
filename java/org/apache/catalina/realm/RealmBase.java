@@ -154,7 +154,17 @@ public abstract class RealmBase
      */
     protected boolean validate = true;
 
-    
+    /**
+     * The name of the class to use for retrieving user names from X509
+     * certificates.
+     */
+    protected String x509UsernameRetrieverClassName;
+
+    /**
+     * The object that will extract user names from X509 client certificates.
+     */
+    protected X509UsernameRetriever x509UsernameRetriever;
+
     /**
      * The all role mode.
      */
@@ -278,6 +288,28 @@ public abstract class RealmBase
 
     }
 
+    /**
+     * Gets the name of the class that will be used to extract user names
+     * from X509 client certificates.
+     * @return The name of the class that will be used to extract user names
+     *         from X509 client certificates.
+     */
+    public String getX509UsernameRetrieverClassName() {
+        return x509UsernameRetrieverClassName;
+    }
+
+    /**
+     * Sets the name of the class that will be used to extract user names
+     * from X509 client certificates. The class must implement
+     * X509UsernameRetriever.
+     *
+     * @param className The name of the class that will be used to extract user names
+     *                  from X509 client certificates.
+     * @see X509UsernameRetriever
+     */
+    public void setX509UsernameRetrieverClassName(String className) {
+        this.x509UsernameRetrieverClassName = className;
+    }
 
     // --------------------------------------------------------- Public Methods
 
@@ -1213,9 +1245,14 @@ public abstract class RealmBase
      * Return the Principal associated with the given certificate.
      */
     protected Principal getPrincipal(X509Certificate usercert) {
-        return(getPrincipal(usercert.getSubjectDN().getName()));
+        String username = x509UsernameRetriever.getUsername(usercert);
+
+        if(log.isDebugEnabled())
+            log.debug(sm.getString("realmBase.gotX509Username", username));
+
+        return(getPrincipal(username));
     }
-    
+
 
     /**
      * Return the Principal associated with the given user name.
@@ -1359,7 +1396,14 @@ public abstract class RealmBase
         if (container != null) {
             this.containerLog = container.getLogger();
         }
-        
+
+        try {
+            x509UsernameRetriever =
+                    createUsernameRetriever(x509UsernameRetrieverClassName);
+        } catch (LifecycleException ex) {
+            log.error(ex.getMessage(), ex);
+        }
+
         initialized=true;
         if( container== null ) {
             ObjectName parent=null;
@@ -1460,4 +1504,23 @@ public abstract class RealmBase
         }
     }
 
+    private static X509UsernameRetriever createUsernameRetriever(String className)
+        throws LifecycleException {
+        if(null == className || "".equals(className.trim()))
+            return new X509SubjectDnRetriever();
+
+        try {
+            @SuppressWarnings("unchecked")
+            Class<? extends X509UsernameRetriever> clazz = (Class<? extends X509UsernameRetriever>)Class.forName(className);
+            return clazz.newInstance();
+        } catch (ClassNotFoundException e) {
+            throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.ClassNotFoundException", className), e);
+        } catch (InstantiationException e) {
+            throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.InstantiationException", className), e);
+        } catch (IllegalAccessException e) {
+            throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.IllegalAccessException", className), e);
+        } catch (ClassCastException e) {
+            throw new LifecycleException(sm.getString("realmBase.createUsernameRetriever.ClassCastException", className), e);
+        }
+    }
 }
