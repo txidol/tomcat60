@@ -209,14 +209,12 @@
     <copy file="${commons-daemon.home}/windows/ia64/prunsrv.exe"
         tofile="${tomcat.dist}/bin/i64/tomcat${version.major}.exe" />
     <!-- tc native -->
-    <copy file="${tomcat-native.home}/tcnative-1.dll.x86"
-        tofile="${tomcat.dist}/bin/tcnative-1.dll" />
-    <!-- tc native 64 bit for amd/emt -->
-    <copy file="${tomcat-native.home}/tcnative-1.dll.x64"
-        tofile="${tomcat.dist}/bin/x64/tcnative-1.dll" />
-    <!-- tc native 64 bit for ia -->
-    <copy file="${tomcat-native.home}/tcnative-1.dll.i64"
-        tofile="${tomcat.dist}/bin/i64/tcnative-1.dll" />
+    <copy todir="${tomcat.dist}/bin">
+      <fileset dir="${tomcat-native.home}/bin">
+        <include name="*.dll"/>
+        <include name="**/*.dll"/>
+      </fileset>
+    </copy>
 
     <!-- Correct permissions and line endings on "bin" scripts -->
     <fixcrlf srcdir="${tomcat.dist}/bin" includes="*.sh"  eol="lf"   encoding="ISO-8859-1" fixlast="false" />

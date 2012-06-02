@@ -139,15 +139,6 @@ PATCHES PROPOSED TO BACKPORT:
   Add WebSocket support to Tomcat 6
   +1: fhanik
 
-* Update Apache Commons Daemon to 1.0.10.
-  Update the native component of the Tomcat APR/native connector to
-  1.1.23 and take advantage of the simplified distribution.
-  It is backport of the following revs of 7.0.x:
-  r1300557 r1301269 r1305197
-  http://people.apache.org/~kkolinko/patches/2012-03-26_tc6_update_deps.patch
-  +1: kkolinko, rjung, markt
-  -1:
-
 * Backport UserDataHelper class (issue 52184)
   Provide greater control over the logging of errors triggered by invalid
   input data (i.e. data over which Tomcat has no control).

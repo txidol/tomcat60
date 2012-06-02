@@ -221,16 +221,20 @@
         wagon-ssh. (jfclere)
       </fix>
       <fix>
-        Update Apache Commons Daemon to 1.0.9 to resolve <bug>52548</bug>
+        Update Apache Commons Daemon to 1.0.10. It resolves <bug>52548</bug>
         which meant that services created with service.bat did not set the
         <code>catalina.home</code> and <code>catalina.base</code> system
-        properties. (markt)
+        properties. (markt, kkolinko)
       </fix>
       <update>
         Update Apache Commons Pool to 1.5.7. (kkolinko)
       </update>
       <update>
         <bug>52805</bug>: Update to Eclipse JDT Compiler 3.7.2. (kkolinko)
+      </update>
+      <update>
+        Update the native component of the APR/native connectors to 1.1.23
+        and take advantage of the simplified distribution. (kkolinko) 
       </update>
       <fix>
         When building a Windows installer do not copy whole "res" folder to
