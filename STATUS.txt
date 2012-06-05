@@ -89,7 +89,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=1304468&view=rev
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52811
