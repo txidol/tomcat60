@@ -77,12 +77,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - https://issues.apache.org/bugzilla/show_bug.cgi?id=52579#c8
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52723
-  Correct theoretical resource leak in StandardManager
-  http://svn.apache.org/viewvc?rev=1299036&view=rev
-  +1: markt, fhanik, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52830
   Lookups using javax.naming.Name fail
   http://svn.apache.org/viewvc?rev=1298635&view=rev
