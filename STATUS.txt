@@ -149,7 +149,7 @@ PATCHES PROPOSED TO BACKPORT:
   full GC every hour.
   http://svn.apache.org/viewvc?view=revision&revision=1343895
   (r1343897 in TC7)
-  +1: kkolinko, kfujino, markt
+  +1: kkolinko, kfujino, markt, schultz
   -1:
 
 * For https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
@@ -170,22 +170,24 @@ PATCHES PROPOSED TO BACKPORT:
   overflow if it is written to again before the connection is closed).
   https://issues.apache.org/bugzilla/attachment.cgi?id=28890
   It is backport of r1344253
-  +1: kkolinko
+  +1: kkolinko, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52850
   Extend memory leak prevention and detection code to
   work with IBM as well as Oracle JVMs. Based on patch provided by Rohit Kelapure.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28893
-  +1: kkolinko
+  +1: kkolinko, schultz
   -1:
+  
+  schultz: it seems reasonable also to back-port the removal of null-checking due to use of NoSuch(Field|Method)Exception
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53050
   Fix XOR arithmetics and charset issue when calculating entropy to
   initialize random numbers generator in session manager. Based on
   proposal by Andras Rozsa.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28894
-  +1: kkolinko
+  +1: kkolinko, schultz
   -1:
 
 
