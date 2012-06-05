@@ -179,6 +179,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52850
+  Extend memory leak prevention and detection code to
+  work with IBM as well as Oracle JVMs. Based on patch provided by Rohit Kelapure.
+  https://issues.apache.org/bugzilla/attachment.cgi?id=28893
+  +1: kkolinko
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
