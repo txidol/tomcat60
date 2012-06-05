@@ -167,7 +167,19 @@ PATCHES PROPOSED TO BACKPORT:
   http://people.apache.org/~kkolinko/patches/2012-06-02_tc6_recycle.patch
   +1: kkolinko
   -1:
-  
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53119
+  Prevent buffer overflow errors being reported when a
+  client disconnects before the response has been fully written from an
+  AJP connection using the APR/native connector.
+  (Make sure the buffer is cleared on write error to prevent possible
+  overflow if it is written to again before the connection is closed).
+  https://issues.apache.org/bugzilla/attachment.cgi?id=28890
+  It is backport of r1344253
+  +1: kkolinko
+  -1:
+
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
