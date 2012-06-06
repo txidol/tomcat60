@@ -99,10 +99,14 @@ PATCHES PROPOSED TO BACKPORT:
   (=r1300157+r1300161 in TC7)
   +1: markt
    0: fhanik - introducing a new parser this late into a release seems too risky for 6
-  +1: kkolinko: With followups (in trunk: r1304275,1304895; in 7.0.x: r1304897).
-        The fix affects response.contentType parsing only. So I think it is
-        acceptable. I'd be more concerned if it affected request.contentType
-        processing.
+  +0: kkolinko:
+        1. It needs followups (in trunk: r1304275,1304895; in 7.0.x: r1304897).
+        2. It needs fix for BZ 53353 (trunk: r1345752,1345754; 7.0: 1345755)
+        Maybe there can be a simpler, not spec-imposing solution for 6.0?
+        E.g. disable parsing and appending of charset if
+        contentType.indexOf('\"') >= 0.
+        A good note about original proposal is that it does not affect
+        request parsing, so only broken webapps may break, not broken clients.
   -1:
 
 * Fix bug https://issues.apache.org/bugzilla/show_bug.cgi?id=52858
@@ -191,14 +195,14 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53032
   Make JspC extend o.a.tools.ant.Task so it works with namespaces
   http://svn.apache.org/viewvc?rev=1346644&view=rev
-  +1: markt, schultz
+  +1: markt, schultz, kkolinko
   -1:
 
 * Backport fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=53230
   Change ManagerBase to throw TooManyActiveSessionsException instead of
   IllegalStateException to allow for custom error page.
   http://svn.apache.org/viewvc?view=revision&revision=1346675
-  +1: schultz
+  +1: schultz, kkolinko
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
