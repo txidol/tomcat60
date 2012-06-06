@@ -196,6 +196,17 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz, kkolinko
   -1:
 
+* https://issues.apache.org/bugzilla/show_bug.cgi?id=48097#c7
+  https://issues.apache.org/bugzilla/show_bug.cgi?id=53366#c1
+  If JSP page unexpectedly fails to initialize PageContext instance,
+  write exception to the logs instead of silent swallowing.
+  Patch:
+  http://people.apache.org/~kkolinko/patches/2012-06-06_tc6_Generator.patch
+  (backport of r1347100 in Tomcat 7, r1346885 in trunk)
+  +1: kkolinko
+  -1:
+
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
