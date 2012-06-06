@@ -147,15 +147,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53267
-  Ensure that using the GC Daemon Protection feature of
-  the <code>JreMemoryLeakPreventionListener</code> does not trigger a
-  full GC every hour.
-  http://svn.apache.org/viewvc?view=revision&revision=1343895
-  (r1343897 in TC7)
-  +1: kkolinko, kfujino, markt, schultz
-  -1:
-
 * For https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
   Ensure that filters are recycled.
   Inspired by r1334790 (TC7), r565964 (TC6 Nio)
