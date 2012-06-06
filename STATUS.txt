@@ -193,7 +193,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53032
   Make JspC extend o.a.tools.ant.Task so it works with namespaces
   http://svn.apache.org/viewvc?rev=1346644&view=rev
-  +1: markt
+  +1: markt, schultz
   -1:
 
 * Backport fix for https://issues.apache.org/bugzilla/show_bug.cgi?id=53230
