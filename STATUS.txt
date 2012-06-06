@@ -179,8 +179,6 @@ PATCHES PROPOSED TO BACKPORT:
   https://issues.apache.org/bugzilla/attachment.cgi?id=28893
   +1: kkolinko, schultz
   -1:
-  
-  schultz: it seems reasonable also to back-port the removal of null-checking due to use of NoSuch(Field|Method)Exception
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53050
   Fix XOR arithmetics and charset issue when calculating entropy to
