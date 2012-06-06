@@ -203,7 +203,7 @@ PATCHES PROPOSED TO BACKPORT:
   Patch:
   http://people.apache.org/~kkolinko/patches/2012-06-06_tc6_Generator.patch
   (backport of r1347100 in Tomcat 7, r1346885 in trunk)
-  +1: kkolinko
+  +1: kkolinko, schultz
   -1:
 
 
