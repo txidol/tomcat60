@@ -257,6 +257,9 @@
         by the Windows installer is <code>res/INSTALLLICENSE</code>.
         (kkolinko)
       </update>
+      <update>
+        Improve <code>RUNNING.txt</code>. (kkolinko)
+      </update>
     </changelog>
   </subsection>
 </section>
