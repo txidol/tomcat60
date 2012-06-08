@@ -33,20 +33,44 @@ import java.util.concurrent.RejectedExecutionException;
 public class StandardThreadExecutor implements Executor {
     
     // ---------------------------------------------- Properties
+    /**
+     * Default thread priority
+     */
     protected int threadPriority = Thread.NORM_PRIORITY;
 
+    /**
+     * Run threads in daemon or non-daemon state
+     */
     protected boolean daemon = true;
     
+    /**
+     * Default name prefix for the thread name
+     */
     protected String namePrefix = "tomcat-exec-";
     
+    /**
+     * max number of threads
+     */
     protected int maxThreads = 200;
     
+    /**
+     * min number of threads
+     */
     protected int minSpareThreads = 25;
     
+    /**
+     * idle time in milliseconds
+     */
     protected int maxIdleTime = 60000;
     
+    /**
+     * The executor we use for this component
+     */
     protected ThreadPoolExecutor executor = null;
     
+    /**
+     * the name of this thread pool
+     */
     protected String name;
     
     /**
