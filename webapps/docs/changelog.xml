@@ -182,6 +182,11 @@
         environment variable that is passed to the service. (markt)
       </fix>
       <fix>
+        <bug>52515</bug>: Make it clear in the Realm how-to in the documentation
+        web application that digested password storage when using DIGEST
+        authentication requires that MD5 digests are used. (markt)
+      </fix>
+      <fix>
         <bug>52641</bug>: Remove mentioning of ldap.jar from docs.
         Patch provided by Felix Schumacher. (rjung)
       </fix>
