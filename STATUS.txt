@@ -218,6 +218,14 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53047
+  Allow database realms configured with an all roles mode that is authentication
+  only to not have to define a role table
+  http://svn.apache.org/viewvc?rev=1348498&view=rev
+  +1: markt
+  -1:
+
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
