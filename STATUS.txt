@@ -223,6 +223,9 @@ PATCHES PROPOSED TO BACKPORT:
   only to not have to define a role table
   http://svn.apache.org/viewvc?rev=1348498&view=rev
   +1: markt
+  +1: kkolinko (docs update would be needed:
+       at least set required="false" on roleNameCol, userRoleTable
+       in config/realm.html)
   -1:
 
 
