@@ -203,7 +203,7 @@ PATCHES PROPOSED TO BACKPORT:
   Patch:
   http://people.apache.org/~kkolinko/patches/2012-06-06_tc6_Generator.patch
   (backport of r1347100 in Tomcat 7, r1346885 in trunk)
-  +1: kkolinko, schultz
+  +1: kkolinko, schultz, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52996
@@ -215,7 +215,7 @@ PATCHES PROPOSED TO BACKPORT:
   It is backport of r723889 from trunk.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28907  (patch)
   http://svn.apache.org/viewvc?view=revision&revision=1348105 (documentation update)
-  +1: kkolinko
+  +1: kkolinko, fhanik
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53047
@@ -227,6 +227,7 @@ PATCHES PROPOSED TO BACKPORT:
        at least set required="false" on roleNameCol, userRoleTable
        in config/realm.html)
   -1:
+  
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53071
   Use the message from the Throwable for the error report if none was specified
   via sendError()
