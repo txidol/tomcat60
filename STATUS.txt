@@ -235,6 +235,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt
   -1:
 
+* Improve InternalNioInputBuffer.parseHeaders()
+  http://svn.apache.org/viewvc?view=revision&revision=1350294
+  (r1350301 in Tomcat 7)
+  +1: kkolinko
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
