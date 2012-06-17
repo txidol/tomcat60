@@ -3366,6 +3366,8 @@ class Generator {
 
         out
                 .printil("if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);");
+        out
+                .printil("else log(t.getMessage(), t);");
         out.popIndent();
         out.printil("}");
         out.popIndent();

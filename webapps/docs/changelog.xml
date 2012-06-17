@@ -141,8 +141,9 @@
         or later. (rjung)
       </update>
       <fix>
-        <bug>52055#c14</bug>: Correctly reset ChunkedInputFilter.needCRLFParse
-        flag when the filter is recycled. (kkolinko)
+        <bug>52055</bug> (comment 14): Correctly reset
+        <code>ChunkedInputFilter.needCRLFParse</code> flag when the filter
+        is recycled. (kkolinko)
       </fix>
       <fix>
         <bug>52606</bug>: Ensure replayed POST bodies are available when using
@@ -152,6 +153,11 @@
   </subsection>
   <subsection name="Jasper">
     <changelog>
+      <fix>
+        <bug>48097</bug> (comment 7), <bug>53366</bug> (comment 1):
+        If JSP page unexpectedly fails to initialize PageContext instance,
+        write exception to the logs instead of silent swallowing. (kkolinko)
+      </fix>
       <fix>
         <bug>52335</bug>: Only handle <code>&lt;\%</code> and not
         <code>\%</code> as escaped in template text. (markt)
