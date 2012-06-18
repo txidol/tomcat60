@@ -234,13 +234,15 @@ PATCHES PROPOSED TO BACKPORT:
 * Implement maxHeaderCount attribute on Connector.
   It is equivalent of LimitRequestFields directive of Apache HTTPD
   (backport of r1350295)
+  In JkMain.setProperty(): Fix setting of properties when connector has
+  already started for properties that have aliases. E.g. changing
+  maxHeaderCount attribute on Connector MBean via JMX.
   Patch:
-   http://people.apache.org/~kkolinko/patches/2012-06-18_tc6_maxHeaderCount_v1.patch
+   http://people.apache.org/~kkolinko/patches/2012-06-18_tc6_maxHeaderCount_v2.patch
   Eol-Style:
    svn propset svn:eol-style native java/org/apache/coyote/AbstractProtocol.java
    svn propset svn:eol-style native java/org/apache/tomcat/util/net/AbstractEndpoint.java
-  +0: kkolinko (I have not tested it yet. Esp. whether JkCoyoteHandler impl. works)
-  +1:
+  +1: kkolinko
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
