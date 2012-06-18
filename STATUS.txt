@@ -231,6 +231,18 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Implement maxHeaderCount attribute on Connector.
+  It is equivalent of LimitRequestFields directive of Apache HTTPD
+  (backport of r1350295)
+  Patch:
+   http://people.apache.org/~kkolinko/patches/2012-06-18_tc6_maxHeaderCount_v1.patch
+  Eol-Style:
+   svn propset svn:eol-style native java/org/apache/coyote/AbstractProtocol.java
+   svn propset svn:eol-style native java/org/apache/tomcat/util/net/AbstractEndpoint.java
+  +0: kkolinko (I have not tested it yet. Esp. whether JkCoyoteHandler impl. works)
+  +1:
+  -1:
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
