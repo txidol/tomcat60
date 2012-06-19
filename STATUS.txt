@@ -31,23 +31,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* Add StuckThreadDetectionValve
-  https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b
-  +1: slaurent
-  +1: kkolinko: several comments are below
-  -1:
-  kkolinko: To view/download this as a patch file you add ".diff" to the URL above. That is:
-  https://github.com/sylvainlaurent/tomcat60/commit/252334f958877221ecb2dc64ee0fd12bb77e360b.diff
-
-  kkolinko: Minor glitches:
-    - In mbeans-descriptors.xml:
-      - There are no properties "asyncSupported", "stateName" in TC6 version of this valve.
-    - In valve.xml:
-      - s/tomcat log/Tomcat log/ (r1345579)
-    - In StuckThreadDetectionValve.java:
-      - private classes CompletedStuckThread, MonitoredThread: make them static (r1175897)
-      - Use Long.valueOf() and explicit boxing/unboxing (r1138132, r1175897)
-
 * Fix autodeployment of applications that have configuration errors.
   If autodeployment fails, create DeployedApplication object and register
   what we deployed (xml or war or dir - a single file) as redeployResource.
@@ -242,6 +225,17 @@ PATCHES PROPOSED TO BACKPORT:
   Eol-Style:
    svn propset svn:eol-style native java/org/apache/coyote/AbstractProtocol.java
    svn propset svn:eol-style native java/org/apache/tomcat/util/net/AbstractEndpoint.java
+  +1: kkolinko
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50306
+  New StuckThreadDetectionValve to detect requests that
+  take a long time to process, which might indicate that their processing
+  threads are stuck. Based on a patch provided by TomLu.
+  Patch:
+   https://issues.apache.org/bugzilla/attachment.cgi?id=28961
+  Eol-Style:
+   svn propset svn:eol-style native java/org/apache/catalina/valves/StuckThreadDetectionValve.java
   +1: kkolinko
   -1:
 
