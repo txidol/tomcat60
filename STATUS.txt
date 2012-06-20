@@ -233,7 +233,7 @@ PATCHES PROPOSED TO BACKPORT:
   take a long time to process, which might indicate that their processing
   threads are stuck. Based on a patch provided by TomLu.
   Patch:
-   https://issues.apache.org/bugzilla/attachment.cgi?id=28961
+   https://issues.apache.org/bugzilla/attachment.cgi?id=28966
   Eol-Style:
    svn propset svn:eol-style native java/org/apache/catalina/valves/StuckThreadDetectionValve.java
   +1: kkolinko
