@@ -79,12 +79,14 @@ PATCHES PROPOSED TO BACKPORT:
   Fix parsing of Content-Type
   http://svn.apache.org/viewvc?rev=1300154&view=rev (new HTTP header parser)
   http://svn.apache.org/viewvc?rev=1300155&view=rev (the actual fix)
-  (=r1300157+r1300161 in TC7)
+  http://svn.apache.org/viewvc?rev=1304275&view=rev (case insensitivity)
+  http://svn.apache.org/viewvc?rev=1304895&view=rev (case insensitivity)
+  http://svn.apache.org/viewvc?rev=1345752&view=rev (BZ 53353)
+  http://svn.apache.org/viewvc?rev=1345754&view=rev (BZ 53353)
+  (=r1300157+r1300161+r1304897+1345755 in TC7)
   +1: markt
    0: fhanik - introducing a new parser this late into a release seems too risky for 6
   +0: kkolinko:
-        1. It needs followups (in trunk: r1304275,1304895; in 7.0.x: r1304897).
-        2. It needs fix for BZ 53353 (trunk: r1345752,1345754; 7.0: 1345755)
         Maybe there can be a simpler, not spec-imposing solution for 6.0?
         E.g. disable parsing and appending of charset if
         contentType.indexOf('\"') >= 0.
