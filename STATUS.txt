@@ -108,7 +108,7 @@ PATCHES PROPOSED TO BACKPORT:
   attachment.interestOps()
   http://svn.apache.org/viewvc?view=revision&revision=1340218 (fix BZ 53138)
   http://svn.apache.org/viewvc?view=revision&revision=1342468 (cleanup)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
@@ -148,7 +148,7 @@ PATCHES PROPOSED TO BACKPORT:
   overflow if it is written to again before the connection is closed).
   https://issues.apache.org/bugzilla/attachment.cgi?id=28890
   It is backport of r1344253
-  +1: kkolinko, schultz
+  +1: kkolinko, schultz, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52850
@@ -156,14 +156,17 @@ PATCHES PROPOSED TO BACKPORT:
   work with IBM as well as Oracle JVMs. Based on patch provided by Rohit Kelapure.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28893
   +1: kkolinko, schultz
-  -1:
+  -1: markt - The patch removes some error handling, probably because the patch
+              it was ported from was applied post r1201555 which was not ported
+              to TC6. As a minimum, the WebappClassLoader needs the changes from
+              r1201555 before this patch is applied 
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53050
   Fix XOR arithmetics and charset issue when calculating entropy to
   initialize random numbers generator in session manager. Based on
   proposal by Andras Rozsa.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28894
-  +1: kkolinko, schultz
+  +1: kkolinko, schultz, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53032
@@ -176,7 +179,7 @@ PATCHES PROPOSED TO BACKPORT:
   Change ManagerBase to throw TooManyActiveSessionsException instead of
   IllegalStateException to allow for custom error page.
   http://svn.apache.org/viewvc?view=revision&revision=1346675
-  +1: schultz, kkolinko
+  +1: schultz, kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52996
@@ -188,7 +191,7 @@ PATCHES PROPOSED TO BACKPORT:
   It is backport of r723889 from trunk.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28907  (patch)
   http://svn.apache.org/viewvc?view=revision&revision=1348105 (documentation update)
-  +1: kkolinko, fhanik
+  +1: kkolinko, fhanik, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53047
@@ -211,7 +214,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve InternalNioInputBuffer.parseHeaders()
   http://svn.apache.org/viewvc?view=revision&revision=1350294
   (r1350301 in Tomcat 7)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Implement maxHeaderCount attribute on Connector.
@@ -225,7 +228,7 @@ PATCHES PROPOSED TO BACKPORT:
   Eol-Style:
    svn propset svn:eol-style native java/org/apache/coyote/AbstractProtocol.java
    svn propset svn:eol-style native java/org/apache/tomcat/util/net/AbstractEndpoint.java
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50306
@@ -236,7 +239,7 @@ PATCHES PROPOSED TO BACKPORT:
    https://issues.apache.org/bugzilla/attachment.cgi?id=28966
   Eol-Style:
    svn propset svn:eol-style native java/org/apache/catalina/valves/StuckThreadDetectionValve.java
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
