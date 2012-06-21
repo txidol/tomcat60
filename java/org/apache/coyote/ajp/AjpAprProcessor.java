@@ -1258,6 +1258,9 @@ public class AjpAprProcessor implements ActionHook {
         throws IOException {
         if (outputBuffer.position() > 0) {
             if ((socket != 0) && Socket.sendbb(socket, 0, outputBuffer.position()) < 0) {
+                // There are no re-tries so clear the buffer to prevent a
+                // possible overflow if the buffer is used again. BZ53119.
+                outputBuffer.clear();
                 throw new IOException(sm.getString("ajpprocessor.failedsend"));
             }
             outputBuffer.clear();

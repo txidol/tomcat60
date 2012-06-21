@@ -149,6 +149,11 @@
         <bug>52606</bug>: Ensure replayed POST bodies are available when using
         AJP. (markt)
       </fix>
+      <fix>
+        <bug>53119</bug>: Prevent buffer overflow errors being reported when a
+        client disconnects before the response has been fully written from an
+        AJP connection using the APR/native connector. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
