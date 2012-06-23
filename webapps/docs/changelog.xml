@@ -277,8 +277,9 @@
         Improve <code>RUNNING.txt</code>. (kkolinko)
       </update>
       <update>
-        Align the Maven deploy script with the Tomact 7 verison, making full use
-        of Nexus. (markt)
+        Align the script that deploys Maven jars for Tomcat
+        (<code>res/maven/mvn-pub.xml</code>) with the Tomcat 7 version,
+        making full use of Nexus. (markt)
       </update>
     </changelog>
   </subsection>
