@@ -152,14 +152,6 @@ PATCHES PROPOSED TO BACKPORT:
               to TC6. As a minimum, the WebappClassLoader needs the changes from
               r1201555 before this patch is applied 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53050
-  Fix XOR arithmetics and charset issue when calculating entropy to
-  initialize random numbers generator in session manager. Based on
-  proposal by Andras Rozsa.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=28894
-  +1: kkolinko, schultz, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53032
   Make JspC extend o.a.tools.ant.Task so it works with namespaces
   http://svn.apache.org/viewvc?rev=1346644&view=rev

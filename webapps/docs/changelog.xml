@@ -119,6 +119,11 @@
         that checks for non-permitted classes in web application JARs. (markt)
       </fix>
       <fix>
+        <bug>53050</bug>: Fix handling of entropy value when initializing
+        session id generator in session manager. Based on proposal by
+        Andras Rozsa. (kkolinko)
+      </fix>
+      <fix>
         <bug>53056</bug>: Add APR version number to tcnative version INFO log
         message. (schultz)
       </fix>
