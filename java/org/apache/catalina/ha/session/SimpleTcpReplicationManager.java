@@ -26,6 +26,7 @@ import org.apache.catalina.ha.ClusterMessage;
 import org.apache.catalina.tribes.Member;
 import org.apache.catalina.realm.GenericPrincipal;
 import org.apache.catalina.session.StandardManager;
+import org.apache.catalina.session.TooManyActiveSessionsException;
 import org.apache.catalina.tribes.io.ReplicationStream;
 import java.io.ByteArrayInputStream;
 import org.apache.catalina.Loader;
@@ -203,9 +204,11 @@ public class SimpleTcpReplicationManager extends StandardManager implements Clus
 
         //inherited from the basic manager
         if ((getMaxActiveSessions() >= 0) &&
-           (sessions.size() >= getMaxActiveSessions()))
-            throw new IllegalStateException(sm.getString("standardManager.createSession.ise"));
-
+           (sessions.size() >= getMaxActiveSessions())) {
+            throw new TooManyActiveSessionsException(
+                    sm.getString("standardManager.createSession.ise"),
+                    getMaxActiveSessions());
+        }
 
         Session session = new ReplicatedSession(this);
 

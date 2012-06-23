@@ -284,8 +284,9 @@ public class StandardManager
         if ((maxActiveSessions >= 0) &&
             (sessions.size() >= maxActiveSessions)) {
             rejectedSessions++;
-            throw new IllegalStateException
-                (sm.getString("standardManager.createSession.ise"));
+            throw new TooManyActiveSessionsException(
+                    sm.getString("standardManager.createSession.ise"),
+                    maxActiveSessions);
         }
 
         return (super.createSession(sessionId));

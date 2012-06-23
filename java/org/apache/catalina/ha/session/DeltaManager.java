@@ -41,6 +41,7 @@ import org.apache.catalina.ha.CatalinaCluster;
 import org.apache.catalina.ha.ClusterMessage;
 import org.apache.catalina.ha.tcp.ReplicationValve;
 import org.apache.catalina.session.ManagerBase;
+import org.apache.catalina.session.TooManyActiveSessionsException;
 import org.apache.catalina.tribes.Member;
 import org.apache.catalina.tribes.io.ReplicationStream;
 import org.apache.catalina.util.LifecycleSupport;
@@ -586,7 +587,9 @@ public class DeltaManager extends ClusterManagerBase{
     public Session createSession(String sessionId, boolean distribute) {
         if ((maxActiveSessions >= 0) && (sessions.size() >= maxActiveSessions)) {
             rejectedSessions++;
-            throw new IllegalStateException(sm.getString("deltaManager.createSession.ise"));
+            throw new TooManyActiveSessionsException(
+                    sm.getString("deltaManager.createSession.ise"),
+                    maxActiveSessions);
         }
         DeltaSession session = (DeltaSession) super.createSession(sessionId) ;
         if (distribute) {

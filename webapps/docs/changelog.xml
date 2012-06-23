@@ -131,6 +131,12 @@
         <bug>53057</bug>: Add OpenSSL version number INFO log message when
         initializing. (schultz)
       </fix>
+      <update>
+        <bug>53230</bug>: Change session managers to throw
+        TooManyActiveSessionsException instead of IllegalStateException
+        when the maximum number of sessions has been exceeded and a new
+        session will not be created. (schultz/kkolinko)
+      </update>
       <fix>
         <bug>53267</bug>: Ensure that using the GC Daemon Protection feature of
         the <code>JreMemoryLeakPreventionListener</code> does not trigger a
