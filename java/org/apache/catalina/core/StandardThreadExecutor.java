@@ -78,6 +78,11 @@ public class StandardThreadExecutor implements Executor {
      */
     protected AtomicInteger submittedTasksCount;
     
+    /**
+     * The maximum number of elements that can queue up before we reject them
+     */
+    protected int maxQueueSize = Integer.MAX_VALUE;
+
     private LifecycleSupport lifecycle = new LifecycleSupport(this);
     // ---------------------------------------------- Constructors
     public StandardThreadExecutor() {
@@ -89,7 +94,7 @@ public class StandardThreadExecutor implements Executor {
     // ---------------------------------------------- Public Methods
     public void start() throws LifecycleException {
         lifecycle.fireLifecycleEvent(BEFORE_START_EVENT, null);
-        TaskQueue taskqueue = new TaskQueue();
+        TaskQueue taskqueue = new TaskQueue(maxQueueSize);
         TaskThreadFactory tf = new TaskThreadFactory(namePrefix);
         lifecycle.fireLifecycleEvent(START_EVENT, null);
         executor = new ThreadPoolExecutor(getMinSpareThreads(), getMaxThreads(), maxIdleTime, TimeUnit.MILLISECONDS,taskqueue, tf) {
@@ -114,7 +119,27 @@ public class StandardThreadExecutor implements Executor {
         submittedTasksCount = null;
         lifecycle.fireLifecycleEvent(AFTER_STOP_EVENT, null);
     }
-    
+
+    // This method is not used by Tomcat 6, but is available in later versions
+    public void execute(Runnable command, long timeout, TimeUnit unit) {
+        if ( executor != null ) {
+            submittedTasksCount.incrementAndGet();
+            try {
+                executor.execute(command);
+            } catch (RejectedExecutionException rx) {
+                //there could have been contention around the queue
+                try {
+                    if ( !( (TaskQueue) executor.getQueue()).force(command,timeout,unit) ) {
+                        submittedTasksCount.decrementAndGet();
+                        throw new RejectedExecutionException("Work queue full.");
+                    }
+                }catch (InterruptedException x) {
+                    throw new RejectedExecutionException("Interrupted.",x);
+                }
+            }
+        } else throw new IllegalStateException("StandardThreadPool not started.");
+    }
+
     public void execute(Runnable command) {
         if ( executor != null ) {
         	submittedTasksCount.incrementAndGet();
@@ -124,7 +149,7 @@ public class StandardThreadExecutor implements Executor {
                 //there could have been contention around the queue
                 if ( !( (TaskQueue) executor.getQueue()).force(command) ) {
                 	submittedTasksCount.decrementAndGet();
-                	throw new RejectedExecutionException();
+                	throw new RejectedExecutionException("Work queue full.");
                 }
             }
         } else throw new IllegalStateException("StandardThreadPool not started.");
@@ -196,6 +221,14 @@ public class StandardThreadExecutor implements Executor {
         this.name = name;
     }
     
+    public void setMaxQueueSize(int size) {
+        this.maxQueueSize = size;
+    }
+
+    public int getMaxQueueSize() {
+        return maxQueueSize;
+    }
+
     /**
      * Add a LifecycleEvent listener to this component.
      *
@@ -257,8 +290,8 @@ public class StandardThreadExecutor implements Executor {
             super();
         }
 
-        public TaskQueue(int initialCapacity) {
-            super(initialCapacity);
+        public TaskQueue(int capacity) {
+            super(capacity);
         }
 
         public TaskQueue(Collection<? extends Runnable> c) {
@@ -272,6 +305,11 @@ public class StandardThreadExecutor implements Executor {
         public boolean force(Runnable o) {
             if ( parent.isShutdown() ) throw new RejectedExecutionException("Executor not running, can't force a command into the queue");
             return super.offer(o); //forces the item onto the queue, to be used if the task is rejected
+        }
+
+        public boolean force(Runnable o, long timeout, TimeUnit unit) throws InterruptedException {
+            if ( parent.isShutdown() ) throw new RejectedExecutionException("Executor not running, can't force a command into the queue");
+            return super.offer(o,timeout,unit); //forces the item onto the queue, to be used if the task is rejected
         }
 
         public boolean offer(Runnable o) {

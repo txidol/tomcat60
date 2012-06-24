@@ -158,18 +158,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, schultz, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52996
-  In StandardThreadExecutor:
-  Add the ability to configure a job queue size.
-  Add a variant of execute method that allows to specify a timeout for how
-  long we want to try to add something to the queue.
-  Based on a patch by Ruediger Pluem.
-  It is backport of r723889 from trunk.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=28907  (patch)
-  http://svn.apache.org/viewvc?view=revision&revision=1348105 (documentation update)
-  +1: kkolinko, fhanik, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53047
   Allow database realms configured with an all roles mode that is authentication
   only to not have to define a role table

@@ -118,6 +118,14 @@
         <bug>52719</bug>: Fix a theoretical resource leak in the JAR validation
         that checks for non-permitted classes in web application JARs. (markt)
       </fix>
+      <add>
+        <bug>52996</bug>: In <code>StandardThreadExecutor</code>:
+        Add the ability to configure a job queue size
+        (<code>maxQueueSize</code> attribute).
+        Add a variant of execute method that allows to specify a timeout for
+        how long we want to try to add something to the queue.
+        Based on a patch by R&#252;diger Pl&#252;m. (kkolinko)
+      </add>
       <fix>
         <bug>53050</bug>: Fix handling of entropy value when initializing
         session id generator in session manager. Based on proposal by
