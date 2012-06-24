@@ -207,6 +207,18 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Align Ant tasks definitions in *.tasks files and in antlib.xml files.
+  Replace taskdef with typedef in bin/catalina-tasks.xml. 
+
+  (taskdef was needed because JspC was not implementing Task and thus
+  o.a.tools.ant.TaskAdapter was needed, but that was fixed by BZ 53032.
+  Using typedef allows to add jmxEquals and jmxCondition to jmxaccessor.tasks
+  file instead of explicit definitions in bin/catalina-tasks.xml. They
+  implement Condition, not Task).
+  http://people.apache.org/~kkolinko/patches/2012-06-24_tc6_anttasks.patch
+  (r1353246 + r1353262 in TC7)
+  +1: kkolinko
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
