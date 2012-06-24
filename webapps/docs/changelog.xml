@@ -261,6 +261,10 @@
         Fix several HTML markup errors in servlets of examples web application.
         (kkolinko)
       </fix>
+      <update>
+        Change the index page of ROOT webapp to mention "manager-gui" role
+        instead of "manager" one. (kkolinko)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Other">

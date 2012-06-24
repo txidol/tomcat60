@@ -198,7 +198,7 @@
           <p>where "$CATALINA_HOME" is the root of the Tomcat installation directory. If you're seeing this page, and you don't think you should be, then you're either a user who has arrived at new installation of Tomcat, or you're an administrator who hasn't got his/her setup quite right. Providing the latter is the case, please refer to the <a href="docs">Tomcat Documentation</a> for more detailed setup and administration information than is found in the INSTALL file.</p>
 
             <p><b>NOTE: For security reasons, using the manager webapp
-            is restricted to users with role "manager".</b>
+            is restricted to users with certain roles such as "manager-gui".</b>
             Users are defined in <code>$CATALINA_HOME/conf/tomcat-users.xml</code>.</p>
 
             <p>Included with this release are a host of sample Servlets and JSPs (with associated source code), extensive documentation, and an introductory guide to developing web applications.</p>
