@@ -53,7 +53,8 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 
 import org.apache.tools.ant.AntClassLoader;
-import org.apache.tools.ant.Project;
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.Task;
 import org.apache.tools.ant.util.FileUtils;
 
 /**
@@ -88,7 +89,7 @@ import org.apache.tools.ant.util.FileUtils;
  * @author Costin Manolache
  * @author Yoav Shapira
  */
-public class JspC implements Options {
+public class JspC extends Task implements Options {
 
     public static final String DEFAULT_IE_CLASS_ID =
             "clsid:8AD9C840-044E-11D1-B3E9-00805F499D93";
@@ -151,7 +152,6 @@ public class JspC implements Options {
     protected String targetClassName;
     protected String uriBase;
     protected String uriRoot;
-    protected Project project;
     protected int dieLevel;
     protected boolean helpNeeded = false;
     protected boolean compile = false;
@@ -236,8 +236,8 @@ public class JspC implements Options {
         if (arg.length == 0) {
             System.out.println(Localizer.getMessage("jspc.usage"));
         } else {
+            JspC jspc = new JspC();
             try {
-                JspC jspc = new JspC();
                 jspc.setArgs(arg);
                 if (jspc.helpNeeded) {
                     System.out.println(Localizer.getMessage("jspc.usage"));
@@ -248,6 +248,11 @@ public class JspC implements Options {
                 System.err.println(je);
                 if (die != NO_DIE_LEVEL) {
                     System.exit(die);
+                }
+            } catch (BuildException je) {
+                System.err.println(je);
+                if (jspc.dieLevel != NO_DIE_LEVEL) {
+                    System.exit(jspc.dieLevel);
                 }
             }
         }
@@ -772,25 +777,6 @@ public class JspC implements Options {
     }
 
     /**
-     * Sets the Ant project.
-     *
-     * @param theProject The project
-     */
-    public void setProject(final Project theProject) {
-        project = theProject;
-    }
-
-    /**
-     * Returns the project: may be <code>null</code> if not running
-     * inside an Ant project.
-     *
-     * @return The project
-     */
-    public Project getProject() {
-        return project;
-    }
-
-    /**
      * Base dir for the webapp. Used to generate class names and resolve
      * includes.
      */
@@ -1273,7 +1259,8 @@ public class JspC implements Options {
      *
      * @throws JasperException If an error occurs
      */
-    public void execute() throws JasperException {
+    @Override
+    public void execute() {
         if(log.isDebugEnabled()) {
             log.debug("execute() starting for " + pages.size() + " pages.");
         }
@@ -1348,7 +1335,7 @@ public class JspC implements Options {
             }
 
         } catch (IOException ioe) {
-            throw new JasperException(ioe);
+            throw new BuildException(ioe);
 
         } catch (JasperException je) {
             Throwable rootCause = je;
@@ -1359,7 +1346,7 @@ public class JspC implements Options {
             if (rootCause != je) {
                 rootCause.printStackTrace();
             }
-            throw je;
+            throw new BuildException(je);
         } finally {
             if (loader != null) {
                 LogFactory.release(loader);
