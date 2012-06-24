@@ -146,11 +146,8 @@ PATCHES PROPOSED TO BACKPORT:
   Extend memory leak prevention and detection code to
   work with IBM as well as Oracle JVMs. Based on patch provided by Rohit Kelapure.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28893
-  +1: kkolinko, schultz
-  -1: markt - The patch removes some error handling, probably because the patch
-              it was ported from was applied post r1201555 which was not ported
-              to TC6. As a minimum, the WebappClassLoader needs the changes from
-              r1201555 before this patch is applied 
+  +1: kkolinko, schultz, markt
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53047
   Allow database realms configured with an all roles mode that is authentication
