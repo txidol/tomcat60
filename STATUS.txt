@@ -72,7 +72,7 @@ PATCHES PROPOSED TO BACKPORT:
 
   Additional patch:
   http://svn.apache.org/viewvc?rev=1304468&view=rev
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52811
@@ -163,13 +163,13 @@ PATCHES PROPOSED TO BACKPORT:
   Use the message from the Throwable for the error report if none was specified
   via sendError()
   http://people.apache.org/~markt/patches/2012-06-11-bug53071-tc6.patch
-  +1: markt
+  +1: markt, kfujino
   -1:
 
 * Improve InternalNioInputBuffer.parseHeaders()
   http://svn.apache.org/viewvc?view=revision&revision=1350294
   (r1350301 in Tomcat 7)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * Implement maxHeaderCount attribute on Connector.
@@ -183,7 +183,7 @@ PATCHES PROPOSED TO BACKPORT:
   Eol-Style:
    svn propset svn:eol-style native java/org/apache/coyote/AbstractProtocol.java
    svn propset svn:eol-style native java/org/apache/tomcat/util/net/AbstractEndpoint.java
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50306
