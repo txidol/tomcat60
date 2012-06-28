@@ -265,6 +265,11 @@
         Change the index page of ROOT webapp to mention "manager-gui" role
         instead of "manager" one. (kkolinko)
       </update>
+      <fix>
+        <bug>53473</bug>: Correct the allowed values for the SSI option
+        <code>isVirtualWebappRelative</code> which are <code>true</code> or
+        <code>false</code>. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
