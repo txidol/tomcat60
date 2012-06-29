@@ -186,7 +186,7 @@ PATCHES PROPOSED TO BACKPORT:
   Add project.url and project.licenses sections to the POMs for the Maven
   artifacts.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28987
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53454
