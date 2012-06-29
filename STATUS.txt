@@ -60,21 +60,6 @@ PATCHES PROPOSED TO BACKPORT:
   -0: markt - https://issues.apache.org/bugzilla/show_bug.cgi?id=52579#c8
   -1: 
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52830
-  Lookups using javax.naming.Name fail
-  http://svn.apache.org/viewvc?rev=1298635&view=rev
-  +1: markt
-  +1: fhanik - would have been easier to read if 90% of the patch wasn't document/formatting related
-  +1: kkolinko, though see alternative implementation,
-       http://svn.apache.org/viewvc?rev=1304468&view=rev
-       (explained in https://issues.apache.org/bugzilla/show_bug.cgi?id=52830#c6 )
-  -1:
-
-  Additional patch:
-  http://svn.apache.org/viewvc?rev=1304468&view=rev
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * https://issues.apache.org/bugzilla/show_bug.cgi?id=52811
   Fix parsing of Content-Type
   http://svn.apache.org/viewvc?rev=1300154&view=rev (new HTTP header parser)
