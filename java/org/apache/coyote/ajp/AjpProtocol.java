@@ -31,13 +31,14 @@ import javax.management.MBeanRegistration;
 import javax.management.MBeanServer;
 import javax.management.ObjectName;
 
+import org.apache.coyote.AbstractProtocol;
 import org.apache.coyote.ActionCode;
 import org.apache.coyote.ActionHook;
 import org.apache.coyote.Adapter;
-import org.apache.coyote.ProtocolHandler;
 import org.apache.coyote.RequestGroupInfo;
 import org.apache.coyote.RequestInfo;
 import org.apache.tomcat.util.modeler.Registry;
+import org.apache.tomcat.util.net.AbstractEndpoint;
 import org.apache.tomcat.util.net.JIoEndpoint;
 import org.apache.tomcat.util.net.JIoEndpoint.Handler;
 import org.apache.tomcat.util.res.StringManager;
@@ -51,8 +52,8 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Remy Maucherat
  * @author Costin Manolache
  */
-public class AjpProtocol 
-    implements ProtocolHandler, MBeanRegistration {
+public class AjpProtocol extends AbstractProtocol
+    implements MBeanRegistration {
     
     
     protected static org.apache.juli.logging.Log log =
@@ -91,6 +92,9 @@ public class AjpProtocol
      */
     protected JIoEndpoint endpoint = new JIoEndpoint();
 
+    protected final AbstractEndpoint getEndpoint() {
+        return endpoint;
+    }
 
     /**
      * Configuration attributes.

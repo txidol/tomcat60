@@ -836,6 +836,8 @@ public class Http11NioProcessor implements ActionHook {
                     break;
                 }
                 keptAlive = true;
+                // Set this every time in case limit has been changed via JMX
+                request.getMimeHeaders().setLimit(endpoint.getMaxHeaderCount());
                 if ( !inputBuffer.parseHeaders() ) {
                     //we've read part of the request, don't recycle it
                     //instead associate it with the socket

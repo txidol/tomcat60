@@ -183,6 +183,20 @@ public class HandlerRequest extends JkHandler
 	return delayInitialRead;
     }
 
+    /**
+     * Set the maximum number of headers in a request that are allowed.
+     */
+    public void setMaxHeaderCount(int maxHeaderCount) {
+        this.maxHeaderCount = maxHeaderCount;
+    }
+
+    /**
+     * Get the maximum number of headers in a request that are allowed.
+     */
+    public int getMaxHeaderCount() {
+        return maxHeaderCount;
+    }
+
     // -------------------- Ajp13.id --------------------
 
     private void generateAjp13Id() {
@@ -229,12 +243,18 @@ public class HandlerRequest extends JkHandler
     private int secretNote;
     private int tmpBufNote;
 
+    /**
+     * The maximum number of headers in a request that are allowed.
+     * 100 by default. A value of less than 0 means no limit.
+     */
+    private int maxHeaderCount = 100; // as in Apache HTTPD server
+
     private boolean decoded=true;
     private boolean tomcatAuthentication=true;
     private boolean registerRequests=true;
     private boolean shutdownEnabled=false;
     private boolean delayInitialRead = true;
-    
+
     public int invoke(Msg msg, MsgContext ep ) 
         throws IOException    {
         int type=msg.getByte();
@@ -563,6 +583,9 @@ public class HandlerRequest extends JkHandler
                                 MessageBytes tmpMB ) {
         // Decode headers
         MimeHeaders headers = req.getMimeHeaders();
+
+        // Set this every time in case limit has been changed via JMX
+        req.getMimeHeaders().setLimit(maxHeaderCount);
 
         int hCount = msg.getInt();
         for(int i = 0 ; i < hCount ; i++) {

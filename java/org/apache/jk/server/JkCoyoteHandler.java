@@ -103,7 +103,7 @@ public class JkCoyoteHandler extends JkHandler implements ProtocolHandler {
         }
         return jkMain;
     }
-    
+
     boolean started=false;
     
     /** Start the protocol

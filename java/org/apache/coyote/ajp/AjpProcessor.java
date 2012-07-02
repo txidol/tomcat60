@@ -697,6 +697,9 @@ public class AjpProcessor implements ActionHook {
         // Decode headers
         MimeHeaders headers = request.getMimeHeaders();
 
+        // Set this every time in case limit has been changed via JMX
+        headers.setLimit(endpoint.getMaxHeaderCount());
+
         int hCount = requestHeaderMessage.getInt();
         for(int i = 0 ; i < hCount ; i++) {
             String hName = null;

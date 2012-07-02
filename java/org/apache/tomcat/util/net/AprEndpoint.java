@@ -55,7 +55,7 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Mladen Turk
  * @author Remy Maucherat
  */
-public class AprEndpoint {
+public class AprEndpoint extends AbstractEndpoint {
 
 
     // -------------------------------------------------------------- Constants

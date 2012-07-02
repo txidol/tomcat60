@@ -144,20 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino, kkolinko
   -1:
 
-* Implement maxHeaderCount attribute on Connector.
-  It is equivalent of LimitRequestFields directive of Apache HTTPD
-  (backport of r1350295)
-  In JkMain.setProperty(): Fix setting of properties when connector has
-  already started for properties that have aliases. E.g. changing
-  maxHeaderCount attribute on Connector MBean via JMX.
-  Patch:
-   http://people.apache.org/~kkolinko/patches/2012-06-18_tc6_maxHeaderCount_v2.patch
-  Eol-Style:
-   svn propset svn:eol-style native java/org/apache/coyote/AbstractProtocol.java
-   svn propset svn:eol-style native java/org/apache/tomcat/util/net/AbstractEndpoint.java
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50306
   New StuckThreadDetectionValve to detect requests that
   take a long time to process, which might indicate that their processing

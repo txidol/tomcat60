@@ -151,7 +151,19 @@ public class JkMain implements MBeanRegistration
         }
         props.put( n, v );
         if( started ) {
+            // Replacements need special processing only when started==true,
+            // because preProcessProperties() handles them during startup.
+            String alias = (String) replacements.get(n);
+            if (alias != null) {
+                props.put( alias, v );
+                if (log.isDebugEnabled()) {
+                    log.debug("Substituting " + n + " " + alias + " " + v);
+                }
+            }
             processProperty( n, v );
+            if (alias != null) {
+                processProperty( alias, v );
+            }
             saveProperties();
         }
     }
@@ -533,6 +545,7 @@ public class JkMain implements MBeanRegistration
         replacements.put("bufferSize", "channelSocket.bufferSize");
         replacements.put("tomcatAuthentication", "request.tomcatAuthentication");
         replacements.put("packetSize", "channelSocket.packetSize");
+        replacements.put("maxHeaderCount", "request.maxHeaderCount");
     }
 
     private void preProcessProperties() {

@@ -518,6 +518,35 @@ public class Connector
 
 
     /**
+     * Return the maximum number of headers that are allowed by the container. A
+     * value of less than 0 means no limit.
+     */
+    public int getMaxHeaderCount() {
+        Object value = getProperty("maxHeaderCount");
+        if (value instanceof Integer) {
+            return ((Integer) value).intValue();
+        } else if (value == null) {
+            // JkCoyoteHandler does not return the actual value, but the
+            // one passed to the previous call of setProperty(), which
+            // is null by default.
+            // The actual value can be seen in JkHandler MBean "request".
+            // The default value for maxHeaderCount is known to be 100.
+            return 100;
+        }
+        return Integer.parseInt((String) value);
+    }
+
+    /**
+     * Set the maximum number of headers in a request that are allowed by the
+     * container. A value of less than 0 means no limit.
+     *
+     * @param maxHeaderCount The new setting
+     */
+    public void setMaxHeaderCount(int maxHeaderCount) {
+        setProperty("maxHeaderCount", String.valueOf(maxHeaderCount));
+    }
+
+    /**
      * Return the maximum number of parameters (GET plus POST) that will be
      * automatically parsed by the container. A value of less than 0 means no
      * limit.

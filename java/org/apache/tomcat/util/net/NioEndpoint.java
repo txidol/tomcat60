@@ -77,7 +77,7 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Remy Maucherat
  * @author Filip Hanik
  */
-public class NioEndpoint {
+public class NioEndpoint extends AbstractEndpoint {
 
 
     // -------------------------------------------------------------- Constants

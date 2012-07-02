@@ -45,7 +45,7 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Yoav Shapira
  * @author Remy Maucherat
  */
-public class JIoEndpoint {
+public class JIoEndpoint extends AbstractEndpoint {
 
 
     // -------------------------------------------------------------- Constants

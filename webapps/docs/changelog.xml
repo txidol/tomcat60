@@ -186,6 +186,20 @@
       <fix>
         Improve <code>InternalNioInputBuffer.parseHeaders()</code>. (kkolinko)
       </fix>
+      <add>
+        Implement <code>maxHeaderCount</code> attribute on Connector.
+        It is equivalent of LimitRequestFields directive of
+        <a href="http://httpd.apache.org/">Apache HTTPD</a>.
+        Default value is 100. (kkolinko)
+      </add>
+      <fix>
+        In JkCoyoteHandler connector for AJP/1.3 protocol
+        (in <code>JkMain.setProperty()</code>):
+        Fix setting of properties when connector has already started for
+        properties that have aliases. E.g. it now allows to change
+        <code>maxHeaderCount</code> attribute on Connector MBean via JMX.
+        (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
