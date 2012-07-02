@@ -319,6 +319,10 @@
         (<code>res/maven/mvn-pub.xml</code>) with the Tomcat 7 version,
         making full use of Nexus. (markt)
       </update>
+      <fix>
+        <bug>53454</bug>: Return correct content-length header for HEAD requests
+        when content length is greater than 2GB. (markt)
+      </fix>
     </changelog>
   </subsection>
 </section>

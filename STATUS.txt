@@ -189,12 +189,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, kfujino
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53454
-  Return correct content-length header for HEAD requests when value is > 2GB
-  http://svn.apache.org/viewvc?rev=1354866&view=rev
-  +1: markt, kkolinko, kfujino
-  -1:
-
 
 PATCHES/ISSUES THAT ARE STALLED
 
