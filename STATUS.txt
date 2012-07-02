@@ -138,7 +138,7 @@ PATCHES PROPOSED TO BACKPORT:
   Allow database realms configured with an all roles mode that is authentication
   only to not have to define a role table
   http://svn.apache.org/viewvc?rev=1348498&view=rev
-  +1: markt
+  +1: markt, kfujino
   +1: kkolinko (docs update would be needed:
        at least set required="false" on roleNameCol, userRoleTable
        in config/realm.html)
@@ -186,13 +186,13 @@ PATCHES PROPOSED TO BACKPORT:
   Add project.url and project.licenses sections to the POMs for the Maven
   artifacts.
   https://issues.apache.org/bugzilla/attachment.cgi?id=28987
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53454
   Return correct content-length header for HEAD requests when value is > 2GB
   http://svn.apache.org/viewvc?rev=1354866&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, kfujino
   -1:
 
 
