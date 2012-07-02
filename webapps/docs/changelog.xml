@@ -124,6 +124,11 @@
         <code>java.lang.String</code>. (markt)
       </fix>
       <add>
+        <bug>52850</bug>: Extend memory leak prevention and detection code to
+        work with IBM as well as Oracle JVMs. Based on a patch provided by
+        Rohit Kelapure. (kkolinko)
+      </add>
+      <add>
         <bug>52996</bug>: In <code>StandardThreadExecutor</code>:
         Add the ability to configure a job queue size
         (<code>maxQueueSize</code> attribute).
