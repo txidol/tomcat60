@@ -183,6 +183,9 @@
         client disconnects before the response has been fully written from an
         AJP connection using the APR/native connector. (kkolinko)
       </fix>
+      <fix>
+        Improve <code>InternalNioInputBuffer.parseHeaders()</code>. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">

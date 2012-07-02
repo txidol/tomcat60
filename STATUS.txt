@@ -144,12 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino
   -1:
 
-* Improve InternalNioInputBuffer.parseHeaders()
-  http://svn.apache.org/viewvc?view=revision&revision=1350294
-  (r1350301 in Tomcat 7)
-  +1: kkolinko, markt, kfujino
-  -1:
-
 * Implement maxHeaderCount attribute on Connector.
   It is equivalent of LimitRequestFields directive of Apache HTTPD
   (backport of r1350295)
