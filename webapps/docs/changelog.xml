@@ -46,6 +46,11 @@
 <section name="Tomcat 6.0.36 (jfclere)" rtext="">
   <subsection name="Catalina">
     <changelog>
+      <add>
+        <bug>50306</bug>: New StuckThreadDetectionValve to detect requests that
+        take a long time to process, which might indicate that their processing
+        threads are stuck. Based on a patch provided by TomLu. (kkolinko)
+      </add>
       <fix>
         <bug>50570</bug>: Enable FIPS mode to be set in AprLifecycleListener.
         Based upon a patch from Chris Beckey. Note that this mode requires

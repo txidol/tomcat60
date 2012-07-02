@@ -144,17 +144,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=50306
-  New StuckThreadDetectionValve to detect requests that
-  take a long time to process, which might indicate that their processing
-  threads are stuck. Based on a patch provided by TomLu.
-  Patch:
-   https://issues.apache.org/bugzilla/attachment.cgi?id=28966
-  Eol-Style:
-   svn propset svn:eol-style native java/org/apache/catalina/valves/StuckThreadDetectionValve.java
-  +1: kkolinko, markt, kfujino
-  -1:
-
 
 PATCHES/ISSUES THAT ARE STALLED
 
