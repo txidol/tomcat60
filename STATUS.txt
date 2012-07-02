@@ -182,13 +182,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, kfujino
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53034
-  Add project.url and project.licenses sections to the POMs for the Maven
-  artifacts.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=28987
-  +1: kkolinko, markt, kfujino
-  -1:
-
 
 PATCHES/ISSUES THAT ARE STALLED
 
