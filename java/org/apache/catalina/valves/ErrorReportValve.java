@@ -159,9 +159,15 @@ public class ErrorReportValve
             return;
 
         String message = RequestUtil.filter(response.getMessage());
-        if (message == null)
-            message = "";
-
+        if (message == null) {
+            if (throwable != null) {
+                message = RequestUtil.filter(throwable.getMessage());
+            }
+            if (message == null) {
+                message = "";
+            }
+        }
+        
         // Do nothing if there is no report for the specified status code
         String report = null;
         try {

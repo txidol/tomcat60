@@ -137,13 +137,6 @@ PATCHES PROPOSED TO BACKPORT:
        in config/realm.html)
   -1:
   
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53071
-  Use the message from the Throwable for the error report if none was specified
-  via sendError()
-  http://people.apache.org/~markt/patches/2012-06-11-bug53071-tc6.patch
-  +1: markt, kfujino, kkolinko
-  -1:
-
 
 PATCHES/ISSUES THAT ARE STALLED
 
