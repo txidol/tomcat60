@@ -136,7 +136,13 @@ PATCHES PROPOSED TO BACKPORT:
        at least set required="false" on roleNameCol, userRoleTable
        in config/realm.html)
   -1:
-  
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53513
+  Fix race condition between the processing of session sync message and transfer
+  complete message.
+  http://svn.apache.org/viewvc?view=revision&revision=1359044
+  +1: kfujino
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
