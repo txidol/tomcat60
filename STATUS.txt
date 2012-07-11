@@ -144,6 +144,14 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53531
+  ExpandWar.expand does not check the return value of File.mkdirs
+  Patch here: https://issues.apache.org/bugzilla/attachment.cgi?id=29050
+  This is a similar fix to trunk (http://svn.apache.org/viewvc?view=revision&revision=1359981)
+  and also includes checking of File.mkdirs() as mentioned in the bug.
+  +1: schultz
+  -1:
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
