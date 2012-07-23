@@ -152,6 +152,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz
   -1:
 
+* Fix conflict with CSRF protection filter and clustering
+  Cache needs to be serializable
+  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/filters/CsrfPreventionFilter.java?r1=1083987&r2=1083986&pathrev=1083987
+  +1: markt
+  -1:
+
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
