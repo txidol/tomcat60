@@ -149,13 +149,13 @@ PATCHES PROPOSED TO BACKPORT:
   Patch here: https://issues.apache.org/bugzilla/attachment.cgi?id=29050
   This is a similar fix to trunk (http://svn.apache.org/viewvc?view=revision&revision=1359981)
   and also includes checking of File.mkdirs() as mentioned in the bug.
-  +1: schultz
+  +1: schultz, kkolinko
   -1:
 
 * Fix conflict with CSRF protection filter and clustering
   Cache needs to be serializable
   http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/filters/CsrfPreventionFilter.java?r1=1083987&r2=1083986&pathrev=1083987
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 
