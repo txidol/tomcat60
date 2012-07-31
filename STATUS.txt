@@ -158,6 +158,11 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53607
+  To avoid NPE, set TCP PING data to ChannelMessage.
+  http://svn.apache.org/viewvc?view=revision&revision=1367456
+  +1: kfujino
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
