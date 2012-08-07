@@ -170,6 +170,15 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53584
+  Ignore path parameters when comparing URIs for FORM authentication. This
+  prevents users being prompted twice for passwords when logging in when session
+  IDs are being encoded as path parameters.
+  http://svn.apache.org/viewvc?rev=1370537&view=rev
+  +1: markt
+  -1:
+  
+  
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
