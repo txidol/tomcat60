@@ -85,6 +85,7 @@ PATCHES PROPOSED TO BACKPORT:
   (=r1300157+r1300161+r1304897+1345755 in TC7)
   +1: markt
    0: fhanik - introducing a new parser this late into a release seems too risky for 6
+  +0: schultz - agree with fhanik: seems risky at this stage
   +0: kkolinko:
         Maybe there can be a simpler, not spec-imposing solution for 6.0?
         E.g. disable parsing and appending of charset if
@@ -109,7 +110,7 @@ PATCHES PROPOSED TO BACKPORT:
   attachment.interestOps()
   http://svn.apache.org/viewvc?view=revision&revision=1340218 (fix BZ 53138)
   http://svn.apache.org/viewvc?view=revision&revision=1342468 (cleanup)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, schultz
   -1:
   
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
@@ -148,7 +149,7 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino
   +1: kkolinko (docs update would be needed:
        at least set required="false" on roleNameCol, userRoleTable
-       in config/realm.html)
+       in config/realm.html), schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53513
@@ -175,7 +176,7 @@ PATCHES PROPOSED TO BACKPORT:
   prevents users being prompted twice for passwords when logging in when session
   IDs are being encoded as path parameters.
   http://svn.apache.org/viewvc?rev=1370537&view=rev
-  +1: markt
+  +1: markt, schultz
   -1:
   
   
