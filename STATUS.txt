@@ -178,8 +178,14 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?rev=1370537&view=rev
   +1: markt, schultz
   -1:
-  
-  
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53481
+  Add support for SSLHonorCipherOrder
+  http://svn.apache.org/viewvc?view=revision&revision=1371298
+  http://svn.apache.org/viewvc?view=revision&revision=1371302 (rolls-back inadvertent addition of TOMCAT-NEXT.txt)
+  +1: schultz
+  -1:
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
