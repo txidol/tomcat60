@@ -132,7 +132,8 @@ public class ExpandWar {
         }
 
         // Create the new document base directory
-        docBase.mkdir();
+        if(!docBase.mkdir() && !docBase.isDirectory())
+            throw new IOException(sm.getString("expandWar.createFailed", docBase));
 
         // Expand the WAR into the new document base directory
         String canonicalDocBasePrefix = docBase.getCanonicalPath();
@@ -162,7 +163,9 @@ public class ExpandWar {
                 if (last >= 0) {
                     File parent = new File(docBase,
                                            name.substring(0, last));
-                    parent.mkdirs();
+
+                    if(!parent.mkdirs() && !parent.isDirectory())
+                        throw new IOException(sm.getString("expandWar.createFailed", parent));
                 }
                 if (name.endsWith("/")) {
                     continue;

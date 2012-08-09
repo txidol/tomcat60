@@ -170,6 +170,10 @@
         the <code>JreMemoryLeakPreventionListener</code> does not trigger a
         full GC every hour. (markt/kkolinko)
       </fix>
+      <fix>
+        <bug>53531</bug>: Fix ExpandWar.expand to check the return value of
+        File.mkdir and File.mkdirs. (schultz)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">

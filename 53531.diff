@@ -1,0 +1,37 @@
+Index: java/org/apache/catalina/startup/ExpandWar.java
+===================================================================
+--- java/org/apache/catalina/startup/ExpandWar.java	(revision 1360366)
++++ java/org/apache/catalina/startup/ExpandWar.java	(working copy)
+@@ -132,7 +132,8 @@
+         }
+ 
+         // Create the new document base directory
+-        docBase.mkdir();
++        if(!docBase.mkdir() && !docBase.isDirectory())
++            throw new IOException(sm.getString("expandWar.createFailed", docBase));
+ 
+         // Expand the WAR into the new document base directory
+         String canonicalDocBasePrefix = docBase.getCanonicalPath();
+@@ -162,7 +163,9 @@
+                 if (last >= 0) {
+                     File parent = new File(docBase,
+                                            name.substring(0, last));
+-                    parent.mkdirs();
++
++                    if(!parent.mkdirs() && !parent.isDirectory())
++                        throw new IOException(sm.getString("expandWar.createFailed", parent));
+                 }
+                 if (name.endsWith("/")) {
+                     continue;
+Index: java/org/apache/catalina/startup/LocalStrings.properties
+===================================================================
+--- java/org/apache/catalina/startup/LocalStrings.properties	(revision 1360366)
++++ java/org/apache/catalina/startup/LocalStrings.properties	(working copy)
+@@ -61,6 +61,7 @@
+ expandWar.copy=Error copying {0} to {1}
+ expandWar.deleteFailed=[{0}] could not be completely deleted. The presence of the remaining files may cause problems
+ expandWar.illegalPath=The archive [{0}] is malformed and will be ignored: an entry contains an illegal path [{1}]
++expandWar.createFailed=Unable to create the directory [{0}]
+ hostConfig.appBase=Application base directory {0} does not exist
+ hostConfig.canonicalizing=Error delete redeploy resources from context [{0}]
+ hostConfig.cce=Lifecycle event data object {0} is not a Host
