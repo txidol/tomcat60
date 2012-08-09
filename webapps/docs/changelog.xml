@@ -307,6 +307,10 @@
         <code>isVirtualWebappRelative</code> which are <code>true</code> or
         <code>false</code>. (markt)
       </fix>
+      <fix>
+        <bug>53664</bug>: Minor JNDI Howto document enhancement concerning mail
+        properties. Patch provided by Mark Eggers. (schultz)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">
