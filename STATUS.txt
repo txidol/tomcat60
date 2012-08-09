@@ -183,7 +183,9 @@ PATCHES PROPOSED TO BACKPORT:
   Patch from 7.0.x should apply relatively cleanly, as it is very small:
   http://svn.apache.org/viewvc?view=revision&revision=1041892
   +1: schultz
-  -1:
+  -1: kkolinko: r1041892 is not enough. It has bad formatting, a HashMap
+  protected field (should be 'Map'), etc. See the current code of Tomcat 7.
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
