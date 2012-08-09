@@ -186,6 +186,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48692
+  Provide option to parse application/x-www-form-urlencoded PUT requests
+  Patch from 7.0.x should apply relatively cleanly, as it is very small:
+  http://svn.apache.org/viewvc?view=revision&revision=1041892
+  +1: schultz
+  -1:
+
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
