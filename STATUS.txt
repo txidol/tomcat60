@@ -185,7 +185,10 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz
   -1: kkolinko: r1041892 is not enough. It has bad formatting, a HashMap
   protected field (should be 'Map'), etc. See the current code of Tomcat 7.
-
+      schultz: current trunk and TC7 code has HashSet<String>. Am I misunderstanding?
+               I will also add http://svn.apache.org/viewvc?view=revision&revision=1043983
+                           and http://svn.apache.org/viewvc?view=revision&revision=1049264
+               to fix the formatting issues.
 
 PATCHES/ISSUES THAT ARE STALLED
 
