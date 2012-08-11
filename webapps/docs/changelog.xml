@@ -315,6 +315,10 @@
         <bug>53664</bug>: Minor JNDI Howto document enhancement concerning mail
         properties. Patch provided by Mark Eggers. (schultz)
       </fix>
+      <fix>
+        <bug>53601</bug>: Clarify that to build Apache Tomcat 6 from sources
+        a Java 5 JDK is recommended. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">

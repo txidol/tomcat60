@@ -42,10 +42,11 @@ Tomcat. The following is a step by step TODO list.
 
 </section>
 
-<section name="Download a Java Development Kit (JDK) release (version 1.5.x or later)">
+<section name="Download a Java Development Kit (JDK) release (version 5)">
 
 <p>
-The Sun JDK can be downloaded <a href="http://java.sun.com/j2se/">here</a>.
+The JDK can be downloaded following the "Previous Releases" link from
+<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">here</a>.
 </p>
 
 <p>
