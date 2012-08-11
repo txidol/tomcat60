@@ -28,12 +28,6 @@ RELEASE SHOWSTOPPERS:
 PATCHES ACCEPTED TO BACKPORT:
   [ start all new proposals below, under PATCHES PROPOSED. ]
 
-* Fix conflict with CSRF protection filter and clustering
-  Cache needs to be serializable
-  http://svn.apache.org/viewvc/tomcat/trunk/java/org/apache/catalina/filters/CsrfPreventionFilter.java?r1=1083987&r2=1083986&pathrev=1083987
-  +1: markt, kkolinko, rjung
-  -1:
-
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
