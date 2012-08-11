@@ -1713,8 +1713,14 @@ public class NioEndpoint extends AbstractEndpoint {
         public boolean processSendfile(SelectionKey sk, KeyAttachment attachment, boolean reg, boolean event) {
             NioChannel sc = null;
             try {
-                //unreg(sk,attachment);//only do this if we do process send file on a separate thread
+                unreg(sk, attachment, sk.readyOps());
                 SendfileData sd = attachment.getSendfileData();
+
+                if (log.isTraceEnabled()) {
+                    log.trace("Processing send file for: " + sd.fileName);
+                }
+
+                //setup the file channel
                 if ( sd.fchannel == null ) {
                     File f = new File(sd.fileName);
                     if ( !f.exists() ) {
@@ -1723,10 +1729,14 @@ public class NioEndpoint extends AbstractEndpoint {
                     }
                     sd.fchannel = new FileInputStream(f).getChannel();
                 }
+
+                //configure output channel
                 sc = attachment.getChannel();
                 sc.setSendFile(true);
+                //ssl channel is slightly different
                 WritableByteChannel wc =(WritableByteChannel) ((sc instanceof SecureNioChannel)?sc:sc.getIOChannel());
-                
+
+                //we still have data in the buffer
                 if (sc.getOutboundRemaining()>0) {
                     if (sc.flushOutbound()) {
                         attachment.access();
@@ -1753,15 +1763,13 @@ public class NioEndpoint extends AbstractEndpoint {
                     attachment.setSendfileData(null);
                     try {sd.fchannel.close();}catch(Exception ignore){}
                     if ( sd.keepAlive ) {
-                        if (reg) {
-                            if (log.isDebugEnabled()) {
-                                log.debug("Connection is keep alive, registering back for OP_READ");
-                            }
-                            if (event) {
-                                this.add(attachment.getChannel(),SelectionKey.OP_READ);
-                            } else {
-                                reg(sk,attachment,SelectionKey.OP_READ);
-                            }
+                        if (log.isDebugEnabled()) {
+                            log.debug("Connection is keep alive, registering back for OP_READ");
+                        }
+                        if (event) {
+                            this.add(attachment.getChannel(),SelectionKey.OP_READ);
+                        } else {
+                            reg(sk,attachment,SelectionKey.OP_READ);
                         }
                     } else {
                         if (log.isDebugEnabled()) {
@@ -1770,9 +1778,9 @@ public class NioEndpoint extends AbstractEndpoint {
                         cancelledKey(sk,SocketStatus.STOP,false);
                         return false;
                     }
-                } else if ( attachment.interestOps() == 0 && reg ) {
+                } else {
                     if (log.isDebugEnabled()) {
-                        log.debug("OP_WRITE for sendilfe:"+sd.fileName);
+                        log.debug("OP_WRITE for sendfile:" + sd.fileName);
                     }
                     if (event) {
                         add(attachment.getChannel(),SelectionKey.OP_WRITE);

@@ -198,6 +198,11 @@
         AJP. (markt)
       </fix>
       <fix>
+        <bug>52858</bug>: Fix high CPU load with SSL, NIO and sendfile when
+        client breaks the connection before reading all the requested data.
+        (fhanik/kkolinko)
+      </fix>
+      <fix>
         <bug>53119</bug>: Prevent buffer overflow errors being reported when a
         client disconnects before the response has been fully written from an
         AJP connection using the APR/native connector. (kkolinko)

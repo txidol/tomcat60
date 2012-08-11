@@ -80,25 +80,6 @@ PATCHES PROPOSED TO BACKPORT:
         request parsing, so only broken webapps may break, not broken clients.
   -1:
 
-* Fix bug https://issues.apache.org/bugzilla/show_bug.cgi?id=52858
-  http://svn.apache.org/viewvc?rev=1300948&view=rev
-  +1: fhanik, markt, rjung
-  -1:
-  rjung: Isn't this only fixing the regression introduced by 52858 (BZ 53138)
-  but 52858 will be again unfixed?
-  -1: kkolinko: unless r1340218 is backported as well (I agree with rjung's
-      concern). Proposed below.
-
- Additional patch:
-  kkolinko: Regarding r1340218: Note, that "reg" argument in all existing
-  calls to processSendfile() is always true. The actual change in this
-  revision is registering for OP_WRITE regardless of the value of
-  attachment.interestOps()
-  http://svn.apache.org/viewvc?view=revision&revision=1340218 (fix BZ 53138)
-  http://svn.apache.org/viewvc?view=revision&revision=1342468 (cleanup)
-  +1: kkolinko, markt, schultz
-  -1:
-  
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
   Add WebSocket support to Tomcat 6
   +1: fhanik
