@@ -165,6 +165,15 @@ PATCHES PROPOSED TO BACKPORT:
                            and http://svn.apache.org/viewvc?view=revision&revision=1049264
                to fix the formatting issues.
 
+* Further fixes for https://issues.apache.org/bugzilla/show_bug.cgi?id=53071
+  - Use standard text for standard HTTP error codes 
+  - Trim Jasper error messages
+  http://svn.apache.org/viewvc?view=revision&revision=1361991
+  http://svn.apache.org/viewvc?rev=1372131&view=rev
+  +1: markt
+  -1:
+  
+  
 PATCHES/ISSUES THAT ARE STALLED
 
 * Backport JSP unloading patch (BZ48358).
