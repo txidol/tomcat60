@@ -144,7 +144,26 @@ PATCHES PROPOSED TO BACKPORT:
   IDs are being encoded as path parameters.
   http://svn.apache.org/viewvc?rev=1370537&view=rev
   +1: markt, schultz
-  -1:
+  -1: kkolinko:
+     Regarding FormAuthenticator.restoreRequest(..):
+     My -1 is because decodedURI is saved into SavedRequest in #saveRequest(..)
+     but is restored into requestURI field in #restoreRequest(..).
+
+     The following are my concerns:
+     1. The web application protected by FORM auth might have expected path
+     parameters, and now those are lost from requestURI.
+     2. The decodedURI value is url-decoded in CoyoteAdapter.postParseRequest(..),
+     while requestURI is not. Using one for the other changes behaviour.
+
+     3. An issue that exists in the old code as well: I wonder why
+     decodedURI value is not restored by restoreRequest(). It looks like a
+     bug. I think an observable consequence is that o.a.c.connector.Request#toAbsolute()
+     will return different values because of different values of decodedURI.
+
+     The BZ 53584 bug is essentially in matchRequest(..) and I agree that it should
+     be changed to compare decodedURI values.
+     Can SavedRequest store both requestURI and decodedURI values and
+     restore both of them?
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53481
   Add support for SSLHonorCipherOrder
