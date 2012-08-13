@@ -143,6 +143,7 @@ PATCHES PROPOSED TO BACKPORT:
   prevents users being prompted twice for passwords when logging in when session
   IDs are being encoded as path parameters.
   http://svn.apache.org/viewvc?rev=1370537&view=rev
+  http://svn.apache.org/viewvc?rev=1372390&view=rev (addresses kkolinko's -1)
   +1: markt, schultz
   -1: kkolinko:
      Regarding FormAuthenticator.restoreRequest(..):
