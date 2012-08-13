@@ -170,11 +170,12 @@ PATCHES PROPOSED TO BACKPORT:
   - Trim Jasper error messages
   http://svn.apache.org/viewvc?view=revision&revision=1361991
   http://svn.apache.org/viewvc?rev=1372131&view=rev
-  +1: markt, rjung
+  +1: markt, rjung, kkolinko
   -1:
   rjung: 1361991 doesn't apply cleanly, because the list of status codes
          was extended in 1361263 and 1361962.
          I would be +1 to backport those two as well.
+  kkolinko: +1 for 1361263 and 1361962 as well.
   
   
 PATCHES/ISSUES THAT ARE STALLED
