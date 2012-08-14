@@ -158,17 +158,20 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48692
   Provide option to parse application/x-www-form-urlencoded PUT requests
-  Patch from 7.0.x should apply relatively cleanly, as it is very small:
-  http://svn.apache.org/viewvc?view=revision&revision=1041892
+  Tomcat 6.0.x patch: https://issues.apache.org/bugzilla/attachment.cgi?id=29222
+  (Merges the following patches for Tomcat 7.0.x:
+    http://svn.apache.org/viewvc?view=revision&revision=1041892 (initial patch)
+    http://svn.apache.org/viewvc?view=revision&revision=1043983 (fixes formatting; improved documentation)
+    http://svn.apache.org/viewvc?view=revision&revision=1049264 (improved javadoc)
+  )
   +1: schultz
-   0: kkolinko: r1041892 is not enough. It has bad formatting, a HashMap
-  protected field (should be 'Map'), etc. See the current code of Tomcat 7.
+   0: kkolinko: r1041892 is not enough. It has bad formatting, a HashSet
+  protected field (should be 'Set'), etc. See the current code of Tomcat 7.
       schultz: current trunk and TC7 code has HashSet<String>. Am I misunderstanding?
-               I will also add http://svn.apache.org/viewvc?view=revision&revision=1043983
-                           and http://svn.apache.org/viewvc?view=revision&revision=1049264
-               to fix the formatting issues.
       kkolinko: If we missed it, then it has to be fixed in trunk. I think
       a patch for 6.0 is needed to properly review the change here.
+
+      schultz: My new patch against 6.0.x should address kkolinko's concerns.
 
 * Further fixes for https://issues.apache.org/bugzilla/show_bug.cgi?id=53071
   - Use standard text for standard HTTP error codes 
