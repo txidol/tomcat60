@@ -187,7 +187,7 @@ PATCHES PROPOSED TO BACKPORT:
   Fix possible corruption of GZIP'd output.
   http://svn.apache.org/viewvc?rev=1377342&view=rev
   (r1377343 in 7.0)
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
   
   
