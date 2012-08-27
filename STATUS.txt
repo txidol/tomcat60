@@ -109,14 +109,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53047
-  Allow database realms configured with an all roles mode that is authentication
-  only to not have to define a role table
-  http://svn.apache.org/viewvc?rev=1348498&view=rev
-  http://svn.apache.org/viewvc?rev=1377444&view=rev (documentation)
-  +1: markt, kfujino, kkolinko, schultz
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53481
   Add support for SSLHonorCipherOrder
   http://svn.apache.org/viewvc?view=revision&revision=1371298

@@ -619,6 +619,12 @@ public class JDBCRealm
      */
     protected ArrayList<String> getRoles(String username) {
         
+        if (allRolesMode != AllRolesMode.STRICT_MODE && !isRoleStoreDefined()) {
+            // Using an authentication only configuration and no role store has
+            // been defined so don't spend cycles looking
+            return null;
+        }
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -678,8 +684,7 @@ public class JDBCRealm
             numberOfTries--;
         }
         
-        return (null);
-        
+        return null;
     }
     
     
@@ -765,8 +770,12 @@ public class JDBCRealm
     }
 
 
-    // ------------------------------------------------------ Lifecycle Methods
+    private boolean isRoleStoreDefined() {
+        return userRoleTable != null || roleNameCol != null;
+    }
 
+
+    // ------------------------------------------------------ Lifecycle Methods
 
     /**
      *
