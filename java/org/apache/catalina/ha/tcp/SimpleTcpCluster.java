@@ -57,6 +57,7 @@ import org.apache.catalina.tribes.group.interceptors.MessageDispatch15Intercepto
 import org.apache.catalina.tribes.group.interceptors.TcpFailureDetector;
 import org.apache.catalina.ha.session.JvmRouteBinderValve;
 import org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener;
+import org.apache.catalina.ha.session.SessionMessage;
 
 /**
  * A <b>Cluster </b> implementation using simple multicast. Responsible for
@@ -808,14 +809,19 @@ public class SimpleTcpCluster
     public void send(ClusterMessage msg, Member dest) {
         try {
             msg.setAddress(getLocalMember());
+            int sendOptions = channelSendOptions;
+            if (msg instanceof SessionMessage
+                    && ((SessionMessage)msg).getEventType() == SessionMessage.EVT_ALL_SESSION_DATA) {
+                sendOptions = Channel.SEND_OPTIONS_SYNCHRONIZED_ACK|Channel.SEND_OPTIONS_USE_ACK;
+            }
             if (dest != null) {
                 if (!getLocalMember().equals(dest)) {
-                    channel.send(new Member[] {dest}, msg,channelSendOptions);
+                    channel.send(new Member[] {dest}, msg, sendOptions);
                 } else
                     log.error("Unable to send message to local member " + msg);
             } else {
                 if (channel.getMembers().length>0)
-                    channel.send(channel.getMembers(),msg,channelSendOptions);
+                    channel.send(channel.getMembers(),msg, sendOptions);
                 else if (log.isDebugEnabled()) 
                     log.debug("No members in cluster, ignoring message:"+msg);
             }

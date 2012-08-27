@@ -266,6 +266,10 @@
         Replicate principal in ClusterSingleSignOn. (kfujino)
       </fix>
       <fix>
+        <bug>53513</bug>: Fix race condition between the processing of session
+        sync message and transfer complete message. (kfujino)
+      </fix>
+      <fix>
         <bug>53606</bug>: Fix potential NPE in <code>TcpPingInterceptor</code>.
         Based on a patch by F. Arnoud. (markt)
       </fix>

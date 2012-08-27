@@ -117,13 +117,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kfujino, kkolinko, schultz
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53513
-  Fix race condition between the processing of session sync message and transfer
-  complete message.
-  http://svn.apache.org/viewvc?view=revision&revision=1359044
-  +1: kfujino, kkolinko, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53481
   Add support for SSLHonorCipherOrder
   http://svn.apache.org/viewvc?view=revision&revision=1371298
