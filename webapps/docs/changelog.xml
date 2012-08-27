@@ -265,6 +265,10 @@
       <fix>
         Replicate principal in ClusterSingleSignOn. (kfujino)
       </fix>
+      <fix>
+        <bug>53606</bug>: Fix potential NPE in <code>TcpPingInterceptor</code>.
+        Based on a patch by F. Arnoud. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Web applications">
