@@ -21,6 +21,7 @@ package org.apache.catalina.valves;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Scanner;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
@@ -161,7 +162,11 @@ public class ErrorReportValve
         String message = RequestUtil.filter(response.getMessage());
         if (message == null) {
             if (throwable != null) {
-                message = RequestUtil.filter(throwable.getMessage());
+                String exceptionMessage = throwable.getMessage();
+                if (exceptionMessage != null && exceptionMessage.length() > 0) {
+                    message = RequestUtil.filter(
+                            (new Scanner(exceptionMessage)).nextLine());
+                }
             }
             if (message == null) {
                 message = "";
@@ -171,7 +176,7 @@ public class ErrorReportValve
         // Do nothing if there is no report for the specified status code
         String report = null;
         try {
-            report = sm.getString("http." + statusCode, message);
+            report = sm.getString("http." + statusCode);
         } catch (Throwable t) {
             ;
         }
