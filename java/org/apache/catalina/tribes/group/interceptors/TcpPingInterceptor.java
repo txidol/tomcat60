@@ -27,6 +27,7 @@ import org.apache.catalina.tribes.ChannelMessage;
 import org.apache.catalina.tribes.Member;
 import org.apache.catalina.tribes.group.ChannelInterceptorBase;
 import org.apache.catalina.tribes.io.ChannelData;
+import org.apache.catalina.tribes.io.XByteBuffer;
 
 /**
  * 
@@ -141,6 +142,7 @@ public class TcpPingInterceptor extends ChannelInterceptorBase {
         data.setAddress(getLocalMember(false));
         data.setTimestamp(System.currentTimeMillis());
         data.setOptions(getOptionFlag());
+        data.setMessage(new XByteBuffer(TCP_PING_DATA, false));
         try {
             super.sendMessage(members, data, null);
         }catch (ChannelException x) {
