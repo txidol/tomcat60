@@ -136,16 +136,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53584
-  Ignore path parameters when comparing URIs for FORM authentication. This
-  prevents users being prompted twice for passwords when logging in when session
-  IDs are being encoded as path parameters.
-  http://svn.apache.org/viewvc?rev=1370537&view=rev
-  http://svn.apache.org/viewvc?rev=1372390&view=rev (addresses kkolinko's -1)
-  +1: markt, schultz
-  +1: kkolinko (OK, my concerns were addressed)
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53481
   Add support for SSLHonorCipherOrder
   http://svn.apache.org/viewvc?view=revision&revision=1371298
