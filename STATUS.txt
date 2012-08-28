@@ -136,9 +136,9 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53725
   Fix possible corruption of GZIP'd output.
-  http://svn.apache.org/viewvc?rev=1377342&view=rev
-  (r1377343 in 7.0)
-  +1: kkolinko, markt
+  (r1377343 + r1378378)
+  https://issues.apache.org/bugzilla/attachment.cgi?id=29297
+  +1: kkolinko
   -1:
 
 * Various DIGEST improvements ported from Tomcat 7
