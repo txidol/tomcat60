@@ -142,6 +142,12 @@
         Based on a patch by R&#252;diger Pl&#252;m. (kkolinko)
       </add>
       <fix>
+        <bug>53047</bug>: If a JDBCRealm or DataSourceRealm is configured for
+        an all roles mode that only requires authorization (and no roles) and no
+        role table or column is defined, don't populate the Principal's roles.
+        (markt/kkolinko)
+      </fix>
+      <fix>
         <bug>53050</bug>: Fix handling of entropy value when initializing
         session id generator in session manager. Based on proposal by
         Andras Rozsa. (kkolinko)
@@ -257,12 +263,6 @@
         <bug>53032</bug>: Modify <code>JspC</code> so it extends
         <code>org.apache.tools.ant.Task</code> enabling it to work with features
         such as namespaces within build.xml files. (markt)
-      </fix>
-      <fix>
-        <bug>53047</bug>: If a JDBC Realm or DataSource Realm is configured for
-        an all roles mode that only requires authorization (and no roles) and no
-        role table or column is defined, don't populate the Principal's roles.
-        (markt/kkolinko) 
       </fix>
     </changelog>
   </subsection>
