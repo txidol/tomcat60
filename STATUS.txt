@@ -136,8 +136,8 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53725
   Fix possible corruption of GZIP'd output.
-  (r1377343 + r1378378)
-  https://issues.apache.org/bugzilla/attachment.cgi?id=29297
+  http://svn.apache.org/viewvc?rev=1378403&view=rev
+  http://svn.apache.org/viewvc?rev=1378408&view=rev
   +1: kkolinko
   -1:
 
