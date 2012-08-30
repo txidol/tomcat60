@@ -165,6 +165,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53800
+  FileDirContext.list() did not provide correct paths for subdirectories.
+  Patch provided by Kevin Wooten.
+  http://svn.apache.org/viewvc?view=revision&revision=1378819
+  +1: kkolinko
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
