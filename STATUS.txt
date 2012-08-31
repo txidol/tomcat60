@@ -114,7 +114,7 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1371298
   http://svn.apache.org/viewvc?view=revision&revision=1371302 (rolls-back inadvertent addition of TOMCAT-NEXT.txt)
   http://svn.apache.org/viewvc?view=revision&revision=1371620 (tab -> spaces)
-  +1: schultz
+  +1: schultz, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48692
@@ -125,14 +125,8 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc?view=revision&revision=1043983 (fixes formatting; improved documentation)
     http://svn.apache.org/viewvc?view=revision&revision=1049264 (improved javadoc)
   )
-  +1: schultz
-   0: kkolinko: r1041892 is not enough. It has bad formatting, a HashSet
-  protected field (should be 'Set'), etc. See the current code of Tomcat 7.
-      schultz: current trunk and TC7 code has HashSet<String>. Am I misunderstanding?
-      kkolinko: If we missed it, then it has to be fixed in trunk. I think
-      a patch for 6.0 is needed to properly review the change here.
-
-      schultz: My new patch against 6.0.x should address kkolinko's concerns.
+  +1: schultz, kkolinko
+  -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53725
   Fix possible corruption of GZIP'd output.
