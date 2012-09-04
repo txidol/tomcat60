@@ -192,6 +192,12 @@
         when logging in when session IDs are being encoded as path parameters.
         (markt)
       </fix>
+      <fix>
+        Various improvements to the DIGEST authenticator including
+        <bug>52954</bug>, the disabling caching of an authenticated user in the
+        session by default, tracking server rather than client nonces and better
+        handling of stale nonce values. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
