@@ -150,6 +150,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, kfujino
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53830
+  Better handling of Manager.randomFile default value on Windows
+  https://issues.apache.org/bugzilla/attachment.cgi?id=29329
+  +1: kkolinko
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
