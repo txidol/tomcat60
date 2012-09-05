@@ -142,12 +142,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, kfujino, jfclere
   -1:
 
-* Remove unneeded handling of FORM authentication in RealmBase
-  http://svn.apache.org/viewvc?rev=1377887&view=rev
-  (r1377892 in 7.0)
-  +1: kkolinko, kfujino, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53793
   Change links on the list of applications in the Manager to point to
   '/appname/' instead of '/appname'.
