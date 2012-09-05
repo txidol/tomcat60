@@ -152,7 +152,7 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53830
   Better handling of Manager.randomFile default value on Windows
-  https://issues.apache.org/bugzilla/attachment.cgi?id=29329
+  https://issues.apache.org/bugzilla/attachment.cgi?id=29330
   +1: kkolinko
   -1:
 
