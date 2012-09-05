@@ -205,6 +205,10 @@
   </subsection>
   <subsection name="Coyote">
     <changelog>
+      <fix>
+        <bug>42181</bug>: Better handling of edge conditions in chunk header
+        processing. (kkolinko)
+      </fix>
       <update>
         <bug>51477</bug>: Support all SSL protocol combinations in the APR/native
         connector. This only works when using the native library version 1.1.21

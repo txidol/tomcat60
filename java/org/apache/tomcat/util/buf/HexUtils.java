@@ -37,23 +37,11 @@ public final class HexUtils {
     /**
      *  Table for HEX to DEC byte translation.
      */
-    public static final int[] DEC = {
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+    private static final int[] DEC = {
         00, 01, 02, 03, 04, 05, 06, 07,  8,  9, -1, -1, -1, -1, -1, -1,
         -1, 10, 11, 12, 13, 14, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1,
         -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, 10, 11, 12, 13, 14, 15, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+        -1, 10, 11, 12, 13, 14, 15,
     };
 
 
@@ -75,6 +63,14 @@ public final class HexUtils {
 
     // --------------------------------------------------------- Static Methods
 
+    public static int getDec(int index){
+        // Fast for correct values, slower for incorrect ones
+        try {
+            return DEC[index - '0'];
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            return -1;
+        }
+    }
 
     /**
      * Convert a String of hexadecimal digits into the corresponding
@@ -146,6 +142,7 @@ public final class HexUtils {
      *
      * @exception IllegalArgumentException if an invalid hexadecimal digit
      *  is included
+     * @deprecated Not used, will be removed in Tomcat 7
      */
     public static int convert2Int( byte[] hex ) {
 	// Code from Ajp11, from Apache's JServ
@@ -154,21 +151,21 @@ public final class HexUtils {
 	// assert valid data
 	int len;
 	if(hex.length < 4 ) return 0;
-	if( DEC[hex[0]]<0 )
+	if( getDec(hex[0])<0 )
 	    throw new IllegalArgumentException(sm.getString("hexUtil.bad"));
-	len = DEC[hex[0]];
+	len = getDec(hex[0]);
 	len = len << 4;
-	if( DEC[hex[1]]<0 )
+	if( getDec(hex[1])<0 )
 	    throw new IllegalArgumentException(sm.getString("hexUtil.bad"));
-	len += DEC[hex[1]];
+	len += getDec(hex[1]);
 	len = len << 4;
-	if( DEC[hex[2]]<0 )
+	if( getDec(hex[2])<0 )
 	    throw new IllegalArgumentException(sm.getString("hexUtil.bad"));
-	len += DEC[hex[2]];
+	len += getDec(hex[2]);
 	len = len << 4;
-	if( DEC[hex[3]]<0 )
+	if( getDec(hex[3])<0 )
 	    throw new IllegalArgumentException(sm.getString("hexUtil.bad"));
-	len += DEC[hex[3]];
+	len += getDec(hex[3]);
 	return len;
     }
 

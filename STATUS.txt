@@ -136,12 +136,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, jfclere
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=42181
-  Better handling of edge conditions in chunk header processing
-  https://issues.apache.org/bugzilla/attachment.cgi?id=29288
-  +1: kkolinko, kfujino, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53793
   Change links on the list of applications in the Manager to point to
   '/appname/' instead of '/appname'.
