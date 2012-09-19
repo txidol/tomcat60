@@ -159,6 +159,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix a behavior of TcpPingInterceptor#useThread.
   If set to false, ping thread is never started. 
   http://svn.apache.org/viewvc?view=revision&revision=1387073
+  http://svn.apache.org/viewvc?view=revision&revision=1387487
   +1: kfujino
   -1:
 
