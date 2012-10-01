@@ -59,26 +59,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino, fhanik
   -1: markt - https://issues.apache.org/bugzilla/show_bug.cgi?id=52579#c8
 
-* https://issues.apache.org/bugzilla/show_bug.cgi?id=52811
-  Fix parsing of Content-Type
-  http://svn.apache.org/viewvc?rev=1300154&view=rev (new HTTP header parser)
-  http://svn.apache.org/viewvc?rev=1300155&view=rev (the actual fix)
-  http://svn.apache.org/viewvc?rev=1304275&view=rev (case insensitivity)
-  http://svn.apache.org/viewvc?rev=1304895&view=rev (case insensitivity)
-  http://svn.apache.org/viewvc?rev=1345752&view=rev (BZ 53353)
-  http://svn.apache.org/viewvc?rev=1345754&view=rev (BZ 53353)
-  (=r1300157+r1300161+r1304897+1345755 in TC7)
-  +1: markt
-   0: fhanik - introducing a new parser this late into a release seems too risky for 6
-  +0: schultz - agree with fhanik: seems risky at this stage
-  +0: kkolinko:
-        Maybe there can be a simpler, not spec-imposing solution for 6.0?
-        E.g. disable parsing and appending of charset if
-        contentType.indexOf('\"') >= 0.
-        A good note about original proposal is that it does not affect
-        request parsing, so only broken webapps may break, not broken clients.
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
   Add WebSocket support to Tomcat 6
   +1: fhanik
