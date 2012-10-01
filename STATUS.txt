@@ -51,14 +51,6 @@ PATCHES PROPOSED TO BACKPORT:
       Or need to delete context.xml manually? 
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52579
-  Propose new implementation of ByteChunk.toStringInternal().
-  This fix does not reintroduce issue BZ51400.
-  This fix avoids http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6196991.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=28274
-  +1: kfujino, fhanik
-  -1: markt - https://issues.apache.org/bugzilla/show_bug.cgi?id=52579#c8
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
   Add WebSocket support to Tomcat 6
   +1: fhanik
