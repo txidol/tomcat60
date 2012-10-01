@@ -386,6 +386,10 @@
         Update Apache Commons Pool to 1.5.7. (kkolinko)
       </update>
       <update>
+        <bug>52579</bug>: Add a note about Sun's Charset.decode() bug to the
+        RELEASE-NOTES file. (kkolinko)
+      </update>
+      <update>
         <bug>52805</bug>: Update to Eclipse JDT Compiler 3.7.2. (kkolinko)
       </update>
       <update>
