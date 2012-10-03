@@ -97,34 +97,34 @@ PATCHES PROPOSED TO BACKPORT:
     http://svn.apache.org/viewvc?view=revision&revision=1043983 (fixes formatting; improved documentation)
     http://svn.apache.org/viewvc?view=revision&revision=1049264 (improved javadoc)
   )
-  +1: schultz, kkolinko
+  +1: schultz, kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53725
   Fix possible corruption of GZIP'd output.
   http://svn.apache.org/viewvc?rev=1378403&view=rev
   http://svn.apache.org/viewvc?rev=1378408&view=rev
-  +1: kkolinko, jfclere
+  +1: kkolinko, jfclere, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53793
   Change links on the list of applications in the Manager to point to
   '/appname/' instead of '/appname'.
   https://issues.apache.org/bugzilla/attachment.cgi?id=29296
-  +1: kkolinko, kfujino, schultz
+  +1: kkolinko, kfujino, schultz, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53800
   FileDirContext.list() did not provide correct paths for subdirectories.
   Patch provided by Kevin Wooten.
   http://svn.apache.org/viewvc?view=revision&revision=1378819
-  +1: kkolinko, kfujino, schultz
+  +1: kkolinko, kfujino, schultz, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53830
   Better handling of Manager.randomFile default value on Windows
   https://issues.apache.org/bugzilla/attachment.cgi?id=29330
-  +1: kkolinko, schultz
+  +1: kkolinko, schultz, markt
   -1:
 
 * Fix a behavior of TcpPingInterceptor#useThread.
@@ -133,13 +133,13 @@ PATCHES PROPOSED TO BACKPORT:
   "Do not start a ping thread when useThread is set to false."
   http://svn.apache.org/viewvc?view=revision&revision=1387073
   http://svn.apache.org/viewvc?view=revision&revision=1387487
-  +1: kfujino, kkolinko, schultz
+  +1: kfujino, kkolinko, schultz, markt
   -1:
 
 * Improve session management in CsrfPreventionFilter
   (Backport of r1393071 from Tomcat 7)
   http://people.apache.org/~kkolinko/patches/2012-10-03_tc6_CsrfPreventionFilter.patch
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
