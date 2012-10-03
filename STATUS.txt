@@ -129,9 +129,11 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Fix a behavior of TcpPingInterceptor#useThread.
   If set to false, ping thread is never started. 
+  kkolinko: Better wording for the above sentence:
+  "Do not start a ping thread when useThread is set to false."
   http://svn.apache.org/viewvc?view=revision&revision=1387073
   http://svn.apache.org/viewvc?view=revision&revision=1387487
-  +1: kfujino
+  +1: kfujino, kkolinko
   -1:
 
 * Improve session management in CsrfPreventionFilter
