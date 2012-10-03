@@ -39,7 +39,7 @@ PATCHES PROPOSED TO BACKPORT:
   listed and undeployed.
   http://people.apache.org/~kkolinko/patches/2011-11-14_tc6_HostConfig.patch
   http://people.apache.org/~kkolinko/patches/2011-11-14_tc6_ContainerBase.patch
-  +1: kkolinko
+  +1: kkolinko, schultz
   +0: kfujino: Question of if host.addChild(context) threw IllegalStateException.
       E.g. case of deployDirectory.
       If META-INF/context.xml exist in Directory, context.xml is copied to configBase.
@@ -48,7 +48,7 @@ PATCHES PROPOSED TO BACKPORT:
       If manager app execute undeploy(or delete directory), directory is deleted 
       but context.xml isn't deleted.
       Should (conf/Catalina/localhost/)context.xml be registered into redeployResources? 
-      Or need to delete context.xml manually? 
+      Or need to delete context.xml manually?
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
@@ -78,7 +78,7 @@ PATCHES PROPOSED TO BACKPORT:
   The nextRequest() method already recycles the filters. If it has been called,
   then lastActiveFilter is -1 and the new code will be NOOP.
   http://people.apache.org/~kkolinko/patches/2012-06-02_tc6_recycle.patch
-  +1: kkolinko
+  +1: kkolinko, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53481
@@ -111,20 +111,20 @@ PATCHES PROPOSED TO BACKPORT:
   Change links on the list of applications in the Manager to point to
   '/appname/' instead of '/appname'.
   https://issues.apache.org/bugzilla/attachment.cgi?id=29296
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53800
   FileDirContext.list() did not provide correct paths for subdirectories.
   Patch provided by Kevin Wooten.
   http://svn.apache.org/viewvc?view=revision&revision=1378819
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53830
   Better handling of Manager.randomFile default value on Windows
   https://issues.apache.org/bugzilla/attachment.cgi?id=29330
-  +1: kkolinko
+  +1: kkolinko, schultz
   -1:
 
 * Fix a behavior of TcpPingInterceptor#useThread.
@@ -133,7 +133,7 @@ PATCHES PROPOSED TO BACKPORT:
   "Do not start a ping thread when useThread is set to false."
   http://svn.apache.org/viewvc?view=revision&revision=1387073
   http://svn.apache.org/viewvc?view=revision&revision=1387487
-  +1: kfujino, kkolinko
+  +1: kfujino, kkolinko, schultz
   -1:
 
 * Improve session management in CsrfPreventionFilter
