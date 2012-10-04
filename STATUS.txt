@@ -89,13 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz, kkolinko, jfclere
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53800
-  FileDirContext.list() did not provide correct paths for subdirectories.
-  Patch provided by Kevin Wooten.
-  http://svn.apache.org/viewvc?view=revision&revision=1378819
-  +1: kkolinko, kfujino, schultz, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53830
   Better handling of Manager.randomFile default value on Windows
   https://issues.apache.org/bugzilla/attachment.cgi?id=29330
