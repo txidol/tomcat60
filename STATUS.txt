@@ -89,13 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz, kkolinko, jfclere
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53725
-  Fix possible corruption of GZIP'd output.
-  http://svn.apache.org/viewvc?rev=1378403&view=rev
-  http://svn.apache.org/viewvc?rev=1378408&view=rev
-  +1: kkolinko, jfclere, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53793
   Change links on the list of applications in the Manager to point to
   '/appname/' instead of '/appname'.

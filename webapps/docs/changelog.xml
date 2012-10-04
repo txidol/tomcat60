@@ -254,6 +254,9 @@
         <code>maxHeaderCount</code> attribute on Connector MBean via JMX.
         (kkolinko)
       </fix>
+      <fix>
+        <bug>53725</bug>: Fix possible corruption of GZIP'd output. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Jasper">
