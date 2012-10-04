@@ -130,7 +130,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Improve session management in CsrfPreventionFilter
   (Backport of r1393071 from Tomcat 7)
   http://people.apache.org/~kkolinko/patches/2012-10-03_tc6_CsrfPreventionFilter.patch
-  +1: kkolinko, markt
+  +1: kkolinko, markt, kfujino
   -1:
 
 PATCHES/ISSUES THAT ARE STALLED
