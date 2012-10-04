@@ -295,7 +295,11 @@
       <fix>
         <bug>53607</bug>: To avoid NPE, set TCP PING data to ChannelMessage.
         Patch provided by F.Arnoud (kfujino)
-      </fix>      
+      </fix>
+      <fix>
+        Fix a behavior of TcpPingInterceptor#useThread.
+        Do not start a ping thread when useThread is set to false. (kfujino)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Web applications">
