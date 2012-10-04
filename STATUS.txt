@@ -88,6 +88,9 @@ PATCHES PROPOSED TO BACKPORT:
   http://svn.apache.org/viewvc?view=revision&revision=1371620 (tab -> spaces)
   +1: schultz, kkolinko, jfclere
   -1:
+     -- Note that a bug has been found in the feature to backport which
+        requires an update to tcnative:
+        https://issues.apache.org/bugzilla/show_bug.cgi?id=53969
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53830
   Better handling of Manager.randomFile default value on Windows
