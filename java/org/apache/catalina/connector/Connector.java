@@ -18,7 +18,10 @@
 
 package org.apache.catalina.connector;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.management.MBeanRegistration;
 import javax.management.MBeanServer;
@@ -44,7 +47,7 @@ import org.apache.tomcat.util.modeler.Registry;
 
 
 /**
- * Implementation of a Coyote connector for Tomcat 5.x.
+ * Implementation of a Coyote connector.
  *
  * @author Craig R. McClanahan
  * @author Remy Maucherat
@@ -210,6 +213,17 @@ public class Connector
      * during authentication. 4kB by default
      */
     protected int maxSavePostSize = 4 * 1024;
+
+    /**
+     * Comma-separated list of HTTP methods that will be parsed according
+     * to POST-style rules for application/x-www-form-urlencoded request bodies.
+     */
+    protected String parseBodyMethods = "POST";
+
+    /**
+     * A Set of methods determined by {@link #parseBodyMethods}.
+     */
+    protected Set<String> parseBodyMethodsSet;
 
 
     /**
@@ -616,6 +630,33 @@ public class Connector
         setProperty("maxSavePostSize", String.valueOf(maxSavePostSize));
     }
 
+
+    public String getParseBodyMethods() {
+
+        return this.parseBodyMethods;
+
+    }
+
+    public void setParseBodyMethods(String methods) {
+
+        HashSet<String> methodSet = new HashSet<String>();
+
+        if( null != methods )
+            methodSet.addAll(Arrays.asList(methods.split("\\s*,\\s*")));
+
+        if( methodSet.contains("TRACE") )
+            throw new IllegalArgumentException(sm.getString("coyoteConnector.parseBodyMethodNoTrace"));
+
+        this.parseBodyMethods = methods;
+        this.parseBodyMethodsSet = methodSet;
+
+    }
+
+    protected boolean isParseBodyMethod(String method) {
+
+        return parseBodyMethodsSet.contains(method);
+
+    }
 
     /**
      * Return the port number on which we listen for requests.
@@ -1070,6 +1111,10 @@ public class Connector
         // Initializa adapter
         adapter = new CoyoteAdapter(this);
         protocolHandler.setAdapter(adapter);
+
+        // Make sure parseBodyMethodsSet has a default
+        if( null == parseBodyMethodsSet )
+            setParseBodyMethods(getParseBodyMethods());
 
         IntrospectionUtils.setProperty(protocolHandler, "jkHome",
                                        System.getProperty("catalina.base"));

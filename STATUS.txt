@@ -89,17 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz, kkolinko, jfclere
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=48692
-  Provide option to parse application/x-www-form-urlencoded PUT requests
-  Tomcat 6.0.x patch: https://issues.apache.org/bugzilla/attachment.cgi?id=29222
-  (Merges the following patches for Tomcat 7.0.x:
-    http://svn.apache.org/viewvc?view=revision&revision=1041892 (initial patch)
-    http://svn.apache.org/viewvc?view=revision&revision=1043983 (fixes formatting; improved documentation)
-    http://svn.apache.org/viewvc?view=revision&revision=1049264 (improved javadoc)
-  )
-  +1: schultz, kkolinko, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53725
   Fix possible corruption of GZIP'd output.
   http://svn.apache.org/viewvc?rev=1378403&view=rev

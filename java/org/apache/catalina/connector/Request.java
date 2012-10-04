@@ -2596,7 +2596,7 @@ public class Request
         if (usingInputStream || usingReader)
             return;
 
-        if (!getMethod().equalsIgnoreCase("POST"))
+        if( !getConnector().isParseBodyMethod(getMethod()) )
             return;
 
         String contentType = getContentType();

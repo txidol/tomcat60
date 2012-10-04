@@ -46,6 +46,10 @@
 <section name="Tomcat 6.0.36 (jfclere)" rtext="">
   <subsection name="Catalina">
     <changelog>
+      <update>
+        <bug>48692</bug>: Provide option to parse
+        <code>application/x-www-form-urlencoded</code> PUT requests. (schultz)
+      </update>
       <add>
         <bug>50306</bug>: New StuckThreadDetectionValve to detect requests that
         take a long time to process, which might indicate that their processing
