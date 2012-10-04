@@ -378,6 +378,11 @@
         <bug>53601</bug>: Clarify that to build Apache Tomcat 6 from sources
         a Java 5 JDK is recommended. (kkolinko)
       </fix>
+      <fix>
+        <bug>53793</bug>: Change links on the list of applications in the
+        Manager to point to <code>/appname/</code> instead of
+        <code>/appname</code>. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Other">

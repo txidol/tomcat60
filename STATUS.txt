@@ -89,13 +89,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz, kkolinko, jfclere
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53793
-  Change links on the list of applications in the Manager to point to
-  '/appname/' instead of '/appname'.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=29296
-  +1: kkolinko, kfujino, schultz, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53800
   FileDirContext.list() did not provide correct paths for subdirectories.
   Patch provided by Kevin Wooten.

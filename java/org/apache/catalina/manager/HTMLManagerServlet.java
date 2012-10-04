@@ -406,7 +406,7 @@ public final class HTMLManagerServlet extends ManagerServlet {
                 }
                 
                 args = new Object[7];
-                args[0] = URL_ENCODER.encode(displayPath);
+                args[0] = URL_ENCODER.encode(contextPath + "/");
                 args[1] = RequestUtil.filter(displayPath);
                 if (context.getDisplayName() == null) {
                     args[2] = "&nbsp;";
