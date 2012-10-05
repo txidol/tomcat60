@@ -92,12 +92,6 @@ PATCHES PROPOSED TO BACKPORT:
         requires an update to tcnative:
         https://issues.apache.org/bugzilla/show_bug.cgi?id=53969
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53830
-  Better handling of Manager.randomFile default value on Windows
-  https://issues.apache.org/bugzilla/attachment.cgi?id=29330
-  +1: kkolinko, schultz, markt
-  -1:
-
 * Improve session management in CsrfPreventionFilter
   (Backport of r1393071 from Tomcat 7)
   http://people.apache.org/~kkolinko/patches/2012-10-03_tc6_CsrfPreventionFilter.patch
