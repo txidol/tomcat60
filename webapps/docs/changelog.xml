@@ -214,6 +214,9 @@
         <bug>53830</bug>: Better handling of <code>Manager.randomFile</code>
         default value on Windows. (kkolinko)
       </fix>
+      <fix>
+        Improve session management in CsrfPreventionFilter. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
