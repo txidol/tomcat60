@@ -31,14 +31,13 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* Fix autodeployment of applications that have configuration errors.
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54007
+  Fix deployment of applications that have configuration errors.
   If autodeployment fails, create DeployedApplication object and register
   what we deployed (xml or war or dir - a single file) as redeployResource.
   If it is updated the application will be redeployed.
-  + ContainerBase patch adds display of failed apps in manager. They can be
-  listed and undeployed.
-  http://people.apache.org/~kkolinko/patches/2011-11-14_tc6_HostConfig.patch
-  http://people.apache.org/~kkolinko/patches/2011-11-14_tc6_ContainerBase.patch
+  Note that this includes a change to ContainerBase.addChild().
+  https://issues.apache.org/bugzilla/attachment.cgi?id=29477
   +1: kkolinko, schultz
   +0: kfujino: Question of if host.addChild(context) threw IllegalStateException.
       E.g. case of deployDirectory.
