@@ -31,11 +31,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
-  Add WebSocket support to Tomcat 6
-  +1: fhanik
-  -0: jfclere
-
 * Backport UserDataHelper class (issue 52184)
   Provide greater control over the logging of errors triggered by invalid
   input data (i.e. data over which Tomcat has no control).
@@ -91,3 +86,20 @@ PATCHES/ISSUES THAT ARE STALLED
       markt - r1172614 needs to be included in this proposal. With that patch,
               my testing shows that the unloading works as designed
   -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
+  Add WebSocket support to Tomcat 6
+  +1: fhanik
+  -0: jfclere
+  -0: kkolinko:
+       - Interesting, but I do not think there is much interest in it.
+         If one needs this feature I would suggest to upgrade to Tomcat 7.
+         If one cannot upgrade to Tomcat 7 then they probably cannot
+         upgrade to a later Tomcat 6 either.
+       - The protocol specification still evolves. I think it is too risky
+         to implement websockets for Tomcat 6.
+       - Formally, the proposal does not have a link to the patch.
+       - The patch in Bugzilla does not include latest changes from Tomcat 7. E.g.
+            http://svn.apache.org/viewvc?view=revision&revision=1380841
+         (Is one supposed to just copy the current version of websocket
+         package from Tomcat 7 here?)
