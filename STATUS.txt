@@ -31,25 +31,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54007
-  Fix deployment of applications that have configuration errors.
-  If autodeployment fails, create DeployedApplication object and register
-  what we deployed (xml or war or dir - a single file) as redeployResource.
-  If it is updated the application will be redeployed.
-  Note that this includes a change to ContainerBase.addChild().
-  https://issues.apache.org/bugzilla/attachment.cgi?id=29477
-  +1: kkolinko, schultz
-  +0: kfujino: Question of if host.addChild(context) threw IllegalStateException.
-      E.g. case of deployDirectory.
-      If META-INF/context.xml exist in Directory, context.xml is copied to configBase.
-      If host.addChild(context) threw IllegalStateException, only a directory is 
-      registered into redeployResources. Context.xml does not register into redeployResources.
-      If manager app execute undeploy(or delete directory), directory is deleted 
-      but context.xml isn't deleted.
-      Should (conf/Catalina/localhost/)context.xml be registered into redeployResources? 
-      Or need to delete context.xml manually?
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
   Add WebSocket support to Tomcat 6
   +1: fhanik
