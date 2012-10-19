@@ -67,6 +67,11 @@ PATCHES PROPOSED TO BACKPORT:
         requires an update to tcnative:
         https://issues.apache.org/bugzilla/show_bug.cgi?id=53969
 
+* Chunked encoding improvements
+  http://people.apache.org/~markt/patches/2012-10-19-chunked-encoding-tc6.patch
+  +1: markt
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
