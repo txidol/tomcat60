@@ -79,6 +79,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54054
+  Do not share shell environment variables between multiple instances of the CGI
+  servlet.
+  http://svn.apache.org/viewvc?rev=1402644&view=rev
+  +1: markt
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
