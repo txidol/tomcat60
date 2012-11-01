@@ -69,21 +69,21 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Chunked encoding improvements
   http://people.apache.org/~markt/patches/2012-10-19-chunked-encoding-tc6.patch
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54045.
   Make sure getMembers() returns available member when TcpFailureDetector works
   in static cluster. 
   http://svn.apache.org/viewvc?view=revision&revision=1402110
-  +1: kfujino
+  +1: kfujino, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54054
   Do not share shell environment variables between multiple instances of the CGI
   servlet.
   http://svn.apache.org/viewvc?rev=1402644&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 
