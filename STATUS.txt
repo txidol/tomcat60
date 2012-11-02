@@ -83,7 +83,7 @@ PATCHES PROPOSED TO BACKPORT:
   Do not share shell environment variables between multiple instances of the CGI
   servlet.
   http://svn.apache.org/viewvc?rev=1402644&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54080
