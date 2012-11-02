@@ -86,6 +86,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54080
+  "Comma related bug in org.apache.catalina.valves.RemoteIpValve"
+  Documentation-only patch:
+     https://issues.apache.org/bugzilla/attachment.cgi?id=29545
+  +1: schultz
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
