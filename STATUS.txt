@@ -93,6 +93,36 @@ PATCHES PROPOSED TO BACKPORT:
   +1: schultz
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54044
+  Correct bug in timestamp cache used by org.apache.juli.OneLineFormatter
+  that meant entries could be made with an earlier timestamp than the true timestamp.
+  (The test was added to tomcat6-testing branch in r1408453)
+  http://svn.apache.org/viewvc?view=revision&revision=1408459
+  +1: kkolinko
+  -1:
+
+* In FormAuthenticator: If it is configured to change Session IDs,
+  do the change before displaying the login form.
+  http://svn.apache.org/viewvc?view=revision&revision=1408044
+  (r1408043 in trunk)
+  +1: kkolinko
+  -1:
+
+* Introduce property "tomcat.output" that is used to specify location of
+  the build output directory. This simplifies build configuration when the
+  output directory is located outside of the source tree.
+  http://svn.apache.org/viewvc?view=revision&revision=1408376
+  +1: kkolinko
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54087
+  Correctly handle (ignore) invalid If-Modified-Since
+  header rather than throwing an exception.
+  http://svn.apache.org/viewvc?view=revision&revision=1408254
+  (r1408248 in trunk, by markt)
+  +1: kkolinko
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
