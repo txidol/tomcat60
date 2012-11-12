@@ -54,13 +54,14 @@
   <property name="final-src.name"        value="${project}-${version}-src" />
 
   <!-- Build Defaults -->
-  <property name="tomcat.build"      value="${basedir}/output/build"/>
-  <property name="tomcat.classes"    value="${basedir}/output/classes"/>
-  <property name="tomcat.dist"       value="${basedir}/output/dist"/>
-  <property name="tomcat.extras"     value="${basedir}/output/extras"/>
-  <property name="tomcat.manifests"  value="${basedir}/output/manifests"/>
-  <property name="tomcat.deployer"   value="${basedir}/output/deployer"/>
-  <property name="tomcat.release"    value="${basedir}/output/release"/>
+  <property name="tomcat.output"     value="${basedir}/output"/>
+  <property name="tomcat.build"      value="${tomcat.output}/build"/>
+  <property name="tomcat.classes"    value="${tomcat.output}/classes"/>
+  <property name="tomcat.dist"       value="${tomcat.output}/dist"/>
+  <property name="tomcat.extras"     value="${tomcat.output}/extras"/>
+  <property name="tomcat.manifests"  value="${tomcat.output}/manifests"/>
+  <property name="tomcat.deployer"   value="${tomcat.output}/deployer"/>
+  <property name="tomcat.release"    value="${tomcat.output}/release"/>
   <property name="test.failonerror"  value="true"/>
   <property name="test.runner"       value="junit.textui.TestRunner"/>
 
