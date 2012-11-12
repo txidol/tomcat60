@@ -58,8 +58,9 @@
   <property name="tomcat.classes"        value="${tomcat.output}/classes"/>
   <property name="tomcat.dist"           value="${tomcat.output}/dist"/>
   <property name="tomcat.manifests"      value="${tomcat.output}/manifests"/>
-  <property name="test.failonerror"      value="true"/>
-  <property name="test.runner"           value="junit.textui.TestRunner"/>
+  <property name="test.classes"          value="${tomcat.output}/testclasses"/>
+  <property name="test.temp"             value="${tomcat.output}/test-tmp"/>
+  <property name="test.apr.loc"          value="${tomcat.build}/bin/native"/>
 
   <!-- Can't be lower - jsp uses templates -->
   <property name="compile.source" value="1.5"/>
@@ -93,10 +94,26 @@
   <available property="tomcat-dbcp.present" file="${tomcat-dbcp.jar}" />
   <available property="jdk16.present" classname="javax.sql.StatementEvent" />
 
+  <!-- Tests To Run -->
+  <property name="test.name" value="**/Test*.java"/>
+  <property name="test.formatter" value="-Dorg.apache.juli.formatter=java.util.logging.SimpleFormatter"/>
+
   <!-- Classpath -->
-  <path id="tomcat.classpath">
+  <path id="compile.classpath">
     <pathelement location="${ant.jar}"/>
     <pathelement location="${jdt.jar}"/>
+  </path>
+
+  <path id="tomcat.classpath">
+    <pathelement location="${tomcat.classes}"/>
+  </path>
+
+  <path id="tomcat.test.classpath">
+    <pathelement location="${tomcat.build}/webapps/examples/WEB-INF/classes"/>
+    <pathelement location="${test.classes}"/>
+    <pathelement location="${junit.jar}"/>
+    <path refid="compile.classpath" />
+    <path refid="tomcat.classpath" />
   </path>
 
   <!-- Version info filter set -->
@@ -135,7 +152,7 @@
 
   </target>
 
-  <target name="compile">
+  <target name="compile" depends="build-prepare">
 
     <!-- Compile internal server components -->
     <javac srcdir="java" destdir="${tomcat.classes}"
@@ -149,7 +166,7 @@
 <!-- Comment this in to show unchecked warnings:
       <compilerarg value="-Xlint:unchecked"/>
  -->
-      <classpath refid="tomcat.classpath" />
+      <classpath refid="compile.classpath" />
       <exclude name="org/apache/naming/factory/webservices/**" />
     </javac>
     <!-- Copy static resource files -->
@@ -653,6 +670,116 @@
 
   </target>
 
+  <!-- ========================= Testing ========================== -->
+
+  <target name="download-test-compile"
+          description="Download additional components for the tests" >
+
+    <antcall target="downloadzip">
+      <param name="sourcefile" value="${junit.loc}"/>
+      <param name="destfile" value="${junit.jar}"/>
+      <param name="destdir" value="${base.path}"/>
+    </antcall>
+
+  </target>
+
+  <target name="test-compile" depends="compile,download-test-compile" >
+    <mkdir dir="${test.classes}"/>
+    <!-- Compile -->
+    <javac srcdir="test" destdir="${test.classes}"
+           debug="${compile.debug}"
+           deprecation="${compile.deprecation}"
+           source="${compile.source}"
+           optimize="${compile.optimize}"
+           encoding="ISO-8859-1"
+           includeantruntime="false">
+      <classpath refid="tomcat.test.classpath" />
+      <include name="org/apache/**" />
+      <include name="javax/**" />
+    </javac>
+  </target>
+
+  <!-- Default JUnit log output formatter -->
+  <property name="junit.formatter.type" value="plain" />
+  <property name="junit.formatter.usefile" value="true" />
+  <property name="junit.formatter.extension" value=".txt" />
+
+  <target name="test" description="Runs the JUnit test cases"
+          depends="test-bio,test-nio,test-apr" >
+    <fail if="test.result.error" message='Some tests completed with an Error. See ${tomcat.build}/logs for details, search for "FAILED".' />
+    <fail if="test.result.failure" message='Some tests completed with a Failure. See ${tomcat.build}/logs for details, search for "FAILED".' />
+  </target>
+  
+  <target name="test-bio" description="Runs the JUnit test cases for BIO. Does not stop on errors."
+          depends="test-compile,deploy" if="${execute.test.bio}">
+    <runtests protocol="org.apache.coyote.http11.Http11Protocol"
+              extension=".BIO" />
+  </target>
+  
+  <target name="test-nio" description="Runs the JUnit test cases for NIO. Does not stop on errors."
+          depends="test-compile,deploy" if="${execute.test.nio}">
+    <runtests protocol="org.apache.coyote.http11.Http11NioProtocol"
+              extension=".NIO" />
+  </target>
+  
+  <target name="test-apr" description="Runs the JUnit test cases for APR. Does not stop on errors."
+          depends="test-compile,deploy,test-apr-exists"
+          if="${apr.exists}">
+    <runtests protocol="org.apache.coyote.http11.Http11AprProtocol"
+              extension=".APR" />
+  </target>
+  
+  <target name="test-apr-exists" description="Checks for APR lib"
+          if="${execute.test.apr}">
+    <available file="${test.apr.loc}" property="apr.exists" />
+  </target>
+
+  <macrodef name="runtests"
+            description="Runs the unit tests using the specified connector.
+              Does not stop on errors, but sets 'test.result.error' and 'test.result.failure' properties.">
+    <attribute name="protocol"
+               description="The class name for the connector protocol"/>
+    <attribute name="extension"
+               description="The extension to use to distinguish the output"/>
+
+    <sequential>
+      <junit printsummary="yes" fork="yes" dir="." showoutput="yes"
+        errorproperty="test.result.error"
+        failureproperty="test.result.failure"
+        haltonfailure="${test.haltonfailure}" >
+
+        <jvmarg value="-Djava.library.path=${test.apr.loc}"/>
+        <jvmarg value="${test.formatter}"/>
+
+        <classpath refid="tomcat.test.classpath" />
+
+        <sysproperty key="tomcat.test.temp" value="${test.temp}" />
+        <sysproperty key="tomcat.test.tomcatbuild" value="${tomcat.build}" />
+        <sysproperty key="tomcat.test.protocol" value="@{protocol}" />
+        <sysproperty key="tomcat.test.accesslog" value="${test.accesslog}" />
+
+        <formatter type="${junit.formatter.type}"
+                   usefile="${junit.formatter.usefile}"
+                   extension="@{extension}${junit.formatter.extension}" />
+
+        <!-- If test.entry is defined, run a single test, otherwise run all valid tests -->
+        <test todir="${tomcat.build}/logs" name="${test.entry}" if="test.entry"/>
+        <batchtest todir="${tomcat.build}/logs" unless="test.entry">
+          <fileset dir="test" >
+            <!-- Include all by default -->
+            <include name="${test.name}" />
+            <!-- Exclude helper classes -->
+            <exclude name="**/Tester*.java" />
+            <!-- Exclude the tests known to fail -->
+            <exclude name="org/apache/catalina/tribes/test/**" />
+          </fileset>
+        </batchtest>
+      </junit>
+    </sequential>
+  </macrodef>
+
+  <!-- ========================= Cleaning Targets ========================== -->
+
   <target name="clean-depend"
           description="Clean depend src components">
      <delete dir="${tomcat-dbcp.home}"/>
@@ -662,7 +789,11 @@
     <delete dir="${tomcat.classes}" />
     <delete dir="${tomcat.build}" />
     <delete dir="${tomcat.manifests}" />
+    <delete dir="${test.classes}" />
+    <delete dir="${test.temp}" />
   </target>
+
+  <!-- ================ Download and dependency building =================== -->
 
   <!-- Download and dependency building -->
   <target name="proxyflags">

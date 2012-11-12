@@ -43,6 +43,19 @@ compile.source=1.5
 compile.target=1.5
 compile.debug=true
 
+# ----- Build control flags -----
+# Note enabling validation uses Checkstyle which is LGPL licensed
+execute.validate=false
+execute.test.bio=true
+execute.test.nio=true
+# Still requires APR/native library to be present
+execute.test.apr=true
+# Stop testing if a failure occurs
+test.haltonfailure=false
+# Activate AccessLog during testing
+test.accesslog=false
+
+
 base-apache.loc.1=http://www.apache.org/dist
 base-apache.loc.2=http://archive.apache.org/dist
 base-commons.loc.1=${base-apache.loc.1}/commons
@@ -159,3 +172,9 @@ commons-daemon.native.src.loc.1=${base-commons.loc.1}/daemon/source/commons-daem
 commons-daemon.native.src.loc.2=${base-commons.loc.2}/daemon/source/commons-daemon-${commons-daemon.version}-native-src.tar.gz
 commons-daemon.native.win.loc.1=${base-commons.loc.1}/daemon/binaries/windows/commons-daemon-${commons-daemon.version}-bin-windows.zip
 commons-daemon.native.win.loc.2=${base-commons.loc.2}/daemon/binaries/windows/commons-daemon-${commons-daemon.version}-bin-windows.zip
+
+# ----- JUnit Unit Test Suite, version 4.8 or later -----
+junit.home=${base.path}/junit4.8.2
+junit.lib=${junit.home}
+junit.jar=${junit.lib}/junit-4.8.2.jar
+junit.loc=http://cloud.github.com/downloads/KentBeck/junit/junit4.8.2.zip

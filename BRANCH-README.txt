@@ -10,7 +10,17 @@ Last catch-up merge: none yet
 TODO:
 
  * Backport support for running JUnit tests to the main /build.xml
-   file from Tomcat 7. Add <target name="test">.                    [Not Started]
+   file from Tomcat 7. Add <target name="test">.                    [Done]
+
+   Notes:
+     - The < if="${execute.test.bio}"> construct requires Ant >= 1.8.0
+       http://ant.apache.org/manual/properties.html#if+unless
+
+     - Separate "test-bio", "test-nio", "test-apr" targets are there,
+       but they do not make much sense as the tests do not start Tomcat.
+
+     - "test.jvmarg.egd=-Djava.security.egd=file:/dev/./urandom"
+       property was not ported, as it is not needed for Tomcat 6.
 
  * Drop useless test/build.xml                                      [Not Started]
 
