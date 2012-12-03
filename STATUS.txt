@@ -123,6 +123,12 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54220
+  ErrorReportValve invoked on non-error responses
+  http://svn.apache.org/viewvc?rev=1416537&view=rev (ErrorReportValve.java only)
+  +1: markt
+  -1:
+
 
 PATCHES/ISSUES THAT ARE STALLED
 
