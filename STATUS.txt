@@ -105,8 +105,7 @@ PATCHES PROPOSED TO BACKPORT:
   do the change before displaying the login form.
   http://svn.apache.org/viewvc?view=revision&revision=1408044
   (r1408043 in trunk)
-  +1: kkolinko, kfujino
-  +0: schultz - Is there a specific reason for this change?
+  +1: kkolinko, kfujino, schultz
   -1:
 
 * Introduce property "tomcat.output" that is used to specify location of
