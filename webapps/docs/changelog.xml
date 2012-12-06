@@ -58,6 +58,10 @@
         <bug>54087</bug>: Correctly handle (ignore) invalid If-Modified-Since
         header rather than throwing an exception. (markt/kkolinko)
       </fix>
+      <fix>
+        <bug>54220</bug>: Ensure the ErrorReportValve only generates an error
+        report if the error flag on the response has been set. (markt)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Web applications">
