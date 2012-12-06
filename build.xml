@@ -53,10 +53,11 @@
 
   <!-- Build Defaults -->
   <property name="tomcat.home"           value="${basedir}"/>
-  <property name="tomcat.build"          value="${basedir}/output/build"/>
-  <property name="tomcat.classes"        value="${basedir}/output/classes"/>
-  <property name="tomcat.dist"           value="${basedir}/output/dist"/>
-  <property name="tomcat.manifests"      value="${basedir}/output/manifests"/>
+  <property name="tomcat.output"         value="${basedir}/output"/>
+  <property name="tomcat.build"          value="${tomcat.output}/build"/>
+  <property name="tomcat.classes"        value="${tomcat.output}/classes"/>
+  <property name="tomcat.dist"           value="${tomcat.output}/dist"/>
+  <property name="tomcat.manifests"      value="${tomcat.output}/manifests"/>
   <property name="test.failonerror"      value="true"/>
   <property name="test.runner"           value="junit.textui.TestRunner"/>
 
