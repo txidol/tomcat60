@@ -47,6 +47,10 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        In FormAuthenticator: If it is configured to change Session IDs,
+        do the change before displaying the login form. (kkolinko)
+      </fix>
+      <fix>
         <bug>54054</bug>: Do not share shell environment variables between
         multiple instances of the CGI servlet. (markt)
       </fix>

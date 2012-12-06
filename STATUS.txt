@@ -94,13 +94,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* In FormAuthenticator: If it is configured to change Session IDs,
-  do the change before displaying the login form.
-  http://svn.apache.org/viewvc?view=revision&revision=1408044
-  (r1408043 in trunk)
-  +1: kkolinko, kfujino, schultz
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54087
   Correctly handle (ignore) invalid If-Modified-Since
   header rather than throwing an exception.

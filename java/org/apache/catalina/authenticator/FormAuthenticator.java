@@ -31,6 +31,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.Globals;
+import org.apache.catalina.Manager;
 import org.apache.catalina.Realm;
 import org.apache.catalina.Session;
 import org.apache.catalina.connector.Request;
@@ -320,6 +321,15 @@ public class FormAuthenticator
             log.debug(sm.getString("formAuthenticator.forwardLogin",
                     request.getRequestURI(), request.getMethod(),
                     config.getLoginPage(), context.getName()));
+        }
+
+        if (getChangeSessionIdOnAuthentication()) {
+            Session session = request.getSessionInternal(false);
+            if (session != null) {
+                Manager manager = request.getContext().getManager();
+                manager.changeSessionId(session);
+                request.changeSessionId(session.getId());
+            }
         }
 
         // Always use GET for the login page, regardless of the method used
