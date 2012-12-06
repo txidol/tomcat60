@@ -54,6 +54,10 @@
         <bug>54054</bug>: Do not share shell environment variables between
         multiple instances of the CGI servlet. (markt)
       </fix>
+      <fix>
+        <bug>54087</bug>: Correctly handle (ignore) invalid If-Modified-Since
+        header rather than throwing an exception. (markt/kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Web applications">

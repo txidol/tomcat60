@@ -94,14 +94,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54087
-  Correctly handle (ignore) invalid If-Modified-Since
-  header rather than throwing an exception.
-  http://svn.apache.org/viewvc?view=revision&revision=1408254
-  (r1408248 in trunk, by markt)
-  +1: kkolinko, kfujino, schultz
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54220
   ErrorReportValve invoked on non-error responses
   http://svn.apache.org/viewvc?rev=1416537&view=rev (ErrorReportValve.java only)
