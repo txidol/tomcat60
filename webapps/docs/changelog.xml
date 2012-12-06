@@ -44,6 +44,14 @@
  General, Catalina, Coyote, Jasper, Cluster, Web applications, Other
 -->
 <section name="Tomcat 6.0.37 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        <bug>54054</bug>: Do not share shell environment variables between
+        multiple instances of the CGI servlet. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Web applications">
     <changelog>
       <fix>
