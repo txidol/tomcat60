@@ -218,7 +218,9 @@
         handling of stale nonce values. (markt)
       </fix>
       <fix>
-        Remove unneeded handling of FORM authentication in RealmBase. (kkolinko)
+        CVE-2012-3546: Fix bypass of security constraint checks with FORM
+        authentication. Remove unneeded processing in <code>RealmBase</code>.
+        (kkolinko)
       </fix>
       <fix>
         <bug>53800</bug>: <code>FileDirContext.list()</code> did not provide
@@ -230,7 +232,9 @@
         default value on Windows. (kkolinko)
       </fix>
       <fix>
-        Improve session management in CsrfPreventionFilter. (kkolinko)
+        CVE-2012-4431: Fix bypass of <code>CsrfPreventionFilter</code> when
+        there is no session. Improve session management in the filter.
+        (kkolinko)
       </fix>
     </changelog>
   </subsection>
@@ -255,8 +259,9 @@
         AJP. (markt)
       </fix>
       <fix>
-        <bug>52858</bug>: Fix high CPU load with SSL, NIO and sendfile when
-        client breaks the connection before reading all the requested data.
+        <bug>52858</bug>, CVE-2012-4534: Fix high CPU load with SSL, NIO and
+        sendfile when client breaks the connection before reading all the
+        requested data.
         (fhanik/kkolinko)
       </fix>
       <fix>
