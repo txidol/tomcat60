@@ -130,3 +130,11 @@ PATCHES/ISSUES THAT ARE STALLED
             http://svn.apache.org/viewvc?view=revision&revision=1380841
          (Is one supposed to just copy the current version of websocket
          package from Tomcat 7 here?)
+
+* Fix memory leak of servlet instances when running with a
+  SecurityManager and either init() or destroy() methods fail
+  or the servlet is a SingleThreadModel one.
+  It is based on r1429186
+  http://people.apache.org/~kkolinko/patches/2013-01-05_tc6_SecurityUtil_remove.patch
+  +1: kkolinko
+  -1:
