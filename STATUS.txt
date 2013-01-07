@@ -109,6 +109,13 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54248
+  Need to reset the decoder when the B2C converter is recycled to ensure BOMs
+  are correctly handled for those encodings that require them.
+  http://svn.apache.org/viewvc?rev=1430083&view=rev
+  +1: markt
+  -1:
+  
 
 PATCHES/ISSUES THAT ARE STALLED
 
