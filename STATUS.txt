@@ -113,7 +113,7 @@ PATCHES PROPOSED TO BACKPORT:
   Need to reset the decoder when the B2C converter is recycled to ensure BOMs
   are correctly handled for those encodings that require them.
   http://svn.apache.org/viewvc?rev=1430083&view=rev
-  +1: markt
+  +1: markt, kkolinko
   -1:
   
 
