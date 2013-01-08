@@ -119,7 +119,7 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54390
   Use /usr/libexec/java_home to determine JAVA_HOME on Mac OS X
   Back-port r1430567: http://svn.apache.org/viewvc?view=revision&revision=r1430567
-       Also r1430599 for changelog.xml update.
+       Also adaptation of r1430599 for changelog.xml update.
   +1: schultz, kkolinko
   -1:
   
