@@ -152,3 +152,9 @@ PATCHES/ISSUES THAT ARE STALLED
             http://svn.apache.org/viewvc?view=revision&revision=1380841
          (Is one supposed to just copy the current version of websocket
          package from Tomcat 7 here?)
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54390
+  Use /usr/libexec/java_home to determine JAVA_HOME on Mac OS X
+  Back-port r1430567: http://svn.apache.org/viewvc?view=revision&revision=r1430567
+  +1: schultz
+  -1:
