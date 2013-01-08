@@ -99,21 +99,21 @@ PATCHES PROPOSED TO BACKPORT:
   or the servlet is a SingleThreadModel one.
   It is based on r1429186
   http://people.apache.org/~kkolinko/patches/2013-01-05_tc6_SecurityUtil_remove.patch
-  +1: kkolinko
+  +1: kkolinko, schultz
   -1:
 
 * Improve method cache handling in SecurityUtil class.
   Add caching for Comet methods and simplify cache lookup code.
   It is backport of r728776 (BZ 46304) and r1429360
   http://people.apache.org/~kkolinko/patches/2013-01-05_tc6_46304_SecurityUtil.patch
-  +1: kkolinko
+  +1: kkolinko, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54248
   Need to reset the decoder when the B2C converter is recycled to ensure BOMs
   are correctly handled for those encodings that require them.
   http://svn.apache.org/viewvc?rev=1430083&view=rev
-  +1: markt, kkolinko
+  +1: markt, kkolinko, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54390
