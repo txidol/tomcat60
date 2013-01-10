@@ -148,4 +148,5 @@ PATCHES/ISSUES THAT ARE STALLED
               We can stall this item until we get some feedback about 7.0.5.
       markt - r1172614 needs to be included in this proposal. With that patch,
               my testing shows that the unloading works as designed
+      kkolinko - r1428358 (r1428355) is needed - a fix for BZ 54260.
   -1:
