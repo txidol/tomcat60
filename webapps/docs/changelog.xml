@@ -62,6 +62,12 @@
         <bug>54220</bug>: Ensure the ErrorReportValve only generates an error
         report if the error flag on the response has been set. (markt)
       </fix>
+      <fix>
+        Fix memory leak of servlet instances when running with a
+        SecurityManager and either init() or destroy() methods fail
+        or the servlet is a SingleThreadModel one, and of filter instances
+        if their destroy() method fails with an Error. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Web applications">
