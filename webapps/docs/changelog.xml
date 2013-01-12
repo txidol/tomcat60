@@ -91,6 +91,10 @@
         configuration if someone wants to move the <code>output</code> directory
         elsewhere (e.g. out of the source tree). (kkolinko)
       </update>
+      <fix>
+        <bug>54390</bug>: Use 'java_home' on Mac OS X to auto-detect JAVA_HOME.
+        (schultz)
+      </fix>
     </changelog>
   </subsection>
 </section>
