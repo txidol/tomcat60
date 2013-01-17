@@ -56,17 +56,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, schultz
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53481
-  Add support for SSLHonorCipherOrder
-  http://svn.apache.org/viewvc?view=revision&revision=1371298
-  http://svn.apache.org/viewvc?view=revision&revision=1371302 (rolls-back inadvertent addition of TOMCAT-NEXT.txt)
-  http://svn.apache.org/viewvc?view=revision&revision=1371620 (tab -> spaces)
-  +1: schultz, kkolinko, jfclere
-  -1:
-     -- Note that a bug has been found in the feature to backport which
-        requires an update to tcnative:
-        https://issues.apache.org/bugzilla/show_bug.cgi?id=53969
-
 * Chunked encoding improvements
   http://people.apache.org/~markt/patches/2012-10-19-chunked-encoding-tc6.patch
   +1: markt, kkolinko

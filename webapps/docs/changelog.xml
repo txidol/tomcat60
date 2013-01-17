@@ -46,6 +46,11 @@
 <section name="Tomcat 6.0.37 (jfclere)">
   <subsection name="Catalina">
     <changelog>
+       <fix>
+         <bug>53481</bug>: Added support for SSLHonorCipherOrder to allow
+         the server to impose its cipher order on the client. Based on a patch
+         provided by Marcel Šebek. (schultz)
+      </fix>
       <fix>
         In FormAuthenticator: If it is configured to change Session IDs,
         do the change before displaying the login form. (kkolinko)
