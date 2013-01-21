@@ -107,7 +107,8 @@ PATCHES PROPOSED TO BACKPORT:
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54324
   Allow APR connector to disable TLS compression when OpenSSL supports it.
   http://svn.apache.org/viewvc?view=revision&revision=1434887
-  (r1434882 in trunk)
+  http://svn.apache.org/viewvc?view=revision&revision=1435769 - Javadoc fix
+  (r1434882 r1435767 in trunk)
   +1: schultz
   -1:
 
