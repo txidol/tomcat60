@@ -44,6 +44,26 @@
  General, Catalina, Coyote, Jasper, Cluster, Web applications, Other
 -->
 <section name="Tomcat 6.0.37 (jfclere)">
+  <subsection name="Catalina">
+    <changelog>
+      <fix>
+        In FormAuthenticator: If it is configured to change Session IDs,
+        do the change before displaying the login form. (kkolinko)
+      </fix>
+      <fix>
+        <bug>54054</bug>: Do not share shell environment variables between
+        multiple instances of the CGI servlet. (markt)
+      </fix>
+      <fix>
+        <bug>54087</bug>: Correctly handle (ignore) invalid If-Modified-Since
+        header rather than throwing an exception. (markt/kkolinko)
+      </fix>
+      <fix>
+        <bug>54220</bug>: Ensure the ErrorReportValve only generates an error
+        report if the error flag on the response has been set. (markt)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Web applications">
     <changelog>
       <fix>
@@ -55,6 +75,16 @@
         <bug>54207</bug>: Correct JNDI factory package name in Javadoc for
         <code>org.apache.naming.java.javaURLContextFactory</code>. (markt)
       </fix>
+    </changelog>
+  </subsection>
+  <subsection name="Other">
+    <changelog>
+      <update>
+        In the build configuration: introduce property "tomcat.output" that is
+        used to specify location of the build output directory. This simplifies
+        configuration if someone wants to move the <code>output</code> directory
+        elsewhere (e.g. out of the source tree). (kkolinko)
+      </update>
     </changelog>
   </subsection>
 </section>

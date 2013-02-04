@@ -156,8 +156,10 @@ public class ErrorReportValve
 
         // Do nothing on a 1xx, 2xx and 3xx status
         // Do nothing if anything has been written already
-        if ((statusCode < 400) || (response.getContentCount() > 0))
+        if (statusCode < 400 || response.getContentCount() > 0 ||
+                !response.isError()) {
             return;
+        }
 
         String message = RequestUtil.filter(response.getMessage());
         if (message == null) {

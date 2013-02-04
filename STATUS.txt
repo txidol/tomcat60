@@ -79,13 +79,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kfujino, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54054
-  Do not share shell environment variables between multiple instances of the CGI
-  servlet.
-  http://svn.apache.org/viewvc?rev=1402644&view=rev
-  +1: markt, kkolinko, schultz
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54080
   "Comma related bug in org.apache.catalina.valves.RemoteIpValve"
   Documentation-only patch:
@@ -99,34 +92,6 @@ PATCHES PROPOSED TO BACKPORT:
   (The test was added to tomcat6-testing branch in r1408453)
   http://svn.apache.org/viewvc?view=revision&revision=1408459
   +1: kkolinko
-  -1:
-
-* In FormAuthenticator: If it is configured to change Session IDs,
-  do the change before displaying the login form.
-  http://svn.apache.org/viewvc?view=revision&revision=1408044
-  (r1408043 in trunk)
-  +1: kkolinko, kfujino, schultz
-  -1:
-
-* Introduce property "tomcat.output" that is used to specify location of
-  the build output directory. This simplifies build configuration when the
-  output directory is located outside of the source tree.
-  http://svn.apache.org/viewvc?view=revision&revision=1408376
-  +1: kkolinko, kfujino, schultz
-  -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54087
-  Correctly handle (ignore) invalid If-Modified-Since
-  header rather than throwing an exception.
-  http://svn.apache.org/viewvc?view=revision&revision=1408254
-  (r1408248 in trunk, by markt)
-  +1: kkolinko, kfujino, schultz
-  -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54220
-  ErrorReportValve invoked on non-error responses
-  http://svn.apache.org/viewvc?rev=1416537&view=rev (ErrorReportValve.java only)
-  +1: markt, kfujino, kkolinko, schultz
   -1:
 
 
