@@ -56,17 +56,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, schultz
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=53481
-  Add support for SSLHonorCipherOrder
-  http://svn.apache.org/viewvc?view=revision&revision=1371298
-  http://svn.apache.org/viewvc?view=revision&revision=1371302 (rolls-back inadvertent addition of TOMCAT-NEXT.txt)
-  http://svn.apache.org/viewvc?view=revision&revision=1371620 (tab -> spaces)
-  +1: schultz, kkolinko, jfclere
-  -1:
-     -- Note that a bug has been found in the feature to backport which
-        requires an update to tcnative:
-        https://issues.apache.org/bugzilla/show_bug.cgi?id=53969
-
 * Chunked encoding improvements
   http://people.apache.org/~markt/patches/2012-10-19-chunked-encoding-tc6.patch
   +1: markt, kkolinko
@@ -76,14 +65,14 @@ PATCHES PROPOSED TO BACKPORT:
   Make sure getMembers() returns available member when TcpFailureDetector works
   in static cluster. 
   http://svn.apache.org/viewvc?view=revision&revision=1402110
-  +1: kfujino, kkolinko
+  +1: kfujino, kkolinko, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54080
   "Comma related bug in org.apache.catalina.valves.RemoteIpValve"
   Documentation-only patch:
      https://issues.apache.org/bugzilla/attachment.cgi?id=29545
-  +1: schultz
+  +1: schultz, markt
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54044
@@ -91,9 +80,37 @@ PATCHES PROPOSED TO BACKPORT:
   that meant entries could be made with an earlier timestamp than the true timestamp.
   (The test was added to tomcat6-testing branch in r1408453)
   http://svn.apache.org/viewvc?view=revision&revision=1408459
-  +1: kkolinko
+  +1: kkolinko, markt
   -1:
 
+* Improve method cache handling in SecurityUtil class.
+  Add caching for Comet methods and simplify cache lookup code.
+  It is backport of r728776 (BZ 46304) and r1429360
+  http://people.apache.org/~kkolinko/patches/2013-01-05_tc6_46304_SecurityUtil.patch
+  +1: kkolinko, schultz
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54248
+  Need to reset the decoder when the B2C converter is recycled to ensure BOMs
+  are correctly handled for those encodings that require them.
+  http://svn.apache.org/viewvc?rev=1430083&view=rev
+  +1: markt, kkolinko, schultz
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54382
+  Avoid NPE with an empty SSI directive
+  http://svn.apache.org/viewvc?view=revision&revision=1430553
+  (r1430550 in trunk)
+  +1: kkolinko, markt
+  -1:
+
+* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54324
+  Allow APR connector to disable TLS compression when OpenSSL supports it.
+  http://svn.apache.org/viewvc?view=revision&revision=1434887
+  http://svn.apache.org/viewvc?view=revision&revision=1435769 - Javadoc fix
+  (r1434882 r1435767 in trunk)
+  +1: schultz
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
@@ -112,21 +129,5 @@ PATCHES/ISSUES THAT ARE STALLED
               We can stall this item until we get some feedback about 7.0.5.
       markt - r1172614 needs to be included in this proposal. With that patch,
               my testing shows that the unloading works as designed
+      kkolinko - r1428358 (r1428355) is needed - a fix for BZ 54260.
   -1:
-
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=52918
-  Add WebSocket support to Tomcat 6
-  +1: fhanik
-  -0: jfclere
-  -0: kkolinko:
-       - Interesting, but I do not think there is much interest in it.
-         If one needs this feature I would suggest to upgrade to Tomcat 7.
-         If one cannot upgrade to Tomcat 7 then they probably cannot
-         upgrade to a later Tomcat 6 either.
-       - The protocol specification still evolves. I think it is too risky
-         to implement websockets for Tomcat 6.
-       - Formally, the proposal does not have a link to the patch.
-       - The patch in Bugzilla does not include latest changes from Tomcat 7. E.g.
-            http://svn.apache.org/viewvc?view=revision&revision=1380841
-         (Is one supposed to just copy the current version of websocket
-         package from Tomcat 7 here?)

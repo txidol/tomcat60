@@ -332,4 +332,13 @@ public final class SSL {
      * Return last SSL error string
      */
     public static native String getLastError();
+
+    /**
+     * Return true if all the requested SSL_OP_* are supported by OpenSSL.
+     *
+     * @param Bitwise-OR of all SSL_OP_* to test.
+     * 
+     * @return true if all SSL_OP_* are supported by OpenSSL library.
+     */
+    public static native boolean hasOp(int op);
 }

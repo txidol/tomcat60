@@ -416,6 +416,17 @@ public class Http11AprProtocol extends AbstractProtocol
 
 
     /**
+     * SSL honor cipher order.
+	 *
+     * Set to <code>true</code> to enforce the <i>server's</i> cipher order
+     * instead of the default which is to allow the client to choose a
+     * preferred cipher.
+     */
+    public boolean getSSLHonorCipherOrder() { return ((AprEndpoint)endpoint).getSSLHonorCipherOrder(); }
+    public void setSSLHonorCipherOrder(boolean SSLHonorCipherOrder) { ((AprEndpoint)endpoint).setSSLHonorCipherOrder(SSLHonorCipherOrder); }
+
+
+    /**
      * SSL certificate file.
      */
     public String getSSLCertificateFile() { return endpoint.getSSLCertificateFile(); }
