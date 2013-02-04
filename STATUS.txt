@@ -105,14 +105,14 @@ PATCHES PROPOSED TO BACKPORT:
   do the change before displaying the login form.
   http://svn.apache.org/viewvc?view=revision&revision=1408044
   (r1408043 in trunk)
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, schultz
   -1:
 
 * Introduce property "tomcat.output" that is used to specify location of
   the build output directory. This simplifies build configuration when the
   output directory is located outside of the source tree.
   http://svn.apache.org/viewvc?view=revision&revision=1408376
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54087
@@ -120,13 +120,13 @@ PATCHES PROPOSED TO BACKPORT:
   header rather than throwing an exception.
   http://svn.apache.org/viewvc?view=revision&revision=1408254
   (r1408248 in trunk, by markt)
-  +1: kkolinko, kfujino
+  +1: kkolinko, kfujino, schultz
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54220
   ErrorReportValve invoked on non-error responses
   http://svn.apache.org/viewvc?rev=1416537&view=rev (ErrorReportValve.java only)
-  +1: markt, kfujino
+  +1: markt, kfujino, kkolinko, schultz
   -1:
 
 
