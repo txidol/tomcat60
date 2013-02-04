@@ -43,7 +43,22 @@
 <!-- Section names:
  General, Catalina, Coyote, Jasper, Cluster, Web applications, Other
 -->
-<section name="Tomcat 6.0.36 (jfclere)" rtext="">
+<section name="Tomcat 6.0.37 (jfclere)">
+  <subsection name="Web applications">
+    <changelog>
+      <fix>
+        <bug>54198</bug>: Clarify that
+        <code>HttpServletResponse.sendError(int)</code> results in an HTML
+        response by default. (markt)
+      </fix>
+      <fix>
+        <bug>54207</bug>: Correct JNDI factory package name in Javadoc for
+        <code>org.apache.naming.java.javaURLContextFactory</code>. (markt)
+      </fix>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat 6.0.36 (jfclere)" rtext="released 2012-10-19">
   <subsection name="Catalina">
     <changelog>
       <update>
