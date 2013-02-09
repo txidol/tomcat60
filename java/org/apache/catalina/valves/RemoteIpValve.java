@@ -93,6 +93,11 @@ import org.apache.juli.logging.LogFactory;
  * <td>RemoteIPInternalProxy</td>
  * <td>Comma delimited list of regular expressions (in the syntax supported by the {@link java.util.regex.Pattern} library)</td>
  * <td>10\.\d{1,3}\.\d{1,3}\.\d{1,3}, 192\.168\.\d{1,3}\.\d{1,3}, 169\.254\.\d{1,3}\.\d{1,3}, 127\.\d{1,3}\.\d{1,3}\.\d{1,3} <br/>
+ * Note that this comma-separated regular expression <i>is</i> used by default
+ * but cannot be specified in the same way through String-based configuration,
+ * as the commas in the "\d{1,3}" expressions will interpreted as separators
+ * between regular expressions. The "\d{1,3}" pattern can be replaced by
+ * "\d\d?\d?" or more simply by "\d+".
  * By default, 10/8, 192.168/16, 169.254/16 and 127/8 are allowed ; 172.16/12 has not been enabled by default because it is complex to
  * describe with regular expressions</td>
  * </tr>
@@ -687,7 +692,10 @@ public class RemoteIpValve extends ValveBase {
      * Comma delimited list of internal proxies. Can be expressed with regular expressions.
      * </p>
      * <p>
-     * Default value : 10\.\d{1,3}\.\d{1,3}\.\d{1,3}, 192\.168\.\d{1,3}\.\d{1,3}, 127\.\d{1,3}\.\d{1,3}\.\d{1,3}
+     * Default value: 10\.\d{1,3}\.\d{1,3}\.\d{1,3}, 192\.168\.\d{1,3}\.\d{1,3}, 127\.\d{1,3}\.\d{1,3}\.\d{1,3}<br/>
+     * Note: If you want to configure the same value, you have to replace
+     * "\d{1,3}" with "\d\d?\d?" or more simply with "\d+". Otherwise the commas
+     * in the expression will be mistaken for separators between regular expressions.
      * </p>
      */
     public void setInternalProxies(String commaDelimitedInternalProxies) {

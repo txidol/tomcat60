@@ -91,6 +91,11 @@
   <subsection name="Web applications">
     <changelog>
       <fix>
+        <bug>54080</bug>: Clarify documentation for initial value of
+        <code>internalProxies</code> attribute of <code>RemoteIpValve</code>.
+        (schultz/kkolinko)
+      </fix>
+      <fix>
         <bug>54198</bug>: Clarify that
         <code>HttpServletResponse.sendError(int)</code> results in an HTML
         response by default. (markt)
