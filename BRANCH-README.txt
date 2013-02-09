@@ -4,7 +4,7 @@ It is maintained as a reintegrate-able branch with regular catch-up
 merges from tc6.0.x/trunk.
 
 Created: 2012-11-12 from r1408230
-Last catch-up merge: 2013-02-04 (r1442376), merged up to r1442373
+Last catch-up merge: 2013-02-09, merged up to r1444297
 
 Revisions in 6.0.x/trunk that are merges from this branch:
 r1417826,1444292
