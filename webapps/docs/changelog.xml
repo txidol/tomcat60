@@ -73,6 +73,10 @@
         or the servlet is a SingleThreadModel one, and of filter instances
         if their destroy() method fails with an Error. (kkolinko)
       </fix>
+      <fix>
+        <bug>54483</bug>: Correct one of the Spanish translations. Based on a
+        suggestion from adinamita. (kkolinko)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Coyote">
