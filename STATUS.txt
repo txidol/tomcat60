@@ -61,13 +61,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54045.
-  Make sure getMembers() returns available member when TcpFailureDetector works
-  in static cluster. 
-  http://svn.apache.org/viewvc?view=revision&revision=1402110
-  +1: kfujino, kkolinko, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54044
   Correct bug in timestamp cache used by org.apache.juli.OneLineFormatter
   that meant entries could be made with an earlier timestamp than the true timestamp.
