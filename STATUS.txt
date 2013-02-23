@@ -103,7 +103,7 @@ PATCHES PROPOSED TO BACKPORT:
   Update file extension to MIME type mapping in web.xml. Aligh with current
   trunk.
   https://issues.apache.org/bugzilla/attachment.cgi?id=29962
-  +1: markt
+  +1: markt, kkolinko
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54601
