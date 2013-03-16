@@ -98,6 +98,11 @@
   </subsection>
   <subsection name="Web applications">
     <changelog>
+      <update>
+        <bug>22278</bug>: Add a commented out sample configuration of
+        <code>RemoteAddrValve</code> to <code>META-INF/context.xml</code>
+        files of the Manager and Host Manager applications. (kkolinko)
+      </update>
       <fix>
         <bug>54080</bug>: Clarify documentation for initial value of
         <code>internalProxies</code> attribute of <code>RemoteIpValve</code>.
