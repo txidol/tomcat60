@@ -39,10 +39,7 @@ PATCHES PROPOSED TO BACKPORT:
   addressed in Tomcat 6, because all logging in that class here is done at
   debug level.
 
-  http://people.apache.org/~kkolinko/patches/2012-03-26_tc6_UserDataHelper.patch
-  (includes a new file, copied from trunk:
-  svn cp ../../trunk/java/org/apache/tomcat/util/log/UserDataHelper.java@1242371 java/org/apache/tomcat/util/log/UserDataHelper.java
-  )
+  http://people.apache.org/~kkolinko/patches/2013-03-24_tc6_52184_UserDataHelper.patch
   +1: kkolinko
   -1:
 
