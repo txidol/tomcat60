@@ -103,6 +103,15 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko
   -1:
 
+* Add sample Apache Commons Daemon JSVC wrapper script bin/daemon.sh that
+  can be used with /etc/init.d.
+  This file is needed, as it has been removed from Commons Daemon and thus
+  a reference to it in docs/setup.html became incorrect.
+  This copy of daemon.sh differs from Tomcat trunk one in initialization of
+  CLASSPATH setting, because tomcat-juli.jar has to be handled differently.
+  http://people.apache.org/~kkolinko/patches/2013-03-26_tc6_daemonsh.patch
+  +1: kkolinko
+  -1:
 
 PATCHES/ISSUES THAT ARE STALLED
 
