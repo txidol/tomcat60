@@ -116,6 +116,8 @@ public final class SSL {
 
     /* As server, disallow session resumption on renegotiation */
     public static final int SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION = 0x00010000;
+    /* Don't use compression even if supported */
+    public static final int SSL_OP_NO_COMPRESSION                         = 0x00020000;
     /* If set, always create a new key when using tmp_dh parameters */
     public static final int SSL_OP_SINGLE_DH_USE                    = 0x00100000;
     /* Set to always use the tmp_rsa key when doing RSA operations,
@@ -335,8 +337,13 @@ public final class SSL {
 
     /**
      * Return true if all the requested SSL_OP_* are supported by OpenSSL.
+     * 
+     * <i>Note that for versions of tcnative &lt; 1.1.25, this method will
+     * return <code>true</code> if and only if <code>op</code>=
+     * {@link #SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION} and tcnative
+     * supports that flag.</i>
      *
-     * @param Bitwise-OR of all SSL_OP_* to test.
+     * @param op Bitwise-OR of all SSL_OP_* to test.
      * 
      * @return true if all SSL_OP_* are supported by OpenSSL library.
      */

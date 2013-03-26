@@ -86,6 +86,10 @@
         a Reader to read a request body with a BOM for those encodings that
         require byte order marks. (markt)
       </fix>
+      <fix>
+        <bug>54324</bug>: Allow APR connector to disable TLS compression
+        if OpenSSL supports it. (schultz)
+      </fix>
     </changelog>
   </subsection>
   <subsection name="Cluster">

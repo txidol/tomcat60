@@ -529,6 +529,20 @@ public class AprEndpoint extends AbstractEndpoint {
     public boolean getSSLHonorCipherOrder() { return SSLHonorCipherOrder; }
 
     /**
+     * Disables compression of the SSL stream. This thwarts CRIME attack
+     * and possibly improves performance by not compressing uncompressible
+     * content such as JPEG, etc.
+     */
+    protected boolean SSLDisableCompression = false;
+
+    /**
+     * Set to <code>true</code> to disable SSL compression. This thwarts CRIME
+     * attack.
+     */
+    public void setSSLDisableCompression(boolean SSLDisableCompression) { this.SSLDisableCompression = SSLDisableCompression; }
+    public boolean getSSLDisableCompression() { return SSLDisableCompression; }
+
+    /**
      * Number of keepalive sockets.
      */
     public int getKeepAliveCount() {
@@ -777,6 +791,23 @@ public class AprEndpoint extends AbstractEndpoint {
                 if (!orderCiphersSupported) {
                     // OpenSSL does not support ciphers ordering.
                     log.warn(sm.getString("endpoint.warn.noHonorCipherOrder",
+                                          SSL.versionString()));
+                }
+            }
+
+            // Disable compression if requested
+            if (SSLDisableCompression) {
+                boolean disableCompressionSupported = false;
+                try {
+                    disableCompressionSupported = SSL.hasOp(SSL.SSL_OP_NO_COMPRESSION);
+                    if (disableCompressionSupported)
+                        SSLContext.setOptions(sslContext, SSL.SSL_OP_NO_COMPRESSION);
+                } catch (UnsatisfiedLinkError e) {
+                    // Ignore
+                }
+                if (!disableCompressionSupported) {
+                    // OpenSSL does not support ciphers ordering.
+                    log.warn(sm.getString("endpoint.warn.noDisableCompression",
                                           SSL.versionString()));
                 }
             }

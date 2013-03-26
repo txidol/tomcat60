@@ -488,6 +488,12 @@ public class Http11AprProtocol extends AbstractProtocol
     public int getSSLVerifyDepth() { return endpoint.getSSLVerifyDepth(); }
     public void setSSLVerifyDepth(int SSLVerifyDepth) { endpoint.setSSLVerifyDepth(SSLVerifyDepth); }
 
+    /**
+     * Disable SSL compression.
+     */
+    public boolean getSSLDisableCompression() { return ((AprEndpoint)endpoint).getSSLDisableCompression(); }
+    public void setSSLDisableCompression(boolean disable) { ((AprEndpoint)endpoint).setSSLDisableCompression(disable); }
+
     
     /**
      * When client certificate information is presented in a form other than

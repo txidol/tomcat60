@@ -80,15 +80,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54324
-  Allow APR connector to disable TLS compression when OpenSSL supports it.
-  http://svn.apache.org/viewvc?view=revision&revision=1434887
-  http://svn.apache.org/viewvc?view=revision&revision=1435769 - Javadoc fix
-  http://svn.apache.org/viewvc?view=revision&revision=1457378 - Fix message broken during backport to TC7
-  (r1434882 r1435767 in trunk)
-  +1: schultz, markt, kkolinko
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54456
   If the client aborts the request, make sure this is communicated to the
   application reading the request body.

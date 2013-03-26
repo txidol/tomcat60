@@ -271,6 +271,11 @@
       and private key have to be in this file (NOT RECOMMENDED).
     </p>
     </attribute>
+    <attribute name="SSLDisableCompression" required="false">
+      <p>Disables compression if set to <code>true</code> and OpenSSL supports
+      disabling compression. Default is <code>false</code> which inherits the
+      default compression setting in OpenSSL.</p>
+    </attribute>
     <attribute name="SSLHonorCipherOrder" required="false">
       <p>Set to <code>true</code> to enforce the server's cipher order
       (from the <code>SSLCipherSuite</code> setting) instead of allowing
