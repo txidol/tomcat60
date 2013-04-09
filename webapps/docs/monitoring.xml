@@ -23,8 +23,6 @@
   &project;
 
   <properties>
-    <author email="pero@apache.org">Peter Rossbach</author>
-    <author email="remm@apache.org">Remy Maucherat</author>
     <title>Monitoring and Managing Tomcat</title>
   </properties>
 
@@ -44,45 +42,62 @@
 
   <section name="Enabling JMX Remote">
 
-    <p>The Sun website includes the list of options and how to configure JMX Remote on Java 5:
+    <p><strong>Note:</strong> This configuration is needed if you are
+    going to monitor Tomcat remotely. If you are going
+    to monitor it locally, using the same user that Tomcat runs with, then
+    with Java 6 it is not needed at all, and with Java 5 it is as simple as
+    adding <code>-Dcom.sun.management.jmxremote</code>, see Java documentation.</p>
+
+    <p>The Oracle website includes the list of options and how to configure JMX Remote on Java 5:
         <a href="http://docs.oracle.com/javase/1.5.0/docs/guide/management/agent.html">
-        http://docs.oracle.com/javase/1.5.0/docs/guide/management/agent.html</a>.
+        http://docs.oracle.com/javase/1.5.0/docs/guide/management/agent.html</a>
+        and on Java 6:
+        <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/management/agent.html">
+        http://docs.oracle.com/javase/6/docs/technotes/guides/management/agent.html</a>.
     </p>
     <p>The following is a quick configuration guide for Java 5:</p>
-    <p>Add the following parameters to your Tomcat startup script:
-    <source>
-    set CATALINA_OPTS=-Dcom.sun.management.jmxremote \
-    -Dcom.sun.management.jmxremote.port=%my.jmx.port% \
-    -Dcom.sun.management.jmxremote.ssl=false \
-    -Dcom.sun.management.jmxremote.authenticate=false
-    </source>
+    <p>Add the following parameters to <code>setenv.bat</code> script of your
+    Tomcat (see <a href="RUNNING.txt">RUNNING.txt</a> for details).<br/>
+    <em>Note:</em> This syntax is for Microsoft Windows. The command has
+    to be on the same line. It is wrapped to be more readable. If Tomcat is
+    running as a Windows service, use its configuration dialog to set
+    java options for the service.
+    For un*xes remove <code>"set "</code> from beginning of the line.
     </p>
-    <p>
+<source>
+set CATALINA_OPTS=-Dcom.sun.management.jmxremote
+  -Dcom.sun.management.jmxremote.port=%my.jmx.port%
+  -Dcom.sun.management.jmxremote.ssl=false
+  -Dcom.sun.management.jmxremote.authenticate=false
+</source>
+
     <ol>
     <li>If you require authorization, add and change this :
-    <source>
-    -Dcom.sun.management.jmxremote.authenticate=true \
-    -Dcom.sun.management.jmxremote.password.file=../conf/jmxremote.password \
-    -Dcom.sun.management.jmxremote.access.file=../conf/jmxremote.access \
-    </source>
+<source>
+  -Dcom.sun.management.jmxremote.authenticate=true
+  -Dcom.sun.management.jmxremote.password.file=../conf/jmxremote.password
+  -Dcom.sun.management.jmxremote.access.file=../conf/jmxremote.access
+</source>
     </li>
     <li>edit the access authorization file <em>$CATALINA_BASE/conf/jmxremote.access</em> :
-    <source>
+<source>
 monitorRole readonly
 controlRole readwrite
-    </source>
+</source>
     </li>
     <li>edit the password file <em>$CATALINA_BASE/conf/jmxremote.password</em> :
-    <source>
+<source>
 monitorRole tomcat
 controlRole tomcat
-    </source>
+</source>
     <b>Tip</b>: The password file should be read-only and only accessible by the
     operating system user Tomcat is running as.
     </li>
     </ol>
-    <b>Note:</b>The JSR 160 JMX-Adaptor opens a second data channel on a random
-    port. That is a problem when you have a local firewall installed.<br/>
+    <p><strong>Note:</strong> The JSR 160 JMX-Adaptor opens a second data channel
+    on a random port. That is a problem when you have a local firewall installed.
+    To fix it, configure a <code>JmxRemoteLifecycleListener</code>, as described
+    in <a href="config/listeners.html">listeners</a> documentation.
     </p>
 
   </section>
