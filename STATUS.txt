@@ -40,7 +40,7 @@ PATCHES PROPOSED TO BACKPORT:
   debug level.
 
   http://people.apache.org/~kkolinko/patches/2013-03-24_tc6_52184_UserDataHelper.patch
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * For https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
@@ -63,7 +63,7 @@ PATCHES PROPOSED TO BACKPORT:
   that meant entries could be made with an earlier timestamp than the true timestamp.
   (The test was added to tomcat6-testing branch in r1408453)
   http://svn.apache.org/viewvc?view=revision&revision=1408459
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Improve method cache handling in SecurityUtil class.
@@ -77,7 +77,7 @@ PATCHES PROPOSED TO BACKPORT:
   Avoid NPE with an empty SSI directive
   http://svn.apache.org/viewvc?view=revision&revision=1430553
   (r1430550 in trunk)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54456
@@ -85,7 +85,7 @@ PATCHES PROPOSED TO BACKPORT:
   application reading the request body.
   http://svn.apache.org/viewvc?rev=1443430&view=rev
   (r1443427 in trunk)
-  +1: kkolinko, markt
+  +1: kkolinko, markt, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54527
@@ -100,7 +100,7 @@ PATCHES PROPOSED TO BACKPORT:
   configure logging, instead of modifying JAVA_OPTS one.
   https://issues.apache.org/bugzilla/attachment.cgi?id=29985
   (backport of r1449406; r1449412 in tc7)
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Add sample Apache Commons Daemon JSVC wrapper script bin/daemon.sh that
@@ -110,20 +110,23 @@ PATCHES PROPOSED TO BACKPORT:
   This copy of daemon.sh differs from Tomcat trunk one in initialization of
   CLASSPATH setting, because tomcat-juli.jar has to be handled differently.
   http://people.apache.org/~kkolinko/patches/2013-03-26_tc6_daemonsh.patch
-  +1: kkolinko, jfclere
+  +1: kkolinko, jfclere, rjung
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54615
   Update to Eclipse JDT Compiler 4.2.2
   http://people.apache.org/~kkolinko/patches/2013-03-26_tc6_eclipse422.patch
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
 
 * Update the native component of the APR/native connector to 1.1.27 and
   make that version the recommended minimum version.
   http://svn.apache.org/r1445210
-  +1: kkolinko
+  +1: kkolinko, rjung
   -1:
+  rjung: The svn merge doesn't apply cleanly. You don't want to
+         change TCN_REQUIRED_PATCH or add TCN_RECOMMENDED_MINOR, correct?
+         Only increment TCN_RECOMMENDED_PV to 27?
 
 PATCHES/ISSUES THAT ARE STALLED
 
