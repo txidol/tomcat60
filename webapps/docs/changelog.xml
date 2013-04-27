@@ -156,6 +156,9 @@
         <bug>54390</bug>: Use 'java_home' on Mac OS X to auto-detect JAVA_HOME.
         (schultz)
       </fix>
+      <update>
+        <bug>54890</bug>: Update to Apache Commons Daemon 1.0.15. (mturk)
+      </update>
     </changelog>
   </subsection>
 </section>
