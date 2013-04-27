@@ -53,11 +53,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, schultz
   -1:
 
-* Chunked encoding improvements
-  http://people.apache.org/~markt/patches/2012-10-19-chunked-encoding-tc6.patch
-  +1: markt, kkolinko, jfclere
-  -1:
-
 * Improve method cache handling in SecurityUtil class.
   Add caching for Comet methods and simplify cache lookup code.
   It is backport of r728776 (BZ 46304) and r1429360

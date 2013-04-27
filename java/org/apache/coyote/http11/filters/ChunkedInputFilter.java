@@ -148,7 +148,7 @@ public class ChunkedInputFilter implements InputFilter {
 
         if(needCRLFParse) {
             needCRLFParse = false;
-            parseCRLF();
+            parseCRLF(false);
         }
 
         if (remaining <= 0) {
@@ -186,7 +186,7 @@ public class ChunkedInputFilter implements InputFilter {
                 //so we defer it to the next call BZ 11117
                 needCRLFParse = true;
             } else {
-                parseCRLF(); //parse the CRLF immediately
+                parseCRLF(false); //parse the CRLF immediately
             }
         }
 
@@ -303,8 +303,8 @@ public class ChunkedInputFilter implements InputFilter {
                     return false;
             }
 
-            if (buf[pos] == Constants.CR) {
-            } else if (buf[pos] == Constants.LF) {
+            if (buf[pos] == Constants.CR || buf[pos] == Constants.LF) {
+                parseCRLF(false);
                 eol = true;
             } else if (buf[pos] == Constants.SEMI_COLON) {
                 trailer = true;
@@ -322,7 +322,10 @@ public class ChunkedInputFilter implements InputFilter {
                 }
             }
 
-            pos++;
+            // Parsing the CRLF increments pos
+            if (!eol) {
+                pos++;
+            }
 
         }
 
@@ -343,9 +346,22 @@ public class ChunkedInputFilter implements InputFilter {
 
     /**
      * Parse CRLF at end of chunk.
+     * @deprecated  Use {@link #parseCRLF(boolean)}
      */
-    protected boolean parseCRLF()
-        throws IOException {
+    @Deprecated
+    protected boolean parseCRLF() throws IOException {
+        parseCRLF(false);
+        return true;
+    }
+
+    /**
+     * Parse CRLF at end of chunk.
+     *
+     * @param   tolerant    Should tolerant parsing (LF and CRLF) be used? This
+     *                      is recommended (RFC2616, section 19.3) for message
+     *                      headers.
+     */
+    protected void parseCRLF(boolean tolerant) throws IOException {
 
         boolean eol = false;
         boolean crfound = false;
@@ -361,7 +377,9 @@ public class ChunkedInputFilter implements InputFilter {
                 if (crfound) throw new IOException("Invalid CRLF, two CR characters encountered.");
                 crfound = true;
             } else if (buf[pos] == Constants.LF) {
-                if (!crfound) throw new IOException("Invalid CRLF, no CR character encountered.");
+                if (!tolerant && !crfound) {
+                    throw new IOException("Invalid CRLF, no CR character encountered.");
+                }
                 eol = true;
             } else {
                 throw new IOException("Invalid CRLF");
@@ -370,9 +388,6 @@ public class ChunkedInputFilter implements InputFilter {
             pos++;
 
         }
-
-        return true;
-
     }
 
 
@@ -394,26 +409,19 @@ public class ChunkedInputFilter implements InputFilter {
         MimeHeaders headers = request.getMimeHeaders();
 
         byte chr = 0;
-        while (true) {
-            // Read new bytes if needed
-            if (pos >= lastValid) {
-                if (readBytes() <0)
-                    throw new EOFException("Unexpected end of stream whilst reading trailer headers for chunked request");
-            }
 
-            chr = buf[pos];
+        // Read new bytes if needed
+        if (pos >= lastValid) {
+            if (readBytes() <0)
+                throw new EOFException("Unexpected end of stream whilst reading trailer headers for chunked request");
+        }
     
-            if ((chr == Constants.CR) || (chr == Constants.LF)) {
-                if (chr == Constants.LF) {
-                    pos++;
-                    return false;
-                }
-            } else {
-                break;
-            }
-    
-            pos++;
-    
+        chr = buf[pos];
+
+        // CRLF terminates the request
+        if (chr == Constants.CR || chr == Constants.LF) {
+            parseCRLF(false);
+            return false;
         }
     
         // Mark the current buffer position
@@ -493,9 +501,8 @@ public class ChunkedInputFilter implements InputFilter {
                 }
     
                 chr = buf[pos];
-                if (chr == Constants.CR) {
-                    // Skip
-                } else if (chr == Constants.LF) {
+                if (chr == Constants.CR || chr == Constants.LF) {
+                    parseCRLF(true);
                     eol = true;
                 } else if (chr == Constants.SP) {
                     trailingHeaders.append(chr);
@@ -504,8 +511,9 @@ public class ChunkedInputFilter implements InputFilter {
                     lastSignificantChar = trailingHeaders.getEnd();
                 }
     
-                pos++;
-    
+                if (!eol) {
+                    pos++;
+                }
             }
     
             // Checking the first character of the new line. If the character
