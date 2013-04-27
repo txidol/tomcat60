@@ -133,6 +133,10 @@
   <subsection name="Other">
     <changelog>
       <update>
+       Add sample Apache Commons Daemon JSVC wrapper script bin/daemon.sh that
+       can be used with /etc/init.d. (kkolinko)
+      </update>
+      <update>
         In the build configuration: introduce property "tomcat.output" that is
         used to specify location of the build output directory. This simplifies
         configuration if someone wants to move the <code>output</code> directory
