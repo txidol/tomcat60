@@ -46,7 +46,11 @@
 <section name="Tomcat 6.0.37 (jfclere)">
   <subsection name="Catalina">
     <changelog>
-       <fix>
+      <fix>
+         <bug>54382</bug>: Fix NPE when SSI processing is enabled and an empty
+         SSI directive is present. (markt)
+      </fix>
+      <fix>
          <bug>53481</bug>: Added support for SSLHonorCipherOrder to allow
          the server to impose its cipher order on the client. Based on a patch
          provided by Marcel Šebek. (schultz)
