@@ -40,7 +40,7 @@ PATCHES PROPOSED TO BACKPORT:
   debug level.
 
   http://people.apache.org/~kkolinko/patches/2013-03-24_tc6_52184_UserDataHelper.patch
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, jfclere
   -1:
 
 * For https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
@@ -50,7 +50,7 @@ PATCHES PROPOSED TO BACKPORT:
   The nextRequest() method already recycles the filters. If it has been called,
   then lastActiveFilter is -1 and the new code will be NOOP.
   http://people.apache.org/~kkolinko/patches/2012-06-02_tc6_recycle.patch
-  +1: kkolinko, schultz
+  +1: kkolinko, schultz, jfclere
   -1:
 
 * Improve method cache handling in SecurityUtil class.
@@ -65,14 +65,15 @@ PATCHES PROPOSED TO BACKPORT:
   configure logging, instead of modifying JAVA_OPTS one.
   https://issues.apache.org/bugzilla/attachment.cgi?id=29985
   (backport of r1449406; r1449412 in tc7)
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, jfclere
   -1:
 
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54615
   Update to Eclipse JDT Compiler 4.2.2
   http://people.apache.org/~kkolinko/patches/2013-03-26_tc6_eclipse422.patch
   +1: kkolinko, rjung
-  -1:
+  -1: jfclere: I am ~OK to add the method to allow to compile but not to
+      change the major version of ecj
 
 PATCHES/ISSUES THAT ARE STALLED
 
