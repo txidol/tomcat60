@@ -81,25 +81,10 @@ PATCHES PROPOSED TO BACKPORT:
 
 * Update the native component of the APR/native connector to 1.1.27 and
   make that version the recommended minimum version.
-  http://svn.apache.org/r1445210
+  http://people.apache.org/~kkolinko/patches/2013-04-27_tc6_native1127.patch
+  ( r1445210 in Tomcat 7)
   +1: kkolinko, rjung
   -1:
-  rjung: The svn merge doesn't apply cleanly. You don't want to
-         change TCN_REQUIRED_PATCH or add TCN_RECOMMENDED_MINOR, correct?
-         Only increment TCN_RECOMMENDED_PV to 27?
-  kkolinko:
-         1. Yes, I mean only TCN_RECOMMENDED_PV: s/22/27/
-
-         2. TCN_RECOMMENDED_MINOR is the same as TCN_REQUIRED_MINOR.
-         It was added to allow running with native 1.2.x along with
-         some change in version check logic. (r782010)
-         The difference between the two is currently irrelevant, as the
-         version check logic has been backported from Tomcat 7.
-
-         3. TCN_REQUIRED_PATCH was incremented to "24" in Tomcat 7 as it
-         required support for "per-socket timeouts inside poller" added in
-         native 1.1.24.
-         I am OK with it staying as "17" in Tomcat 6.
 
 
 PATCHES/ISSUES THAT ARE STALLED
