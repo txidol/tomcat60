@@ -83,7 +83,7 @@ PATCHES PROPOSED TO BACKPORT:
   make that version the recommended minimum version.
   http://people.apache.org/~kkolinko/patches/2013-04-27_tc6_native1127.patch
   ( r1445210 in Tomcat 7)
-  +1: kkolinko, rjung
+  +1: kkolinko, rjung, jfclere
   -1:
 
 
