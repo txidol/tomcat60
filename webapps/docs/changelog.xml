@@ -47,6 +47,11 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>54044</bug>: Correct bug in timestamp cache used by logging
+        (including the access log valve) that meant entries could be made with
+        an earlier timestamp than the true timestamp. (markt) 
+      </fix>
+      <fix>
          <bug>54382</bug>: Fix NPE when SSI processing is enabled and an empty
          SSI directive is present. (markt)
       </fix>

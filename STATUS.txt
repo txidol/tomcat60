@@ -58,14 +58,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: markt, kkolinko, jfclere
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54044
-  Correct bug in timestamp cache used by org.apache.juli.OneLineFormatter
-  that meant entries could be made with an earlier timestamp than the true timestamp.
-  (The test was added to tomcat6-testing branch in r1408453)
-  http://svn.apache.org/viewvc?view=revision&revision=1408459
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Improve method cache handling in SecurityUtil class.
   Add caching for Comet methods and simplify cache lookup code.
   It is backport of r728776 (BZ 46304) and r1429360
