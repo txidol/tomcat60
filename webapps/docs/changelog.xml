@@ -47,18 +47,14 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>53481</bug>: Added support for SSLHonorCipherOrder to allow
+        the server to impose its cipher order on the client. Based on a patch
+        provided by Marcel &#x160;ebek. (schultz)
+      </fix>
+      <fix>
         <bug>54044</bug>: Correct bug in timestamp cache used by logging
         (including the access log valve) that meant entries could be made with
         an earlier timestamp than the true timestamp. (markt) 
-      </fix>
-      <fix>
-         <bug>54382</bug>: Fix NPE when SSI processing is enabled and an empty
-         SSI directive is present. (markt)
-      </fix>
-      <fix>
-         <bug>53481</bug>: Added support for SSLHonorCipherOrder to allow
-         the server to impose its cipher order on the client. Based on a patch
-         provided by Marcel Šebek. (schultz)
       </fix>
       <fix>
         In FormAuthenticator: If it is configured to change Session IDs,
@@ -83,18 +79,21 @@
         if their destroy() method fails with an Error. (kkolinko)
       </fix>
       <fix>
+        <bug>54382</bug>: Fix NPE when SSI processing is enabled and an empty
+        SSI directive is present. (markt)
+      </fix>
+      <fix>
         <bug>54483</bug>: Correct one of the Spanish translations. Based on a
         suggestion from adinamita. (kkolinko)
       </fix>
+      <update>
+        <bug>54527</bug>: Synchronize conf/web.xml mime mapping with Tomcat 7.
+        (markt)
+      </update>
     </changelog>
   </subsection>
   <subsection name="Coyote">
     <changelog>
-      <fix>
-        <bug>54456</bug>: Ensure that if a client aborts a request when sending
-        a chunked request body that this is communicated correctly to the client
-        reading the request body. (markt)
-      </fix>
       <fix>
         <bug>54248</bug>: Ensure that byte order marks are swallowed when using
         a Reader to read a request body with a BOM for those encodings that
@@ -103,6 +102,11 @@
       <fix>
         <bug>54324</bug>: Allow APR connector to disable TLS compression
         if OpenSSL supports it. (schultz)
+      </fix>
+      <fix>
+        <bug>54456</bug>: Ensure that if a client aborts a request when sending
+        a chunked request body that this is communicated correctly to the client
+        reading the request body. (markt)
       </fix>
     </changelog>
   </subsection>
@@ -116,9 +120,6 @@
   </subsection>
   <subsection name="Web applications">
     <changelog>
-      <update>
-        <bug>54527</bug>: Synchronize conf/web.xml mime mapping with Tomcat 7. (markt)
-      </update>
       <update>
         <bug>22278</bug>: Add a commented out sample configuration of
         <code>RemoteAddrValve</code> to <code>META-INF/context.xml</code>
