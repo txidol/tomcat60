@@ -88,13 +88,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, markt, rjung
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54527
-  Update file extension to MIME type mapping in web.xml. Aligh with current
-  trunk.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=29962
-  +1: markt, kkolinko, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54601
   Change catalina.sh to consistently use LOGGING_MANAGER variable to
   configure logging, instead of modifying JAVA_OPTS one.
