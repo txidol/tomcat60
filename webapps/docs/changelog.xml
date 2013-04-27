@@ -86,6 +86,11 @@
   <subsection name="Coyote">
     <changelog>
       <fix>
+        <bug>54456</bug>: Ensure that if a client aborts a request when sending
+        a chunked request body that this is communicated correctly to the client
+        reading the request body. (markt)
+      </fix>
+      <fix>
         <bug>54248</bug>: Ensure that byte order marks are swallowed when using
         a Reader to read a request body with a BOM for those encodings that
         require byte order marks. (markt)

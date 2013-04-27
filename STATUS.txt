@@ -73,14 +73,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, schultz
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54456
-  If the client aborts the request, make sure this is communicated to the
-  application reading the request body.
-  http://svn.apache.org/viewvc?rev=1443430&view=rev
-  (r1443427 in trunk)
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54601
   Change catalina.sh to consistently use LOGGING_MANAGER variable to
   configure logging, instead of modifying JAVA_OPTS one.

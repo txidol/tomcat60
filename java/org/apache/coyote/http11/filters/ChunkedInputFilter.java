@@ -164,7 +164,10 @@ public class ChunkedInputFilter implements InputFilter {
         int result = 0;
 
         if (pos >= lastValid) {
-            readBytes();
+            if (readBytes() < 0) {
+                throw new IOException(
+                        "Unexpected end of stream whilst reading request body");
+            }
         }
 
         if (remaining > (lastValid - pos)) {
@@ -378,7 +381,7 @@ public class ChunkedInputFilter implements InputFilter {
      */
     protected boolean parseEndChunk() throws IOException {
 
-        // Handle option trailer headers
+        // Handle optional trailer headers
         while (parseHeader()) {
             // Loop until we run out of headers
         }
