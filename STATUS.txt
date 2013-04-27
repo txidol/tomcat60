@@ -73,13 +73,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, schultz
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54382
-  Avoid NPE with an empty SSI directive
-  http://svn.apache.org/viewvc?view=revision&revision=1430553
-  (r1430550 in trunk)
-  +1: kkolinko, markt, rjung
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54456
   If the client aborts the request, make sure this is communicated to the
   application reading the request body.
