@@ -72,8 +72,7 @@ PATCHES PROPOSED TO BACKPORT:
   Update to Eclipse JDT Compiler 4.2.2
   http://people.apache.org/~kkolinko/patches/2013-03-26_tc6_eclipse422.patch
   +1: kkolinko, rjung
-  -1: jfclere: I am ~OK to add the method to allow to compile but not to
-      change the major version of ecj
+  -1: 
 
 PATCHES/ISSUES THAT ARE STALLED
 
