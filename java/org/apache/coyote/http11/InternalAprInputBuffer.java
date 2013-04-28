@@ -275,6 +275,11 @@ public class InternalAprInputBuffer implements InputBuffer {
         // Recycle Request object
         request.recycle();
 
+        // Recycle filters
+        for (int i = 0; i <= lastActiveFilter; i++) {
+            activeFilters[i].recycle();
+        }
+
         socket = 0;
         lastValid = 0;
         pos = 0;

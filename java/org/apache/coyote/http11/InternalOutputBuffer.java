@@ -347,6 +347,11 @@ public class InternalOutputBuffer
         response.recycle();
         socketBuffer.recycle();
 
+        // Recycle filters
+        for (int i = 0; i <= lastActiveFilter; i++) {
+            activeFilters[i].recycle();
+        }
+
         outputStream = null;
         pos = 0;
         lastActiveFilter = -1;

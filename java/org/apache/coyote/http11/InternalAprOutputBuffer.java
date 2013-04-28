@@ -332,6 +332,11 @@ public class InternalAprOutputBuffer
         response.recycle();
         bbuf.clear();
 
+        // Recycle filters
+        for (int i = 0; i <= lastActiveFilter; i++) {
+            activeFilters[i].recycle();
+        }
+
         socket = 0;
         pos = 0;
         lastActiveFilter = -1;

@@ -47,6 +47,9 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>52055</bug>: Ensure that filters are recycled. (markt/kkolinko)
+      </fix>
+      <fix>
         <bug>52184</bug>: Reduce log level for invalid cookies. (markt)
       </fix>
       <fix>

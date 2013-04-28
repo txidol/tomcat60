@@ -31,16 +31,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* For https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
-  Ensure that filters are recycled.
-  Inspired by r1334790 (TC7), r565964 (TC6 Nio)
-  I do not have evidence that this change matters, but it should not hurt.
-  The nextRequest() method already recycles the filters. If it has been called,
-  then lastActiveFilter is -1 and the new code will be NOOP.
-  http://people.apache.org/~kkolinko/patches/2012-06-02_tc6_recycle.patch
-  +1: kkolinko, schultz, jfclere
-  -1:
-
 * Improve method cache handling in SecurityUtil class.
   Add caching for Comet methods and simplify cache lookup code.
   It is backport of r728776 (BZ 46304) and r1429360
