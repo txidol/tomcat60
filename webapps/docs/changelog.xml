@@ -47,6 +47,9 @@
   <subsection name="Catalina">
     <changelog>
       <fix>
+        <bug>52184</bug>: Reduce log level for invalid cookies. (markt)
+      </fix>
+      <fix>
         <bug>53481</bug>: Added support for SSLHonorCipherOrder to allow
         the server to impose its cipher order on the client. Based on a patch
         provided by Marcel &#x160;ebek. (schultz)

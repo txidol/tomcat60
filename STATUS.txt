@@ -31,18 +31,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* Backport UserDataHelper class (issue 52184)
-  Provide greater control over the logging of errors triggered by invalid
-  input data (i.e. data over which Tomcat has no control).
-
-  Note: cookies logging (o.a.t.util.http.Cookies) does not need to be
-  addressed in Tomcat 6, because all logging in that class here is done at
-  debug level.
-
-  http://people.apache.org/~kkolinko/patches/2013-03-24_tc6_52184_UserDataHelper.patch
-  +1: kkolinko, rjung, jfclere
-  -1:
-
 * For https://issues.apache.org/bugzilla/show_bug.cgi?id=52055
   Ensure that filters are recycled.
   Inspired by r1334790 (TC7), r565964 (TC6 Nio)
