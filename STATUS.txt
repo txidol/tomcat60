@@ -38,14 +38,6 @@ PATCHES PROPOSED TO BACKPORT:
   +1: kkolinko, schultz
   -1:
 
-* Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54601
-  Change catalina.sh to consistently use LOGGING_MANAGER variable to
-  configure logging, instead of modifying JAVA_OPTS one.
-  https://issues.apache.org/bugzilla/attachment.cgi?id=29985
-  (backport of r1449406; r1449412 in tc7)
-  +1: kkolinko, rjung, jfclere
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54615
   Update to Eclipse JDT Compiler 4.2.2
   http://people.apache.org/~kkolinko/patches/2013-03-26_tc6_eclipse422.patch

@@ -168,6 +168,11 @@
         (schultz)
       </fix>
       <update>
+        <bug>54601</bug>: Change catalina.sh to consistently use LOGGING_MANAGER
+          variable to configure logging, instead of modifying JAVA_OPTS one.
+          (kkolinko) 
+      </update>
+      <update>
         <bug>54890</bug>: Update to Apache Commons Daemon 1.0.15. (mturk)
       </update>
     </changelog>
