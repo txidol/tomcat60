@@ -131,6 +131,8 @@ public class TldLocationsCache {
         noTldJars.add("ecj-3.7.jar");
         noTldJars.add("ecj-3.7.1.jar");
         noTldJars.add("ecj-3.7.2.jar");
+        noTldJars.add("ecj-4.2.1.jar");
+        noTldJars.add("ecj-4.2.2.jar");
         noTldJars.add("jsp-api.jar");
         noTldJars.add("servlet-api.jar");
         noTldJars.add("tomcat-coyote.jar");

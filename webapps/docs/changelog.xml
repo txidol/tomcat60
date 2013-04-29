@@ -120,6 +120,13 @@
       </update>
     </changelog>
   </subsection>
+  <subsection name="Jasper">
+    <changelog>
+      <fix>
+        <bug>54615</bug>:  Tomcat 6 doesn't build against ecj 4.x (kkolinko)
+      </fix>
+    </changelog>
+  </subsection>
   <subsection name="Cluster">
     <changelog>
       <fix>

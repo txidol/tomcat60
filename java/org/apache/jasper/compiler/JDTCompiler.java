@@ -147,6 +147,10 @@ public class JDTCompiler extends org.apache.jasper.compiler.Compiler {
                 }
                 return result;
             }
+
+            public boolean ignoreOptionalProblems() {
+                return false;
+            }
         }
 
         final INameEnvironment env = new INameEnvironment() {
