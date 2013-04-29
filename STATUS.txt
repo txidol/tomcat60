@@ -31,13 +31,6 @@ PATCHES ACCEPTED TO BACKPORT:
 PATCHES PROPOSED TO BACKPORT:
   [ New proposals should be added at the end of the list ]
 
-* Improve method cache handling in SecurityUtil class.
-  Add caching for Comet methods and simplify cache lookup code.
-  It is backport of r728776 (BZ 46304) and r1429360
-  http://people.apache.org/~kkolinko/patches/2013-01-05_tc6_46304_SecurityUtil.patch
-  +1: kkolinko, schultz, markt
-  -1:
-
 * Fix https://issues.apache.org/bugzilla/show_bug.cgi?id=54615
   Update to Eclipse JDT Compiler 4.2.2
   http://people.apache.org/~kkolinko/patches/2013-03-26_tc6_eclipse422.patch

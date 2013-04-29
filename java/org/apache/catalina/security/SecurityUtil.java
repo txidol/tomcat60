@@ -39,8 +39,8 @@ import org.apache.catalina.util.StringManager;
 /**
  * This utility class associates a <code>Subject</code> to the current 
  * <code>AccessControlContext</code>. When a <code>SecurityManager</code> is
- * used, * the container will always associate the called thread with an 
- * AccessControlContext * containing only the principal of the requested
+ * used, the container will always associate the called thread with an 
+ * AccessControlContext containing only the principal of the requested
  * Servlet/Filter.
  *
  * This class uses reflection to invoke the invoke methods.
@@ -49,16 +49,23 @@ import org.apache.catalina.util.StringManager;
  */
 
 public final class SecurityUtil{
-    
-    private final static int INIT= 0;
-    private final static int SERVICE = 1;
-    private final static int DOFILTER = 1;
-    private final static int DESTROY = 2;
-    
-    private final static String INIT_METHOD = "init";
-    private final static String DOFILTER_METHOD = "doFilter";
-    private final static String SERVICE_METHOD = "service";
-    private final static String DESTROY_METHOD = "destroy";
+
+    // Note that indexes overlap.
+    // A Servlet uses "init", "service", "event", "destroy".
+    // A Filter uses "doFilter", "doFilterEvent", "destroy".
+    private static final int INIT= 0;
+    private static final int SERVICE = 1;
+    private static final int DOFILTER = 1;
+    private static final int EVENT = 2;
+    private static final int DOFILTEREVENT = 2;
+    private static final int DESTROY = 3;
+
+    private static final String INIT_METHOD = "init";
+    private static final String DOFILTER_METHOD = "doFilter";
+    private static final String SERVICE_METHOD = "service";
+    private static final String EVENT_METHOD = "event";
+    private static final String DOFILTEREVENT_METHOD = "doFilterEvent";
+    private static final String DESTROY_METHOD = "destroy";
    
     /**
      * Cache every object for which we are creating method on it.
@@ -335,19 +342,19 @@ public final class SecurityUtil{
      */
     private static Method findMethod(Method[] methodsCache,
                                      String methodName){
-        if (methodName.equalsIgnoreCase(INIT_METHOD) 
-                && methodsCache[INIT] != null){
+        if (methodName.equals(INIT_METHOD)){
             return methodsCache[INIT];
-        } else if (methodName.equalsIgnoreCase(DESTROY_METHOD) 
-                && methodsCache[DESTROY] != null){
-            return methodsCache[DESTROY];            
-        } else if (methodName.equalsIgnoreCase(SERVICE_METHOD) 
-                && methodsCache[SERVICE] != null){
+        } else if (methodName.equals(DESTROY_METHOD)){
+            return methodsCache[DESTROY];
+        } else if (methodName.equals(SERVICE_METHOD)){
             return methodsCache[SERVICE];
-        } else if (methodName.equalsIgnoreCase(DOFILTER_METHOD) 
-                && methodsCache[DOFILTER] != null){
-            return methodsCache[DOFILTER];          
-        } 
+        } else if (methodName.equals(DOFILTER_METHOD)){
+            return methodsCache[DOFILTER];
+        } else if (methodName.equals(EVENT_METHOD)){
+            return methodsCache[EVENT];
+        } else if (methodName.equals(DOFILTEREVENT_METHOD)){
+            return methodsCache[DOFILTEREVENT];
+        }
         return null;
     }
     
@@ -369,22 +376,26 @@ public final class SecurityUtil{
             throws Exception{
         
         if ( methodsCache == null){
-            methodsCache = new Method[3];
+            methodsCache = new Method[4];
         }               
                 
         Method method = 
             targetObject.getClass().getMethod(methodName, targetType); 
 
-        if (methodName.equalsIgnoreCase(INIT_METHOD)){
+        if (methodName.equals(INIT_METHOD)){
             methodsCache[INIT] = method;
-        } else if (methodName.equalsIgnoreCase(DESTROY_METHOD)){
+        } else if (methodName.equals(DESTROY_METHOD)){
             methodsCache[DESTROY] = method;
-        } else if (methodName.equalsIgnoreCase(SERVICE_METHOD)){
+        } else if (methodName.equals(SERVICE_METHOD)){
             methodsCache[SERVICE] = method;
-        } else if (methodName.equalsIgnoreCase(DOFILTER_METHOD)){
+        } else if (methodName.equals(DOFILTER_METHOD)){
             methodsCache[DOFILTER] = method;
-        } 
-         
+        } else if (methodName.equals(EVENT_METHOD)){
+            methodsCache[EVENT] = method;
+        } else if (methodName.equals(DOFILTEREVENT_METHOD)){
+            methodsCache[DOFILTEREVENT] = method;
+        }
+
         objectCache.put(targetObject, methodsCache );
                                            
         return method;
