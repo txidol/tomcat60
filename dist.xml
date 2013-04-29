@@ -533,6 +533,7 @@
          tarfile="${tomcat.release}/v${version}/bin/${final.name}.tar.gz">
       <tarfileset dir="${tomcat.dist}" mode="755" prefix="${final.name}">
         <include name="bin/catalina.sh" />
+        <include name="bin/daemon.sh" />
         <include name="bin/digest.sh" />
         <include name="bin/jasper.sh" />
         <include name="bin/jspc.sh" />
@@ -562,6 +563,7 @@
         <include name="RUNNING.txt" />
         <include name="BENCHMARKS.txt" />
         <exclude name="bin/catalina.sh" />
+        <exclude name="bin/daemon.sh" />
         <exclude name="bin/digest.sh" />
         <exclude name="bin/jasper.sh" />
         <exclude name="bin/jspc.sh" />
